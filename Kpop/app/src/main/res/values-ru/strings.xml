@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Угадай K-pop</string>
+    <string name="guess">Угадай звезду</string>
+    <string name="guess2">Угадай звезду2</string>
+    <string name="guess3">Угадай звезду3</string>
+    <string name="guess4">Угадай звезду4</string>
+</resources>
