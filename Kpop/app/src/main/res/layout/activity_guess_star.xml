@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".GuessStar">
 
+<!--    TODO ffff     -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,13 +19,14 @@
         <RelativeLayout
             android:id="@+id/rel"
             android:layout_width="match_parent"
-            android:layout_height="500dp">
+            android:layout_height="424dp">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/bts_chin" />
+
         </RelativeLayout>
 
         <TableLayout
@@ -36,9 +39,23 @@
             android:layout_marginBottom="10dp">
 
             <TableRow
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/scoreText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+            </TableRow>
+
+            <TableRow
                 android:id="@+id/row1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent" >
+
+            </TableRow>
 
             <TableRow
                 android:id="@+id/row2"

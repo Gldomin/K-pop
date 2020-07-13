@@ -1,14 +1,20 @@
 package com.example.k_pop;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.service.autofill.TextValueSanitizer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Random;
@@ -19,15 +25,33 @@ public class GuessStar extends AppCompatActivity {
     String[] stars;
     Button[] buttons = new Button[4];
     int chosenOne;
+    int scoreNow = 0;
+    String StarName;
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putInt("scoreNow", scoreNow);
+        super.onSaveInstanceState(outState);
+    }
+
+    @SuppressLint("DefaultLocale")
+    void updateScore(TextView text) {
+        text.setText("Ваш счет: " + scoreNow);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
+
+        if (savedInstanceState != null)
+            scoreNow = savedInstanceState.getInt("scoreNow");
+
         imageView = findViewById(R.id.imageView);
         //TextView textView = findViewById(R.id.textView);
         String str = getResources().getString(R.string.app_name);
         //textView.setText(str);
+
         for (int i = 0; i < 4; i++) {
             buttons[i] = new Button(this);
             TableRow tableRow;
@@ -40,18 +64,33 @@ public class GuessStar extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (((Button) view).getText().equals(stars[chosenOne])) {
+                        scoreNow++;
+                        switch (scoreNow){
+                        case 10: Toast.makeText(GuessStar.this, "Поздравляем, Вы - адепт BTS", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                            break;
+                            case 20: Toast.makeText(GuessStar.this, "Да вы знаток BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                                break;
+                            case 30: Toast.makeText(GuessStar.this, "Вау, вы просто эксперт BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+
+                        }
                         init();
-                    }
+                    } else if (scoreNow > 0) scoreNow--;
+                    TextView textView = findViewById(R.id.scoreText);
+                    updateScore(textView);
                 }
             });
             tableRow.addView(buttons[i]);
         }
+        // TODO hjdhfj
         init();
     }
 
     private void init() {
+        TextView textView = findViewById(R.id.scoreText);
+        updateScore(textView);
         AssetManager assetManager = getAssets();
         stars = new String[4];
+
         try {
             String[] str = assetManager.list("BTS");
             for (int i = 0; i < 4; i++) {
@@ -59,7 +98,9 @@ public class GuessStar extends AppCompatActivity {
                 while (str[rand].equals("")) {
                     rand = new Random().nextInt(str.length);
                 }
-                stars[i] = str[rand];
+                //обрезание по точкам
+                String[] s = str[rand].split(".png");
+                stars[i] = s[0];
                 buttons[i].setText(stars[i]);
                 str[rand] = "";
             }
@@ -69,7 +110,7 @@ public class GuessStar extends AppCompatActivity {
 
         try {
             chosenOne = new Random().nextInt(4);
-            Drawable drawable = Drawable.createFromStream(assetManager.open("BTS/" + stars[chosenOne]), "123");
+            Drawable drawable = Drawable.createFromStream(assetManager.open("BTS/" + stars[chosenOne] + ".png"), "123");
             imageView.setImageDrawable(drawable);
         } catch (IOException e) {
             e.printStackTrace();
