@@ -71,7 +71,6 @@ public class GuessStar extends AppCompatActivity {
                             case 20: Toast.makeText(GuessStar.this, "Да вы знаток BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                                 break;
                             case 30: Toast.makeText(GuessStar.this, "Вау, вы просто эксперт BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-
                         }
                         init();
                     } else if (scoreNow > 0) scoreNow--;
@@ -90,7 +89,6 @@ public class GuessStar extends AppCompatActivity {
         updateScore(textView);
         AssetManager assetManager = getAssets();
         stars = new String[4];
-
         try {
             String[] str = assetManager.list("BTS");
             for (int i = 0; i < 4; i++) {
@@ -107,7 +105,6 @@ public class GuessStar extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         try {
             chosenOne = new Random().nextInt(4);
             Drawable drawable = Drawable.createFromStream(assetManager.open("BTS/" + stars[chosenOne] + ".png"), "123");
