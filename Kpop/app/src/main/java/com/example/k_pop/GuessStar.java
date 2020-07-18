@@ -2,7 +2,6 @@ package com.example.k_pop;
 
 import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -19,16 +18,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GuessStar extends AppCompatActivity {
 
     ImageView imageView;
     String[] stars;
+    ArrayList<Artist> artists = new ArrayList<>();
     Button[] buttons = new Button[4];
     int chosenOne;
     int scoreNow = 0;
-    String StarName;
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -65,7 +65,11 @@ public class GuessStar extends AppCompatActivity {
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (((Button) view).getText().equals(stars[chosenOne])) {
+                    if (((Button) view).getText().equals(artists.get(chosenOne).getName())) {
+                        //Сбос значений для проверки записан ли артист на кнопку
+                        for (Artist a : artists) {
+                            a.setInit(false);
+                        }
                         scoreNow++;
                         switch (scoreNow) {
                             case 10:
@@ -86,41 +90,57 @@ public class GuessStar extends AppCompatActivity {
             tableRow.addView(buttons[i]);
         }
         // TODO hjdhfj
+        createArray();
         init();
     }
 
-    private void init() {
-        TextView textView = findViewById(R.id.scoreText);
-        updateScore(textView);
+    /**
+     * Метод для создания массива обектов с именами и группами артистов
+     */
+    private void createArray() {
+        artists = new ArrayList<>();
         AssetManager assetManager = getAssets();
-        stars = new String[4];
         try {
-            String[] str = assetManager.list("BTS");
-            for (int i = 0; i < 4; i++) {
-                int rand = new Random().nextInt(str.length);
-                while (str[rand].equals("")) {
-                    rand = new Random().nextInt(str.length);
+            String[] str2 = assetManager.list("Groups");
+            for (String s : str2) {
+                try {
+                    String[] nameFolder = assetManager.list("Groups/" + s);
+                    for (String folder : nameFolder) {
+                        //Создание объекта
+                        artists.add(new Artist(s, folder));
+                    }
+                } catch (IOException ignored) {
+
                 }
-                //обрезание по точкам
-                String[] s = str[rand].split(".png");
-                stars[i] = s[0];
-                buttons[i].setText(stars[i]);
-                str[rand] = "";
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            chosenOne = new Random().nextInt(4);
+    }
 
-            //Работа библиотеки Glide с изображением
-            Glide.with(this).load(Uri.parse("file:///android_asset/BTS/" + stars[chosenOne] + ".png"))
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                    .into(imageView);
-
-            Drawable drawable = Drawable.createFromStream(assetManager.open("file:///android_asset/BTS/" + stars[chosenOne] + ".png"), "123");
-        } catch (IOException e) {
-            e.printStackTrace();
+    /**
+     * Метод для загрузки текста на кнопки и вывода на экран артиста
+     */
+    private void init() {
+        TextView textView = findViewById(R.id.scoreText);
+        updateScore(textView);
+        chosenOne = new Random().nextInt(4);
+        stars = new String[4];
+        for (int i = 0; i < 4; i++) {
+            int rand = new Random().nextInt(artists.size());
+            while (artists.get(rand).isInit()) {
+                rand = new Random().nextInt(artists.size());
+            }
+            if (i == chosenOne) {
+                chosenOne = rand;
+            }
+            stars[i] = artists.get(rand).getName();
+            buttons[i].setText(stars[i]);
+            artists.get(rand).Init();
         }
+        //Работа библиотеки Glide с изображением
+        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(chosenOne).getFolder()))
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(imageView);
     }
 }
