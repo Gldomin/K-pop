@@ -1,20 +1,22 @@
 package com.example.k_pop;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
-import android.service.autofill.TextValueSanitizer;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.io.IOException;
 import java.util.Random;
@@ -65,12 +67,15 @@ public class GuessStar extends AppCompatActivity {
                 public void onClick(View view) {
                     if (((Button) view).getText().equals(stars[chosenOne])) {
                         scoreNow++;
-                        switch (scoreNow){
-                        case 10: Toast.makeText(GuessStar.this, "Поздравляем, Вы - адепт BTS", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-                            break;
-                            case 20: Toast.makeText(GuessStar.this, "Да вы знаток BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                        switch (scoreNow) {
+                            case 10:
+                                Toast.makeText(GuessStar.this, "Поздравляем, Вы - адепт BTS", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                                 break;
-                            case 30: Toast.makeText(GuessStar.this, "Вау, вы просто эксперт BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                            case 20:
+                                Toast.makeText(GuessStar.this, "Да вы знаток BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                                break;
+                            case 30:
+                                Toast.makeText(GuessStar.this, "Вау, вы просто эксперт BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                         }
                         init();
                     } else if (scoreNow > 0) scoreNow--;
@@ -107,8 +112,13 @@ public class GuessStar extends AppCompatActivity {
         }
         try {
             chosenOne = new Random().nextInt(4);
-            Drawable drawable = Drawable.createFromStream(assetManager.open("BTS/" + stars[chosenOne] + ".png"), "123");
-            imageView.setImageDrawable(drawable);
+
+            //Работа библиотеки Glide с изображением
+            Glide.with(this).load(Uri.parse("file:///android_asset/BTS/" + stars[chosenOne] + ".png"))
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                    .into(imageView);
+
+            Drawable drawable = Drawable.createFromStream(assetManager.open("file:///android_asset/BTS/" + stars[chosenOne] + ".png"), "123");
         } catch (IOException e) {
             e.printStackTrace();
         }
