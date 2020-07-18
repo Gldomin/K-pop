@@ -1,13 +1,23 @@
 package com.example.k_pop;
 
+import java.util.Random;
+
 public class Artist {
     private String group;
     private String name;
     private boolean init = false;
+    private String[] namesImages;
 
-    public Artist(String group, String name) {
+    public Artist(String group, String name, String[] namesImages) {
         this.group = group;
         this.name = name;
+        this.namesImages = namesImages; //массив имен всех фоток артиста
+    }
+
+    public String getNamesImages() {
+        Random rand = new Random();
+
+        return namesImages[rand.nextInt(namesImages.length)]; //возвращаем рандомную фотку Артиста
     }
 
     public String getName() {
@@ -27,7 +37,7 @@ public class Artist {
     }
 
     public String getFolder() {
-        return group + "/" + name;
+        return group + "/" + name + "/" + getNamesImages();
     }
 
     public boolean isInit() {

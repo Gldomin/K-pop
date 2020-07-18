@@ -27,7 +27,7 @@ public class GuessStar extends AppCompatActivity {
     String[] stars;
     ArrayList<Artist> artists = new ArrayList<>();
     Button[] buttons = new Button[4];
-    int chosenOne;
+    int chosenOne = -1;
     int scoreNow = 0;
 
     @Override
@@ -101,13 +101,16 @@ public class GuessStar extends AppCompatActivity {
         artists = new ArrayList<>();
         AssetManager assetManager = getAssets();
         try {
-            String[] str2 = assetManager.list("Groups");
-            for (String s : str2) {
+            String[] groupName = assetManager.list("Groups");
+            for (String s : groupName) {
                 try {
-                    String[] nameFolder = assetManager.list("Groups/" + s);
-                    for (String folder : nameFolder) {
+
+                    String[] nameArtist = assetManager.list("Groups/" + s);
+
+                    for (String folder : nameArtist) {
                         //Создание объекта
-                        artists.add(new Artist(s, folder));
+
+                        artists.add(new Artist(s, folder, assetManager.list("Groups/" + s + "/" + folder)));
                     }
                 } catch (IOException ignored) {
 
@@ -122,13 +125,14 @@ public class GuessStar extends AppCompatActivity {
      * Метод для загрузки текста на кнопки и вывода на экран артиста
      */
     private void init() {
+        int lastAtrist = chosenOne;
         TextView textView = findViewById(R.id.scoreText);
         updateScore(textView);
         chosenOne = new Random().nextInt(4);
         stars = new String[4];
         for (int i = 0; i < 4; i++) {
-            int rand = new Random().nextInt(artists.size());
-            while (artists.get(rand).isInit()) {
+            int rand = new Random().nextInt(artists.size()); //выбор артиста из пула артистов
+            while (artists.get(rand).isInit() || lastAtrist == rand) {  //перевыбор артиста из пула артистов
                 rand = new Random().nextInt(artists.size());
             }
             if (i == chosenOne) {
