@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -98,6 +99,7 @@ public class GuessStar extends AppCompatActivity {
      * Метод для создания массива обектов с именами и группами артистов
      */
     private void createArray() {
+        int i=0;
         artists = new ArrayList<>();
         AssetManager assetManager = getAssets();
         try {
@@ -109,6 +111,8 @@ public class GuessStar extends AppCompatActivity {
 
                     for (String folder : nameArtist) {
                         //Создание объекта
+                        Log.i(s, "createArtist:" + i);
+                        i++;
 
                         artists.add(new Artist(s, folder, assetManager.list("Groups/" + s + "/" + folder)));
                     }
@@ -125,14 +129,14 @@ public class GuessStar extends AppCompatActivity {
      * Метод для загрузки текста на кнопки и вывода на экран артиста
      */
     private void init() {
-        int lastAtrist = chosenOne;
+        int lastArtist = chosenOne;
         TextView textView = findViewById(R.id.scoreText);
         updateScore(textView);
         chosenOne = new Random().nextInt(4);
         stars = new String[4];
         for (int i = 0; i < 4; i++) {
             int rand = new Random().nextInt(artists.size()); //выбор артиста из пула артистов
-            while (artists.get(rand).isInit() || lastAtrist == rand) {  //перевыбор артиста из пула артистов
+            while (artists.get(rand).isInit() || lastArtist == rand) {  //перевыбор артиста из пула артистов
                 rand = new Random().nextInt(artists.size());
             }
             if (i == chosenOne) {
