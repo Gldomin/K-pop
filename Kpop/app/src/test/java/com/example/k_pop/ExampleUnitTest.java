@@ -1,4 +1,4 @@
-package com.exam.k_pop;
+package com.example.k_pop;
 
 import org.junit.Test;
 
