@@ -1,4 +1,4 @@
-package com.example.k_pop;
+package com.exam.k_pop;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
