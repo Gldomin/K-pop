@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableRow;
@@ -62,6 +63,13 @@ public class GuessStar extends AppCompatActivity {
             } else {
                 tableRow = findViewById(R.id.row2);
             }
+            buttons[i].setBackgroundResource(R.drawable.stylebutton);
+            buttons[i].setPadding(10, 10, 10, 10);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(10, 10, 10, 10);
+            buttons[i].setLayoutParams(lp);
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -104,12 +112,9 @@ public class GuessStar extends AppCompatActivity {
             String[] groupName = assetManager.list("Groups");
             for (String s : groupName) {
                 try {
-
                     String[] nameArtist = assetManager.list("Groups/" + s);
-
                     for (String folder : nameArtist) {
                         //Создание объекта
-
                         artists.add(new Artist(s, folder, assetManager.list("Groups/" + s + "/" + folder)));
                     }
                 } catch (IOException ignored) {
