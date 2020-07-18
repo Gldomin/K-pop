@@ -38,22 +38,22 @@ public class GuessStar extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt("scoreNow", scoreNow);
         super.onSaveInstanceState(outState);
+    }
 
+    @Override
+    protected void onDestroy() {
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
-        if (sp.getInt("userScoreGuessStar", -1) < scoreNow)
-        {
+        if (sp.getInt("userScoreGuessStar", -1) < scoreNow) {
             SharedPreferences.Editor e = sp.edit();
             e.putInt("userScoreGuessStar", scoreNow);
             e.apply();
         }
-
+        super.onDestroy();
     }
 
     @SuppressLint("DefaultLocale")
     void updateScore(TextView text) {
         text.setText("Ваш счет: " + scoreNow);
-
-
     }
 
     @Override
@@ -65,7 +65,7 @@ public class GuessStar extends AppCompatActivity {
         TextView textUserScore = findViewById(R.id.scoreText2);
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         if (sp.contains("userScoreGuessStar")) {
-            int userScore=-1;
+            int userScore = -1;
             userScore = sp.getInt("userScoreGuessStar", userScore);
             textUserScore.setText("Ваш рекорд: " + userScore);
 
