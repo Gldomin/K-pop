@@ -1,6 +1,8 @@
 package com.example.k_pop;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,17 +38,38 @@ public class GuessStar extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt("scoreNow", scoreNow);
         super.onSaveInstanceState(outState);
+
+        SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
+        if (sp.getInt("userScoreGuessStar", -1) < scoreNow)
+        {
+            SharedPreferences.Editor e = sp.edit();
+            e.putInt("userScoreGuessStar", scoreNow);
+            e.apply();
+        }
+
     }
 
     @SuppressLint("DefaultLocale")
     void updateScore(TextView text) {
         text.setText("Ваш счет: " + scoreNow);
+
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
+
+        TextView textUserScore = findViewById(R.id.scoreText2);
+        SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
+        if (sp.contains("userScoreGuessStar")) {
+            int userScore=-1;
+            userScore = sp.getInt("userScoreGuessStar", userScore);
+            textUserScore.setText("Ваш рекорд: " + userScore);
+
+        } else textUserScore.setText("Ваш рекорд: " + 0);
 
         if (savedInstanceState != null)
             scoreNow = savedInstanceState.getInt("scoreNow");
@@ -107,7 +130,7 @@ public class GuessStar extends AppCompatActivity {
      * Метод для создания массива обектов с именами и группами артистов
      */
     private void createArray() {
-        int i=0;
+        int i = 0;
         artists = new ArrayList<>();
         AssetManager assetManager = getAssets();
         try {
