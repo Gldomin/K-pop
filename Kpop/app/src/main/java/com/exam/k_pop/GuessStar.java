@@ -112,6 +112,9 @@ public class GuessStar extends AppCompatActivity {
                                 break;
                             case 30:
                                 Toast.makeText(GuessStar.this, "Вау, вы просто эксперт BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                                break;
+                            case 100:
+                                Toast.makeText(GuessStar.this, "Бро, да ты просто бешеный! Нет, я серьезно. Таких фанатов K-pop еще надо поискать!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                         }
                         init();
                     } else if (scoreNow > 0) scoreNow--;
