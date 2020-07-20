@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Guess K-pop</string>
     <string name="guess">Guess1</string>
-    <string name="guess2">Guess2</string>
+    <string name="guess2">Guess Bands</string>
     <string name="guess3">Guess3</string>
     <string name="guess4">Guess4</string>
 </resources>
