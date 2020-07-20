@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -30,16 +31,23 @@
             android:text="@string/guess2" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/chooseGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/guess3" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/galery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/guess4" />
+
+
+    <Button
+        android:id="@+id/settingsG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/guess5" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

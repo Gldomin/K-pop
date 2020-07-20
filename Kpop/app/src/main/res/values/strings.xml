@@ -2,6 +2,7 @@
     <string name="app_name">Guess K-pop</string>
     <string name="guess">Guess Star</string>
     <string name="guess2">Guess Group</string>
-    <string name="guess3">Guess3</string>
-    <string name="guess4">Guess4</string>
+    <string name="guess3">Choose Group</string>
+    <string name="guess4">Gallery</string>
+    <string name="guess5">Settings</string>
 </resources>
