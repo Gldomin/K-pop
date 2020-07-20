@@ -103,7 +103,9 @@ public class GuessStar extends AppCompatActivity {
                         for (Artist a : artists) {
                             a.setInit(false);
                         }
-                        ((Button) view).setTextColor(Color.BLACK);  //Чит на правильный ответ
+                        for (int i = 0; i < 4; i++) {
+                            buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                        }
                         scoreNow++;
                         switch (scoreNow) {
                             case 10:
@@ -165,6 +167,7 @@ public class GuessStar extends AppCompatActivity {
         int lastArtist = chosenOne;
         TextView textView = findViewById(R.id.scoreText);
         updateScore(textView);
+        boolean is = true;
         chosenOne = new Random().nextInt(4);
         stars = new String[4];
         for (int i = 0; i < 4; i++) {
@@ -172,9 +175,10 @@ public class GuessStar extends AppCompatActivity {
             while (artists.get(rand).isInit() || lastArtist == rand) {  //перевыбор артиста из пула артистов
                 rand = new Random().nextInt(artists.size());
             }
-            if (i == chosenOne) {
+            if (i == chosenOne && is) {
                 chosenOne = rand;
                 buttons[i].setTextColor(Color.RED); //Чит на правильный ответ
+                is = false;
             }
             stars[i] = artists.get(rand).getName();
             buttons[i].setText(stars[i]);
