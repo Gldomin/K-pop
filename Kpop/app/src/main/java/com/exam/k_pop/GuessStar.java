@@ -42,14 +42,14 @@ public class GuessStar extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
+    protected void onPause() {
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         if (sp.getInt("userScoreGuessStar", -1) < scoreNow) {
             SharedPreferences.Editor e = sp.edit();
             e.putInt("userScoreGuessStar", scoreNow);
             e.apply();
         }
-        super.onStop();
+        super.onPause();
     }
 
     @SuppressLint("DefaultLocale")
