@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -102,6 +103,7 @@ public class GuessStar extends AppCompatActivity {
                         for (Artist a : artists) {
                             a.setInit(false);
                         }
+                        ((Button) view).setTextColor(Color.BLACK);  //Чит на правильный ответ
                         scoreNow++;
                         switch (scoreNow) {
                             case 10:
@@ -172,6 +174,7 @@ public class GuessStar extends AppCompatActivity {
             }
             if (i == chosenOne) {
                 chosenOne = rand;
+                buttons[i].setTextColor(Color.RED); //Чит на правильный ответ
             }
             stars[i] = artists.get(rand).getName();
             buttons[i].setText(stars[i]);
