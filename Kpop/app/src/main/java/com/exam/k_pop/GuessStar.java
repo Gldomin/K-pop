@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GuessStar extends AppCompatActivity {
+    boolean cheatOn = false;
 
     ImageView imageView;
     String[] stars;
@@ -127,6 +128,26 @@ public class GuessStar extends AppCompatActivity {
                 }
             });
             tableRow.addView(buttons[i]);
+            imageView.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
+                @Override
+                public void onClick(View view) {
+                    cheatOn = !cheatOn;
+
+
+                    if (cheatOn) {
+
+                        for (int i = 0; i < 4; i++)
+                            if (i == chosenOne)
+                                buttons[i].setTextColor(Color.RED); //TODO при активации читов неправильно показывает ПЕРВОГО артиста. дальше норм. надо исправить
+                            else buttons[i].setTextColor(Color.BLACK);
+
+                        Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                    } else
+                        Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                }
+            });
+
+
         }
         // TODO hjdhfj
         createArray();
@@ -177,7 +198,11 @@ public class GuessStar extends AppCompatActivity {
             }
             if (i == chosenOne && is) {
                 chosenOne = rand;
-                buttons[i].setTextColor(Color.RED); //Чит на правильный ответ
+
+
+                if (cheatOn)
+                    buttons[i].setTextColor(Color.RED); //Чит на правильный ответ
+
                 is = false;
             }
             stars[i] = artists.get(rand).getName();
