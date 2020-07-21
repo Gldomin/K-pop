@@ -21,10 +21,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+
 
 public class GuessStar extends AppCompatActivity {
     boolean cheatOn = false;
@@ -212,6 +215,7 @@ public class GuessStar extends AppCompatActivity {
         //Работа библиотеки Glide с изображением
         Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(chosenOne).getFolder()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .transition(withCrossFade())
                 .into(imageView);
     }
 }
