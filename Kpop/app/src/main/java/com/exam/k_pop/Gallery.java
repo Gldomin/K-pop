@@ -32,14 +32,12 @@ private GestureDetectorCompat gdt;
             public void onSwipeLeft() {
                 Toast.makeText(Gallery.this, "Свайп-влево", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
             }
-        });
-
-        imageView.setOnTouchListener(new OnSwipeTouchListener(this) {
-            @Override
             public void onSwipeRight() {
                 Toast.makeText(Gallery.this, "Свайп-вправо", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
             }
         });
+
+      
 
 
 
