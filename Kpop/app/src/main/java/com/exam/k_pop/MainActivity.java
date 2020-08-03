@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-        Button buttonBand = findViewById(R.id.button2);
+        Button buttonBand = findViewById(R.id.guessGroup);
         buttonBand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
