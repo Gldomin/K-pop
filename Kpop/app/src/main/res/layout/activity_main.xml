@@ -19,13 +19,13 @@
         <Button
             android:id="@+id/guessStar"
             android:layout_width="147dp"
-            android:layout_height="61dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/guess" />
 
         <Button
             android:id="@+id/guessGroup"
-            android:layout_width="wrap_content"
+            android:layout_width="147dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/guess2" />

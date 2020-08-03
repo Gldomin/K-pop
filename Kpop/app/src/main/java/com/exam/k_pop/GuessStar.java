@@ -21,12 +21,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+
 public class GuessStar extends AppCompatActivity {
+    boolean cheatOn = false;
 
     ImageView imageView;
     String[] stars;
@@ -109,13 +113,13 @@ public class GuessStar extends AppCompatActivity {
                         scoreNow++;
                         switch (scoreNow) {
                             case 10:
-                                Toast.makeText(GuessStar.this, "Поздравляем, Вы - адепт BTS", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                                Toast.makeText(GuessStar.this, "Поздравляем, Вы - адепт K-pop", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                                 break;
                             case 20:
-                                Toast.makeText(GuessStar.this, "Да вы знаток BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                                Toast.makeText(GuessStar.this, "Да вы знаток K-pop!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                                 break;
                             case 30:
-                                Toast.makeText(GuessStar.this, "Вау, вы просто эксперт BTS!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                                Toast.makeText(GuessStar.this, "Вау, вы просто эксперт K-pop!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                                 break;
                             case 100:
                                 Toast.makeText(GuessStar.this, "Бро, да ты просто бешеный! Нет, я серьезно. Таких фанатов K-pop еще надо поискать!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
@@ -127,6 +131,26 @@ public class GuessStar extends AppCompatActivity {
                 }
             });
             tableRow.addView(buttons[i]);
+            imageView.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
+                @Override
+                public void onClick(View view) {
+                    cheatOn = !cheatOn;
+
+
+                    if (cheatOn) {
+
+                        for (int i = 0; i < 4; i++)
+                            if (i == chosenOne)
+                                buttons[i].setTextColor(Color.RED); //TODO при активации читов неправильно показывает ПЕРВОГО артиста. дальше норм. надо исправить
+                            else buttons[i].setTextColor(Color.BLACK);
+
+                        Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                    } else
+                        Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                }
+            });
+
+
         }
         // TODO hjdhfj
         createArray();
@@ -177,7 +201,11 @@ public class GuessStar extends AppCompatActivity {
             }
             if (i == chosenOne && is) {
                 chosenOne = rand;
-                buttons[i].setTextColor(Color.RED); //Чит на правильный ответ
+
+
+                if (cheatOn)
+                    buttons[i].setTextColor(Color.RED); //Чит на правильный ответ
+
                 is = false;
             }
             stars[i] = artists.get(rand).getName();
@@ -187,6 +215,7 @@ public class GuessStar extends AppCompatActivity {
         //Работа библиотеки Glide с изображением
         Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(chosenOne).getFolder()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .transition(withCrossFade())
                 .into(imageView);
     }
 }
