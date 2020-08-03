@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">Угадай K-pop</string>
     <string name="guess">Угадай звезду</string>
-    <string name="guess2">Угадай звезду2</string>
-    <string name="guess3">Угадай звезду3</string>
-    <string name="guess4">Угадай звезду4</string>
+    <string name="guess2">Угадай группу</string>
+    <string name="guess3">Раскидай на две группы</string>
+    <string name="guess4">Галлерея</string>
     <string name="guess5">Настройки</string>
 </resources>

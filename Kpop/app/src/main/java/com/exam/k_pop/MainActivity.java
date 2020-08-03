@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Button button = findViewById(R.id.guessStar);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button guessStarButton = findViewById(R.id.guessStar);
+        guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent image = new Intent();
@@ -30,15 +30,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-        Button buttonBand = findViewById(R.id.guessGroup);
-        buttonBand.setOnClickListener(new View.OnClickListener() {
+        Button guessBandButton = findViewById(R.id.guessBand);
+        guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent image = new Intent();
-                image.setClass( MainActivity.this, GuessStar.class );
+                image.setClass( MainActivity.this, GuessBands.class );
                 startActivity(image);
             }
         });
+
+        Button galleryButton = findViewById(R.id.gallery);
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass( MainActivity.this, Gallery.class );
+                startActivity(image);
+            }
+        });
+
     }
 
 }

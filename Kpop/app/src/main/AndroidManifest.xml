@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Gallery"></activity>
         <activity android:name=".GuessStar" />
+        <activity android:name=".GuessBands"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

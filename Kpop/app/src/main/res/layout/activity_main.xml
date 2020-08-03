@@ -18,14 +18,14 @@
 
         <Button
             android:id="@+id/guessStar"
-            android:layout_width="147dp"
+            android:layout_width="232dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/guess" />
 
         <Button
-            android:id="@+id/guessGroup"
-            android:layout_width="147dp"
+            android:id="@+id/guessBand"
+            android:layout_width="232dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/guess2" />
@@ -37,14 +37,14 @@
             android:text="@string/guess3" />
 
         <Button
-            android:id="@+id/galery"
+            android:id="@+id/gallery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/guess4" />
 
 
     <Button
-        android:id="@+id/settingsG"
+        android:id="@+id/settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/guess5" />
