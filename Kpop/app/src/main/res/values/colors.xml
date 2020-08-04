@@ -6,4 +6,7 @@
 
     <color name="colorBackgroundButton">#FFFFFF</color>
     <color name="colorStrokeButton">#000000</color>
+
+    <color name="acceptGreen">#C858FF73</color>
+    <color name="cancelRed">#CEFF6363</color>
 </resources>

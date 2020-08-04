@@ -6,4 +6,14 @@
     <string name="guess3">Раскидай на две группы</string>
     <string name="guess4">Галлерея</string>
     <string name="guess5">Настройки</string>
+
+    <string name="accept">Подтвердить</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="settings0">Настройки</string>
+    <string name="settings1">Параметр 1</string>
+    <string name="settings2">Параметр 2</string>
+    <string name="settings3">Параметр 3</string>
+    <string name="settings4">Параметр 4</string>
+    <string name="settings5">Параметр 5</string>
 </resources>

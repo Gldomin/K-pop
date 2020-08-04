@@ -7,4 +7,14 @@
     <string name="guess4">Gallery</string>
     <string name="guess5">Settings</string>
 
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="settings0">Settings</string>
+    <string name="settings1">Parameter 1</string>
+    <string name="settings2">Parameter 2</string>
+    <string name="settings3">Parameter 3</string>
+    <string name="settings4">Parameter 4</string>
+    <string name="settings5">Parameter 5</string>
+
 </resources>
