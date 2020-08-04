@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
 
 
         Button button = findViewById(R.id.guessStar);
@@ -35,7 +35,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent image = new Intent();
-                image.setClass( MainActivity.this, GuessStar.class );
+                image.setClass( MainActivity.this, GuessBands.class );
+                startActivity(image);
+            }
+        });
+        Button buttonLibrary = findViewById(R.id.galery);
+        buttonLibrary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(MainActivity.this, com.exam.k_pop.activity.MainActivity.class);
                 startActivity(image);
             }
         });

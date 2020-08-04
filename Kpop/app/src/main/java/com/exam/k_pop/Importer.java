@@ -13,7 +13,7 @@ import java.util.Collections;
  */
 public class Importer {
     private ArrayList tempImport;
-
+//
 
     public ArrayList getAllArtists(AssetManager assetManager) //достает всех артистов и дает нам массив полных имен (с путем от Assets)
     {
