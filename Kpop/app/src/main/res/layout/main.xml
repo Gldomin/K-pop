@@ -18,21 +18,21 @@
 
         <Button
             android:id="@+id/guessStar"
-            android:layout_width="147dp"
+            android:layout_width="224dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/guess" />
 
         <Button
             android:id="@+id/guessGroup"
-            android:layout_width="147dp"
+            android:layout_width="224dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/guess2" />
 
         <Button
             android:id="@+id/chooseGroup"
-            android:layout_width="match_parent"
+            android:layout_width="224dp"
             android:layout_height="wrap_content"
             android:text="@string/guess3" />
 
