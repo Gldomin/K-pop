@@ -30,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
+
+        Button button2 = findViewById(R.id.guessGroup);
+        button2.setOnClickListener(new View.OnClickListener(){
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, GuesGroup.class);
+            startActivity(intent);
+        }
+    });
     }
+
 
 }

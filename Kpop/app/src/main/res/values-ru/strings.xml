@@ -6,4 +6,5 @@
     <string name="guess3">Угадай звезду3</string>
     <string name="guess4">Угадай звезду4</string>
     <string name="guess5">Настройки</string>
+    <string name="groupname">Название группы</string>
 </resources>

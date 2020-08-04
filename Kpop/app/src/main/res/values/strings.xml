@@ -5,4 +5,7 @@
     <string name="guess3">Choose Group</string>
     <string name="guess4">Gallery</string>
     <string name="guess5">Settings</string>
+    <string name="groupname">Group Name</string>
+
+
 </resources>
