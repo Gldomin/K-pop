@@ -78,8 +78,84 @@ public class GuesGroup extends AppCompatActivity {
                  grName.setText("Ent", TextView.BufferType.EDITABLE);
                 break;
                 case R.id.litQ:
-                init();
+                grName.getText().insert();
                 break;
+                case R.id.litW:
+                    init();
+                    break;
+                case R.id.litE:
+                    init();
+                    break;
+                case R.id.litR:
+                    init();
+                    break;
+                case R.id.litT:
+                    init();
+                    break;
+                case R.id.litY:
+                    init();
+                    break;
+                case R.id.litU:
+                    init();
+                    break;
+                case R.id.litI:
+                    init();
+                    break;
+                case R.id.litO:
+                    init();
+                    break;
+                case R.id.litP:
+                    init();
+                    break;
+                case R.id.litA:
+                    init();
+                    break;
+                case R.id.litS:
+                    init();
+                    break;
+                case R.id.litD:
+                    init();
+                    break;
+                case R.id.litF:
+                    init();
+                    break;
+                case R.id.litG:
+                    init();
+                    break;
+                case R.id.litH:
+                    init();
+                    break;
+                case R.id.litJ:
+                    init();
+                    break;
+                case R.id.litK:
+                    init();
+                    break;
+                case R.id.litL:
+                    init();
+                    break;
+                case R.id.litZ:
+                    init();
+                    break;
+                case R.id.litX:
+                    init();
+                    break;
+                case R.id.litC:
+                    init();
+                    break;
+                case R.id.litV:
+                    init();
+                    break;
+                case R.id.litB:
+                    init();
+                    break;
+                case R.id.litN:
+                    init();
+                    break;
+                case R.id.litM:
+                    init();
+                    break;
+
             }
         }
 
