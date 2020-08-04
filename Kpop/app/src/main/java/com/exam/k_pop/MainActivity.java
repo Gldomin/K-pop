@@ -18,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.main);
 
         Button guessStarButton = findViewById(R.id.guessStar);
         guessStarButton.setOnClickListener(new View.OnClickListener() {
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-        Button guessBandButton = findViewById(R.id.guessBand);
+        Button guessBandButton = findViewById(R.id.guessGroup);
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-
         Button galleryButton = findViewById(R.id.gallery);
         galleryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-
         Button settingsButton = findViewById(R.id.settings);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
