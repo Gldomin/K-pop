@@ -37,14 +37,14 @@
             android:text="@string/guess3" />
 
         <Button
-            android:id="@+id/galery"
+            android:id="@+id/gallery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/guess4" />
 
 
     <Button
-        android:id="@+id/settingsG"
+        android:id="@+id/settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/guess5" />

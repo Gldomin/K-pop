@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-        Button galleryButton = findViewById(R.id.gallery);
-        galleryButton.setOnClickListener(new View.OnClickListener() {
+        Button buttonLibrary = findViewById(R.id.gallery);
+        buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent image = new Intent();
-                image.setClass( MainActivity.this, Gallery.class );
+                image.setClass(MainActivity.this, com.exam.k_pop.activity.MainActivity.class);
                 startActivity(image);
             }
         });
