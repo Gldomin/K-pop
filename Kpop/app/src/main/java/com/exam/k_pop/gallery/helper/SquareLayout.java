@@ -1,4 +1,4 @@
-package com.exam.k_pop.helper;
+package com.exam.k_pop.gallery.helper;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 /**
- * Created by Lincoln on 05/04/16.
+ * Класс для создания квадратных плиток
  */
 class SquareLayout extends RelativeLayout {
 

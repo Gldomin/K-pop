@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.exam.k_pop.gallery.activity.Gallery;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_main);
 
         Button guessStarButton = findViewById(R.id.guessStar);
         guessStarButton.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent image = new Intent();
-                image.setClass(MainActivity.this, com.exam.k_pop.activity.MainActivity.class);
+                image.setClass(MainActivity.this, Gallery.class);
                 startActivity(image);
             }
         });

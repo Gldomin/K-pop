@@ -1,4 +1,4 @@
-package com.exam.k_pop.activity;
+package com.exam.k_pop.gallery.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,14 +16,14 @@ import androidx.viewpager.widget.ViewPager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.exam.k_pop.R;
-import com.exam.k_pop.model.Image;
+import com.exam.k_pop.gallery.model.ImageGallery;
 
 import java.util.ArrayList;
 
-
+//Класс фрагмента типа страницы, который можно листать вправо, влево
 public class SlideshowDialogFragment extends DialogFragment {
     private String TAG = SlideshowDialogFragment.class.getSimpleName();
-    private ArrayList<Image> images;
+    private ArrayList<ImageGallery> imageGalleries;
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private TextView lblCount, lblTitle, lblDate;
@@ -37,17 +37,17 @@ public class SlideshowDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_image_slider, container, false);
-        viewPager = (ViewPager) v.findViewById(R.id.viewpager);
-        lblCount = (TextView) v.findViewById(R.id.lbl_count);
-        lblTitle = (TextView) v.findViewById(R.id.title);
-        lblDate = (TextView) v.findViewById(R.id.date);
+        View v = inflater.inflate(R.layout.gallery_fragment_image_slider, container, false);
+        viewPager = v.findViewById(R.id.viewpager);
+        lblCount = v.findViewById(R.id.lbl_count);
+        lblTitle = v.findViewById(R.id.title);
+        lblDate = v.findViewById(R.id.date);
 
-        images = (ArrayList<Image>) getArguments().getSerializable("images");
+        imageGalleries = (ArrayList<ImageGallery>) getArguments().getSerializable("images");
         selectedPosition = getArguments().getInt("position");
 
         Log.e(TAG, "position: " + selectedPosition);
-        Log.e(TAG, "images size: " + images.size());
+        Log.e(TAG, "images size: " + imageGalleries.size());
 
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
@@ -83,11 +83,11 @@ public class SlideshowDialogFragment extends DialogFragment {
     };
 
     private void displayMetaInfo(int position) {
-        lblCount.setText((position + 1) + " of " + images.size());
+        lblCount.setText((position + 1) + " of " + imageGalleries.size());
 
-        Image image = images.get(position);
-        lblTitle.setText(image.getName());
-        lblDate.setText(image.getTimestamp());
+        ImageGallery imageGallery = imageGalleries.get(position);
+        lblTitle.setText(imageGallery.getName());
+        lblDate.setText(imageGallery.getTimestamp());
     }
 
     @Override
@@ -108,13 +108,13 @@ public class SlideshowDialogFragment extends DialogFragment {
         public Object instantiateItem(ViewGroup container, int position) {
 
             layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = layoutInflater.inflate(R.layout.image_fullscreen_preview, container, false);
+            View view = layoutInflater.inflate(R.layout.gallery_image_fullscreen_preview, container, false);
 
             ImageView imageViewPreview = (ImageView) view.findViewById(R.id.image_preview);
 
-            Image image = images.get(position);
+            ImageGallery imageGallery = imageGalleries.get(position);
 
-            Glide.with(getActivity()).load(image.getUri())
+            Glide.with(getActivity()).load(imageGallery.getUri())
                     .thumbnail(0.5f)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(imageViewPreview);
@@ -126,7 +126,7 @@ public class SlideshowDialogFragment extends DialogFragment {
 
         @Override
         public int getCount() {
-            return images.size();
+            return imageGalleries.size();
         }
 
         @Override
