@@ -1,4 +1,4 @@
-package com.exam.k_pop.adapter;
+package com.exam.k_pop.gallery.adapter;
 
 import android.content.Context;
 import android.view.GestureDetector;
@@ -16,15 +16,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.List;
 
 import com.exam.k_pop.R;
-import com.exam.k_pop.model.Image;
+import com.exam.k_pop.gallery.model.ImageGallery;
 
 /**
- * Created by Lincoln on 31/03/16.
+ * Класс адаптер для загрузки изображений в плитки
  */
-
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHolder> {
 
-    private List<Image> images;
+    private List<ImageGallery> imageGalleries;
     private Context mContext;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -37,9 +36,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
     }
 
 
-    public GalleryAdapter(Context context, List<Image> images) {
+    public GalleryAdapter(Context context, List<ImageGallery> imageGalleries) {
         mContext = context;
-        this.images = images;
+        this.imageGalleries = imageGalleries;
     }
 
     @Override
@@ -52,9 +51,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Image image = images.get(position);
+        ImageGallery imageGallery = imageGalleries.get(position);
 
-        Glide.with(mContext).load(image.getUri())
+        Glide.with(mContext).load(imageGallery.getUri())
                 .thumbnail(0.5f)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.thumbnail);
@@ -62,7 +61,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return images.size();
+        return imageGalleries.size();
     }
 
     public interface ClickListener {

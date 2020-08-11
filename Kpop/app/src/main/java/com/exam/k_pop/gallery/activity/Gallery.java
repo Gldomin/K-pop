@@ -1,4 +1,4 @@
-package com.exam.k_pop.activity;
+package com.exam.k_pop.gallery.activity;
 
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -13,28 +13,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.exam.k_pop.Artist;
 import com.exam.k_pop.R;
-import com.exam.k_pop.adapter.GalleryAdapter;
-import com.exam.k_pop.model.Image;
+import com.exam.k_pop.gallery.adapter.GalleryAdapter;
+import com.exam.k_pop.gallery.model.ImageGallery;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+//Класс для показа всех Артистов плиткой
+public class Gallery extends AppCompatActivity {
 
-    private String TAG = MainActivity.class.getSimpleName();
-    private ArrayList<Image> images;
+    private String TAG = Gallery.class.getSimpleName();
+    private ArrayList<ImageGallery> imageGalleries;
     private GalleryAdapter mAdapter;
     private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_gallery);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        images = new ArrayList<>();
-        mAdapter = new GalleryAdapter(getApplicationContext(), images);
+        imageGalleries = new ArrayList<>();
+        mAdapter = new GalleryAdapter(getApplicationContext(), imageGalleries);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("images", images);
+                bundle.putSerializable("images", imageGalleries);
                 bundle.putInt("position", position);
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(s, "createArtist:" + i);
                         i++;
                         artists.add(new Artist(s, folder, assetManager.list("Groups/" + s + "/" + folder)));
-                        images.add(new Image(artists.get(artists.size() - 1).getFolder()));
+                        imageGalleries.add(new ImageGallery(artists.get(artists.size() - 1).getFolder()));
                     }
                 } catch (IOException ignored) {
 
