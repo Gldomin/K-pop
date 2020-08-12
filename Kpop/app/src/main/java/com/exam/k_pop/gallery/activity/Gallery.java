@@ -4,6 +4,9 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.exam.k_pop.Artist;
+import com.exam.k_pop.OnSwipeTouchListener;
 import com.exam.k_pop.R;
 import com.exam.k_pop.gallery.adapter.GalleryAdapter;
 import com.exam.k_pop.gallery.model.ImageGallery;
@@ -26,9 +30,16 @@ public class Gallery extends AppCompatActivity {
     private ArrayList<ImageGallery> imageGalleries;
     private GalleryAdapter mAdapter;
     private RecyclerView recyclerView;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
@@ -62,6 +73,9 @@ public class Gallery extends AppCompatActivity {
         }));
 
         createArray();
+
+/*
+     */
     }
 
     private void createArray() {

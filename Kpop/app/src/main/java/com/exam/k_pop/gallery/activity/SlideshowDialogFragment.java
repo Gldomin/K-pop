@@ -1,13 +1,17 @@
 package com.exam.k_pop.gallery.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.viewpager.widget.PagerAdapter;
@@ -15,7 +19,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.exam.k_pop.GalleryBioPage;
+import com.exam.k_pop.MainActivity;
+import com.exam.k_pop.OnSwipeTouchListener;
 import com.exam.k_pop.R;
+import com.exam.k_pop.Settings;
 import com.exam.k_pop.gallery.model.ImageGallery;
 
 import java.util.ArrayList;
@@ -34,14 +42,26 @@ public class SlideshowDialogFragment extends DialogFragment {
         return f;
     }
 
+    public void bioPageTransition(View v)  //метод открывает bioPageTransition
+    {
+
+        Intent galaryBioPage = new Intent();
+        galaryBioPage.setClass(v.getContext(), GalleryBioPage.class);
+        startActivity(galaryBioPage);
+
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.gallery_fragment_image_slider, container, false);
+
+        final View v = inflater.inflate(R.layout.gallery_fragment_image_slider, container, false);
+
         viewPager = v.findViewById(R.id.viewpager);
         lblCount = v.findViewById(R.id.lbl_count);
-        lblTitle = v.findViewById(R.id.title);
-        lblDate = v.findViewById(R.id.date);
+        lblTitle = v.findViewById(R.id.gallaryName);
+        lblDate = v.findViewById(R.id.galleryText);
 
         imageGalleries = (ArrayList<ImageGallery>) getArguments().getSerializable("images");
         selectedPosition = getArguments().getInt("position");
@@ -49,11 +69,54 @@ public class SlideshowDialogFragment extends DialogFragment {
         Log.e(TAG, "position: " + selectedPosition);
         Log.e(TAG, "images size: " + imageGalleries.size());
 
+        LinearLayout Lnr = v.findViewById(R.id.gallaryFooterLayout);
+        ImageButton imgBtn = v.findViewById(R.id.imageButtonArrow);
+        imgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bioPageTransition(v);
+            }
+        });
+
+        Lnr.setOnClickListener(new View.OnClickListener() { //обработка кнопки-стрелки
+            @Override
+            public void onClick(View arg0) {
+               // toggleSomething();
+            }
+        });
+        Lnr.setOnTouchListener(new OnSwipeTouchListener() { //обработка свайпов
+
+            @Override
+
+            public boolean onSwipeUp() {
+                Toast.makeText(v.getContext(), "Свайп-вверх", Toast.LENGTH_LONG).show();
+                bioPageTransition(v);
+                return true;
+            }
+
+            public boolean onSwipeDown() {
+                Toast.makeText(v.getContext(), "Свайп-вниз", Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+            public boolean onSwipeLeft() {
+                Toast.makeText(v.getContext(), "Свайп-влево", Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+            public boolean onSwipeRight() {
+                Toast.makeText(v.getContext(), "Свайп-вправо", Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+        });
+
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
         setCurrentItem(selectedPosition);
+
 
         return v;
     }

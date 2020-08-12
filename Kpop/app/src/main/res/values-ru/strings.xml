@@ -16,4 +16,6 @@
     <string name="settings3">Параметр 3</string>
     <string name="settings4">Параметр 4</string>
     <string name="settings5">Параметр 5</string>
+
+    <string name="gallaryInfoButton">Биография</string>
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Фрагмент страницы для показа всей информации-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +9,9 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/black" />
+        android:background="@android:color/black">
+
+    </androidx.viewpager.widget.ViewPager>
 
     <TextView
         android:id="@+id/lbl_count"
@@ -22,16 +25,28 @@
         android:textStyle="bold" />
 
     <LinearLayout
+        android:id="@+id/gallaryFooterLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+
+
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:layout_marginBottom="40dp"
-        android:padding="20dp">
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/imageButtonArrow"
+            android:layout_width="74dp"
+            android:layout_height="63dp"
+
+            android:background="#00FFFFFF"
+            android:foreground="@android:drawable/arrow_up_float" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/gallaryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -39,12 +54,19 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/galleryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
             android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="56dp"
+            android:layout_height="53dp"
+            android:drawableBottom="@android:drawable/ic_dialog_info"
+            android:gravity="center_horizontal|fill_horizontal" />
 
     </LinearLayout>
 
