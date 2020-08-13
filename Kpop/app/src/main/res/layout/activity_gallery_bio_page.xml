@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/tempImg"
-        android:layout_width="379dp"
-        android:layout_height="697dp"
+        android:layout_width="390dp"
+        android:layout_height="395dp"
         android:src="@drawable/ic_launcher_background"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="320dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
