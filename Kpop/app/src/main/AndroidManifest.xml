@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GalleryBioPage"></activity>
+        <activity android:name=".gallery.activity.GalleryBioPage"></activity>
         <activity android:name=".Settings" />
         <activity android:name=".GuessStar" />
         <activity android:name=".GuessBands" />

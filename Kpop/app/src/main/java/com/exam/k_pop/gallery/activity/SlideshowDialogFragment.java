@@ -19,11 +19,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.exam.k_pop.GalleryBioPage;
-import com.exam.k_pop.MainActivity;
 import com.exam.k_pop.OnSwipeTouchListener;
 import com.exam.k_pop.R;
-import com.exam.k_pop.Settings;
 import com.exam.k_pop.gallery.model.ImageGallery;
 
 import java.util.ArrayList;
@@ -44,11 +41,10 @@ public class SlideshowDialogFragment extends DialogFragment {
 
     public void bioPageTransition(View v)  //метод открывает bioPageTransition
     {
-
         Intent galaryBioPage = new Intent();
-        galaryBioPage.setClass(v.getContext(), GalleryBioPage.class);
-        startActivity(galaryBioPage);
-
+        galaryBioPage.setClass(getActivity(), GalleryBioPage.class);
+        startActivityForResult(galaryBioPage, 0);
+        getActivity().overridePendingTransition(R.anim.alpha_off, R.anim.bottom_off);
     }
 
 
@@ -81,7 +77,7 @@ public class SlideshowDialogFragment extends DialogFragment {
         Lnr.setOnClickListener(new View.OnClickListener() { //обработка кнопки-стрелки
             @Override
             public void onClick(View arg0) {
-               // toggleSomething();
+                bioPageTransition(v);
             }
         });
         Lnr.setOnTouchListener(new OnSwipeTouchListener() { //обработка свайпов
