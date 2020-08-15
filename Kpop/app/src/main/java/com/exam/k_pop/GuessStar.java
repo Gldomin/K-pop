@@ -67,22 +67,25 @@ public class GuessStar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
 
+        ///////UserScore//////
         TextView textUserScore = findViewById(R.id.scoreText2);
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         if (sp.contains("userScoreGuessStar")) {
             int userScore = -1;
             userScore = sp.getInt("userScoreGuessStar", userScore);
             textUserScore.setText("Ваш рекорд: " + userScore);
-
         } else textUserScore.setText("Ваш рекорд: " + 0);
-
         if (savedInstanceState != null)
             scoreNow = savedInstanceState.getInt("scoreNow");
+        ///////////////////
+
+
+
 
         imageView = findViewById(R.id.imageView);
-        //TextView textView = findViewById(R.id.textView);
+
         String str = getResources().getString(R.string.app_name);
-        //textView.setText(str);
+
 
         for (int i = 0; i < 4; i++) {
             buttons[i] = new Button(this);
@@ -153,7 +156,11 @@ public class GuessStar extends AppCompatActivity {
 
         }
         // TODO hjdhfj
-        createArray();
+       // createArray();
+        Importer imp = new Importer();
+        AssetManager assetManager = getAssets();
+        artists = imp.getAllArtists(assetManager);
+
         init();
     }
 

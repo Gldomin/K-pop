@@ -17,7 +17,7 @@ public class Importer {
 
     public ArrayList getAllArtists(AssetManager assetManager) //достает всех артистов и дает нам массив полных имен (с путем от Assets)
     {
-        tempImport.clear();
+       // tempImport.clear(); // пришлось его вырубить, иначе бугуртит на виртуализацию
         int i = 0;
         tempImport = new ArrayList<>();
         try {
@@ -41,13 +41,13 @@ public class Importer {
         return tempImport;
     }
     public ArrayList getScrambledArtists(AssetManager assetManager) //возращает перемешанный arrayList (рандомно перемешанный)
-    {tempImport.clear();
+    {// tempImport.clear(); // пришлось его вырубить, иначе бугуртит на виртуализацию
         getAllArtists(assetManager);
         Collections.shuffle(tempImport);
         return tempImport;
     }
     public ArrayList GetAllBands(AssetManager assetManager) {
-        tempImport.clear();
+        // tempImport.clear(); // пришлось его вырубить, иначе бугуртит на виртуализацию
         int i = 0;
         ArrayList artists = new ArrayList();
         tempImport = new ArrayList<>();
