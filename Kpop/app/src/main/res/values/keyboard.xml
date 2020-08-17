@@ -36,7 +36,8 @@
     <string name="literX"  translatable="false">X</string>
     <string name="literY"  translatable="false">Y</string>
     <string name="literZ"  translatable="false">Z</string>
-    <string name="keyEnt"  translatable="false">Ent          </string>
+    <string name="keyEnt"  translatable="false">Ent</string>
+    <string name="keyDel"  translatable="false">Del</string>
 
 
 
