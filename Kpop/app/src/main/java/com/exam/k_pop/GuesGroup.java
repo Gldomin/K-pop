@@ -248,8 +248,6 @@ public class GuesGroup extends AppCompatActivity {
                 .transition(withCrossFade())
                 .into(groupPhoto);
     }
-
-
-
+    
 
 }
