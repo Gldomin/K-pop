@@ -7,6 +7,10 @@
     <string name="guess4">Gallery</string>
     <string name="guess5">Settings</string>
 
+
+    <string name="groupname"></string>
+
+
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
 
@@ -17,5 +21,7 @@
     <string name="settings4">Parameter 4</string>
     <string name="settings5">Parameter 5</string>
 
+
     <string name="gallaryInfoButton">Bio</string>
+
 </resources>

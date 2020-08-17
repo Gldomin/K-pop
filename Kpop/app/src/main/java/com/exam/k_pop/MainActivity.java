@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
+
         Button guessBandButton = findViewById(R.id.guessGroup);
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
+
+
 
     }
 
