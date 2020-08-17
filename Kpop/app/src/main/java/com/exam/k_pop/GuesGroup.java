@@ -78,7 +78,7 @@ public class GuesGroup extends AppCompatActivity {
                  grName.setText("Ent", TextView.BufferType.EDITABLE);
                 break;
                 case R.id.litQ:
-                grName.getText().insert();
+                grName.getText();
                 break;
                 case R.id.litW:
                     init();

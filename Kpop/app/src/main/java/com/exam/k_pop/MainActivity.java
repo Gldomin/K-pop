@@ -30,7 +30,41 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
+<<<<<<< Updated upstream
 
+=======
+<<<<<<< HEAD
+        Button guessBandButton = findViewById(R.id.guessGroup);
+        guessBandButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass( MainActivity.this, GuessBands.class );
+                startActivity(image);
+            }
+        });
+        Button buttonLibrary = findViewById(R.id.gallery);
+        buttonLibrary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(MainActivity.this, Gallery.class);
+                startActivity(image);
+            }
+        });
+        Button settingsButton = findViewById(R.id.settings);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass( MainActivity.this, Settings.class );
+                startActivity(image);
+            }
+        });
+
+=======
+
+>>>>>>> Stashed changes
         Button button2 = findViewById(R.id.guessGroup);
         button2.setOnClickListener(new View.OnClickListener(){
         public void onClick(View view) {
@@ -38,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     });
+<<<<<<< Updated upstream
+=======
+>>>>>>> MrPunisher001
+>>>>>>> Stashed changes
     }
 
 
