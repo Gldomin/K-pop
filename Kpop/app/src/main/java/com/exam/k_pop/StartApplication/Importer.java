@@ -17,6 +17,10 @@ import java.util.Collections;
 
 /*
 класс является посредиком между Assets и основным модулем и достает нам всех артистов и группы. класс может перемешать запрашиваемый массив артистов/группы
+
+Пример использования:
+  ArrayList<Band> bands = Importer.getBands();
+  ArrayList<Artist> artists = Importer.getRandomArtists();
  */
 public class Importer {
 
