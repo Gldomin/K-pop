@@ -77,7 +77,6 @@ public class GalleryBioPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery_bio_page);
 
-
         /////////BioContent////////
       /*  TextView textUserScore = findViewById(R.id.scoreText2);
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
@@ -105,11 +104,16 @@ public class GalleryBioPage extends AppCompatActivity {
             @Override
             public boolean onSwipeDown() {
                 finish();
-                overridePendingTransition(R.anim.alpha_on, R.anim.bottom_on);
                 return true;
             }
         });
 
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.alpha_on, R.anim.bottom_on);
     }
 }
