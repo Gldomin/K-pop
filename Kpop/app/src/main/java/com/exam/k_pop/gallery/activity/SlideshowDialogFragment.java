@@ -42,10 +42,17 @@ public class SlideshowDialogFragment extends DialogFragment {
     public void bioPageTransition(View v)  //метод открывает bioPageTransition
     {
         Intent galaryBioPage = new Intent();
-        galaryBioPage.setClass(getActivity(), GalleryBioPage.class);
+        galaryBioPage.setClass(getContext(), GalleryBioPage.class);
         startActivityForResult(galaryBioPage, 0);
-        getActivity().overridePendingTransition(R.anim.alpha_off, R.anim.bottom_off);
     }
+
+
+    @Override
+    public void onPause() {
+        getActivity().overridePendingTransition(R.anim.alpha_off, R.anim.bottom_off);
+        super.onPause();
+    }
+
 
 
     @Override
