@@ -37,7 +37,7 @@ public class GuessBands extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guess_group);
+        setContentView(R.layout.activity_guess_bands);
         final ImageView groupPhoto = findViewById(R.id.groupPhoto);
         Glide.with(this).load(Uri.parse("file:///android_asset/Groups/BTS/Jimin/Jimin.png"))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)

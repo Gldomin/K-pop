@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/groupName"
         app:orientation="vertical"
-        app:rowCount="3">
+        app:rowCount="4">
 
         <Button
             android:id="@+id/litQ"
@@ -28,7 +28,7 @@
             android:minHeight="10dp"
             android:text="@string/literQ"
             app:layout_column="0"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litW"
@@ -36,7 +36,7 @@
             android:minHeight="10dp"
             android:text="@string/literW"
             app:layout_column="1"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litE"
@@ -44,7 +44,7 @@
             android:minHeight="10dp"
             android:text="@string/literE"
             app:layout_column="2"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litR"
@@ -52,7 +52,7 @@
             android:minHeight="10dp"
             android:text="@string/literR"
             app:layout_column="3"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litT"
@@ -60,7 +60,7 @@
             android:minHeight="10dp"
             android:text="@string/literT"
             app:layout_column="4"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litY"
@@ -68,7 +68,7 @@
             android:minHeight="10dp"
             android:text="@string/literY"
             app:layout_column="5"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litU"
@@ -76,7 +76,7 @@
             android:minHeight="10dp"
             android:text="@string/literU"
             app:layout_column="6"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litI"
@@ -84,7 +84,7 @@
             android:minHeight="10dp"
             android:text="@string/literI"
             app:layout_column="7"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litO"
@@ -92,7 +92,7 @@
             android:minHeight="10dp"
             android:text="@string/literO"
             app:layout_column="8"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litP"
@@ -100,7 +100,7 @@
             android:minHeight="10dp"
             android:text="@string/literP"
             app:layout_column="8"
-            app:layout_row="0" />
+            app:layout_row="1" />
 
         <Button
             android:id="@+id/litA"
@@ -108,7 +108,7 @@
             android:minHeight="10dp"
             android:text="@string/literA"
             app:layout_column="0"
-            app:layout_row="1" />
+            app:layout_row="2" />
 
         <Button
             android:id="@+id/litS"
@@ -116,7 +116,7 @@
             android:minHeight="10dp"
             android:text="@string/literS"
             app:layout_column="1"
-            app:layout_row="1" />
+            app:layout_row="2" />
 
         <Button
             android:id="@+id/litD"
@@ -124,7 +124,7 @@
             android:minHeight="10dp"
             android:text="@string/literD"
             app:layout_column="2"
-            app:layout_row="1" />
+            app:layout_row="2" />
 
         <Button
             android:id="@+id/litF"
@@ -132,7 +132,7 @@
             android:minHeight="10dp"
             android:text="@string/literF"
             app:layout_column="3"
-            app:layout_row="1" />
+            app:layout_row="2" />
 
         <Button
             android:id="@+id/litG"
@@ -140,7 +140,7 @@
             android:minHeight="10dp"
             android:text="@string/literG"
             app:layout_column="4"
-            app:layout_row="1" />
+            app:layout_row="2" />
 
         <Button
             android:id="@+id/litH"
@@ -148,7 +148,7 @@
             android:minHeight="10dp"
             android:text="@string/literH"
             app:layout_column="5"
-            app:layout_row="1" />
+            app:layout_row="2" />
 
         <Button
             android:id="@+id/litJ"
@@ -156,7 +156,7 @@
             android:minHeight="10dp"
             android:text="@string/literJ"
             app:layout_column="6"
-            app:layout_row="1" />
+            app:layout_row="2" />
 
         <Button
             android:id="@+id/litK"
@@ -164,7 +164,7 @@
             android:minHeight="10dp"
             android:text="@string/literK"
             app:layout_column="7"
-            app:layout_row="1" />
+            app:layout_row="2" />
 
         <Button
             android:id="@+id/litL"
@@ -172,7 +172,7 @@
             android:minHeight="10dp"
             android:text="@string/literL"
             app:layout_column="8"
-            app:layout_row="1" />
+            app:layout_row="2" />
 
         <Button
             android:id="@+id/litZ"
@@ -180,7 +180,7 @@
             android:minHeight="10dp"
             android:text="@string/literZ"
             app:layout_column="0"
-            app:layout_row="2" />
+            app:layout_row="3" />
 
         <Button
             android:id="@+id/litX"
@@ -188,7 +188,7 @@
             android:minHeight="10dp"
             android:text="@string/literX"
             app:layout_column="1"
-            app:layout_row="2" />
+            app:layout_row="3" />
 
         <Button
             android:id="@+id/litC"
@@ -196,7 +196,7 @@
             android:minHeight="10dp"
             android:text="@string/literC"
             app:layout_column="2"
-            app:layout_row="2" />
+            app:layout_row="3" />
 
         <Button
             android:id="@+id/litV"
@@ -204,7 +204,7 @@
             android:minHeight="10dp"
             android:text="@string/literV"
             app:layout_column="3"
-            app:layout_row="2" />
+            app:layout_row="3" />
 
         <Button
             android:id="@+id/litB"
@@ -212,7 +212,7 @@
             android:minHeight="10dp"
             android:text="@string/literB"
             app:layout_column="4"
-            app:layout_row="2" />
+            app:layout_row="3" />
 
         <Button
             android:id="@+id/litN"
@@ -220,7 +220,7 @@
             android:minHeight="10dp"
             android:text="@string/literN"
             app:layout_column="5"
-            app:layout_row="2" />
+            app:layout_row="3" />
 
         <Button
             android:id="@+id/litM"
@@ -228,7 +228,7 @@
             android:minHeight="10dp"
             android:text="@string/literM"
             app:layout_column="6"
-            app:layout_row="2" />
+            app:layout_row="3" />
 
         <Button
             android:id="@+id/litDel"
@@ -238,7 +238,7 @@
             android:minHeight="10dp"
             android:text="@string/keyDel"
             app:layout_column="8"
-            app:layout_row="2" />
+            app:layout_row="3" />
 
         <Button
             android:id="@+id/litEnt"
@@ -248,7 +248,7 @@
             android:minHeight="10dp"
             android:text="@string/keyEnt"
             app:layout_column="7"
-            app:layout_row="2" />
+            app:layout_row="3" />
 
 
     </androidx.gridlayout.widget.GridLayout>
