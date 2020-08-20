@@ -36,6 +36,7 @@ public class GuessBands extends AppCompatActivity {
     String band ;
     String folder ;
     int i = 0;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class GuessBands extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands);
-
+        final TextView scoreText = findViewById(R.id.scoreBands);
 
 
              artist= artists.get(0).getName();
@@ -85,10 +86,23 @@ public class GuessBands extends AppCompatActivity {
             Button btnEnt = findViewById(R.id.litEnt);
             Button btnDel = findViewById(R.id.litDel);
             Button btnSpace = findViewById(R.id.space);
+
+            Button btn0 = findViewById(R.id.num0);
+            Button btn1 = findViewById(R.id.num1);
+            Button btn2 = findViewById(R.id.num2);
+            Button btn3 = findViewById(R.id.num3);
+            Button btn4 = findViewById(R.id.num4);
+            Button btn5 = findViewById(R.id.num5);
+            Button btn6 = findViewById(R.id.num6);
             Button btn7 = findViewById(R.id.num7);
+            Button btn8 = findViewById(R.id.num8);
+            Button btn9 = findViewById(R.id.num9);
 
             final EditText grName = findViewById(R.id.groupName);
+            grName.setLongClickable(false);
+            grName.setFocusable(false);
             grName.setText(band);
+
             OnClickListener clkGr = new OnClickListener() {
 
                 @Override
@@ -106,6 +120,9 @@ public class GuessBands extends AppCompatActivity {
                                 if (textAnsw.equals(answ)) {
                                     grName.setText("");
                                      i++;
+                                     score++;
+
+                                     scoreText.setText("Ваш результат: "+score);
 
                                     artist= artists.get(i).getName();
                                     band = artists.get(i).getGroup();
@@ -245,9 +262,18 @@ public class GuessBands extends AppCompatActivity {
             btnB.setOnClickListener(clkGr);
             btnN.setOnClickListener(clkGr);
             btnM.setOnClickListener(clkGr);
-            btnDel.setOnClickListener(clkGr);
+            btn0.setOnClickListener(clkGr);
+            btn1.setOnClickListener(clkGr);
+            btn2.setOnClickListener(clkGr);
+            btn3.setOnClickListener(clkGr);
+            btn4.setOnClickListener(clkGr);
+            btn5.setOnClickListener(clkGr);
+            btn6.setOnClickListener(clkGr);
             btn7.setOnClickListener(clkGr);
+            btn8.setOnClickListener(clkGr);
+            btn9.setOnClickListener(clkGr);
             btnSpace.setOnClickListener(clkGr);
+            btnDel.setOnClickListener(clkGr);
 
 
 
