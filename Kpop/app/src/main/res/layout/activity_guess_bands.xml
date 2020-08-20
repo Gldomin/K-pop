@@ -23,6 +23,20 @@
         app:rowCount="4">
 
         <Button
+            android:id="@+id/num7"
+            android:minWidth="20dp"
+            android:minHeight="10dp"
+            android:text="@string/number7"
+            app:layout_column="0"
+            app:layout_row="0" />
+        <Button
+            android:id="@+id/space"
+            android:minWidth="20dp"
+            android:minHeight="10dp"
+            android:text="@string/space"
+            app:layout_column="1"
+            app:layout_row="0" />
+        <Button
             android:id="@+id/litQ"
             android:minWidth="20dp"
             android:minHeight="10dp"
@@ -99,7 +113,7 @@
             android:minWidth="20dp"
             android:minHeight="10dp"
             android:text="@string/literP"
-            app:layout_column="8"
+            app:layout_column="9"
             app:layout_row="1" />
 
         <Button
