@@ -24,9 +24,9 @@ public class Artist {
         return name;
     }
 
-    public String getGroup() {
-        return group;
-    }
+        public String getGroup() {
+            return group;
+        }
 
     public void setInit(boolean init) {
         this.init = init;
