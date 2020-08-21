@@ -23,6 +23,7 @@ import com.exam.k_pop.StartApplication.Importer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -37,6 +38,16 @@ public class GuessBands extends AppCompatActivity {
     String folder ;
     int i = 0;
     int score = 0;
+
+    private List<Button> buttons;
+    private static final int[] BUTTON_IDS= {
+    R.id.litW, R.id.litE,  R.id.litR, R.id.litT, R.id.litY, R.id.litU, R.id.litI, R.id.litO, R.id.litP,
+    R.id.litA, R.id.litS, R.id.litD, R.id.litF, R.id.litG, R.id.litH, R.id.litJ, R.id.litK, R.id.litL,
+    R.id.litZ, R.id.litX, R.id.litC, R.id.litV, R.id.litB, R.id.litN, R.id.litM, R.id.litEnt, R.id.litDel,
+    R.id.space, R.id.num0, R.id.num1, R.id.num2, R.id.num3, R.id.num4, R.id.num5, R.id.num6, R.id.num7,
+    R.id.num8, R.id.num9,
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,46 +68,11 @@ public class GuessBands extends AppCompatActivity {
                     .transition(withCrossFade())
                     .into(groupPhoto);
 
-            Button btnQ = findViewById(R.id.litQ);
-            Button btnW = findViewById(R.id.litW);
-            Button btnE = findViewById(R.id.litE);
-            Button btnR = findViewById(R.id.litR);
-            Button btnT = findViewById(R.id.litT);
-            Button btnY = findViewById(R.id.litY);
-            Button btnU = findViewById(R.id.litU);
-            Button btnI = findViewById(R.id.litI);
-            Button btnO = findViewById(R.id.litO);
-            Button btnP = findViewById(R.id.litP);
-            Button btnA = findViewById(R.id.litA);
-            Button btnS = findViewById(R.id.litS);
-            Button btnD = findViewById(R.id.litD);
-            Button btnF = findViewById(R.id.litF);
-            Button btnG = findViewById(R.id.litG);
-            Button btnH = findViewById(R.id.litH);
-            Button btnJ = findViewById(R.id.litJ);
-            Button btnK = findViewById(R.id.litK);
-            Button btnL = findViewById(R.id.litL);
-            Button btnZ = findViewById(R.id.litZ);
-            Button btnX = findViewById(R.id.litX);
-            Button btnC = findViewById(R.id.litC);
-            Button btnV = findViewById(R.id.litV);
-            Button btnB = findViewById(R.id.litB);
-            Button btnN = findViewById(R.id.litN);
-            Button btnM = findViewById(R.id.litM);
-            Button btnEnt = findViewById(R.id.litEnt);
-            Button btnDel = findViewById(R.id.litDel);
-            Button btnSpace = findViewById(R.id.space);
 
-            Button btn0 = findViewById(R.id.num0);
-            Button btn1 = findViewById(R.id.num1);
-            Button btn2 = findViewById(R.id.num2);
-            Button btn3 = findViewById(R.id.num3);
-            Button btn4 = findViewById(R.id.num4);
-            Button btn5 = findViewById(R.id.num5);
-            Button btn6 = findViewById(R.id.num6);
-            Button btn7 = findViewById(R.id.num7);
-            Button btn8 = findViewById(R.id.num8);
-            Button btn9 = findViewById(R.id.num9);
+            buttons = new ArrayList<Button>();
+
+
+
 
             final EditText grName = findViewById(R.id.groupName);
             grName.setLongClickable(false);
@@ -235,46 +211,13 @@ public class GuessBands extends AppCompatActivity {
                 }
 
             };
-            btnQ.setOnClickListener(clkGr);
-            btnEnt.setOnClickListener(clkGr);
-            btnW.setOnClickListener(clkGr);
-            btnE.setOnClickListener(clkGr);
-            btnR.setOnClickListener(clkGr);
-            btnT.setOnClickListener(clkGr);
-            btnY.setOnClickListener(clkGr);
-            btnU.setOnClickListener(clkGr);
-            btnI.setOnClickListener(clkGr);
-            btnO.setOnClickListener(clkGr);
-            btnP.setOnClickListener(clkGr);
-            btnA.setOnClickListener(clkGr);
-            btnS.setOnClickListener(clkGr);
-            btnD.setOnClickListener(clkGr);
-            btnF.setOnClickListener(clkGr);
-            btnG.setOnClickListener(clkGr);
-            btnH.setOnClickListener(clkGr);
-            btnJ.setOnClickListener(clkGr);
-            btnK.setOnClickListener(clkGr);
-            btnL.setOnClickListener(clkGr);
-            btnZ.setOnClickListener(clkGr);
-            btnX.setOnClickListener(clkGr);
-            btnC.setOnClickListener(clkGr);
-            btnV.setOnClickListener(clkGr);
-            btnB.setOnClickListener(clkGr);
-            btnN.setOnClickListener(clkGr);
-            btnM.setOnClickListener(clkGr);
-            btn0.setOnClickListener(clkGr);
-            btn1.setOnClickListener(clkGr);
-            btn2.setOnClickListener(clkGr);
-            btn3.setOnClickListener(clkGr);
-            btn4.setOnClickListener(clkGr);
-            btn5.setOnClickListener(clkGr);
-            btn6.setOnClickListener(clkGr);
-            btn7.setOnClickListener(clkGr);
-            btn8.setOnClickListener(clkGr);
-            btn9.setOnClickListener(clkGr);
-            btnSpace.setOnClickListener(clkGr);
-            btnDel.setOnClickListener(clkGr);
 
+        for(int id : BUTTON_IDS) {
+            Button button = (Button)findViewById(id);
+            button.setOnClickListener(clkGr);
+            buttons.add(button);
+        }
+        
 
 
     }
