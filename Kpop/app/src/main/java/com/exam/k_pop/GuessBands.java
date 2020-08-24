@@ -216,6 +216,7 @@ public class GuessBands extends AppCompatActivity {
         for(int id : BUTTON_IDS) {
             Button button = (Button)findViewById(id);
             button.setOnClickListener(clkGr);
+
             button.setOnLongClickListener(new OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
