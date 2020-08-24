@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,6 +39,7 @@ public class GuessBands extends AppCompatActivity {
     String folder ;
     int i = 0;
     int score = 0;
+    private boolean longnazh = false;
 
     private List<Button> buttons;
     private static final int[] BUTTON_IDS= {
@@ -70,7 +72,6 @@ public class GuessBands extends AppCompatActivity {
 
 
             buttons = new ArrayList<Button>();
-
 
 
 
@@ -215,12 +216,72 @@ public class GuessBands extends AppCompatActivity {
         for(int id : BUTTON_IDS) {
             Button button = (Button)findViewById(id);
             button.setOnClickListener(clkGr);
+            button.setOnLongClickListener(new OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    switch (v.getId()) {
+                        case R.id.litH:
+                            grName.append(":");
+                            break;
+                        case R.id.litJ:
+                            grName.append(";");
+                            break;
+                        case R.id.litK:
+                            grName.append("");
+                            break;
+                        case R.id.litL:
+                            grName.append("'");
+                            break;
+                        case R.id.litB:
+                            grName.append(".");
+                            break;
+                        case R.id.litN:
+                            grName.append(",");
+                            break;
+                        case R.id.litM:
+                            grName.append("/");
+                            break;
+                        case R.id.num1:
+                            grName.append("!");
+                            break;
+                        case R.id.num2:
+                            grName.append("@");
+                            break;
+                        case R.id.num3:
+                            grName.append("#");
+                            break;
+                        case R.id.num4:
+                            grName.append("-");
+                            break;
+                        case R.id.num5:
+                            grName.append("_");
+                            break;
+                        case R.id.num6:
+                            grName.append("*");
+                            break;
+                        case R.id.num7:
+                            grName.append("+");
+                            break;
+                        case R.id.num8:
+                            grName.append("?");
+                            break;
+                        case R.id.num9:
+                            grName.append("(");
+                            break;
+                        case R.id.num0:
+                            grName.append(")");
+                            break;
+                    }
+                    return true;
+                }
+            });
             buttons.add(button);
         }
         
 
 
     }
+
 
     private void change() {
 
