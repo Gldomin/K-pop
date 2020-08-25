@@ -46,8 +46,9 @@ public class GuessBands extends AppCompatActivity {
     private boolean longnazh = false;
     private SharedPreferences spBands;
 
-
+    //Создаем лист для кнопок
     private List<Button> buttons;
+    //Массив id'шников, к которым будет обращаться программа для инициализации кнопок
     private static final int[] BUTTON_IDS= {
     R.id.litW, R.id.litE,  R.id.litR, R.id.litT, R.id.litY, R.id.litU, R.id.litI, R.id.litO, R.id.litP,
     R.id.litA, R.id.litS, R.id.litD, R.id.litF, R.id.litG, R.id.litH, R.id.litJ, R.id.litK, R.id.litL,
@@ -56,7 +57,7 @@ public class GuessBands extends AppCompatActivity {
     R.id.num8, R.id.num9,
     };
 
-
+    //сохранение результата на переключении активити и выключении проги
     @Override
     protected void onPause(){
         super.onPause();
@@ -92,10 +93,12 @@ public class GuessBands extends AppCompatActivity {
         }
         else{ score = 0;}
 
+            //Выбор первого артиста
              artist= artists.get(0).getName();
              band = artists.get(0).getGroup();
              folder = artists.get(0).getFolder();
 
+             //Загрузка первого фото
             final ImageView groupPhoto = findViewById(R.id.groupPhoto);
             Glide.with(this).load(Uri.parse("file:///android_asset/Groups/"+folder))
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -106,10 +109,15 @@ public class GuessBands extends AppCompatActivity {
             buttons = new ArrayList<Button>();
             final EditText grName = findViewById(R.id.groupName);
 
+            //делаем недоступным EditText
             grName.setLongClickable(false);
             grName.setFocusable(false);
+
+            //Подсказка названия группы на время разработки
+            //надо будет удалить на релизе
             info.setText(band);
 
+            //устанавливаем слушатель на основные кнопки
             OnClickListener clkGr = new OnClickListener() {
 
                 @Override
@@ -160,6 +168,7 @@ public class GuessBands extends AppCompatActivity {
 
             };
 
+            //Инициализация кнопок, добавление дополнительных символов
         for(int id : BUTTON_IDS) {
             Button button = (Button)findViewById(id);
             button.setOnClickListener(clkGr);
@@ -217,6 +226,7 @@ public class GuessBands extends AppCompatActivity {
                     break;
             }
 
+            //устанавливаем слушатель долгого нажатия на специальные символы
             button.setOnLongClickListener(new OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -251,7 +261,7 @@ public class GuessBands extends AppCompatActivity {
 
     }
 
-
+        //метод смены фото айдола
     private void change() {
 
         final ImageView groupPhoto = findViewById(R.id.groupPhoto);
