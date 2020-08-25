@@ -1,6 +1,8 @@
 package com.exam.k_pop;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,8 +41,11 @@ public class GuessBands extends AppCompatActivity {
     String band ;
     String folder ;
     int i = 0;
-    int score = 0;
+    int score ;
+    int fastscore=0;
     private boolean longnazh = false;
+    private SharedPreferences spBands;
+
 
     private List<Button> buttons;
     private static final int[] BUTTON_IDS= {
@@ -53,13 +58,39 @@ public class GuessBands extends AppCompatActivity {
 
 
     @Override
+    protected void onPause(){
+        super.onPause();
+
+        SharedPreferences.Editor editor = spBands.edit();
+        editor.putInt("userScoreGuessBand", score);
+        editor.apply();
+    }
+
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands);
         final TextView scoreText = findViewById(R.id.scoreBands);
+        final TextView fastscoreText = findViewById(R.id.fastscoreBands);
+        final TextView info = findViewById(R.id.info);
 
+
+        fastscoreText.setText("Ваш счет: "+fastscore);
+
+
+
+        spBands = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
+
+        if (spBands.contains("userScoreGuessBand")){
+            score = spBands.getInt("userScoreGuessBand",-1);
+            scoreText.setText("Ваш рекорд: "+score);
+        }
+        else{ score = 0;}
 
              artist= artists.get(0).getName();
              band = artists.get(0).getGroup();
@@ -73,13 +104,11 @@ public class GuessBands extends AppCompatActivity {
 
 
             buttons = new ArrayList<Button>();
-
-
-
             final EditText grName = findViewById(R.id.groupName);
+
             grName.setLongClickable(false);
             grName.setFocusable(false);
-            grName.setText(band);
+            info.setText(band);
 
             OnClickListener clkGr = new OnClickListener() {
 
@@ -98,21 +127,21 @@ public class GuessBands extends AppCompatActivity {
                                 if (textAnsw.equals(answ)) {
                                     grName.setText("");
                                      i++;
-                                     score++;
+                                     fastscore++;
 
-                                     scoreText.setText("Ваш результат: "+score);
 
+                                     fastscoreText.setText("Ваш счет "+fastscore);
+                                        if(fastscore>score) score=fastscore;
+                                    scoreText.setText("Ваш рекорд: "+score);
                                     artist= artists.get(i).getName();
                                     band = artists.get(i).getGroup();
                                     folder = artists.get(i).getFolder();
 
                                     change();
-                                    grName.setText(band);
+                                    info.setText(band);
                                 }
                                 break;
                             case R.id.litQ:
-
-                                grName.getText();
 
                                 grName.append("Q");
 

@@ -376,11 +376,29 @@
         app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
+            android:id="@+id/fastscoreBands"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Ваш счет: 0"
+             />
+
+        <TextView
             android:id="@+id/scoreBands"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Ваш результат: 0" />
+            android:layout_centerHorizontal="true"
+            android:text="Ваш рекорд: 0"
+            android:layout_below="@+id/fastscoreBands" />
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="qwe"
+            android:layout_alignParentTop="true" />
+
     </RelativeLayout>
 
 
