@@ -222,55 +222,23 @@ public class GuessBands extends AppCompatActivity {
                 public boolean onLongClick(View v) {
                     switch (v.getId()) {
                         case R.id.litH:
-                            grName.append(":");
-                            break;
                         case R.id.litJ:
-                            grName.append(";");
-                            break;
                         case R.id.litK:
-                            grName.append("");
-                            break;
                         case R.id.litL:
-                            grName.append("'");
-                            break;
                         case R.id.litB:
-                            grName.append(".");
-                            break;
                         case R.id.litN:
-                            grName.append(",");
-                            break;
                         case R.id.litM:
-                            grName.append("/");
-                            break;
                         case R.id.num1:
-                            grName.append("!");
-                            break;
                         case R.id.num2:
-                            grName.append("@");
-                            break;
                         case R.id.num3:
-                            grName.append("#");
-                            break;
                         case R.id.num4:
-                            grName.append("-");
-                            break;
                         case R.id.num5:
-                            grName.append("_");
-                            break;
                         case R.id.num6:
-                            grName.append("*");
-                            break;
                         case R.id.num7:
-                            grName.append("+");
-                            break;
                         case R.id.num8:
-                            grName.append("?");
-                            break;
                         case R.id.num9:
-                            grName.append("(");
-                            break;
                         case R.id.num0:
-                            grName.append(")");
+                            grName.append(""+((Button)v).getText().charAt(2));
                             break;
                     }
                     return true;
