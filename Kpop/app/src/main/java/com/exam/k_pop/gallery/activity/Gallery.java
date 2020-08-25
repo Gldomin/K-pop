@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.exam.k_pop.Artist;
 import com.exam.k_pop.OnSwipeTouchListener;
 import com.exam.k_pop.R;
+import com.exam.k_pop.StartApplication.Importer;
 import com.exam.k_pop.gallery.adapter.GalleryAdapter;
 import com.exam.k_pop.gallery.model.ImageGallery;
 
@@ -79,27 +80,9 @@ public class Gallery extends AppCompatActivity {
     }
 
     private void createArray() {
-        int i = 0;
-        ArrayList<Artist> artists = new ArrayList<>();
-        AssetManager assetManager = getAssets();
-        try {
-            String[] groupName = assetManager.list("Groups");
-            for (String s : groupName) {
-                try {
-                    String[] nameArtist = assetManager.list("Groups/" + s);
-                    for (String folder : nameArtist) {
-                        //Создание объекта
-                        Log.i(s, "createArtist:" + i);
-                        i++;
-                        artists.add(new Artist(s, folder, assetManager.list("Groups/" + s + "/" + folder)));
-                        imageGalleries.add(new ImageGallery(artists.get(artists.size() - 1).getFolder()));
-                    }
-                } catch (IOException ignored) {
-
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        ArrayList<Artist> artists = Importer.getArtists();
+        for(Artist a : artists){
+            imageGalleries.add(new ImageGallery(a.getFolder()));
         }
     }
 }

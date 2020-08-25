@@ -36,6 +36,7 @@ public class Importer {
         ArrayList<Artist> artistsBand = new ArrayList<>();
         ArrayList<String> images = new ArrayList<>();
         String nameArtist = "artist";
+        boolean sex = false;
         try {
             while (parser.getEventType() != XmlPullParser.END_DOCUMENT) {
                 switch (parser.getEventType()) {
@@ -55,10 +56,15 @@ public class Importer {
                             images.add(parser.getText());
                             break;
                         }
+                        if (parser.getName().equals("Sex")) {
+                            parser.next();
+                            sex = parser.getText().equals("Female");
+                            break;
+                        }
                         break;
                     case XmlPullParser.END_TAG:
                         if (parser.getName().equals("Artist")) {
-                            artistsBand.add(new Artist(nameBand, nameArtist, images.toArray(new String[0])));
+                            artistsBand.add(new Artist(nameBand, nameArtist, images.toArray(new String[0]), sex));
                             images.removeAll(images);
                             Log.i(TAG, "createArtist:" + artistsBand.get(artistsBand.size() - 1).getName());
                             break;

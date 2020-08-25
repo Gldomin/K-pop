@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-
 public class GuessStar extends AppCompatActivity {
     boolean cheatOn = false;
 
@@ -40,6 +39,7 @@ public class GuessStar extends AppCompatActivity {
     Button[] buttons = new Button[4];
     int chosenOne = -1;
     int scoreNow = 0;
+    int count = 0;
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -82,8 +82,6 @@ public class GuessStar extends AppCompatActivity {
         ///////////////////
 
 
-
-
         imageView = findViewById(R.id.imageView);
 
         String str = getResources().getString(R.string.app_name);
@@ -107,7 +105,7 @@ public class GuessStar extends AppCompatActivity {
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (((Button) view).getText().equals(artists.get(chosenOne).getName())) {
+                    if (((Button) view).getText().equals(artists.get(count).getName())) {
                         //Сбос значений для проверки записан ли артист на кнопку
                         for (Artist a : artists) {
                             a.setInit(false);
@@ -129,6 +127,7 @@ public class GuessStar extends AppCompatActivity {
                             case 100:
                                 Toast.makeText(GuessStar.this, "Бро, да ты просто бешеный! Нет, я серьезно. Таких фанатов K-pop еще надо поискать!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                         }
+                        count++;
                         init();
                     } else if (scoreNow > 0) scoreNow--;
                     TextView textView = findViewById(R.id.scoreText);
@@ -140,15 +139,11 @@ public class GuessStar extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     cheatOn = !cheatOn;
-
-
                     if (cheatOn) {
-
                         for (int i = 0; i < 4; i++)
                             if (i == chosenOne)
                                 buttons[i].setTextColor(Color.RED); //TODO при активации читов неправильно показывает ПЕРВОГО артиста. дальше норм. надо исправить
                             else buttons[i].setTextColor(Color.BLACK);
-
                         Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                     } else
                         Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
@@ -157,70 +152,39 @@ public class GuessStar extends AppCompatActivity {
 
 
         }
-        // TODO hjdhfj
-        createArray();
         artists = Importer.getRandomArtists();
-
         init();
     }
 
-    /**
-     * Метод для создания массива обектов с именами и группами артистов
-     */
-    private void createArray() {
-        int i = 0;
-        artists = new ArrayList<>();
-        AssetManager assetManager = getAssets();
-        try {
-            String[] groupName = assetManager.list("Groups");
-            for (String s : groupName) {
-                try {
-                    String[] nameArtist = assetManager.list("Groups/" + s);
-                    for (String folder : nameArtist) {
-                        //Создание объекта
-                        i++;
-                        artists.add(new Artist(s, folder, assetManager.list("Groups/" + s + "/" + folder)));
-                        Log.i("createArtist", folder);
-                    }
-                } catch (IOException ignored) {
 
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Метод для загрузки текста на кнопки и вывода на экран артиста
      */
     private void init() {
-        int lastArtist = chosenOne;
         TextView textView = findViewById(R.id.scoreText);
         updateScore(textView);
-        boolean is = true;
         chosenOne = new Random().nextInt(4);
         stars = new String[4];
+        boolean sex = artists.get(count).isSex();
         for (int i = 0; i < 4; i++) {
-            int rand = new Random().nextInt(artists.size()); //выбор артиста из пула артистов
-            while (artists.get(rand).isInit() || lastArtist == rand) {  //перевыбор артиста из пула артистов
-                rand = new Random().nextInt(artists.size());
-            }
-            if (i == chosenOne && is) {
-                chosenOne = rand;
-
-
+            int rand;
+            if (i == chosenOne) {
                 if (cheatOn)
                     buttons[i].setTextColor(Color.RED); //Чит на правильный ответ
-
-                is = false;
+                rand = count;
+            } else {
+                rand = new Random().nextInt(artists.size()); //выбор артиста из пула артистов
+                while (artists.get(rand).isInit() || artists.get(rand).isSex() != sex) {  //перевыбор артиста из пула артистов
+                    rand = new Random().nextInt(artists.size());
+                }
             }
             stars[i] = artists.get(rand).getName();
             buttons[i].setText(stars[i]);
             artists.get(rand).Init();
         }
         //Работа библиотеки Glide с изображением
-        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(chosenOne).getFolder()))
+        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(count).getFolder()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(imageView);

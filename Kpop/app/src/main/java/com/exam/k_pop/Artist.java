@@ -7,6 +7,7 @@ public class Artist {
     private String name;
     private boolean init = false;
     private String[] namesImages;
+    private boolean sex = false;
 
     public Artist(String group, String name, String[] namesImages) {
         this.group = group;
@@ -14,10 +15,20 @@ public class Artist {
         this.namesImages = namesImages; //массив имен всех фоток артиста
     }
 
+    public Artist(String group, String name, String[] namesImages, boolean sex) {
+        this.group = group;
+        this.name = name;
+        this.namesImages = namesImages; //массив имен всех фоток артиста
+        this.sex = sex;
+    }
+
     public String getNamesImages() {
         Random rand = new Random();
-
         return namesImages[rand.nextInt(namesImages.length)]; //возвращаем рандомную фотку Артиста
+    }
+
+    public boolean isSex() {
+        return sex;
     }
 
     public String getName() {
