@@ -141,90 +141,6 @@ public class GuessBands extends AppCompatActivity {
                                     info.setText(band);
                                 }
                                 break;
-                            case R.id.litQ:
-
-                                grName.append("Q");
-
-                                break;
-                            case R.id.litW:
-                                grName.append("W");
-
-                                break;
-                            case R.id.litE:
-                                grName.append("E");
-                                break;
-                            case R.id.litR:
-                                grName.append("R");
-                                break;
-                            case R.id.litT:
-                                grName.append("T");
-                                break;
-                            case R.id.litY:
-                                grName.append("Y");
-                                break;
-                            case R.id.litU:
-                                grName.append("U");
-                                break;
-                            case R.id.litI:
-                                grName.append("I");
-                                break;
-                            case R.id.litO:
-                                grName.append("O");
-                                break;
-                            case R.id.litP:
-                                grName.append("P");
-                                break;
-                            case R.id.litA:
-                                grName.append("A");
-                                break;
-                            case R.id.litS:
-                                grName.append("S");
-                                break;
-                            case R.id.litD:
-                                grName.append("D");
-                                break;
-                            case R.id.litF:
-                                grName.append("F");
-                                break;
-                            case R.id.litG:
-                                grName.append("G");
-                                break;
-                            case R.id.litH:
-                                grName.append("H");
-                                break;
-                            case R.id.litJ:
-                                grName.append("J");
-                                break;
-                            case R.id.litK:
-                                grName.append("K");
-                                break;
-                            case R.id.litL:
-                                grName.append("L");
-                                break;
-                            case R.id.litZ:
-                                grName.append("Z");
-                                break;
-                            case R.id.litX:
-                                grName.append("X");
-                                break;
-                            case R.id.litC:
-                                grName.append("C");
-                                break;
-                            case R.id.litV:
-                                grName.append("V");
-                                break;
-                            case R.id.litB:
-                                grName.append("B");
-                                break;
-                            case R.id.litN:
-                                grName.append("N");
-                                break;
-                            case R.id.litM:
-                                grName.append("M");
-                                break;
-                            case R.id.num7:
-                                grName.append("7");
-                                break;
                             case R.id.space:
                                 grName.append(" ");
                                 break;
@@ -236,7 +152,8 @@ public class GuessBands extends AppCompatActivity {
                                     grName.setText(textGro);
                                 }
                                 break;
-
+                            default:
+                                grName.append(""+((Button)view).getText().charAt(0));
                         }
 
                 }
