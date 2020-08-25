@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -216,6 +217,59 @@ public class GuessBands extends AppCompatActivity {
         for(int id : BUTTON_IDS) {
             Button button = (Button)findViewById(id);
             button.setOnClickListener(clkGr);
+            switch (id){
+                case R.id.litH:
+                    button.setText(Html.fromHtml("H<small> :</small>"));
+                    break;
+                case R.id.litJ:
+                    button.setText(Html.fromHtml("J<small> ;</small>"));
+                    break;
+                case R.id.litK:
+                    button.setText(Html.fromHtml("K<small> </small>"));
+                    break;
+                case R.id.litL:
+                    button.setText(Html.fromHtml("L<small> '</small>"));
+                    break;
+                case R.id.litB:
+                    button.setText(Html.fromHtml("B<small> .</small>"));
+                    break;
+                case R.id.litN:
+                    button.setText(Html.fromHtml("N<small> ,</small>"));
+                    break;
+                case R.id.litM:
+                    button.setText(Html.fromHtml("M<small> /</small>"));
+                    break;
+                case R.id.num1:
+                    button.setText(Html.fromHtml("1<small> !</small>"));
+                    break;
+                case R.id.num2:
+                    button.setText(Html.fromHtml("2<small> @</small>"));
+                    break;
+                case R.id.num3:
+                    button.setText(Html.fromHtml("3<small> #</small>"));
+                    break;
+                case R.id.num4:
+                    button.setText(Html.fromHtml("4<small> -</small>"));
+                    break;
+                case R.id.num5:
+                    button.setText(Html.fromHtml("5<small> _</small>"));
+                    break;
+                case R.id.num6:
+                    button.setText(Html.fromHtml("6<small> *</small>"));
+                    break;
+                case R.id.num7:
+                    button.setText(Html.fromHtml("7<small> +</small>"));
+                    break;
+                case R.id.num8:
+                    button.setText(Html.fromHtml("8<small> ?</small>"));
+                    break;
+                case R.id.num9:
+                    button.setText(Html.fromHtml("9<small> (</small>"));
+                    break;
+                case R.id.num0:
+                    button.setText(Html.fromHtml("0<small> )</small>"));
+                    break;
+            }
 
             button.setOnLongClickListener(new OnLongClickListener() {
                 @Override
