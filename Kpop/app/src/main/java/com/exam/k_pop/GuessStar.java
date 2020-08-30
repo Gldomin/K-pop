@@ -49,7 +49,7 @@ public class GuessStar extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE); //сохранение Счета
         if (sp.getInt("userScoreGuessStar", -1) < scoreNow) {
             SharedPreferences.Editor e = sp.edit();
             e.putInt("userScoreGuessStar", scoreNow);

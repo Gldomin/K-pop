@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/settingsCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -36,13 +36,13 @@
             android:layout_marginEnd="83dp"
             android:layout_marginRight="83dp"
             android:layout_marginBottom="15dp"
-            android:layout_toEndOf="@+id/button2"
-            android:layout_toRightOf="@+id/button2"
+            android:layout_toEndOf="@+id/settingsConfirm"
+            android:layout_toRightOf="@+id/settingsConfirm"
             android:background="@color/cancelRed"
             android:text="@string/cancel" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/settingsConfirm"
             android:layout_width="116dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/optionSwitch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -82,10 +82,10 @@
             android:text="@string/settings1" />
 
         <Switch
-            android:id="@+id/switch2"
+            android:id="@+id/optionSwitch2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/switch1"
+            android:layout_below="@+id/optionSwitch1"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="134dp"
@@ -94,14 +94,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch1"
+            app:layout_constraintTop_toBottomOf="@+id/optionSwitch1"
             android:text="@string/settings2" />
 
         <Switch
-            android:id="@+id/switch3"
+            android:id="@+id/optionSwitch3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/switch2"
+            android:layout_below="@+id/optionSwitch2"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="136dp"
@@ -110,14 +110,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch2"
+            app:layout_constraintTop_toBottomOf="@+id/optionSwitch2"
             android:text="@string/settings3" />
 
         <Switch
-            android:id="@+id/switch4"
+            android:id="@+id/optionSwitch4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/switch3"
+            android:layout_below="@+id/optionSwitch3"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="135dp"
@@ -126,14 +126,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch3"
+            app:layout_constraintTop_toBottomOf="@+id/optionSwitch3"
             android:text="@string/settings4" />
 
         <Switch
-            android:id="@+id/switch5"
+            android:id="@+id/optionSwitch5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/switch4"
+            android:layout_below="@+id/optionSwitch4"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="136dp"
@@ -142,7 +142,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch4"
+            app:layout_constraintTop_toBottomOf="@+id/optionSwitch4"
             android:text="@string/settings5" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
