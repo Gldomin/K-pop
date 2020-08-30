@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.exam.k_pop.gallery.activity.Gallery;
+
+import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
+
         Button tinderButton = findViewById(R.id.chooseTinder);
         tinderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageView achievement = findViewById(R.id.achievementButton);
+        achievement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Comming SOON!", Toast.LENGTH_LONG).show();
+
+            }
+        });
 
 
     }
