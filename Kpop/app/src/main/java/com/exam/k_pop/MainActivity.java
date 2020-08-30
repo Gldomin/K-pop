@@ -59,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
+        Button tinderButton = findViewById(R.id.chooseTinder);
+        tinderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(MainActivity.this, TwoBandsTinder.class);
+                startActivity(image);
+            }
+        });
 
 
 

@@ -21,5 +21,6 @@
     <string name="settings5">Параметр 5</string>
 
     <string name="gallaryInfoButton">Биография</string>
-
+    //Для счета
+    <string name="Score">Ваш Счет</string>
 </resources>
