@@ -25,49 +25,67 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     ArrayList<Bands> bands = Importer.getRandomBands();
     ArrayList<Artist> artists = new ArrayList<>();
-    private void startFinishSection()
-    {
+    int artistCount;
+    boolean choice;
+    int bandsCount;
+    ImageView imageBand;
+    TextView oneBand;
+    TextView secondBand;
+    TextView score;
+
+    private void startFinishSection() {
 
     }
-    private void guessTwoBands()
-    {
-        ImageView imageBand = findViewById(R.id.imageBand);
-        TextView oneBand = findViewById(R.id.oneBand);
-        TextView secondBand = findViewById(R.id.secondBand);
 
-        if (artists!=null) artists.clear();
-        int bandsCount = bands.size();
-        for ( int i=0; i<bandsCount; i=i+1)
-        {
-            if(bands.get(i)==null) {
-                startFinishSection();
-                break;
-            }
-            Log.i("TAG"," "+i+" bands "+artists.size());
-            if(bands!=null)artists.addAll(bands.get(i).getArtists());
-            if(i+1>=bandsCount) {
-                startFinishSection();
-                break;
-            }
-            if(bands!=null)artists.addAll(bands.get(i+1).getArtists());
-            oneBand.setText(bands.get(i).getName());
-            secondBand.setText(bands.get(i+1).getName());
-            Collections.shuffle(artists);
-            for(Artist art : artists)
-            {
-                Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + art.getNamesImages()))
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .transition(withCrossFade())
-                        .into(imageBand);
-                imageBand.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
-            }
+    private void changeBands() {
+        Log.i("Test2", "test");
+        if (bandsCount >= bands.size()) return;
+        if (bandsCount + 1 >= bands.size()) return;
+        Log.i("Test2", "bands size" + bands.size());
+        oneBand.setText(bands.get(bandsCount).getName());
+        secondBand.setText(bands.get(bandsCount + 1).getName());
+        artists.addAll(bands.get(bandsCount).getArtists());
+        Log.i("Test2", "band artists count" + bands.get(bandsCount).getArtists().size());
+        artists.addAll(bands.get(bandsCount + 1).getArtists());
+        Log.i("Test2", "artist size" + artists.size());
+        Collections.shuffle(artists);
+        changeArtist();
+        bandsCount = bandsCount + 2;
+    }
+
+    private void changeArtist() {
+        if (artistCount >= artists.size()) {
+            changeBands();
+        } else {
+            Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(artistCount).getFolder()))
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .transition(withCrossFade())
+                    .into(imageBand);
+            artistCount++;
+            score.setText("" + artistCount);
         }
+    }
+
+    private void guessTwoBands() {
+        imageBand = findViewById(R.id.imageBand);
+        oneBand = findViewById(R.id.oneBand);
+        secondBand = findViewById(R.id.secondBand);
+        score = findViewById(R.id.RecordScore);
+        bandsCount = 0;
+        artistCount = 0;
+        if (artists != null) artists.clear();
+
+        choice = false;
+        imageBand.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
+            @Override
+            public void onClick(View view) {
+                changeArtist();
+            }
+        });
+        changeBands();
 
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

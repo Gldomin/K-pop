@@ -11,7 +11,7 @@ public class Bands {
 
     public Bands(String name, ArrayList<Artist> artists, String[] imagesBands) {
         this.name = name;
-        this.artists = artists;
+        this.artists = new ArrayList<>(artists);
         this.numberOfPeople = (byte) artists.size();
         this.imagesBands = imagesBands;
     }
