@@ -2,11 +2,19 @@ package com.exam.k_pop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipDescription;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +40,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     TextView oneBand;
     TextView secondBand;
     TextView score;
-
+    private static final String IMAGEVIEW_TAG = "icon bitmap";
     private void startFinishSection() {
 
     }
@@ -66,6 +74,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void guessTwoBands() {
         imageBand = findViewById(R.id.imageBand);
         oneBand = findViewById(R.id.oneBand);
@@ -73,6 +82,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         score = findViewById(R.id.RecordScore);
         bandsCount = 0;
         artistCount = 0;
+        imageBand.setTag(IMAGEVIEW_TAG);
         if (artists != null) artists.clear();
 
         choice = false;
@@ -80,6 +90,41 @@ public class TwoBandsTinder extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 changeArtist();
+            }
+        });
+        imageBand.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                ClipData.Item item = new ClipData.Item(""+v.getTag());
+                ClipData dragData = new ClipData(
+                        ""+v.getTag(),
+                        new String[] { ClipDescription.MIMETYPE_TEXT_PLAIN },
+                        item);
+                View.DragShadowBuilder myShadow = new View.DragShadowBuilder(v);
+
+                // Starts the drag
+
+                v.startDrag(dragData,  // the data to be dragged
+                        myShadow,  // the drag shadow builder
+                        null,      // no need to use local data
+                        0          // flags (not currently used, set to 0)
+                );
+                return false;
+            }
+
+        });
+        imageBand.setOnTouchListener(new OnSwipeTouchListener() {
+
+            public boolean onSwipeRight() {
+                Log.i("Swipe", "onSwipeRight");
+
+                //changeArtist();
+                return true;
+            }
+            public boolean onSwipeLeft() {
+                Log.i("Swipe", "onSwipeLeft");
+                //changeArtist();
+                return true;
             }
         });
         changeBands();
