@@ -1,15 +1,23 @@
 package com.exam.k_pop;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 
 public class Settings extends AppCompatActivity {
@@ -78,18 +86,35 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        Button creepyGuy = findViewById(R.id.settingsCancel); //TODO delete this shit
+
+        creepyGuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView imageView = new ImageView(Settings.this);
+                ConstraintLayout constraintLayout = findViewById(R.id.constraint);
+                constraintLayout.addView(imageView);
+                Glide.with(Settings.this).load(getResources().getDrawable(R.drawable.hello))
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .transition(withCrossFade())
+                        .into(imageView);
+                Alert alert = new Alert();
+                alert.execute();
+            }
+        });
+
 
 
 ///////Read Settings//////
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
         if (sp.contains("hardMode") && sp.contains("hintMode") && sp.contains("option5")) {
-            Storage storage= new Storage(this);
+            Storage storage = new Storage(this);
             String nameOfStorage = "settings";
-            tempSettingsSet.hintMode =storage.getBoolean(nameOfStorage,"hintMode"); //считывание настроек из Хранилища
-            tempSettingsSet.hardMode =storage.getBoolean(nameOfStorage,"hardMode");
-            tempSettingsSet.option3 =storage.getBoolean(nameOfStorage,"option3");
-            tempSettingsSet.option4 =storage.getBoolean(nameOfStorage,"option4");
-            tempSettingsSet.option5 =storage.getBoolean(nameOfStorage,"option5");
+            tempSettingsSet.hintMode = storage.getBoolean(nameOfStorage, "hintMode"); //считывание настроек из Хранилища
+            tempSettingsSet.hardMode = storage.getBoolean(nameOfStorage, "hardMode");
+            tempSettingsSet.option3 = storage.getBoolean(nameOfStorage, "option3");
+            tempSettingsSet.option4 = storage.getBoolean(nameOfStorage, "option4");
+            tempSettingsSet.option5 = storage.getBoolean(nameOfStorage, "option5");
 
 
             hintModeSwitch.setChecked(tempSettingsSet.hintMode); //установка значение свитча
@@ -97,7 +122,6 @@ public class Settings extends AppCompatActivity {
             optionSwitch3.setChecked(tempSettingsSet.option3);
             optionSwitch4.setChecked(tempSettingsSet.option4);
             optionSwitch5.setChecked(tempSettingsSet.option5);
-
 
 
         } else {
@@ -109,15 +133,34 @@ public class Settings extends AppCompatActivity {
 
     }
 
+    class Alert extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            finish();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                Thread.sleep(2200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+    }
+
     void saveSettings() {
 
         Storage storage = new Storage(this);
-        storage.saveValue("settings","hintMode",tempSettingsSet.hintMode);
-        storage.saveValue("settings","hardMode",tempSettingsSet.hardMode);
-        storage.saveValue("settings","option3",tempSettingsSet.option3);
-        storage.saveValue("settings","option4",tempSettingsSet.option4);
-        storage.saveValue("settings","option5",tempSettingsSet.option5);
-        Toast.makeText(Settings.this,getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+        storage.saveValue("settings", "hintMode", tempSettingsSet.hintMode);
+        storage.saveValue("settings", "hardMode", tempSettingsSet.hardMode);
+        storage.saveValue("settings", "option3", tempSettingsSet.option3);
+        storage.saveValue("settings", "option4", tempSettingsSet.option4);
+        storage.saveValue("settings", "option5", tempSettingsSet.option5);
+        Toast.makeText(Settings.this, getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
 
     }
 

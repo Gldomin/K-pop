@@ -58,8 +58,8 @@
 
     <ImageView
         android:id="@+id/achievementButton"
-        android:layout_width="40pt"
-        android:layout_height="40pt"
+        android:layout_width="112dp"
+        android:layout_height="115dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:src="@drawable/achievement"

@@ -78,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
         achievement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Comming SOON!", Toast.LENGTH_LONG).show();
+                Intent image = new Intent();
+                image.setClass(MainActivity.this, Achievements.class);
+                startActivity(image);
             }
         });
 
