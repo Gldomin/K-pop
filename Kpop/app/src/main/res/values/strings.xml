@@ -20,6 +20,7 @@
     <string name="settings3">Parameter 3</string>
     <string name="settings4">Parameter 4</string>
     <string name="settings5">Parameter 5</string>
+    <string name="OptionsSet">Settings saved</string>
     //scorestuff
     <string name="Score">Your score</string>
 

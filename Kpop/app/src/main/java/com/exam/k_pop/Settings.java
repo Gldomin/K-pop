@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 
 public class Settings extends AppCompatActivity {
-    OptionsSet tempSettingsSet = new OptionsSet(false,false); //создание объекта для хранение параметров
+    OptionsSet tempSettingsSet = new OptionsSet(false, false); //создание объекта для хранение параметров
     SharedPreferences sp;
 
     @Override
@@ -33,7 +33,7 @@ public class Settings extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 // Switch temp =findViewById(R.id.optionSwitch1);
 // settings.hintMode=temp.isChecked();
-                tempSettingsSet.hintMode= hintModeSwitch.isChecked();
+                tempSettingsSet.hintMode = hintModeSwitch.isChecked();
                 //tempSettingsSet.hardMode= !tempSettingsSet.hardMode;
                 //saveSettings();
 
@@ -45,24 +45,27 @@ public class Settings extends AppCompatActivity {
 // Switch temp =findViewById(R.id.optionSwitch2);
 // settings.hardMode =temp.isChecked();
                 //tempSettingsSet.hintMode= !tempSettingsSet.hintMode;
-                tempSettingsSet.hardMode= hardModeSwitch.isChecked();
+                tempSettingsSet.hardMode = hardModeSwitch.isChecked();
                 //saveSettings();
             }
         });
         optionSwitch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                tempSettingsSet.option3= optionSwitch3.isChecked(); }
+                tempSettingsSet.option3 = optionSwitch3.isChecked();
+            }
         });
         optionSwitch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                tempSettingsSet.option4= optionSwitch4.isChecked(); }
+                tempSettingsSet.option4 = optionSwitch4.isChecked();
+            }
         });
         optionSwitch5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                tempSettingsSet.option5= optionSwitch5.isChecked(); }
+                tempSettingsSet.option5 = optionSwitch5.isChecked();
+            }
         });
 
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
@@ -71,23 +74,23 @@ public class Settings extends AppCompatActivity {
             public void onClick(View view) {
 
                 saveSettings();
-
+                finish();
             }
         });
 
 
 
-
-//TODO индуский метод, надо переделать. все создается и обрабатывается вручную. то есть если добавим настроек придется продолжать индусить... но я хз как сделать иначе
 ///////Read Settings//////
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
-        if (sp.contains("hardMode") && sp.contains("hintMode") && sp.contains("option5"))
-        {
-            tempSettingsSet.hintMode = sp.getBoolean("hintMode", tempSettingsSet.hintMode); //взятие settings из Хранилища
-            tempSettingsSet.hardMode = sp.getBoolean("hardMode", tempSettingsSet.hardMode);
-            tempSettingsSet.option3 = sp.getBoolean("option3", tempSettingsSet.option3);
-            tempSettingsSet.option4 = sp.getBoolean("option4", tempSettingsSet.option4);
-            tempSettingsSet.option5 = sp.getBoolean("option5", tempSettingsSet.option5);
+        if (sp.contains("hardMode") && sp.contains("hintMode") && sp.contains("option5")) {
+            Storage storage= new Storage(this);
+            String nameOfStorage = "settings";
+            tempSettingsSet.hintMode =storage.getBoolean(nameOfStorage,"hintMode"); //считывание настроек из Хранилища
+            tempSettingsSet.hardMode =storage.getBoolean(nameOfStorage,"hardMode");
+            tempSettingsSet.option3 =storage.getBoolean(nameOfStorage,"option3");
+            tempSettingsSet.option4 =storage.getBoolean(nameOfStorage,"option4");
+            tempSettingsSet.option5 =storage.getBoolean(nameOfStorage,"option5");
+
 
             hintModeSwitch.setChecked(tempSettingsSet.hintMode); //установка значение свитча
             hardModeSwitch.setChecked(tempSettingsSet.hardMode);
@@ -97,51 +100,27 @@ public class Settings extends AppCompatActivity {
 
 
 
-
-            //Toast.makeText(Settings.this, "OK" + tempSettingsSet.hintMode, Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-
         } else {
 
             saveSettings();
 
         }
-// if (savedInstanceState != null)
-// scoreNow = savedInstanceState.getInt("scoreNow");
-///////////////////
-
-
-
-
-
-
 
 
     }
-    void saveSettings(){
 
-        sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
+    void saveSettings() {
 
-        SharedPreferences.Editor e = sp.edit();
-      //  e.putBoolean("hardMode", tempSettingsSet.hardMode);
-      //  e.putBoolean("hintMode", tempSettingsSet.hintMode);
-        e.putBoolean("hardMode", tempSettingsSet.hardMode);
-        e.putBoolean("hintMode", tempSettingsSet.hintMode);
-        e.putBoolean("option3", tempSettingsSet.option3);
-        e.putBoolean("option4", tempSettingsSet.option4);
-        e.putBoolean("option5", tempSettingsSet.option5);
-        e.apply();
-
-
-
-
-        Toast.makeText(Settings.this, tempSettingsSet.hintMode + "->" + sp.getBoolean("hintMode", tempSettingsSet.hintMode) +"|" + tempSettingsSet.hardMode + "->" + sp.getBoolean("hardMode", tempSettingsSet.hardMode) , Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-        //SharedPreferences sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
-
-        //String userScore = "123";
-      //  userScore = sp.getString("hardMode", userScore);
-       // Toast.makeText(Settings.this,"Ваш рекорд: " + userScore,Toast.LENGTH_LONG).show();
+        Storage storage = new Storage(this);
+        storage.saveValue("settings","hintMode",tempSettingsSet.hintMode);
+        storage.saveValue("settings","hardMode",tempSettingsSet.hardMode);
+        storage.saveValue("settings","option3",tempSettingsSet.option3);
+        storage.saveValue("settings","option4",tempSettingsSet.option4);
+        storage.saveValue("settings","option5",tempSettingsSet.option5);
+        Toast.makeText(Settings.this,getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
 
     }
+
     @Override
     protected void onPause() {
 //save Settings

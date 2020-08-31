@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Comming SOON!", Toast.LENGTH_LONG).show();
-
             }
         });
 
