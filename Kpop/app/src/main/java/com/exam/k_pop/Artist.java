@@ -9,12 +9,6 @@ public class Artist {
     private String[] namesImages;
     private boolean sex = false;
 
-    public Artist(String group, String name, String[] namesImages) {
-        this.group = group;
-        this.name = name;
-        this.namesImages = namesImages; //массив имен всех фоток артиста
-    }
-
     public Artist(String group, String name, String[] namesImages, boolean sex) {
         this.group = group;
         this.name = name;
@@ -35,9 +29,9 @@ public class Artist {
         return name;
     }
 
-        public String getGroup() {
-            return group;
-        }
+    public String getGroup() {
+        return group;
+    }
 
     public void setInit(boolean init) {
         this.init = init;

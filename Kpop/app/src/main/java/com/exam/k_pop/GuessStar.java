@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.exam.k_pop.StartApplication.Importer;
+import com.yandex.metrica.YandexMetrica;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -105,6 +106,7 @@ public class GuessStar extends AppCompatActivity {
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    YandexMetrica.reportEvent("XXnjj");
                     if (((Button) view).getText().equals(artists.get(count).getName())) {
                         //Сбос значений для проверки записан ли артист на кнопку
                         for (Artist a : artists) {
