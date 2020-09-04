@@ -9,7 +9,7 @@
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="fill_horizontal"
         android:longClickable="false"
@@ -24,79 +24,108 @@
 
         <Button
             android:id="@+id/num1"
-            android:minWidth="20dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/number1"
             app:layout_column="0"
-            app:layout_row="0" />
+            app:layout_row="0"
+             />
+
         <Button
             android:id="@+id/num2"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
             android:text="@string/number2"
             app:layout_column="1"
             app:layout_row="0" />
+
         <Button
             android:id="@+id/num3"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/number3"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
             app:layout_column="2"
             app:layout_row="0" />
+
         <Button
             android:id="@+id/num4"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
             android:text="@string/number4"
             app:layout_column="3"
             app:layout_row="0" />
+
         <Button
             android:id="@+id/num5"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
             android:text="@string/number5"
             app:layout_column="4"
             app:layout_row="0" />
+
         <Button
             android:id="@+id/num6"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
             android:text="@string/number6"
             app:layout_column="5"
             app:layout_row="0" />
+
         <Button
             android:id="@+id/num7"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
             android:text="@string/number7"
             app:layout_column="6"
             app:layout_row="0" />
+
         <Button
             android:id="@+id/num8"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
             android:text="@string/number8"
             app:layout_column="7"
             app:layout_row="0" />
+
         <Button
             android:id="@+id/num9"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
             android:text="@string/number9"
             app:layout_column="8"
             app:layout_row="0" />
 
         <Button
             android:id="@+id/num0"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginEnd="-5dp"
             android:text="@string/number0"
             app:layout_column="9"
             app:layout_row="0" />
 
         <Button
             android:id="@+id/litQ"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literQ"
             app:layout_column="0"
@@ -104,7 +133,7 @@
 
         <Button
             android:id="@+id/litW"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literW"
             app:layout_column="1"
@@ -112,7 +141,7 @@
 
         <Button
             android:id="@+id/litE"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literE"
             app:layout_column="2"
@@ -120,7 +149,7 @@
 
         <Button
             android:id="@+id/litR"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literR"
             app:layout_column="3"
@@ -128,7 +157,7 @@
 
         <Button
             android:id="@+id/litT"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literT"
             app:layout_column="4"
@@ -136,7 +165,7 @@
 
         <Button
             android:id="@+id/litY"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literY"
             app:layout_column="5"
@@ -144,7 +173,7 @@
 
         <Button
             android:id="@+id/litU"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literU"
             app:layout_column="6"
@@ -152,7 +181,7 @@
 
         <Button
             android:id="@+id/litI"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literI"
             app:layout_column="7"
@@ -160,7 +189,7 @@
 
         <Button
             android:id="@+id/litO"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literO"
             app:layout_column="8"
@@ -168,7 +197,7 @@
 
         <Button
             android:id="@+id/litP"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literP"
             app:layout_column="9"
@@ -176,7 +205,7 @@
 
         <Button
             android:id="@+id/litA"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literA"
             app:layout_column="0"
@@ -184,7 +213,7 @@
 
         <Button
             android:id="@+id/litS"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literS"
             app:layout_column="1"
@@ -192,7 +221,7 @@
 
         <Button
             android:id="@+id/litD"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literD"
             app:layout_column="2"
@@ -200,7 +229,7 @@
 
         <Button
             android:id="@+id/litF"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literF"
             app:layout_column="3"
@@ -208,7 +237,7 @@
 
         <Button
             android:id="@+id/litG"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literG"
             app:layout_column="4"
@@ -216,7 +245,7 @@
 
         <Button
             android:id="@+id/litH"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literH"
             app:layout_column="5"
@@ -224,7 +253,7 @@
 
         <Button
             android:id="@+id/litJ"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literJ"
             app:layout_column="6"
@@ -232,7 +261,7 @@
 
         <Button
             android:id="@+id/litK"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literK"
             app:layout_column="7"
@@ -240,7 +269,7 @@
 
         <Button
             android:id="@+id/litL"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literL"
             app:layout_column="8"
@@ -248,7 +277,7 @@
 
         <Button
             android:id="@+id/litZ"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literZ"
             app:layout_column="0"
@@ -256,7 +285,7 @@
 
         <Button
             android:id="@+id/litX"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literX"
             app:layout_column="1"
@@ -264,7 +293,7 @@
 
         <Button
             android:id="@+id/litC"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literC"
             app:layout_column="2"
@@ -272,7 +301,7 @@
 
         <Button
             android:id="@+id/litV"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literV"
             app:layout_column="3"
@@ -280,7 +309,7 @@
 
         <Button
             android:id="@+id/litB"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literB"
             app:layout_column="4"
@@ -288,7 +317,7 @@
 
         <Button
             android:id="@+id/litN"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literN"
             app:layout_column="5"
@@ -296,7 +325,7 @@
 
         <Button
             android:id="@+id/litM"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/literM"
             app:layout_column="6"
@@ -306,7 +335,7 @@
             android:id="@+id/litDel"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/keyDel"
             app:layout_column="9"
@@ -314,19 +343,19 @@
 
         <Button
             android:id="@+id/litEnt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/keyEnt"
             app:layout_column="8"
-            app:layout_row="3"
             app:layout_columnSpan="2"
-            app:layout_gravity="fill_horizontal" />
+            app:layout_gravity="fill_horizontal"
+            app:layout_row="3" />
+
         <Button
             android:id="@+id/space"
-            android:minWidth="20dp"
+            android:minWidth="10dp"
             android:minHeight="10dp"
             android:text="@string/space"
             app:layout_column="7"
@@ -381,23 +410,23 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Ваш счет: 0"
-             />
+            android:text="Ваш счет: 0" />
 
         <TextView
             android:id="@+id/scoreBands"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/fastscoreBands"
             android:layout_centerHorizontal="true"
-            android:text="Ваш рекорд: 0"
-            android:layout_below="@+id/fastscoreBands" />
+            android:text="Ваш рекорд: 0" />
+
         <TextView
             android:id="@+id/info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="qwe"
-            android:layout_alignParentTop="true" />
+            android:text="qwe" />
 
     </RelativeLayout>
 

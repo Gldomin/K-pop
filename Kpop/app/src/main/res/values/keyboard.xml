@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="number1" translatable="false">1</string>
-    <string name="number2" translatable="false">2</string>
-    <string name="number3" translatable="false">3</string>
-    <string name="number4" translatable="false">4</string>
-    <string name="number5" translatable="false">5</string>
-    <string name="number6" translatable="false">6</string>
-    <string name="number7" translatable="false">7</string>
-    <string name="number8" translatable="false">8</string>
-    <string name="number9" translatable="false">9</string>
-    <string name="number0" translatable="false">0</string>
+    <string name="number1" translatable="false">1<small> :</small></string>
+    <string name="number2" translatable="false">2<small> ;</small></string>
+    <string name="number3" translatable="false">3<small> </small></string>
+    <string name="number4" translatable="false">4<small> ;</small></string>
+    <string name="number5" translatable="false">5<small> .</small></string>
+    <string name="number6" translatable="false">6<small> ,</small></string>
+    <string name="number7" translatable="false">7<small> /</small></string>
+    <string name="number8" translatable="false">8<small> ?</small></string>
+    <string name="number9" translatable="false">9<small> (</small></string>
+    <string name="number0" translatable="false">0<small> )</small></string>
     <string name="literA"  translatable="false">A</string>
     <string name="literB"  translatable="false">B</string>
     <string name="literC"  translatable="false">C</string>
