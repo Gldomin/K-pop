@@ -9,6 +9,17 @@
 
     <string name="groupname"></string>
 
+    <string name="achGuessStarNormal">Accept</string>
+    <string name="achGuessStarExpert">Cancel</string>
+    <string name="achGuessBandsNormal">Settings</string>
+    <string name="achGuessBandsExpert">Parameter 1</string>
+    <string name="achSwipeTwoBandsNormal">Accept</string>
+    <string name="achSwipeTwoBandsExpert">Cancel</string>
+    <string name="achGuessStarReversNormal">Settings</string>
+    <string name="achGuessStarReversExpert">Parameter 1</string>
+    <string name="achSecretGameMode">Settings</string>
+    <string name="achAdsFree">Parameter 1</string>
+    <string name="achRoyal">Parameter 1</string>
 
     <string name="accept">Подтвердить</string>
     <string name="cancel">Отмена</string>
@@ -20,6 +31,11 @@
     <string name="settings4">Параметр 4</string>
     <string name="settings5">Параметр 5</string>
     <string name="OptionsSet">Настройки сохранены</string>
+
+    <string name="aboutButton">Как играть</string>
+    <string name="aboutBigText">Parameter 1</string>
+    <string name="aboutText">Parameter 1</string>
+
 
     <string name="gallaryInfoButton">Биография</string>
     //Для счета

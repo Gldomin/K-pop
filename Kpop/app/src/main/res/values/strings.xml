@@ -10,10 +10,20 @@
 
     <string name="groupname"></string>
 
+    <string name="achGuessStarNormal">Accept</string>
+    <string name="achGuessStarExpert">Cancel</string>
+    <string name="achGuessBandsNormal">Settings</string>
+    <string name="achGuessBandsExpert">Parameter 1</string>
+    <string name="achSwipeTwoBandsNormal">Accept</string>
+    <string name="achSwipeTwoBandsExpert">Cancel</string>
+    <string name="achGuessStarReversNormal">Settings</string>
+    <string name="achGuessStarReversExpert">Parameter 1</string>
+    <string name="achSecretGameMode">Settings</string>
+    <string name="achAdsFree">Parameter 1</string>
+    <string name="achRoyal">Parameter 1</string>
 
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
-
     <string name="settings0">Settings</string>
     <string name="settings1">Parameter 1</string>
     <string name="settings2">Parameter 2</string>
@@ -21,8 +31,16 @@
     <string name="settings4">Parameter 4</string>
     <string name="settings5">Parameter 5</string>
     <string name="OptionsSet">Settings saved</string>
+
+
+    <string name="aboutButton">How play</string>
+    <string name="aboutBigText">Parameter 1</string>
+    <string name="aboutText">Parameter 1</string>
+
     //scorestuff
     <string name="Score">Your score</string>
+
+
 
     <string name="gallaryInfoButton">Bio</string>
     <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
