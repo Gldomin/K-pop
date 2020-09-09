@@ -10,17 +10,29 @@
 
     <string name="groupname"></string>
 
-    <string name="achGuessStarNormal">Accept</string>
-    <string name="achGuessStarExpert">Cancel</string>
-    <string name="achGuessBandsNormal">Settings</string>
-    <string name="achGuessBandsExpert">Parameter 1</string>
-    <string name="achSwipeTwoBandsNormal">Accept</string>
-    <string name="achSwipeTwoBandsExpert">Cancel</string>
-    <string name="achGuessStarReversNormal">Settings</string>
-    <string name="achGuessStarReversExpert">Parameter 1</string>
-    <string name="achSecretGameMode">Settings</string>
-    <string name="achAdsFree">Parameter 1</string>
-    <string name="achRoyal">Parameter 1</string>
+    <string name="achGuessStarNormal">Айдол-знаток</string>
+    <string name="achGuessStarExpert">Айдол-эксперт</string>
+    <string name="achGuessBandsNormal">Групповой знаток</string>
+    <string name="achGuessBandsExpert">Групповой эксперт</string>
+    <string name="achSwipeTwoBandsNormal">Прямо как в тиндере!</string>
+    <string name="achSwipeTwoBandsExpert">Прямо как в тиндере! (эксперт)</string>
+    <string name="achGuessStarReversNormal">Адепт секретного режима</string>
+    <string name="achGuessStarReversExpert">Эксперт секретного режима</string>
+    <string name="achSecretGameMode">Легче легкого</string>
+    <string name="achAdsFree">Мастер К-попа</string>
+    <string name="achRoyal">Повелитель четырех режимов</string>
+
+    <string name="achGuessStarNormalText">Вы набрали 50 очков в режиме Угадай Звезду</string>
+    <string name="achGuessStarExpertText">Вы набрали 50 очков в экспертном режиме Угадай Звезду</string>
+    <string name="achGuessBandsNormalText">Вы набрали 50 очков в режиме Отгадай Группу</string>
+    <string name="achGuessBandsExpertText">Вы набрали 50 очков в экспертном режиме Отгадай Группу</string>
+    <string name="achSwipeTwoBandsNormalText">Вы набрали 50 очков в режиме Распредели На Две Группы</string>
+    <string name="achSwipeTwoBandsExpertText">Вы набрали 50 очков в экспертном режиме Распредели На Две Группы</string>
+    <string name="achGuessStarReversNormalText">Вы набрали 50 очков в режиме Найди Звезду</string>
+    <string name="achGuessStarReversExpertText">Вы набрали 50 очков в экспертном режиме Найди Звезду</string>
+    <string name="achSecretGameModeText">Вы открыли секретный режим!</string>
+    <string name="achAdsFreeText">Вы истинный знаток К-попа. Спасибо вам за игру, отныне всплывающая реклама отключена.</string>
+    <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! В настройках теперь доступен скромный бонус.</string>
 
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>

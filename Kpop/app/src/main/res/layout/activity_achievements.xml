@@ -47,14 +47,14 @@
                             android:id="@+id/ach1BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="придумать название" />
+                            android:text="@string/achGuessStarNormal" />
 
                         <TextView
                             android:id="@+id/ach1SmallText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="придумать критерий достижения" />
+                            android:text="@string/achGuessStarNormalText" />
 
                     </LinearLayout>
 
@@ -81,7 +81,7 @@
                             android:id="@+id/ach2BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="придумать название" />
+                            android:text="@string/achGuessBandsNormal" />
 
                         <TextView
                             android:id="@+id/ach2SmallText"
@@ -115,7 +115,7 @@
                             android:id="@+id/ach3BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="придумать название" />
+                            android:text="@string/achSwipeTwoBandsNormal" />
 
                         <TextView
                             android:id="@+id/ach3SmallText"
@@ -149,7 +149,7 @@
                             android:id="@+id/ach4BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="придумать название" />
+                            android:text="@string/achGuessStarReversNormal" />
 
                         <TextView
                             android:id="@+id/ach4SmallText"
@@ -183,7 +183,7 @@
                             android:id="@+id/ach5BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="придумать название" />
+                            android:text="@string/achSecretGameMode" />
 
                         <TextView
                             android:id="@+id/ach5SmallText"
@@ -217,7 +217,7 @@
                             android:id="@+id/ach6BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="придумать название" />
+                            android:text="@string/achAdsFree" />
 
                         <TextView
                             android:id="@+id/ach6SmallText"
@@ -250,7 +250,7 @@
                             android:id="@+id/ach7BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="придумать название" />
+                            android:text="@string/achRoyal" />
 
                         <TextView
                             android:id="@+id/ach7SmallText"
