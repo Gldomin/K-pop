@@ -2,8 +2,8 @@
 <resources>
     <string name="number1" translatable="false">1<small> :</small></string>
     <string name="number2" translatable="false">2<small> ;</small></string>
-    <string name="number3" translatable="false">3<small> </small></string>
-    <string name="number4" translatable="false">4<small> ;</small></string>
+    <string name="number3" translatable="false">3<small> #</small></string>
+    <string name="number4" translatable="false">4<small> .</small></string>
     <string name="number5" translatable="false">5<small> .</small></string>
     <string name="number6" translatable="false">6<small> ,</small></string>
     <string name="number7" translatable="false">7<small> /</small></string>
@@ -39,6 +39,7 @@
     <string name="keyEnt"  translatable="false">Ent</string>
     <string name="keyDel"  translatable="false">Del</string>
     <string name="space" translatable="false">___</string>
+    <string name="hint" translatable="false">Hint</string>
 
 
 

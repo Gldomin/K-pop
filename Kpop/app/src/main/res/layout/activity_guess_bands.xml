@@ -7,362 +7,353 @@
     android:layout_height="match_parent">
 
 
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/gridLayout"
+    <LinearLayout
+        android:id="@+id/keys"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
-        android:longClickable="false"
-        app:columnCount="10"
-        app:layout_constraintBottom_toBottomOf="@+id/conLay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupName"
-        app:orientation="vertical"
-        app:rowCount="4">
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <Button
-            android:id="@+id/num1"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/number1"
-            app:layout_column="0"
-            app:layout_row="0"
-             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/num2"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            android:text="@string/number2"
-            app:layout_column="1"
-            app:layout_row="0" />
+            <Button
+                android:id="@+id/zap3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text=""
+                android:visibility="invisible"/>
+            <Button
+                android:id="@+id/num1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number1" />
 
-        <Button
-            android:id="@+id/num3"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/number3"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            app:layout_column="2"
-            app:layout_row="0" />
+            <Button
+                android:id="@+id/num2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number2" />
 
-        <Button
-            android:id="@+id/num4"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            android:text="@string/number4"
-            app:layout_column="3"
-            app:layout_row="0" />
+            <Button
+                android:id="@+id/num3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number3" />
 
-        <Button
-            android:id="@+id/num5"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            android:text="@string/number5"
-            app:layout_column="4"
-            app:layout_row="0" />
+            <Button
+                android:id="@+id/num4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number4" />
 
-        <Button
-            android:id="@+id/num6"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            android:text="@string/number6"
-            app:layout_column="5"
-            app:layout_row="0" />
+            <Button
+                android:id="@+id/num5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number5" />
 
-        <Button
-            android:id="@+id/num7"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            android:text="@string/number7"
-            app:layout_column="6"
-            app:layout_row="0" />
+            <Button
+                android:id="@+id/num6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number6" />
 
-        <Button
-            android:id="@+id/num8"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            android:text="@string/number8"
-            app:layout_column="7"
-            app:layout_row="0" />
+            <Button
+                android:id="@+id/num7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number7" />
 
-        <Button
-            android:id="@+id/num9"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            android:text="@string/number9"
-            app:layout_column="8"
-            app:layout_row="0" />
+            <Button
+                android:id="@+id/num8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number8" />
 
-        <Button
-            android:id="@+id/num0"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:layout_marginRight="-5dp"
-            android:layout_marginEnd="-5dp"
-            android:text="@string/number0"
-            app:layout_column="9"
-            app:layout_row="0" />
+            <Button
+                android:id="@+id/num9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number9" />
 
-        <Button
-            android:id="@+id/litQ"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literQ"
-            app:layout_column="0"
-            app:layout_row="1" />
+            <Button
+                android:id="@+id/num0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/number0" />
+            <Button
+                android:id="@+id/zap4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text=""
+                android:visibility="invisible"/>
 
-        <Button
-            android:id="@+id/litW"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literW"
-            app:layout_column="1"
-            app:layout_row="1" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/litE"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literE"
-            app:layout_column="2"
-            app:layout_row="1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/litR"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literR"
-            app:layout_column="3"
-            app:layout_row="1" />
+            <Button
+                android:id="@+id/zap1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text=""
+                android:visibility="invisible"/>
+            <Button
+                android:id="@+id/litQ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literQ" />
 
-        <Button
-            android:id="@+id/litT"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literT"
-            app:layout_column="4"
-            app:layout_row="1" />
+            <Button
+                android:id="@+id/litW"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literW" />
 
-        <Button
-            android:id="@+id/litY"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literY"
-            app:layout_column="5"
-            app:layout_row="1" />
+            <Button
+                android:id="@+id/litE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literE" />
 
-        <Button
-            android:id="@+id/litU"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literU"
-            app:layout_column="6"
-            app:layout_row="1" />
+            <Button
+                android:id="@+id/litR"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literR" />
 
-        <Button
-            android:id="@+id/litI"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literI"
-            app:layout_column="7"
-            app:layout_row="1" />
+            <Button
+                android:id="@+id/litT"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literT" />
 
-        <Button
-            android:id="@+id/litO"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literO"
-            app:layout_column="8"
-            app:layout_row="1" />
+            <Button
+                android:id="@+id/litY"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literY" />
 
-        <Button
-            android:id="@+id/litP"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literP"
-            app:layout_column="9"
-            app:layout_row="1" />
+            <Button
+                android:id="@+id/litU"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literU" />
 
-        <Button
-            android:id="@+id/litA"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literA"
-            app:layout_column="0"
-            app:layout_row="2" />
+            <Button
+                android:id="@+id/litI"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literI" />
 
-        <Button
-            android:id="@+id/litS"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literS"
-            app:layout_column="1"
-            app:layout_row="2" />
+            <Button
+                android:id="@+id/litO"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literO" />
 
-        <Button
-            android:id="@+id/litD"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literD"
-            app:layout_column="2"
-            app:layout_row="2" />
-
-        <Button
-            android:id="@+id/litF"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literF"
-            app:layout_column="3"
-            app:layout_row="2" />
-
-        <Button
-            android:id="@+id/litG"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literG"
-            app:layout_column="4"
-            app:layout_row="2" />
-
-        <Button
-            android:id="@+id/litH"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literH"
-            app:layout_column="5"
-            app:layout_row="2" />
-
-        <Button
-            android:id="@+id/litJ"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literJ"
-            app:layout_column="6"
-            app:layout_row="2" />
-
-        <Button
-            android:id="@+id/litK"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literK"
-            app:layout_column="7"
-            app:layout_row="2" />
-
-        <Button
-            android:id="@+id/litL"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literL"
-            app:layout_column="8"
-            app:layout_row="2" />
-
-        <Button
-            android:id="@+id/litZ"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literZ"
-            app:layout_column="0"
-            app:layout_row="3" />
-
-        <Button
-            android:id="@+id/litX"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literX"
-            app:layout_column="1"
-            app:layout_row="3" />
-
-        <Button
-            android:id="@+id/litC"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literC"
-            app:layout_column="2"
-            app:layout_row="3" />
-
-        <Button
-            android:id="@+id/litV"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literV"
-            app:layout_column="3"
-            app:layout_row="3" />
-
-        <Button
-            android:id="@+id/litB"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literB"
-            app:layout_column="4"
-            app:layout_row="3" />
-
-        <Button
-            android:id="@+id/litN"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literN"
-            app:layout_column="5"
-            app:layout_row="3" />
-
-        <Button
-            android:id="@+id/litM"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/literM"
-            app:layout_column="6"
-            app:layout_row="3" />
-
-        <Button
-            android:id="@+id/litDel"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/keyDel"
-            app:layout_column="9"
-            app:layout_row="2" />
-
-        <Button
-            android:id="@+id/litEnt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/keyEnt"
-            app:layout_column="8"
-            app:layout_columnSpan="2"
-            app:layout_gravity="fill_horizontal"
-            app:layout_row="3" />
-
-        <Button
-            android:id="@+id/space"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:text="@string/space"
-            app:layout_column="7"
-            app:layout_row="3" />
+            <Button
+                android:id="@+id/litP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literP" />
+            <Button
+                android:id="@+id/zap2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text=""
+                android:visibility="invisible"/>
 
 
-    </androidx.gridlayout.widget.GridLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/litA"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literA" />
+
+            <Button
+                android:id="@+id/litS"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literS" />
+
+            <Button
+                android:id="@+id/litD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literD" />
+
+            <Button
+                android:id="@+id/litF"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literF" />
+
+            <Button
+                android:id="@+id/litG"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literG" />
+
+            <Button
+                android:id="@+id/litH"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literH" />
+
+            <Button
+                android:id="@+id/litJ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literJ" />
+
+            <Button
+                android:id="@+id/litK"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literK" />
+
+            <Button
+                android:id="@+id/litL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literL" />
+            <Button
+                android:id="@+id/litDel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:text="@string/keyDel"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+            <Button
+                android:id="@+id/litZ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literZ" />
+
+            <Button
+                android:id="@+id/litX"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literX" />
+
+            <Button
+                android:id="@+id/litC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literC" />
+
+            <Button
+                android:id="@+id/litV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literV" />
+            <Button
+                android:id="@+id/space"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:text="@string/space"/>
+
+            <Button
+                android:id="@+id/litB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literB" />
+
+            <Button
+                android:id="@+id/litN"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literN" />
+
+            <Button
+                android:id="@+id/litM"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/literM" />
+
+            <Button
+                android:id="@+id/litEnt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:text="@string/keyEnt"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
     <ImageView
         android:id="@+id/groupPhoto"
@@ -386,7 +377,7 @@
 
         android:inputType="textPersonName"
         android:text="@string/groupname"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintBottom_toTopOf="@+id/keys"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -427,6 +418,15 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:text="qwe" />
+        <Button
+            android:id="@+id/podsk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="10dp"
+            android:minHeight="10dp"
+            android:text="@string/hint"
+
+            />
 
     </RelativeLayout>
 
