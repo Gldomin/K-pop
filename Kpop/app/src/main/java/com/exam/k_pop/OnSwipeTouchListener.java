@@ -9,10 +9,12 @@ import android.view.View.OnTouchListener;
 public class OnSwipeTouchListener implements OnTouchListener {
 
     private final GestureDetector gestureDetector = new GestureDetector(new GestureListener());
-
+    float dX, dY;
+    @Override
     public boolean onTouch(final View v, final MotionEvent event) {
-        return gestureDetector.onTouchEvent(event);
+        return true;
     }
+
 
     private final class GestureListener extends SimpleOnGestureListener {
 

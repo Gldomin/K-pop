@@ -15,6 +15,7 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     ImageView imageBand;
     TextView oneBand;
     TextView secondBand;
+    OnSwipeTouchListener l;
     TextView score;
     private static final String IMAGEVIEW_TAG = "icon bitmap";
     private void startFinishSection() {
@@ -84,14 +86,8 @@ public class TwoBandsTinder extends AppCompatActivity {
         artistCount = 0;
         imageBand.setTag(IMAGEVIEW_TAG);
         if (artists != null) artists.clear();
-
         choice = false;
-        imageBand.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
-            @Override
-            public void onClick(View view) {
-                changeArtist();
-            }
-        });
+
         imageBand.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -113,7 +109,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
 
         });
-        imageBand.setOnTouchListener(new OnSwipeTouchListener() {
+        imageBand.setOnTouchListener(new OnSwipeTinderListener() {
 
             public boolean onSwipeRight() {
                 Log.i("Swipe", "onSwipeRight");
@@ -136,5 +132,37 @@ public class TwoBandsTinder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_bands_tinder);
         guessTwoBands();
+    }
+}
+// класс listener для моего обьекта
+class OnSwipeTinderListener implements View.OnTouchListener {
+    float dX; float defX;
+    @Override
+    public boolean onTouch(final View v, final MotionEvent event) {
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                defX = v.getX();
+                Log.i("deX", "onTouch:getrawX "+event.getRawX()+"dX"+dX+ "vgetx "+v.getX());
+                dX = v.getX() - event.getRawX();
+                // dY = v.getY() - event.getRawY();
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+
+                v.animate()
+                        .x(event.getRawX() + dX).setDuration(0).start();
+                Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+dX+v.getX());
+//                        .y(event.getRawY() + dY)
+//                        .setDuration(0)
+//                        .start();
+                break;
+            case  MotionEvent.ACTION_UP:
+                Log.i("defX", "onTouch:DefX "+defX);
+                if (v.getX()<20) v.animate().x(defX);
+                if (v.getX()>v.getLeft()-20) v.animate().x(defX);
+                break;
+        }
+        return true;
     }
 }
