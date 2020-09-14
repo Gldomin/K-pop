@@ -1,5 +1,6 @@
 package com.exam.k_pop;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -12,8 +13,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.nfc.Tag;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,7 +48,9 @@ public class TwoBandsTinder extends AppCompatActivity {
     TextView score;
     private static final String IMAGEVIEW_TAG = "icon bitmap";
     private void startFinishSection() {
-
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics metricsB = new DisplayMetrics();
+        display.getMetrics(metricsB);
     }
 
     private void changeBands() {
@@ -137,30 +143,35 @@ public class TwoBandsTinder extends AppCompatActivity {
 // класс listener для моего обьекта
 class OnSwipeTinderListener implements View.OnTouchListener {
     float dX; float defX;
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public boolean onTouch(final View v, final MotionEvent event) {
-
+        DisplayMetrics metrics = new DisplayMetrics();
+        v.getDisplay().getMetrics(metrics);
+        int height = metrics.heightPixels;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 defX = v.getX();
-                Log.i("deX", "onTouch:getrawX "+event.getRawX()+"dX"+dX+ "vgetx "+v.getX());
+                Log.i("deX", "onTouch:getrawX "+defX+"dX"+dX+ "vgetx "+v.getX());
                 dX = v.getX() - event.getRawX();
                 // dY = v.getY() - event.getRawY();
                 break;
 
             case MotionEvent.ACTION_MOVE:
 
+
                 v.animate()
                         .x(event.getRawX() + dX).setDuration(0).start();
-                Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+dX+v.getX());
+                Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+dX);
 //                        .y(event.getRawY() + dY)
 //                        .setDuration(0)
 //                        .start();
                 break;
             case  MotionEvent.ACTION_UP:
-                Log.i("defX", "onTouch:DefX "+defX);
-                if (v.getX()<20) v.animate().x(defX);
-                if (v.getX()>v.getLeft()-20) v.animate().x(defX);
+                Log.i("defX", "onTouch:right "+v.getRight()+" left"+v.getLeft());
+                //if (v.getX()<20) v.animate().x(defX);
+                if ((v.getX()+v.getRight())/2>20&&(v.getX()+v.getRight())/2 <height-20 )v.animate().x(v.getPaddingLeft());
                 break;
         }
         return true;
