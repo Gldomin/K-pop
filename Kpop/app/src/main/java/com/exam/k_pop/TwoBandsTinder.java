@@ -44,13 +44,10 @@ public class TwoBandsTinder extends AppCompatActivity {
     ImageView imageBand;
     TextView oneBand;
     TextView secondBand;
-    OnSwipeTouchListener l;
     TextView score;
     private static final String IMAGEVIEW_TAG = "icon bitmap";
     private void startFinishSection() {
-        Display display = getWindowManager().getDefaultDisplay();
-        DisplayMetrics metricsB = new DisplayMetrics();
-        display.getMetrics(metricsB);
+
     }
 
     private void changeBands() {
@@ -92,8 +89,14 @@ public class TwoBandsTinder extends AppCompatActivity {
         artistCount = 0;
         imageBand.setTag(IMAGEVIEW_TAG);
         if (artists != null) artists.clear();
-        choice = false;
 
+        choice = false;
+        imageBand.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
+            @Override
+            public void onClick(View view) {
+                changeArtist();
+            }
+        });
         imageBand.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -115,7 +118,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
 
         });
-        imageBand.setOnTouchListener(new OnSwipeTinderListener() {
+        imageBand.setOnTouchListener(new OnSwipeTouchListener() {
 
             public boolean onSwipeRight() {
                 Log.i("Swipe", "onSwipeRight");
