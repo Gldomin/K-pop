@@ -1,24 +1,14 @@
 
-<<<<<<< HEAD:Kpop/app/src/main/java/com/examy/k_pop/TwoBandsTinder.java
 package com.examy.k_pop;
-=======
->>>>>>> parent of 043f233... swipe fix:Kpop/app/src/main/java/com/exam/k_pop/TwoBandsTinder.java
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.net.Uri;
-<<<<<<< HEAD:Kpop/app/src/main/java/com/examy/k_pop/TwoBandsTinder.java
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
-=======
-import android.nfc.Tag;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.DragEvent;
->>>>>>> parent of 043f233... swipe fix:Kpop/app/src/main/java/com/exam/k_pop/TwoBandsTinder.java
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -156,15 +146,9 @@ class OnSwipeTinderListener implements View.OnTouchListener {
 
             case MotionEvent.ACTION_MOVE:
 
-<<<<<<< HEAD:Kpop/app/src/main/java/com/examy/k_pop/TwoBandsTinder.java
                 v.animate().x(event.getRawX() + dX).rotationY(v.getX()).setDuration(0).start();
                 Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+dX);
 
-=======
-                v.animate()
-                        .x(event.getRawX() + dX).setDuration(0).start();
-                Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+dX+v.getX());
->>>>>>> parent of 043f233... swipe fix:Kpop/app/src/main/java/com/exam/k_pop/TwoBandsTinder.java
 //                        .y(event.getRawY() + dY)
 //                        .setDuration(0)
 //                        .start();
