@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -48,13 +49,14 @@ public class GuessBands extends AppCompatActivity {
 
     //Создаем лист для кнопок
     private List<Button> buttons;
+
     //Массив id'шников, к которым будет обращаться программа для инициализации кнопок
     private static final int[] BUTTON_IDS= {
     R.id.litW, R.id.litE,  R.id.litR, R.id.litT, R.id.litY, R.id.litU, R.id.litI, R.id.litO, R.id.litP,
     R.id.litA, R.id.litS, R.id.litD, R.id.litF, R.id.litG, R.id.litH, R.id.litJ, R.id.litK, R.id.litL,
     R.id.litZ, R.id.litX, R.id.litC, R.id.litV, R.id.litB, R.id.litN, R.id.litM, R.id.litEnt, R.id.litDel,
     R.id.space, R.id.num0, R.id.num1, R.id.num2, R.id.num3, R.id.num4, R.id.num5, R.id.num6, R.id.num7,
-    R.id.num8, R.id.num9,
+    R.id.num8, R.id.num9, R.id.podsk
     };
 
     //сохранение результата на переключении активити и выключении проги
@@ -160,6 +162,26 @@ public class GuessBands extends AppCompatActivity {
                                     grName.setText(textGro);
                                 }
                                 break;
+
+                            case R.id.podsk:
+                                String textGroupHint = grName.getText().toString();
+                                char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
+                                for ( int j:textHint) { String textHintTwo = ""+textHint[j];
+                                    textHintTwo=textHintTwo.toLowerCase();
+                                    textHint[j] =textHintTwo.charAt(0);
+
+                                }
+
+                                            for(Button b : buttons){
+                                                for(char c : textHint){
+                                                    if(b.getText().charAt(0) == c){
+                                                        b.setBackgroundColor(Color.RED);
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                break;
+
                             default:
                                 grName.append(""+((Button)view).getText().charAt(0));
                         }
@@ -172,72 +194,12 @@ public class GuessBands extends AppCompatActivity {
         for(int id : BUTTON_IDS) {
             Button button = (Button)findViewById(id);
             button.setOnClickListener(clkGr);
-            switch (id){
-                case R.id.litH:
-                    //button.setText(Html.fromHtml("H<small> :</small>"));
-                    break;
-                case R.id.litJ:
-//                    button.setText(Html.fromHtml("J<small> ;</small>"));
-                    break;
-                case R.id.litK:
-//                    button.setText(Html.fromHtml("K<small> </small>"));
-                    break;
-                case R.id.litL:
-//                    button.setText(Html.fromHtml("L<small> '</small>"));
-                    break;
-                case R.id.litB:
-//                    button.setText(Html.fromHtml("B<small> .</small>"));
-                    break;
-                case R.id.litN:
-//                    button.setText(Html.fromHtml("N<small> ,</small>"));
-                    break;
-                case R.id.litM:
-//                    button.setText(Html.fromHtml("M<small> /</small>"));
-                    break;
-                case R.id.num1:
-//                    button.setText(Html.fromHtml("1<small> !</small>"));
-                    break;
-                case R.id.num2:
-//                    button.setText(Html.fromHtml("2<small> @</small>"));
-                    break;
-                case R.id.num3:
-//                    button.setText(Html.fromHtml("3<small> #</small>"));
-                    break;
-                case R.id.num4:
-//                    button.setText(Html.fromHtml("4<small> -</small>"));
-                    break;
-                case R.id.num5:
-//                    button.setText(Html.fromHtml("5<small> _</small>"));
-                    break;
-                case R.id.num6:
-//                    button.setText(Html.fromHtml("6<small> *</small>"));
-                    break;
-                case R.id.num7:
-//                    button.setText(Html.fromHtml("7<small> +</small>"));
-                    break;
-                case R.id.num8:
-//                    button.setText(Html.fromHtml("8<small> ?</small>"));
-                    break;
-                case R.id.num9:
-//                    button.setText(Html.fromHtml("9<small> (</small>"));
-                    break;
-                case R.id.num0:
-                    //button.setText(Html.fromHtml("0<small> )</small>"));
-                    break;
-            }
 
             //устанавливаем слушатель долгого нажатия на специальные символы
             button.setOnLongClickListener(new OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     switch (v.getId()) {
-                        case R.id.litH:
-                        case R.id.litJ:
-                        case R.id.litK:
-                        case R.id.litL:
-                        case R.id.litB:
-                        case R.id.litN:
-                        case R.id.litM:
                         case R.id.num1:
                         case R.id.num2:
                         case R.id.num3:
