@@ -46,7 +46,7 @@ public class GuessBands extends AppCompatActivity {
 
     //Массив id'шников, к которым будет обращаться программа для инициализации кнопок
     private static final int[] BUTTON_IDS= {
-    R.id.litW, R.id.litE,  R.id.litR, R.id.litT, R.id.litY, R.id.litU, R.id.litI, R.id.litO, R.id.litP,
+            R.id.litQ,R.id.litW, R.id.litE,  R.id.litR, R.id.litT, R.id.litY, R.id.litU, R.id.litI, R.id.litO, R.id.litP,
     R.id.litA, R.id.litS, R.id.litD, R.id.litF, R.id.litG, R.id.litH, R.id.litJ, R.id.litK, R.id.litL,
     R.id.litZ, R.id.litX, R.id.litC, R.id.litV, R.id.litB, R.id.litN, R.id.litM, R.id.litEnt, R.id.litDel,
     R.id.space, R.id.num0, R.id.num1, R.id.num2, R.id.num3, R.id.num4, R.id.num5, R.id.num6, R.id.num7,
@@ -128,6 +128,11 @@ public class GuessBands extends AppCompatActivity {
                                 answ=answ.toUpperCase();
 
 
+                                for(Button b : buttons){
+
+                                            b.setBackgroundResource(R.drawable.stylebutton);
+                                }
+
                                 if (textAnsw.equals(answ)) {
                                     grName.setText("");
                                      i++;
@@ -158,10 +163,10 @@ public class GuessBands extends AppCompatActivity {
                                 break;
 
                             case R.id.podsk:
-                                String textGroupHint = grName.getText().toString();
+                                String textGroupHint = artists.get(i).getGroup();
                                 char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
-                                for ( int j:textHint) { String textHintTwo = ""+textHint[j];
-                                    textHintTwo=textHintTwo.toLowerCase();
+                                for ( int j=0; j<textHint.length; j++) { String textHintTwo = ""+textHint[j];
+                                    textHintTwo=textHintTwo.toUpperCase();
                                     textHint[j] =textHintTwo.charAt(0);
 
                                 }
@@ -169,7 +174,7 @@ public class GuessBands extends AppCompatActivity {
                                             for(Button b : buttons){
                                                 for(char c : textHint){
                                                     if(b.getText().charAt(0) == c){
-                                                        b.setBackgroundColor(Color.RED);
+                                                        b.setBackgroundResource(R.drawable.stylebutton_hint);
                                                         break;
                                                     }
                                                 }
