@@ -162,7 +162,7 @@ class OnSwipeTinderListener implements View.OnTouchListener {
 
 
                 v.animate()
-                        .x(event.getRawX() + dX).setDuration(0).start();
+                        .x(event.getRawX() + dX).rotationX(v.getX()).setDuration(0).start();
                 Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+dX);
 //                        .y(event.getRawY() + dY)
 //                        .setDuration(0)
