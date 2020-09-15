@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.examy.k_pop"
+        applicationId "com.exam.k_pop"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 2
