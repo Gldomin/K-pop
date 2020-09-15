@@ -1,4 +1,4 @@
-package com.exam.k_pop;
+package com.examy.k_pop;
 
 import android.app.Activity;
 import android.content.Context;
@@ -24,7 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import com.exam.k_pop.StartApplication.Importer;
+import com.examy.k_pop.Artist;
+import com.examy.k_pop.StartApplication.Importer;
 
 import java.io.IOException;
 import java.util.ArrayList;
