@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.examy.k_pop">
+    package="com.star.k_pop">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.examy.k_pop.StartApplication.ApplicationStart"
+        android:name="com.star.k_pop.StartApplication.ApplicationStart"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,14 +13,14 @@
         android:supportsRtl="true"
 
         android:theme="@style/AppTheme">
-        <activity android:name="com.examy.k_pop.Achievements" android:screenOrientation="portrait"></activity>
-        <activity android:name="com.examy.k_pop.TwoBandsTinder"  android:screenOrientation="portrait"/>
-        <activity android:name="com.examy.k_pop.gallery.activity.GalleryBioPage"  android:screenOrientation="portrait"/>
-        <activity android:name="com.examy.k_pop.Settings"  android:screenOrientation="portrait"/>
-        <activity android:name="com.examy.k_pop.GuessStar"  android:screenOrientation="portrait"/>
-        <activity android:name="com.examy.k_pop.GuessBands"  android:screenOrientation="portrait"/>
-        <activity android:name="com.examy.k_pop.gallery.activity.Gallery"  android:screenOrientation="portrait"/>
-        <activity android:name="com.examy.k_pop.MainActivity" android:screenOrientation="portrait">
+        <activity android:name="com.star.k_pop.Achievements" android:screenOrientation="portrait"/>
+        <activity android:name="com.star.k_pop.TwoBandsTinder"  android:screenOrientation="portrait"/>
+        <activity android:name="com.star.k_pop.gallery.activity.GalleryBioPage"  android:screenOrientation="portrait"/>
+        <activity android:name="com.star.k_pop.Settings"  android:screenOrientation="portrait"/>
+        <activity android:name="com.star.k_pop.GuessStar"  android:screenOrientation="portrait"/>
+        <activity android:name="com.star.k_pop.GuessBands"  android:screenOrientation="portrait"/>
+        <activity android:name="com.star.k_pop.gallery.activity.Gallery"  android:screenOrientation="portrait"/>
+        <activity android:name="com.star.k_pop.MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
