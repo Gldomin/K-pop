@@ -51,8 +51,8 @@
 
                         <TextView
                             android:id="@+id/ach1SmallText"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/achGuessStarNormalText" />
 
@@ -85,10 +85,9 @@
 
                         <TextView
                             android:id="@+id/ach2SmallText"
-                            android:layout_width="234dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-
                             android:text="придумать критерий достижения" />
 
                     </LinearLayout>
@@ -120,8 +119,8 @@
 
                         <TextView
                             android:id="@+id/ach3SmallText"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="придумать критерий достижения" />
 
@@ -154,8 +153,8 @@
 
                         <TextView
                             android:id="@+id/ach4SmallText"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="придумать критерий достижения" />
 
@@ -188,8 +187,8 @@
 
                         <TextView
                             android:id="@+id/ach5SmallText"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="придумать критерий достижения" />
 
@@ -222,8 +221,8 @@
 
                         <TextView
                             android:id="@+id/ach6SmallText"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="придумать критерий достижения" />
 
@@ -255,8 +254,8 @@
 
                         <TextView
                             android:id="@+id/ach7SmallText"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="придумать критерий достижения" />
 
