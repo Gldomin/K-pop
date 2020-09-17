@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -102,6 +103,7 @@ public class GuessBands extends AppCompatActivity {
                     .into(groupPhoto);
 
 
+
             buttons = new ArrayList<Button>();
             final EditText grName = findViewById(R.id.groupName);
 
@@ -193,6 +195,8 @@ public class GuessBands extends AppCompatActivity {
         for(int id : BUTTON_IDS) {
             Button button = (Button)findViewById(id);
             button.setOnClickListener(clkGr);
+            button.setOnClickListener(clkGr);
+
 
             //устанавливаем слушатель долгого нажатия на специальные символы
             button.setOnLongClickListener(new OnLongClickListener() {
@@ -202,7 +206,6 @@ public class GuessBands extends AppCompatActivity {
                         case R.id.num1:
                         case R.id.num2:
                         case R.id.num3:
-                        case R.id.num4:
                         case R.id.num5:
                         case R.id.num6:
                         case R.id.num7:
@@ -211,13 +214,20 @@ public class GuessBands extends AppCompatActivity {
                         case R.id.num0:
                             grName.append(""+((Button)v).getText().charAt(2));
                             break;
+                        case R.id.num4:
+                            String word = "'";
+                            grName.append(word);
+                            break;
                     }
                     return true;
                 }
             });
             buttons.add(button);
         }
-        
+        for(Button b : buttons){
+
+            b.setBackgroundResource(R.drawable.stylebutton);
+        }
 
 
     }

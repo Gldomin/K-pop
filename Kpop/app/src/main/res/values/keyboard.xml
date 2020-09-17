@@ -3,7 +3,7 @@
     <string name="number1" translatable="false">1<small> !</small></string>
     <string name="number2" translatable="false">2<small> .</small></string>
     <string name="number3" translatable="false">3<small> /</small></string>
-    <string name="number4" translatable="false">4<small> .</small></string>
+    <string name="number4" translatable="false">4<small> \'</small></string>
     <string name="number5" translatable="false">5<small> _</small></string>
     <string name="number6" translatable="false">6<small> ,</small></string>
     <string name="number7" translatable="false">7<small> :</small></string>
