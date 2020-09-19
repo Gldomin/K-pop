@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -172,13 +173,18 @@ public class GuessBands extends AppCompatActivity {
                                     textHint[j] =textHintTwo.charAt(0);
 
                                 }
+                                String entLit="ENT";
+                                String delLit="DEL";
 
                                             for(Button b : buttons){
-                                                for(char c : textHint){
-                                                    if(b.getText().charAt(0) == c){
-                                                        b.setBackgroundResource(R.drawable.stylebutton_hint);
-                                                        break;
-                                                    }
+                                                if ((b.getId()==R.id.litDel)||(b.getId()==R.id.litEnt)||(b.getId()==R.id.podsk)) continue;
+                                                for(char c : textHint) {
+                                                        if (b.getText().charAt(0) == c) {
+                                                            b.setBackgroundResource(R.drawable.stylebutton_hint);
+                                                            break;
+                                                        }
+
+
                                                 }
                                             }
                                 break;

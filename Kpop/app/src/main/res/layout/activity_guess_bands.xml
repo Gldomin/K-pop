@@ -22,7 +22,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/zap3"
+                android:id="@+id/zap1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
@@ -99,7 +99,7 @@
                 android:layout_weight="1"
                 android:text="@string/number0"/>
             <Button
-                android:id="@+id/zap4"
+                android:id="@+id/zap2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
@@ -114,12 +114,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/zap1"
+                android:id="@+id/zap3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:text=""
                 android:visibility="invisible"/>
+
             <Button
                 android:id="@+id/litQ"
                 android:layout_width="0dp"
@@ -189,15 +190,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/literP"/>
+
             <Button
-                android:id="@+id/zap2"
+                android:id="@+id/zap4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:text=""
                 android:visibility="invisible"/>
-
-
 
 
         </LinearLayout>
@@ -424,11 +424,11 @@
             android:id="@+id/podsk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
             android:minWidth="10dp"
             android:minHeight="10dp"
-            android:text="@string/hint"
-
-            />
+            android:text="@string/hint" />
 
     </RelativeLayout>
 
