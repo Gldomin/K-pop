@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button guessStarButton = findViewById(R.id.guessStar);
+        Button guessStarButton = findViewById(R.id.guessStarButton);
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button guessBandButton = findViewById(R.id.guessGroup);
+        Button guessBandButton = findViewById(R.id.guessGroupButton);
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-        Button buttonLibrary = findViewById(R.id.gallery);
+        Button buttonLibrary = findViewById(R.id.galleryButton);
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-        Button settingsButton = findViewById(R.id.settings);
+        Button settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button tinderButton = findViewById(R.id.chooseTinder);
+        Button tinderButton = findViewById(R.id.chooseTinderButton);
         tinderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,6 +79,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Achievements.class);
+                startActivity(image);
+            }
+        });
+        Button about = findViewById(R.id.abautButton);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(MainActivity.this, AboutActivity.class);
                 startActivity(image);
             }
         });

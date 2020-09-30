@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="226dp"
+        android:layout_height="287dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,43 +17,43 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/guessStar"
-            android:layout_width="147dp"
+            android:id="@+id/guessStarButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/guess" />
+            android:text="@string/menuItemGuessStar" />
 
         <Button
-            android:id="@+id/guessGroup"
-            android:layout_width="147dp"
+            android:id="@+id/guessGroupButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/guess2" />
+            android:text="@string/menuItemGuessBand" />
 
         <Button
-            android:id="@+id/chooseGroup"
+            android:id="@+id/chooseTinderButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/guess3" />
+            android:text="@string/menuItemTinderSwipe" />
 
         <Button
-            android:id="@+id/chooseTinder"
+            android:id="@+id/galleryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tinder" />
+            android:text="@string/menuItemGallery" />
+
 
         <Button
-            android:id="@+id/gallery"
+            android:id="@+id/settingsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/guess4" />
+            android:text="@string/menuItemSettings" />
 
-
-    <Button
-        android:id="@+id/settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/guess5" />
+        <Button
+            android:id="@+id/abautButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menuItemAbout" />
     </LinearLayout>
 
     <ImageView
