@@ -1,14 +1,6 @@
 package com.star.k_pop;
 
-<<<<<<< HEAD
-=======
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
->>>>>>> master
 import android.annotation.SuppressLint;
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,34 +12,27 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-<<<<<<< HEAD
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-=======
-import java.util.ArrayList;
-import java.util.Collections;
->>>>>>> master
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.StartApplication.Importer;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Collections;
 
-=======
->>>>>>> master
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class TwoBandsTinder extends AppCompatActivity {
 
-    ArrayList<Bands> bands = Importer.getRandomBands();
-    ArrayList<Artist> artists = new ArrayList<>();
+    ArrayList<Bands> bands = Importer.getRandomBands(); //берем список всех групп
+    ArrayList<Artist> artists = new ArrayList<>(); //лист для того чтобы переносить артистов из двух групп
     int artistCount;
     boolean choice;
     int bandsCount;
     ImageView imageBand;
+    ImageView imBTmp;
     TextView oneBand;
     TextView secondBand;
     OnSwipeTouchListener l;
@@ -79,6 +64,14 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (artistCount >= artists.size()) {
             changeBands();
         } else {
+            imageBand.animate().x(imageBand.getPaddingLeft()).rotation(0).setDuration(0);
+
+            imBTmp.setX(imageBand.getX());
+            imBTmp.setY(imageBand.getY());
+            imBTmp.setImageDrawable(imageBand.getDrawable());
+            //imBTmp.setVisibility(View.VISIBLE);
+            Log.i("defX", "onTouch:imbTx "+imBTmp.getX()+" imbTy "+imBTmp.getY()+" imagex "+imageBand.getX() + " imagey "+imageBand.getY()+" ");
+
             Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(artistCount).getFolder()))
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .transition(withCrossFade())
@@ -90,7 +83,9 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     private void guessTwoBands() {
+
         imageBand = findViewById(R.id.imageBand);
+        imBTmp =    findViewById(R.id.imgBTmp);
         oneBand = findViewById(R.id.oneBand);
         secondBand = findViewById(R.id.secondBand);
         score = findViewById(R.id.RecordScore);
@@ -100,38 +95,17 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (artists != null) artists.clear();
         choice = false;
 
-        imageBand.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                ClipData.Item item = new ClipData.Item(""+v.getTag());
-                ClipData dragData = new ClipData(
-                        ""+v.getTag(),
-                        new String[] { ClipDescription.MIMETYPE_TEXT_PLAIN },
-                        item);
-                View.DragShadowBuilder myShadow = new View.DragShadowBuilder(v);
-
-                // Starts the drag
-
-                v.startDrag(dragData,  // the data to be dragged
-                        myShadow,  // the drag shadow builder
-                        null,      // no need to use local data
-                        0          // flags (not currently used, set to 0)
-                );
-                return false;
-            }
-
-        });
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
 
-            public boolean onSwipeRight() {
+            public boolean onRightCheck() {
                 Log.i("Swipe", "onSwipeRight");
 
-                //changeArtist();
+                changeArtist();
                 return true;
             }
-            public boolean onSwipeLeft() {
+            public boolean onLeftCheck() {
                 Log.i("Swipe", "onSwipeLeft");
-                //changeArtist();
+                changeArtist();
                 return true;
             }
         });
@@ -146,59 +120,76 @@ public class TwoBandsTinder extends AppCompatActivity {
         guessTwoBands();
     }
 }
+
 // класс listener для моего обьекта
 class OnSwipeTinderListener implements View.OnTouchListener {
+    //переменные для положения x
     float dX; float defX;
-<<<<<<< HEAD
+    //переменные для поворота
     float roatx; float droatx;
-=======
+    //переменные для проверки финального условия
+    boolean leftCheck; boolean rightCheck;
 
->>>>>>> master
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public boolean onTouch(final View v, final MotionEvent event) {
+        //получаем размер экрана чтобы различать в какую сторону скинули
         DisplayMetrics metrics = new DisplayMetrics();
         v.getDisplay().getMetrics(metrics);
-<<<<<<< HEAD
         int width = metrics.widthPixels;
-        roatx = (event.getRawX()/width)*180-90;
-        droatx = dX/width*180+90;
-=======
-        int height = metrics.heightPixels;
->>>>>>> master
+        //размер границы картинки от левого края
+        final int padding = (width - v.getWidth())/2;
+        //формулы для определения в какую сторону была скинута картинка
+        leftCheck = (defX < (width/2 - width +30));
+        rightCheck = (defX > (width/2 - 30));
+        //формула для для вычисление поворота
+        roatx = (event.getRawX()/width)*90-45;
+        droatx = dX/width*90+45;
+
+
         switch (event.getAction()) {
+            //обработка события нажатия на экран
             case MotionEvent.ACTION_DOWN:
-                defX = v.getX();
+
                 Log.i("deX", "onTouch:getrawX "+defX+"dX"+dX+ "vgetx "+v.getX());
+                //задаем значение dx равное обратной позиции нажатия на экран, чтобы картинка не сьехала
                 dX = v.getX() - event.getRawX();
-                // dY = v.getY() - event.getRawY();
                 break;
-
+            //обработка события проведение по экрану
             case MotionEvent.ACTION_MOVE:
-
-
-                v.animate()
-<<<<<<< HEAD
-                        .x(event.getRawX() + dX).rotation(roatx+droatx).setDuration(0).start();
-                Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+roatx);
-=======
-                        .x(event.getRawX() + dX).setDuration(0).start();
-                Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+dX);
->>>>>>> master
-//                        .y(event.getRawY() + dY)
-//                        .setDuration(0)
-//                        .start();
+                // движение картинки так как dx назначается в начале,то defx будет двигать только картинку от ее начальной позиции
+                defX = dX+event.getRawX();
+                //droat и roat та же логика
+                 v.animate().x( defX).rotation(roatx+droatx).setDuration(0).start();
+                Log.i("dX", "onTouch:getrawX "+defX+"dX"+roatx);
                 break;
+            // обработка события отпуск от экрана
             case  MotionEvent.ACTION_UP:
-                Log.i("defX", "onTouch:right "+v.getRight()+" left"+v.getLeft());
-                //if (v.getX()<20) v.animate().x(defX);
-<<<<<<< HEAD
-                if ((v.getX()+v.getRight())/2>20&&(v.getX()+v.getRight())/2 <width-20 )v.animate().x(v.getPaddingLeft()).rotation(0);
-=======
-                if ((v.getX()+v.getRight())/2>20&&(v.getX()+v.getRight())/2 <height-20 )v.animate().x(v.getPaddingLeft());
->>>>>>> master
+                Log.i("defX", "onTouch:right "+leftCheck+" left"+rightCheck);
+
+                // если картинка не находится слева и справа
+                if (!leftCheck&&!rightCheck)v.animate().x(padding).rotation(0);
+
+                if (leftCheck){
+                    v.animate().x(defX).rotation(-360).setDuration(600);
+                    v.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            onLeftCheck();
+
+                        }
+                    },300);
+
+                }
+                if (rightCheck) {
+                    v.animate().x(defX).rotation(360).setDuration(600);
+                    onRightCheck();
+                }
                 break;
         }
         return true;
     }
+    public boolean onLeftCheck(){return false;}
+    public boolean onRightCheck(){return false;}
 }

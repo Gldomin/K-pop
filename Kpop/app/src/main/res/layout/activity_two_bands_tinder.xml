@@ -10,31 +10,45 @@
         android:id="@+id/RecordScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Рекорд:0"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/scoreBands"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:text="@string/Score"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/RecordScore" />
+
+    <ImageView
+        android:id="@+id/imgBTmp"
+        android:layout_width="fill_parent"
+        android:layout_height="450dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreBands"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/imageBand"
         android:layout_width="fill_parent"
         android:layout_height="450dp"
         android:layout_margin="5dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="19dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RecordScore"
+        app:layout_constraintTop_toBottomOf="@+id/scoreBands"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
