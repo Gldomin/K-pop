@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="number1" translatable="false">1<small> !</small></string>
+    <string name="number2" translatable="false">2<small> .</small></string>
+    <string name="number3" translatable="false">3<small> /</small></string>
+    <string name="number4" translatable="false">4<small> \'</small></string>
+    <string name="number5" translatable="false">5<small> _</small></string>
+    <string name="number6" translatable="false">6<small> ,</small></string>
+    <string name="number7" translatable="false">7<small> :</small></string>
+    <string name="number8" translatable="false">8<small> ?</small></string>
+    <string name="number9" translatable="false">9<small> (</small></string>
+    <string name="number0" translatable="false">0<small> )</small></string>
+    <string name="literA"  translatable="false">A</string>
+    <string name="literB"  translatable="false">B</string>
+    <string name="literC"  translatable="false">C</string>
+    <string name="literD"  translatable="false">D</string>
+    <string name="literE"  translatable="false">E</string>
+    <string name="literF"  translatable="false">F</string>
+    <string name="literG"  translatable="false">G</string>
+    <string name="literH"  translatable="false">H</string>
+    <string name="literI"  translatable="false">I</string>
+    <string name="literJ"  translatable="false">J</string>
+    <string name="literK"  translatable="false">K</string>
+    <string name="literL"  translatable="false">L</string>
+    <string name="literM"  translatable="false">M</string>
+    <string name="literN"  translatable="false">N</string>
+    <string name="literO"  translatable="false">O</string>
+    <string name="literP"  translatable="false">P</string>
+    <string name="literQ"  translatable="false">Q</string>
+    <string name="literR"  translatable="false">R</string>
+    <string name="literS"  translatable="false">S</string>
+    <string name="literT"  translatable="false">T</string>
+    <string name="literU"  translatable="false">U</string>
+    <string name="literV"  translatable="false">V</string>
+    <string name="literW"  translatable="false">W</string>
+    <string name="literX"  translatable="false">X</string>
+    <string name="literY"  translatable="false">Y</string>
+    <string name="literZ"  translatable="false">Z</string>
+    <string name="keyEnt"  translatable="false">Ent</string>
+    <string name="keyDel"  translatable="false">Del</string>
+    <string name="space" translatable="false">___</string>
+    <string name="hint" translatable="false">Hint</string>
+
+
+
+
+</resources>

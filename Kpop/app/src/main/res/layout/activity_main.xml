@@ -7,8 +7,9 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_width="226dp"
+        android:layout_height="287dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,30 +17,55 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="147dp"
-            android:layout_height="61dp"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/guess" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="147dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/guess2" />
-
-        <Button
-            android:id="@+id/button3"
+            android:id="@+id/guessStarButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_gravity="center_horizontal"
+            android:text="@string/menuItemGuessStar" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/guessGroupButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_gravity="center_horizontal"
+            android:text="@string/menuItemGuessBand" />
+
+        <Button
+            android:id="@+id/chooseTinderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menuItemTinderSwipe" />
+
+        <Button
+            android:id="@+id/galleryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menuItemGallery" />
+
+
+        <Button
+            android:id="@+id/settingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menuItemSettings" />
+
+        <Button
+            android:id="@+id/abautButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menuItemAbout" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/achievementButton"
+        android:layout_width="112dp"
+        android:layout_height="115dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:src="@drawable/achievement"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,11 @@
 package com.star.k_pop;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
+>>>>>>> master
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -14,16 +20,24 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+=======
+import java.util.ArrayList;
+import java.util.Collections;
+>>>>>>> master
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.StartApplication.Importer;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Collections;
 
+=======
+>>>>>>> master
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class TwoBandsTinder extends AppCompatActivity {
@@ -135,15 +149,23 @@ public class TwoBandsTinder extends AppCompatActivity {
 // класс listener для моего обьекта
 class OnSwipeTinderListener implements View.OnTouchListener {
     float dX; float defX;
+<<<<<<< HEAD
     float roatx; float droatx;
+=======
+
+>>>>>>> master
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public boolean onTouch(final View v, final MotionEvent event) {
         DisplayMetrics metrics = new DisplayMetrics();
         v.getDisplay().getMetrics(metrics);
+<<<<<<< HEAD
         int width = metrics.widthPixels;
         roatx = (event.getRawX()/width)*180-90;
         droatx = dX/width*180+90;
+=======
+        int height = metrics.heightPixels;
+>>>>>>> master
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 defX = v.getX();
@@ -156,8 +178,13 @@ class OnSwipeTinderListener implements View.OnTouchListener {
 
 
                 v.animate()
+<<<<<<< HEAD
                         .x(event.getRawX() + dX).rotation(roatx+droatx).setDuration(0).start();
                 Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+roatx);
+=======
+                        .x(event.getRawX() + dX).setDuration(0).start();
+                Log.i("dX", "onTouch:getrawX "+event.getRawX()+"dX"+dX);
+>>>>>>> master
 //                        .y(event.getRawY() + dY)
 //                        .setDuration(0)
 //                        .start();
@@ -165,7 +192,11 @@ class OnSwipeTinderListener implements View.OnTouchListener {
             case  MotionEvent.ACTION_UP:
                 Log.i("defX", "onTouch:right "+v.getRight()+" left"+v.getLeft());
                 //if (v.getX()<20) v.animate().x(defX);
+<<<<<<< HEAD
                 if ((v.getX()+v.getRight())/2>20&&(v.getX()+v.getRight())/2 <width-20 )v.animate().x(v.getPaddingLeft()).rotation(0);
+=======
+                if ((v.getX()+v.getRight())/2>20&&(v.getX()+v.getRight())/2 <height-20 )v.animate().x(v.getPaddingLeft());
+>>>>>>> master
                 break;
         }
         return true;
