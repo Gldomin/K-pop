@@ -145,8 +145,8 @@ class OnSwipeTinderListener implements View.OnTouchListener {
         leftCheck = (defX < (width/2 - width +30));
         rightCheck = (defX > (width/2 - 30));
         //формула для для вычисление поворота
-        roatx = (event.getRawX()/width)*90-45;
-        droatx = dX/width*90+45;
+        roatx = (event.getRawX()/width)*45-17.5f;
+        droatx = dX/width*45+17.5f;
 
 
         switch (event.getAction()) {
