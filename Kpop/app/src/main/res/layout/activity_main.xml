@@ -92,7 +92,7 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Атрибуты(статусы) приложения. менять на свой риск" />
+                    android:text="Атрибуты приложения. менять на свой риск" />
 
                 <Switch
                     android:id="@+id/noticeWatched"
