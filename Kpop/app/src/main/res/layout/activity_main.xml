@@ -68,4 +68,112 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="1.0" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Атрибуты(статусы) приложения. менять на свой риск" />
+
+                <Switch
+                    android:id="@+id/noticeWatched"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="noticeWatched" />
+
+                <Switch
+                    android:id="@+id/achGuessStarNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achGuessStarNormalText" />
+
+                <Switch
+                    android:id="@+id/achGuessStarExpertText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achGuessStarExpertText" />
+
+                <Switch
+                    android:id="@+id/achGuessBandsNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achGuessBandsNormalText" />
+
+                <Switch
+                    android:id="@+id/achGuessBandsExpertText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achGuessBandsExpertText" />
+
+                <Switch
+                    android:id="@+id/achSwipeTwoBandsNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achSwipeTwoBandsNormalText" />
+
+                <Switch
+                    android:id="@+id/achSwipeTwoBandsExpertText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achSwipeTwoBandsExpertText" />
+
+                <Switch
+                    android:id="@+id/achGuessStarReversNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achGuessStarReversNormalText" />
+
+                <Switch
+                    android:id="@+id/achGuessStarReversExpertText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achGuessStarReversExpertText" />
+
+                <Switch
+                    android:id="@+id/achSecretGameModeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achSecretGameModeText" />
+
+                <Switch
+                    android:id="@+id/achAdsFreeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achAdsFreeText" />
+
+                <Switch
+                    android:id="@+id/achRoyalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="achRoyalText" />
+
+                <Button
+                    android:id="@+id/saveStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Сохранить" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
