@@ -1,5 +1,6 @@
 package com.star.k_pop;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Build;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,12 +33,15 @@ public class TwoBandsTinder extends AppCompatActivity {
     int artistCount;
     boolean choice;
     int bandsCount;
+    float paddingY;
+    float paddingX;
     ImageView imageBand;
     ImageView imBTmp;
     TextView oneBand;
     TextView secondBand;
     OnSwipeTouchListener l;
     TextView score;
+    ViewGroup.MarginLayoutParams padding;
     private static final String IMAGEVIEW_TAG = "icon bitmap";
     private void startFinishSection() {
         Display display = getWindowManager().getDefaultDisplay();
@@ -63,14 +68,14 @@ public class TwoBandsTinder extends AppCompatActivity {
     private void changeArtist() {
         if (artistCount >= artists.size()) {
             changeBands();
-        } else {
-            imageBand.animate().x(imageBand.getPaddingLeft()).y(imageBand.getPaddingTop()).rotation(0).setDuration(0);
+        } else {Log.i("defX", "onTouch:imbTx "+imBTmp.getX()+" imbTy "+imBTmp.getY()+" imagex "+imageBand.getX() + " imagey "+padding.topMargin+" ");
+            imageBand.animate().x(padding.leftMargin).y(padding.topMargin).rotation(0).setDuration(0);
 
             imBTmp.setX(imageBand.getX());
             imBTmp.setY(imageBand.getY());
             imBTmp.setImageDrawable(imageBand.getDrawable());
             //imBTmp.setVisibility(View.VISIBLE);
-            Log.i("defX", "onTouch:imbTx "+imBTmp.getX()+" imbTy "+imBTmp.getY()+" imagex "+imageBand.getX() + " imagey "+imageBand.getY()+" ");
+            Log.i("defX", "onTouch:imbTx "+imBTmp.getX()+" imbTy "+imBTmp.getY()+" imagex "+imageBand.getX() + " imagey "+paddingY+" ");
 
             Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(artistCount).getFolder()))
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -89,6 +94,8 @@ public class TwoBandsTinder extends AppCompatActivity {
         oneBand = findViewById(R.id.oneBand);
         secondBand = findViewById(R.id.secondBand);
         score = findViewById(R.id.RecordScore);
+        padding =(ViewGroup.MarginLayoutParams) imageBand.getLayoutParams();
+
         bandsCount = 0;
         artistCount = 0;
         imageBand.setTag(IMAGEVIEW_TAG);
@@ -130,17 +137,19 @@ class OnSwipeTinderListener implements View.OnTouchListener {
     float roatx; float droatx;
     //переменные для проверки финального условия
     boolean leftCheck; boolean rightCheck;
-
+    float paddingYx;
+    //ViewGroup.MarginLayoutParams padding;
+    float b;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public boolean onTouch(final View v, final MotionEvent event) {
         //получаем размер экрана чтобы различать в какую сторону скинули
         DisplayMetrics metrics = new DisplayMetrics();
+        //padding = (ViewGroup.MarginLayoutParams)  v.getLayoutParams();
         v.getDisplay().getMetrics(metrics);
-        int width = metrics.widthPixels;
+            int width = metrics.widthPixels;
         //размер границы картинки от левого края
         final int paddingX = (width - v.getWidth())/2;
-        final float paddingY = v.getY();
         //формулы для определения в какую сторону была скинута картинка
         leftCheck = (defX < (width/2 - width +30));
         rightCheck = (defX > (width/2 - 30));
@@ -157,25 +166,28 @@ class OnSwipeTinderListener implements View.OnTouchListener {
                 //задаем значение dx равное обратной позиции нажатия на экран, чтобы картинка не сьехала
                 dY = v.getY() - event.getRawY();
                 dX = v.getX() - event.getRawX();
+                paddingYx = v.getY();
                 break;
+
             //обработка события проведение по экрану
             case MotionEvent.ACTION_MOVE:
                 // движение картинки так как dx назначается в начале,то defx будет двигать только картинку от ее начальной позиции
                 defX = dX+event.getRawX();
                 defY = dY+event.getRawY();
                 //droat и roat та же логика
-                 v.animate().x( defX).y(defY).rotation(roatx+droatx).setDuration(0).start();
+                ObjectAnimator b = new ObjectAnimator();
+                v.animate().setDuration(0);
+                v.animate().x( defX).y(defY).rotation(roatx+droatx).start();
                 Log.i("dX", "onTouch:getrawX "+defX+"dX"+roatx);
                 break;
             // обработка события отпуск от экрана
             case  MotionEvent.ACTION_UP:
-                Log.i("defX", "onTouch:right "+leftCheck+" left"+rightCheck);
-
+                Log.i("defX", "onTouch:right "+leftCheck+" left"+rightCheck+" padding "+paddingYx);
                 // если картинка не находится слева и справа
-                if (!leftCheck&&!rightCheck)v.animate().x(paddingX).y(paddingY).rotation(0);
+                if (!leftCheck&&!rightCheck){v.animate().setDuration(200).x(paddingX).y(paddingYx).rotation(0);}//v.animate().x(paddingX).y(paddingY).rotation(0);
 
                 if (leftCheck){
-                    v.animate().x(defX).y(defY).rotation(-360).setDuration(600);
+                    v.animate().x(defX).y(defY).rotation(-360).setDuration(800);
                     v.postDelayed(new Runnable() {
                         @Override
                         public void run() {
