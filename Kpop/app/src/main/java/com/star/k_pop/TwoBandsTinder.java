@@ -64,7 +64,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (artistCount >= artists.size()) {
             changeBands();
         } else {
-            imageBand.animate().x(imageBand.getPaddingLeft()).rotation(0).setDuration(0);
+            imageBand.animate().x(imageBand.getPaddingLeft()).y(imageBand.getPaddingTop()).rotation(0).setDuration(0);
 
             imBTmp.setX(imageBand.getX());
             imBTmp.setY(imageBand.getY());
@@ -125,6 +125,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 class OnSwipeTinderListener implements View.OnTouchListener {
     //переменные для положения x
     float dX; float defX;
+    float dY; float defY;
     //переменные для поворота
     float roatx; float droatx;
     //переменные для проверки финального условия
@@ -138,7 +139,8 @@ class OnSwipeTinderListener implements View.OnTouchListener {
         v.getDisplay().getMetrics(metrics);
         int width = metrics.widthPixels;
         //размер границы картинки от левого края
-        final int padding = (width - v.getWidth())/2;
+        final int paddingX = (width - v.getWidth())/2;
+        final float paddingY = v.getY();
         //формулы для определения в какую сторону была скинута картинка
         leftCheck = (defX < (width/2 - width +30));
         rightCheck = (defX > (width/2 - 30));
@@ -153,14 +155,16 @@ class OnSwipeTinderListener implements View.OnTouchListener {
 
                 Log.i("deX", "onTouch:getrawX "+defX+"dX"+dX+ "vgetx "+v.getX());
                 //задаем значение dx равное обратной позиции нажатия на экран, чтобы картинка не сьехала
+                dY = v.getY() - event.getRawY();
                 dX = v.getX() - event.getRawX();
                 break;
             //обработка события проведение по экрану
             case MotionEvent.ACTION_MOVE:
                 // движение картинки так как dx назначается в начале,то defx будет двигать только картинку от ее начальной позиции
                 defX = dX+event.getRawX();
+                defY = dY+event.getRawY();
                 //droat и roat та же логика
-                 v.animate().x( defX).rotation(roatx+droatx).setDuration(0).start();
+                 v.animate().x( defX).y(defY).rotation(roatx+droatx).setDuration(0).start();
                 Log.i("dX", "onTouch:getrawX "+defX+"dX"+roatx);
                 break;
             // обработка события отпуск от экрана
@@ -168,10 +172,10 @@ class OnSwipeTinderListener implements View.OnTouchListener {
                 Log.i("defX", "onTouch:right "+leftCheck+" left"+rightCheck);
 
                 // если картинка не находится слева и справа
-                if (!leftCheck&&!rightCheck)v.animate().x(padding).rotation(0);
+                if (!leftCheck&&!rightCheck)v.animate().x(paddingX).y(paddingY).rotation(0);
 
                 if (leftCheck){
-                    v.animate().x(defX).rotation(-360).setDuration(600);
+                    v.animate().x(defX).y(defY).rotation(-360).setDuration(600);
                     v.postDelayed(new Runnable() {
                         @Override
                         public void run() {
