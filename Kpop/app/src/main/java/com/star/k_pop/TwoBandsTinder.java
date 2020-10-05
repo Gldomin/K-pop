@@ -1,5 +1,7 @@
 package com.star.k_pop;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.net.Uri;
@@ -39,6 +41,9 @@ public class TwoBandsTinder extends AppCompatActivity {
     ImageView imBTmp;
     TextView oneBand;
     TextView secondBand;
+    TextView artistName;
+    boolean left;
+    boolean right;
     OnSwipeTouchListener l;
     TextView score;
     ViewGroup.MarginLayoutParams padding;
@@ -48,6 +53,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         DisplayMetrics metricsB = new DisplayMetrics();
         display.getMetrics(metricsB);
     }
+
 
     private void changeBands() {
         Log.i("Test2", "test");
@@ -70,12 +76,34 @@ public class TwoBandsTinder extends AppCompatActivity {
             changeBands();
         } else {Log.i("defX", "onTouch:imbTx "+imBTmp.getX()+" imbTy "+imBTmp.getY()+" imagex "+imageBand.getX() + " imagey "+padding.topMargin+" ");
             imageBand.animate().x(padding.leftMargin).y(padding.topMargin).rotation(0).setDuration(0);
-
-            imBTmp.setX(imageBand.getX());
-            imBTmp.setY(imageBand.getY());
-            imBTmp.setImageDrawable(imageBand.getDrawable());
+            artistName.setText(artists.get(artistCount).getName());
+                imBTmp.setVisibility(View.VISIBLE);
+                imBTmp.setY(imageBand.getY());
+                imBTmp.setX(imageBand.getX());
+                imBTmp.setImageDrawable(imageBand.getDrawable());
+                imBTmp.setRotation(0);
+                imBTmp.setScaleX(1);
+                imBTmp.setScaleY(1);
+            if(left){
+                imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(30).setDuration(400).setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        imBTmp.setVisibility(View.GONE);
+                    }
+                });
+            }
+            if(right){
+                imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(-30).setDuration(400).setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        imBTmp.setVisibility(View.GONE);
+                    }
+                });
+            }
             //imBTmp.setVisibility(View.VISIBLE);
-            Log.i("defX", "onTouch:imbTx "+imBTmp.getX()+" imbTy "+imBTmp.getY()+" imagex "+imageBand.getX() + " imagey "+paddingY+" ");
+            Log.i("defX", "onTouch:imbTx "+imBTmp.animate().getDuration()+" imbTy "+imBTmp.getY()+" imagex "+imageBand.getX() + " imagey "+paddingY+" ");
 
             Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(artistCount).getFolder()))
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -88,14 +116,13 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     private void guessTwoBands() {
-
         imageBand = findViewById(R.id.imageBand);
         imBTmp =    findViewById(R.id.imgBTmp);
         oneBand = findViewById(R.id.oneBand);
         secondBand = findViewById(R.id.secondBand);
         score = findViewById(R.id.RecordScore);
+        artistName = findViewById(R.id.artistName);
         padding =(ViewGroup.MarginLayoutParams) imageBand.getLayoutParams();
-
         bandsCount = 0;
         artistCount = 0;
         imageBand.setTag(IMAGEVIEW_TAG);
@@ -105,12 +132,15 @@ public class TwoBandsTinder extends AppCompatActivity {
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
 
             public boolean onRightCheck() {
+                right = true;
+                left = false;
                 Log.i("Swipe", "onSwipeRight");
-
                 changeArtist();
                 return true;
             }
             public boolean onLeftCheck() {
+                right = false;
+                left = true;
                 Log.i("Swipe", "onSwipeLeft");
                 changeArtist();
                 return true;
@@ -184,22 +214,13 @@ class OnSwipeTinderListener implements View.OnTouchListener {
             case  MotionEvent.ACTION_UP:
                 Log.i("defX", "onTouch:right "+leftCheck+" left"+rightCheck+" padding "+paddingYx);
                 // если картинка не находится слева и справа
-                if (!leftCheck&&!rightCheck){v.animate().setDuration(200).x(paddingX).y(paddingYx).rotation(0);}//v.animate().x(paddingX).y(paddingY).rotation(0);
+                if (!leftCheck&&!rightCheck){v.animate().setDuration(400).x(paddingX).y(paddingYx).rotation(0);}//v.animate().x(paddingX).y(paddingY).rotation(0);
 
-                if (leftCheck){
-                    v.animate().x(defX).y(defY).rotation(-360).setDuration(800);
-                    v.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
+                if (leftCheck){v.animate().y(paddingYx);
                             onLeftCheck();
-
-                        }
-                    },300);
-
                 }
-                if (rightCheck) {
-                    v.animate().x(defX).rotation(360).setDuration(600);
+                if (rightCheck) {v.animate().y(paddingYx);
+
                     onRightCheck();
                 }
                 break;
