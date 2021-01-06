@@ -22,10 +22,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.StartApplication.Importer;
 import com.yandex.metrica.YandexMetrica;
 
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
-
 import java.util.ArrayList;
 import java.util.Random;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 
 public class GuessStar extends AppCompatActivity {
@@ -128,10 +128,14 @@ public class GuessStar extends AppCompatActivity {
                                 Toast.makeText(GuessStar.this, "Бро, да ты просто бешеный! Нет, я серьезно. Таких фанатов K-pop еще надо поискать!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                         }*/
                         count++;
-                        if (count>=artists.size())      //обработка конца списка. Что бы играть можно было вечно
+                        if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
+                        {
                             artists = Importer.getRandomArtists();
+                            count = 0;
+                        }
                         init();
-                    } else if (scoreNow > 0) {scoreNow--;
+                    } else if (scoreNow > 0) {
+                        scoreNow--;
                         YandexMetrica.reportEvent("GuessStarLoseClick");  //метрика на неправильный клик
                     }
                     TextView textView = findViewById(R.id.scoreText);
@@ -159,7 +163,6 @@ public class GuessStar extends AppCompatActivity {
         artists = Importer.getRandomArtists();
         init();
     }
-
 
 
     /**
