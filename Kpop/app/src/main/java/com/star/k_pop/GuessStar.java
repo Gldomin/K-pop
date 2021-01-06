@@ -30,14 +30,14 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class GuessStar extends AppCompatActivity {
     boolean cheatOn = false;
-
+    Button cheaterButton;
     ImageView imageView;
     String[] stars;
     ArrayList<Artist> artists = new ArrayList<>();
     Button[] buttons = new Button[4];
-    int chosenOne = -1;
-    int scoreNow = 0;
-    int count = 0;
+    int chosenOne = -1;     //избранный артист (правильный артист)
+    int scoreNow = 0;       //текущий счет
+    int count = 0;          //номер артиста из сгенерированного списка (текущий)
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -155,6 +155,17 @@ public class GuessStar extends AppCompatActivity {
                         Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                     } else
                         Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                }
+            });
+
+            cheaterButton = findViewById(R.id.cheaterButton);
+            cheaterButton.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
+                @Override
+                public void onClick(View view) {
+                    count++;
+                    scoreNow++;
+                    Toast.makeText(GuessStar.this, "Boop!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+
                 }
             });
 
