@@ -13,5 +13,5 @@
         android:adjustViewBounds="true"
         android:padding="5dp"
         android:scaleType="matrix" />
-    
+
 </com.star.k_pop.gallery.helper.SquareLayout>
