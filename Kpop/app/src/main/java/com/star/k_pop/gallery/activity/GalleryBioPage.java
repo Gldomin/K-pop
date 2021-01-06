@@ -63,11 +63,6 @@ public class GalleryBioPage extends AppCompatActivity {
 
 
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +79,6 @@ public class GalleryBioPage extends AppCompatActivity {
         if (savedInstanceState != null)
             scoreNow = savedInstanceState.getInt("scoreNow");*/
         ///////////////////////////
-
-
 
 
         ImageView tempImg = findViewById(R.id.tempImg);

@@ -3,7 +3,7 @@
 <com.star.k_pop.gallery.helper.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+
     android:orientation="vertical">
 
     <ImageView
@@ -11,5 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop" />
+        android:padding="5dp"
+        android:scaleType="matrix" />
+    
 </com.star.k_pop.gallery.helper.SquareLayout>
