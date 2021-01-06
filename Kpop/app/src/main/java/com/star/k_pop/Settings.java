@@ -28,13 +28,13 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
+        final Storage recordStorage = new Storage(this); //хранилищеРекорда
 
         final Switch hintModeSwitch = findViewById(R.id.optionSwitch1); //hintMode переключалка
         final Switch hardModeSwitch = findViewById(R.id.optionSwitch2); //hardMode переключалка
         final Switch darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
-        final Switch optionSwitch4 = findViewById(R.id.optionSwitch4); //заменить когда появится новая опция
-        final Switch optionSwitch5 = findViewById(R.id.optionSwitch5); //заменить когда появится новая опция
+     //   final Switch optionSwitch4 = findViewById(R.id.optionSwitch4); //заменить когда появится новая опция
+     //   final Switch optionSwitch5 = findViewById(R.id.optionSwitch5); //заменить когда появится новая опция
 //hintModeSwitch.setOnCheckedChangeListener
         hintModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -66,7 +66,7 @@ public class Settings extends AppCompatActivity {
 
             }
         });
-        optionSwitch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+       /* optionSwitch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 tempSettingsSet.option4 = optionSwitch4.isChecked();
@@ -77,7 +77,7 @@ public class Settings extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 tempSettingsSet.option5 = optionSwitch5.isChecked();
             }
-        });
+        });*/
 
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
         settingsConfirmButton.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +107,17 @@ public class Settings extends AppCompatActivity {
         });
 
 
+        Button resetButton = findViewById(R.id.resetRecordButton); //кнопка сброса счета
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                recordStorage.saveValue("UserScore","userScoreGuessStar", 0);  //сброс рекорда. TODO надо сделать и для других режимов сброс а так же нужно окно подтверждение удаления
+                Toast.makeText(Settings.this, "Данные удалены", Toast.LENGTH_SHORT).show(); //отправка сообщения на экран
+            }
+        });
+
 
 ///////Read Settings//////
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
@@ -123,8 +134,8 @@ public class Settings extends AppCompatActivity {
             hintModeSwitch.setChecked(tempSettingsSet.hintMode); //установка значение свитча
             hardModeSwitch.setChecked(tempSettingsSet.hardMode);
             darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
-            optionSwitch4.setChecked(tempSettingsSet.option4);
-            optionSwitch5.setChecked(tempSettingsSet.option5);
+            //optionSwitch4.setChecked(tempSettingsSet.option4);
+            //optionSwitch5.setChecked(tempSettingsSet.option5);
 
 
         } else {

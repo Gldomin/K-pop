@@ -159,12 +159,22 @@ public class GuessStar extends AppCompatActivity {
             });
 
             cheaterButton = findViewById(R.id.cheaterButton);
-            cheaterButton.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
+            cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
                 @Override
                 public void onClick(View view) {
-                    count++;
-                    scoreNow++;
-                    Toast.makeText(GuessStar.this, "Boop!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                    int stepSize=1; //рзамер шага переключения
+
+                  for(int i=0; i<stepSize;i++) { //количетво скипнутых артистов
+                      count++;
+                      scoreNow++;
+                      if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
+                      {
+                          artists = Importer.getRandomArtists();
+                          count = 0;
+                      }
+                  }
+
+                    init();
 
                 }
             });
