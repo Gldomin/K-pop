@@ -70,6 +70,7 @@ public class GuessBands extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        setTheme(R.style.AppTheme);
 
 
         super.onCreate(savedInstanceState);
@@ -107,6 +108,12 @@ public class GuessBands extends AppCompatActivity {
 
             buttons = new ArrayList<Button>();
             final EditText grName = findViewById(R.id.groupName);
+        // 4 строки снизу для отладки, удалить на релизе
+        String textAnsw = grName.getText().toString();
+        String answ = artists.get(i).getGroup();
+        answ=answ.toUpperCase();
+        grName.setText(answ);
+
 
             //делаем недоступным EditText
             grName.setLongClickable(false);
@@ -137,7 +144,8 @@ public class GuessBands extends AppCompatActivity {
                                 }
 
                                 if (textAnsw.equals(answ)) {
-                                    grName.setText("");
+                                    //на время отладки отключено, на релизе надо включить
+                                    //grName.setText("");
                                      i++;
                                      fastscore++;
 
@@ -151,6 +159,11 @@ public class GuessBands extends AppCompatActivity {
 
                                     change();
                                     info.setText(band);
+                                    //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
+                                    //на момент релиза удалить.
+                                    answ = artists.get(i).getGroup();
+                                    answ=answ.toUpperCase();
+                                    grName.setText(answ);
                                 }
                                 break;
                             case R.id.space:
