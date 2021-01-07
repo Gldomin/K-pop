@@ -79,5 +79,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="id_yandex_metrica" translatable="false">7f5528ae-626c-4298-a361-5635a0ad148a</string>
+    <string name="achievementUnlocked">Achievement unlocked!</string>
 
 </resources>
