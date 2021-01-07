@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,15 +32,14 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 public class GuessBands extends AppCompatActivity {
 
 
-
     private View button;
     ArrayList<Artist> artists = Importer.getRandomArtists();
-    String artist ;
-    String band ;
-    String folder ;
+    String artist;
+    String band;
+    String folder;
     int i = 0;
-    int score ;
-    int fastscore=0;
+    int score;
+    int fastscore = 0;
     private boolean longnazh = false;
     private SharedPreferences spBands;
 
@@ -47,24 +47,23 @@ public class GuessBands extends AppCompatActivity {
     private List<Button> buttons;
 
     //Массив id'шников, к которым будет обращаться программа для инициализации кнопок
-    private static final int[] BUTTON_IDS= {
-            R.id.litQ,R.id.litW, R.id.litE,  R.id.litR, R.id.litT, R.id.litY, R.id.litU, R.id.litI, R.id.litO, R.id.litP,
-    R.id.litA, R.id.litS, R.id.litD, R.id.litF, R.id.litG, R.id.litH, R.id.litJ, R.id.litK, R.id.litL,
-    R.id.litZ, R.id.litX, R.id.litC, R.id.litV, R.id.litB, R.id.litN, R.id.litM, R.id.litEnt, R.id.litDel,
-    R.id.space, R.id.num0, R.id.num1, R.id.num2, R.id.num3, R.id.num4, R.id.num5, R.id.num6, R.id.num7,
-    R.id.num8, R.id.num9, R.id.podsk
+    private static final int[] BUTTON_IDS = {
+            R.id.litQ, R.id.litW, R.id.litE, R.id.litR, R.id.litT, R.id.litY, R.id.litU, R.id.litI, R.id.litO, R.id.litP,
+            R.id.litA, R.id.litS, R.id.litD, R.id.litF, R.id.litG, R.id.litH, R.id.litJ, R.id.litK, R.id.litL,
+            R.id.litZ, R.id.litX, R.id.litC, R.id.litV, R.id.litB, R.id.litN, R.id.litM, R.id.litEnt, R.id.litDel,
+            R.id.space, R.id.num0, R.id.num1, R.id.num2, R.id.num3, R.id.num4, R.id.num5, R.id.num6, R.id.num7,
+            R.id.num8, R.id.num9, R.id.podsk
     };
 
     //сохранение результата на переключении активити и выключении проги
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
 
         SharedPreferences.Editor editor = spBands.edit();
         editor.putInt("userScoreGuessBand", score);
         editor.apply();
     }
-
 
 
     @Override
@@ -80,139 +79,149 @@ public class GuessBands extends AppCompatActivity {
         final TextView info = findViewById(R.id.info);
 
 
-        fastscoreText.setText("Ваш счет: "+fastscore);
-
+        fastscoreText.setText("Ваш счет: " + fastscore);
 
 
         spBands = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
 
-        if (spBands.contains("userScoreGuessBand")){
-            score = spBands.getInt("userScoreGuessBand",-1);
-            scoreText.setText("Ваш рекорд: "+score);
+        if (spBands.contains("userScoreGuessBand")) {
+            score = spBands.getInt("userScoreGuessBand", -1);
+            scoreText.setText("Ваш рекорд: " + score);
+        } else {
+            score = 0;
         }
-        else{ score = 0;}
 
-            //Выбор первого артиста
-             artist= artists.get(0).getName();
-             band = artists.get(0).getGroup();
-             folder = artists.get(0).getFolder();
+        //Выбор первого артиста
+        artist = artists.get(0).getName();
+        band = artists.get(0).getGroup();
+        folder = artists.get(0).getFolder();
 
-             //Загрузка первого фото
-            final ImageView groupPhoto = findViewById(R.id.groupPhoto);
-            Glide.with(this).load(Uri.parse("file:///android_asset/Groups/"+folder))
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .transition(withCrossFade())
-                    .into(groupPhoto);
-
+        //Загрузка первого фото
+        final ImageView groupPhoto = findViewById(R.id.groupPhoto);
+        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + folder))
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .transition(withCrossFade())
+                .into(groupPhoto);
 
 
-            buttons = new ArrayList<Button>();
-            final EditText grName = findViewById(R.id.groupName);
+        buttons = new ArrayList<Button>();
+        final EditText grName = findViewById(R.id.groupName);
         // 4 строки снизу для отладки, удалить на релизе
         String textAnsw = grName.getText().toString();
         String answ = artists.get(i).getGroup();
-        answ=answ.toUpperCase();
+        answ = answ.toUpperCase();
         grName.setText(answ);
 
 
-            //делаем недоступным EditText
-            grName.setLongClickable(false);
-            grName.setFocusable(false);
+        //делаем недоступным EditText
+        grName.setLongClickable(false);
+        grName.setFocusable(false);
 
-            //Подсказка названия группы на время разработки
-            //надо будет удалить на релизе
-            info.setText(band);
+        //Подсказка названия группы на время разработки
+        //надо будет удалить на релизе
+        info.setText(band);
 
-            //устанавливаем слушатель на основные кнопки
-            OnClickListener clkGr = new OnClickListener() {
+        //устанавливаем слушатель на основные кнопки
+        OnClickListener clkGr = new OnClickListener() {
 
-                @Override
-                public void onClick(View view) {
-
-
-                        switch (view.getId()) {
-                            case R.id.litEnt:
-
-                                String textAnsw = grName.getText().toString();
-                                String answ = artists.get(i).getGroup();
-                                answ=answ.toUpperCase();
+            @Override
+            public void onClick(View view) {
 
 
-                                for(Button b : buttons){
+                switch (view.getId()) {
+                    case R.id.litEnt:
 
-                                            b.setBackgroundResource(R.drawable.stylebutton);
-                                }
-
-                                if (textAnsw.equals(answ)) {
-                                    //на время отладки отключено, на релизе надо включить
-                                    //grName.setText("");
-                                     i++;
-                                     fastscore++;
+                        String textAnsw = grName.getText().toString();
+                        String answ = artists.get(i).getGroup();
+                        answ = answ.toUpperCase();
 
 
-                                     fastscoreText.setText("Ваш счет "+fastscore);
-                                        if(fastscore>score) score=fastscore;
-                                    scoreText.setText("Ваш рекорд: "+score);
-                                    artist= artists.get(i).getName();
-                                    band = artists.get(i).getGroup();
-                                    folder = artists.get(i).getFolder();
+                        for (Button b : buttons) {
 
-                                    change();
-                                    info.setText(band);
-                                    //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
-                                    //на момент релиза удалить.
-                                    answ = artists.get(i).getGroup();
-                                    answ=answ.toUpperCase();
-                                    grName.setText(answ);
-                                }
-                                break;
-                            case R.id.space:
-                                grName.append(" ");
-                                break;
-                            case R.id.litDel:
-
-                                Editable textGro = grName.getText();
-                                if (textGro.length() > 0) {
-                                    textGro.delete(textGro.length() - 1, textGro.length());
-                                    grName.setText(textGro);
-                                }
-                                break;
-
-                            case R.id.podsk:
-                                String textGroupHint = artists.get(i).getGroup();
-                                char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
-                                for ( int j=0; j<textHint.length; j++) { String textHintTwo = ""+textHint[j];
-                                    textHintTwo=textHintTwo.toUpperCase();
-                                    textHint[j] =textHintTwo.charAt(0);
-
-                                }
-                                String entLit="ENT";
-                                String delLit="DEL";
-
-                                            for(Button b : buttons){
-                                                if ((b.getId()==R.id.litDel)||(b.getId()==R.id.litEnt)||(b.getId()==R.id.podsk)) continue;
-                                                for(char c : textHint) {
-                                                        if (b.getText().charAt(0) == c) {
-                                                            b.setBackgroundResource(R.drawable.stylebutton_hint);
-                                                            break;
-                                                        }
-
-
-                                                }
-                                            }
-                                break;
-
-                            default:
-                                grName.append(""+((Button)view).getText().charAt(0));
+                            b.setBackgroundResource(R.drawable.stylebutton);
                         }
 
+                        if (textAnsw.equals(answ)) {
+                            //на время отладки отключено, на релизе надо включить
+                            //grName.setText("");
+                            i++;
+                            fastscore++;
+
+                            if (i == artists.size()) //перетасовка списка для вечной игры
+                            {
+                                artists = Importer.getRandomArtists();
+
+                               // Toast.makeText(GuessBands.this, "Перетасовка", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                                i = 0;
+                            }
+
+                            fastscoreText.setText("Ваш счет " + fastscore);
+                            if (fastscore > score) score = fastscore;
+                            scoreText.setText("Ваш рекорд: " + score);
+                            artist = artists.get(i).getName();
+                            band = artists.get(i).getGroup();
+                            folder = artists.get(i).getFolder();
+
+                            change();
+                            info.setText(band);
+                            //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
+                            //на момент релиза удалить.
+                            answ = artists.get(i).getGroup();
+                            answ = answ.toUpperCase();
+                            grName.setText(answ);
+
+
+                        }
+                        break;
+                    case R.id.space:
+                        grName.append(" ");
+                        break;
+                    case R.id.litDel:
+
+                        Editable textGro = grName.getText();
+                        if (textGro.length() > 0) {
+                            textGro.delete(textGro.length() - 1, textGro.length());
+                            grName.setText(textGro);
+                        }
+                        break;
+
+                    case R.id.podsk:
+                        String textGroupHint = artists.get(i).getGroup();
+                        char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
+                        for (int j = 0; j < textHint.length; j++) {
+                            String textHintTwo = "" + textHint[j];
+                            textHintTwo = textHintTwo.toUpperCase();
+                            textHint[j] = textHintTwo.charAt(0);
+
+                        }
+                        String entLit = "ENT";
+                        String delLit = "DEL";
+
+                        for (Button b : buttons) {
+                            if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
+                                continue;
+                            for (char c : textHint) {
+                                if (b.getText().charAt(0) == c) {
+                                    b.setBackgroundResource(R.drawable.stylebutton_hint);
+                                    break;
+                                }
+
+
+                            }
+                        }
+                        break;
+
+                    default:
+                        grName.append("" + ((Button) view).getText().charAt(0));
                 }
 
-            };
+            }
 
-            //Инициализация кнопок, добавление дополнительных символов
-        for(int id : BUTTON_IDS) {
-            Button button = (Button)findViewById(id);
+        };
+
+        //Инициализация кнопок, добавление дополнительных символов
+        for (int id : BUTTON_IDS) {
+            Button button = (Button) findViewById(id);
             button.setOnClickListener(clkGr);
             button.setOnClickListener(clkGr);
 
@@ -231,7 +240,7 @@ public class GuessBands extends AppCompatActivity {
                         case R.id.num8:
                         case R.id.num9:
                         case R.id.num0:
-                            grName.append(""+((Button)v).getText().charAt(2));
+                            grName.append("" + ((Button) v).getText().charAt(2));
                             break;
                         case R.id.num4:
                             String word = "'";
@@ -243,7 +252,7 @@ public class GuessBands extends AppCompatActivity {
             });
             buttons.add(button);
         }
-        for(Button b : buttons){
+        for (Button b : buttons) {
 
             b.setBackgroundResource(R.drawable.stylebutton);
         }
@@ -251,16 +260,15 @@ public class GuessBands extends AppCompatActivity {
 
     }
 
-        //метод смены фото айдола
+    //метод смены фото айдола
     private void change() {
 
         final ImageView groupPhoto = findViewById(R.id.groupPhoto);
-        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/"+folder))
+        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + folder))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(groupPhoto);
     }
-
 
 
 }
