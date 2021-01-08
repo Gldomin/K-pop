@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,11 +62,14 @@ public class GuessStar extends AppCompatActivity {
         text.setText("Ваш счет: " + scoreNow);
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
+
 
         ///////UserScore//////
         TextView textUserScore = findViewById(R.id.scoreText2);
@@ -193,4 +197,6 @@ public class GuessStar extends AppCompatActivity {
                 .transition(withCrossFade())
                 .into(imageView);
     }
+
+
 }
