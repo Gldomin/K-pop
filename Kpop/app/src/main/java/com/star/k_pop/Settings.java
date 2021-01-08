@@ -28,7 +28,7 @@ public class Settings extends AppCompatActivity {
 
     //OptionsSet tempSettingsSet2 = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
     String buttonStyleChange = "stylebutton";
-    int darkModeCounter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -75,8 +75,6 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 tempSettingsSet.darkMode = darkThemeSwitch.isChecked(); //TODO Надо сделать темную тему
-                if (darkThemeSwitch.isChecked()) darkModeCounter = 1;
-                else darkModeCounter = 0;
                // final ConstraintLayout cl = findViewById(R.id.constraint);
                // cl.setBackgroundColor(000000);
 
@@ -136,7 +134,6 @@ public class Settings extends AppCompatActivity {
             tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode");
             tempSettingsSet.option4 = storage.getBoolean(nameOfStorage, "option4");
             tempSettingsSet.option5 = storage.getBoolean(nameOfStorage, "option5");
-            tempSettingsSet.darkModeCounter = storage.getInt(nameOfStorage, "darkModeCounter");
 
 
             hintModeSwitch.setChecked(tempSettingsSet.hintMode); //установка значение свитча
@@ -182,7 +179,6 @@ public class Settings extends AppCompatActivity {
         storage.saveValue("settings", "darkMode", tempSettingsSet.darkMode);
         storage.saveValue("settings", "option4", tempSettingsSet.option4);
         storage.saveValue("settings", "option5", tempSettingsSet.option5);
-        storage.saveValue("settings","darkModeCounter",darkModeCounter);
         Toast.makeText(Settings.this, getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
 
     }

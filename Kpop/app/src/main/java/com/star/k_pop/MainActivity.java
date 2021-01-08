@@ -127,17 +127,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Storage storage = new Storage(this);
-        storage.saveValue("settings", "darkModeCounter", tempSettingsSet.darkModeCounter);
 
         Storage tempStorage = new Storage(this);
         String nameOfStorage3 = "settings";
         String nameOfValue = "darkModeCounter";
-        Integer counter;
-        counter = tempStorage.getInt(nameOfStorage3,nameOfValue);
-        //if (counter ==1) {
-           // counter = 0;
-           // tempStorage.saveValue(nameOfStorage3,nameOfValue,counter);
-        //}
 
 
         String nameOfStorage2 = "settings";
@@ -194,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recreate();
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, GuessStar.class);
                 startActivity(image);
