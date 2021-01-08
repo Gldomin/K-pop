@@ -37,7 +37,8 @@ public class Achievements extends AppCompatActivity {
         tempButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SomeMethods.showToast(Achievements.this, "Достижение открыто - КУБЫ!", R.drawable.cubes);
+                //SomeMethods.showToast(Achievements.this, "Достижение открыто - КУБЫ!", R.drawable.cubes);
+                SomeMethods.showAlertDeialog(Achievements.this,"title?","1 or 2","1","2");
                 //потом надо будет вместо кнопки сделать функцию обновления ачивок. Если в хранилище будет ачивка True -> открыть картинку. КОнечно же надо будет сначала ачивки сохранить в Хранилище....
                 ach1.setImageResource(R.drawable.heart);
                 ach2.setImageResource(R.drawable.energy);
