@@ -48,40 +48,44 @@
 
         <TableLayout
             android:id="@+id/tableButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:splitMotionEvents="true"
+            android:stretchColumns="*">
 
             <TableRow
                 android:id="@+id/header"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/scoreText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/scoreText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="TextView" />
             </TableRow>
 
             <TableRow
                 android:id="@+id/row1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             </TableRow>
 
             <TableRow
                 android:id="@+id/row2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
             </TableRow>
