@@ -118,8 +118,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
+    String buttonStyleChange = "stylebutton";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        String nameOfStorage2 = "settings";
+        Storage storage2 = new Storage(this);
+        tempSettingsSet.darkMode = storage2.getBoolean(nameOfStorage2, "darkMode"); //считываем состояние
+        //теперь выбираем тему в зависимости от положения свича
+        if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -140,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+
 ///////////////////////////////////СВИЧИ ДЛЯ ПРОВЕРКИ СТУТУСОВ - начало////////////////// //TODO удалить блок вместе с ScrollView из активити и readStatus() с saveStatus()
         readStatus();
 
@@ -159,6 +171,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button guessStarButton = findViewById(R.id.guessStarButton);
+        if (tempSettingsSet.darkMode==true) guessStarButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else guessStarButton.setBackgroundResource(R.drawable.stylebutton);
+
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -169,6 +184,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button guessBandButton = findViewById(R.id.guessGroupButton);
+        if (tempSettingsSet.darkMode==true) guessBandButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else guessBandButton.setBackgroundResource(R.drawable.stylebutton);
+
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -178,6 +196,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button buttonLibrary = findViewById(R.id.galleryButton);
+        if (tempSettingsSet.darkMode==true) buttonLibrary.setBackgroundResource(R.drawable.stylebutton_dark);
+        else buttonLibrary.setBackgroundResource(R.drawable.stylebutton);
+
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -187,6 +208,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button settingsButton = findViewById(R.id.settingsButton);
+        if (tempSettingsSet.darkMode==true) settingsButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else settingsButton.setBackgroundResource(R.drawable.stylebutton);
+
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,6 +221,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button tinderButton = findViewById(R.id.chooseTinderButton);
+        if (tempSettingsSet.darkMode==true) tinderButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else tinderButton.setBackgroundResource(R.drawable.stylebutton);
+
         tinderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -216,6 +243,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button about = findViewById(R.id.abautButton);
+        if (tempSettingsSet.darkMode==true) about.setBackgroundResource(R.drawable.stylebutton_dark);
+        else about.setBackgroundResource(R.drawable.stylebutton);
+
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

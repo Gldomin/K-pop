@@ -24,8 +24,18 @@ public class Settings extends AppCompatActivity {
     OptionsSet tempSettingsSet = new OptionsSet(false, false); //создание объекта для хранение параметров
     SharedPreferences sp;
 
+
+    //OptionsSet tempSettingsSet2 = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
+    String buttonStyleChange = "stylebutton";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        String nameOfStorage2 = "settings";
+        Storage storage = new Storage(this);
+        tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage2, "darkMode"); //считываем состояние
+        //теперь выбираем тему в зависимости от положения свича
+        if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
@@ -111,7 +121,7 @@ public class Settings extends AppCompatActivity {
 ///////Read Settings//////
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
         if (sp.contains("hardMode") && sp.contains("hintMode") && sp.contains("option5")) {
-            Storage storage = new Storage(this);
+            storage = new Storage(this);
             String nameOfStorage = "settings";
             tempSettingsSet.hintMode = storage.getBoolean(nameOfStorage, "hintMode"); //считывание настроек из Хранилища
             tempSettingsSet.hardMode = storage.getBoolean(nameOfStorage, "hardMode");

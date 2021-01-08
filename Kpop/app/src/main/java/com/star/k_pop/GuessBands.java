@@ -44,15 +44,15 @@ public class GuessBands extends AppCompatActivity {
     String folder;
     String buttonStyleChange = "stylebutton";
 
-    //
-    private int currentApiVersion;
+
+    //private int currentApiVersion;
     int i = 0;
     int score;
     int fastscore = 0;
     private boolean longnazh = false;
     private SharedPreferences spBands;
     SharedPreferences sp;
-    OptionsSet tempSettingsSet = new OptionsSet(false, false);
+    OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
 
     //Создаем лист для кнопок
     private List<Button> buttons;
@@ -86,7 +86,8 @@ public class GuessBands extends AppCompatActivity {
 
         String nameOfStorage = "settings";
         Storage storage = new Storage(this);
-        tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode");
+        tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode"); //считываем состояние
+        //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) {
             setTheme(R.style.AppTheme2);
             buttonStyleChange = "stylebutton_dark";
@@ -202,7 +203,7 @@ public class GuessBands extends AppCompatActivity {
 
 
                         for (Button b : buttons) {
-
+                            //выбор темы в зависимости от положения свича
                             if (tempSettingsSet.darkMode==true) b.setBackgroundResource(R.drawable.stylebutton_dark);
                             else b.setBackgroundResource(R.drawable.stylebutton);
                         }

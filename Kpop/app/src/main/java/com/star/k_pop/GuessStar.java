@@ -40,6 +40,10 @@ public class GuessStar extends AppCompatActivity {
     int scoreNow = 0;
     int count = 0;
 
+    OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
+    String buttonStyleChange = "stylebutton";
+    SharedPreferences sp;
+
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt("scoreNow", scoreNow);
@@ -66,6 +70,17 @@ public class GuessStar extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
+
+        String nameOfStorage = "settings";
+        Storage storage = new Storage(this);
+        tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode"); //считываем состояние
+        //теперь выбираем тему в зависимости от положения свича
+        if (tempSettingsSet.darkMode==true) {
+            setTheme(R.style.AppTheme2);
+            buttonStyleChange = "stylebutton_dark";
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
@@ -97,7 +112,11 @@ public class GuessStar extends AppCompatActivity {
             } else {
                 tableRow = findViewById(R.id.row2);
             }
-            buttons[i].setBackgroundResource(R.drawable.stylebutton);
+            if (tempSettingsSet.darkMode==true)
+                buttons[i].setBackgroundResource(R.drawable.stylebutton_dark);
+            else
+                buttons[i].setBackgroundResource(R.drawable.stylebutton);
+
             buttons[i].setPadding(10, 10, 10, 10);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
