@@ -31,6 +31,7 @@ public class Storage {
         e.apply();
     }
 
+
     public void saveValue(String nameOfVault, String nameOfValue, Boolean value) {
 //сохранение значений в файле-хранилище
         SharedPreferences sp = context.getSharedPreferences(nameOfVault, Context.MODE_PRIVATE);
@@ -85,6 +86,7 @@ public class Storage {
 
         return value;
     }
+
 
     public Integer getInt(String nameOfStorage, String nameOfValue) {
         //nameOfStorage - это название файла-хранилища, а nameOfValue - название значения, что хранится в файле-хранилище

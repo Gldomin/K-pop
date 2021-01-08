@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,11 +21,13 @@ import com.star.k_pop.gallery.activity.Gallery;
 import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
+    final int REQUEST_CODE=1;
     SharedPreferences sp; SharedPreferences spp;
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
     }
+
 
     protected void appStatusGeneration(){ //генерация первоначального статуса
         Storage tempStorage = new Storage(this);
@@ -123,6 +126,19 @@ public class MainActivity extends AppCompatActivity {
     String buttonStyleChange = "stylebutton";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Storage storage = new Storage(this);
+        storage.saveValue("settings", "darkModeCounter", tempSettingsSet.darkModeCounter);
+
+        Storage tempStorage = new Storage(this);
+        String nameOfStorage3 = "settings";
+        String nameOfValue = "darkModeCounter";
+        Integer counter;
+        counter = tempStorage.getInt(nameOfStorage3,nameOfValue);
+        //if (counter ==1) {
+           // counter = 0;
+           // tempStorage.saveValue(nameOfStorage3,nameOfValue,counter);
+        //}
+
 
         String nameOfStorage2 = "settings";
         Storage storage2 = new Storage(this);
@@ -131,12 +147,13 @@ public class MainActivity extends AppCompatActivity {
         if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
 
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
                         //+++FirstLaunchHelp+++\\ // блок для первичного задания статусов (ачивок и прочего), а так же отображения приветсвия новых пользователей
-        Storage storage = new Storage(this);
+        //Storage storage = new Storage(this);
         String nameOfStorage="appStatus";
         sp = getSharedPreferences(nameOfStorage,Context.MODE_PRIVATE);
         appStatusGeneration(); //создание статусов приложения, не создаст, если статусы уже существуют
@@ -177,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                recreate();
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, GuessStar.class);
                 startActivity(image);
@@ -214,15 +232,32 @@ public class MainActivity extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+           /*     new CountDownTimer(10000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        recreate();
+                    }
+                }.start();*/
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Settings.class);
-                startActivity(image);
+                startActivityForResult(image,REQUEST_CODE);
             }
+
+
+
         });
+
 
         Button tinderButton = findViewById(R.id.chooseTinderButton);
         if (tempSettingsSet.darkMode==true) tinderButton.setBackgroundResource(R.drawable.stylebutton_dark);
         else tinderButton.setBackgroundResource(R.drawable.stylebutton);
+
+
 
         tinderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -257,5 +292,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            recreate();
+        }
+
+    }
+     /*public class Restart {
+        public void reStart() {
+            recreate();
+        }
+     }*/
 
 }

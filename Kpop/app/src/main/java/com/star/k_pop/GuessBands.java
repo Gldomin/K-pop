@@ -76,7 +76,6 @@ public class GuessBands extends AppCompatActivity {
         editor.apply();
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -86,6 +85,13 @@ public class GuessBands extends AppCompatActivity {
 
         String nameOfStorage = "settings";
         Storage storage = new Storage(this);
+
+        Integer counter;
+        Storage tempStorage = new Storage(this);
+        String nameOfStorage3 = "settings";
+        String nameOfValue = "darkModeCounter";
+        counter = tempStorage.getInt(nameOfStorage3,nameOfValue);
+
         tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) {
@@ -184,7 +190,7 @@ public class GuessBands extends AppCompatActivity {
         //Подсказка названия группы на время разработки
         //надо будет удалить на релизе
 
-        info.setText(band);
+        info.setText(band+counter);
 
 
         //устанавливаем слушатель на основные кнопки
