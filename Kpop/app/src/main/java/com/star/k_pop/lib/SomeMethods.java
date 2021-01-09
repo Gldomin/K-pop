@@ -21,7 +21,7 @@ public class SomeMethods {
      * @param text     текст на ачивке
      * @param drawable id картинки из drawable для ачивки
      */
-    static public void showToast(Activity act, String text, int drawable) {
+    static public void showToast(Activity act, String text, int drawable) { //метод для вывода не очень важных сообщений + ачивок
 
         LayoutInflater inflater = act.getLayoutInflater();
         View layout = inflater.inflate(R.layout.custom_toast,
@@ -40,26 +40,80 @@ public class SomeMethods {
         toast.show();
     }
 
+    public static String result = "resultHasNotSet"; //для хранения результата
+    public static Boolean boolResult = false; //для хранения результата
+    public static String getStringAnswerAlertDeialog(final Activity act, String title, String question, final String first, final String second) { //метод для отображения простых окон да/нет или типа того. вариация работает со стрингами, главное быть осторожным на счет локализации
 
-    public static void showAlertDeialog(final Activity act, String title, String question, final String first, final String second) {
         AlertDialog.Builder builder = new AlertDialog.Builder(act);
         builder.setTitle(title)
                 .setMessage(question)
                 .setCancelable(false)
                 .setNegativeButton(first, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(act, first,
+                        result = first;
+                        Toast.makeText(act, result,
                                 Toast.LENGTH_LONG).show();
                     }
                 })
                 .setPositiveButton(second, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(act, second,
+                        result = second;
+                        Toast.makeText(act, result,
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+        return result;
+    }
+
+    public static Boolean getBoolAnswerAlertDeialog(final Activity act, String title, String question, final String first, final String second) { //метод для отображения простых окон да/нет или типа того. вариация работает со стрингами, главное быть осторожным на счет локализации
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(act);
+        builder.setTitle(title)
+                .setMessage(question)
+                .setCancelable(false)
+                .setNegativeButton(first, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        boolResult=true;
+                        Toast.makeText(act, "true",
+                                Toast.LENGTH_LONG).show();
+                    }
+                })
+                .setPositiveButton(second, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        boolResult=false;
+                        Toast.makeText(act, "false",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+        return boolResult;
+    }
+
+    public static void showAlertDeialog(final Activity act, String title, String question, final String first, final String second) { //метод для отображения простых окон да/нет или типа того
+        AlertDialog.Builder builder = new AlertDialog.Builder(act);
+        builder.setTitle(title)
+                .setMessage(question)
+                .setCancelable(false)
+                .setNegativeButton(first, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        result = first;
+                        Toast.makeText(act, result,
+                                Toast.LENGTH_LONG).show();
+                    }
+                })
+                .setPositiveButton(second, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        result = second;
+                        Toast.makeText(act, result,
                                 Toast.LENGTH_LONG).show();
                     }
                 });
         AlertDialog alert = builder.create();
         alert.show();
     }
+
 }
 

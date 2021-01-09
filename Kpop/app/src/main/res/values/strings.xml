@@ -34,18 +34,23 @@
     <string name="achAdsFreeText">Вы истинный знаток К-попа. Спасибо вам за игру, отныне всплывающая реклама отключена.</string>
     <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! В настройках теперь доступен скромный бонус.</string>
 
-    <string name="accept">Accept</string>
-    <string name="cancel">Cancel</string>
+
     <string name="settings0">Settings</string>
     <string name="settings1">Hint mode</string>
     <string name="settings2">Hard mode</string>
     <string name="settings3">Dark theme</string>
     <string name="settings4">Parameter 4</string>
     <string name="settings5">Parameter 5</string>
-    <string name="resetRecords">Reset my records</string>
+    <string name="resetRecords">Reset the account</string>
+
     <string name="OptionsSet">Settings saved</string>
 
-
+    <string name="questionReset">Confirm reset all records?</string>
+    <string name="questionConfirmTitle">Please confirm</string>
+    <string name="answerAccept">Accept</string>
+    <string name="answerCancel">Cancel</string>
+    <string name="answerYes">Yes</string>
+    <string name="answerNo">No</string>
 
     <string name="aboutTitle">О программе</string>
     <string name="aboutText">東ローマ帝国（ひがしローマていこく、英語: Eastern Roman Empire[3]）またはビザンツ帝国、ビザンティン帝国、ギリシャ帝国は、東西に分割統治されて以降のローマ帝国の東側の領域、国家である。ローマ帝国の東西分担統治は3世紀以降断続的に存在したが、一般的には395年以降の東の皇帝の統治領域を指す。なお、当時の国法的にはローマ帝国が東西に「分裂」したという事実は存在せず、当時の人々は東ローマ帝国と西ローマ帝国とを合わせて一つのローマ帝国であると考えていた。皇帝府は主としてコンスタンティノポリス[注 1][注 2]に置かれた。

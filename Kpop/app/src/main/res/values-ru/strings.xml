@@ -35,8 +35,12 @@
     <string name="achAdsFreeText">Вы истинный знаток К-попа. Спасибо вам за игру, отныне всплывающая реклама отключена.</string>
     <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! В настройках теперь доступен скромный бонус.</string>
 
-    <string name="accept">Подтвердить</string>
-    <string name="cancel">Отмена</string>
+    <string name="questionReset">Удалить рекорды?</string>
+    <string name="questionConfirmTitle">Подтверждение</string>
+    <string name="answerAccept">Подтвердить</string>
+    <string name="answerCancel">Отмена</string>
+    <string name="answerYes">Да</string>
+    <string name="answerNo">Нет</string>
 
     <string name="settings0">Настройки</string>
     <string name="settings1">Подсказки</string>
