@@ -76,6 +76,7 @@ public class GuessBands extends AppCompatActivity {
         editor.apply();
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -98,6 +99,8 @@ public class GuessBands extends AppCompatActivity {
             setTheme(R.style.AppTheme2);
             buttonStyleChange = "stylebutton_dark";
         }
+        else setTheme(R.style.AppThemeLight);
+
         super.onCreate(savedInstanceState);
 /*
 
@@ -176,6 +179,9 @@ public class GuessBands extends AppCompatActivity {
 
         buttons = new ArrayList<Button>();
         final EditText grName = findViewById(R.id.groupName);
+        if (tempSettingsSet.darkMode==true) grName.setTextColor(R.color.colorText);
+        else grName.setTextColor(R.color.colorTextLight);
+
         // 4 строки снизу для отладки, удалить на релизе
         String textAnsw = grName.getText().toString();
         String answ = artists.get(i).getGroup();

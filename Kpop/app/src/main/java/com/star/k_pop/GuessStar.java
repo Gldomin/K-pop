@@ -81,6 +81,7 @@ public class GuessStar extends AppCompatActivity {
             setTheme(R.style.AppTheme2);
             buttonStyleChange = "stylebutton_dark";
         }
+        else setTheme(R.style.AppThemeLight);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
@@ -124,6 +125,7 @@ public class GuessStar extends AppCompatActivity {
             lp.setMargins(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
             buttons[i].setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("ResourceAsColor")
                 @Override
                 public void onClick(View view) {
 
@@ -133,7 +135,10 @@ public class GuessStar extends AppCompatActivity {
                             a.setInit(false);
                         }
                         for (int i = 0; i < 4; i++) {
-                            buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                            //buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                            if (tempSettingsSet.darkMode==true) buttons[i].setTextColor(R.color.colorText);
+                                else buttons[i].setTextColor(R.color.colorTextLight);
+
                         }
                         scoreNow++;
                         YandexMetrica.reportEvent("GuessStarRightClick"); //метрика на правильный клик
@@ -163,6 +168,7 @@ public class GuessStar extends AppCompatActivity {
             });
             tableRow.addView(buttons[i]);
             imageView.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
+                @SuppressLint("ResourceAsColor")
                 @Override
                 public void onClick(View view) {
                     cheatOn = !cheatOn;
@@ -170,7 +176,10 @@ public class GuessStar extends AppCompatActivity {
                         for (int i = 0; i < 4; i++)
                             if (i == chosenOne)
                                 buttons[i].setTextColor(Color.RED);
-                            else buttons[i].setTextColor(Color.BLACK);
+                            else { if (tempSettingsSet.darkMode==true){
+                                buttons[i].setTextColor(R.color.colorText);
+                            } buttons[i].setTextColor(R.color.colorTextLight);
+                            }
                         Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                     } else
                         Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран

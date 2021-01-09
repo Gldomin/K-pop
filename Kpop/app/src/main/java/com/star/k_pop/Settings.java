@@ -39,6 +39,7 @@ public class Settings extends AppCompatActivity {
         tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage2, "darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
+        else setTheme(R.style.AppThemeLight);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
@@ -94,6 +95,9 @@ public class Settings extends AppCompatActivity {
         });
 
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
+        if (tempSettingsSet.darkMode==true) settingsConfirmButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else settingsConfirmButton.setBackgroundResource(R.drawable.stylebutton);
+
         settingsConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,6 +110,9 @@ public class Settings extends AppCompatActivity {
         });
 
         Button creepyGuy = findViewById(R.id.settingsCancel); //TODO delete this shit
+
+        if (tempSettingsSet.darkMode==true) creepyGuy.setBackgroundResource(R.drawable.stylebutton_dark);
+        else creepyGuy.setBackgroundResource(R.drawable.stylebutton);
 
         creepyGuy.setOnClickListener(new View.OnClickListener() {
             @Override

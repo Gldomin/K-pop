@@ -20,7 +20,7 @@ import com.star.k_pop.gallery.activity.Gallery;
 
 import static android.widget.Toast.makeText;
 
-public class MainActivity extends AppCompatActivity {
+public class    MainActivity extends AppCompatActivity {
     final int REQUEST_CODE=1;
     SharedPreferences sp; SharedPreferences spp;
     @Override
@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         tempSettingsSet.darkMode = storage2.getBoolean(nameOfStorage2, "darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
+        else setTheme(R.style.AppThemeLight);
 
 
 
