@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.graphics.drawable.shapes.Shape;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     TextView oneBand;
     TextView secondBand;
     TextView artistName;
+    Shape rect;
     boolean left;
     boolean right;
     OnSwipeTouchListener l;
@@ -68,6 +70,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         Log.i("Test2", "artist size" + artists.size());
         Collections.shuffle(artists);
         changeArtist();
+
         bandsCount = bandsCount + 2;
     }
 
@@ -116,6 +119,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     private void guessTwoBands() {
+
         imageBand = findViewById(R.id.imageBand);
         imBTmp =    findViewById(R.id.imgBTmp);
         oneBand = findViewById(R.id.oneBand);
@@ -130,8 +134,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         choice = false;
 
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
-
-            public boolean onRightCheck() {
+                public boolean onRightCheck() {
                 right = true;
                 left = false;
                 Log.i("Swipe", "onSwipeRight");
