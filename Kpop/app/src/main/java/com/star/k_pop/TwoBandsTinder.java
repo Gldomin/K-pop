@@ -68,7 +68,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         Collections.shuffle(artists);
         number_of_artist = 0;
         if(artChoices!=null) artChoices.clear();
-        changeArtist();
+        if(artChoices.size()!=0)changeArtist();
         bandsCount = bandsCount + 2;
     }
 
@@ -78,26 +78,22 @@ public class TwoBandsTinder extends AppCompatActivity {
             byte rightGuesses = 0;
             for(int i =0; i <=artists.size()-1;i++)
             {
-                Log.i("tCheck","Shit is not workin group is " + artists.get(i).getName().trim() + " and answer "+playerChoice.get(i).trim());
+                Log.i("tWheck","Shit is not workin group is " + artists.get(i).getName().trim() + " and answer "+playerChoice.get(i).trim());
                 if (artists.get(i).getGroup().trim() == playerChoice.get(i).trim()) rightGuesses++;
             }
-            Log.i("tCheck","Shit is not workin rightGuesses" + rightGuesses + " and guys are "+artists.size());
+            Log.i("tWheck","Shit is not workin rightGuesses" + rightGuesses + " and guys are "+artists.size());
             if( rightGuesses == playerChoice.size() ) return true;
         }
         return false;
     }
     private void changeArtist() {
 
-        if(artChoices!=null){ Log.i("Wrong","Are this shit working"+artists.size()+artChoices.size());
-            if(groupCheck(artChoices) == true ){
-                changeBands();
-            }
-        }
+
                 if (number_of_artist < artists.size()) {
 
-                    Log.i("Fuck","WTF "+artists.get(number_of_artist).getName()+" is this "+artists.get(number_of_artist+1).getName());
+                    if (number_of_artist+1 < artists.size())Log.i("Wrong","WTF "+artists.get(number_of_artist).getName());
                     imageBand.animate().x(padding.leftMargin).y(padding.topMargin).rotation(0).setDuration(0);
-                    artistName.setText(artists.get(number_of_artist).getName());
+
                     imBTmp.setVisibility(View.VISIBLE);
                     imBTmp.setY(imageBand.getY());
                     imBTmp.setX(imageBand.getX());
@@ -111,13 +107,12 @@ public class TwoBandsTinder extends AppCompatActivity {
                             @Override
                             public void onAnimationEnd(Animator animation) {
                                 super.onAnimationEnd(animation);
-                                number_of_artist++;
+                                imBTmp.setVisibility(View.GONE);
                             }
                         });
-                        imBTmp.setVisibility(View.GONE);
-                        String text = "test";
                         artChoices.add(oneBand.getText().toString());
-
+                        Log.i("Wrong",""+number_of_artist);
+                        number_of_artist++;
                     }
                     if (right) {
 
@@ -125,24 +120,35 @@ public class TwoBandsTinder extends AppCompatActivity {
                             @Override
                             public void onAnimationEnd(Animator animation) {
                                 super.onAnimationEnd(animation);
-                                number_of_artist++;
+                                imBTmp.setVisibility(View.GONE);
                             }
                         });
-                        imBTmp.setVisibility(View.GONE);
-                        Log.i("tCheck","Shit is not workin group is " +secondBand.getText().toString());
                         artChoices.add(secondBand.getText().toString());
-
+                        Log.i("Wrong",""+number_of_artist);
+                        number_of_artist++;
                     }
                     //imBTmp.setVisibility(View.VISIBLE);
                     Log.i("defX", "onTouch:imbTx " + imBTmp.animate().getDuration() + " imbTy " + imBTmp.getY() + " imagex " + imageBand.getX() + " imagey " + paddingY + " ");
-                    Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(number_of_artist).getFolder()))
+                    if(number_of_artist+1<=artists.size())
+                    {
+                        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(number_of_artist).getFolder()))
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .transition(withCrossFade())
                             .into(imageBand);
+                    artistName.setText(artists.get(number_of_artist).getName());
+                    score.setText("" +  number_of_artist);
+                    }
 
-                    artistCount++;
-                    score.setText("" + artistCount);
             }
+                else{
+                    for(Artist art : artists) {Log.i("Wrong",""+art.getName());}
+
+                }
+        if(artChoices!=null){ Log.i("Wrong","Are this shit working"+artists.size()+" and my choices are " + artChoices.size());
+            if(groupCheck(artChoices) == true ){
+                changeBands();
+            }
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -158,34 +164,27 @@ public class TwoBandsTinder extends AppCompatActivity {
         imageBand.setTag(IMAGEVIEW_TAG);
         bandsCount = 0;
         artistCount = 0;
+
         if (artists != null) artists.clear();
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
                 public boolean onRightCheck() {
-
-                    if(number_of_artist != artistCount)
-                    {   left = false;
+                        left = false;
                         right = true;
-
-                        changeArtist();
-
-                    }
+                        if(number_of_artist <= artists.size())  changeArtist();
                 return true;
             }
             public boolean onLeftCheck() {
-
-
-                    if(number_of_artist != artists.size())
-                    {
-                        left = true;
+                       left = true;
                         right = false;
-                        changeArtist();
+                        if(number_of_artist <= artists.size())  changeArtist();
 
-                    }
                 return true;
             }
         });
+        left = false;
+        right = false;
         changeBands();
-
+        changeArtist();
     }
 
     @Override
