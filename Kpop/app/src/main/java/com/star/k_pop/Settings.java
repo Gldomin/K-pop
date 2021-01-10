@@ -98,7 +98,7 @@ public class Settings extends AppCompatActivity {
                 ImageView imageView = new ImageView(Settings.this);
                 ConstraintLayout constraintLayout = findViewById(R.id.constraint);
                 constraintLayout.addView(imageView);
-                Glide.with(Settings.this).load(getResources().getDrawable(R.drawable.hello))
+                Glide.with(Settings.this).load(getResources().getDrawable(R.drawable.error))
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .transition(withCrossFade())
                         .into(imageView);

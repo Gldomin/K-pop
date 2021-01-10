@@ -53,13 +53,13 @@
     <string name="answerNo">No</string>
 
     <string name="aboutTitle">Welcome!</string>
-    <string name="aboutText">        "\n"
+    <string name="aboutText">
          Welcome to Guess K-pop app! In this application, you can test your knowledge of K-pop. In this application, you are offered 3 main game modes: "\n"
          1) Guess the Star "\n"
          2) Guess the Group "\n"
          3) Assign to groups "\n"
-         With these game modes, you can memorize all of K-pop's most famous bands, as well as all of their incredible members! "\n"
-         Each game mode has achievements! "\ N"
+         With these game modes, you can memorize all of K-pop most famous bands, as well as all of their incredible members! "\n"
+         Each game mode has achievements! "\n"
          Good luck!
     </string>
 

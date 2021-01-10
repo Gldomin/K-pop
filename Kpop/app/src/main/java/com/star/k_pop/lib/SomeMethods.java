@@ -42,6 +42,7 @@ public class SomeMethods {
 
     public static String result = "resultHasNotSet"; //для хранения результата
     public static Boolean boolResult = false; //для хранения результата
+    static  Boolean answerGetted = false; //для учета нажатия кнопки
     public static String getStringAnswerAlertDeialog(final Activity act, String title, String question, final String first, final String second) { //метод для отображения простых окон да/нет или типа того. вариация работает со стрингами, главное быть осторожным на счет локализации
 
         AlertDialog.Builder builder = new AlertDialog.Builder(act);
@@ -67,17 +68,20 @@ public class SomeMethods {
         return result;
     }
 
-    public static Boolean getBoolAnswerAlertDeialog(final Activity act, String title, String question, final String first, final String second) { //метод для отображения простых окон да/нет или типа того. вариация работает со стрингами, главное быть осторожным на счет локализации
 
+    public static Boolean getBoolAnswerAlertDeialog(final Activity act, String title, String question, final String first, final String second) { //метод для отображения простых окон да/нет или типа того. вариация работает со стрингами, главное быть осторожным на счет локализации
+        answerGetted=false;
         AlertDialog.Builder builder = new AlertDialog.Builder(act);
         builder.setTitle(title)
                 .setMessage(question)
                 .setCancelable(false)
                 .setNegativeButton(first, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+
                         boolResult=true;
                         Toast.makeText(act, "true",
                                 Toast.LENGTH_LONG).show();
+                        answerGetted=true;
                     }
                 })
                 .setPositiveButton(second, new DialogInterface.OnClickListener() {
@@ -85,10 +89,13 @@ public class SomeMethods {
                         boolResult=false;
                         Toast.makeText(act, "false",
                                 Toast.LENGTH_LONG).show();
+                        answerGetted=true;
+
                     }
                 });
         AlertDialog alert = builder.create();
         alert.show();
+
         return boolResult;
     }
 
