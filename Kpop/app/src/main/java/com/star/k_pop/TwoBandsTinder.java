@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.graphics.drawable.shapes.Shape;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,7 +33,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     ArrayList<Bands> bands = Importer.getRandomBands(); //берем список всех групп
     ArrayList<Artist> artists = new ArrayList<>(); //лист для того чтобы переносить артистов из двух групп
     int artistCount;
-    boolean choice;
+    ArrayList<String> artChoices = new ArrayList<>();
     int bandsCount;
     float paddingY;
     float paddingX;
@@ -43,13 +42,12 @@ public class TwoBandsTinder extends AppCompatActivity {
     TextView oneBand;
     TextView secondBand;
     TextView artistName;
-    Shape rect;
+    byte number_of_artist;
     boolean left;
     boolean right;
-    OnSwipeTouchListener l;
     TextView score;
-    ViewGroup.MarginLayoutParams padding;
     private static final String IMAGEVIEW_TAG = "icon bitmap";
+    ViewGroup.MarginLayoutParams padding;
     private void startFinishSection() {
         Display display = getWindowManager().getDefaultDisplay();
         DisplayMetrics metricsB = new DisplayMetrics();
@@ -58,7 +56,6 @@ public class TwoBandsTinder extends AppCompatActivity {
 
 
     private void changeBands() {
-        Log.i("Test2", "test");
         if (bandsCount >= bands.size()) return;
         if (bandsCount + 1 >= bands.size()) return;
         Log.i("Test2", "bands size" + bands.size());
@@ -69,52 +66,83 @@ public class TwoBandsTinder extends AppCompatActivity {
         artists.addAll(bands.get(bandsCount + 1).getArtists());
         Log.i("Test2", "artist size" + artists.size());
         Collections.shuffle(artists);
+        number_of_artist = 0;
+        if(artChoices!=null) artChoices.clear();
         changeArtist();
-
         bandsCount = bandsCount + 2;
     }
 
-    private void changeArtist() {
-        if (artistCount >= artists.size()) {
-            changeBands();
-        } else {Log.i("defX", "onTouch:imbTx "+imBTmp.getX()+" imbTy "+imBTmp.getY()+" imagex "+imageBand.getX() + " imagey "+padding.topMargin+" ");
-            imageBand.animate().x(padding.leftMargin).y(padding.topMargin).rotation(0).setDuration(0);
-            artistName.setText(artists.get(artistCount).getName());
-                imBTmp.setVisibility(View.VISIBLE);
-                imBTmp.setY(imageBand.getY());
-                imBTmp.setX(imageBand.getX());
-                imBTmp.setImageDrawable(imageBand.getDrawable());
-                imBTmp.setRotation(0);
-                imBTmp.setScaleX(1);
-                imBTmp.setScaleY(1);
-            if(left){
-                imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(30).setDuration(400).setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        imBTmp.setVisibility(View.GONE);
-                    }
-                });
+    private boolean groupCheck(ArrayList<String> playerChoice)
+    {
+        if (playerChoice.size() == artists.size()){
+            byte rightGuesses = 0;
+            for(int i =0; i <=artists.size()-1;i++)
+            {
+                Log.i("tCheck","Shit is not workin group is " + artists.get(i).getName().trim() + " and answer "+playerChoice.get(i).trim());
+                if (artists.get(i).getGroup().trim() == playerChoice.get(i).trim()) rightGuesses++;
             }
-            if(right){
-                imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(-30).setDuration(400).setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        imBTmp.setVisibility(View.GONE);
-                    }
-                });
-            }
-            //imBTmp.setVisibility(View.VISIBLE);
-            Log.i("defX", "onTouch:imbTx "+imBTmp.animate().getDuration()+" imbTy "+imBTmp.getY()+" imagex "+imageBand.getX() + " imagey "+paddingY+" ");
-
-            Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(artistCount).getFolder()))
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .transition(withCrossFade())
-                    .into(imageBand);
-            artistCount++;
-            score.setText("" + artistCount);
+            Log.i("tCheck","Shit is not workin rightGuesses" + rightGuesses + " and guys are "+artists.size());
+            if( rightGuesses == playerChoice.size() ) return true;
         }
+        return false;
+    }
+    private void changeArtist() {
+
+        if(artChoices!=null){ Log.i("Wrong","Are this shit working"+artists.size()+artChoices.size());
+            if(groupCheck(artChoices) == true ){
+                changeBands();
+            }
+        }
+                if (number_of_artist < artists.size()) {
+
+                    Log.i("Fuck","WTF "+artists.get(number_of_artist).getName()+" is this "+artists.get(number_of_artist+1).getName());
+                    imageBand.animate().x(padding.leftMargin).y(padding.topMargin).rotation(0).setDuration(0);
+                    artistName.setText(artists.get(number_of_artist).getName());
+                    imBTmp.setVisibility(View.VISIBLE);
+                    imBTmp.setY(imageBand.getY());
+                    imBTmp.setX(imageBand.getX());
+                    imBTmp.setImageDrawable(imageBand.getDrawable());
+                    imBTmp.setRotation(0);
+                    imBTmp.setScaleX(1);
+                    imBTmp.setScaleY(1);
+                    if (left) {
+                        Log.i("Fuck","when im going here");
+                        imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(30).setDuration(400).setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                number_of_artist++;
+                            }
+                        });
+                        imBTmp.setVisibility(View.GONE);
+                        String text = "test";
+                        artChoices.add(oneBand.getText().toString());
+
+                    }
+                    if (right) {
+
+                        imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(-30).setDuration(400).setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                number_of_artist++;
+                            }
+                        });
+                        imBTmp.setVisibility(View.GONE);
+                        Log.i("tCheck","Shit is not workin group is " +secondBand.getText().toString());
+                        artChoices.add(secondBand.getText().toString());
+
+                    }
+                    //imBTmp.setVisibility(View.VISIBLE);
+                    Log.i("defX", "onTouch:imbTx " + imBTmp.animate().getDuration() + " imbTy " + imBTmp.getY() + " imagex " + imageBand.getX() + " imagey " + paddingY + " ");
+                    Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(number_of_artist).getFolder()))
+                            .diskCacheStrategy(DiskCacheStrategy.NONE)
+                            .transition(withCrossFade())
+                            .into(imageBand);
+
+                    artistCount++;
+                    score.setText("" + artistCount);
+            }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -127,25 +155,32 @@ public class TwoBandsTinder extends AppCompatActivity {
         score = findViewById(R.id.RecordScore);
         artistName = findViewById(R.id.artistName);
         padding =(ViewGroup.MarginLayoutParams) imageBand.getLayoutParams();
+        imageBand.setTag(IMAGEVIEW_TAG);
         bandsCount = 0;
         artistCount = 0;
-        imageBand.setTag(IMAGEVIEW_TAG);
         if (artists != null) artists.clear();
-        choice = false;
-
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
                 public boolean onRightCheck() {
-                right = true;
-                left = false;
-                Log.i("Swipe", "onSwipeRight");
-                changeArtist();
+
+                    if(number_of_artist != artistCount)
+                    {   left = false;
+                        right = true;
+
+                        changeArtist();
+
+                    }
                 return true;
             }
             public boolean onLeftCheck() {
-                right = false;
-                left = true;
-                Log.i("Swipe", "onSwipeLeft");
-                changeArtist();
+
+
+                    if(number_of_artist != artists.size())
+                    {
+                        left = true;
+                        right = false;
+                        changeArtist();
+
+                    }
                 return true;
             }
         });
@@ -195,7 +230,7 @@ class OnSwipeTinderListener implements View.OnTouchListener {
             //обработка события нажатия на экран
             case MotionEvent.ACTION_DOWN:
 
-                Log.i("deX", "onTouch:getrawX "+defX+"dX"+dX+ "vgetx "+v.getX());
+                //Log.i("deX", "onTouch:getrawX "+defX+"dX"+dX+ "vgetx "+v.getX());
                 //задаем значение dx равное обратной позиции нажатия на экран, чтобы картинка не сьехала
                 dY = v.getY() - event.getRawY();
                 dX = v.getX() - event.getRawX();
@@ -211,11 +246,11 @@ class OnSwipeTinderListener implements View.OnTouchListener {
                 ObjectAnimator b = new ObjectAnimator();
                 v.animate().setDuration(0);
                 v.animate().x( defX).y(defY).rotation(roatx+droatx).start();
-                Log.i("dX", "onTouch:getrawX "+defX+"dX"+roatx);
+               // Log.i("dX", "onTouch:getrawX "+defX+"dX"+roatx);
                 break;
             // обработка события отпуск от экрана
             case  MotionEvent.ACTION_UP:
-                Log.i("defX", "onTouch:right "+leftCheck+" left"+rightCheck+" padding "+paddingYx);
+               // Log.i("defX", "onTouch:right "+leftCheck+" left"+rightCheck+" padding "+paddingYx);
                 // если картинка не находится слева и справа
                 if (!leftCheck&&!rightCheck){v.animate().setDuration(400).x(paddingX).y(paddingYx).rotation(0);}//v.animate().x(paddingX).y(paddingY).rotation(0);
 

@@ -22,10 +22,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.StartApplication.Importer;
 import com.yandex.metrica.YandexMetrica;
 
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
-
 import java.util.ArrayList;
 import java.util.Random;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 
 public class GuessStar extends AppCompatActivity {
@@ -157,6 +157,7 @@ public class GuessStar extends AppCompatActivity {
 
         }
         artists = Importer.getRandomArtists();
+
         init();
     }
 
