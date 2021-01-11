@@ -34,33 +34,33 @@
     <string name="achAdsFreeText">Вы истинный знаток К-попа. Спасибо вам за игру, отныне всплывающая реклама отключена.</string>
     <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! В настройках теперь доступен скромный бонус.</string>
 
-    <string name="accept">Accept</string>
-    <string name="cancel">Cancel</string>
+
     <string name="settings0">Settings</string>
     <string name="settings1">Hint mode</string>
     <string name="settings2">Hard mode</string>
     <string name="settings3">Dark theme</string>
     <string name="settings4">Parameter 4</string>
     <string name="settings5">Parameter 5</string>
-    <string name="resetRecords">Reset my records</string>
+    <string name="resetRecords">Reset the account</string>
+
     <string name="OptionsSet">Settings saved</string>
 
+    <string name="questionReset">Confirm reset all records?</string>
+    <string name="questionConfirmTitle">Please confirm</string>
+    <string name="answerAccept">Accept</string>
+    <string name="answerCancel">Cancel</string>
+    <string name="answerYes">Yes</string>
+    <string name="answerNo">No</string>
 
-
-    <string name="aboutTitle">О программе</string>
-    <string name="aboutText">東ローマ帝国（ひがしローマていこく、英語: Eastern Roman Empire[3]）またはビザンツ帝国、ビザンティン帝国、ギリシャ帝国は、東西に分割統治されて以降のローマ帝国の東側の領域、国家である。ローマ帝国の東西分担統治は3世紀以降断続的に存在したが、一般的には395年以降の東の皇帝の統治領域を指す。なお、当時の国法的にはローマ帝国が東西に「分裂」したという事実は存在せず、当時の人々は東ローマ帝国と西ローマ帝国とを合わせて一つのローマ帝国であると考えていた。皇帝府は主としてコンスタンティノポリス[注 1][注 2]に置かれた。
-
-西暦476年に西ローマ皇帝ロムルス・アウグストゥスがゲルマン人の傭兵隊長オドアケルによって廃位された際、形式上は当時の東ローマ皇帝ゼノンに帝位を返上して東西の皇帝権が再統一[注 3]された。帝国は一時期は地中海の広範な地域を支配したものの、8世紀以降はバルカン半島、アナトリア半島を中心とした国家となった。また、ある程度の時代が下ると民族的・文化的にはギリシャ化が進んでいったことから、同時代の西欧やルーシからは「ギリシア帝国」と呼ばれ、13世紀以降には住民の自称も「ギリシャ人」へと変化していった[5]
-    </string>
-    <string name="howToPlayTitle">Как играть</string>
-    <string name="howToPlayText">
-        初期の時代は、内部では古代ローマ帝国末期の政治体制や法律を継承し、キリスト教（正教会）を国教として定めていた。また、対外的には東方地域に勢力を維持するのみならず、一時は旧西ローマ帝国地域にも宗主権を有していた。しかし、7世紀以降は相次いだ戦乱や疫病などにより地中海沿岸部の人口が激減、長大な国境線を維持できず、サーサーン朝ペルシアやイスラム帝国により国土を侵食された。8世紀末にはローマ教皇との対立などから西方地域での政治的影響力も低下した。
-
-領土の縮小と文化的影響力の低下によって、東ローマ帝国の体質はいわゆる「古代ローマ帝国」のものから変容した。住民の多くがギリシア系となり、620年には公用語もラテン語からギリシア語に変わった[2]。これらの特徴から、7世紀以降の東ローマ帝国を「キリスト教化されたギリシア人のローマ帝国」と評す者もいる[6]。「ビザンツ帝国」「ビザンティン帝国」も、この時代以降に対して用いられる場合が多い。
-
-9世紀には徐々に国力を回復させ、東ローマ皇帝に権力を集中する政治体制を築いた。11世紀前半には、東ローマ帝国はバルカン半島やアナトリア半島東部を奪還し、東地中海の大帝国として最盛期を迎えたが、それも一時的なもので、その後は徐々に衰退していった。11世紀後半以降には国内の権力争いが激化し、さらに第4回十字軍の侵攻と重なったことから一時首都コンスタンティノポリスを失い、各地に亡命政権が建てられた。その後、亡命政権のひとつニカイア帝国がコンスタンティノポリスを奪還したものの、内憂外患に悩まされ続けた。文化的には高い水準を保っていたが、領土は次々と縮小し、帝国の権威は完全に失われた。そして1453年、西方に支援を求めるものの大きな援助はなく、オスマン帝国の侵攻により首都コンスタンティノポリスは陥落し、東ローマ帝国は滅亡した。
-
-古代ギリシア文化の伝統を引き継いで1000年余りにわたって培われた東ローマ帝国の文化は、正教圏各国のみならず西欧のルネサンスに多大な影響を与え、「ビザンティン文化」として高く評価されている。また、近年はギリシャだけでなく、イスラム圏であったトルコでもその文化が見直されており、建築物や美術品の修復作業が盛んに行われている。
+    <string name="aboutTitle">Welcome!</string>
+    <string name="aboutText">
+         Welcome to Guess K-pop app! In this application, you can test your knowledge of K-pop. In this application, you are offered 3 main game modes: "\n"
+         1) Guess the Star "\n"
+         2) Guess the Group "\n"
+         3) Assign to groups "\n"
+         With these game modes, you can memorize all of K-pop most famous bands, as well as all of their incredible members! "\n"
+         Each game mode has achievements! "\n"
+         Good luck!
     </string>
 
     //scorestuff
@@ -79,5 +79,32 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="id_yandex_metrica" translatable="false">7f5528ae-626c-4298-a361-5635a0ad148a</string>
+    <string name="achievementUnlocked">Achievement unlocked!</string>
+
+    <string name="newRecordTitle">Новый рекорд!</string>
+    <string name="newRecordText">Поздравляем! Вы достигли нового рекорда:</string>
+    <string name="endGameTitle">Конец игры</string>
+    <string name="endGameTextScoreNow">Ваш счет:</string>
+    <string name="endGameTextRecordNow">Ваш рекорд:</string>
+    <string name="gameModeAbaut">Описание режима</string>
+    <string name="guessStarGameModeAbaut">
+Guess the Star game mode lets you test your knowledge of K-pop stars. "\n"
+Guess the names of K-pop artists from photos. It is not important for you to know which group a star is on screen, but it is important to know his or her name. Each artist you guess will increase your score! A wrong guess, accordingly, reduces. But I think you can figure it out. "\n"
+Guess them all!
+    </string>
+    <string name="guessBandGameModeAbaut">
+Guess the Group game mode lets you test your knowledge of the most famous K-pop groups in history! "\n"
+Guess the group the star is on the screen. Each correct answer will increase your score! And the wrong one, accordingly, reduces. But I think you can figure it out. "\n"
+Guess them all!
+    </string>
+    <string name="twoBandsTinderGameModeAbaut">
+The game mode "Assign by Groups" allows you to test your knowledge of K-pop groups "\n"
+You are given a set of different K-pop stars, and you need to divide them into 2 groups. To distribute the artist cards, you need to swipe them to the corresponding K-pop group on the side of the screen. "\n"
+At any time, you can view all artist cards and redistribute them. If you distribute the cards incorrectly, you will also be asked to correct the result. But with each new attempt, the potential score will get smaller. "\n"
+But I think you can figure it out. "\n"
+Distribute them all!
+    </string>
+
+
 
 </resources>

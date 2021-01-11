@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.star.k_pop.lib.SomeMethods;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -48,8 +49,8 @@ public class Settings extends AppCompatActivity {
         final Switch hintModeSwitch = findViewById(R.id.optionSwitch1); //hintMode переключалка
         final Switch hardModeSwitch = findViewById(R.id.optionSwitch2); //hardMode переключалка
         final Switch darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
-     //   final Switch optionSwitch4 = findViewById(R.id.optionSwitch4); //заменить когда появится новая опция
-     //   final Switch optionSwitch5 = findViewById(R.id.optionSwitch5); //заменить когда появится новая опция
+        //   final Switch optionSwitch4 = findViewById(R.id.optionSwitch4); //заменить когда появится новая опция
+        //   final Switch optionSwitch5 = findViewById(R.id.optionSwitch5); //заменить когда появится новая опция
 //hintModeSwitch.setOnCheckedChangeListener
         hintModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -76,8 +77,8 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 tempSettingsSet.darkMode = darkThemeSwitch.isChecked(); //TODO Надо сделать темную тему
-               // final ConstraintLayout cl = findViewById(R.id.constraint);
-               // cl.setBackgroundColor(000000);
+                // final ConstraintLayout cl = findViewById(R.id.constraint);
+                // cl.setBackgroundColor(000000);
 
             }
         });
@@ -120,7 +121,7 @@ public class Settings extends AppCompatActivity {
                 ImageView imageView = new ImageView(Settings.this);
                 ConstraintLayout constraintLayout = findViewById(R.id.constraint);
                 constraintLayout.addView(imageView);
-                Glide.with(Settings.this).load(getResources().getDrawable(R.drawable.hello))
+                Glide.with(Settings.this).load(getResources().getDrawable(R.drawable.error))
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .transition(withCrossFade())
                         .into(imageView);
@@ -136,8 +137,11 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                recordStorage.saveValue("UserScore","userScoreGuessStar", 0);  //сброс рекорда. TODO надо сделать и для других режимов сброс а так же нужно окно подтверждение удаления
-                Toast.makeText(Settings.this, "Данные удалены", Toast.LENGTH_SHORT).show(); //отправка сообщения на экран
+
+                if (SomeMethods.getBoolAnswerAlertDeialog(Settings.this, getResources().getString(R.string.questionConfirmTitle), getResources().getString(R.string.questionReset), getResources().getString(R.string.answerYes), getResources().getString(R.string.answerNo))) {
+                    recordStorage.saveValue("UserScore", "userScoreGuessStar", 0);  //сброс рекорда. TODO надо сделать и для других режимов сброс
+                    Toast.makeText(Settings.this, "Данные удалены", Toast.LENGTH_SHORT).show(); //отправка сообщения на экран
+                }
             }
         });
 

@@ -41,7 +41,7 @@
             android:layout_toEndOf="@+id/settingsConfirm"
             android:layout_toRightOf="@+id/settingsConfirm"
             android:background="@color/cancelRed"
-            android:text="@string/cancel" />
+            android:text="@string/answerCancel" />
 
         <Button
             android:id="@+id/settingsConfirm"
@@ -54,7 +54,7 @@
             android:layout_marginLeft="79dp"
             android:layout_marginBottom="15dp"
             android:background="@color/acceptGreen"
-            android:text="@string/accept" />
+            android:text="@string/answerAccept" />
     </RelativeLayout>
 
     <RelativeLayout
