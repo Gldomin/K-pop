@@ -72,47 +72,13 @@ public class SlideshowDialogFragment extends DialogFragment {
         Log.e(TAG, "position: " + selectedPosition);
         Log.e(TAG, "images size: " + imageGalleries.size());
 
-        LinearLayout Lnr = v.findViewById(R.id.gallaryFooterLayout);
-        ImageButton imgBtn = v.findViewById(R.id.imageButtonArrow);
-        imgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bioPageTransition(v);
-            }
-        });
-
-        Lnr.setOnClickListener(new View.OnClickListener() { //обработка кнопки-стрелки
-            @Override
-            public void onClick(View arg0) {
-                bioPageTransition(v);
-            }
-        });
-        Lnr.setOnTouchListener(new OnSwipeTouchListener() { //обработка свайпов
-
-            @Override
-
-            public boolean onSwipeUp() {
-                Toast.makeText(v.getContext(), "Свайп-вверх", Toast.LENGTH_LONG).show();
-                bioPageTransition(v);
-                return true;
-            }
-
-            public boolean onSwipeDown() {
-                Toast.makeText(v.getContext(), "Свайп-вниз", Toast.LENGTH_LONG).show();
-                return true;
-            }
-
-            public boolean onSwipeLeft() {
-                Toast.makeText(v.getContext(), "Свайп-влево", Toast.LENGTH_LONG).show();
-                return true;
-            }
-
-            public boolean onSwipeRight() {
-                Toast.makeText(v.getContext(), "Свайп-вправо", Toast.LENGTH_LONG).show();
-                return true;
-            }
-
-        });
+//        ImageButton imgBtn = v.findViewById(R.id.imageButtonArrow);
+//        imgBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                bioPageTransition(v);
+//            }
+//        });
 
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
@@ -153,7 +119,8 @@ public class SlideshowDialogFragment extends DialogFragment {
 
         ImageGallery imageGallery = imageGalleries.get(position);
         lblTitle.setText(imageGallery.getName());
-        lblDate.setText(imageGallery.getTimestamp());
+        lblTitle.setText(imageGallery.getName());
+        lblDate.setText(imageGallery.getGroup());
     }
 
     @Override

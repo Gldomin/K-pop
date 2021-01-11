@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +21,7 @@ import static android.widget.Toast.makeText;
 
 public class    MainActivity extends AppCompatActivity {
     final int REQUEST_CODE=1;
+
     SharedPreferences sp; SharedPreferences spp;
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {

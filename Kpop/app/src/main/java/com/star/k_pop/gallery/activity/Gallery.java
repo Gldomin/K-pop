@@ -25,15 +25,9 @@ public class Gallery extends AppCompatActivity {
     private ArrayList<ImageGallery> imageGalleries;
     private GalleryAdapter mAdapter;
     private RecyclerView recyclerView;
-    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
@@ -69,14 +63,12 @@ public class Gallery extends AppCompatActivity {
 
         createArray();
 
-/*
-     */
     }
 
     private void createArray() {
         ArrayList<Artist> artists = Importer.getArtists();
         for(Artist a : artists){
-            imageGalleries.add(new ImageGallery(a.getFolder()));
+            imageGalleries.add(new ImageGallery(a.getName(), a.getGroup(), a.getFolder()));
         }
     }
 }

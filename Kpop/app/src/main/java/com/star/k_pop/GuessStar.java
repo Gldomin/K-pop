@@ -23,22 +23,22 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.StartApplication.Importer;
 import com.yandex.metrica.YandexMetrica;
 
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
-
 import java.util.ArrayList;
 import java.util.Random;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 
 public class GuessStar extends AppCompatActivity {
     boolean cheatOn = false;
-
+    Button cheaterButton;
     ImageView imageView;
     String[] stars;
     ArrayList<Artist> artists = new ArrayList<>();
     Button[] buttons = new Button[4];
-    int chosenOne = -1;
-    int scoreNow = 0;
-    int count = 0;
+    int chosenOne = -1;     //избранный артист (правильный артист)
+    int scoreNow = 0;       //текущий счет
+    int count = 0;          //номер артиста из сгенерированного списка (текущий)
 
     OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
     String buttonStyleChange = "stylebutton";
@@ -120,8 +120,8 @@ public class GuessStar extends AppCompatActivity {
 
             buttons[i].setPadding(10, 10, 10, 10);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
             lp.setMargins(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
             buttons[i].setOnClickListener(new View.OnClickListener() {
@@ -156,10 +156,14 @@ public class GuessStar extends AppCompatActivity {
                                 Toast.makeText(GuessStar.this, "Бро, да ты просто бешеный! Нет, я серьезно. Таких фанатов K-pop еще надо поискать!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                         }*/
                         count++;
-                        if (count>=artists.size())      //обработка конца списка. Что бы играть можно было вечно
+                        if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
+                        {
                             artists = Importer.getRandomArtists();
+                            count = 0;
+                        }
                         init();
-                    } else if (scoreNow > 0) {scoreNow--;
+                    } else if (scoreNow > 0) {
+                        scoreNow--;
                         YandexMetrica.reportEvent("GuessStarLoseClick");  //метрика на неправильный клик
                     }
                     TextView textView = findViewById(R.id.scoreText);
@@ -186,12 +190,37 @@ public class GuessStar extends AppCompatActivity {
                 }
             });
 
+            cheaterButton = findViewById(R.id.cheaterButton);
+            cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
+                @Override
+                public void onClick(View view) {
+                    for (Artist a : artists) {
+                        a.setInit(false);
+                    }
+                    for (int i = 0; i < 4; i++) {
+                        buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                    }
+                   //количетво скипнутых артистов
+                      count++;
+                      scoreNow++;
+                      if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
+                      {
+                          artists = Importer.getRandomArtists();
+                          count = 0;
+                      }
+
+
+                    init();
+
+                }
+            });
+
 
         }
         artists = Importer.getRandomArtists();
+
         init();
     }
-
 
 
     /**

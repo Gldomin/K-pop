@@ -4,14 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Html;
-import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,12 +20,12 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
 import com.star.k_pop.StartApplication.Importer;
 
 import java.util.ArrayList;
@@ -46,6 +45,7 @@ public class GuessBands extends AppCompatActivity {
 
 
     //private int currentApiVersion;
+
     int i = 0;
     int score;
     int fastscore = 0;
@@ -77,10 +77,9 @@ public class GuessBands extends AppCompatActivity {
     }
 
     @SuppressLint("ResourceAsColor")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
@@ -100,7 +99,6 @@ public class GuessBands extends AppCompatActivity {
             buttonStyleChange = "stylebutton_dark";
         }
         else setTheme(R.style.AppThemeLight);
-
         super.onCreate(savedInstanceState);
 /*
 
@@ -150,7 +148,6 @@ public class GuessBands extends AppCompatActivity {
         final TextView scoreText = findViewById(R.id.scoreBands); //рекорд
         final TextView fastscoreText = findViewById(R.id.fastscoreBands); //текущий счет
         final TextView info = findViewById(R.id.info);
-
 
         fastscoreText.setText("Ваш счет: " + fastscore);
 
@@ -272,6 +269,7 @@ public class GuessBands extends AppCompatActivity {
                             textHintTwo = textHintTwo.toUpperCase();
                             textHint[j] = textHintTwo.charAt(0);
 
+
                         }
                         String entLit = "ENT";
                         String delLit = "DEL";
@@ -284,8 +282,6 @@ public class GuessBands extends AppCompatActivity {
                                     b.setBackgroundResource(R.drawable.stylebutton_hint);
                                     break;
                                 }
-
-
                             }
                         }
                         break;
@@ -335,13 +331,10 @@ public class GuessBands extends AppCompatActivity {
             if (tempSettingsSet.darkMode==true) b.setBackgroundResource(R.drawable.stylebutton_dark);
             else b.setBackgroundResource(R.drawable.stylebutton);
         }
-
-
     }
 
     //метод смены фото айдола
     private void change() {
-
         final ImageView groupPhoto = findViewById(R.id.groupPhoto);
         Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + folder))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -365,4 +358,5 @@ public class GuessBands extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }*/
+
 }

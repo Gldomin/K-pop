@@ -9,19 +9,25 @@ import java.io.Serializable;
  */
 public class ImageGallery implements Serializable {
     private String name;
-    private String timestamp;
+    private String group;
+    private String folder;
 
     public ImageGallery(String name) {
         this.name = name;
     }
 
-    public ImageGallery(String name, String timestamp) {
+    public ImageGallery(String name, String group, String folder) {
         this.name = name;
-        this.timestamp = timestamp;
+        this.folder = folder;
+        this.group = group;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getGroup() {
+        return group;
     }
 
     public void setName(String name) {
@@ -29,14 +35,14 @@ public class ImageGallery implements Serializable {
     }
 
     public Uri getUri() {
-        return Uri.parse("file:///android_asset/Groups/" + name);
+        return Uri.parse("file:///android_asset/Groups/" + folder);
     }
 
     public String getTimestamp() {
-        return timestamp;
+        return group;
     }
 
     public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+        this.group = timestamp;
     }
 }

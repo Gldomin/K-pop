@@ -37,13 +37,13 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <ImageButton
-            android:id="@+id/imageButtonArrow"
-            android:layout_width="74dp"
-            android:layout_height="63dp"
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButtonArrow"-->
+<!--            android:layout_width="74dp"-->
+<!--            android:layout_height="63dp"-->
 
-            android:background="#00FFFFFF"
-            android:foreground="@android:drawable/arrow_up_float" />
+<!--            android:background="#00FFFFFF"-->
+<!--            android:foreground="@android:drawable/arrow_up_float" />-->
 
         <TextView
             android:id="@+id/gallaryName"
@@ -61,12 +61,12 @@
             android:layout_alignParentBottom="true"
             android:textColor="@android:color/white" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="56dp"
-            android:layout_height="53dp"
-            android:drawableBottom="@android:drawable/ic_dialog_info"
-            android:gravity="center_horizontal|fill_horizontal" />
+<!--        <Button-->
+<!--            android:id="@+id/button"-->
+<!--            android:layout_width="56dp"-->
+<!--            android:layout_height="53dp"-->
+<!--            android:drawableBottom="@android:drawable/ic_dialog_info"-->
+<!--            android:gravity="center_horizontal|fill_horizontal" />-->
 
     </LinearLayout>
 
