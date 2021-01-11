@@ -95,7 +95,6 @@ public class GuessBands extends AppCompatActivity {
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) {
             setTheme(R.style.AppTheme2);
-            buttonStyleChange = "stylebutton_dark";
         }
         else setTheme(R.style.AppThemeLight);
         super.onCreate(savedInstanceState);

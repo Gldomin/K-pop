@@ -123,7 +123,6 @@ public class    MainActivity extends AppCompatActivity {
     }
 
     OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
-    String buttonStyleChange = "stylebutton";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Storage storage = new Storage(this);

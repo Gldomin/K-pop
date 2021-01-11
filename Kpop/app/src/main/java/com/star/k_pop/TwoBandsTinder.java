@@ -47,9 +47,11 @@ public class TwoBandsTinder extends AppCompatActivity {
     boolean right;
     TextView score;
     ViewGroup.MarginLayoutParams padding;
+    String nameOfStorage2 = "settings";
+    Storage storage2 = new Storage(this);
+
 
     OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
-    String buttonStyleChange = "stylebutton";
 
     private static final String IMAGEVIEW_TAG = "icon bitmap";
     private void startFinishSection() {
@@ -199,6 +201,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         tempSettingsSet.darkMode = storage2.getBoolean(nameOfStorage2, "darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
+        else setTheme(R.style.AppThemeLight);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_bands_tinder);
