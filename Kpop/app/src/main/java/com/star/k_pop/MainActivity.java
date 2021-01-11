@@ -8,14 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.star.k_pop.gallery.activity.Gallery;
-
-import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences sp; SharedPreferences spp;

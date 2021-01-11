@@ -186,6 +186,7 @@ public class GuessStar extends AppCompatActivity {
 
         }
         artists = Importer.getRandomArtists();
+
         init();
     }
 
