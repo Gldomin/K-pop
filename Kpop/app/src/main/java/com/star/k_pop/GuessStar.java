@@ -96,8 +96,8 @@ public class GuessStar extends AppCompatActivity {
             buttons[i].setBackgroundResource(R.drawable.stylebutton);
             buttons[i].setPadding(10, 10, 10, 10);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
             lp.setMargins(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
             buttons[i].setOnClickListener(new View.OnClickListener() {
@@ -162,9 +162,13 @@ public class GuessStar extends AppCompatActivity {
             cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
                 @Override
                 public void onClick(View view) {
-                    int stepSize=1; //рзамер шага переключения
-
-                  for(int i=0; i<stepSize;i++) { //количетво скипнутых артистов
+                    for (Artist a : artists) {
+                        a.setInit(false);
+                    }
+                    for (int i = 0; i < 4; i++) {
+                        buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                    }
+                   //количетво скипнутых артистов
                       count++;
                       scoreNow++;
                       if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
@@ -172,7 +176,7 @@ public class GuessStar extends AppCompatActivity {
                           artists = Importer.getRandomArtists();
                           count = 0;
                       }
-                  }
+
 
                     init();
 
@@ -182,6 +186,7 @@ public class GuessStar extends AppCompatActivity {
 
         }
         artists = Importer.getRandomArtists();
+
         init();
     }
 
