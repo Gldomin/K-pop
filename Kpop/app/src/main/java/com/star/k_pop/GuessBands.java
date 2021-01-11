@@ -86,11 +86,11 @@ public class GuessBands extends AppCompatActivity {
         String nameOfStorage = "settings";
         Storage storage = new Storage(this);
 
-        Integer counter;
+        Integer counter = 0;
         Storage tempStorage = new Storage(this);
         String nameOfStorage3 = "settings";
         String nameOfValue = "darkModeCounter";
-        counter = tempStorage.getInt(nameOfStorage3,nameOfValue);
+        // TODO counter = tempStorage.getInt(nameOfStorage3,nameOfValue);
 
         tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
