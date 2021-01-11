@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.lib.SomeMethods;
 import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
@@ -113,7 +114,19 @@ public class GuessStar extends AppCompatActivity {
                             buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
                         }
                         scoreNow++;
-                        YandexMetrica.reportEvent("GuessStarRightClick"); //метрика на правильный клик
+                        YandexMetrica.reportEvent("GuessStarRightClick");
+
+
+                        if (scoreNow == 10) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
+                         SomeMethods.achievementGetted(GuessStar.this,R.string.achGuessStarNormal,R.drawable.error,"achGuessStarNormal"); //ачивочка
+                            /*Storage storage = new Storage(GuessStar.this); //блок кодя для получения, уведомления и записи ачивок
+                            String nameOfStorage = "appStatus"; String nameOfAchievement = "achGuessStarNormal";
+                            if (!storage.getBoolean(nameOfStorage, "achGuessStarNormalText"))
+                                SomeMethods.showAchievementToast(GuessStar.this, getResources().getString(R.string.achievementUnlocked), getResources().getString(R.string.achGuessStarNormal), R.drawable.achievement);
+                            storage.saveValue(nameOfStorage,nameOfAchievement,true);*/
+                        }
+
+                        //метрика на правильный клик
                         /*switch (scoreNow) {
                             case 10:
                                 Toast.makeText(GuessStar.this, "Поздравляем, Вы - адепт K-pop", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
@@ -168,14 +181,14 @@ public class GuessStar extends AppCompatActivity {
                     for (int i = 0; i < 4; i++) {
                         buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
                     }
-                   //количетво скипнутых артистов
-                      count++;
-                      scoreNow++;
-                      if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
-                      {
-                          artists = Importer.getRandomArtists();
-                          count = 0;
-                      }
+                    //количетво скипнутых артистов
+                    count++;
+                    scoreNow++;
+                    if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
+                    {
+                        artists = Importer.getRandomArtists();
+                        count = 0;
+                    }
 
 
                     init();

@@ -161,7 +161,7 @@ public class Settings extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                Thread.sleep(2200);
+                Thread.sleep(5350);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

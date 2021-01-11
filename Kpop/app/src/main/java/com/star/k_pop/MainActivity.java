@@ -25,20 +25,20 @@ public class MainActivity extends AppCompatActivity {
         Storage tempStorage = new Storage(this);
         String nameOfStorage = "appStatus"; //хранилище всяких состояний приложения
         sp = getSharedPreferences(nameOfStorage,Context.MODE_PRIVATE);
-        if (!sp.contains("noticeWatched")) {
+        if (!sp.contains("noticeWatched")||!sp.contains("achGuessStarNormal")) {
             tempStorage.saveValue(nameOfStorage,"noticeWatched", false);  //Если равно False - игра запущена в первый раз
 
-            tempStorage.saveValue(nameOfStorage,"achGuessStarNormalText", false); //ачивка, если равно True - получена
-            tempStorage.saveValue(nameOfStorage,"achGuessStarExpertText", false); //ачивка
-            tempStorage.saveValue(nameOfStorage,"achGuessBandsNormalText", false); //ачивка
-            tempStorage.saveValue(nameOfStorage,"achGuessBandsExpertText", false); //ачивка
-            tempStorage.saveValue(nameOfStorage,"achSwipeTwoBandsNormalText", false); //ачивка
-            tempStorage.saveValue(nameOfStorage,"achSwipeTwoBandsExpertText", false); //ачивка
-            tempStorage.saveValue(nameOfStorage,"achGuessStarReversNormalText", false); //ачивка
-            tempStorage.saveValue(nameOfStorage,"achGuessStarReversExpertText", false); //ачивка
-            tempStorage.saveValue(nameOfStorage,"achSecretGameModeText", false); //ачивка
-            tempStorage.saveValue(nameOfStorage,"achAdsFreeText", false); //ачивка
-            tempStorage.saveValue(nameOfStorage,"achRoyalText", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achGuessStarNormal", false); //ачивка, если равно True - получена
+            tempStorage.saveValue(nameOfStorage,"achGuessStarExpert", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achGuessBandsNormal", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achGuessBandsExpert", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achSwipeTwoBandsNormal", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achSwipeTwoBandsExpert", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achGuessStarReversNormal", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achGuessStarReversExpert", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achSecretGameMode", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achAdsFree", false); //ачивка
+            tempStorage.saveValue(nameOfStorage,"achRoyal", false); //ачивка
 
             tempStorage.saveValue(nameOfStorage,"adActive", true); //включена ли реклама //можно было бы проверять по ачивке, но так интуитивнее
 
@@ -67,17 +67,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         noticeWatched.setChecked(storage.getBoolean(nameOfStorage, "noticeWatched")); //TODO по-хорошему надо переписать Storage, что бы не писать лишний раз nameOfStorage (можно указывать в конструкторе)
-        achGuessStarNormalText.setChecked(storage.getBoolean(nameOfStorage, "achGuessStarNormalText"));
-        achGuessStarExpertText.setChecked(storage.getBoolean(nameOfStorage, "achGuessStarExpertText"));
-        achGuessBandsNormalText.setChecked(storage.getBoolean(nameOfStorage, "achGuessBandsNormalText"));
-        achGuessBandsExpertText.setChecked(storage.getBoolean(nameOfStorage, "achGuessBandsExpertText"));
-        achSwipeTwoBandsNormalText.setChecked(storage.getBoolean(nameOfStorage, "achSwipeTwoBandsNormalText"));
-        achSwipeTwoBandsExpertText.setChecked(storage.getBoolean(nameOfStorage, "achSwipeTwoBandsExpertText"));
-        achGuessStarReversNormalText.setChecked(storage.getBoolean(nameOfStorage, "achGuessStarReversNormalText"));
-        achGuessStarReversExpertText.setChecked(storage.getBoolean(nameOfStorage, "achGuessStarReversExpertText"));
-        achSecretGameModeText.setChecked(storage.getBoolean(nameOfStorage, "achSecretGameModeText"));
-        achAdsFreeText.setChecked(storage.getBoolean(nameOfStorage, "achAdsFreeText"));
-        achRoyalText.setChecked(storage.getBoolean(nameOfStorage, "achRoyalText"));
+        achGuessStarNormalText.setChecked(storage.getBoolean(nameOfStorage, "achGuessStarNormal"));
+        achGuessStarExpertText.setChecked(storage.getBoolean(nameOfStorage, "achGuessStarExpert"));
+        achGuessBandsNormalText.setChecked(storage.getBoolean(nameOfStorage, "achGuessBandsNormal"));
+        achGuessBandsExpertText.setChecked(storage.getBoolean(nameOfStorage, "achGuessBandsExpert"));
+        achSwipeTwoBandsNormalText.setChecked(storage.getBoolean(nameOfStorage, "achSwipeTwoBandsNormal"));
+        achSwipeTwoBandsExpertText.setChecked(storage.getBoolean(nameOfStorage, "achSwipeTwoBandsExpert"));
+        achGuessStarReversNormalText.setChecked(storage.getBoolean(nameOfStorage, "achGuessStarReversNormal"));
+        achGuessStarReversExpertText.setChecked(storage.getBoolean(nameOfStorage, "achGuessStarReversExpert"));
+        achSecretGameModeText.setChecked(storage.getBoolean(nameOfStorage, "achSecretGameMode"));
+        achAdsFreeText.setChecked(storage.getBoolean(nameOfStorage, "achAdsFree"));
+        achRoyalText.setChecked(storage.getBoolean(nameOfStorage, "achRoyal"));
     }
     protected void saveStatus() { //сохраняет значения свичей меняя атрибуты //TODO удалить
         Storage storage = new Storage(this);
@@ -99,17 +99,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         storage.saveValue(nameOfStorage,"noticeWatched",noticeWatched.isChecked());
-        storage.saveValue(nameOfStorage,"achGuessStarNormalText",achGuessStarNormalText.isChecked());
-        storage.saveValue(nameOfStorage,"achGuessStarExpertText",achGuessStarExpertText.isChecked());
-        storage.saveValue(nameOfStorage,"achGuessBandsNormalText",achGuessBandsNormalText.isChecked());
-        storage.saveValue(nameOfStorage,"achGuessBandsExpertText",achGuessBandsExpertText.isChecked());
-        storage.saveValue(nameOfStorage,"achSwipeTwoBandsNormalText",achSwipeTwoBandsNormalText.isChecked());
-        storage.saveValue(nameOfStorage,"achSwipeTwoBandsExpertText",achSwipeTwoBandsExpertText.isChecked());
-        storage.saveValue(nameOfStorage,"achGuessStarReversNormalText",achGuessStarReversNormalText.isChecked());
-        storage.saveValue(nameOfStorage,"achGuessStarReversExpertText",achGuessStarReversExpertText.isChecked());
-        storage.saveValue(nameOfStorage,"achSecretGameModeText",achSecretGameModeText.isChecked());
-        storage.saveValue(nameOfStorage,"achAdsFreeText",achAdsFreeText.isChecked());
-        storage.saveValue(nameOfStorage,"achRoyalText",achRoyalText.isChecked());
+        storage.saveValue(nameOfStorage,"achGuessStarNormal",achGuessStarNormalText.isChecked());
+        storage.saveValue(nameOfStorage,"achGuessStarExpert",achGuessStarExpertText.isChecked());
+        storage.saveValue(nameOfStorage,"achGuessBandsNormal",achGuessBandsNormalText.isChecked());
+        storage.saveValue(nameOfStorage,"achGuessBandsExpert",achGuessBandsExpertText.isChecked());
+        storage.saveValue(nameOfStorage,"achSwipeTwoBandsNormal",achSwipeTwoBandsNormalText.isChecked());
+        storage.saveValue(nameOfStorage,"achSwipeTwoBandsExpert",achSwipeTwoBandsExpertText.isChecked());
+        storage.saveValue(nameOfStorage,"achGuessStarReversNormal",achGuessStarReversNormalText.isChecked());
+        storage.saveValue(nameOfStorage,"achGuessStarReversExpert",achGuessStarReversExpertText.isChecked());
+        storage.saveValue(nameOfStorage,"achSecretGameMode",achSecretGameModeText.isChecked());
+        storage.saveValue(nameOfStorage,"achAdsFree",achAdsFreeText.isChecked());
+        storage.saveValue(nameOfStorage,"achRoyal",achRoyalText.isChecked());
 
 
     }
