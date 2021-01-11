@@ -77,10 +77,7 @@ public class GuessStar extends AppCompatActivity {
         Storage storage = new Storage(this);
         tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
-        if (tempSettingsSet.darkMode==true) {
-            setTheme(R.style.AppTheme2);
-            buttonStyleChange = "stylebutton_dark";
-        }
+        if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
         else setTheme(R.style.AppThemeLight);
 
         super.onCreate(savedInstanceState);
@@ -136,8 +133,8 @@ public class GuessStar extends AppCompatActivity {
                         }
                         for (int i = 0; i < 4; i++) {
                             //buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
-                            if (tempSettingsSet.darkMode==true) buttons[i].setTextColor(R.color.colorText);
-                                else buttons[i].setTextColor(R.color.colorTextLight);
+                            if (tempSettingsSet.darkMode==true) buttons[i].setTextColor(getResources().getColor(R.color.colorText));
+                                else buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
 
                         }
                         scoreNow++;
@@ -181,8 +178,8 @@ public class GuessStar extends AppCompatActivity {
                             if (i == chosenOne)
                                 buttons[i].setTextColor(Color.RED);
                             else { if (tempSettingsSet.darkMode==true){
-                                buttons[i].setTextColor(R.color.colorText);
-                            } buttons[i].setTextColor(R.color.colorTextLight);
+                                 buttons[i].setTextColor(getResources().getColor(R.color.colorText));}
+                                else buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
                             }
                         Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                     } else
@@ -192,13 +189,17 @@ public class GuessStar extends AppCompatActivity {
 
             cheaterButton = findViewById(R.id.cheaterButton);
             cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
+                @SuppressLint("ResourceAsColor")
                 @Override
                 public void onClick(View view) {
                     for (Artist a : artists) {
                         a.setInit(false);
                     }
                     for (int i = 0; i < 4; i++) {
-                        buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                       // buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                        if (tempSettingsSet.darkMode==true){
+                            buttons[i].setTextColor(getResources().getColor(R.color.colorText));
+                        }  buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
                     }
                    //количетво скипнутых артистов
                       count++;

@@ -47,8 +47,14 @@ public class Settings extends AppCompatActivity {
         final Storage recordStorage = new Storage(this); //хранилищеРекорда
 
         final Switch hintModeSwitch = findViewById(R.id.optionSwitch1); //hintMode переключалка
+        if (tempSettingsSet.darkMode==true) hintModeSwitch.setTextColor(getResources().getColor(R.color.colorText));
+        else hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
         final Switch hardModeSwitch = findViewById(R.id.optionSwitch2); //hardMode переключалка
+        if (tempSettingsSet.darkMode==true) hardModeSwitch.setTextColor(getResources().getColor(R.color.colorText));
+        else hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
         final Switch darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
+        if (tempSettingsSet.darkMode==true) darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorText));
+        else darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
         //   final Switch optionSwitch4 = findViewById(R.id.optionSwitch4); //заменить когда появится новая опция
         //   final Switch optionSwitch5 = findViewById(R.id.optionSwitch5); //заменить когда появится новая опция
 //hintModeSwitch.setOnCheckedChangeListener
@@ -132,6 +138,8 @@ public class Settings extends AppCompatActivity {
 
 
         Button resetButton = findViewById(R.id.resetRecordButton); //кнопка сброса счета
+        if (tempSettingsSet.darkMode==true) resetButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else resetButton.setBackgroundResource(R.drawable.stylebutton);
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
