@@ -1,7 +1,9 @@
 package com.star.k_pop.lib;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,9 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.star.k_pop.MainActivity;
 import com.star.k_pop.R;
+import com.star.k_pop.Settings;
 
 import static android.app.PendingIntent.getActivity;
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class SomeMethods {
     /**
@@ -39,6 +46,29 @@ public class SomeMethods {
         toast.setView(layout);
         toast.show();
     }
+
+    static public void showToastError(Context context) { //метод для вывода не очень важных сообщений + ачивок
+
+        LayoutInflater inflater  = LayoutInflater.from(context);
+        View layout = View.inflate(context, R.layout.custom_toast, null);
+
+        ImageView image = layout.findViewById(R.id.custom_toast_image);
+        Glide.with(context).load(context.getResources().getDrawable(R.drawable.error))
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .transition(withCrossFade())
+                .into(image);
+
+        TextView textView = layout.findViewById(R.id.custom_toast_text);
+        textView.setText("Error!");
+
+
+        Toast toast = new Toast(context);
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+
 
     public static String result = "resultHasNotSet"; //для хранения результата
     public static Boolean boolResult = false; //для хранения результата
