@@ -36,6 +36,10 @@ public class Achievements extends AppCompatActivity {
         final ImageView ach5 = findViewById(R.id.ach5);
         final ImageView ach6 = findViewById(R.id.ach6);
         final ImageView ach7 = findViewById(R.id.ach7);
+        final ImageView ach8 = findViewById(R.id.ach8);
+        final ImageView ach9 = findViewById(R.id.ach9);
+        final ImageView ach10 = findViewById(R.id.ach10);
+        final ImageView ach11 = findViewById(R.id.ach11);
 
         Storage storage = new Storage(this);
         String nameOfStorage = "appStatus";
@@ -49,20 +53,20 @@ public class Achievements extends AppCompatActivity {
         if (storage.getBoolean(nameOfStorage, "achGuessBandsExpert"))
             ach4.setImageResource(R.drawable.heart);
         if (storage.getBoolean(nameOfStorage, "achSwipeTwoBandsNormal"))
-            ach5.setImageResource(R.drawable.heart);
+            ach5.setImageResource(R.drawable.cubes);
         if (storage.getBoolean(nameOfStorage, "achSwipeTwoBandsExpert"))
-            ach6.setImageResource(R.drawable.heart);
+            ach6.setImageResource(R.drawable.energy);
         if (storage.getBoolean(nameOfStorage, "achGuessStarReversNormal"))
-            ach7.setImageResource(R.drawable.heart);
-        /* if (storage.getBoolean(nameOfStorage, "achGuessStarReversExpert"))
+            ach7.setImageResource(R.drawable.cubes);
+         if (storage.getBoolean(nameOfStorage, "achGuessStarReversExpert"))
            ach8.setImageResource(R.drawable.achievement);
         if (storage.getBoolean(nameOfStorage,"achSecretGameMode"))
-            ach9.setImageResource(R.drawable.achievement);
+            ach9.setImageResource(R.drawable.energy);
         if (storage.getBoolean(nameOfStorage,"achAdsFree"))
-            ach10.setImageResource(R.drawable.achievement);
+            ach10.setImageResource(R.drawable.heart);
         if (storage.getBoolean(nameOfStorage,"achRoyal"))
-            ach11.setImageResource(R.drawable.achievement);
-        */
+            ach11.setImageResource(R.drawable.energy);
+
 
         //SomeMethods.showToast(this, "Достижение открыто!", R.drawable.achievement);
 
