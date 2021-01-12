@@ -1,9 +1,12 @@
 package com.star.k_pop;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,12 +17,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.star.k_pop.gallery.activity.Gallery;
 
-public class MainActivity extends AppCompatActivity {
+import static android.widget.Toast.makeText;
+
+public class    MainActivity extends AppCompatActivity {
+    final int REQUEST_CODE=1;
+
     SharedPreferences sp; SharedPreferences spp;
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
     }
+
 
     protected void appStatusGeneration(){ //генерация первоначального статуса
         Storage tempStorage = new Storage(this);
@@ -113,14 +121,33 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
+    String buttonStyleChange = "stylebutton";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Storage storage = new Storage(this);
+
+        Storage tempStorage = new Storage(this);
+        String nameOfStorage3 = "settings";
+        String nameOfValue = "darkModeCounter";
+
+
+        String nameOfStorage2 = "settings";
+        Storage storage2 = new Storage(this);
+        tempSettingsSet.darkMode = storage2.getBoolean(nameOfStorage2, "darkMode"); //считываем состояние
+        //теперь выбираем тему в зависимости от положения свича
+        if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
+        else setTheme(R.style.AppThemeLight);
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
                         //+++FirstLaunchHelp+++\\ // блок для первичного задания статусов (ачивок и прочего), а так же отображения приветсвия новых пользователей
-        Storage storage = new Storage(this);
+        //Storage storage = new Storage(this);
         String nameOfStorage="appStatus";
         sp = getSharedPreferences(nameOfStorage,Context.MODE_PRIVATE);
         appStatusGeneration(); //создание статусов приложения, не создаст, если статусы уже существуют
@@ -134,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
 
 ///////////////////////////////////СВИЧИ ДЛЯ ПРОВЕРКИ СТУТУСОВ - начало////////////////// //TODO удалить блок вместе с ScrollView из активити и readStatus() с saveStatus()
         readStatus();
@@ -154,6 +182,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button guessStarButton = findViewById(R.id.guessStarButton);
+        if (tempSettingsSet.darkMode==true) guessStarButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else guessStarButton.setBackgroundResource(R.drawable.stylebutton);
+
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,6 +195,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button guessBandButton = findViewById(R.id.guessGroupButton);
+        if (tempSettingsSet.darkMode==true) guessBandButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else guessBandButton.setBackgroundResource(R.drawable.stylebutton);
+
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,6 +207,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button buttonLibrary = findViewById(R.id.galleryButton);
+        if (tempSettingsSet.darkMode==true) buttonLibrary.setBackgroundResource(R.drawable.stylebutton_dark);
+        else buttonLibrary.setBackgroundResource(R.drawable.stylebutton);
+
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -182,16 +219,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button settingsButton = findViewById(R.id.settingsButton);
+        if (tempSettingsSet.darkMode==true) settingsButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else settingsButton.setBackgroundResource(R.drawable.stylebutton);
+
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+           /*     new CountDownTimer(10000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        recreate();
+                    }
+                }.start();*/
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Settings.class);
-                startActivity(image);
+                startActivityForResult(image,REQUEST_CODE);
             }
+
+
+
         });
 
+
         Button tinderButton = findViewById(R.id.chooseTinderButton);
+        if (tempSettingsSet.darkMode==true) tinderButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else tinderButton.setBackgroundResource(R.drawable.stylebutton);
+
+
+
         tinderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -211,6 +271,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button about = findViewById(R.id.abautButton);
+        if (tempSettingsSet.darkMode==true) about.setBackgroundResource(R.drawable.stylebutton_dark);
+        else about.setBackgroundResource(R.drawable.stylebutton);
+
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -222,5 +285,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            recreate();
+        }
+
+    }
+     /*public class Restart {
+        public void reStart() {
+            recreate();
+        }
+     }*/
 
 }

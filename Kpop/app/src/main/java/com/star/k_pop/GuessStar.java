@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,14 +31,18 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class GuessStar extends AppCompatActivity {
     boolean cheatOn = false;
-
+    Button cheaterButton;
     ImageView imageView;
     String[] stars;
     ArrayList<Artist> artists = new ArrayList<>();
     Button[] buttons = new Button[4];
-    int chosenOne = -1;
-    int scoreNow = 0;
-    int count = 0;
+    int chosenOne = -1;     //избранный артист (правильный артист)
+    int scoreNow = 0;       //текущий счет
+    int count = 0;          //номер артиста из сгенерированного списка (текущий)
+
+    OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
+    String buttonStyleChange = "stylebutton";
+    SharedPreferences sp;
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -61,11 +66,26 @@ public class GuessStar extends AppCompatActivity {
         text.setText("Ваш счет: " + scoreNow);
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
+
+        String nameOfStorage = "settings";
+        Storage storage = new Storage(this);
+        tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode"); //считываем состояние
+        //теперь выбираем тему в зависимости от положения свича
+        if (tempSettingsSet.darkMode==true) {
+            setTheme(R.style.AppTheme2);
+            buttonStyleChange = "stylebutton_dark";
+        }
+        else setTheme(R.style.AppThemeLight);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
+
 
         ///////UserScore//////
         TextView textUserScore = findViewById(R.id.scoreText2);
@@ -93,14 +113,19 @@ public class GuessStar extends AppCompatActivity {
             } else {
                 tableRow = findViewById(R.id.row2);
             }
-            buttons[i].setBackgroundResource(R.drawable.stylebutton);
+            if (tempSettingsSet.darkMode==true)
+                buttons[i].setBackgroundResource(R.drawable.stylebutton_dark);
+            else
+                buttons[i].setBackgroundResource(R.drawable.stylebutton);
+
             buttons[i].setPadding(10, 10, 10, 10);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
             lp.setMargins(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
             buttons[i].setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("ResourceAsColor")
                 @Override
                 public void onClick(View view) {
 
@@ -110,7 +135,10 @@ public class GuessStar extends AppCompatActivity {
                             a.setInit(false);
                         }
                         for (int i = 0; i < 4; i++) {
-                            buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                            //buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                            if (tempSettingsSet.darkMode==true) buttons[i].setTextColor(R.color.colorText);
+                                else buttons[i].setTextColor(R.color.colorTextLight);
+
                         }
                         scoreNow++;
                         YandexMetrica.reportEvent("GuessStarRightClick"); //метрика на правильный клик
@@ -128,10 +156,14 @@ public class GuessStar extends AppCompatActivity {
                                 Toast.makeText(GuessStar.this, "Бро, да ты просто бешеный! Нет, я серьезно. Таких фанатов K-pop еще надо поискать!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                         }*/
                         count++;
-                        if (count>=artists.size())      //обработка конца списка. Что бы играть можно было вечно
+                        if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
+                        {
                             artists = Importer.getRandomArtists();
+                            count = 0;
+                        }
                         init();
-                    } else if (scoreNow > 0) {scoreNow--;
+                    } else if (scoreNow > 0) {
+                        scoreNow--;
                         YandexMetrica.reportEvent("GuessStarLoseClick");  //метрика на неправильный клик
                     }
                     TextView textView = findViewById(R.id.scoreText);
@@ -140,6 +172,7 @@ public class GuessStar extends AppCompatActivity {
             });
             tableRow.addView(buttons[i]);
             imageView.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
+                @SuppressLint("ResourceAsColor")
                 @Override
                 public void onClick(View view) {
                     cheatOn = !cheatOn;
@@ -147,10 +180,38 @@ public class GuessStar extends AppCompatActivity {
                         for (int i = 0; i < 4; i++)
                             if (i == chosenOne)
                                 buttons[i].setTextColor(Color.RED);
-                            else buttons[i].setTextColor(Color.BLACK);
+                            else { if (tempSettingsSet.darkMode==true){
+                                buttons[i].setTextColor(R.color.colorText);
+                            } buttons[i].setTextColor(R.color.colorTextLight);
+                            }
                         Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                     } else
                         Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                }
+            });
+
+            cheaterButton = findViewById(R.id.cheaterButton);
+            cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
+                @Override
+                public void onClick(View view) {
+                    for (Artist a : artists) {
+                        a.setInit(false);
+                    }
+                    for (int i = 0; i < 4; i++) {
+                        buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                    }
+                   //количетво скипнутых артистов
+                      count++;
+                      scoreNow++;
+                      if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
+                      {
+                          artists = Importer.getRandomArtists();
+                          count = 0;
+                      }
+
+
+                    init();
+
                 }
             });
 
@@ -160,7 +221,6 @@ public class GuessStar extends AppCompatActivity {
 
         init();
     }
-
 
 
     /**
@@ -194,4 +254,6 @@ public class GuessStar extends AppCompatActivity {
                 .transition(withCrossFade())
                 .into(imageView);
     }
+
+
 }

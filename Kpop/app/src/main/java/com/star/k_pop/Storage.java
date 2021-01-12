@@ -12,6 +12,8 @@ public class Storage {
         this.context = context;
     }
 
+
+
     //+++++++++++++++++++++++++++++++++VALUE+SAVE+++++++++++++++++++++++++++++++++++++++++
     //куча перегрузок для разных типов
     //Overload!
@@ -30,6 +32,7 @@ public class Storage {
         e.putInt(nameOfValue, value);
         e.apply();
     }
+
 
     public void saveValue(String nameOfVault, String nameOfValue, Boolean value) {
 //сохранение значений в файле-хранилище
@@ -85,6 +88,7 @@ public class Storage {
 
         return value;
     }
+
 
     public Integer getInt(String nameOfStorage, String nameOfValue) {
         //nameOfStorage - это название файла-хранилища, а nameOfValue - название значения, что хранится в файле-хранилище

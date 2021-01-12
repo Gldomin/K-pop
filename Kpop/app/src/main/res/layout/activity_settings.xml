@@ -41,7 +41,7 @@
             android:layout_toEndOf="@+id/settingsConfirm"
             android:layout_toRightOf="@+id/settingsConfirm"
             android:background="@color/cancelRed"
-            android:text="@string/cancel" />
+            android:text="@string/answerCancel" />
 
         <Button
             android:id="@+id/settingsConfirm"
@@ -54,13 +54,13 @@
             android:layout_marginLeft="79dp"
             android:layout_marginBottom="15dp"
             android:background="@color/acceptGreen"
-            android:text="@string/accept" />
+            android:text="@string/answerAccept" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl2"
         android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_height="272dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/rl3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,11 +77,11 @@
             android:layout_marginStart="136dp"
             android:layout_marginLeft="136dp"
             android:layout_marginTop="20dp"
+            android:text="@string/settings1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/settings1" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Switch
             android:id="@+id/optionSwitch2"
@@ -93,11 +93,11 @@
             android:layout_marginStart="134dp"
             android:layout_marginLeft="134dp"
             android:layout_marginTop="14dp"
+            android:text="@string/settings2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/optionSwitch1"
-            android:text="@string/settings2" />
+            app:layout_constraintTop_toBottomOf="@+id/optionSwitch1" />
 
         <Switch
             android:id="@+id/optionSwitch3"
@@ -109,11 +109,11 @@
             android:layout_marginStart="136dp"
             android:layout_marginLeft="136dp"
             android:layout_marginTop="14dp"
+            android:text="@string/settings3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/optionSwitch2"
-            android:text="@string/settings3" />
+            app:layout_constraintTop_toBottomOf="@+id/optionSwitch2" />
 
         <Switch
             android:id="@+id/optionSwitch4"
@@ -125,11 +125,12 @@
             android:layout_marginStart="135dp"
             android:layout_marginLeft="135dp"
             android:layout_marginTop="14dp"
+            android:text="@string/settings4"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/optionSwitch3"
-            android:text="@string/settings4" />
+            app:layout_constraintTop_toBottomOf="@+id/optionSwitch3" />
 
         <Switch
             android:id="@+id/optionSwitch5"
@@ -141,10 +142,23 @@
             android:layout_marginStart="136dp"
             android:layout_marginLeft="136dp"
             android:layout_marginTop="14dp"
+            android:text="@string/settings5"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/optionSwitch4"
-            android:text="@string/settings5" />
+            app:layout_constraintTop_toBottomOf="@+id/optionSwitch4" />
+
+        <Button
+            android:id="@+id/resetRecordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/optionSwitch5"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="123dp"
+            android:layout_marginLeft="123dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/resetRecords" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
