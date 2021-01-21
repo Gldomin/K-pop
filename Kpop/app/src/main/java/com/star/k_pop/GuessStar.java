@@ -117,8 +117,8 @@ public class GuessStar extends AppCompatActivity {
                         YandexMetrica.reportEvent("GuessStarRightClick");
 
 
-                        if (scoreNow == 10) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                         SomeMethods.achievementGetted(GuessStar.this,R.string.achGuessStarNormal,R.drawable.error,"achGuessStarNormal"); //ачивочка
+                        if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
+                         SomeMethods.achievementGetted(GuessStar.this,R.string.achGuessStarNormal,R.drawable.kpoplove,"achGuessStarNormal"); //ачивочка
                             /*Storage storage = new Storage(GuessStar.this); //блок кодя для получения, уведомления и записи ачивок
                             String nameOfStorage = "appStatus"; String nameOfAchievement = "achGuessStarNormal";
                             if (!storage.getBoolean(nameOfStorage, "achGuessStarNormalText"))

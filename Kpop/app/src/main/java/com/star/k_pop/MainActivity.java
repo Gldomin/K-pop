@@ -163,6 +163,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button guessStarReverseButton = findViewById(R.id.guessStarReverseButton);
+        guessStarReverseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(MainActivity.this, GuessStarReverse.class);
+                startActivity(image);
+            }
+        });
+
         Button guessBandButton = findViewById(R.id.guessGroupButton);
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override

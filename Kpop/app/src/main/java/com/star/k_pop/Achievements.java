@@ -45,27 +45,27 @@ public class Achievements extends AppCompatActivity {
         String nameOfStorage = "appStatus";
 
         if (storage.getBoolean(nameOfStorage, "achGuessStarNormal")) //почему-то R.drawable.achievement слишком большая
-            ach1.setImageResource(R.drawable.achievement);
+            ach1.setImageResource(R.drawable.normalgs);
         if (storage.getBoolean(nameOfStorage, "achGuessStarExpert"))
-            ach2.setImageResource(R.drawable.energy);
+            ach2.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean(nameOfStorage, "achGuessBandsNormal"))
-            ach3.setImageResource(R.drawable.cubes);
+            ach3.setImageResource(R.drawable.normalgb);
         if (storage.getBoolean(nameOfStorage, "achGuessBandsExpert"))
-            ach4.setImageResource(R.drawable.heart);
+            ach4.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean(nameOfStorage, "achSwipeTwoBandsNormal"))
-            ach5.setImageResource(R.drawable.cubes);
+            ach5.setImageResource(R.drawable.normaldb);
         if (storage.getBoolean(nameOfStorage, "achSwipeTwoBandsExpert"))
-            ach6.setImageResource(R.drawable.energy);
+            ach6.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean(nameOfStorage, "achGuessStarReversNormal"))
-            ach7.setImageResource(R.drawable.cubes);
+            ach7.setImageResource(R.drawable.kpoplove);
          if (storage.getBoolean(nameOfStorage, "achGuessStarReversExpert"))
-           ach8.setImageResource(R.drawable.achievement);
+           ach8.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean(nameOfStorage,"achSecretGameMode"))
-            ach9.setImageResource(R.drawable.energy);
+            ach9.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean(nameOfStorage,"achAdsFree"))
-            ach10.setImageResource(R.drawable.heart);
+            ach10.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean(nameOfStorage,"achRoyal"))
-            ach11.setImageResource(R.drawable.energy);
+            ach11.setImageResource(R.drawable.kpoplove);
 
 
         //SomeMethods.showToast(this, "Достижение открыто!", R.drawable.achievement);

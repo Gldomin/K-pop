@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BasicNotice"
+        <activity android:name=".GuessStarReverse"></activity>
+        <activity
+            android:name=".BasicNotice"
             android:label="@string/aboutTitle"
-            android:theme="@style/Theme.AppCompat.Dialog">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Dialog"></activity>
         <activity
             android:name=".Achievements"
             android:screenOrientation="portrait" />

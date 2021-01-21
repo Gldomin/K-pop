@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.lib.SomeMethods;
 import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import java.util.Random;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 
-public class GuessStarReverse extends AppCompatActivity { //класс копирован с GuessStar. Но работает наоборот. Игрок видит 4 фотографии и Имя, после
+public class GuessStarReverse extends AppCompatActivity { //копия GuessStar, но видоизмененная - GuessStarReverse предоставляет 4 фотки и одно имя. режим наоборот.
     boolean cheatOn = false;
     Button cheaterButton;
     ImageView imageView;
@@ -48,9 +49,9 @@ public class GuessStarReverse extends AppCompatActivity { //класс копи�
     @Override
     protected void onPause() {
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE); //сохранение Счета
-        if (sp.getInt("userScoreGuessStar", -1) < scoreNow) {
+        if (sp.getInt("userScoreGuessStarReverse", -1) < scoreNow) {
             SharedPreferences.Editor e = sp.edit();
-            e.putInt("userScoreGuessStar", scoreNow);
+            e.putInt("userScoreGuessStarReverse", scoreNow);
             e.apply();
         }
         super.onPause();
@@ -70,9 +71,9 @@ public class GuessStarReverse extends AppCompatActivity { //класс копи�
         ///////UserScore//////
         TextView textUserScore = findViewById(R.id.scoreText2);
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
-        if (sp.contains("userScoreGuessStar")) {
+        if (sp.contains("userScoreGuessStarReverse")) {
             int userScore = -1;
-            userScore = sp.getInt("userScoreGuessStar", userScore);
+            userScore = sp.getInt("userScoreGuessStarReverse", userScore);
             textUserScore.setText("Ваш рекорд: " + userScore);
         } else textUserScore.setText("Ваш рекорд: " + 0);
         if (savedInstanceState != null)
@@ -96,8 +97,8 @@ public class GuessStarReverse extends AppCompatActivity { //класс копи�
             buttons[i].setBackgroundResource(R.drawable.stylebutton);
             buttons[i].setPadding(10, 10, 10, 10);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
             lp.setMargins(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
             buttons[i].setOnClickListener(new View.OnClickListener() {
@@ -113,7 +114,19 @@ public class GuessStarReverse extends AppCompatActivity { //класс копи�
                             buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
                         }
                         scoreNow++;
-                        YandexMetrica.reportEvent("GuessStarRightClick"); //метрика на правильный клик
+                        YandexMetrica.reportEvent("GuessStarReverseRightClick");
+
+
+                        if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
+                            SomeMethods.achievementGetted(GuessStarReverse.this,R.string.achGuessStarReversNormal,R.drawable.kpoplove,"achGuessStarReversNormal"); //ачивочка
+                            /*Storage storage = new Storage(GuessStar.this); //блок кодя для получения, уведомления и записи ачивок
+                            String nameOfStorage = "appStatus"; String nameOfAchievement = "achGuessStarNormal";
+                            if (!storage.getBoolean(nameOfStorage, "achGuessStarNormalText"))
+                                SomeMethods.showAchievementToast(GuessStar.this, getResources().getString(R.string.achievementUnlocked), getResources().getString(R.string.achGuessStarNormal), R.drawable.achievement);
+                            storage.saveValue(nameOfStorage,nameOfAchievement,true);*/
+                        }
+
+                        //метрика на правильный клик
                         /*switch (scoreNow) {
                             case 10:
                                 Toast.makeText(GuessStar.this, "Поздравляем, Вы - адепт K-pop", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
@@ -162,17 +175,21 @@ public class GuessStarReverse extends AppCompatActivity { //класс копи�
             cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
                 @Override
                 public void onClick(View view) {
-                    int stepSize=1; //рзамер шага переключения
+                    for (Artist a : artists) {
+                        a.setInit(false);
+                    }
+                    for (int i = 0; i < 4; i++) {
+                        buttons[i].setTextColor(Color.BLACK); //Чит на правильный ответ
+                    }
+                    //количетво скипнутых артистов
+                    count++;
+                    scoreNow++;
+                    if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
+                    {
+                        artists = Importer.getRandomArtists();
+                        count = 0;
+                    }
 
-                  for(int i=0; i<stepSize;i++) { //количетво скипнутых артистов
-                      count++;
-                      scoreNow++;
-                      if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
-                      {
-                          artists = Importer.getRandomArtists();
-                          count = 0;
-                      }
-                  }
 
                     init();
 
@@ -182,6 +199,7 @@ public class GuessStarReverse extends AppCompatActivity { //класс копи�
 
         }
         artists = Importer.getRandomArtists();
+
         init();
     }
 
