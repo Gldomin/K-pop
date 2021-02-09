@@ -1,12 +1,9 @@
-package com.star.k_pop;
+package com.star.k_pop.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +12,12 @@ import android.widget.Switch;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.star.k_pop.BasicNotice;
+import com.star.k_pop.OptionsSet;
+import com.star.k_pop.R;
+import com.star.k_pop.Settings;
+import com.star.k_pop.Storage;
+import com.star.k_pop.TwoBandsTinder;
 import com.star.k_pop.gallery.activity.Gallery;
 
 import static android.widget.Toast.makeText;

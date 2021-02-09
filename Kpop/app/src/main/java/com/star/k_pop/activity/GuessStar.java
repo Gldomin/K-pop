@@ -1,11 +1,10 @@
-package com.star.k_pop;
+package com.star.k_pop.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.star.k_pop.Artist;
+import com.star.k_pop.OptionsSet;
+import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.Storage;
 import com.star.k_pop.lib.SomeMethods;
 import com.yandex.metrica.YandexMetrica;
 

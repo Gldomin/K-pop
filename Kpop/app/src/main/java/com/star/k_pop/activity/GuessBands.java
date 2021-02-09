@@ -1,4 +1,4 @@
-package com.star.k_pop;
+package com.star.k_pop.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -26,7 +26,11 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.star.k_pop.Artist;
+import com.star.k_pop.OptionsSet;
+import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.Storage;
 
 import java.util.ArrayList;
 import java.util.List;

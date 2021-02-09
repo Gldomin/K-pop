@@ -1,4 +1,4 @@
-package com.star.k_pop;
+package com.star.k_pop.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.star.k_pop.OptionsSet;
+import com.star.k_pop.R;
+import com.star.k_pop.Storage;
 import com.star.k_pop.lib.SomeMethods;
 
 
