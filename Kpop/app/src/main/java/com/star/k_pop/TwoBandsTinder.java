@@ -65,6 +65,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         Log.i("Test2", "bands size" + bands.size());
         oneBand.setText(bands.get(bandsCount).getName());
         secondBand.setText(bands.get(bandsCount + 1).getName());
+        if(artists.size()!=0)artists.clear();
         artists.addAll(bands.get(bandsCount).getArtists());
         Log.i("Test2", "band artists count" + bands.get(bandsCount).getArtists().size());
         artists.addAll(bands.get(bandsCount + 1).getArtists());
@@ -72,7 +73,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         Collections.shuffle(artists);
         number_of_artist = 0;
         if(artChoices!=null) artChoices.clear();
-        if(artChoices.size()!=0)changeArtist();
+        if(artChoices.size()==0)changeArtist();
         bandsCount = bandsCount + 2;
     }
 
@@ -105,9 +106,10 @@ public class TwoBandsTinder extends AppCompatActivity {
                     imBTmp.setRotation(0);
                     imBTmp.setScaleX(1);
                     imBTmp.setScaleY(1);
+                    imBTmp.setAlpha(1.0f);
                     if (left) {
                         Log.i("Fuck","when im going here");
-                        imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(30).setDuration(400).setListener(new AnimatorListenerAdapter() {
+                        imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(30).alpha(0.1f).setDuration(400).setListener(new AnimatorListenerAdapter() {
                             @Override
                             public void onAnimationEnd(Animator animation) {
                                 super.onAnimationEnd(animation);
@@ -120,7 +122,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                     }
                     if (right) {
 
-                        imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(-30).setDuration(400).setListener(new AnimatorListenerAdapter() {
+                        imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(-30).alpha(0.1f).setDuration(400).setListener(new AnimatorListenerAdapter() {
                             @Override
                             public void onAnimationEnd(Animator animation) {
                                 super.onAnimationEnd(animation);
