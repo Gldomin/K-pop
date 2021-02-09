@@ -2,6 +2,7 @@
     <string name="app_name">Guess K-pop</string>
 
     <string name="menuItemGuessStar">Guess Star</string>
+    <string name="menuItemGuessStarReverse">Guess Star Reverse</string>
     <string name="menuItemGuessBand">Guess Band</string>
     <string name="menuItemTinderSwipe">Choose Group</string>
     <string name="menuItemGallery">Gallery</string>
@@ -104,7 +105,6 @@ At any time, you can view all artist cards and redistribute them. If you distrib
 But I think you can figure it out. "\n"
 Distribute them all!
     </string>
-
 
 
 </resources>

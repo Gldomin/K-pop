@@ -24,6 +24,12 @@
             android:text="@string/menuItemGuessStar" />
 
         <Button
+            android:id="@+id/guessStarReverseButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/menuItemGuessStarReverse" />
+        <Button
             android:id="@+id/guessGroupButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

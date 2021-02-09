@@ -25,6 +25,7 @@
                 android:layout_height="match_parent">
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="20dp"
@@ -32,10 +33,12 @@
 
                     <ImageView
                         android:id="@+id/ach1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        app:srcCompat="@drawable/hide" />
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/hide"
+
+                        />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -51,7 +54,7 @@
 
                         <TextView
                             android:id="@+id/ach1SmallText"
-                            android:layout_width="match_parent"
+                            android:layout_width="230dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="@string/achGuessStarNormalText" />
@@ -61,15 +64,17 @@
                 </TableRow>
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/ach2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        app:srcCompat="@drawable/hide" />
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/hide"
+                        />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -81,7 +86,7 @@
                             android:id="@+id/ach2BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achGuessBandsNormal" />
+                            android:text="@string/achGuessStarExpert" />
 
                         <TextView
                             android:id="@+id/ach2SmallText"
@@ -89,21 +94,22 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
 
-                            android:text="придумать критерий достижения" />
+                            android:text="@string/achGuessStarExpertText" />
 
                     </LinearLayout>
 
                 </TableRow>
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/ach3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
@@ -116,28 +122,29 @@
                             android:id="@+id/ach3BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achSwipeTwoBandsNormal" />
+                            android:text="@string/achGuessBandsNormal" />
 
                         <TextView
                             android:id="@+id/ach3SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="придумать критерий достижения" />
+                            android:text="@string/achGuessBandsNormalText" />
 
                     </LinearLayout>
 
                 </TableRow>
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/ach4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
@@ -150,28 +157,29 @@
                             android:id="@+id/ach4BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achGuessStarReversNormal" />
+                            android:text="@string/achGuessBandsExpert" />
 
                         <TextView
                             android:id="@+id/ach4SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="придумать критерий достижения" />
+                            android:text="@string/achGuessBandsExpertText" />
 
                     </LinearLayout>
 
                 </TableRow>
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/ach5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
@@ -184,28 +192,29 @@
                             android:id="@+id/ach5BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achSecretGameMode" />
+                            android:text="@string/achSwipeTwoBandsNormal" />
 
                         <TextView
                             android:id="@+id/ach5SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="придумать критерий достижения" />
+                            android:text="@string/achSwipeTwoBandsNormalText" />
 
                     </LinearLayout>
 
                 </TableRow>
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/ach6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
@@ -218,27 +227,28 @@
                             android:id="@+id/ach6BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achAdsFree" />
+                            android:text="@string/achSwipeTwoBandsExpert" />
 
                         <TextView
                             android:id="@+id/ach6SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="придумать критерий достижения" />
+                            android:text="@string/achSwipeTwoBandsExpertText" />
 
                     </LinearLayout>
 
                 </TableRow>
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/ach7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
@@ -251,14 +261,151 @@
                             android:id="@+id/ach7BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achRoyal" />
+                            android:text="@string/achGuessStarReversNormal" />
 
                         <TextView
                             android:id="@+id/ach7SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="придумать критерий достижения" />
+                            android:text="@string/achGuessStarReversNormalText" />
+
+                    </LinearLayout>
+
+                </TableRow>
+                <TableRow
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ach8"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/hide" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ach8BigText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/achGuessStarReversExpert" />
+
+                        <TextView
+                            android:id="@+id/ach8SmallText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/achGuessStarReversExpertText" />
+
+                    </LinearLayout>
+
+                </TableRow>
+                <TableRow
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ach9"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/hide" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ach9BigText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/achSecretGameMode" />
+
+                        <TextView
+                            android:id="@+id/ach9SmallText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/achSecretGameModeText" />
+
+                    </LinearLayout>
+
+                </TableRow>
+                <TableRow
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ach10"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/hide" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ach10BigText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/achAdsFree" />
+
+                        <TextView
+                            android:id="@+id/ach10SmallText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/achAdsFreeText" />
+
+                    </LinearLayout>
+
+                </TableRow>
+                <TableRow
+
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ach11"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/hide" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ach11BigText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/achRoyal" />
+
+                        <TextView
+                            android:id="@+id/ach11SmallText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/achRoyalText" />
 
                     </LinearLayout>
 

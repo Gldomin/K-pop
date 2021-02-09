@@ -32,8 +32,42 @@ public class Achievements extends AppCompatActivity {
         final ImageView ach2 = findViewById(R.id.ach2);
         final ImageView ach3 = findViewById(R.id.ach3);
         final ImageView ach4 = findViewById(R.id.ach4);
+        final ImageView ach5 = findViewById(R.id.ach5);
+        final ImageView ach6 = findViewById(R.id.ach6);
+        final ImageView ach7 = findViewById(R.id.ach7);
+        final ImageView ach8 = findViewById(R.id.ach8);
+        final ImageView ach9 = findViewById(R.id.ach9);
+        final ImageView ach10 = findViewById(R.id.ach10);
+        final ImageView ach11 = findViewById(R.id.ach11);
 
-        SomeMethods.showToast(this, "Достижение открыто!", R.drawable.achievement);
+        Storage storage = new Storage(this);
+        String nameOfStorage = "appStatus";
+
+        if (storage.getBoolean(nameOfStorage, "achGuessStarNormal")) //почему-то R.drawable.achievement слишком большая
+            ach1.setImageResource(R.drawable.normalgs);
+        if (storage.getBoolean(nameOfStorage, "achGuessStarExpert"))
+            ach2.setImageResource(R.drawable.kpoplove);
+        if (storage.getBoolean(nameOfStorage, "achGuessBandsNormal"))
+            ach3.setImageResource(R.drawable.normalgb);
+        if (storage.getBoolean(nameOfStorage, "achGuessBandsExpert"))
+            ach4.setImageResource(R.drawable.kpoplove);
+        if (storage.getBoolean(nameOfStorage, "achSwipeTwoBandsNormal"))
+            ach5.setImageResource(R.drawable.normaldb);
+        if (storage.getBoolean(nameOfStorage, "achSwipeTwoBandsExpert"))
+            ach6.setImageResource(R.drawable.kpoplove);
+        if (storage.getBoolean(nameOfStorage, "achGuessStarReversNormal"))
+            ach7.setImageResource(R.drawable.kpoplove);
+         if (storage.getBoolean(nameOfStorage, "achGuessStarReversExpert"))
+           ach8.setImageResource(R.drawable.kpoplove);
+        if (storage.getBoolean(nameOfStorage,"achSecretGameMode"))
+            ach9.setImageResource(R.drawable.kpoplove);
+        if (storage.getBoolean(nameOfStorage,"achAdsFree"))
+            ach10.setImageResource(R.drawable.kpoplove);
+        if (storage.getBoolean(nameOfStorage,"achRoyal"))
+            ach11.setImageResource(R.drawable.kpoplove);
+
+
+        //SomeMethods.showToast(this, "Достижение открыто!", R.drawable.achievement);
 
         Button tempButton = findViewById(R.id.button2); //временная штука, потом будем считывать из Хранилища состояния ачивок
         tempButton.setOnClickListener(new View.OnClickListener() {

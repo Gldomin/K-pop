@@ -3,6 +3,7 @@
     <string name="app_name">Угадай K-pop</string>
 
     <string name="menuItemGuessStar">Угадай звезду</string>
+    <string name="menuItemGuessStarReverse">Угадай звезду наоборот</string>
     <string name="menuItemGuessBand">Угадай группу</string>
     <string name="menuItemTinderSwipe">Распредели по группам</string>
     <string name="menuItemGallery">Галлерея</string>
