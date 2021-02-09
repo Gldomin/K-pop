@@ -13,7 +13,7 @@ import com.star.k_pop.lib.SomeMethods;
 public class Achievements extends AppCompatActivity {
 
     OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
-    String buttonStyleChange = "stylebutton";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class Achievements extends AppCompatActivity {
         tempSettingsSet.darkMode = storage2.getBoolean(nameOfStorage2, "darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode == true) setTheme(R.style.AppTheme2);
+        else setTheme(R.style.AppThemeLight);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievements);
@@ -69,7 +70,9 @@ public class Achievements extends AppCompatActivity {
 
         //SomeMethods.showToast(this, "Достижение открыто!", R.drawable.achievement);
 
-        Button tempButton = findViewById(R.id.button2); //временная штука, потом будем считывать из Хранилища состояния ачивок
+        Button tempButton = findViewById(R.id.button2);//временная штука, потом будем считывать из Хранилища состояния ачивокъ
+        if (tempSettingsSet.darkMode==true) tempButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        else tempButton.setBackgroundResource(R.drawable.stylebutton);
         tempButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

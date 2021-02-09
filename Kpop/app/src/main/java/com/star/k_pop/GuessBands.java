@@ -90,13 +90,11 @@ public class GuessBands extends AppCompatActivity {
         Storage tempStorage = new Storage(this);
         String nameOfStorage3 = "settings";
         String nameOfValue = "darkModeCounter";
-        // TODO counter = tempStorage.getInt(nameOfStorage3,nameOfValue);
 
         tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) {
             setTheme(R.style.AppTheme2);
-            buttonStyleChange = "stylebutton_dark";
         }
         else setTheme(R.style.AppThemeLight);
         super.onCreate(savedInstanceState);
@@ -176,8 +174,10 @@ public class GuessBands extends AppCompatActivity {
 
         buttons = new ArrayList<Button>();
         final EditText grName = findViewById(R.id.groupName);
-        if (tempSettingsSet.darkMode==true) grName.setTextColor(R.color.colorText);
-        else grName.setTextColor(R.color.colorTextLight);
+        if (tempSettingsSet.darkMode==true) grName.setTextColor(getResources().getColor(R.color.colorText));
+        else grName.setTextColor(getResources().getColor(R.color.colorTextLight));
+
+
 
         // 4 строки снизу для отладки, удалить на релизе
         String textAnsw = grName.getText().toString();
