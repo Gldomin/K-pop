@@ -1,13 +1,16 @@
-package com.star.k_pop;
+package com.star.k_pop.model;
 
 import java.util.Random;
 
+/**
+ * Класс артист
+ */
 public class Artist {
-    private String group;
-    private String name;
-    private boolean init = false;
-    private String[] namesImages;
-    private boolean sex = false;
+    private String group;           // Имя группы
+    private String name;            // Имя артиста
+    private boolean init = false;   // Использовался артист или нет
+    private String[] namesImages;   // Имена картинок
+    private boolean sex = false;    // Пол артиста
 
     public Artist(String group, String name, String[] namesImages, boolean sex) {
         this.group = group;

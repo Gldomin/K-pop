@@ -1,4 +1,4 @@
-package com.star.k_pop;
+package com.star.k_pop.helper;
 
 public class OptionsSet { //объект хранения настроек приложения
     public Boolean hardMode; //режим хардкора

@@ -1,8 +1,10 @@
-package com.star.k_pop;
+package com.star.k_pop.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.star.k_pop.R;
 
 public class BasicNotice extends AppCompatActivity {
 

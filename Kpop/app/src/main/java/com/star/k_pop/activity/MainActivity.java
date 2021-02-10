@@ -12,12 +12,9 @@ import android.widget.Switch;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.star.k_pop.BasicNotice;
-import com.star.k_pop.OptionsSet;
+import com.star.k_pop.helper.OptionsSet;
 import com.star.k_pop.R;
-import com.star.k_pop.Settings;
-import com.star.k_pop.Storage;
-import com.star.k_pop.TwoBandsTinder;
+import com.star.k_pop.helper.Storage;
 import com.star.k_pop.gallery.activity.Gallery;
 
 import static android.widget.Toast.makeText;

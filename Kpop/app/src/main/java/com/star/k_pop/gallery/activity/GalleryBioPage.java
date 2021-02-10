@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.star.k_pop.OnSwipeTouchListener;
+import com.star.k_pop.interfaces.OnSwipeTouchListener;
 import com.star.k_pop.R;
 
 public class GalleryBioPage extends AppCompatActivity {

@@ -7,10 +7,9 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.star.k_pop.OptionsSet;
+import com.star.k_pop.helper.OptionsSet;
 import com.star.k_pop.R;
-import com.star.k_pop.Storage;
-import com.star.k_pop.lib.SomeMethods;
+import com.star.k_pop.helper.Storage;
 
 
 public class Achievements extends AppCompatActivity {

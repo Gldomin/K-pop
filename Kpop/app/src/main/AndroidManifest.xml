@@ -14,20 +14,20 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.GuessStarReverse"></activity>
         <activity
-            android:name=".BasicNotice"
+            android:name=".activity.BasicNotice"
             android:label="@string/aboutTitle"
             android:theme="@style/Theme.AppCompat.Dialog"></activity>
         <activity
             android:name=".activity.Achievements"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TwoBandsTinder"
+            android:name=".activity.TwoBandsTinder"
             android:screenOrientation="portrait" />
         <activity
             android:name=".gallery.activity.GalleryBioPage"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Settings"
+            android:name=".activity.Settings"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.GuessStar"

@@ -1,4 +1,4 @@
-package com.star.k_pop;
+package com.star.k_pop.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;

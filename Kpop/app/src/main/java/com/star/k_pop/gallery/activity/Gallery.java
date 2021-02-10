@@ -2,7 +2,6 @@ package com.star.k_pop.gallery.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,11 +9,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.star.k_pop.Artist;
-import com.star.k_pop.OptionsSet;
+import com.star.k_pop.model.Artist;
+import com.star.k_pop.helper.OptionsSet;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
-import com.star.k_pop.Storage;
+import com.star.k_pop.helper.Storage;
 import com.star.k_pop.gallery.adapter.GalleryAdapter;
 import com.star.k_pop.gallery.model.ImageGallery;
 
