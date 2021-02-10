@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         final Switch hintModeSwitch = findViewById(R.id.optionSwitch1);
 
 
-        noticeWatched.setChecked(storage.getBoolean("noticeWatched")); //TODO по-хорошему надо переписать Storage, что бы не писать лишний раз nameOfStorage (можно указывать в конструкторе)
+        noticeWatched.setChecked(storage.getBoolean("noticeWatched"));
         achGuessStarNormalText.setChecked(storage.getBoolean("achGuessStarNormal"));
         achGuessStarExpertText.setChecked(storage.getBoolean("achGuessStarExpert"));
         achGuessBandsNormalText.setChecked(storage.getBoolean("achGuessBandsNormal"));

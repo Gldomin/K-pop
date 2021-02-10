@@ -12,19 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.GuessStarReverse"></activity>
+        <activity android:name=".activity.GuessStarReverse" />
         <activity
             android:name=".activity.BasicNotice"
             android:label="@string/aboutTitle"
-            android:theme="@style/Theme.AppCompat.Dialog"></activity>
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
             android:name=".activity.Achievements"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.TwoBandsTinder"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".gallery.activity.GalleryBioPage"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.Settings"

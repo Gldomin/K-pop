@@ -103,4 +103,8 @@
         Распредели их всех!
     </string>
 
+
+    <string name="score_text">Ваш счет:</string>
+    <string name="record_text">Ваш рекорд:</string>
+
 </resources>

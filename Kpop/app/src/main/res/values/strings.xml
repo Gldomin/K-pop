@@ -106,5 +106,7 @@ But I think you can figure it out. "\n"
 Distribute them all!
     </string>
 
+    <string name="score_text">Score:</string>
+    <string name="record_text">Record:</string>
 
 </resources>

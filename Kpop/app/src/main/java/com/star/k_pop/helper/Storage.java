@@ -89,7 +89,7 @@ public class Storage {
             value = sp.getString(nameOfValue, value); //взятие settings из Хранилища
         } else {
             // saveValue(nameOfStorage, nameOfValue);
-            throw new MissedValueException();
+            //throw new MissedValueException();
         }
         return value;
     }
@@ -108,7 +108,7 @@ public class Storage {
             value = sp.getInt(nameOfValue, value); //взятие settings из Хранилища
         } else {
             // saveValue(nameOfStorage, nameOfValue);
-            throw new MissedValueException();
+            //throw new MissedValueException();
         }
         return value;
     }
@@ -127,7 +127,7 @@ public class Storage {
             value = sp.getBoolean(nameOfValue, value); //взятие settings из Хранилища
         } else {
             // saveValue(nameOfStorage, nameOfValue);
-            throw new MissedValueException();
+            //throw new MissedValueException();
         }
         return value;
     }
@@ -146,7 +146,7 @@ public class Storage {
             value = sp.getFloat(nameOfValue, value); //взятие settings из Хранилища
         } else {
             // saveValue(nameOfStorage, nameOfValue);
-            throw new MissedValueException();
+            //throw new MissedValueException();
         }
         return value;
     }
