@@ -8,10 +8,10 @@ import java.util.Random;
  */
 public class Bands {
 
-    private String name;                // Имя группы
-    private ArrayList<Artist> artists;  // Список артистов
-    private byte numberOfPeople;        // Количество человек
-    private String[] imagesBands;       // Названия картинок
+    private final String name;                // Имя группы
+    private final ArrayList<Artist> artists;  // Список артистов
+    private final byte numberOfPeople;        // Количество человек
+    private final String[] imagesBands;       // Названия картинок
 
     public Bands(String name, ArrayList<Artist> artists, String[] imagesBands) {
         this.name = name;

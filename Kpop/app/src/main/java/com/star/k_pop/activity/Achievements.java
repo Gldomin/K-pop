@@ -7,24 +7,20 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.star.k_pop.helper.OptionsSet;
 import com.star.k_pop.R;
 import com.star.k_pop.helper.Storage;
+import com.star.k_pop.helper.Theme;
 
 
 public class Achievements extends AppCompatActivity {
 
-    OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
-
+    Theme theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Storage storage2 = new Storage(this,"settings");
-        tempSettingsSet.darkMode = storage2.getBoolean("darkMode"); //считываем состояние
-        //теперь выбираем тему в зависимости от положения свича
-        if (tempSettingsSet.darkMode == true) setTheme(R.style.AppTheme2);
-        else setTheme(R.style.AppThemeLight);
+        theme = new Theme(this);
+        theme.setTheme();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievements);
@@ -58,8 +54,8 @@ public class Achievements extends AppCompatActivity {
             ach6.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean("achGuessStarReversNormal"))
             ach7.setImageResource(R.drawable.kpoplove);
-         if (storage.getBoolean("achGuessStarReversExpert"))
-           ach8.setImageResource(R.drawable.kpoplove);
+        if (storage.getBoolean("achGuessStarReversExpert"))
+            ach8.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean("achSecretGameMode"))
             ach9.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean("achAdsFree"))
@@ -71,8 +67,11 @@ public class Achievements extends AppCompatActivity {
         //SomeMethods.showToast(this, "Достижение открыто!", R.drawable.achievement);
 
         Button tempButton = findViewById(R.id.button2);//временная штука, потом будем считывать из Хранилища состояния ачивокъ
-        if (tempSettingsSet.darkMode==true) tempButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        else tempButton.setBackgroundResource(R.drawable.stylebutton);
+        if (theme.isDarkMode()) {
+            tempButton.setBackgroundResource(R.drawable.stylebutton_dark);
+        } else {
+            tempButton.setBackgroundResource(R.drawable.stylebutton);
+        }
         tempButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

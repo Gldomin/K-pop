@@ -21,8 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
-import com.star.k_pop.helper.OptionsSet;
-import com.star.k_pop.helper.Storage;
+import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.model.Artist;
 import com.yandex.metrica.YandexMetrica;
@@ -48,19 +47,14 @@ public class GuessStar extends AppCompatActivity {
     int count = 0;          //номер артиста из сгенерированного списка (текущий)
     boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
 
-    OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
+    Theme theme; //переменная для считывания состояния свиича на darkmod
 
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Storage storage = new Storage(this, "settings");
-        tempSettingsSet.darkMode = storage.getBoolean("darkMode"); //считываем состояние
-        //теперь выбираем тему в зависимости от положения свича
-        if (tempSettingsSet.darkMode) {
-            setTheme(R.style.AppTheme2);
-        } else {
-            setTheme(R.style.AppThemeLight);
-        }
+
+        theme = new Theme(this);
+        theme.setTheme();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
@@ -95,7 +89,7 @@ public class GuessStar extends AppCompatActivity {
                 tableRow = findViewById(R.id.row2);
             }
 
-            if (tempSettingsSet.darkMode) {
+            if (theme.isDarkMode()) {
                 buttons[i].setBackgroundResource(R.drawable.stylebutton_dark);
                 buttons[i].setTextColor(getResources().getColor(R.color.colorText));
             } else {
@@ -122,7 +116,7 @@ public class GuessStar extends AppCompatActivity {
                             artists = Importer.getRandomArtists();
                             count = 0;
                         }
-                        
+
                         // TODO Ваня доделай эту часть
                         if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.kpoplove, "achGuessStarNormal"); //ачивочка
@@ -136,7 +130,7 @@ public class GuessStar extends AppCompatActivity {
 
                         // TODO Удалить перед релизом
                         for (int i = 0; i < 4; i++) {
-                            if (tempSettingsSet.darkMode) {
+                            if (theme.isDarkMode()) {
                                 buttons[i].setTextColor(getResources().getColor(R.color.colorText));
                             } else {
                                 buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
@@ -156,12 +150,19 @@ public class GuessStar extends AppCompatActivity {
         }
 
         // TODO Удалить перед релизом
+        if (theme.isDarkMode()) {
+            cheaterButton.setBackgroundResource(R.drawable.stylebutton_dark);
+            cheaterButton.setTextColor(getResources().getColor(R.color.colorText));
+        } else {
+            cheaterButton.setBackgroundResource(R.drawable.stylebutton);
+            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextLight));
+        }
         cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
                 for (int i = 0; i < 4; i++) {
-                    if (tempSettingsSet.darkMode) {
+                    if (theme.isDarkMode()) {
                         buttons[i].setTextColor(getResources().getColor(R.color.colorText));
                     } else {
                         buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
@@ -190,7 +191,7 @@ public class GuessStar extends AppCompatActivity {
                         if (i == chosenOne)
                             buttons[i].setTextColor(Color.RED);
                         else {
-                            if (tempSettingsSet.darkMode) {
+                            if (theme.isDarkMode()) {
                                 buttons[i].setTextColor(getResources().getColor(R.color.colorText));
                             } else {
                                 buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
@@ -199,7 +200,7 @@ public class GuessStar extends AppCompatActivity {
                     }
                     Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                 } else {
-                    if (tempSettingsSet.darkMode) {
+                    if (theme.isDarkMode()) {
                         buttons[chosenOne].setTextColor(getResources().getColor(R.color.colorText));
                     } else {
                         buttons[chosenOne].setTextColor(getResources().getColor(R.color.colorTextLight));
