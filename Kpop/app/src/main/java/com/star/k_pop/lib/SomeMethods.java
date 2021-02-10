@@ -21,6 +21,7 @@ import static android.app.PendingIntent.getActivity;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class SomeMethods {
+
     /**
      * @param text     текст на ачивке
      * @param drawable id картинки из drawable для ачивки
@@ -48,12 +49,11 @@ public class SomeMethods {
         //achievementNameStringId это айдишка-указатель на название R.String которое хранит название ачивки
         //drawableId это картинка нужная для сообщения
         //nameOfAchievement это Строка-название по которому идет запись в Хранилище
-        Storage storage = new Storage(act.getApplicationContext());
+        Storage storage = new Storage(act.getApplicationContext(), "appStatus");
 
-        String nameOfStorage = "appStatus";
-        if (!storage.getBoolean(nameOfStorage, nameOfAchievement)) {
+        if (!storage.getBoolean(nameOfAchievement)) {
             SomeMethods.showAchievementToast(act, act.getResources().getString(R.string.achievementUnlocked), act.getResources().getString(achievementNameStringId), drawableId);
-            storage.saveValue(nameOfStorage, nameOfAchievement, true);
+            storage.saveValue(nameOfAchievement, true);
         }
     }
 

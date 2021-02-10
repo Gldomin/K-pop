@@ -33,11 +33,10 @@ public class Bands {
     }
 
     /**
-     *
      * @return имя картинки группы
      */
     public String getNamesImages() {
-        if(imagesBands.length == 1){
+        if (imagesBands.length == 1) {
             return imagesBands[0];
         }
         Random rand = new Random();
@@ -45,7 +44,6 @@ public class Bands {
     }
 
     /**
-     *
      * @return путь: имя группы/картинка
      */
     public String getFolder() {

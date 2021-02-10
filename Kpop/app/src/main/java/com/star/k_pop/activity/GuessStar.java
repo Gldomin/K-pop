@@ -77,9 +77,8 @@ public class GuessStar extends AppCompatActivity {
 
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
-        String nameOfStorage = "settings";
-        Storage storage = new Storage(this);
-        tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode"); //считываем состояние
+        Storage storage = new Storage(this, "settings");
+        tempSettingsSet.darkMode = storage.getBoolean("darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
         else setTheme(R.style.AppThemeLight);

@@ -80,15 +80,13 @@ public class GuessBands extends AppCompatActivity {
 
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
-        String nameOfStorage = "settings";
-        Storage storage = new Storage(this);
+        Storage storage = new Storage(this, "settings");
 
         Integer counter = 0;
-        Storage tempStorage = new Storage(this);
         String nameOfStorage3 = "settings";
         String nameOfValue = "darkModeCounter";
 
-        tempSettingsSet.darkMode = storage.getBoolean(nameOfStorage, "darkMode"); //считываем состояние
+        tempSettingsSet.darkMode = storage.getBoolean("darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) {
             setTheme(R.style.AppTheme2);

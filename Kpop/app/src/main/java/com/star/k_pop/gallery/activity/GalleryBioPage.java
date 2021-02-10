@@ -32,7 +32,6 @@ public class GalleryBioPage extends AppCompatActivity {
             try {
                 bufferedReader = new BufferedReader(new FileReader(yourFile));
             } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             String row = "";
@@ -47,7 +46,6 @@ public class GalleryBioPage extends AppCompatActivity {
 
 
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             jString = builder.toString();

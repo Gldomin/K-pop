@@ -32,8 +32,8 @@ public class Gallery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         String nameOfStorage2 = "settings";
-        Storage storage2 = new Storage(this);
-        tempSettingsSet.darkMode = storage2.getBoolean(nameOfStorage2, "darkMode"); //считываем состояние
+        Storage storage2 = new Storage(this, "settings");
+        tempSettingsSet.darkMode = storage2.getBoolean("darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode==true) setTheme(R.style.AppTheme2);
         else setTheme(R.style.AppThemeLight);

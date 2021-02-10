@@ -46,5 +46,7 @@ public class ApplicationStart extends Application {
         } catch (Exception ignored) {
 
         }
+
+        // TODO Добавить инициализацию значений поумолчанию и создать все файлы и ключи для коректной работы
     }
 }

@@ -20,9 +20,8 @@ public class Achievements extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        String nameOfStorage2 = "settings";
-        Storage storage2 = new Storage(this);
-        tempSettingsSet.darkMode = storage2.getBoolean(nameOfStorage2, "darkMode"); //считываем состояние
+        Storage storage2 = new Storage(this,"settings");
+        tempSettingsSet.darkMode = storage2.getBoolean("darkMode"); //считываем состояние
         //теперь выбираем тему в зависимости от положения свича
         if (tempSettingsSet.darkMode == true) setTheme(R.style.AppTheme2);
         else setTheme(R.style.AppThemeLight);
@@ -43,30 +42,29 @@ public class Achievements extends AppCompatActivity {
         final ImageView ach10 = findViewById(R.id.ach10);
         final ImageView ach11 = findViewById(R.id.ach11);
 
-        Storage storage = new Storage(this);
-        String nameOfStorage = "appStatus";
+        Storage storage = new Storage(this, "appStatus");
 
-        if (storage.getBoolean(nameOfStorage, "achGuessStarNormal")) //почему-то R.drawable.achievement слишком большая
+        if (storage.getBoolean("achGuessStarNormal")) //почему-то R.drawable.achievement слишком большая
             ach1.setImageResource(R.drawable.normalgs);
-        if (storage.getBoolean(nameOfStorage, "achGuessStarExpert"))
+        if (storage.getBoolean("achGuessStarExpert"))
             ach2.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean(nameOfStorage, "achGuessBandsNormal"))
+        if (storage.getBoolean("achGuessBandsNormal"))
             ach3.setImageResource(R.drawable.normalgb);
-        if (storage.getBoolean(nameOfStorage, "achGuessBandsExpert"))
+        if (storage.getBoolean("achGuessBandsExpert"))
             ach4.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean(nameOfStorage, "achSwipeTwoBandsNormal"))
+        if (storage.getBoolean("achSwipeTwoBandsNormal"))
             ach5.setImageResource(R.drawable.normaldb);
-        if (storage.getBoolean(nameOfStorage, "achSwipeTwoBandsExpert"))
+        if (storage.getBoolean("achSwipeTwoBandsExpert"))
             ach6.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean(nameOfStorage, "achGuessStarReversNormal"))
+        if (storage.getBoolean("achGuessStarReversNormal"))
             ach7.setImageResource(R.drawable.kpoplove);
-         if (storage.getBoolean(nameOfStorage, "achGuessStarReversExpert"))
+         if (storage.getBoolean("achGuessStarReversExpert"))
            ach8.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean(nameOfStorage,"achSecretGameMode"))
+        if (storage.getBoolean("achSecretGameMode"))
             ach9.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean(nameOfStorage,"achAdsFree"))
+        if (storage.getBoolean("achAdsFree"))
             ach10.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean(nameOfStorage,"achRoyal"))
+        if (storage.getBoolean("achRoyal"))
             ach11.setImageResource(R.drawable.kpoplove);
 
 
