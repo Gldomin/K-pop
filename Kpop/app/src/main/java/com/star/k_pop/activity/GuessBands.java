@@ -14,16 +14,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.star.k_pop.model.Artist;
-import com.star.k_pop.helper.OptionsSet;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.helper.Storage;
+import com.star.k_pop.helper.Theme;
+import com.star.k_pop.model.Artist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +48,7 @@ public class GuessBands extends AppCompatActivity {
     private boolean longnazh = false;
     private SharedPreferences spBands;
     SharedPreferences sp;
-    OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
+    Theme theme;
 
     //Создаем лист для кнопок
     private List<Button> buttons;
@@ -83,15 +82,10 @@ public class GuessBands extends AppCompatActivity {
         Storage storage = new Storage(this, "settings");
 
         Integer counter = 0;
-        String nameOfStorage3 = "settings";
-        String nameOfValue = "darkModeCounter";
 
-        tempSettingsSet.darkMode = storage.getBoolean("darkMode"); //считываем состояние
-        //теперь выбираем тему в зависимости от положения свича
-        if (tempSettingsSet.darkMode==true) {
-            setTheme(R.style.AppTheme2);
-        }
-        else setTheme(R.style.AppThemeLight);
+        theme = new Theme(this);
+        theme.setTheme();
+
         super.onCreate(savedInstanceState);
 /*
 
@@ -169,9 +163,11 @@ public class GuessBands extends AppCompatActivity {
 
         buttons = new ArrayList<Button>();
         final EditText grName = findViewById(R.id.groupName);
-        if (tempSettingsSet.darkMode==true) grName.setTextColor(getResources().getColor(R.color.colorText));
-        else grName.setTextColor(getResources().getColor(R.color.colorTextLight));
-
+        if (theme.isDarkMode()) {
+            grName.setTextColor(getResources().getColor(R.color.colorText));
+        } else {
+            grName.setTextColor(getResources().getColor(R.color.colorTextLight));
+        }
 
 
         // 4 строки снизу для отладки, удалить на релизе
@@ -188,7 +184,7 @@ public class GuessBands extends AppCompatActivity {
         //Подсказка названия группы на время разработки
         //надо будет удалить на релизе
 
-        info.setText(band+counter);
+        info.setText(band + counter);
 
 
         //устанавливаем слушатель на основные кнопки
@@ -208,8 +204,11 @@ public class GuessBands extends AppCompatActivity {
 
                         for (Button b : buttons) {
                             //выбор темы в зависимости от положения свича
-                            if (tempSettingsSet.darkMode==true) b.setBackgroundResource(R.drawable.stylebutton_dark);
-                            else b.setBackgroundResource(R.drawable.stylebutton);
+                            if (theme.isDarkMode()) {
+                                b.setBackgroundResource(R.drawable.stylebutton_dark);
+                            } else {
+                                b.setBackgroundResource(R.drawable.stylebutton);
+                            }
                         }
 
                         if (textAnsw.equals(answ)) {
@@ -222,7 +221,7 @@ public class GuessBands extends AppCompatActivity {
                             {
                                 artists = Importer.getRandomArtists();
 
-                               // Toast.makeText(GuessBands.this, "Перетасовка", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+                                // Toast.makeText(GuessBands.this, "Перетасовка", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                                 i = 0;
                             }
 
@@ -323,8 +322,11 @@ public class GuessBands extends AppCompatActivity {
             buttons.add(button);
         }
         for (Button b : buttons) {
-            if (tempSettingsSet.darkMode==true) b.setBackgroundResource(R.drawable.stylebutton_dark);
-            else b.setBackgroundResource(R.drawable.stylebutton);
+            if (theme.isDarkMode()) {
+                b.setBackgroundResource(R.drawable.stylebutton_dark);
+            } else {
+                b.setBackgroundResource(R.drawable.stylebutton);
+            }
         }
     }
 

@@ -10,9 +10,8 @@ import androidx.annotation.Nullable;
  */
 public class Storage {
 
-    //context важен, так как без него не заработает SharedPreferences, так как последний хочет рабить после Create
     Context context; // Context – это объект, который предоставляет доступ к базовым функциям приложения: доступ к ресурсам, к файловой системе, вызов активности
-    String nameOfStorage; // Еазвание файла-хранилища
+    String nameOfStorage; // Название файла-хранилища
 
     public Storage(Context context, String nameOfStorage) {
         this.context = context;

@@ -6,17 +6,18 @@ import java.util.Random;
  * Класс артист
  */
 public class Artist {
-    private String group;           // Имя группы
-    private String name;            // Имя артиста
-    private boolean init = false;   // Использовался артист или нет
-    private String[] namesImages;   // Имена картинок
-    private boolean sex = false;    // Пол артиста
+    private final String group;             // Имя группы
+    private final String name;              // Имя артиста
+    private boolean init;                   // Использовался артист или нет
+    private final String[] namesImages;     // Имена картинок
+    private final boolean sex;              // Пол артиста
 
     public Artist(String group, String name, String[] namesImages, boolean sex) {
         this.group = group;
         this.name = name;
         this.namesImages = namesImages; //массив имен всех фоток артиста
         this.sex = sex;
+        init = false;
     }
 
     public String getNamesImages() {

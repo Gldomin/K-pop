@@ -14,8 +14,7 @@ import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.gallery.adapter.GalleryAdapter;
 import com.star.k_pop.gallery.fragment.GallerySlideshowDialogFragment;
 import com.star.k_pop.gallery.model.ImageGallery;
-import com.star.k_pop.helper.OptionsSet;
-import com.star.k_pop.helper.Storage;
+import com.star.k_pop.helper.Theme;
 import com.star.k_pop.model.Artist;
 
 import java.util.ArrayList;
@@ -26,15 +25,12 @@ public class Gallery extends AppCompatActivity {
     private ArrayList<ImageGallery> imageGalleries;
     private GalleryAdapter mAdapter;
     private RecyclerView recyclerView;
-    final OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
+    Theme theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Storage storage2 = new Storage(this, "settings");
-        tempSettingsSet.darkMode = storage2.getBoolean("darkMode"); //считываем состояние
-        //теперь выбираем тему в зависимости от положения свича
-        if (tempSettingsSet.darkMode) setTheme(R.style.AppTheme2);
-        else setTheme(R.style.AppThemeLight);
+        theme = new Theme(this);
+        theme.setTheme();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);

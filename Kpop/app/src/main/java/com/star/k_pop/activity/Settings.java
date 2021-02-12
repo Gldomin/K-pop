@@ -20,15 +20,16 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.helper.OptionsSet;
 import com.star.k_pop.helper.Storage;
+import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.SomeMethods;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 
 public class Settings extends AppCompatActivity {
-    OptionsSet tempSettingsSet = new OptionsSet(false, false); //создание объекта для хранение параметров
+    OptionsSet tempSettingsSet = new OptionsSet(false, false);
+    Theme theme;
     SharedPreferences sp;
-
 
     //OptionsSet tempSettingsSet2 = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
     String buttonStyleChange = "stylebutton";
@@ -38,35 +39,41 @@ public class Settings extends AppCompatActivity {
 
         Storage storage = new Storage(this, "settings");
 
-        tempSettingsSet.darkMode = storage.getBoolean("darkMode"); //считываем состояние
-        //теперь выбираем тему в зависимости от положения свича
-        if (tempSettingsSet.darkMode == true) setTheme(R.style.AppTheme2);
-        else setTheme(R.style.AppThemeLight);
+        theme = new Theme(this);
+        theme.setTheme();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
 
         final Switch hintModeSwitch = findViewById(R.id.optionSwitch1); //hintMode переключалка
-        if (tempSettingsSet.darkMode == true)
+        if (theme.isDarkMode()) {
             hintModeSwitch.setTextColor(getResources().getColor(R.color.colorText));
-        else hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
+        } else {
+            hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
+        }
+
         final Switch hardModeSwitch = findViewById(R.id.optionSwitch2); //hardMode переключалка
-        if (tempSettingsSet.darkMode == true)
+        if (theme.isDarkMode()) {
             hardModeSwitch.setTextColor(getResources().getColor(R.color.colorText));
-        else hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
+        } else {
+            hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
+        }
+
         final Switch darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
-        if (tempSettingsSet.darkMode == true)
+        if (theme.isDarkMode()) {
             darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorText));
-        else darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
+        } else {
+            darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
+        }
         //   final Switch optionSwitch4 = findViewById(R.id.optionSwitch4); //заменить когда появится новая опция
         //   final Switch optionSwitch5 = findViewById(R.id.optionSwitch5); //заменить когда появится новая опция
-//hintModeSwitch.setOnCheckedChangeListener
+        //hintModeSwitch.setOnCheckedChangeListener
         hintModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-// Switch temp =findViewById(R.id.optionSwitch1);
-// settings.hintMode=temp.isChecked();
+                // Switch temp =findViewById(R.id.optionSwitch1);
+                // settings.hintMode=temp.isChecked();
                 tempSettingsSet.hintMode = hintModeSwitch.isChecked();
                 //tempSettingsSet.hardMode= !tempSettingsSet.hardMode;
                 //saveSettings();
@@ -76,8 +83,8 @@ public class Settings extends AppCompatActivity {
         hardModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-// Switch temp =findViewById(R.id.optionSwitch2);
-// settings.hardMode =temp.isChecked();
+                // Switch temp =findViewById(R.id.optionSwitch2);
+                // settings.hardMode =temp.isChecked();
                 //tempSettingsSet.hintMode= !tempSettingsSet.hintMode;
                 tempSettingsSet.hardMode = hardModeSwitch.isChecked();
                 //saveSettings();
@@ -106,9 +113,11 @@ public class Settings extends AppCompatActivity {
         });*/
 
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
-        if (tempSettingsSet.darkMode == true)
+        if (theme.isDarkMode()) {
             settingsConfirmButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        else settingsConfirmButton.setBackgroundResource(R.drawable.stylebutton);
+        } else {
+            settingsConfirmButton.setBackgroundResource(R.drawable.stylebutton);
+        }
 
         settingsConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,10 +131,11 @@ public class Settings extends AppCompatActivity {
         });
 
         Button creepyGuy = findViewById(R.id.settingsCancel); //TODO delete this shit
-
-        if (tempSettingsSet.darkMode == true)
+        if (theme.isDarkMode()) {
             creepyGuy.setBackgroundResource(R.drawable.stylebutton_dark);
-        else creepyGuy.setBackgroundResource(R.drawable.stylebutton);
+        } else {
+            creepyGuy.setBackgroundResource(R.drawable.stylebutton);
+        }
 
         creepyGuy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,17 +152,16 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-
         Button resetButton = findViewById(R.id.resetRecordButton); //кнопка сброса счета
-        if (tempSettingsSet.darkMode == true)
+        if (theme.isDarkMode()) {
             resetButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        else resetButton.setBackgroundResource(R.drawable.stylebutton);
+        } else {
+            resetButton.setBackgroundResource(R.drawable.stylebutton);
+        }
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if (SomeMethods.getBoolAnswerAlertDeialog(Settings.this, getResources().getString(R.string.questionConfirmTitle), getResources().getString(R.string.questionReset), getResources().getString(R.string.answerYes), getResources().getString(R.string.answerNo))) {
                     recordStorage.saveValue("userScoreGuessStar", 0);  //сброс рекорда. TODO надо сделать и для других режимов сброс
                     Toast.makeText(Settings.this, "Данные удалены", Toast.LENGTH_SHORT).show(); //отправка сообщения на экран
@@ -165,28 +174,20 @@ public class Settings extends AppCompatActivity {
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
         if (sp.contains("hardMode") && sp.contains("hintMode") && sp.contains("option5")) {
             storage = new Storage(this, "settings");
-            String nameOfStorage = "settings";
             tempSettingsSet.hintMode = storage.getBoolean("hintMode"); //считывание настроек из Хранилища
             tempSettingsSet.hardMode = storage.getBoolean("hardMode");
             tempSettingsSet.darkMode = storage.getBoolean("darkMode");
             tempSettingsSet.option4 = storage.getBoolean("option4");
             tempSettingsSet.option5 = storage.getBoolean("option5");
 
-
             hintModeSwitch.setChecked(tempSettingsSet.hintMode); //установка значение свитча
             hardModeSwitch.setChecked(tempSettingsSet.hardMode);
             darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
             //optionSwitch4.setChecked(tempSettingsSet.option4);
             //optionSwitch5.setChecked(tempSettingsSet.option5);
-
-
         } else {
-
             saveSettings();
-
         }
-
-
     }
 
     class Alert extends AsyncTask<Void, Void, Void> {
@@ -209,7 +210,6 @@ public class Settings extends AppCompatActivity {
     }
 
     void saveSettings() {
-
         Storage storage = new Storage(this, "settings");
         storage.saveValue("hintMode", tempSettingsSet.hintMode);
         storage.saveValue("hardMode", tempSettingsSet.hardMode);
@@ -217,13 +217,11 @@ public class Settings extends AppCompatActivity {
         storage.saveValue("option4", tempSettingsSet.option4);
         storage.saveValue("option5", tempSettingsSet.option5);
         Toast.makeText(Settings.this, getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-
     }
 
     @Override
     protected void onPause() {
-//save Settings
-
+        //save Settings
         //saveSettings();
         super.onPause();
     }

@@ -25,6 +25,7 @@ import com.star.k_pop.helper.OptionsSet;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.helper.Storage;
+import com.star.k_pop.helper.Theme;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
 
@@ -55,7 +56,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     Storage storage2 = new Storage(this, "settings");
 
 
-    OptionsSet tempSettingsSet = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
+    Theme theme;
 
     private static final String IMAGEVIEW_TAG = "icon bitmap";
 
@@ -204,11 +205,8 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Storage storage2 = new Storage(this, "settings");
-        tempSettingsSet.darkMode = storage2.getBoolean("darkMode"); //считываем состояние
-        //теперь выбираем тему в зависимости от положения свича
-        if (tempSettingsSet.darkMode == true) setTheme(R.style.AppTheme2);
-        else setTheme(R.style.AppThemeLight);
+        theme = new Theme(this);
+        theme.setTheme();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_bands_tinder);
