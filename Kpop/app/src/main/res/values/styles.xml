@@ -14,6 +14,7 @@
         <item name="colorPrimary">@color/colorPrimaryLight</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkLight</item>
         <item name="colorAccent">@color/colorAccentLight</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorBackground</item>
         <item name="android:textColor">@color/colorText</item>>
         <item name="windowActionBar">false</item>
@@ -25,6 +26,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorBackgroundLight</item>
+        <!--<item name="android:windowBackground">@drawable/main_background</item>-->
         <item name="android:textColor">@color/colorTextLight</item>>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -38,6 +40,10 @@
 
     </style>
 
+    <style name="MyTheme" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="materialAlertDialogTitleTextStyle">@color/colorAccent</item>
+        <item name="materialAlertDialogBodyTextStyle">@color/colorAccent</item>
+    </style>
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
