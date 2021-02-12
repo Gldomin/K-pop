@@ -3,14 +3,14 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#000000</color>
-    <color name="colorBackground">#191919</color>
+    <color name="colorBackground">#000000</color>
     <color name="colorText">#FFFFFF</color>
 
     <color name="colorAccentLight">#626d71</color>
     <color name="colorPrimaryLight">#626d71</color>
     <color name="colorPrimaryDarkLight">#626d71</color>
-    <color name="colorBackgroundLight">#EBD8D1</color>
-    <color name="colorTextLight">#DFDBD2</color>
+    <color name="colorBackgroundLight">#FFF0F0</color>
+    <color name="colorTextLight">#32405C</color>
 
     <color name="colorBackgroundButton">#ACD6A3</color>
 
