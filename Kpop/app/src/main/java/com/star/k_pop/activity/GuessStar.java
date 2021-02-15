@@ -158,15 +158,6 @@ public class GuessStar extends AppCompatActivity {
             tableRow.addView(buttons[i]);
         }
 
-        // TODO Удалить перед релизом
-        if (theme.isDarkMode()) {
-            cheaterButton.setBackgroundResource(R.drawable.stylebutton_dark);
-            cheaterButton.setTextColor(getResources().getColor(R.color.colorText));
-        } else {
-            cheaterButton.setBackgroundResource(R.drawable.stylebutton);
-            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextLight));
-        }
-
         ImageView heart1 = findViewById(R.id.guessStarHeart1); //toDo тест хп
         ImageView heart2 = findViewById(R.id.guessStarHeart2);
         ImageView heart3 = findViewById(R.id.guessStarHeart3);
@@ -176,6 +167,14 @@ public class GuessStar extends AppCompatActivity {
         imageViewList.add(heart3);
         heathBarTest = new HeathBar(imageViewList, 3);
 
+        // TODO Удалить перед релизом
+        if (theme.isDarkMode()) {
+            cheaterButton.setBackgroundResource(R.drawable.stylebutton_dark);
+            cheaterButton.setTextColor(getResources().getColor(R.color.colorText));
+        } else {
+            cheaterButton.setBackgroundResource(R.drawable.stylebutton);
+            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextLight));
+        }
 
         cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
             @SuppressLint("ResourceAsColor")
