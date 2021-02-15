@@ -22,6 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.helper.Theme;
+import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.model.Artist;
 import com.yandex.metrica.YandexMetrica;
@@ -32,6 +33,7 @@ import java.util.Random;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class GuessStar extends AppCompatActivity {
+
 
     Button cheaterButton; // TODO Удалить перед релизом
     Button[] buttons = new Button[4];
@@ -48,6 +50,7 @@ public class GuessStar extends AppCompatActivity {
     boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
 
     Theme theme; //переменная для считывания состояния свиича на darkmod
+    HeathBar heathBarTest;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -139,9 +142,15 @@ public class GuessStar extends AppCompatActivity {
                         // TODO Конец удаления
                         YandexMetrica.reportEvent("GuessStarRightClick");
                         nextArtist();
-                    } else if (scoreNow > 0) {
-                        scoreNow--;
+                    } else {
+                        heathBarTest.blow(); //снижение хп
                         YandexMetrica.reportEvent("GuessStarLoseClick");  //метрика на неправильный клик
+                        if (heathBarTest.getHp() == 0) {  //обнуление игры в случае проеба
+                            SomeMethods.showAchievementToast(GuessStar.this, "Поздравляем!", "Вы набрали " + scoreNow + " очков! Начинаем новую игру!", R.drawable.achievement);
+                            heathBarTest.setHp(3);
+                            scoreNow = 0;
+                            nextArtist();
+                        }
                     }
                     updateScore();
                 }
@@ -157,10 +166,22 @@ public class GuessStar extends AppCompatActivity {
             cheaterButton.setBackgroundResource(R.drawable.stylebutton);
             cheaterButton.setTextColor(getResources().getColor(R.color.colorTextLight));
         }
+
+        ImageView heart1 = findViewById(R.id.guessStarHeart1); //toDo тест хп
+        ImageView heart2 = findViewById(R.id.guessStarHeart2);
+        ImageView heart3 = findViewById(R.id.guessStarHeart3);
+        final ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
+        imageViewList.add(heart1);
+        imageViewList.add(heart2);
+        imageViewList.add(heart3);
+        heathBarTest = new HeathBar(imageViewList, 3);
+
+
         cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
+
                 for (int i = 0; i < 4; i++) {
                     if (theme.isDarkMode()) {
                         buttons[i].setTextColor(getResources().getColor(R.color.colorText));
@@ -178,6 +199,9 @@ public class GuessStar extends AppCompatActivity {
                 }
                 updateScore();
                 nextArtist();
+                
+                heathBarTest.restore();
+
             }
         });
 
@@ -185,6 +209,10 @@ public class GuessStar extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
+
+
+
+
                 cheatOn = !cheatOn;
                 if (cheatOn) {
                     for (int i = 0; i < 4; i++) {

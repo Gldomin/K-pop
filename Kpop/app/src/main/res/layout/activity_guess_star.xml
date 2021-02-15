@@ -27,61 +27,36 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="4dp"
-                android:gravity="center"><![CDATA[
-                >
+                android:gravity="center">
 
-
-
-
-
-
-
-
-
-
-
-
-
-                ]]>
-
-                <ImageButton
+                <ImageView
                     android:id="@+id/guessStarHeart1"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-
                     android:layout_marginEnd="1dp"
                     android:layout_marginRight="1dp"
                     android:layout_toStartOf="@+id/guessStarHeart2"
                     android:layout_toLeftOf="@+id/guessStarHeart2"
-                    android:background="@drawable/heart"
-                    android:padding="25dp"
-                    android:text="RED"
-                    android:textColor="#000" />
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/guessStarHeart2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/heart"
-                    android:gravity="center"
-                    android:padding="25dp"
-                    android:text="ORANGE"
-                    android:textColor="#000" />
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/guessStarHeart3"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-
                     android:layout_marginStart="1dp"
                     android:layout_marginLeft="1dp"
-
                     android:layout_toEndOf="@+id/guessStarHeart2"
                     android:layout_toRightOf="@+id/guessStarHeart2"
-                    android:background="@drawable/heart"
-                    android:padding="25dp"
-                    android:text="YELLOW"
-                    android:textColor="#000" />
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart" />
             </RelativeLayout>
 
             <Button
