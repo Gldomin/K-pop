@@ -48,9 +48,9 @@ public class HeathBar {
         Log.v("test", "Кнопка работает, hp=" + hp);
         for (int i = 0; i < heathBarImageViews.size(); i++) { //обратный for для тотбражения хп, путем замены картинок начиная с последней
             if (i >= hp)
-                heathBarImageViews.get(i).setImageResource(R.drawable.hide);
+                heathBarImageViews.get(i).setImageResource(R.drawable.heart_colorless);
             else
-                heathBarImageViews.get(i).setImageResource(R.drawable.heart);
+                heathBarImageViews.get(i).setImageResource(R.drawable.heart_color);
         }
         //heathBarImageViews.get(hp).setImageResource(R.drawable.hide);
     }
