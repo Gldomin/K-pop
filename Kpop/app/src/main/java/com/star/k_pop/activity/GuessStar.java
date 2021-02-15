@@ -119,7 +119,6 @@ public class GuessStar extends AppCompatActivity {
                             artists = Importer.getRandomArtists();
                             count = 0;
                         }
-
                         // TODO Ваня доделай эту часть
                         if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.kpoplove, "achGuessStarNormal"); //ачивочка
@@ -149,6 +148,7 @@ public class GuessStar extends AppCompatActivity {
                             SomeMethods.showAchievementToast(GuessStar.this, "Поздравляем!", "Вы набрали " + scoreNow + " очков! Начинаем новую игру!", R.drawable.achievement);
                             heathBarTest.setHp(3);
                             scoreNow = 0;
+                            count++;
                             nextArtist();
                         }
                     }
@@ -199,7 +199,7 @@ public class GuessStar extends AppCompatActivity {
                 }
                 updateScore();
                 nextArtist();
-                
+
                 heathBarTest.restore();
 
             }
@@ -209,10 +209,6 @@ public class GuessStar extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-
-
-
-
                 cheatOn = !cheatOn;
                 if (cheatOn) {
                     for (int i = 0; i < 4; i++) {
