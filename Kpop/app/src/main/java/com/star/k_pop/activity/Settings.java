@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -30,6 +32,11 @@ public class Settings extends AppCompatActivity {
     OptionsSet tempSettingsSet = new OptionsSet(false, false);
     Theme theme;
     SharedPreferences sp;
+    int themeCount=1;
+
+    private static final int[] RADIO_IDS ={
+            R.id.blueVar,R.id.redVar
+    };
 
     //OptionsSet tempSettingsSet2 = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
     String buttonStyleChange = "stylebutton";
@@ -42,7 +49,10 @@ public class Settings extends AppCompatActivity {
         theme = new Theme(this);
         theme.setTheme();
 
+
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_settings);
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
 
@@ -66,6 +76,52 @@ public class Settings extends AppCompatActivity {
         } else {
             darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
         }
+        final  RadioGroup radGroup = findViewById(R.id.radGroup);
+        final RadioButton  blueBut = findViewById(R.id.blueVar);
+        if (theme.isDarkMode()) {
+            blueBut.setTextColor(getResources().getColor(R.color.colorText));
+        } else {
+            blueBut.setTextColor(getResources().getColor(R.color.colorTextLight));
+        }
+        final ImageView themeIm = findViewById(R.id.exampleBack);
+        final RadioButton  redBut = findViewById(R.id.redVar);
+        if (theme.isDarkMode()) {
+            redBut.setTextColor(getResources().getColor(R.color.colorText));
+        } else {
+            redBut.setTextColor(getResources().getColor(R.color.colorTextLight));
+        }
+        if (theme.isDarkMode()) { radGroup.setVisibility(View.GONE);
+        themeIm.setVisibility(View.GONE);
+        }
+        else {radGroup.setVisibility(View.VISIBLE);
+            themeIm.setVisibility(View.VISIBLE);
+        }
+
+        themeIm.setImageResource(R.drawable.main_background);
+
+radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+                                    {
+
+                                        @Override
+                                        public void onCheckedChanged(RadioGroup radGroup, int checkedId) {
+                                            if (checkedId == R.id.blueVar){
+                                                themeIm.setImageResource(R.drawable.main_background);
+                                            tempSettingsSet.themeCount=1;}
+                                            else if (checkedId == R.id.redVar){
+                                                themeIm.setImageResource(R.drawable.main_background2);
+                                            tempSettingsSet.themeCount=2;}
+                                            //switch (radGroup.getId()){
+                                               // case R.id.blueVar:
+                                                  //  tempSettingsSet.themeCount=1;
+                                                  //  break;
+                                                //case R.id.redVar:
+                                                 //   tempSettingsSet.themeCount=2;
+                                           // }
+                                       }
+                                    }
+                                            );
+
+
         //   final Switch optionSwitch4 = findViewById(R.id.optionSwitch4); //заменить когда появится новая опция
         //   final Switch optionSwitch5 = findViewById(R.id.optionSwitch5); //заменить когда появится новая опция
         //hintModeSwitch.setOnCheckedChangeListener
@@ -179,10 +235,15 @@ public class Settings extends AppCompatActivity {
             tempSettingsSet.darkMode = storage.getBoolean("darkMode");
             tempSettingsSet.option4 = storage.getBoolean("option4");
             tempSettingsSet.option5 = storage.getBoolean("option5");
+            tempSettingsSet.themeCount = storage.getInt("themeCount");
 
             hintModeSwitch.setChecked(tempSettingsSet.hintMode); //установка значение свитча
             hardModeSwitch.setChecked(tempSettingsSet.hardMode);
             darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
+
+            if (tempSettingsSet.themeCount==1) radGroup.check(R.id.blueVar);
+            if (tempSettingsSet.themeCount==2) radGroup.check(R.id.redVar);
+
             //optionSwitch4.setChecked(tempSettingsSet.option4);
             //optionSwitch5.setChecked(tempSettingsSet.option5);
         } else {
@@ -216,6 +277,7 @@ public class Settings extends AppCompatActivity {
         storage.saveValue("darkMode", tempSettingsSet.darkMode);
         storage.saveValue("option4", tempSettingsSet.option4);
         storage.saveValue("option5", tempSettingsSet.option5);
+        storage.saveValue("themeCount",tempSettingsSet.themeCount);
         Toast.makeText(Settings.this, getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
     }
 

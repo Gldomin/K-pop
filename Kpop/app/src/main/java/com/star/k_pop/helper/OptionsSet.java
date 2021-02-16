@@ -6,6 +6,8 @@ public class OptionsSet { //объект хранения настроек пр�
     public Boolean darkMode; //темный режим
     public Boolean option4; //временное название
     public Boolean option5; //временное название
+    public int themeCount;
+
 
      public OptionsSet(Boolean hint, Boolean hard) {
         hintMode = hint;
@@ -22,6 +24,7 @@ public class OptionsSet { //объект хранения настроек пр�
         darkMode = false;
         option4 = false;
         option5 = false;
+        themeCount = 1;
     }
 
 

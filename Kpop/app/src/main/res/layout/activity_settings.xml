@@ -115,11 +115,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/optionSwitch2" />
 
+        <RadioGroup
+            android:id="@+id/radGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/optionSwitch3"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/blueVar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Синий"
+                />
+            <RadioButton
+                android:id="@+id/redVar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Красный"/>
+
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/exampleBack"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/radGroup"
+            android:layout_centerHorizontal="true"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <Switch
             android:id="@+id/optionSwitch4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/optionSwitch3"
+            android:layout_below="@+id/exampleBack"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="135dp"
@@ -149,16 +179,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/optionSwitch4" />
 
+
+
         <Button
             android:id="@+id/resetRecordButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/optionSwitch5"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="123dp"
-            android:layout_marginLeft="123dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/resetRecords" />
+            android:layout_below="@+id/exampleBack"
+
+           android:layout_alignParentStart="true"
+        android:layout_alignParentLeft ="true"
+       android:layout_marginStart="123dp"
+        android:layout_marginLeft="123dp"
+android:layout_marginTop="10dp"
+
+            android:text="@string/resetRecords"
+            android:textFontWeight="1"/>
+
+
     </RelativeLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
