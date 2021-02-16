@@ -153,31 +153,5 @@ public class SomeMethods {
         AlertDialog alert = builder.create();
         alert.show();
     }
-
-    public static void createAlertDialog(Activity act, String title, String question, String first, String second,
-                                         DialogInterface.OnClickListener positive, DialogInterface.OnClickListener negative) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(act);
-        builder.setTitle(title)
-                .setMessage(question)
-                .setCancelable(false)
-                .setNegativeButton(second, negative)
-                .setPositiveButton(first, positive);
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
-    public static void createRewardAlertDialog(Activity act, String title, String question, String first, String second, String third,
-                                         DialogInterface.OnClickListener positive, DialogInterface.OnClickListener negative, DialogInterface.OnClickListener neutral) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(act);
-        builder.setTitle(title)
-                .setMessage(question)
-                .setCancelable(false)
-                .setNegativeButton(second, negative)
-                .setNeutralButton(third, neutral)
-                .setPositiveButton(first, positive);
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
 }
 
