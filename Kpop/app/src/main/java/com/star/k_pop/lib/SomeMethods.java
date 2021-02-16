@@ -2,7 +2,6 @@ package com.star.k_pop.lib;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,13 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.helper.Storage;
-
-import static android.app.PendingIntent.getActivity;
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class SomeMethods {
 
@@ -156,6 +150,31 @@ public class SomeMethods {
                                 Toast.LENGTH_LONG).show();
                     }
                 });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public static void createAlertDialog(Activity act, String title, String question, String first, String second,
+                                         DialogInterface.OnClickListener positive, DialogInterface.OnClickListener negative) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(act);
+        builder.setTitle(title)
+                .setMessage(question)
+                .setCancelable(false)
+                .setNegativeButton(second, negative)
+                .setPositiveButton(first, positive);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public static void createRewardAlertDialog(Activity act, String title, String question, String first, String second, String third,
+                                         DialogInterface.OnClickListener positive, DialogInterface.OnClickListener negative, DialogInterface.OnClickListener neutral) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(act);
+        builder.setTitle(title)
+                .setMessage(question)
+                .setCancelable(false)
+                .setNegativeButton(second, negative)
+                .setNeutralButton(third, neutral)
+                .setPositiveButton(first, positive);
         AlertDialog alert = builder.create();
         alert.show();
     }

@@ -16,8 +16,13 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 public class Rewarded {
 
+    public interface RewardDelay{
+        void onShowDismissed();
+    }
+
     Context context;
     RewardedAd mRewardedAd;
+    RewardDelay rewardDelay;
     final String TAG = "Rewarded";
 
     public Rewarded(Context context) {
@@ -27,12 +32,17 @@ public class Rewarded {
                 adRequest, new RewardedAdLoadCallbackCustom());
     }
 
-    public void show(Activity activity, OnUserEarnedRewardListener listener) {
+    public void show(Activity activity, OnUserEarnedRewardListener listener, RewardDelay rewardDelay) {
+        this.rewardDelay = rewardDelay;
         if (mRewardedAd != null) {
             mRewardedAd.show(activity, listener);
         } else {
             Log.d(TAG, "The rewarded ad wasn't ready yet.");
         }
+    }
+
+    public boolean onLoaded(){
+        return mRewardedAd != null;
     }
 
     class RewardedAdLoadCallbackCustom extends RewardedAdLoadCallback {
@@ -64,6 +74,7 @@ public class Rewarded {
 
                 @Override
                 public void onAdDismissedFullScreenContent() {
+                    rewardDelay.onShowDismissed();
                     Log.d(TAG, "Ad was dismissed.");
                 }
             });
