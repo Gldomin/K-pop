@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -52,13 +51,14 @@ public class GuessStar extends AppCompatActivity {
     int scoreNow = 0;       //текущий счет
     int record = 0;         //рекорд
     int count = 0;          //номер артиста из сгенерированного списка (текущий)
-    boolean onRewarded = true;
-    boolean showReward = false;
+    boolean onRewarded = true;      // Просмотр рекламы 1 раз
+    boolean showReward = false;     // Просмотрена реклама до конца или нет
+
     boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
 
     Theme theme; //переменная для считывания состояния свиича на darkmod
 
-    Rewarded rewarded;
+    Rewarded rewarded;          //Класс для работы с рекламой
     HeathBar heathBarTest;
 
     @SuppressLint("DefaultLocale")
@@ -302,7 +302,7 @@ public class GuessStar extends AppCompatActivity {
     private void startLosingDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(GuessStar.this);
         builder.setTitle("Поздравляем!")
-                .setMessage("Вы набрали " + scoreNow + " очков! Начинаем новую игру!")
+                .setMessage("Ваш счет: " + scoreNow + "! Начинаем новую игру?")
                 .setCancelable(false)
                 .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
                     @Override
@@ -316,6 +316,10 @@ public class GuessStar extends AppCompatActivity {
                         heathBarTest.setHp(3);
                         scoreNow = 0;
                         count++;
+                        if (count >= artists.size() - 1) {
+                            artists = Importer.getRandomArtists();
+                            count = 0;
+                        }
                         onRewarded = true;
                         nextArtist();
                         updateScore();
@@ -330,7 +334,6 @@ public class GuessStar extends AppCompatActivity {
                         public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
                             onRewarded = false;
                             showReward = true;
-                            Log.d("Rewarded", "uses");
                         }
                     }, new Rewarded.RewardDelay() {
                         @Override
@@ -341,6 +344,10 @@ public class GuessStar extends AppCompatActivity {
                                 heathBarTest.setHp(3);
                                 scoreNow = 0;
                                 count++;
+                                if (count >= artists.size() - 1) {
+                                    artists = Importer.getRandomArtists();
+                                    count = 0;
+                                }
                                 onRewarded = true;
                                 nextArtist();
                                 updateScore();
