@@ -109,4 +109,7 @@ Distribute them all!
     <string name="score_text">Score:</string>
     <string name="record_text">Record:</string>
 
+    <string name="admob_id_account" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_id_reward" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+
 </resources>

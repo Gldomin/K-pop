@@ -3,6 +3,7 @@ package com.star.k_pop.StartApplication;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.multidex.MultiDexApplication;
 
 import com.star.k_pop.R;
 import com.yandex.metrica.YandexMetrica;
@@ -11,7 +12,7 @@ import com.yandex.metrica.YandexMetricaConfig;
 /**
  * Класс запускающийся при старте приложения
  */
-public class ApplicationStart extends Application {
+public class ApplicationStart extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();

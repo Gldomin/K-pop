@@ -2,7 +2,6 @@ package com.star.k_pop.lib;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,13 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.helper.Storage;
-
-import static android.app.PendingIntent.getActivity;
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class SomeMethods {
 
@@ -160,6 +154,5 @@ public class SomeMethods {
         AlertDialog alert = builder.create();
         alert.show();
     }
-
 }
 

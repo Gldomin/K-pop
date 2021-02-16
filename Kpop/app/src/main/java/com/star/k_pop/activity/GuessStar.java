@@ -1,7 +1,9 @@
 package com.star.k_pop.activity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
@@ -19,9 +21,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.helper.Rewarded;
 import com.star.k_pop.helper.Theme;
+import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.model.Artist;
 import com.yandex.metrica.YandexMetrica;
@@ -45,9 +51,15 @@ public class GuessStar extends AppCompatActivity {
     int scoreNow = 0;       //текущий счет
     int record = 0;         //рекорд
     int count = 0;          //номер артиста из сгенерированного списка (текущий)
+    boolean onRewarded = true;      // Просмотр рекламы 1 раз
+    boolean showReward = false;     // Просмотрена реклама до конца или нет
+
     boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
 
     Theme theme; //переменная для считывания состояния свиича на darkmod
+
+    Rewarded rewarded;          //Класс для работы с рекламой
+    HeathBar heathBarTest;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -55,6 +67,8 @@ public class GuessStar extends AppCompatActivity {
 
         theme = new Theme(this);
         theme.setTheme();
+
+        rewarded = new Rewarded(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
@@ -125,7 +139,6 @@ public class GuessStar extends AppCompatActivity {
                             artists = Importer.getRandomArtists();
                             count = 0;
                         }
-
                         // TODO Ваня доделай эту часть
                         if (scoreNow == 50) //ачивка за 50 - achGuessStarNormalText. Условие ачивки
                         {
@@ -150,15 +163,27 @@ public class GuessStar extends AppCompatActivity {
                         // TODO Конец удаления
                         YandexMetrica.reportEvent("GuessStarRightClick");
                         nextArtist();
-                    } else if (scoreNow > 0) {
-                        scoreNow--;
+                    } else {
+                        heathBarTest.blow(); //снижение хп
                         YandexMetrica.reportEvent("GuessStarLoseClick");  //метрика на неправильный клик
+                        if (heathBarTest.getHp() == 0) {  //обнуление игры в случае проеба
+                            startLosingDialog();
+                        }
                     }
                     updateScore();
                 }
             });
             tableRow.addView(buttons[i]);
         }
+
+        ImageView heart1 = findViewById(R.id.guessStarHeart1); //toDo тест хп
+        ImageView heart2 = findViewById(R.id.guessStarHeart2);
+        ImageView heart3 = findViewById(R.id.guessStarHeart3);
+        final ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
+        imageViewList.add(heart1);
+        imageViewList.add(heart2);
+        imageViewList.add(heart3);
+        heathBarTest = new HeathBar(imageViewList, 3);
 
         // TODO Удалить перед релизом
         if (theme.isDarkMode()) {
@@ -180,6 +205,7 @@ public class GuessStar extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
+
                 for (int i = 0; i < 4; i++) {
                     if (theme.isDarkMode()) {
                         buttons[i].setTextColor(getResources().getColor(R.color.colorText));
@@ -197,6 +223,7 @@ public class GuessStar extends AppCompatActivity {
                 }
                 updateScore();
                 nextArtist();
+                heathBarTest.restore();
             }
         });
 
@@ -290,4 +317,66 @@ public class GuessStar extends AppCompatActivity {
                 .into(imageView);
     }
 
+    private void startLosingDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(GuessStar.this);
+        builder.setTitle("Поздравляем!")
+                .setMessage("Ваш счет: " + scoreNow + "! Начинаем новую игру?")
+                .setCancelable(false)
+                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        heathBarTest.setHp(3);
+                        scoreNow = 0;
+                        count++;
+                        if (count >= artists.size() - 1) {
+                            artists = Importer.getRandomArtists();
+                            count = 0;
+                        }
+                        onRewarded = true;
+                        nextArtist();
+                        updateScore();
+                    }
+                });
+        if (rewarded.onLoaded() && onRewarded) {
+            builder.setNeutralButton("Посмотреть рекламу", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    rewarded.show(GuessStar.this, new OnUserEarnedRewardListener() {
+                        @Override
+                        public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                            onRewarded = false;
+                            showReward = true;
+                        }
+                    }, new Rewarded.RewardDelay() {
+                        @Override
+                        public void onShowDismissed() {
+                            if (showReward) {
+                                heathBarTest.restore();
+                            } else {
+                                heathBarTest.setHp(3);
+                                scoreNow = 0;
+                                count++;
+                                if (count >= artists.size() - 1) {
+                                    artists = Importer.getRandomArtists();
+                                    count = 0;
+                                }
+                                onRewarded = true;
+                                nextArtist();
+                                updateScore();
+                            }
+                            showReward = false;
+                        }
+                    });
+                }
+            });
+        }
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 }
