@@ -12,6 +12,7 @@ import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -135,6 +136,7 @@ public class GuessBands extends AppCompatActivity {
         final TextView scoreText = findViewById(R.id.scoreBands); //рекорд
         final TextView fastscoreText = findViewById(R.id.fastscoreBands); //текущий счет
         final TextView info = findViewById(R.id.info);
+
 
         fastscoreText.setText("Ваш счет: " + fastscore);
 

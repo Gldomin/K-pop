@@ -77,7 +77,7 @@ public class SomeMethods {
 
     public static String getStringAnswerAlertDeialog(final Activity act, String title, String question, final String first, final String second) { //метод для отображения простых окон да/нет или типа того. вариация работает со стрингами, главное быть осторожным на счет локализации
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(act);
+        AlertDialog.Builder builder = new AlertDialog.Builder(act,R.style.AlertDialog);
         builder.setTitle(title)
                 .setMessage(question)
                 .setCancelable(false)
@@ -97,13 +97,14 @@ public class SomeMethods {
                 });
         AlertDialog alert = builder.create();
         alert.show();
+
         return result;
     }
 
 
     public static Boolean getBoolAnswerAlertDeialog(final Activity act, String title, String question, final String first, final String second) { //метод для отображения простых окон да/нет или типа того. вариация работает со стрингами, главное быть осторожным на счет локализации
         answerGetted = false;
-        AlertDialog.Builder builder = new AlertDialog.Builder(act);
+        AlertDialog.Builder builder = new AlertDialog.Builder(act, R.style.AlertDialog);
         builder.setTitle(title)
                 .setMessage(question)
                 .setCancelable(false)
