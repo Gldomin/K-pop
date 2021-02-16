@@ -15,16 +15,49 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
-            android:id="@+id/rel"
+            android:id="@+id/topRL"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/tableButton"
-            android:layout_marginBottom="10dp">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:id="@+id/guessStarHealthLR"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/guessStarHeart1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_toStartOf="@+id/guessStarHeart2"
+                    android:layout_toLeftOf="@+id/guessStarHeart2"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart_color" />
+
+                <ImageView
+                    android:id="@+id/guessStarHeart2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart_color" />
+
+                <ImageView
+                    android:id="@+id/guessStarHeart3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_toEndOf="@+id/guessStarHeart2"
+                    android:layout_toRightOf="@+id/guessStarHeart2"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart_color" />
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/cheaterButton"
@@ -33,14 +66,39 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
+                android:text="boop" />
+
+            <ImageButton
+                android:id="@+id/guessStarAbautButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginStart="11dp"
-                android:layout_marginLeft="11dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="251dp"
-                android:layout_marginRight="251dp"
-                android:text="boop" />
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginRight="3dp"
+                app:srcCompat="@android:drawable/ic_menu_help" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/tableButton"
+            android:layout_below="@+id/topRL"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </RelativeLayout>
 
