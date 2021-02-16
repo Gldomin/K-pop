@@ -23,6 +23,7 @@ import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
+import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.model.Artist;
 
 import java.util.ArrayList;
@@ -255,6 +256,9 @@ public class GuessBands extends AppCompatActivity {
                             answ = answ.toUpperCase();
                             grName.setText(answ);
 
+                            if (fastscore == 5) { //ачивка за 5 - achGuessBandsNormal. Условие ачивки 
+                                SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normaldb, "achGuessBandsNormal"); //ачивочка
+                                 }
 
                         }
                         break;

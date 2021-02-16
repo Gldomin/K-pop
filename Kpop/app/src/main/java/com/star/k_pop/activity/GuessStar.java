@@ -115,7 +115,8 @@ public class GuessStar extends AppCompatActivity {
 
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View view)
+                {
                     if (((Button) view).getText().equals(artists.get(count).getName())) {
                         count++;
                         scoreNow++;
@@ -126,19 +127,16 @@ public class GuessStar extends AppCompatActivity {
                         }
 
                         // TODO Ваня доделай эту часть
-                        if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                            SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.kpoplove, "achGuessStarNormal"); //ачивочка
-                            /*Storage storage = new Storage(GuessStar.this); //блок кодя для получения, уведомления и записи ачивок
-                            String nameOfStorage = "appStatus"; String nameOfAchievement = "achGuessStarNormal";
-                            if (!storage.getBoolean(nameOfStorage, "achGuessStarNormalText"))
-                                SomeMethods.showAchievementToast(GuessStar.this, getResources().getString(R.string.achievementUnlocked), getResources().getString(R.string.achGuessStarNormal), R.drawable.achievement);
-                            storage.saveValue(nameOfStorage,nameOfAchievement,true);*/
+                        if (scoreNow == 50) //ачивка за 50 - achGuessStarNormalText. Условие ачивки
+                        {
+                            SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.normalgs, "achGuessStarNormal"); //ачивочка
                         }
                         // TODO Конец части
 
                         // TODO Удалить перед релизом
                         for (int i = 0; i < 4; i++) {
-                            if (theme.isDarkMode()) {
+                            if (theme.isDarkMode())
+                            {
                                 buttons[i].setTextColor(getResources().getColor(R.color.colorText));
                             } else if (theme.isLightRabbit()){
                                 buttons[i].setTextColor(getResources().getColor(R.color.colorTextRabbit));
