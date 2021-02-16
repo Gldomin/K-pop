@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,8 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.helper.Rewarded;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.model.Artist;
@@ -48,6 +52,7 @@ public class GuessStar extends AppCompatActivity {
     boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
 
     Theme theme; //переменная для считывания состояния свиича на darkmod
+    Rewarded rewarded;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -55,6 +60,8 @@ public class GuessStar extends AppCompatActivity {
 
         theme = new Theme(this);
         theme.setTheme();
+
+        rewarded = new Rewarded(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
@@ -176,6 +183,16 @@ public class GuessStar extends AppCompatActivity {
                     artists = Importer.getRandomArtists();
                     count = 0;
                 }
+
+                rewarded.show(GuessStar.this, new OnUserEarnedRewardListener() {
+                    @Override
+                    public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                        Log.d("TAG", "The user earned the reward.");
+                        int rewardAmount = rewardItem.getAmount();
+                        String rewardType = rewardItem.getType();
+                        Log.d("TAG", rewardType + "  The user earned the reward.  " + rewardAmount);
+                    }
+                });
                 updateScore();
                 nextArtist();
             }
@@ -270,5 +287,4 @@ public class GuessStar extends AppCompatActivity {
                 .transition(withCrossFade())
                 .into(imageView);
     }
-
 }
