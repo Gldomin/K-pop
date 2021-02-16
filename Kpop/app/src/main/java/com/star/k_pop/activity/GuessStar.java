@@ -92,10 +92,18 @@ public class GuessStar extends AppCompatActivity {
             if (theme.isDarkMode()) {
                 buttons[i].setBackgroundResource(R.drawable.stylebutton_dark);
                 buttons[i].setTextColor(getResources().getColor(R.color.colorText));
-            } else {
+            }   else if (theme.isLightRabbit()){
                 buttons[i].setBackgroundResource(R.drawable.stylebutton);
-                buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
+                buttons[i].setTextColor(getResources().getColor(R.color.colorTextRabbit));
             }
+            else if (theme.isLightCat()) {
+                buttons[i].setBackgroundResource(R.drawable.stylebutton_cat);
+                buttons[i].setTextColor(getResources().getColor(R.color.colorTextCat));
+            }else if (theme.isLightHamster()) {
+                buttons[i].setBackgroundResource(R.drawable.stylebutton_hamster);
+                buttons[i].setTextColor(getResources().getColor(R.color.colorTextHamster));
+            }
+
 
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -132,8 +140,13 @@ public class GuessStar extends AppCompatActivity {
                         for (int i = 0; i < 4; i++) {
                             if (theme.isDarkMode()) {
                                 buttons[i].setTextColor(getResources().getColor(R.color.colorText));
-                            } else {
-                                buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
+                            } else if (theme.isLightRabbit()){
+                                buttons[i].setTextColor(getResources().getColor(R.color.colorTextRabbit));
+                            }
+                            else if (theme.isLightCat()) {
+                                buttons[i].setTextColor(getResources().getColor(R.color.colorTextCat));
+                            }else if (theme.isLightHamster()) {
+                                buttons[i].setTextColor(getResources().getColor(R.color.colorTextHamster));
                             }
                         }
                         // TODO Конец удаления
@@ -153,10 +166,18 @@ public class GuessStar extends AppCompatActivity {
         if (theme.isDarkMode()) {
             cheaterButton.setBackgroundResource(R.drawable.stylebutton_dark);
             cheaterButton.setTextColor(getResources().getColor(R.color.colorText));
-        } else {
+        } else if (theme.isLightRabbit()){
             cheaterButton.setBackgroundResource(R.drawable.stylebutton);
-            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextLight));
+            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextRabbit));
         }
+        else if (theme.isLightCat()) {
+            cheaterButton.setBackgroundResource(R.drawable.stylebutton_cat);
+            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextCat));
+        }else if (theme.isLightHamster()) {
+            cheaterButton.setBackgroundResource(R.drawable.stylebutton_hamster);
+            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextHamster));
+        }
+
         cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
             @SuppressLint("ResourceAsColor")
             @Override
@@ -165,7 +186,7 @@ public class GuessStar extends AppCompatActivity {
                     if (theme.isDarkMode()) {
                         buttons[i].setTextColor(getResources().getColor(R.color.colorText));
                     } else {
-                        buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
+                        buttons[i].setTextColor(getResources().getColor(R.color.colorTextRabbit));
                     }
                 }
                 //количетво скипнутых артистов
@@ -194,7 +215,7 @@ public class GuessStar extends AppCompatActivity {
                             if (theme.isDarkMode()) {
                                 buttons[i].setTextColor(getResources().getColor(R.color.colorText));
                             } else {
-                                buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
+                                buttons[i].setTextColor(getResources().getColor(R.color.colorTextRabbit));
                             }
                         }
                     }
@@ -203,7 +224,7 @@ public class GuessStar extends AppCompatActivity {
                     if (theme.isDarkMode()) {
                         buttons[chosenOne].setTextColor(getResources().getColor(R.color.colorText));
                     } else {
-                        buttons[chosenOne].setTextColor(getResources().getColor(R.color.colorTextLight));
+                        buttons[chosenOne].setTextColor(getResources().getColor(R.color.colorTextRabbit));
                     }
                     Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                 }

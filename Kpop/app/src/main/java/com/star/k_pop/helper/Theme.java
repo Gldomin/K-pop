@@ -8,6 +8,7 @@ public class Theme {
 
     Activity activity;
     boolean darkMode;
+    boolean lightCat, lightHamster, lightRabbit = false;
     int themeCount;
 
     public Theme(Activity activity) {
@@ -20,12 +21,22 @@ public class Theme {
         themeCount = storage2.getInt("themeCount");
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
-        } else if(themeCount==1)
-            activity.setTheme(R.style.AppThemeLight);
-        else activity.setTheme(R.style.AppThemeLightPurp);
+        } else if(themeCount==1){
+            activity.setTheme(R.style.AppThemeLightRabbit);
+            lightRabbit=true;
+        }
+        else if(themeCount==2){ activity.setTheme(R.style.AppThemeLightHamster);
+            lightHamster=true;
+        }
+        else if(themeCount==3){ activity.setTheme(R.style.AppThemeLightCat);
+            lightCat=true;
+        }
     }
 
     public boolean isDarkMode() {
         return darkMode;
     }
+    public boolean isLightCat(){return lightCat;}
+    public boolean isLightHamster(){return lightHamster;}
+    public boolean isLightRabbit(){return lightRabbit;}
 }

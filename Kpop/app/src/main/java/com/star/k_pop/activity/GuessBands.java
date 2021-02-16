@@ -167,8 +167,14 @@ public class GuessBands extends AppCompatActivity {
         final EditText grName = findViewById(R.id.groupName);
         if (theme.isDarkMode()) {
             grName.setTextColor(getResources().getColor(R.color.colorText));
-        } else {
-            grName.setTextColor(getResources().getColor(R.color.colorTextLight));
+        } else if(theme.isLightRabbit()){
+            grName.setTextColor(getResources().getColor(R.color.colorTextRabbit));
+        }
+        else if(theme.isLightCat()){
+            grName.setTextColor(getResources().getColor(R.color.colorTextCat));
+        }
+        else if(theme.isLightHamster()){
+            grName.setTextColor(getResources().getColor(R.color.colorTextHamster));
         }
 
 
@@ -208,9 +214,16 @@ public class GuessBands extends AppCompatActivity {
                             //выбор темы в зависимости от положения свича
                             if (theme.isDarkMode()) {
                                 b.setBackgroundResource(R.drawable.stylebutton_dark);
-                            } else {
+                            } else if(theme.isLightRabbit()){
                                 b.setBackgroundResource(R.drawable.stylebutton);
                             }
+                            else if(theme.isLightCat()){
+                                b.setBackgroundResource(R.drawable.stylebutton_cat);
+                            }
+                            else if(theme.isLightHamster()){
+                                b.setBackgroundResource(R.drawable.stylebutton_hamster);
+                            }
+
                         }
 
                         if (textAnsw.equals(answ)) {
@@ -326,8 +339,14 @@ public class GuessBands extends AppCompatActivity {
         for (Button b : buttons) {
             if (theme.isDarkMode()) {
                 b.setBackgroundResource(R.drawable.stylebutton_dark);
-            } else {
+            } else if(theme.isLightRabbit()){
                 b.setBackgroundResource(R.drawable.stylebutton);
+            }
+            else if(theme.isLightCat()){
+                b.setBackgroundResource(R.drawable.stylebutton_cat);
+            }
+            else if(theme.isLightHamster()){
+                b.setBackgroundResource(R.drawable.stylebutton_hamster);
             }
         }
     }

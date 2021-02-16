@@ -10,7 +10,11 @@
     <color name="colorPrimaryLight">#626d71</color>
     <color name="colorPrimaryDarkLight">#626d71</color>
     <color name="colorBackgroundLight">#FFF0F0</color>
-    <color name="colorTextLight">#32405C</color>
+
+
+    <color name="colorTextHamster">#447C40</color>
+    <color name="colorTextRabbit">#32405C</color>
+    <color name="colorTextCat">#454545</color>
 
     <color name="colorBackgroundButton">#ACD6A3</color>
 
