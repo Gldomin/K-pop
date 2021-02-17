@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -53,6 +54,7 @@ public class GuessStar extends AppCompatActivity {
     int count = 0;          //номер артиста из сгенерированного списка (текущий)
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
+    boolean endGame = false;
 
     boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
 
@@ -76,9 +78,12 @@ public class GuessStar extends AppCompatActivity {
         textRecord = findViewById(R.id.scoreText2);
         imageView = findViewById(R.id.imageView);
         textScore = findViewById(R.id.scoreText);
+        ImageButton about = findViewById(R.id.guessStarAbautButton);
         cheaterButton = findViewById(R.id.cheaterButton); // TODO Удалить перед релизом
 
         artists = Importer.getRandomArtists();
+
+        about.setBackgroundResource(theme.getBackgroundResource());
 
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         if (sp.contains("userScoreGuessStar")) {
@@ -103,14 +108,8 @@ public class GuessStar extends AppCompatActivity {
                 tableRow = findViewById(R.id.row2);
             }
 
-            if (theme.isDarkMode()) {
-                buttons[i].setBackgroundResource(R.drawable.stylebutton_dark);
-                buttons[i].setTextColor(getResources().getColor(R.color.colorText));
-            } else {
-                buttons[i].setBackgroundResource(R.drawable.stylebutton);
-                buttons[i].setTextColor(getResources().getColor(R.color.colorTextLight));
-            }
-
+            buttons[i].setBackgroundResource(theme.getBackgroundResource());
+            buttons[i].setTextColor(theme.getTextColor());
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
@@ -155,7 +154,7 @@ public class GuessStar extends AppCompatActivity {
                     } else {
                         heathBarTest.blow(); //снижение хп
                         YandexMetrica.reportEvent("GuessStarLoseClick");  //метрика на неправильный клик
-                        if (heathBarTest.getHp() == 0) {  //обнуление игры в случае проеба
+                        if (heathBarTest.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
                             startLosingDialog();
                         }
                     }
@@ -299,10 +298,12 @@ public class GuessStar extends AppCompatActivity {
                 .into(imageView);
     }
 
+    @SuppressLint("DefaultLocale")
     private void startLosingDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(GuessStar.this);
-        builder.setTitle("Поздравляем!")
-                .setMessage("Ваш счет: " + scoreNow + "! Начинаем новую игру?")
+        endGame = true;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+        builder.setTitle(getResources().getString(R.string.endGameCongratulate))
+                .setMessage(String.format("%s %d! %s", getResources().getString(R.string.score_text), scoreNow, getResources().getString(R.string.endGameNewGame)))
                 .setCancelable(false)
                 .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
                     @Override
@@ -313,6 +314,7 @@ public class GuessStar extends AppCompatActivity {
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        endGame = false;
                         heathBarTest.setHp(3);
                         scoreNow = 0;
                         count++;
@@ -326,37 +328,40 @@ public class GuessStar extends AppCompatActivity {
                     }
                 });
         if (rewarded.onLoaded() && onRewarded) {
-            builder.setNeutralButton("Посмотреть рекламу", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    rewarded.show(GuessStar.this, new OnUserEarnedRewardListener() {
+            builder.setMessage(String.format("%s %d! %s %s", getResources().getString(R.string.score_text),
+                    scoreNow, getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
+                    .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
                         @Override
-                        public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
-                            onRewarded = false;
-                            showReward = true;
-                        }
-                    }, new Rewarded.RewardDelay() {
-                        @Override
-                        public void onShowDismissed() {
-                            if (showReward) {
-                                heathBarTest.restore();
-                            } else {
-                                heathBarTest.setHp(3);
-                                scoreNow = 0;
-                                count++;
-                                if (count >= artists.size() - 1) {
-                                    artists = Importer.getRandomArtists();
-                                    count = 0;
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            endGame = false;
+                            rewarded.show(GuessStar.this, new OnUserEarnedRewardListener() {
+                                @Override
+                                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                                    onRewarded = false;
+                                    showReward = true;
                                 }
-                                onRewarded = true;
-                                nextArtist();
-                                updateScore();
-                            }
-                            showReward = false;
+                            }, new Rewarded.RewardDelay() {
+                                @Override
+                                public void onShowDismissed() {
+                                    if (showReward) {
+                                        heathBarTest.restore();
+                                    } else {
+                                        heathBarTest.setHp(3);
+                                        scoreNow = 0;
+                                        count++;
+                                        if (count >= artists.size() - 1) {
+                                            artists = Importer.getRandomArtists();
+                                            count = 0;
+                                        }
+                                        onRewarded = true;
+                                        nextArtist();
+                                        updateScore();
+                                    }
+                                    showReward = false;
+                                }
+                            });
                         }
                     });
-                }
-            });
         }
         AlertDialog alert = builder.create();
         alert.show();

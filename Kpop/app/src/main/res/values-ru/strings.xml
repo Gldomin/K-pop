@@ -11,7 +11,6 @@
     <string name="menuItemAbout">О программе</string>
 
     <string name="groupname"></string>
-
     <string name="achGuessStarNormal">Айдол-знаток</string>
     <string name="achGuessStarExpert">Айдол-эксперт</string>
     <string name="achGuessBandsNormal">Групповой знаток</string>
@@ -52,7 +51,6 @@
     <string name="resetRecords">Сбросить счёт</string>
     <string name="OptionsSet">Настройки сохранены</string>
 
-
     <string name="aboutTitle">Добро пожаловать!</string>
     <string name="aboutText">
         "\n"
@@ -65,18 +63,10 @@
         Желаем удачи!
          </string>
 
-    <string name="gallaryInfoButton">Биография</string>
     //Для счета
     <string name="Score">Ваш Счет</string>
     <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="achievementUnlocked">Достижение открыто!!</string>
 
     <string name="newRecordTitle">Новый рекорд!</string>
@@ -107,4 +97,10 @@
     <string name="score_text">Ваш счет:</string>
     <string name="record_text">Ваш рекорд:</string>
 
+    <string name="endGameCongratulate">Поздравляем!</string>
+    <string name="endGameNewGame">Начинаем новую игру?</string>
+    <string name="endGameReward">Или посмотреть рекламу что бы добавить одну жизнь?</string>
+    <string name="endGameYes">Да</string>
+    <string name="endGameNo">Нет</string>
+    <string name="endGameRewardShow">Посмотреть рекламу</string>
 </resources>

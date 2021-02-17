@@ -21,6 +21,7 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
     <style name="AppThemeLight" parent="Theme.AppCompat.DayNight">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -31,7 +32,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
-
         <item name="colorControlNormal">@color/colorTextLight</item>
         <item name="colorControlActivated">@color/colorTextLight</item>
         <item name="colorControlHighlight">@color/colorTextLight</item>
@@ -47,8 +47,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
-
-
         <item name="colorControlNormal">@color/colorTextLight</item>
         <item name="colorControlActivated">@color/colorTextLight</item>
         <item name="colorControlHighlight">@color/colorTextLight</item>
@@ -59,10 +57,22 @@
         <item name="materialAlertDialogBodyTextStyle">@color/colorAccent</item>
     </style>
 
-    <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
-        <item name="android:textColor">#000000</item>
-        <item name="android:textColorPrimary">#595959</item>
-        <!--<item name="android:colorAccent">@color/colorAccent</item>-->
+    <style name="AlertDialog1" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@color/colorAlertDialogBackgroundStyle1</item>            <!-- Цвет фона -->
+        <item name="android:textColor">@color/colorAlertDialogTextStyle1</item>                         <!-- Цвет текста кнопок и заголовка -->
+        <item name="android:textColorPrimary">@color/colorAlertDialogTextPrimaryStyle1</item>           <!-- Цвет текста обращения -->
+    </style>
+
+    <style name="AlertDialog2" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@color/colorAlertDialogBackgroundStyle2</item>            <!-- Цвет фона -->
+        <item name="android:textColor">@color/colorAlertDialogTextStyle2</item>                         <!-- Цвет текста кнопок и заголовка -->
+        <item name="android:textColorPrimary">@color/colorAlertDialogTextPrimaryStyle2</item>           <!-- Цвет текста обращения -->
+    </style>
+
+    <style name="AlertDialog3" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@color/colorAlertDialogBackgroundStyle3</item>            <!-- Цвет фона -->
+        <item name="android:textColor">@color/colorAlertDialogTextStyle3</item>                         <!-- Цвет текста кнопок и заголовка -->
+        <item name="android:textColorPrimary">@color/colorAlertDialogTextPrimaryStyle3</item>           <!-- Цвет текста обращения -->
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -1,7 +1,5 @@
 package com.star.k_pop.StartApplication;
 
-import android.app.Application;
-
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDexApplication;
 
@@ -20,7 +18,7 @@ public class ApplicationStart extends MultiDexApplication {
         Importer.createListArtists(getResources());
         // Подключение яндекс метрики
         try {
-            YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder(getResources().getString(R.string.id_yandex_metrica)).build();
+            YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder(getResources().getString(R.string.yandex_id_metrica)).build();
             YandexMetrica.activate(getApplicationContext(), config);
             YandexMetrica.enableActivityAutoTracking(this);
         } catch (Exception ignored) {

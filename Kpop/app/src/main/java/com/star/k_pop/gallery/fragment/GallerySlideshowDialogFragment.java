@@ -33,8 +33,7 @@ public class GallerySlideshowDialogFragment extends DialogFragment {
     private int selectedPosition = 0;
 
     public static GallerySlideshowDialogFragment newInstance() {
-        GallerySlideshowDialogFragment f = new GallerySlideshowDialogFragment();
-        return f;
+        return new GallerySlideshowDialogFragment();
     }
 
     @Override

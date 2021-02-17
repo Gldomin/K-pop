@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Guess K-pop</string>
 
+    <string name="yandex_id_metrica" translatable="false">7f5528ae-626c-4298-a361-5635a0ad148a</string>
+
+    <string name="admob_id_account" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_id_reward" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+
     <string name="menuItemGuessStar">Guess Star</string>
     <string name="menuItemGuessStarReverse">Guess Star Reverse</string>
     <string name="menuItemGuessBand">Guess Band</string>
@@ -10,7 +15,6 @@
     <string name="menuItemAbout">About</string>
 
     <string name="groupname"></string>
-
     <string name="achGuessStarNormal">Айдол-знаток</string>
     <string name="achGuessStarExpert">Айдол-эксперт</string>
     <string name="achGuessBandsNormal">Групповой знаток</string>
@@ -67,19 +71,9 @@
     //scorestuff
     <string name="Score">Your score</string>
 
-
-    <string name="gallaryInfoButton">Bio</string>
     <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <string name="id_yandex_metrica" translatable="false">7f5528ae-626c-4298-a361-5635a0ad148a</string>
     <string name="achievementUnlocked">Achievement unlocked!</string>
 
     <string name="newRecordTitle">Новый рекорд!</string>
@@ -109,7 +103,11 @@ Distribute them all!
     <string name="score_text">Score:</string>
     <string name="record_text">Record:</string>
 
-    <string name="admob_id_account" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="admob_id_reward" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="endGameCongratulate">Поздравляем!</string>
+    <string name="endGameNewGame">Начинаем новую игру?</string>
+    <string name="endGameReward">Или посмотреть рекламу что бы добавить одну жизнь?</string>
+    <string name="endGameYes">Да</string>
+    <string name="endGameNo">Нет</string>
+    <string name="endGameRewardShow">Посмотреть рекламу</string>
 
 </resources>

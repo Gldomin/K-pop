@@ -28,5 +28,16 @@
     <color name="text_shadow">#7F000000</color>
     <color name="text_shadow_white">#FFFFFF</color>
 
+    <color name="colorAlertDialogBackgroundStyle1">#000000</color>
+    <color name="colorAlertDialogTextStyle1">#FFFFFF</color>
+    <color name="colorAlertDialogTextPrimaryStyle1">#FFFFFF</color>
+
+    <color name="colorAlertDialogBackgroundStyle2">#000000</color>
+    <color name="colorAlertDialogTextStyle2">#FFFFFF</color>
+    <color name="colorAlertDialogTextPrimaryStyle2">#FFFFFF</color>
+
+    <color name="colorAlertDialogBackgroundStyle3">#000000</color>
+    <color name="colorAlertDialogTextStyle3">#FFFFFF</color>
+    <color name="colorAlertDialogTextPrimaryStyle3">#FFFFFF</color>
 
 </resources>
