@@ -55,4 +55,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="NoticeTheme" parent="Theme.AppCompat.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

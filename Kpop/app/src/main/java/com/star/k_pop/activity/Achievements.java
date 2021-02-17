@@ -43,15 +43,15 @@ public class Achievements extends AppCompatActivity {
         if (storage.getBoolean("achGuessStarNormal")) //почему-то R.drawable.achievement слишком большая
             ach1.setImageResource(R.drawable.normalgs);
         if (storage.getBoolean("achGuessStarExpert"))
-            ach2.setImageResource(R.drawable.kpoplove);
+            ach2.setImageResource(R.drawable.expertgs);
         if (storage.getBoolean("achGuessBandsNormal"))
             ach3.setImageResource(R.drawable.normalgb);
         if (storage.getBoolean("achGuessBandsExpert"))
-            ach4.setImageResource(R.drawable.kpoplove);
+            ach4.setImageResource(R.drawable.expertgb);
         if (storage.getBoolean("achSwipeTwoBandsNormal"))
             ach5.setImageResource(R.drawable.normaldb);
         if (storage.getBoolean("achSwipeTwoBandsExpert"))
-            ach6.setImageResource(R.drawable.kpoplove);
+            ach6.setImageResource(R.drawable.expertdb);
         if (storage.getBoolean("achGuessStarReversNormal"))
             ach7.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean("achGuessStarReversExpert"))

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -132,12 +134,10 @@ public class GuessStar extends AppCompatActivity {
                         }
                         // TODO Ваня доделай эту часть
                         if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                            SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.kpoplove, "achGuessStarNormal"); //ачивочка
-                            /*Storage storage = new Storage(GuessStar.this); //блок кодя для получения, уведомления и записи ачивок
-                            String nameOfStorage = "appStatus"; String nameOfAchievement = "achGuessStarNormal";
-                            if (!storage.getBoolean(nameOfStorage, "achGuessStarNormalText"))
-                                SomeMethods.showAchievementToast(GuessStar.this, getResources().getString(R.string.achievementUnlocked), getResources().getString(R.string.achGuessStarNormal), R.drawable.achievement);
-                            storage.saveValue(nameOfStorage,nameOfAchievement,true);*/
+                            SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.normalgs, "achGuessStarNormal"); //ачивочка
+                        }
+                        if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
+                            SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
                         }
                         // TODO Конец части
 
@@ -173,6 +173,27 @@ public class GuessStar extends AppCompatActivity {
         imageViewList.add(heart2);
         imageViewList.add(heart3);
         heathBarTest = new HeathBar(imageViewList, 3);
+
+
+        ImageButton about = findViewById(R.id.guessStarAbautButton);
+        if (theme.isDarkMode()) {
+            about.setBackgroundResource(R.drawable.stylebutton_dark);
+        } else {
+            about.setBackgroundResource(R.drawable.stylebutton);
+        }
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(GuessStar.this, BasicNotice.class);
+                image.putExtra("text", R.string.guessStarGameModeAbaut);
+                image.putExtra("title", R.string.gameModeAbaut);
+                startActivity(image);
+            }
+        });
+
+
 
         // TODO Удалить перед релизом
         if (theme.isDarkMode()) {
@@ -269,6 +290,8 @@ public class GuessStar extends AppCompatActivity {
         }
     }
 
+
+
     void nextArtist() {
         chosenOne = new Random().nextInt(4);
         boolean sex = artists.get(count).isSex();
@@ -354,4 +377,5 @@ public class GuessStar extends AppCompatActivity {
         AlertDialog alert = builder.create();
         alert.show();
     }
+
 }
