@@ -127,13 +127,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Синий"
+                android:text="Зайка"
                 />
             <RadioButton
                 android:id="@+id/redVar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Красный"/>
+                android:text="Хомячок"/>
+            <RadioButton
+                android:id="@+id/catVar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Котик"/>
 
         </RadioGroup>
 

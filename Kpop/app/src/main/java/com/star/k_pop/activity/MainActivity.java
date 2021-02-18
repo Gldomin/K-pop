@@ -66,9 +66,13 @@ public class MainActivity extends AppCompatActivity {
         Button guessStarButton = findViewById(R.id.guessStarButton);
         if (theme.isDarkMode()) {
             guessStarButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
+        }  else if (theme.isLightRabbit()) {
             guessStarButton.setBackgroundResource(R.drawable.stylebutton);
-        }
+    }else if (theme.isLightCat()) {
+            guessStarButton.setBackgroundResource(R.drawable.stylebutton_cat);
+    }else if (theme.isLightHamster()) {
+            guessStarButton.setBackgroundResource(R.drawable.stylebutton_hamster);
+    }
 
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +86,12 @@ public class MainActivity extends AppCompatActivity {
         Button guessStarReverseButton = findViewById(R.id.guessStarReverseButton);
         if (theme.isDarkMode()) {
             guessStarReverseButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
+        } else if (theme.isLightRabbit()) {
             guessStarReverseButton.setBackgroundResource(R.drawable.stylebutton);
+        }else if (theme.isLightCat()) {
+            guessStarReverseButton.setBackgroundResource(R.drawable.stylebutton_cat);
+        }else if (theme.isLightHamster()) {
+            guessStarReverseButton.setBackgroundResource(R.drawable.stylebutton_hamster);
         }
         guessStarReverseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,8 +105,12 @@ public class MainActivity extends AppCompatActivity {
         Button guessBandButton = findViewById(R.id.guessGroupButton);
         if (theme.isDarkMode()) {
             guessBandButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
+        } else if (theme.isLightRabbit()) {
             guessBandButton.setBackgroundResource(R.drawable.stylebutton);
+        }else if (theme.isLightCat()) {
+            guessBandButton.setBackgroundResource(R.drawable.stylebutton_cat);
+        }else if (theme.isLightHamster()) {
+            guessBandButton.setBackgroundResource(R.drawable.stylebutton_hamster);
         }
 
         guessBandButton.setOnClickListener(new View.OnClickListener() {
@@ -112,8 +124,12 @@ public class MainActivity extends AppCompatActivity {
         Button buttonLibrary = findViewById(R.id.galleryButton);
         if (theme.isDarkMode()) {
             buttonLibrary.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
+        } else if (theme.isLightRabbit()) {
             buttonLibrary.setBackgroundResource(R.drawable.stylebutton);
+        }else if (theme.isLightCat()) {
+            buttonLibrary.setBackgroundResource(R.drawable.stylebutton_cat);
+        }else if (theme.isLightHamster()) {
+            buttonLibrary.setBackgroundResource(R.drawable.stylebutton_hamster);
         }
 
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
@@ -127,9 +143,14 @@ public class MainActivity extends AppCompatActivity {
         Button settingsButton = findViewById(R.id.settingsButton);
         if (theme.isDarkMode()) {
             settingsButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
+        } else if (theme.isLightRabbit()) {
             settingsButton.setBackgroundResource(R.drawable.stylebutton);
+        }else if (theme.isLightCat()) {
+            settingsButton.setBackgroundResource(R.drawable.stylebutton_cat);
+        }else if (theme.isLightHamster()) {
+            settingsButton.setBackgroundResource(R.drawable.stylebutton_hamster);
         }
+
 
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,8 +178,12 @@ public class MainActivity extends AppCompatActivity {
         Button tinderButton = findViewById(R.id.chooseTinderButton);
         if (theme.isDarkMode()) {
             tinderButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
+        } else if (theme.isLightRabbit()) {
             tinderButton.setBackgroundResource(R.drawable.stylebutton);
+        }else if (theme.isLightCat()) {
+            tinderButton.setBackgroundResource(R.drawable.stylebutton_cat);
+        }else if (theme.isLightHamster()) {
+            tinderButton.setBackgroundResource(R.drawable.stylebutton_hamster);
         }
 
 
@@ -183,9 +208,14 @@ public class MainActivity extends AppCompatActivity {
         Button about = findViewById(R.id.abautButton);
         if (theme.isDarkMode()) {
             about.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
+        } else if (theme.isLightRabbit()) {
             about.setBackgroundResource(R.drawable.stylebutton);
+        }else if (theme.isLightCat()) {
+            about.setBackgroundResource(R.drawable.stylebutton_cat);
+        }else if (theme.isLightHamster()) {
+            about.setBackgroundResource(R.drawable.stylebutton_hamster);
         }
+
 
         about.setOnClickListener(new View.OnClickListener() {
             @Override

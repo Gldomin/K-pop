@@ -59,36 +59,59 @@ public class Settings extends AppCompatActivity {
         final Switch hintModeSwitch = findViewById(R.id.optionSwitch1); //hintMode переключалка
         if (theme.isDarkMode()) {
             hintModeSwitch.setTextColor(getResources().getColor(R.color.colorText));
-        } else {
-            hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
+        } else if (theme.isLightRabbit()){
+            hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextRabbit));
+        }
+        else if (theme.isLightCat()){
+            hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextCat));
+        }
+        else if (theme.isLightHamster()){
+            hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextHamster));
         }
 
         final Switch hardModeSwitch = findViewById(R.id.optionSwitch2); //hardMode переключалка
         if (theme.isDarkMode()) {
             hardModeSwitch.setTextColor(getResources().getColor(R.color.colorText));
-        } else {
-            hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
+        } else if (theme.isLightRabbit()){
+            hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextRabbit));
         }
+        else if (theme.isLightCat()){
+            hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextCat));
+        }
+        else if (theme.isLightHamster()){
+            hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextHamster));
+        }
+
 
         final Switch darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
         if (theme.isDarkMode()) {
             darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorText));
-        } else {
-            darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextLight));
+        } else if (theme.isLightRabbit()){
+            darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextRabbit));
         }
+        else if (theme.isLightCat()){
+            darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextCat));
+        }
+        else if (theme.isLightHamster()){
+            darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextHamster));
+        }
+
+
         final  RadioGroup radGroup = findViewById(R.id.radGroup);
         final RadioButton  blueBut = findViewById(R.id.blueVar);
+
         if (theme.isDarkMode()) {
             blueBut.setTextColor(getResources().getColor(R.color.colorText));
         } else {
-            blueBut.setTextColor(getResources().getColor(R.color.colorTextLight));
+            blueBut.setTextColor(getResources().getColor(R.color.colorTextRabbit));
         }
         final ImageView themeIm = findViewById(R.id.exampleBack);
         final RadioButton  redBut = findViewById(R.id.redVar);
+        final RadioButton  catBut = findViewById(R.id.catVar);
         if (theme.isDarkMode()) {
             redBut.setTextColor(getResources().getColor(R.color.colorText));
         } else {
-            redBut.setTextColor(getResources().getColor(R.color.colorTextLight));
+            redBut.setTextColor(getResources().getColor(R.color.colorTextRabbit));
         }
         if (theme.isDarkMode()) { radGroup.setVisibility(View.GONE);
         themeIm.setVisibility(View.GONE);
@@ -108,8 +131,11 @@ radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
                                                 themeIm.setImageResource(R.drawable.main_background);
                                             tempSettingsSet.themeCount=1;}
                                             else if (checkedId == R.id.redVar){
-                                                themeIm.setImageResource(R.drawable.main_background2);
+                                                themeIm.setImageResource(R.drawable.main_background_hamster);
                                             tempSettingsSet.themeCount=2;}
+                                            else if (checkedId == R.id.catVar){
+                                                themeIm.setImageResource(R.drawable.main_background_cat);
+                                                tempSettingsSet.themeCount=3;}
                                             //switch (radGroup.getId()){
                                                // case R.id.blueVar:
                                                   //  tempSettingsSet.themeCount=1;
@@ -243,6 +269,7 @@ radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
 
             if (tempSettingsSet.themeCount==1) radGroup.check(R.id.blueVar);
             if (tempSettingsSet.themeCount==2) radGroup.check(R.id.redVar);
+            if(tempSettingsSet.themeCount==3) radGroup.check(R.id.catVar);
 
             //optionSwitch4.setChecked(tempSettingsSet.option4);
             //optionSwitch5.setChecked(tempSettingsSet.option5);
