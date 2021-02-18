@@ -33,6 +33,20 @@ public class Theme {
         }
     }
 
+    public void setThemeSecond() {
+        Storage storage2 = new Storage(activity, "settings");
+        darkMode = storage2.getBoolean("darkMode");
+        themeCount = storage2.getInt("themeCount");
+        if (darkMode) {
+            activity.setTheme(R.style.AppTheme2);
+        } else if(themeCount==1){ activity.setTheme(R.style.AppThemeLightRabbit);
+        }
+        else if(themeCount==2){ activity.setTheme(R.style.AppThemeLightHamster2);
+        }
+        else if(themeCount==3){ activity.setTheme(R.style.AppThemeLightCat);
+        }
+    }
+
     public int getAlertDialogStyle() {
         if (darkMode) {
             return R.style.AlertDialog3;

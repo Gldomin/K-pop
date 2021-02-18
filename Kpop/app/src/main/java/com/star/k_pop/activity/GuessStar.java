@@ -68,7 +68,7 @@ public class GuessStar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         theme = new Theme(this);
-        theme.setTheme();
+        theme.setThemeSecond();
 
         rewarded = new Rewarded(this);
 

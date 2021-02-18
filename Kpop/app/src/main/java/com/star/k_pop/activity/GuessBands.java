@@ -86,7 +86,8 @@ public class GuessBands extends AppCompatActivity {
         Integer counter = 0;
 
         theme = new Theme(this);
-        theme.setTheme();
+        theme.setThemeSecond();
+
 
         super.onCreate(savedInstanceState);
 /*
@@ -166,7 +167,8 @@ public class GuessBands extends AppCompatActivity {
 
         buttons = new ArrayList<Button>();
         final EditText grName = findViewById(R.id.groupName);
-        if (theme.isDarkMode()) {
+        grName.setTextColor(theme.getTextColor());
+       /* if (theme.isDarkMode()) {
             grName.setTextColor(getResources().getColor(R.color.colorText));
         } else if(theme.isLightRabbit()){
             grName.setTextColor(getResources().getColor(R.color.colorTextRabbit));
@@ -176,7 +178,7 @@ public class GuessBands extends AppCompatActivity {
         }
         else if(theme.isLightHamster()){
             grName.setTextColor(getResources().getColor(R.color.colorTextHamster));
-        }
+        }*/
 
 
         // 4 строки снизу для отладки, удалить на релизе

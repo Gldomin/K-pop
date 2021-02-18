@@ -60,13 +60,60 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:windowBackground">@color/colorBackgroundLight</item>-->
         <item name="android:windowBackground">@drawable/main_background_cat</item>
-        <item name="android:textColor">@color/colorTextRabbit</item>>
+        <item name="android:textColor">@color/colorTextCat</item>>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
 
 
 
+        <item name="colorControlNormal">@color/colorTextCat</item>
+        <item name="colorControlActivated">@color/colorTextCat</item>
+        <item name="colorControlHighlight">@color/colorTextCat</item>
+    </style>
+
+
+    <style name="AppThemeLightCat2" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:windowBackground">@color/colorBackgroundLight</item>-->
+        <item name="android:windowBackground">@drawable/main_background_cat</item>
+        <item name="android:textColor">@color/colorTextCat</item>>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+
+        <item name="colorControlNormal">@color/colorTextCat</item>
+        <item name="colorControlActivated">@color/colorTextCat</item>
+        <item name="colorControlHighlight">@color/colorTextCat</item>
+    </style>
+
+    <style name="AppThemeLightHamster2" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:windowBackground">@color/colorBackgroundLight</item>-->
+        <item name="android:windowBackground">@drawable/main_background_hamster2</item>
+        <item name="android:textColor">@color/colorTextHamster</item>>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorControlNormal">@color/colorTextHamster</item>
+        <item name="colorControlActivated">@color/colorTextHamster</item>
+        <item name="colorControlHighlight">@color/colorTextHamster</item>
+    </style>
+
+    <style name="AppThemeLightRabbit2" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:windowBackground">@color/colorBackgroundLight</item>-->
+        <item name="android:windowBackground">@drawable/main_background</item>
+        <item name="android:textColor">@color/colorTextRabbit</item>>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
         <item name="colorControlNormal">@color/colorTextRabbit</item>
         <item name="colorControlActivated">@color/colorTextRabbit</item>
         <item name="colorControlHighlight">@color/colorTextRabbit</item>
