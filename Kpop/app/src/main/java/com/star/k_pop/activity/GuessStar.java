@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
@@ -52,9 +53,11 @@ public class GuessStar extends AppCompatActivity {
     int scoreNow = 0;       //текущий счет
     int record = 0;         //рекорд
     int count = 0;          //номер артиста из сгенерированного списка (текущий)
+
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
+
 
     boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
 
@@ -129,12 +132,13 @@ public class GuessStar extends AppCompatActivity {
                             artists = Importer.getRandomArtists();
                             count = 0;
                         }
-                        // TODO Ваня доделай эту часть
-                        if (scoreNow == 50) //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                        {
+                        if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.normalgs, "achGuessStarNormal"); //ачивочка
                         }
-                        // TODO Конец части
+                        if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
+                            SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
+
+                        }
 
                         // TODO Удалить перед релизом
                         for (int i = 0; i < 4; i++) {
@@ -156,14 +160,27 @@ public class GuessStar extends AppCompatActivity {
             tableRow.addView(buttons[i]);
         }
 
-        ImageView heart1 = findViewById(R.id.guessStarHeart1); //toDo тест хп
-        ImageView heart2 = findViewById(R.id.guessStarHeart2);
-        ImageView heart3 = findViewById(R.id.guessStarHeart3);
+        ImageView heart1 = findViewById(R.id.guessBandHeart1); //toDo тест хп
+        ImageView heart2 = findViewById(R.id.guessBandHeart2);
+        ImageView heart3 = findViewById(R.id.guessBandHeart3);
         final ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
         imageViewList.add(heart1);
         imageViewList.add(heart2);
         imageViewList.add(heart3);
         heathBarTest = new HeathBar(imageViewList, 3);
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(GuessStar.this, BasicNotice.class);
+                image.putExtra("text", R.string.guessStarGameModeAbaut);
+                image.putExtra("title", R.string.gameModeAbaut);
+                startActivity(image);
+            }
+        });
+
+
 
         // TODO Удалить перед релизом
         cheaterButton.setBackgroundResource(theme.getBackgroundResource());
@@ -241,6 +258,8 @@ public class GuessStar extends AppCompatActivity {
                     getResources().getString(R.string.record_text), scoreNow));
         }
     }
+
+
 
     void nextArtist() {
         chosenOne = new Random().nextInt(4);
@@ -340,4 +359,5 @@ public class GuessStar extends AppCompatActivity {
         AlertDialog alert = builder.create();
         alert.show();
     }
+
 }

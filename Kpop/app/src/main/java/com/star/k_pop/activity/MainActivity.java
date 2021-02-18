@@ -150,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, BasicNotice.class);
+                image.putExtra("text", R.string.aboutText);
+                image.putExtra("title", R.string.aboutTitle);
                 startActivity(image);
             }
         });

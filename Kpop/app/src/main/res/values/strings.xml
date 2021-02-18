@@ -57,6 +57,8 @@
     <string name="answerYes">Yes</string>
     <string name="answerNo">No</string>
 
+
+    <string name="gameRulesAbaut">Games Rules</string>
     <string name="aboutTitle">Welcome!</string>
     <string name="aboutText">
          Welcome to Guess K-pop app! In this application, you can test your knowledge of K-pop. In this application, you are offered 3 main game modes: "\n"
