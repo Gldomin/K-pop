@@ -9,7 +9,7 @@ public class Theme {
     Activity activity;
     boolean darkMode;
     boolean lightCat, lightHamster, lightRabbit = false;
-    int themeCount;
+    int themeCount, themeCount2;
 
     public Theme(Activity activity) {
         this.activity = activity;
@@ -44,6 +44,34 @@ public class Theme {
         else if(themeCount==2){ activity.setTheme(R.style.AppThemeLightHamster2);
         }
         else if(themeCount==3){ activity.setTheme(R.style.AppThemeLightCat);
+        }
+    }
+
+    public int getThemeBackground() {
+        /*if (darkMode) {
+            return R.drawable.main_background2;
+        } else*/ if (themeCount == 1) {
+            return R.drawable.main_background2;
+        } else if (themeCount == 2) {
+            return R.drawable.main_background_hamster2;
+        } else if (themeCount == 3) {
+            return R.drawable.main_background_cat2;
+        } else {
+            return R.drawable.main_background;
+        }
+    }
+
+    public int getThemeBackground2() {
+        /*if (darkMode) {
+            return R.drawable.main_background2;
+        } else*/ if (themeCount == 1) {
+            return R.drawable.main_background2;
+        } else if (themeCount == 2) {
+            return R.drawable.main_background_hamster2;
+        } else if (themeCount == 3) {
+            return R.drawable.main_background_cat2;
+        } else {
+            return R.drawable.main_background;
         }
     }
 

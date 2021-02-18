@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -68,7 +69,9 @@ public class GuessStar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         theme = new Theme(this);
-        theme.setThemeSecond();
+        theme.setTheme();
+        Window window = getWindow();
+        window.setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
 
         rewarded = new Rewarded(this);
 

@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Storage storage = new Storage(this, "appStatus");
         theme = new Theme(this);
-        if (theme.isLightRabbit())
         theme.setTheme();
 
         super.onCreate(savedInstanceState);

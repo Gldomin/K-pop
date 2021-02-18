@@ -9,9 +9,11 @@ import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,11 +83,15 @@ public class GuessBands extends AppCompatActivity {
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
         Storage storage = new Storage(this, "settings");
-
+        RelativeLayout layoutR  = findViewById(R.id.guesId);
         Integer counter = 0;
 
         theme = new Theme(this);
-        theme.setThemeSecond();
+        theme.setTheme();
+        //layoutR.setBackground(getResources().getDrawable(theme.getThemeBackground2()));
+        Window window = getWindow();
+        window.setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
+
 
 
         super.onCreate(savedInstanceState);
