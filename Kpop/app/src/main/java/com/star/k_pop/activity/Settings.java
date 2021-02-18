@@ -32,10 +32,10 @@ public class Settings extends AppCompatActivity {
     OptionsSet tempSettingsSet = new OptionsSet(false, false);
     Theme theme;
     SharedPreferences sp;
-    int themeCount=1;
+    int themeCount = 1;
 
-    private static final int[] RADIO_IDS ={
-            R.id.blueVar,R.id.redVar
+    private static final int[] RADIO_IDS = {
+            R.id.blueVar, R.id.redVar
     };
 
     //OptionsSet tempSettingsSet2 = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
@@ -50,102 +50,63 @@ public class Settings extends AppCompatActivity {
         theme.setTheme();
 
 
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_settings);
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
 
         final Switch hintModeSwitch = findViewById(R.id.optionSwitch1); //hintMode переключалка
-        if (theme.isDarkMode()) {
-            hintModeSwitch.setTextColor(getResources().getColor(R.color.colorText));
-        } else if (theme.isLightRabbit()){
-            hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextRabbit));
-        }
-        else if (theme.isLightCat()){
-            hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextCat));
-        }
-        else if (theme.isLightHamster()){
-            hintModeSwitch.setTextColor(getResources().getColor(R.color.colorTextHamster));
-        }
+        hintModeSwitch.setTextColor(theme.getTextColor());
 
         final Switch hardModeSwitch = findViewById(R.id.optionSwitch2); //hardMode переключалка
-        if (theme.isDarkMode()) {
-            hardModeSwitch.setTextColor(getResources().getColor(R.color.colorText));
-        } else if (theme.isLightRabbit()){
-            hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextRabbit));
-        }
-        else if (theme.isLightCat()){
-            hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextCat));
-        }
-        else if (theme.isLightHamster()){
-            hardModeSwitch.setTextColor(getResources().getColor(R.color.colorTextHamster));
-        }
-
+        hardModeSwitch.setTextColor(theme.getTextColor());
 
         final Switch darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
-        if (theme.isDarkMode()) {
-            darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorText));
-        } else if (theme.isLightRabbit()){
-            darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextRabbit));
-        }
-        else if (theme.isLightCat()){
-            darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextCat));
-        }
-        else if (theme.isLightHamster()){
-            darkThemeSwitch.setTextColor(getResources().getColor(R.color.colorTextHamster));
-        }
+        darkThemeSwitch.setTextColor(theme.getTextColor());
 
-
-        final  RadioGroup radGroup = findViewById(R.id.radGroup);
-        final RadioButton  blueBut = findViewById(R.id.blueVar);
-
-        if (theme.isDarkMode()) {
-            blueBut.setTextColor(getResources().getColor(R.color.colorText));
-        } else {
-            blueBut.setTextColor(getResources().getColor(R.color.colorTextRabbit));
-        }
+        final RadioGroup radGroup = findViewById(R.id.radGroup);
+        final RadioButton blueBut = findViewById(R.id.blueVar);
         final ImageView themeIm = findViewById(R.id.exampleBack);
-        final RadioButton  redBut = findViewById(R.id.redVar);
-        final RadioButton  catBut = findViewById(R.id.catVar);
+        final RadioButton redBut = findViewById(R.id.redVar);
+        final RadioButton catBut = findViewById(R.id.catVar);
+
+        blueBut.setTextColor(theme.getTextColor());
+        redBut.setTextColor(theme.getTextColor());
+        catBut.setTextColor(theme.getTextColor());
         if (theme.isDarkMode()) {
-            redBut.setTextColor(getResources().getColor(R.color.colorText));
+            radGroup.setVisibility(View.GONE);
+            themeIm.setVisibility(View.GONE);
         } else {
-            redBut.setTextColor(getResources().getColor(R.color.colorTextRabbit));
-        }
-        if (theme.isDarkMode()) { radGroup.setVisibility(View.GONE);
-        themeIm.setVisibility(View.GONE);
-        }
-        else {radGroup.setVisibility(View.VISIBLE);
+            radGroup.setVisibility(View.VISIBLE);
             themeIm.setVisibility(View.VISIBLE);
         }
 
         themeIm.setImageResource(R.drawable.main_background);
 
-radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-                                    {
+        radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
-                                        @Override
-                                        public void onCheckedChanged(RadioGroup radGroup, int checkedId) {
-                                            if (checkedId == R.id.blueVar){
-                                                themeIm.setImageResource(R.drawable.main_background);
-                                            tempSettingsSet.themeCount=1;}
-                                            else if (checkedId == R.id.redVar){
-                                                themeIm.setImageResource(R.drawable.main_background_hamster);
-                                            tempSettingsSet.themeCount=2;}
-                                            else if (checkedId == R.id.catVar){
-                                                themeIm.setImageResource(R.drawable.main_background_cat);
-                                                tempSettingsSet.themeCount=3;}
-                                            //switch (radGroup.getId()){
-                                               // case R.id.blueVar:
-                                                  //  tempSettingsSet.themeCount=1;
-                                                  //  break;
-                                                //case R.id.redVar:
-                                                 //   tempSettingsSet.themeCount=2;
-                                           // }
-                                       }
-                                    }
-                                            );
+                                                @Override
+                                                public void onCheckedChanged(RadioGroup radGroup, int checkedId) {
+                                                    if (checkedId == R.id.blueVar) {
+                                                        themeIm.setImageResource(R.drawable.main_background);
+                                                        tempSettingsSet.themeCount = 1;
+                                                    } else if (checkedId == R.id.redVar) {
+                                                        themeIm.setImageResource(R.drawable.main_background_hamster);
+                                                        tempSettingsSet.themeCount = 2;
+                                                    } else if (checkedId == R.id.catVar) {
+                                                        themeIm.setImageResource(R.drawable.main_background_cat);
+                                                        tempSettingsSet.themeCount = 3;
+                                                    }
+                                                    //switch (radGroup.getId()){
+                                                    // case R.id.blueVar:
+                                                    //  tempSettingsSet.themeCount=1;
+                                                    //  break;
+                                                    //case R.id.redVar:
+                                                    //   tempSettingsSet.themeCount=2;
+                                                    // }
+                                                }
+                                            }
+        );
 
 
         //   final Switch optionSwitch4 = findViewById(R.id.optionSwitch4); //заменить когда появится новая опция
@@ -195,11 +156,7 @@ radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         });*/
 
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
-        if (theme.isDarkMode()) {
-            settingsConfirmButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
-            settingsConfirmButton.setBackgroundResource(R.drawable.stylebutton);
-        }
+        settingsConfirmButton.setBackgroundResource(theme.getBackgroundResource());
 
         settingsConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,11 +170,7 @@ radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         });
 
         Button creepyGuy = findViewById(R.id.settingsCancel); //TODO delete this shit
-        if (theme.isDarkMode()) {
-            creepyGuy.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
-            creepyGuy.setBackgroundResource(R.drawable.stylebutton);
-        }
+        creepyGuy.setBackgroundResource(theme.getBackgroundResource());
 
         creepyGuy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,12 +188,7 @@ radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         });
 
         Button resetButton = findViewById(R.id.resetRecordButton); //кнопка сброса счета
-        if (theme.isDarkMode()) {
-            resetButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
-            resetButton.setBackgroundResource(R.drawable.stylebutton);
-        }
-
+        resetButton.setBackgroundResource(theme.getBackgroundResource());
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -267,9 +215,9 @@ radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
             hardModeSwitch.setChecked(tempSettingsSet.hardMode);
             darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
 
-            if (tempSettingsSet.themeCount==1) radGroup.check(R.id.blueVar);
-            if (tempSettingsSet.themeCount==2) radGroup.check(R.id.redVar);
-            if(tempSettingsSet.themeCount==3) radGroup.check(R.id.catVar);
+            if (tempSettingsSet.themeCount == 1) radGroup.check(R.id.blueVar);
+            if (tempSettingsSet.themeCount == 2) radGroup.check(R.id.redVar);
+            if (tempSettingsSet.themeCount == 3) radGroup.check(R.id.catVar);
 
             //optionSwitch4.setChecked(tempSettingsSet.option4);
             //optionSwitch5.setChecked(tempSettingsSet.option5);
@@ -304,7 +252,7 @@ radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         storage.saveValue("darkMode", tempSettingsSet.darkMode);
         storage.saveValue("option4", tempSettingsSet.option4);
         storage.saveValue("option5", tempSettingsSet.option5);
-        storage.saveValue("themeCount",tempSettingsSet.themeCount);
+        storage.saveValue("themeCount", tempSettingsSet.themeCount);
         Toast.makeText(Settings.this, getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
     }
 

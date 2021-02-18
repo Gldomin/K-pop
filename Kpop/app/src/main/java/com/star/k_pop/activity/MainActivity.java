@@ -65,16 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button guessStarButton = findViewById(R.id.guessStarButton);
-        if (theme.isDarkMode()) {
-            guessStarButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        }  else if (theme.isLightRabbit()) {
-            guessStarButton.setBackgroundResource(R.drawable.stylebutton);
-    }else if (theme.isLightCat()) {
-            guessStarButton.setBackgroundResource(R.drawable.stylebutton_cat);
-    }else if (theme.isLightHamster()) {
-            guessStarButton.setBackgroundResource(R.drawable.stylebutton_hamster);
-    }
-
+        guessStarButton.setBackgroundResource(theme.getBackgroundResource());
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,15 +76,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button guessStarReverseButton = findViewById(R.id.guessStarReverseButton);
-        if (theme.isDarkMode()) {
-            guessStarReverseButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else if (theme.isLightRabbit()) {
-            guessStarReverseButton.setBackgroundResource(R.drawable.stylebutton);
-        }else if (theme.isLightCat()) {
-            guessStarReverseButton.setBackgroundResource(R.drawable.stylebutton_cat);
-        }else if (theme.isLightHamster()) {
-            guessStarReverseButton.setBackgroundResource(R.drawable.stylebutton_hamster);
-        }
+        guessStarReverseButton.setBackgroundResource(theme.getBackgroundResource());
         guessStarReverseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,16 +87,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button guessBandButton = findViewById(R.id.guessGroupButton);
-        if (theme.isDarkMode()) {
-            guessBandButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else if (theme.isLightRabbit()) {
-            guessBandButton.setBackgroundResource(R.drawable.stylebutton);
-        }else if (theme.isLightCat()) {
-            guessBandButton.setBackgroundResource(R.drawable.stylebutton_cat);
-        }else if (theme.isLightHamster()) {
-            guessBandButton.setBackgroundResource(R.drawable.stylebutton_hamster);
-        }
-
+        guessBandButton.setBackgroundResource(theme.getBackgroundResource());
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,17 +96,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-        Button buttonLibrary = findViewById(R.id.galleryButton);
-        if (theme.isDarkMode()) {
-            buttonLibrary.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else if (theme.isLightRabbit()) {
-            buttonLibrary.setBackgroundResource(R.drawable.stylebutton);
-        }else if (theme.isLightCat()) {
-            buttonLibrary.setBackgroundResource(R.drawable.stylebutton_cat);
-        }else if (theme.isLightHamster()) {
-            buttonLibrary.setBackgroundResource(R.drawable.stylebutton_hamster);
-        }
 
+        Button buttonLibrary = findViewById(R.id.galleryButton);
+        buttonLibrary.setBackgroundResource(theme.getBackgroundResource());
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,32 +107,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-        Button settingsButton = findViewById(R.id.settingsButton);
-        if (theme.isDarkMode()) {
-            settingsButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else if (theme.isLightRabbit()) {
-            settingsButton.setBackgroundResource(R.drawable.stylebutton);
-        }else if (theme.isLightCat()) {
-            settingsButton.setBackgroundResource(R.drawable.stylebutton_cat);
-        }else if (theme.isLightHamster()) {
-            settingsButton.setBackgroundResource(R.drawable.stylebutton_hamster);
-        }
 
+        Button settingsButton = findViewById(R.id.settingsButton);
+        settingsButton.setBackgroundResource(theme.getBackgroundResource());
 
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-           /*     new CountDownTimer(10000, 1000) {
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        recreate();
-                    }
-                }.start();*/
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Settings.class);
                 startActivityForResult(image, REQUEST_CODE);
@@ -177,17 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button tinderButton = findViewById(R.id.chooseTinderButton);
-        if (theme.isDarkMode()) {
-            tinderButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else if (theme.isLightRabbit()) {
-            tinderButton.setBackgroundResource(R.drawable.stylebutton);
-        }else if (theme.isLightCat()) {
-            tinderButton.setBackgroundResource(R.drawable.stylebutton_cat);
-        }else if (theme.isLightHamster()) {
-            tinderButton.setBackgroundResource(R.drawable.stylebutton_hamster);
-        }
-
-
+        tinderButton.setBackgroundResource(theme.getBackgroundResource());
         tinderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -206,18 +143,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
+
         Button about = findViewById(R.id.abautButton);
-        if (theme.isDarkMode()) {
-            about.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else if (theme.isLightRabbit()) {
-            about.setBackgroundResource(R.drawable.stylebutton);
-        }else if (theme.isLightCat()) {
-            about.setBackgroundResource(R.drawable.stylebutton_cat);
-        }else if (theme.isLightHamster()) {
-            about.setBackgroundResource(R.drawable.stylebutton_hamster);
-        }
-
-
+        about.setBackgroundResource(theme.getBackgroundResource());
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -226,8 +154,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(image);
             }
         });
-
-
     }
 
     @Override
@@ -327,7 +253,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Theme theme;//переменная для считывания состояния свиича на darkmod
-
 
 
     @Override

@@ -21,15 +21,15 @@ public class Theme {
         themeCount = storage2.getInt("themeCount");
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
-        } else if(themeCount==1){
+        } else if (themeCount == 1) {
             activity.setTheme(R.style.AppThemeLightRabbit);
-            lightRabbit=true;
-        }
-        else if(themeCount==2){ activity.setTheme(R.style.AppThemeLightHamster);
-            lightHamster=true;
-        }
-        else if(themeCount==3){ activity.setTheme(R.style.AppThemeLightCat);
-            lightCat=true;
+            lightRabbit = true;
+        } else if (themeCount == 2) {
+            activity.setTheme(R.style.AppThemeLightHamster);
+            lightHamster = true;
+        } else if (themeCount == 3) {
+            activity.setTheme(R.style.AppThemeLightCat);
+            lightCat = true;
         }
     }
 
@@ -49,30 +49,43 @@ public class Theme {
 
     public int getAlertDialogStyle() {
         if (darkMode) {
-            return R.style.AlertDialog3;
-        } else if (themeCount == 1)
             return R.style.AlertDialog1;
-        else {
+        } else if (themeCount == 1)
             return R.style.AlertDialog2;
+        else if (themeCount == 2) {
+            activity.setTheme(R.style.AppThemeLightHamster);
+            return R.style.AlertDialog3;
+        } else if (themeCount == 3) {
+            activity.setTheme(R.style.AppThemeLightCat);
+            return R.style.AlertDialog4;
         }
+        return R.style.AlertDialog1;
     }
 
-    public int getTextColor(){
+    public int getTextColor() {
         if (darkMode) {
             return activity.getResources().getColor(R.color.colorText);
         } else if (themeCount == 1)
             return activity.getResources().getColor(R.color.colorTextRabbit);
-        else {
+        else if (themeCount == 2) {
+            return activity.getResources().getColor(R.color.colorTextHamster);
+        } else if (themeCount == 3) {
+            return activity.getResources().getColor(R.color.colorTextCat);
+        } else {
             return activity.getResources().getColor(R.color.colorTextRabbit);
         }
     }
 
-    public int getBackgroundResource(){
+    public int getBackgroundResource() {
         if (darkMode) {
             return R.drawable.stylebutton_dark;
-        } else if (themeCount == 1)
+        } else if (themeCount == 1) {
             return R.drawable.stylebutton;
-        else {
+        } else if (themeCount == 2) {
+            return R.drawable.stylebutton_hamster;
+        } else if (themeCount == 3) {
+            return R.drawable.stylebutton_cat;
+        } else {
             return R.drawable.stylebutton;
         }
     }
@@ -80,7 +93,16 @@ public class Theme {
     public boolean isDarkMode() {
         return darkMode;
     }
-    public boolean isLightCat(){return lightCat;}
-    public boolean isLightHamster(){return lightHamster;}
-    public boolean isLightRabbit(){return lightRabbit;}
+
+    public boolean isLightCat() {
+        return lightCat;
+    }
+
+    public boolean isLightHamster() {
+        return lightHamster;
+    }
+
+    public boolean isLightRabbit() {
+        return lightRabbit;
+    }
 }
