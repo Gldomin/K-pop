@@ -36,12 +36,17 @@
     <color name="colorAlertDialogTextStyle1">#FFFFFF</color>
     <color name="colorAlertDialogTextPrimaryStyle1">#FFFFFF</color>
 
-    <color name="colorAlertDialogBackgroundStyle2">#000000</color>
-    <color name="colorAlertDialogTextStyle2">#FFFFFF</color>
-    <color name="colorAlertDialogTextPrimaryStyle2">#FFFFFF</color>
+    <color name="colorAlertDialogBackgroundStyle2">#EBFFCA</color>
+    <color name="colorAlertDialogTextStyle2">#32405C</color>
+    <color name="colorAlertDialogTextPrimaryStyle2">#32405C</color>
 
-    <color name="colorAlertDialogBackgroundStyle3">#000000</color>
-    <color name="colorAlertDialogTextStyle3">#FFFFFF</color>
-    <color name="colorAlertDialogTextPrimaryStyle3">#FFFFFF</color>
+    <color name="colorAlertDialogBackgroundStyle3">#E1FFAE</color>
+    <color name="colorAlertDialogTextStyle3">#447C40</color>
+    <color name="colorAlertDialogTextPrimaryStyle3">#447C40</color>
+
+    <color name="colorAlertDialogBackgroundStyle4">#FFEAFD</color>
+    <color name="colorAlertDialogTextStyle4">#454545</color>
+    <color name="colorAlertDialogTextPrimaryStyle4">#454545</color>
+
 
 </resources>

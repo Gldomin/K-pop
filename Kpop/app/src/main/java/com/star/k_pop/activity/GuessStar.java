@@ -166,31 +166,15 @@ public class GuessStar extends AppCompatActivity {
         heathBarTest = new HeathBar(imageViewList, 3);
 
         // TODO Удалить перед релизом
-        if (theme.isDarkMode()) {
-            cheaterButton.setBackgroundResource(R.drawable.stylebutton_dark);
-            cheaterButton.setTextColor(getResources().getColor(R.color.colorText));
-        } else if (theme.isLightRabbit()) {
-            cheaterButton.setBackgroundResource(R.drawable.stylebutton);
-            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextRabbit));
-        } else if (theme.isLightCat()) {
-            cheaterButton.setBackgroundResource(R.drawable.stylebutton_cat);
-            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextCat));
-        } else if (theme.isLightHamster()) {
-            cheaterButton.setBackgroundResource(R.drawable.stylebutton_hamster);
-            cheaterButton.setTextColor(getResources().getColor(R.color.colorTextHamster));
-        }
-
+        cheaterButton.setBackgroundResource(theme.getBackgroundResource());
+        cheaterButton.setTextColor(theme.getTextColor());
         cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
 
                 for (int i = 0; i < 4; i++) {
-                    if (theme.isDarkMode()) {
-                        buttons[i].setTextColor(getResources().getColor(R.color.colorText));
-                    } else {
-                        buttons[i].setTextColor(getResources().getColor(R.color.colorTextRabbit));
-                    }
+                    buttons[i].setTextColor(theme.getTextColor());
                 }
                 //количетво скипнутых артистов
                 count++;
@@ -216,20 +200,12 @@ public class GuessStar extends AppCompatActivity {
                         if (i == chosenOne)
                             buttons[i].setTextColor(Color.RED);
                         else {
-                            if (theme.isDarkMode()) {
-                                buttons[i].setTextColor(getResources().getColor(R.color.colorText));
-                            } else {
-                                buttons[i].setTextColor(getResources().getColor(R.color.colorTextRabbit));
-                            }
+                            buttons[i].setTextColor(theme.getTextColor());
                         }
                     }
                     Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                 } else {
-                    if (theme.isDarkMode()) {
-                        buttons[chosenOne].setTextColor(getResources().getColor(R.color.colorText));
-                    } else {
-                        buttons[chosenOne].setTextColor(getResources().getColor(R.color.colorTextRabbit));
-                    }
+                    buttons[chosenOne].setTextColor(theme.getTextColor());
                     Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
                 }
             }

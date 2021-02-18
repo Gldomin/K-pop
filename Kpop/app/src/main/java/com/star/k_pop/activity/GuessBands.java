@@ -12,7 +12,6 @@ import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -166,18 +165,7 @@ public class GuessBands extends AppCompatActivity {
 
         buttons = new ArrayList<Button>();
         final EditText grName = findViewById(R.id.groupName);
-        if (theme.isDarkMode()) {
-            grName.setTextColor(getResources().getColor(R.color.colorText));
-        } else if(theme.isLightRabbit()){
-            grName.setTextColor(getResources().getColor(R.color.colorTextRabbit));
-        }
-        else if(theme.isLightCat()){
-            grName.setTextColor(getResources().getColor(R.color.colorTextCat));
-        }
-        else if(theme.isLightHamster()){
-            grName.setTextColor(getResources().getColor(R.color.colorTextHamster));
-        }
-
+        grName.setTextColor(theme.getTextColor());
 
         // 4 строки снизу для отладки, удалить на релизе
         String textAnsw = grName.getText().toString();
@@ -213,18 +201,7 @@ public class GuessBands extends AppCompatActivity {
 
                         for (Button b : buttons) {
                             //выбор темы в зависимости от положения свича
-                            if (theme.isDarkMode()) {
-                                b.setBackgroundResource(R.drawable.stylebutton_dark);
-                            } else if(theme.isLightRabbit()){
-                                b.setBackgroundResource(R.drawable.stylebutton);
-                            }
-                            else if(theme.isLightCat()){
-                                b.setBackgroundResource(R.drawable.stylebutton_cat);
-                            }
-                            else if(theme.isLightHamster()){
-                                b.setBackgroundResource(R.drawable.stylebutton_hamster);
-                            }
-
+                            b.setBackgroundResource(theme.getBackgroundResource());
                         }
 
                         if (textAnsw.equals(answ)) {
@@ -258,7 +235,7 @@ public class GuessBands extends AppCompatActivity {
 
                             if (fastscore == 5) { //ачивка за 5 - achGuessBandsNormal. Условие ачивки 
                                 SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normaldb, "achGuessBandsNormal"); //ачивочка
-                                 }
+                            }
 
                         }
                         break;
@@ -341,17 +318,7 @@ public class GuessBands extends AppCompatActivity {
             buttons.add(button);
         }
         for (Button b : buttons) {
-            if (theme.isDarkMode()) {
-                b.setBackgroundResource(R.drawable.stylebutton_dark);
-            } else if(theme.isLightRabbit()){
-                b.setBackgroundResource(R.drawable.stylebutton);
-            }
-            else if(theme.isLightCat()){
-                b.setBackgroundResource(R.drawable.stylebutton_cat);
-            }
-            else if(theme.isLightHamster()){
-                b.setBackgroundResource(R.drawable.stylebutton_hamster);
-            }
+            b.setBackgroundResource(theme.getBackgroundResource());
         }
     }
 
