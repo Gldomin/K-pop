@@ -56,6 +56,7 @@ public class GuessStar extends AppCompatActivity {
     int count = 0;          //номер артиста из сгенерированного списка (текущий)
     boolean onRewarded = true;
     boolean showReward = false;
+
     boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
 
     Theme theme; //переменная для считывания состояния свиича на darkmod
@@ -165,9 +166,9 @@ public class GuessStar extends AppCompatActivity {
             tableRow.addView(buttons[i]);
         }
 
-        ImageView heart1 = findViewById(R.id.guessStarHeart1); //toDo тест хп
-        ImageView heart2 = findViewById(R.id.guessStarHeart2);
-        ImageView heart3 = findViewById(R.id.guessStarHeart3);
+        ImageView heart1 = findViewById(R.id.guessBandHeart1); //toDo тест хп
+        ImageView heart2 = findViewById(R.id.guessBandHeart2);
+        ImageView heart3 = findViewById(R.id.guessBandHeart3);
         final ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
         imageViewList.add(heart1);
         imageViewList.add(heart2);

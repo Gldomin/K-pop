@@ -22,6 +22,7 @@ import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
+import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.model.Artist;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class GuessBands extends AppCompatActivity {
     String folder;
     String buttonStyleChange = "stylebutton";
 
+    HeathBar heathBarTest; // объявление хп
 
     //private int currentApiVersion;
 
@@ -76,6 +78,7 @@ public class GuessBands extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
@@ -131,6 +134,16 @@ public class GuessBands extends AppCompatActivity {
        */
 
         setContentView(R.layout.activity_guess_bands);
+
+        ImageView imageView1 = findViewById(R.id.guessBandHeart1);
+        ImageView imageView2 = findViewById(R.id.guessBandHeart2);
+        ImageView imageView3 = findViewById(R.id.guessBandHeart3);
+        final ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
+        imageViewList.add(imageView1);
+        imageViewList.add(imageView2);
+        imageViewList.add(imageView3);
+        heathBarTest = new HeathBar(imageViewList, 3);      //инициализация хп
+
 
         final TextView scoreText = findViewById(R.id.scoreBands); //рекорд
         final TextView fastscoreText = findViewById(R.id.fastscoreBands); //текущий счет
@@ -217,6 +230,7 @@ public class GuessBands extends AppCompatActivity {
                             i++;
                             fastscore++;
 
+
                             if (i == artists.size()) //перетасовка списка для вечной игры
                             {
                                 artists = Importer.getRandomArtists();
@@ -241,6 +255,11 @@ public class GuessBands extends AppCompatActivity {
                             grName.setText(answ);
 
 
+                        } else {
+                            heathBarTest.blow();
+                            if (heathBarTest.getHp() == 0) {
+                                //TODO поставить startLosingDialog(конец игры)
+                            }
                         }
                         break;
                     case R.id.space:
@@ -338,7 +357,11 @@ public class GuessBands extends AppCompatActivity {
                 .transition(withCrossFade())
                 .into(groupPhoto);
     }
-/*
+
+
+
+
+    /*
     @SuppressLint("NewApi")
     @Override
     public void onWindowFocusChanged(boolean hasFocus)
