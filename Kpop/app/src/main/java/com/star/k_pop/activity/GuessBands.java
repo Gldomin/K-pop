@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -88,10 +89,9 @@ public class GuessBands extends AppCompatActivity {
 
         theme = new Theme(this);
         theme.setTheme();
-        //layoutR.setBackground(getResources().getDrawable(theme.getThemeBackground2()));
-        Window window = getWindow();
-        window.setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
-
+        //Window window = getWindow();
+        //window.setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
+        this.getWindow().setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
 
 
         super.onCreate(savedInstanceState);

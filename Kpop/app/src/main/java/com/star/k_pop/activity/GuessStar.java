@@ -14,6 +14,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,8 +72,10 @@ public class GuessStar extends AppCompatActivity {
 
         theme = new Theme(this);
         theme.setTheme();
-        Window window = getWindow();
-        window.setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
+
+        //Window window = getWindow();
+        //window.setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
+        this.getWindow().setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
 
         rewarded = new Rewarded(this);
 
