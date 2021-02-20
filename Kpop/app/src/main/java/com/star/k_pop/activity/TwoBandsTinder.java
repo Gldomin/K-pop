@@ -206,7 +206,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
-        theme.setTheme();
+        theme.setThemeSecond();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_bands_tinder);

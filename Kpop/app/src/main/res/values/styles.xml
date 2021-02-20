@@ -78,7 +78,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:windowBackground">@color/colorBackgroundLight</item>-->
-        <item name="android:windowBackground">@drawable/main_background_cat</item>
+        <item name="android:windowBackground">@drawable/main_background_cat2</item>
         <item name="android:textColor">@color/colorTextCat</item>>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -109,7 +109,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:windowBackground">@color/colorBackgroundLight</item>-->
-        <item name="android:windowBackground">@drawable/main_background</item>
+        <item name="android:windowBackground">@drawable/main_background2</item>
         <item name="android:textColor">@color/colorTextRabbit</item>>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -88,10 +88,10 @@ public class GuessBands extends AppCompatActivity {
         Integer counter = 0;
 
         theme = new Theme(this);
-        theme.setTheme();
+        theme.setThemeSecond();
         //Window window = getWindow();
         //window.setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
-        this.getWindow().setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
+        //this.getWindow().setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
 
 
         super.onCreate(savedInstanceState);

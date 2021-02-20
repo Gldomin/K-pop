@@ -39,18 +39,18 @@ public class Theme {
         themeCount = storage2.getInt("themeCount");
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
-        } else if(themeCount==1){ activity.setTheme(R.style.AppThemeLightRabbit);
+        } else if(themeCount==1){ activity.setTheme(R.style.AppThemeLightRabbit2);
         }
         else if(themeCount==2){ activity.setTheme(R.style.AppThemeLightHamster2);
         }
-        else if(themeCount==3){ activity.setTheme(R.style.AppThemeLightCat);
+        else if(themeCount==3){ activity.setTheme(R.style.AppThemeLightCat2);
         }
     }
 
-    public int getThemeBackground() {
-        /*if (darkMode) {
+   /* public int getThemeBackground() {
+        if (darkMode) {
             return R.drawable.main_background2;
-        } else*/ if (themeCount == 1) {
+        } else if (themeCount == 1) {
             return R.drawable.main_background2;
         } else if (themeCount == 2) {
             return R.drawable.main_background_hamster2;
@@ -59,17 +59,17 @@ public class Theme {
         } else {
             return R.drawable.main_background;
         }
-    }
+    }*/
 
     public int getThemeBackground2() {
         /*if (darkMode) {
             return R.drawable.main_background2;
         } else*/ if (themeCount == 1) {
-            return R.drawable.main_background2;
+            return R.drawable.main_background;
         } else if (themeCount == 2) {
-            return R.drawable.main_background_hamster2;
+            return R.drawable.main_background_hamster;
         } else if (themeCount == 3) {
-            return R.drawable.main_background_cat2;
+            return R.drawable.main_background_cat;
         } else {
             return R.drawable.main_background;
         }
