@@ -76,7 +76,7 @@ public class GuessBands extends AppCompatActivity {
         editor.apply();
     }
 
-    @SuppressLint("ResourceAsColor")
+    //@SuppressLint("ResourceAsColor")
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +84,7 @@ public class GuessBands extends AppCompatActivity {
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
         Storage storage = new Storage(this, "settings");
-        RelativeLayout layoutR  = findViewById(R.id.guesId);
+
         Integer counter = 0;
 
         theme = new Theme(this);
