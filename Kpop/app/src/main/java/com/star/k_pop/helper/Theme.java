@@ -105,14 +105,24 @@ public class Theme {
     }
 
     public int getBackgroundResource() {
-        if (darkMode) {
+        /*if (darkMode) {
             return R.drawable.stylebutton_dark;
-        } else if (themeCount == 1) {
-            return R.drawable.stylebutton;
+        } else */
+        if (themeCount == 1) {
+            if(darkMode){return R.drawable.stylebutton_dark;}
+            else {
+                return R.drawable.stylebutton;
+            }
         } else if (themeCount == 2) {
-            return R.drawable.stylebutton_hamster;
+            if(darkMode){return R.drawable.stylebutton_dark_green;}
+            else {
+                return R.drawable.stylebutton_hamster;
+            }
         } else if (themeCount == 3) {
-            return R.drawable.stylebutton_cat;
+            if(darkMode){return R.drawable.stylebutton_dark_pink;}
+            else {
+                return R.drawable.stylebutton_cat;
+            }
         } else {
             return R.drawable.stylebutton;
         }
