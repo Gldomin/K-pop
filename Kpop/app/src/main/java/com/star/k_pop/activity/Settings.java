@@ -47,7 +47,6 @@ public class Settings extends AppCompatActivity {
         Storage storage = new Storage(this, "settings");
 
         theme = new Theme(this);
-        theme.setTheme();
 
 
         super.onCreate(savedInstanceState);

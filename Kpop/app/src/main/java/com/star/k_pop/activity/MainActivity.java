@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Storage storage = new Storage(this, "appStatus");
         theme = new Theme(this);
-        theme.setTheme();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

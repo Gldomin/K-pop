@@ -69,10 +69,7 @@ public class GuessStar extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         theme = new Theme(this);
-        theme.setTheme();
-
         rewarded = new Rewarded(this);
 
         super.onCreate(savedInstanceState);
@@ -160,14 +157,7 @@ public class GuessStar extends AppCompatActivity {
             tableRow.addView(buttons[i]);
         }
 
-        ImageView heart1 = findViewById(R.id.guessBandHeart1); //toDo тест хп
-        ImageView heart2 = findViewById(R.id.guessBandHeart2);
-        ImageView heart3 = findViewById(R.id.guessBandHeart3);
-        final ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
-        imageViewList.add(heart1);
-        imageViewList.add(heart2);
-        imageViewList.add(heart3);
-        heathBarTest = new HeathBar(imageViewList, 3);
+        createHeathBar();
 
         about.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,6 +220,17 @@ public class GuessStar extends AppCompatActivity {
         // TODO Конец удаления
         updateScore();
         nextArtist();
+    }
+
+    private void createHeathBar(){
+        ImageView imageView1 = findViewById(R.id.guessBandHeart1);
+        ImageView imageView2 = findViewById(R.id.guessBandHeart2);
+        ImageView imageView3 = findViewById(R.id.guessBandHeart3);
+        ArrayList<ImageView> imageViewList = new ArrayList<>();
+        imageViewList.add(imageView1);
+        imageViewList.add(imageView2);
+        imageViewList.add(imageView3);
+        heathBarTest = new HeathBar(imageViewList, 3);
     }
 
     @Override

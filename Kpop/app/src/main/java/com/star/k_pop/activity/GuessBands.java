@@ -1,7 +1,9 @@
 package com.star.k_pop.activity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,16 +16,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
-import com.star.k_pop.helper.Storage;
+import com.star.k_pop.helper.Rewarded;
 import com.star.k_pop.helper.Theme;
-import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.lib.HeathBar;
+import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.model.Artist;
 
 import java.util.ArrayList;
@@ -33,25 +38,26 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class GuessBands extends AppCompatActivity {
 
-
-    private View button;
     ArrayList<Artist> artists = Importer.getRandomArtists();
-    String artist;
-    String band;
-    String folder;
-    String buttonStyleChange = "stylebutton";
-
     HeathBar heathBarTest; // объявление хп
 
-    //private int currentApiVersion;
-
-    int i = 0;
+    int count = 0;
     int score;
     int fastscore = 0;
-    private boolean longnazh = false;
     private SharedPreferences spBands;
     SharedPreferences sp;
     Theme theme;
+
+    boolean onRewarded = true;      // Просмотр рекламы 1 раз
+    boolean showReward = false;     // Просмотрена реклама до конца или нет
+    boolean endGame = false;
+
+    Rewarded rewarded;
+
+    TextView scoreText; //рекорд
+    TextView fastScoreText; //текущий счет
+    ImageView groupPhoto;
+    EditText grName;
 
     //Создаем лист для кнопок
     private List<Button> buttons;
@@ -69,192 +75,82 @@ public class GuessBands extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
         SharedPreferences.Editor editor = spBands.edit();
         editor.putInt("userScoreGuessBand", score);
         editor.apply();
     }
 
-    @SuppressLint("ResourceAsColor")
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-
-        sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
-
-        Storage storage = new Storage(this, "settings");
-
-        Integer counter = 0;
-
-        theme = new Theme(this);
-        theme.setTheme();
-
-        super.onCreate(savedInstanceState);
-/*
-
-        currentApiVersion = android.os.Build.VERSION.SDK_INT;
-
-        final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-
-        // This work only for android 4.4+
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT)
-        {
-
-            getWindow().getDecorView().setSystemUiVisibility(flags);
-
-            // Code below is to handle presses of Volume up or Volume down.
-            // Without this, after pressing volume buttons, the navigation bar will
-            // show up and won't hide
-            final View decorView = getWindow().getDecorView();
-            decorView
-                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-                    {
-
-                        @Override
-                        public void onSystemUiVisibilityChange(int visibility)
-                        {
-                            if((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)
-                            {
-                                decorView.setSystemUiVisibility(flags);
-                            }
-                        }
-                    });
-        }
-
-
-
-
-
-
-       */
-
-        setContentView(R.layout.activity_guess_bands);
-
+    private void createHeathBar() {
         ImageView imageView1 = findViewById(R.id.guessBandHeart1);
         ImageView imageView2 = findViewById(R.id.guessBandHeart2);
         ImageView imageView3 = findViewById(R.id.guessBandHeart3);
-        final ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
+        ArrayList<ImageView> imageViewList = new ArrayList<>();
         imageViewList.add(imageView1);
         imageViewList.add(imageView2);
         imageViewList.add(imageView3);
-        heathBarTest = new HeathBar(imageViewList, 3);      //инициализация хп
+        heathBarTest = new HeathBar(imageViewList, 3);
+    }
 
+    @SuppressLint({"ResourceAsColor", "DefaultLocale"})
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        theme = new Theme(this);
+        rewarded = new Rewarded(this);
 
-        final TextView scoreText = findViewById(R.id.scoreBands); //рекорд
-        final TextView fastscoreText = findViewById(R.id.fastscoreBands); //текущий счет
-        final TextView info = findViewById(R.id.info);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_guess_bands);
 
+        sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
-        fastscoreText.setText("Ваш счет: " + fastscore);
+        createHeathBar();
 
+        scoreText = findViewById(R.id.scoreBands);                  //рекорд
+        fastScoreText = findViewById(R.id.fastscoreBands);          //текущий счет
+        groupPhoto = findViewById(R.id.groupPhoto);
+
+        groupPhoto.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
 
         spBands = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
 
         if (spBands.contains("userScoreGuessBand")) {
             score = spBands.getInt("userScoreGuessBand", -1);
-            scoreText.setText("Ваш рекорд: " + score);
         } else {
             score = 0;
         }
+        scoreText.setText(String.format("%s %d",
+                getResources().getString(R.string.record_text), score));
+        fastScoreText.setText(String.format("%s %d",
+                getResources().getString(R.string.score_text), fastscore));
 
-        //Выбор первого артиста
-        artist = artists.get(0).getName();
-        band = artists.get(0).getGroup();
-        folder = artists.get(0).getFolder();
-
-        //Загрузка первого фото
-        final ImageView groupPhoto = findViewById(R.id.groupPhoto);
-        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + folder))
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .transition(withCrossFade())
-                .into(groupPhoto);
-
-
-        buttons = new ArrayList<Button>();
-        final EditText grName = findViewById(R.id.groupName);
+        buttons = new ArrayList<>();
+        grName = findViewById(R.id.groupName);
         grName.setTextColor(theme.getTextColor());
-
-        // 4 строки снизу для отладки, удалить на релизе
-        String textAnsw = grName.getText().toString();
-        String answ = artists.get(i).getGroup();
-        answ = answ.toUpperCase();
-        grName.setText(answ);
-
-
-        //делаем недоступным EditText
         grName.setLongClickable(false);
         grName.setFocusable(false);
-
-        //Подсказка названия группы на время разработки
-        //надо будет удалить на релизе
-
-        info.setText(band + counter);
-
 
         //устанавливаем слушатель на основные кнопки
         OnClickListener clkGr = new OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
-
                 switch (view.getId()) {
                     case R.id.litEnt:
-
                         String textAnsw = grName.getText().toString();
-                        String answ = artists.get(i).getGroup();
+                        String answ = artists.get(count).getGroup();
                         answ = answ.toUpperCase();
-
-
-                        for (Button b : buttons) {
-                            //выбор темы в зависимости от положения свича
-                            b.setBackgroundResource(theme.getBackgroundResource());
-                        }
-
                         if (textAnsw.equals(answ)) {
-                            //на время отладки отключено, на релизе надо включить
-                            //grName.setText("");
-                            i++;
                             fastscore++;
-
-
-                            if (i == artists.size()) //перетасовка списка для вечной игры
-                            {
-                                artists = Importer.getRandomArtists();
-
-                                // Toast.makeText(GuessBands.this, "Перетасовка", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-                                i = 0;
-                            }
-
-                            fastscoreText.setText("Ваш счет " + fastscore);
-                            if (fastscore > score) score = fastscore;
-                            scoreText.setText("Ваш рекорд: " + score);
-                            artist = artists.get(i).getName();
-                            band = artists.get(i).getGroup();
-                            folder = artists.get(i).getFolder();
-
+                            count++;
                             change();
-                            info.setText(band);
                             //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
                             //на момент релиза удалить.
-                            answ = artists.get(i).getGroup();
-                            answ = answ.toUpperCase();
-                            grName.setText(answ);
-
                             if (fastscore == 5) { //ачивка за 5 - achGuessBandsNormal. Условие ачивки 
                                 SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normaldb, "achGuessBandsNormal"); //ачивочка
                             }
-
                         } else {
                             heathBarTest.blow();
                             if (heathBarTest.getHp() == 0) {
-                                //TODO поставить startLosingDialog(конец игры)
+                                startLosingDialog();
                             }
                         }
                         break;
@@ -262,27 +158,20 @@ public class GuessBands extends AppCompatActivity {
                         grName.append(" ");
                         break;
                     case R.id.litDel:
-
                         Editable textGro = grName.getText();
                         if (textGro.length() > 0) {
                             textGro.delete(textGro.length() - 1, textGro.length());
                             grName.setText(textGro);
                         }
                         break;
-
                     case R.id.podsk:
-                        String textGroupHint = artists.get(i).getGroup();
+                        String textGroupHint = artists.get(count).getGroup();
                         char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
                         for (int j = 0; j < textHint.length; j++) {
                             String textHintTwo = "" + textHint[j];
                             textHintTwo = textHintTwo.toUpperCase();
                             textHint[j] = textHintTwo.charAt(0);
-
-
                         }
-                        String entLit = "ENT";
-                        String delLit = "DEL";
-
                         for (Button b : buttons) {
                             if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
                                 continue;
@@ -294,22 +183,17 @@ public class GuessBands extends AppCompatActivity {
                             }
                         }
                         break;
-
                     default:
                         grName.append("" + ((Button) view).getText().charAt(0));
                 }
-
             }
 
         };
 
         //Инициализация кнопок, добавление дополнительных символов
         for (int id : BUTTON_IDS) {
-            Button button = (Button) findViewById(id);
+            Button button = findViewById(id);
             button.setOnClickListener(clkGr);
-            button.setOnClickListener(clkGr);
-
-
             //устанавливаем слушатель долгого нажатия на специальные символы
             button.setOnLongClickListener(new OnLongClickListener() {
                 @Override
@@ -339,36 +223,100 @@ public class GuessBands extends AppCompatActivity {
         for (Button b : buttons) {
             b.setBackgroundResource(theme.getBackgroundResource());
         }
+        change();
     }
 
     //метод смены фото айдола
+    @SuppressLint("DefaultLocale")
     private void change() {
-        final ImageView groupPhoto = findViewById(R.id.groupPhoto);
-        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + folder))
+        if (count >= artists.size()) {
+            artists = Importer.getRandomArtists();
+            count = 0;
+        }
+        for (Button b : buttons) {
+            b.setBackgroundResource(theme.getBackgroundResource());
+        }
+        grName.setText("");
+        // TODO Удалить перед релизом
+        String answ = artists.get(count).getGroup();
+        answ = answ.toUpperCase();
+        grName.setText(answ);
+        // TODO Конец удаления
+        fastScoreText.setText(String.format("%s %d",
+                getResources().getString(R.string.score_text), fastscore));
+        if (fastscore > score) score = fastscore;
+        scoreText.setText(String.format("%s %d",
+                getResources().getString(R.string.record_text), score));
+        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(count).getFolder()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(groupPhoto);
     }
 
-
-
-
-    /*
-    @SuppressLint("NewApi")
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus)
-    {
-        super.onWindowFocusChanged(hasFocus);
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT && hasFocus)
-        {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    @SuppressLint("DefaultLocale")
+    private void startLosingDialog() {
+        endGame = true;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+        builder.setTitle(getResources().getString(R.string.endGameCongratulate))
+                .setMessage(String.format("%s %d! %s", getResources().getString(R.string.score_text), fastscore, getResources().getString(R.string.endGameNewGame)))
+                .setCancelable(false)
+                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        endGame = false;
+                        heathBarTest.setHp(3);
+                        fastscore = 0;
+                        count++;
+                        if (count >= artists.size() - 1) {
+                            artists = Importer.getRandomArtists();
+                            count = 0;
+                        }
+                        onRewarded = true;
+                        change();
+                    }
+                });
+        if (rewarded.onLoaded() && onRewarded) {
+            builder.setMessage(String.format("%s %d! %s %s", getResources().getString(R.string.score_text),
+                    fastscore, getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
+                    .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            endGame = false;
+                            rewarded.show(GuessBands.this, new OnUserEarnedRewardListener() {
+                                @Override
+                                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                                    onRewarded = false;
+                                    showReward = true;
+                                }
+                            }, new Rewarded.RewardDelay() {
+                                @Override
+                                public void onShowDismissed() {
+                                    if (showReward) {
+                                        heathBarTest.restore();
+                                    } else {
+                                        heathBarTest.setHp(3);
+                                        fastscore = 0;
+                                        count++;
+                                        if (count >= artists.size() - 1) {
+                                            artists = Importer.getRandomArtists();
+                                            count = 0;
+                                        }
+                                        onRewarded = true;
+                                        change();
+                                    }
+                                    showReward = false;
+                                }
+                            });
+                        }
+                    });
         }
-    }*/
-
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 }

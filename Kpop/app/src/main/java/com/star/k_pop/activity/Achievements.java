@@ -20,7 +20,6 @@ public class Achievements extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         theme = new Theme(this);
-        theme.setTheme();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievements);
