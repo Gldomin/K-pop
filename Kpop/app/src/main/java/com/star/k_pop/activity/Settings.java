@@ -1,10 +1,12 @@
 package com.star.k_pop.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -38,6 +40,15 @@ public class Settings extends AppCompatActivity {
             R.id.blueVar, R.id.redVar
     };
 
+    RadioGroup radGroup;
+    RadioButton blueBut;
+    ImageView themeIm;
+    RadioButton redBut;
+    RadioButton catBut;
+    Switch darkThemeSwitch;
+    Switch hardModeSwitch;
+    Switch hintModeSwitch;
+
     //OptionsSet tempSettingsSet2 = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
     String buttonStyleChange = "stylebutton";
 
@@ -50,26 +61,25 @@ public class Settings extends AppCompatActivity {
 
         theme.setThemeSecond();
 
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_settings);
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
 
-        final Switch hintModeSwitch = findViewById(R.id.optionSwitch1); //hintMode переключалка
+        hintModeSwitch = findViewById(R.id.optionSwitch1); //hintMode переключалка
         hintModeSwitch.setTextColor(theme.getTextColor());
 
-        final Switch hardModeSwitch = findViewById(R.id.optionSwitch2); //hardMode переключалка
+        hardModeSwitch = findViewById(R.id.optionSwitch2); //hardMode переключалка
         hardModeSwitch.setTextColor(theme.getTextColor());
 
-        final Switch darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
+        darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
         darkThemeSwitch.setTextColor(theme.getTextColor());
 
-        final RadioGroup radGroup = findViewById(R.id.radGroup);
-        final RadioButton blueBut = findViewById(R.id.blueVar);
-        final ImageView themeIm = findViewById(R.id.exampleBack);
-        final RadioButton redBut = findViewById(R.id.redVar);
-        final RadioButton catBut = findViewById(R.id.catVar);
+        radGroup = findViewById(R.id.radGroup);
+        blueBut = findViewById(R.id.blueVar);
+        themeIm = findViewById(R.id.exampleBack);
+        redBut = findViewById(R.id.redVar);
+        catBut = findViewById(R.id.catVar);
 
         blueBut.setTextColor(theme.getTextColor());
         redBut.setTextColor(theme.getTextColor());
@@ -94,25 +104,12 @@ public class Settings extends AppCompatActivity {
                                                 @Override
                                                 public void onCheckedChanged(RadioGroup radGroup, int checkedId) {
                                                     if (checkedId == R.id.blueVar) {
-                                                        if(theme.isDarkMode()){themeIm.setImageResource(R.drawable.stylebutton_dark);
-                                                            tempSettingsSet.themeCount = 1;}
-                                                        else{
-                                                        themeIm.setImageResource(R.drawable.main_background);
-                                                        tempSettingsSet.themeCount = 1;}
+                                                        chooseTheme(1);
                                                     } else if (checkedId == R.id.redVar) {
-                                                        if (theme.isDarkMode()){themeIm.setImageResource(R.drawable.stylebutton_dark_green);
-                                                            tempSettingsSet.themeCount = 2;}
-                                                        else{
-                                                        themeIm.setImageResource(R.drawable.main_background_hamster);
-                                                        tempSettingsSet.themeCount = 2;}
+                                                        chooseTheme(2);
                                                     } else if (checkedId == R.id.catVar) {
-                                                        if (theme.isDarkMode()){themeIm.setImageResource(R.drawable.stylebutton_dark_pink);
-                                                            tempSettingsSet.themeCount = 3;}
-                                                            else{
-                                                        themeIm.setImageResource(R.drawable.main_background_cat);
-                                                        tempSettingsSet.themeCount = 3;}
+                                                        chooseTheme(3);
                                                     }
-
                                                     //switch (radGroup.getId()){
                                                     // case R.id.blueVar:
                                                     //  tempSettingsSet.themeCount=1;
@@ -153,9 +150,24 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 tempSettingsSet.darkMode = darkThemeSwitch.isChecked(); //TODO Надо сделать темную тему
+                if (darkThemeSwitch.isChecked()) {
+                    blueBut.setText("Красный");
+                    redBut.setText("Зеленый");
+                    catBut.setText("Розовый");
+                } else {
+                    blueBut.setText("Зайка");
+                    redBut.setText("Хомячок");
+                    catBut.setText("Котик");
+                }
+                if (blueBut.isChecked()) {
+                    chooseTheme(1);
+                } else if (redBut.isChecked()) {
+                    chooseTheme(2);
+                } else if (catBut.isChecked()) {
+                    chooseTheme(3);
+                }
                 // final ConstraintLayout cl = findViewById(R.id.constraint);
                 // cl.setBackgroundColor(000000);
-
             }
         });
        /* optionSwitch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -208,10 +220,26 @@ public class Settings extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (SomeMethods.getBoolAnswerAlertDeialog(Settings.this, getResources().getString(R.string.questionConfirmTitle), getResources().getString(R.string.questionReset), getResources().getString(R.string.answerYes), getResources().getString(R.string.answerNo))) {
-                    recordStorage.saveValue("userScoreGuessStar", 0);  //сброс рекорда. TODO надо сделать и для других режимов сброс
-                    Toast.makeText(Settings.this, "Данные удалены", Toast.LENGTH_SHORT).show(); //отправка сообщения на экран
-                }
+                SomeMethods.showAlertDialog(Settings.this, theme.getAlertDialogStyle(),
+                        getResources().getString(R.string.questionConfirmTitle),
+                        getResources().getString(R.string.questionReset),
+                        getResources().getString(R.string.answerYes),
+                        getResources().getString(R.string.answerNo),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Log.i("Settings", "" + recordStorage.getInt("userScoreGuessStar"));
+                                recordStorage.saveValue("userScoreGuessStar", 0);
+                                recordStorage.saveValue("userScoreGuessBand", 0);
+                                recordStorage.saveValue("userScoreGuessStarReverse", 0);
+                                Log.i("Settings", "" + recordStorage.getInt("userScoreGuessStar"));
+                            }
+                        }, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
             }
         });
 
@@ -239,6 +267,34 @@ public class Settings extends AppCompatActivity {
             //optionSwitch5.setChecked(tempSettingsSet.option5);
         } else {
             saveSettings();
+        }
+    }
+
+    void chooseTheme(int num) {
+        if (num == 1) {
+            if (darkThemeSwitch.isChecked()) {
+                themeIm.setImageResource(R.drawable.stylebutton_dark);
+                tempSettingsSet.themeCount = 1;
+            } else {
+                themeIm.setImageResource(R.drawable.main_background);
+                tempSettingsSet.themeCount = 1;
+            }
+        } else if (num == 2) {
+            if (darkThemeSwitch.isChecked()) {
+                themeIm.setImageResource(R.drawable.stylebutton_dark_green);
+                tempSettingsSet.themeCount = 2;
+            } else {
+                themeIm.setImageResource(R.drawable.main_background_hamster);
+                tempSettingsSet.themeCount = 2;
+            }
+        } else if (num == 3) {
+            if (darkThemeSwitch.isChecked()) {
+                themeIm.setImageResource(R.drawable.stylebutton_dark_pink);
+                tempSettingsSet.themeCount = 3;
+            } else {
+                themeIm.setImageResource(R.drawable.main_background_cat);
+                tempSettingsSet.themeCount = 3;
+            }
         }
     }
 

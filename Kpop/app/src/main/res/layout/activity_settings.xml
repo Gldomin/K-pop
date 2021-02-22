@@ -59,8 +59,8 @@
 
     <RelativeLayout
         android:id="@+id/rl2"
-        android:layout_width="409dp"
-        android:layout_height="272dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/rl3"
         app:layout_constraintEnd_toEndOf="parent"
