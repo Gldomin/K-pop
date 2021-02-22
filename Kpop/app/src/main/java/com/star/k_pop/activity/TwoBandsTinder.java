@@ -268,6 +268,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
+        theme.setThemeSecond();
 
         super.onCreate(savedInstanceState);
         Log.i("Wrong", "We are here now");

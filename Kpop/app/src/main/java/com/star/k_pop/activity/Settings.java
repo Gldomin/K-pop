@@ -48,6 +48,8 @@ public class Settings extends AppCompatActivity {
 
         theme = new Theme(this);
 
+        theme.setThemeSecond();
+
 
         super.onCreate(savedInstanceState);
 
@@ -73,29 +75,44 @@ public class Settings extends AppCompatActivity {
         redBut.setTextColor(theme.getTextColor());
         catBut.setTextColor(theme.getTextColor());
         if (theme.isDarkMode()) {
-            radGroup.setVisibility(View.GONE);
-            themeIm.setVisibility(View.GONE);
+            //radGroup.setVisibility(View.GONE);
+            //themeIm.setVisibility(View.GONE);
+            blueBut.setText("Красный");
+            redBut.setText("Зеленый");
+            catBut.setText("Розовый");
         } else {
             radGroup.setVisibility(View.VISIBLE);
             themeIm.setVisibility(View.VISIBLE);
         }
-
-        themeIm.setImageResource(R.drawable.main_background);
+        if (theme.isDarkMode())
+            themeIm.setImageResource(R.drawable.stylebutton_dark);
+        else
+            themeIm.setImageResource(R.drawable.main_background);
 
         radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
                                                 @Override
                                                 public void onCheckedChanged(RadioGroup radGroup, int checkedId) {
                                                     if (checkedId == R.id.blueVar) {
+                                                        if(theme.isDarkMode()){themeIm.setImageResource(R.drawable.stylebutton_dark);
+                                                            tempSettingsSet.themeCount = 1;}
+                                                        else{
                                                         themeIm.setImageResource(R.drawable.main_background);
-                                                        tempSettingsSet.themeCount = 1;
+                                                        tempSettingsSet.themeCount = 1;}
                                                     } else if (checkedId == R.id.redVar) {
+                                                        if (theme.isDarkMode()){themeIm.setImageResource(R.drawable.stylebutton_dark_green);
+                                                            tempSettingsSet.themeCount = 2;}
+                                                        else{
                                                         themeIm.setImageResource(R.drawable.main_background_hamster);
-                                                        tempSettingsSet.themeCount = 2;
+                                                        tempSettingsSet.themeCount = 2;}
                                                     } else if (checkedId == R.id.catVar) {
+                                                        if (theme.isDarkMode()){themeIm.setImageResource(R.drawable.stylebutton_dark_pink);
+                                                            tempSettingsSet.themeCount = 3;}
+                                                            else{
                                                         themeIm.setImageResource(R.drawable.main_background_cat);
-                                                        tempSettingsSet.themeCount = 3;
+                                                        tempSettingsSet.themeCount = 3;}
                                                     }
+
                                                     //switch (radGroup.getId()){
                                                     // case R.id.blueVar:
                                                     //  tempSettingsSet.themeCount=1;

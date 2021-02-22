@@ -8,7 +8,7 @@ public class Theme {
 
     Activity activity;
     boolean darkMode;
-    int themeCount;
+    int themeCount, themeCount2;
 
     public Theme(Activity activity) {
         this.activity = activity;
@@ -27,6 +27,48 @@ public class Theme {
             activity.setTheme(R.style.AppThemeLightHamster);
         } else if (themeCount == 3) {
             activity.setTheme(R.style.AppThemeLightCat);
+        }
+    }
+
+    public void setThemeSecond() {
+        Storage storage2 = new Storage(activity, "settings");
+        darkMode = storage2.getBoolean("darkMode");
+        themeCount = storage2.getInt("themeCount");
+        if (darkMode) {
+            activity.setTheme(R.style.AppTheme2);
+        } else if(themeCount==1){ activity.setTheme(R.style.AppThemeLightRabbit2);
+        }
+        else if(themeCount==2){ activity.setTheme(R.style.AppThemeLightHamster2);
+        }
+        else if(themeCount==3){ activity.setTheme(R.style.AppThemeLightCat2);
+        }
+    }
+
+   /* public int getThemeBackground() {
+        if (darkMode) {
+            return R.drawable.main_background2;
+        } else if (themeCount == 1) {
+            return R.drawable.main_background2;
+        } else if (themeCount == 2) {
+            return R.drawable.main_background_hamster2;
+        } else if (themeCount == 3) {
+            return R.drawable.main_background_cat2;
+        } else {
+            return R.drawable.main_background;
+        }
+    }*/
+
+    public int getThemeBackground2() {
+        /*if (darkMode) {
+            return R.drawable.main_background2;
+        } else*/ if (themeCount == 1) {
+            return R.drawable.main_background;
+        } else if (themeCount == 2) {
+            return R.drawable.main_background_hamster;
+        } else if (themeCount == 3) {
+            return R.drawable.main_background_cat;
+        } else {
+            return R.drawable.main_background;
         }
     }
 
@@ -60,14 +102,24 @@ public class Theme {
     }
 
     public int getBackgroundResource() {
-        if (darkMode) {
+        /*if (darkMode) {
             return R.drawable.stylebutton_dark;
-        } else if (themeCount == 1) {
-            return R.drawable.stylebutton;
+        } else */
+        if (themeCount == 1) {
+            if(darkMode){return R.drawable.stylebutton_dark;}
+            else {
+                return R.drawable.stylebutton;
+            }
         } else if (themeCount == 2) {
-            return R.drawable.stylebutton_hamster;
+            if(darkMode){return R.drawable.stylebutton_dark_green;}
+            else {
+                return R.drawable.stylebutton_hamster;
+            }
         } else if (themeCount == 3) {
-            return R.drawable.stylebutton_cat;
+            if(darkMode){return R.drawable.stylebutton_dark_pink;}
+            else {
+                return R.drawable.stylebutton_cat;
+            }
         } else {
             return R.drawable.stylebutton;
         }

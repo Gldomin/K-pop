@@ -11,13 +11,16 @@ import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -91,11 +94,14 @@ public class GuessBands extends AppCompatActivity {
         heathBarTest = new HeathBar(imageViewList, 3);
     }
 
+
     @SuppressLint({"ResourceAsColor", "DefaultLocale"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
+
         rewarded = new Rewarded(this);
+        theme.setThemeSecond();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands);
