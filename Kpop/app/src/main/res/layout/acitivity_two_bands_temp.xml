@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/twoBandFlipper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:isScrollContainer="true"
+    android:scrollbars="vertical"
+    tools:context=".activity.TwoBandsTinder">
+    //View Для выбора пиздюка
+
+    //View Для Смены выбора
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/twoBandsActors"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/RecordScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Рекорд:0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/scoreBands"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/Score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RecordScore" />
+
+        <ImageView
+            android:id="@+id/imageBand"
+            android:layout_width="fill_parent"
+            android:layout_height="450dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginRight="5dp"
+            android:foreground="@drawable/roundedimageview"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imgBTmp"
+            android:layout_width="fill_parent"
+            android:layout_height="450dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginRight="5dp"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:foreground="@drawable/roundedimageview"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/oneBand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="56dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/secondBand"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageBand" />
+
+        <TextView
+            android:id="@+id/secondBand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginRight="80dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageBand" />
+
+        <TextView
+            android:id="@+id/artistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageBand" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_help" />
+
+        <ImageButton
+            android:id="@+id/ttChoseActorButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:contentDescription="TODO"
+            android:onClick="onButtonGroupPress"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_dialog_dialer" />
+
+        <ImageButton
+            android:id="@+id/ttConfirmButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginRight="80dp"
+            android:onClick="onButtonConfirmPress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/secondBand"
+            app:srcCompat="@android:drawable/ic_menu_directions" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/twoBandsGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|fill"
+        android:isScrollContainer="true"
+        android:orientation="horizontal"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
+        android:verticalScrollbarPosition="right">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/ttChoseGroupGLay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|center_horizontal"
+                    android:layout_marginTop="64dp"
+                    android:addStatesFromChildren="true"
+                    android:isScrollContainer="true"
+                    android:maxHeight="50dp"
+                    android:overScrollMode="always"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbars="vertical"
+                    android:verticalScrollbarPosition="right"
+                    app:alignmentMode="alignMargins"
+                    app:columnCount="2"
+                    app:flow_firstVerticalStyle="spread"
+                    app:flow_horizontalAlign="end"
+                    app:useDefaultMargins="true" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</ViewFlipper>
