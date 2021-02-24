@@ -74,19 +74,12 @@ public class Settings extends AppCompatActivity {
         redBut.setTextColor(theme.getTextColor());
         catBut.setTextColor(theme.getTextColor());
         if (theme.isDarkMode()) {
-            //radGroup.setVisibility(View.GONE);
-            //themeIm.setVisibility(View.GONE);
+
             blueBut.setText("Красный");
             redBut.setText("Зеленый");
             catBut.setText("Розовый");
-        } else {
-            radGroup.setVisibility(View.VISIBLE);
-            themeIm.setVisibility(View.VISIBLE);
         }
-        if (theme.isDarkMode())
-            themeIm.setImageResource(R.drawable.stylebutton_dark);
-        else
-            themeIm.setImageResource(R.drawable.main_background);
+            themeIm.setImageResource(theme.getBackgroundButton2());
 
         radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
@@ -111,6 +104,7 @@ public class Settings extends AppCompatActivity {
                                                         themeIm.setImageResource(R.drawable.main_background_cat);
                                                         tempSettingsSet.themeCount = 3;}
                                                     }
+<<<<<<< Updated upstream
 
                                                     //switch (radGroup.getId()){
                                                     // case R.id.blueVar:
@@ -119,6 +113,8 @@ public class Settings extends AppCompatActivity {
                                                     //case R.id.redVar:
                                                     //   tempSettingsSet.themeCount=2;
                                                     // }
+=======
+>>>>>>> Stashed changes
                                                 }
                                             }
         );

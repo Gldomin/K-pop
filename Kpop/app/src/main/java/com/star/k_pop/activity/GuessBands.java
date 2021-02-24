@@ -9,15 +9,13 @@ import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -63,7 +61,7 @@ public class GuessBands extends AppCompatActivity {
             R.id.litA, R.id.litS, R.id.litD, R.id.litF, R.id.litG, R.id.litH, R.id.litJ, R.id.litK, R.id.litL,
             R.id.litZ, R.id.litX, R.id.litC, R.id.litV, R.id.litB, R.id.litN, R.id.litM, R.id.litEnt, R.id.litDel,
             R.id.space, R.id.num0, R.id.num1, R.id.num2, R.id.num3, R.id.num4, R.id.num5, R.id.num6, R.id.num7,
-            R.id.num8, R.id.num9, R.id.podsk
+            R.id.num8, R.id.num9//, R.id.podsk
     };
 
     //сохранение результата на переключении активити и выключении проги
@@ -92,6 +90,9 @@ public class GuessBands extends AppCompatActivity {
         //Window window = getWindow();
         //window.setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
         //this.getWindow().setBackgroundDrawable(getResources().getDrawable(theme.getThemeBackground2()));
+
+
+
 
 
         super.onCreate(savedInstanceState);
@@ -139,10 +140,16 @@ public class GuessBands extends AppCompatActivity {
        */
 
         setContentView(R.layout.activity_guess_bands);
+<<<<<<< Updated upstream
 
         final TextView scoreText = findViewById(R.id.scoreBands); //рекорд
         final TextView fastscoreText = findViewById(R.id.fastscoreBands); //текущий счет
         final TextView info = findViewById(R.id.info);
+=======
+        ImageButton podsk = findViewById(R.id.podsk);
+        if(theme.isDarkMode())podsk.setBackgroundResource(R.drawable.hint2);
+        sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
+>>>>>>> Stashed changes
 
 
         fastscoreText.setText("Ваш счет: " + fastscore);
@@ -277,7 +284,7 @@ public class GuessBands extends AppCompatActivity {
                                 continue;
                             for (char c : textHint) {
                                 if (b.getText().charAt(0) == c) {
-                                    b.setBackgroundResource(R.drawable.stylebutton_hint);
+                                    b.setBackgroundResource(theme.getBackgroundButton());
                                     break;
                                 }
                             }
@@ -297,8 +304,12 @@ public class GuessBands extends AppCompatActivity {
             Button button = (Button) findViewById(id);
             button.setOnClickListener(clkGr);
             button.setOnClickListener(clkGr);
+<<<<<<< Updated upstream
 
 
+=======
+            podsk.setOnClickListener(clkGr);
+>>>>>>> Stashed changes
             //устанавливаем слушатель долгого нажатия на специальные символы
             button.setOnLongClickListener(new OnLongClickListener() {
                 @Override
@@ -328,6 +339,12 @@ public class GuessBands extends AppCompatActivity {
         for (Button b : buttons) {
             b.setBackgroundResource(theme.getBackgroundResource());
         }
+<<<<<<< Updated upstream
+=======
+        change();
+
+
+>>>>>>> Stashed changes
     }
 
     //метод смены фото айдола
