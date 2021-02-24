@@ -202,6 +202,8 @@ public class GuessStar extends AppCompatActivity {
             }
         });
 
+        imageView.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
+
         imageView.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
             @SuppressLint("ResourceAsColor")
             @Override
@@ -304,13 +306,13 @@ public class GuessStar extends AppCompatActivity {
         builder.setTitle(getResources().getString(R.string.endGameCongratulate))
                 .setMessage(String.format("%s %d! %s", getResources().getString(R.string.score_text), scoreNow, getResources().getString(R.string.endGameNewGame)))
                 .setCancelable(false)
-                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.endGameNo), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
                     }
                 })
-                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getResources().getString(R.string.endGameYes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         endGame = false;

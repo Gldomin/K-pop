@@ -40,6 +40,7 @@
         <NameBand>Blackpink</NameBand>
         <Artist>
             <NameArtist>Jenny</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>123 (2).jpg</ImageArtists>
             <ImageArtists>123 (3).jpg</ImageArtists>
             <ImageArtists>123 (4).jpg</ImageArtists>
@@ -48,16 +49,19 @@
         </Artist>
         <Artist>
             <NameArtist>Kim Jisoo</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Kim Jisoo.png</ImageArtists>
             <ImageArtists>Kim Jisoo2.png</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Lalisa</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Lalisa.png</ImageArtists>
             <ImageArtists>Lalisa2.png</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Rose</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Rose.jpg</ImageArtists>
             <ImageArtists>Rose2.jpg</ImageArtists>
         </Artist>
@@ -97,36 +101,42 @@
         <NameBand>Everglow</NameBand>
         <Artist>
             <NameArtist>Aisha</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Aisha.jpg</ImageArtists>
             <ImageArtists>Aisha1.jpg</ImageArtists>
             <ImageArtists>Aisha2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>EU</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>EU.jpg</ImageArtists>
             <ImageArtists>EU1.jpg</ImageArtists>
             <ImageArtists>EU3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Mia</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Mia.jpg</ImageArtists>
             <ImageArtists>Mia1.jpg</ImageArtists>
             <ImageArtists>Mia2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Onda</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Onda.jpg</ImageArtists>
             <ImageArtists>Onda1.jpg</ImageArtists>
             <ImageArtists>Onda2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sihyeon</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Sihyeon.jpg</ImageArtists>
             <ImageArtists>Sihyeon1.jpg</ImageArtists>
             <ImageArtists>Sihyeon2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yiren</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Yiren.jpg</ImageArtists>
             <ImageArtists>Yiren1.jpg</ImageArtists>
             <ImageArtists>Yiren2.jpg</ImageArtists>
@@ -226,24 +236,28 @@
         <NameBand>Mamamoo</NameBand>
         <Artist>
             <NameArtist>Hwasa</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Hwasa.jpg</ImageArtists>
             <ImageArtists>Hwasa1.jpg</ImageArtists>
             <ImageArtists>Hwasa2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Moonbyul</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Moonbyul.jpg</ImageArtists>
             <ImageArtists>Moonbyul1.jpg</ImageArtists>
             <ImageArtists>Moonbyul2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Solar</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Solar.jpg</ImageArtists>
             <ImageArtists>Solar1.jpg</ImageArtists>
             <ImageArtists>Solar2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Wheein</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Wheein.jpg</ImageArtists>
             <ImageArtists>Wheein1.jpg</ImageArtists>
             <ImageArtists>Wheein2.jpg</ImageArtists>
@@ -251,6 +265,7 @@
     </Band>
     <Band>
         <NameBand>NU'EST</NameBand>
+        <NameBand>NUEST</NameBand>
         <Artist>
             <NameArtist>Aron</NameArtist>
             <ImageArtists>Aron.jpg</ImageArtists>
@@ -286,30 +301,35 @@
         <NameBand>Red Velvet</NameBand>
         <Artist>
             <NameArtist>Irene</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Irene.jpg</ImageArtists>
             <ImageArtists>Irene1.jpg</ImageArtists>
             <ImageArtists>Irene2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Joy</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Joy.jpg</ImageArtists>
             <ImageArtists>Joy1.jpg</ImageArtists>
             <ImageArtists>Joy2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Seulgi</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Seulgi.jpg</ImageArtists>
             <ImageArtists>Seulgi1.jpg</ImageArtists>
             <ImageArtists>Seulgi2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Wendy</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Wendy.jpg</ImageArtists>
             <ImageArtists>Wendy1.jpg</ImageArtists>
             <ImageArtists>Wendy2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yeri</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Yeri.jpg</ImageArtists>
             <ImageArtists>Yeri1.jpg</ImageArtists>
             <ImageArtists>Yeri2.jpg</ImageArtists>
@@ -403,38 +423,47 @@
         <NameBand>Twice</NameBand>
         <Artist>
             <NameArtist>Chaeyoung</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Son Chae Young.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Dahyun</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Dahyun.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jihyo</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Jihyo.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jungyeon</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Jungyeon.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Mina</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Mina.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Momo</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Momo.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Nayeon</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Nayeon.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sana</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Sana.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Tzuyu</NameArtist>
+            <Sex>Female</Sex>
             <ImageArtists>Tzuyu.jpg</ImageArtists>
         </Artist>
     </Band>

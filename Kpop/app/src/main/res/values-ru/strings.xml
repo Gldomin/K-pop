@@ -10,7 +10,6 @@
     <string name="menuItemSettings">Настройки</string>
     <string name="menuItemAbout">О программе</string>
 
-    <string name="groupname"></string>
     <string name="achGuessStarNormal">Айдол-знаток</string>
     <string name="achGuessStarExpert">Айдол-эксперт</string>
     <string name="achGuessBandsNormal">Групповой знаток</string>
@@ -95,7 +94,6 @@
         Распредели их всех ツ
     </string>
 
-
     <string name="score_text">Ваш счет:</string>
     <string name="record_text">Ваш рекорд:</string>
 
@@ -105,4 +103,11 @@
     <string name="endGameYes">Да</string>
     <string name="endGameNo">Нет</string>
     <string name="endGameRewardShow">Посмотреть рекламу</string>
+
+    <string name="settingRed">Красный</string>
+    <string name="settingGreen">Зеленый</string>
+    <string name="settingPink">Розовый</string>
+    <string name="settingRabbit">Кролик</string>
+    <string name="settingHamster">Хомячок</string>
+    <string name="settingCat">Котик</string>
 </resources>

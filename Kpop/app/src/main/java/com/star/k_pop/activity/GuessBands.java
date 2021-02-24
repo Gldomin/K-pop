@@ -11,16 +11,13 @@ import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -142,9 +139,7 @@ public class GuessBands extends AppCompatActivity {
                 switch (view.getId()) {
                     case R.id.litEnt:
                         String textAnsw = grName.getText().toString();
-                        String answ = artists.get(count).getGroup();
-                        answ = answ.toUpperCase();
-                        if (textAnsw.equals(answ)) {
+                        if (artists.get(count).checkGroup(textAnsw)) {
                             fastscore++;
                             count++;
                             change();
@@ -171,7 +166,7 @@ public class GuessBands extends AppCompatActivity {
                         }
                         break;
                     case R.id.podsk:
-                        String textGroupHint = artists.get(count).getGroup();
+                        String textGroupHint = artists.get(count).getGroups();
                         char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
                         for (int j = 0; j < textHint.length; j++) {
                             String textHintTwo = "" + textHint[j];
@@ -244,7 +239,7 @@ public class GuessBands extends AppCompatActivity {
         }
         grName.setText("");
         // TODO Удалить перед релизом
-        String answ = artists.get(count).getGroup();
+        String answ = artists.get(count).getGroups();
         answ = answ.toUpperCase();
         grName.setText(answ);
         // TODO Конец удаления
@@ -266,13 +261,13 @@ public class GuessBands extends AppCompatActivity {
         builder.setTitle(getResources().getString(R.string.endGameCongratulate))
                 .setMessage(String.format("%s %d! %s", getResources().getString(R.string.score_text), fastscore, getResources().getString(R.string.endGameNewGame)))
                 .setCancelable(false)
-                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.endGameNo), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
                     }
                 })
-                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getResources().getString(R.string.endGameYes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         endGame = false;

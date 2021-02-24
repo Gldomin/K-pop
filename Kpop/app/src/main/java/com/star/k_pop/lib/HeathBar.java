@@ -45,7 +45,6 @@ public class HeathBar {
 
     public void refresh() // метод для обновления индикатора хп
     {
-        Log.v("test", "Кнопка работает, hp=" + hp);
         for (int i = 0; i < heathBarImageViews.size(); i++) { //обратный for для тотбражения хп, путем замены картинок начиная с последней
             if (i >= hp)
                 heathBarImageViews.get(i).setImageResource(R.drawable.heart_colorless);

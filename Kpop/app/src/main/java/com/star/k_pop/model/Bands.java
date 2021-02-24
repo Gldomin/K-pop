@@ -8,12 +8,12 @@ import java.util.Random;
  */
 public class Bands {
 
-    private final String name;                // Имя группы
+    private final String[] name;                // Имя группы
     private final ArrayList<Artist> artists;  // Список артистов
     private final byte numberOfPeople;        // Количество человек
     private final String[] imagesBands;       // Названия картинок
 
-    public Bands(String name, ArrayList<Artist> artists, String[] imagesBands) {
+    public Bands(String[] name, ArrayList<Artist> artists, String[] imagesBands) {
         this.name = name;
         this.artists = new ArrayList<>(artists);
         this.numberOfPeople = (byte) artists.size();
@@ -21,7 +21,7 @@ public class Bands {
     }
 
     public String getName() {
-        return name;
+        return name[0];
     }
 
     public ArrayList<Artist> getArtists() {
@@ -47,6 +47,6 @@ public class Bands {
      * @return путь: имя группы/картинка
      */
     public String getFolder() {
-        return name + "/" + getNamesImages();
+        return name[0] + "/" + getNamesImages();
     }
 }

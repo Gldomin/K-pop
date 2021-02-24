@@ -46,8 +46,6 @@ public class Settings extends AppCompatActivity {
     RadioButton redBut;
     RadioButton catBut;
     Switch darkThemeSwitch;
-    Switch hardModeSwitch;
-    Switch hintModeSwitch;
 
     //OptionsSet tempSettingsSet2 = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
     String buttonStyleChange = "stylebutton";
@@ -66,12 +64,6 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
 
-        hintModeSwitch = findViewById(R.id.optionSwitch1); //hintMode переключалка
-        hintModeSwitch.setTextColor(theme.getTextColor());
-
-        hardModeSwitch = findViewById(R.id.optionSwitch2); //hardMode переключалка
-        hardModeSwitch.setTextColor(theme.getTextColor());
-
         darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
         darkThemeSwitch.setTextColor(theme.getTextColor());
 
@@ -85,14 +77,13 @@ public class Settings extends AppCompatActivity {
         redBut.setTextColor(theme.getTextColor());
         catBut.setTextColor(theme.getTextColor());
         if (theme.isDarkMode()) {
-            //radGroup.setVisibility(View.GONE);
-            //themeIm.setVisibility(View.GONE);
-            blueBut.setText("Красный");
-            redBut.setText("Зеленый");
-            catBut.setText("Розовый");
+            blueBut.setText(getResources().getString(R.string.settingRed));
+            redBut.setText(getResources().getString(R.string.settingGreen));
+            catBut.setText(getResources().getString(R.string.settingPink));
         } else {
-            radGroup.setVisibility(View.VISIBLE);
-            themeIm.setVisibility(View.VISIBLE);
+            blueBut.setText(getResources().getString(R.string.settingRabbit));
+            redBut.setText(getResources().getString(R.string.settingHamster));
+            catBut.setText(getResources().getString(R.string.settingCat));
         }
         if (theme.isDarkMode())
             themeIm.setImageResource(R.drawable.stylebutton_dark);
@@ -121,43 +112,18 @@ public class Settings extends AppCompatActivity {
                                             }
         );
 
-
-        //   final Switch optionSwitch4 = findViewById(R.id.optionSwitch4); //заменить когда появится новая опция
-        //   final Switch optionSwitch5 = findViewById(R.id.optionSwitch5); //заменить когда появится новая опция
-        //hintModeSwitch.setOnCheckedChangeListener
-        hintModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                // Switch temp =findViewById(R.id.optionSwitch1);
-                // settings.hintMode=temp.isChecked();
-                tempSettingsSet.hintMode = hintModeSwitch.isChecked();
-                //tempSettingsSet.hardMode= !tempSettingsSet.hardMode;
-                //saveSettings();
-
-            }
-        });
-        hardModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                // Switch temp =findViewById(R.id.optionSwitch2);
-                // settings.hardMode =temp.isChecked();
-                //tempSettingsSet.hintMode= !tempSettingsSet.hintMode;
-                tempSettingsSet.hardMode = hardModeSwitch.isChecked();
-                //saveSettings();
-            }
-        });
         darkThemeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 tempSettingsSet.darkMode = darkThemeSwitch.isChecked(); //TODO Надо сделать темную тему
                 if (darkThemeSwitch.isChecked()) {
-                    blueBut.setText("Красный");
-                    redBut.setText("Зеленый");
-                    catBut.setText("Розовый");
+                    blueBut.setText(getResources().getString(R.string.settingRed));
+                    redBut.setText(getResources().getString(R.string.settingGreen));
+                    catBut.setText(getResources().getString(R.string.settingPink));
                 } else {
-                    blueBut.setText("Зайка");
-                    redBut.setText("Хомячок");
-                    catBut.setText("Котик");
+                    blueBut.setText(getResources().getString(R.string.settingRabbit));
+                    redBut.setText(getResources().getString(R.string.settingHamster));
+                    catBut.setText(getResources().getString(R.string.settingCat));
                 }
                 if (blueBut.isChecked()) {
                     chooseTheme(1);
@@ -255,8 +221,6 @@ public class Settings extends AppCompatActivity {
             tempSettingsSet.option5 = storage.getBoolean("option5");
             tempSettingsSet.themeCount = storage.getInt("themeCount");
 
-            hintModeSwitch.setChecked(tempSettingsSet.hintMode); //установка значение свитча
-            hardModeSwitch.setChecked(tempSettingsSet.hardMode);
             darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
 
             if (tempSettingsSet.themeCount == 1) radGroup.check(R.id.blueVar);
@@ -271,6 +235,9 @@ public class Settings extends AppCompatActivity {
     }
 
     void chooseTheme(int num) {
+
+
+        
         if (num == 1) {
             if (darkThemeSwitch.isChecked()) {
                 themeIm.setImageResource(R.drawable.stylebutton_dark);

@@ -157,7 +157,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             byte rightGuesses = 0;
             for (int i = 0; i <= artists.size() - 1; i++) {
                 Log.i("tWheck", "Shit is not workin group is " + artists.get(i).getName().trim() + " and answer " + playerChoice.get(i).trim());
-                if (artists.get(i).getGroup().trim() == playerChoice.get(i).trim()) rightGuesses++;
+                if (artists.get(i).getGroups().trim() == playerChoice.get(i).trim()) rightGuesses++;
             }
             Log.i("tWheck", "Shit is not workin rightGuesses" + rightGuesses + " and guys are " + artists.size());
             if (rightGuesses == playerChoice.size()) return true;

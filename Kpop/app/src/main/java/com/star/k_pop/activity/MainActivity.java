@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Storage storage = new Storage(this, "appStatus");
         theme = new Theme(this);
+        theme.setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -200,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
         final Switch achSecretGameModeText = findViewById(R.id.achSecretGameModeText);
         final Switch achAdsFreeText = findViewById(R.id.achAdsFreeText);
         final Switch achRoyalText = findViewById(R.id.achRoyalText);
-        final Switch hintModeSwitch = findViewById(R.id.optionSwitch1);
 
 
         noticeWatched.setChecked(storage.getBoolean("noticeWatched"));
@@ -232,7 +232,6 @@ public class MainActivity extends AppCompatActivity {
         final Switch achSecretGameModeText = findViewById(R.id.achSecretGameModeText);
         final Switch achAdsFreeText = findViewById(R.id.achAdsFreeText);
         final Switch achRoyalText = findViewById(R.id.achRoyalText);
-        final Switch hintModeSwitch = findViewById(R.id.optionSwitch1);
 
 
         storage.saveValue("noticeWatched", noticeWatched.isChecked());

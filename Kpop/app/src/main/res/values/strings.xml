@@ -14,7 +14,6 @@
     <string name="menuItemSettings">Settings</string>
     <string name="menuItemAbout">About</string>
 
-    <string name="groupname"></string>
     <string name="achGuessStarNormal">Айдол-знаток</string>
     <string name="achGuessStarExpert">Айдол-эксперт</string>
     <string name="achGuessBandsNormal">Групповой знаток</string>
@@ -111,5 +110,12 @@ Distribute them all!
     <string name="endGameYes">Да</string>
     <string name="endGameNo">Нет</string>
     <string name="endGameRewardShow">Посмотреть рекламу</string>
+
+    <string name="settingRed">Красный</string>
+    <string name="settingGreen">Зеленый</string>
+    <string name="settingPink">Розовый</string>
+    <string name="settingRabbit">Кролик</string>
+    <string name="settingHamster">Хомячок</string>
+    <string name="settingCat">Котик</string>
 
 </resources>

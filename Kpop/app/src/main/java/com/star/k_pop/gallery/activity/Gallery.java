@@ -30,6 +30,7 @@ public class Gallery extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
+        theme.setThemeSecond();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
@@ -68,7 +69,7 @@ public class Gallery extends AppCompatActivity {
     private void createArray() {
         ArrayList<Artist> artists = Importer.getArtists();
         for (Artist a : artists) {
-            imageGalleries.add(new ImageGallery(a.getName(), a.getGroup(), a.getFolder()));
+            imageGalleries.add(new ImageGallery(a.getName(), a.getGroups(), a.getFolder()));
         }
     }
 }
