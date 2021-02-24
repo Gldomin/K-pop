@@ -140,16 +140,14 @@ public class GuessBands extends AppCompatActivity {
        */
 
         setContentView(R.layout.activity_guess_bands);
-<<<<<<< Updated upstream
 
         final TextView scoreText = findViewById(R.id.scoreBands); //рекорд
         final TextView fastscoreText = findViewById(R.id.fastscoreBands); //текущий счет
         final TextView info = findViewById(R.id.info);
-=======
         ImageButton podsk = findViewById(R.id.podsk);
         if(theme.isDarkMode())podsk.setBackgroundResource(R.drawable.hint2);
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
->>>>>>> Stashed changes
+
 
 
         fastscoreText.setText("Ваш счет: " + fastscore);
@@ -303,13 +301,8 @@ public class GuessBands extends AppCompatActivity {
         for (int id : BUTTON_IDS) {
             Button button = (Button) findViewById(id);
             button.setOnClickListener(clkGr);
-            button.setOnClickListener(clkGr);
-<<<<<<< Updated upstream
-
-
-=======
             podsk.setOnClickListener(clkGr);
->>>>>>> Stashed changes
+
             //устанавливаем слушатель долгого нажатия на специальные символы
             button.setOnLongClickListener(new OnLongClickListener() {
                 @Override
@@ -339,12 +332,9 @@ public class GuessBands extends AppCompatActivity {
         for (Button b : buttons) {
             b.setBackgroundResource(theme.getBackgroundResource());
         }
-<<<<<<< Updated upstream
-=======
+
         change();
 
-
->>>>>>> Stashed changes
     }
 
     //метод смены фото айдола
