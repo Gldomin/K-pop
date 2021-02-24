@@ -174,11 +174,9 @@ public class MainActivity extends AppCompatActivity {
             tempStorage.saveValue("achSwipeTwoBandsExpert", false); //ачивка
             tempStorage.saveValue("achGuessStarReversNormal", false); //ачивка
             tempStorage.saveValue("achGuessStarReversExpert", false); //ачивка
-            tempStorage.saveValue("achSecretGameMode", false); //ачивка
-            tempStorage.saveValue("achAdsFree", false); //ачивка
+            tempStorage.saveValue("achTripleAdept", false); //ачивка
+            tempStorage.saveValue("achTripleExpert", false); //ачивка
             tempStorage.saveValue("achRoyal", false); //ачивка
-
-            tempStorage.saveValue("adActive", true); //включена ли реклама //можно было бы проверять по ачивке, но так интуитивнее
 
             tempStorage.saveValue("gameBuyed", false); //TODO надо сделать возможность купить игру, отключая рекламу. за это может быть ачивка
 
@@ -200,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
         final Switch achSecretGameModeText = findViewById(R.id.achSecretGameModeText);
         final Switch achAdsFreeText = findViewById(R.id.achAdsFreeText);
         final Switch achRoyalText = findViewById(R.id.achRoyalText);
-        final Switch hintModeSwitch = findViewById(R.id.optionSwitch1);
 
 
         noticeWatched.setChecked(storage.getBoolean("noticeWatched"));
@@ -212,8 +209,8 @@ public class MainActivity extends AppCompatActivity {
         achSwipeTwoBandsExpertText.setChecked(storage.getBoolean("achSwipeTwoBandsExpert"));
         achGuessStarReversNormalText.setChecked(storage.getBoolean("achGuessStarReversNormal"));
         achGuessStarReversExpertText.setChecked(storage.getBoolean("achGuessStarReversExpert"));
-        achSecretGameModeText.setChecked(storage.getBoolean("achSecretGameMode"));
-        achAdsFreeText.setChecked(storage.getBoolean("achAdsFree"));
+        achSecretGameModeText.setChecked(storage.getBoolean("achTripleAdept"));
+        achAdsFreeText.setChecked(storage.getBoolean("achTripleExpert"));
         achRoyalText.setChecked(storage.getBoolean("achRoyal"));
     }
 
@@ -244,8 +241,8 @@ public class MainActivity extends AppCompatActivity {
         storage.saveValue("achSwipeTwoBandsExpert", achSwipeTwoBandsExpertText.isChecked());
         storage.saveValue("achGuessStarReversNormal", achGuessStarReversNormalText.isChecked());
         storage.saveValue("achGuessStarReversExpert", achGuessStarReversExpertText.isChecked());
-        storage.saveValue("achSecretGameMode", achSecretGameModeText.isChecked());
-        storage.saveValue("achAdsFree", achAdsFreeText.isChecked());
+        storage.saveValue("achTripleAdept", achSecretGameModeText.isChecked());
+        storage.saveValue("achTripleExpert", achAdsFreeText.isChecked());
         storage.saveValue("achRoyal", achRoyalText.isChecked());
 
 

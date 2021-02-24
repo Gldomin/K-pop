@@ -19,21 +19,21 @@
     <string name="achSwipeTwoBandsExpert">Прямо как в тиндере! (эксперт)</string>
     <string name="achGuessStarReversNormal">Адепт секретного режима</string>
     <string name="achGuessStarReversExpert">Эксперт секретного режима</string>
-    <string name="achSecretGameMode">Легче легкого</string>
-    <string name="achAdsFree">Мастер К-попа</string>
+    <string name="achTripleAdept">Легче легкого</string>
+    <string name="achTripleExpert">Мастер К-попа</string>
     <string name="achRoyal">Повелитель четырех режимов</string>
 
     <string name="achGuessStarNormalText">Вы набрали 50 очков в режиме Угадай Звезду</string>
-    <string name="achGuessStarExpertText">Вы набрали 50 очков в экспертном режиме Угадай Звезду</string>
-    <string name="achGuessBandsNormalText">Вы набрали 50 очков в режиме Отгадай Группу</string>
+    <string name="achGuessStarExpertText">Вы набрали 150 очков в экспертном режиме Угадай Звезду</string>
+    <string name="achGuessBandsNormalText">Вы набрали 15 очков в режиме Отгадай Группу</string>
     <string name="achGuessBandsExpertText">Вы набрали 50 очков в экспертном режиме Отгадай Группу</string>
-    <string name="achSwipeTwoBandsNormalText">Вы набрали 50 очков в режиме Распредели На Две Группы</string>
-    <string name="achSwipeTwoBandsExpertText">Вы набрали 50 очков в экспертном режиме Распредели На Две Группы</string>
+    <string name="achSwipeTwoBandsNormalText">Вы набрали 5 очков в режиме Распредели На Две Группы</string>
+    <string name="achSwipeTwoBandsExpertText">Вы набрали 25 очков в экспертном режиме Распредели На Две Группы</string>
     <string name="achGuessStarReversNormalText">Вы набрали 50 очков в режиме Найди Звезду</string>
-    <string name="achGuessStarReversExpertText">Вы набрали 50 очков в экспертном режиме Найди Звезду</string>
-    <string name="achSecretGameModeText">Вы открыли секретный режим!</string>
-    <string name="achAdsFreeText">Вы истинный знаток К-попа. Спасибо вам за игру, отныне всплывающая реклама отключена.</string>
-    <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! В настройках теперь доступен скромный бонус.</string>
+    <string name="achGuessStarReversExpertText">Вы набрали 150 очков в экспертном режиме Найди Звезду</string>
+    <string name="achTripleAdeptText">Вы - Адепт трех режимов!</string>
+    <string name="achTripleExpertText">Вы истинный знаток К-попа. Вы получили экспертные достижения в трех режимах!</string>
+    <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! У нас есть для вас скромный бонус</string>
 
     <string name="questionReset">Удалить рекорды?</string>
     <string name="questionConfirmTitle">Подтверждение</string>
