@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -57,7 +58,8 @@ public class TwoBandsTinder extends AppCompatActivity {
     TextView secondBand;
     TextView artistName;
     ViewFlipper twoBandFlip;
-    ImageButton chooseActorButton;
+    ImageButton chooseActorButton, podsk, podsk2;
+    Button confirm;
     byte number_of_artist;
     boolean left;
     boolean right;
@@ -292,7 +294,25 @@ public class TwoBandsTinder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.i("Wrong", "We are here now");
         setContentView(R.layout.acitivity_two_bands_temp);
+
+        podsk = findViewById(R.id.hintTind);
+        podsk2 = findViewById(R.id.hintTind_dark);
+        confirm = findViewById(R.id.ttConfirmButton);
+
+        confirm.setBackgroundResource(theme.getBackgroundResource());
+        if (theme.isDarkMode()) {
+            podsk.setVisibility(View.INVISIBLE);
+            podsk2.setVisibility(View.VISIBLE);
+        }
+        else {
+            podsk.setVisibility(View.VISIBLE);
+            podsk2.setVisibility(View.INVISIBLE);
+        }
+
         guessTwoBands();
+
+
+
     }
 
     private void resetPosition(){
