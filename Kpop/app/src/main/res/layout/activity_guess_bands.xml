@@ -408,6 +408,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed">
 
+        <ImageButton
+            android:id="@+id/guessBandAbautButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="4dp"
+            android:layout_toStartOf="@+id/podsk"
+            android:layout_toLeftOf="@+id/podsk"
+            app:srcCompat="@android:drawable/ic_menu_help" />
+
         <RelativeLayout
             android:id="@+id/guessBandHealthLR"
             android:layout_width="137dp"
@@ -480,11 +490,9 @@
 
         <ImageButton
             android:id="@+id/podsk"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
