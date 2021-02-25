@@ -153,9 +153,9 @@ public class GuessBands extends AppCompatActivity {
                             change();
                             //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
                             //на момент релиза удалить.
-                            if (fastscore == 5) { //ачивка за 5 - achGuessBandsNormal. Условие ачивки 
+                            /*if (fastscore == 5) { //ачивка за 5 - achGuessBandsNormal. Условие ачивки
                                 SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normaldb, "achGuessBandsNormal"); //ачивочка
-                            }
+                            }*/
                         } else {
                             heathBarTest.blow();
                             if (heathBarTest.getHp() == 0) {
@@ -248,9 +248,9 @@ public class GuessBands extends AppCompatActivity {
         }
         grName.setText("");
         // TODO Удалить перед релизом
-        String answ = artists.get(count).getGroups();
+        /*String answ = artists.get(count).getGroups();
         answ = answ.toUpperCase();
-        grName.setText(answ);
+        grName.setText(answ);*/
         // TODO Конец удаления
         fastScoreText.setText(String.format("%s %d",
                 getResources().getString(R.string.score_text), fastscore));
