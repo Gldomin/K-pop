@@ -1,9 +1,14 @@
 package com.star.k_pop.StartApplication;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDexApplication;
 
 import com.star.k_pop.R;
+import com.star.k_pop.helper.Storage;
 import com.yandex.metrica.YandexMetrica;
 import com.yandex.metrica.YandexMetricaConfig;
 
@@ -47,5 +52,29 @@ public class ApplicationStart extends MultiDexApplication {
         }
 
         // TODO Добавить инициализацию значений поумолчанию и создать все файлы и ключи для коректной работы
+
+
+        SharedPreferences sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
+        if (!sp.contains("noticeWatched") || !sp.contains("achGuessStarNormal")) {
+            Log.v("TAG", "noticeWatched");
+            Storage tempStorage = new Storage(this, "appStatus");
+            tempStorage.saveValue("noticeWatched", false);  //Если равно False - игра запущена в первый раз
+            tempStorage.saveValue("achGuessStarNormal", false); //ачивка, если равно True - получена
+            tempStorage.saveValue("achGuessStarExpert", false); //ачивка
+            tempStorage.saveValue("achGuessBandsNormal", false); //ачивка
+            tempStorage.saveValue("achGuessBandsExpert", false); //ачивка
+            tempStorage.saveValue("achSwipeTwoBandsNormal", false); //ачивка
+            tempStorage.saveValue("achSwipeTwoBandsExpert", false); //ачивка
+            tempStorage.saveValue("achGuessStarReversNormal", false); //ачивка
+            tempStorage.saveValue("achGuessStarReversExpert", false); //ачивка
+            tempStorage.saveValue("achTripleAdept", false); //ачивка
+            tempStorage.saveValue("achTripleExpert", false); //ачивка
+            tempStorage.saveValue("achRoyal", false); //ачивка
+            tempStorage.saveValue("gameBuyed", false); //TODO надо сделать возможность купить игру, отключая рекламу. за это может быть ачивка
+
+            Storage storage = new Storage(this, "settings");
+            storage.saveValue("darkMode", false);
+            storage.saveValue("themeCount", 1);
+        }
     }
 }

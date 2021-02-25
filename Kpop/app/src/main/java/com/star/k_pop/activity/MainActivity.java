@@ -34,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
         //Storage storage = new Storage(this);
         String nameOfStorage = "appStatus";
         sp = getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
-        appStatusGeneration(); //создание статусов приложения, не создаст, если статусы уже существуют
         if (sp.contains("noticeWatched")) {
             if (!storage.getBoolean("noticeWatched")) {
                 storage.saveValue("noticeWatched", true);
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, BasicNotice.class);
+                image.putExtra("text", R.string.aboutText);
+                image.putExtra("title", R.string.aboutTitle);
                 startActivity(image);
             }
         }
@@ -159,29 +160,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-    }
-
-    protected void appStatusGeneration() { //генерация первоначального статуса
-        Storage tempStorage = new Storage(this, "appStatus"); //хранилище всяких состояний приложения
-        sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
-        if (!sp.contains("noticeWatched") || !sp.contains("achGuessStarNormal")) {
-            tempStorage.saveValue("noticeWatched", false);  //Если равно False - игра запущена в первый раз
-
-            tempStorage.saveValue("achGuessStarNormal", false); //ачивка, если равно True - получена
-            tempStorage.saveValue("achGuessStarExpert", false); //ачивка
-            tempStorage.saveValue("achGuessBandsNormal", false); //ачивка
-            tempStorage.saveValue("achGuessBandsExpert", false); //ачивка
-            tempStorage.saveValue("achSwipeTwoBandsNormal", false); //ачивка
-            tempStorage.saveValue("achSwipeTwoBandsExpert", false); //ачивка
-            tempStorage.saveValue("achGuessStarReversNormal", false); //ачивка
-            tempStorage.saveValue("achGuessStarReversExpert", false); //ачивка
-            tempStorage.saveValue("achTripleAdept", false); //ачивка
-            tempStorage.saveValue("achTripleExpert", false); //ачивка
-            tempStorage.saveValue("achRoyal", false); //ачивка
-
-            tempStorage.saveValue("gameBuyed", false); //TODO надо сделать возможность купить игру, отключая рекламу. за это может быть ачивка
-
-        }
     }
 
     protected void readStatus() { //считывает статус/атрибуты приложения //TODO удалить
