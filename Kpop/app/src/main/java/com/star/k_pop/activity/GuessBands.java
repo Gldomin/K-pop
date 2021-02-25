@@ -45,16 +45,14 @@ public class GuessBands extends AppCompatActivity {
 
     int count = 0;
     int score;
-    int countHints =3;
     int fastscore = 0;
     private SharedPreferences spBands;
     SharedPreferences sp;
     Theme theme;
 
     boolean onRewardedHint = true;
-    int hintCount = 3;
+    int hintCount = 4;
     boolean hintShow = false;
-
 
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
@@ -67,7 +65,7 @@ public class GuessBands extends AppCompatActivity {
     TextView counterHint;
     ImageView groupPhoto;
     EditText grName;
-    ImageButton podsk, podsk2;
+    ImageButton podsk;
 
     //Создаем лист для кнопок
     private List<Button> buttons;
@@ -116,6 +114,7 @@ public class GuessBands extends AppCompatActivity {
         setContentView(R.layout.activity_guess_bands);
 
         ImageButton about = findViewById(R.id.guessBandAbautButton);
+        about.setBackgroundResource(theme.getBackgroundResource());
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,11 +129,10 @@ public class GuessBands extends AppCompatActivity {
 
         podsk = findViewById(R.id.podsk);
         counterHint = findViewById(R.id.counter_Hints);
-        counterHint.setText(""+countHints);
+        counterHint.setText(String.format("%d", hintCount));
         if (theme.isDarkMode()) {
             podsk.setImageResource(R.drawable.hint2);
-        }
-        else {
+        } else {
             podsk.setImageResource(R.drawable.hint);
         }
 
@@ -179,6 +177,10 @@ public class GuessBands extends AppCompatActivity {
                             fastscore++;
                             count++;
                             change();
+                            if (fastscore % 10 == 0) {
+                                heathBarTest.restore();
+                                hintCount++;
+                            }
                             //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
                             //на момент релиза удалить.
                             if (fastscore == 15) { //ачивка за 15 - achGuessBandsNormal. Условие ачивки
@@ -205,8 +207,10 @@ public class GuessBands extends AppCompatActivity {
                         }
                         break;
                     case R.id.podsk:
-                        if (hintCount > 0 && !hintShow) {
+                        if (hintCount > 1 && !hintShow) {
                             hintShow = true;
+                            hintCount--;
+                            counterHint.setText(String.format("%d", hintCount));
                             String textGroupHint = artists.get(count).getGroups();
                             char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
                             for (int j = 0; j < textHint.length; j++) {
@@ -224,7 +228,6 @@ public class GuessBands extends AppCompatActivity {
                                     }
                                 }
                             }
-                            hintCount--;
                         } else {
                             if (!hintShow) {
                                 onRewardHint();
@@ -328,8 +331,10 @@ public class GuessBands extends AppCompatActivity {
                             artists = Importer.getRandomArtists();
                             count = 0;
                         }
-                        hintCount = 3;
+                        hintCount = 4;
+                        counterHint.setText(String.format("%d", hintCount));
                         onRewarded = true;
+                        onRewardedHint = true;
                         change();
                     }
                 });
@@ -359,8 +364,10 @@ public class GuessBands extends AppCompatActivity {
                                             artists = Importer.getRandomArtists();
                                             count = 0;
                                         }
-                                        hintCount = 3;
+                                        hintCount = 4;
+                                        counterHint.setText(String.format("%d", hintCount));
                                         onRewarded = true;
+                                        onRewardedHint = true;
                                         change();
                                     }
                                     showReward = false;
@@ -415,6 +422,8 @@ public class GuessBands extends AppCompatActivity {
                                                 }
                                             }
                                         }
+                                        hintCount--;
+                                        counterHint.setText(String.format("%d", hintCount));
                                     } else {
                                         onRewardedHint = true;
                                     }
