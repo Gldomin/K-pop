@@ -24,19 +24,19 @@
     <string name="achGuessStarReversExpert">Secret mode expert</string>
     <string name="achTripleAdept">As a piece of cake</string>
     <string name="achTripleExpert">K-pop Master</string>
-    <string name="achRoyal">Повелитель четырех режимов</string>
+    <string name="achRoyal">Lord of four modes</string>
 
-    <string name="achGuessStarNormalText">Вы набрали 50 очков в режиме Угадай Звезду</string>
-    <string name="achGuessStarExpertText">Вы набрали 50 очков в экспертном режиме Угадай Звезду</string>
-    <string name="achGuessBandsNormalText">Вы набрали 50 очков в режиме Отгадай Группу</string>
-    <string name="achGuessBandsExpertText">Вы набрали 50 очков в экспертном режиме Отгадай Группу</string>
-    <string name="achSwipeTwoBandsNormalText">Вы набрали 50 очков в режиме Распредели На Две Группы</string>
-    <string name="achSwipeTwoBandsExpertText">Вы набрали 50 очков в экспертном режиме Распредели На Две Группы</string>
-    <string name="achGuessStarReversNormalText">Вы набрали 50 очков в режиме Найди Звезду</string>
-    <string name="achGuessStarReversExpertText">Вы набрали 50 очков в экспертном режиме Найди Звезду</string>
-    <string name="achTripleAdeptText">Вы открыли секретный режим!</string>
-    <string name="achTripleExpertText">Вы истинный знаток К-попа. Спасибо вам за игру, отныне всплывающая реклама отключена.</string>
-    <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! В настройках теперь доступен скромный бонус.</string>
+    <string name="achGuessStarNormalText">You got 50 points in Guess Star</string>
+    <string name="achGuessStarExpertText">You got 50 points in Guess Star expert mode</string>
+    <string name="achGuessBandsNormalText">You got 50 points in Guess Band</string>
+    <string name="achGuessBandsExpertText">You got 50 points in Guess Band expert mode</string>
+    <string name="achSwipeTwoBandsNormalText">You got 50 points in Divide to bands</string>
+    <string name="achSwipeTwoBandsExpertText">You got 50 points in Divide to bands expert mode</string>
+    <string name="achGuessStarReversNormalText">You got 50 points in Find the Star</string>
+    <string name="achGuessStarReversExpertText">You got 50 points in Find the Star expert mode</string>
+    <string name="achTripleAdeptText">You have unlocked Secret mode</string>
+    <string name="achTripleExpertText">You are the true K-pop scholar. Thank you for game, now all ads will be disabled.</string>
+    <string name="achRoyalText">You unlock them all! Congratulations! You can receive a little bonus in settings.</string>
 
 
     <string name="settings0">Settings</string>
