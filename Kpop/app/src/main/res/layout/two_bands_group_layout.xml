@@ -1,47 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:verticalScrollbarPosition="right"
     android:visibility="visible">
 
-    <androidx.gridlayout.widget.GridLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="64dp"
-        android:addStatesFromChildren="true"
-        android:scrollbars="vertical"
-        android:verticalScrollbarPosition="right"
-        app:alignmentMode="alignMargins"
-        app:columnCount="2"
-        app:flow_firstVerticalStyle="spread"
-        app:flow_horizontalAlign="start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rowCount="@integer/config_navAnimTime"
-        app:useDefaultMargins="true">
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:fadeScrollbars="false"
+        android:fadingEdge="none"
+        android:filterTouchesWhenObscured="false"
+        android:hapticFeedbackEnabled="false"
+        android:keepScreenOn="false"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbarThumbHorizontal="@android:color/transparent"
+        android:scrollbarThumbVertical="@android:color/transparent"
+        android:theme="@style/AppTheme"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false">
 
-        <androidx.cardview.widget.CardView android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/cardImage"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            android:background="@drawable/roundedimageview"
+            android:cropToPadding="true"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@tools:sample/avatars"></ImageView>
+    </androidx.cardview.widget.CardView>
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/cardNameTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center|top"
+        android:text="TextView" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:text="TextView" />
+    <TextView
+        android:id="@+id/cardNameBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center|top"
+        android:text="TextView" />
 
-        </androidx.cardview.widget.CardView>
-
-    </androidx.gridlayout.widget.GridLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

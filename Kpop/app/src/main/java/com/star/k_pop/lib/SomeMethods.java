@@ -154,5 +154,16 @@ public class SomeMethods {
         AlertDialog alert = builder.create();
         alert.show();
     }
+
+    public static void showAlertDialog(Activity act, int style, String title, String question, String positive, String negative, DialogInterface.OnClickListener s, DialogInterface.OnClickListener d){
+        AlertDialog.Builder builder = new AlertDialog.Builder(act, style);
+        builder.setTitle(title)
+                .setMessage(question)
+                .setCancelable(false)
+                .setPositiveButton(positive, s)
+                .setNegativeButton(negative, d);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 }
 

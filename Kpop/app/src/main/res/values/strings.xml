@@ -14,7 +14,6 @@
     <string name="menuItemSettings">Settings</string>
     <string name="menuItemAbout">About</string>
 
-    <string name="groupname"></string>
     <string name="achGuessStarNormal">Айдол-знаток</string>
     <string name="achGuessStarExpert">Айдол-эксперт</string>
     <string name="achGuessBandsNormal">Групповой знаток</string>
@@ -23,8 +22,8 @@
     <string name="achSwipeTwoBandsExpert">Прямо как в тиндере! (эксперт)</string>
     <string name="achGuessStarReversNormal">Адепт секретного режима</string>
     <string name="achGuessStarReversExpert">Эксперт секретного режима</string>
-    <string name="achSecretGameMode">Легче легкого</string>
-    <string name="achAdsFree">Мастер К-попа</string>
+    <string name="achTripleAdept">Легче легкого</string>
+    <string name="achTripleExpert">Мастер К-попа</string>
     <string name="achRoyal">Повелитель четырех режимов</string>
 
     <string name="achGuessStarNormalText">Вы набрали 50 очков в режиме Угадай Звезду</string>
@@ -35,8 +34,8 @@
     <string name="achSwipeTwoBandsExpertText">Вы набрали 50 очков в экспертном режиме Распредели На Две Группы</string>
     <string name="achGuessStarReversNormalText">Вы набрали 50 очков в режиме Найди Звезду</string>
     <string name="achGuessStarReversExpertText">Вы набрали 50 очков в экспертном режиме Найди Звезду</string>
-    <string name="achSecretGameModeText">Вы открыли секретный режим!</string>
-    <string name="achAdsFreeText">Вы истинный знаток К-попа. Спасибо вам за игру, отныне всплывающая реклама отключена.</string>
+    <string name="achTripleAdeptText">Вы открыли секретный режим!</string>
+    <string name="achTripleExpertText">Вы истинный знаток К-попа. Спасибо вам за игру, отныне всплывающая реклама отключена.</string>
     <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! В настройках теперь доступен скромный бонус.</string>
 
 
@@ -57,6 +56,8 @@
     <string name="answerYes">Yes</string>
     <string name="answerNo">No</string>
 
+
+    <string name="gameRulesAbaut">Games Rules</string>
     <string name="aboutTitle">Welcome!</string>
     <string name="aboutText">
          Welcome to Guess K-pop app! In this application, you can test your knowledge of K-pop. In this application, you are offered 3 main game modes: "\n"
@@ -109,5 +110,12 @@ Distribute them all!
     <string name="endGameYes">Да</string>
     <string name="endGameNo">Нет</string>
     <string name="endGameRewardShow">Посмотреть рекламу</string>
+
+    <string name="settingRed">Красный</string>
+    <string name="settingGreen">Зеленый</string>
+    <string name="settingPink">Розовый</string>
+    <string name="settingRabbit">Кролик</string>
+    <string name="settingHamster">Хомячок</string>
+    <string name="settingCat">Котик</string>
 
 </resources>

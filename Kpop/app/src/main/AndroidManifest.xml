@@ -18,8 +18,7 @@
         <activity android:name=".activity.GuessStarReverse" />
         <activity
             android:name=".activity.BasicNotice"
-            android:label="@string/aboutTitle"
-            android:theme="@style/Theme.AppCompat.Dialog" />
+            android:theme="@style/NoticeTheme" />
         <activity
             android:name=".activity.Achievements"
             android:screenOrientation="portrait" />

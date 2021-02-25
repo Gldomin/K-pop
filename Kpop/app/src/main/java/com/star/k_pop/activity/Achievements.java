@@ -43,56 +43,29 @@ public class Achievements extends AppCompatActivity {
         if (storage.getBoolean("achGuessStarNormal")) //почему-то R.drawable.achievement слишком большая
             ach1.setImageResource(R.drawable.normalgs);
         if (storage.getBoolean("achGuessStarExpert"))
-            ach2.setImageResource(R.drawable.kpoplove);
+            ach2.setImageResource(R.drawable.expertgs);
         if (storage.getBoolean("achGuessBandsNormal"))
             ach3.setImageResource(R.drawable.normalgb);
         if (storage.getBoolean("achGuessBandsExpert"))
-            ach4.setImageResource(R.drawable.kpoplove);
+            ach4.setImageResource(R.drawable.expertgb);
         if (storage.getBoolean("achSwipeTwoBandsNormal"))
             ach5.setImageResource(R.drawable.normaldb);
         if (storage.getBoolean("achSwipeTwoBandsExpert"))
-            ach6.setImageResource(R.drawable.kpoplove);
+            ach6.setImageResource(R.drawable.expertdb);
         if (storage.getBoolean("achGuessStarReversNormal"))
             ach7.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean("achGuessStarReversExpert"))
             ach8.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean("achSecretGameMode"))
+        if (storage.getBoolean("achTripleAdept"))
             ach9.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean("achAdsFree"))
-            ach10.setImageResource(R.drawable.kpoplove);
+        if (storage.getBoolean("achTripleExpert"))
+            ach10.setImageResource(R.drawable.royal);
         if (storage.getBoolean("achRoyal"))
             ach11.setImageResource(R.drawable.kpoplove);
 
 
         //SomeMethods.showToast(this, "Достижение открыто!", R.drawable.achievement);
 
-        Button tempButton = findViewById(R.id.button2);//временная штука, потом будем считывать из Хранилища состояния ачивокъ
-        if (theme.isDarkMode()) {
-            tempButton.setBackgroundResource(R.drawable.stylebutton_dark);
-        } else {
-            tempButton.setBackgroundResource(R.drawable.stylebutton);
-        }
-        tempButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //SomeMethods.showToast(Achievements.this, "Достижение открыто - КУБЫ!", R.drawable.cubes);
 
-             /*  ImageView imageView = new ImageView(Achievements.this);
-                ConstraintLayout constraintLayout = findViewById(R.id.constraint);
-                constraintLayout.addView(imageView);
-                Glide.with(Achievements.this).load(getResources().getDrawable(R.drawable.hello))
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .transition(withCrossFade())
-                        .into(imageView);
-                Achievements.Alert alert = new Achievements.Alert();
-                alert.execute();*/
-                //SomeMethods.showAlertDeialog(Achievements.this,"title?","1 or 2","1","2");
-                //потом надо будет вместо кнопки сделать функцию обновления ачивок. Если в хранилище будет ачивка True -> открыть картинку. КОнечно же надо будет сначала ачивки сохранить в Хранилище....
-                ach1.setImageResource(R.drawable.heart);
-                ach2.setImageResource(R.drawable.energy);
-                ach3.setImageResource(R.drawable.cubes);
-                ach4.setImageResource(R.drawable.star);
-            }
-        });
     }
 }

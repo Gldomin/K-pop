@@ -36,11 +36,11 @@ public class Importer {
      */
     protected static void createListArtists(Resources res) {
         XmlPullParser parser = res.getXml(R.xml.bands);
-        String nameBand = "bands";
         artists = new ArrayList<>();
         bands = new ArrayList<>();
         ArrayList<Artist> artistsBand = new ArrayList<>();
         ArrayList<String> images = new ArrayList<>();
+        ArrayList<String> nameBand = new ArrayList<>();
         String nameArtist = "artist";
         boolean sex = false;
         try {
@@ -49,7 +49,7 @@ public class Importer {
                     case XmlPullParser.START_TAG:
                         if (parser.getName().equals("NameBand")) {
                             parser.next();
-                            nameBand = parser.getText();
+                            nameBand.add(parser.getText());
                             break;
                         }
                         if (parser.getName().equals("NameArtist")) {
@@ -70,14 +70,16 @@ public class Importer {
                         break;
                     case XmlPullParser.END_TAG:
                         if (parser.getName().equals("Artist")) {
-                            artistsBand.add(new Artist(nameBand, nameArtist, images.toArray(new String[0]), sex));
-                            images.removeAll(images);
+                            artistsBand.add(new Artist(nameBand.toArray(new String[0]), nameArtist, images.toArray(new String[0]), sex));
+                            images.clear();
+                            sex = false;
                             break;
                         }
                         if (parser.getName().equals("Band")) {
                             artists.addAll(artistsBand);
-                            bands.add(new Bands(nameBand, artistsBand, null));
-                            artistsBand.removeAll(artistsBand);
+                            bands.add(new Bands(nameBand.toArray(new String[0]), artistsBand, null));
+                            nameBand.clear();
+                            artistsBand.clear();
                         }
                         break;
                     default:

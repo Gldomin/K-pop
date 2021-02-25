@@ -22,7 +22,7 @@
 
 
             <RelativeLayout
-                android:id="@+id/guessStarHealthLR"
+                android:id="@+id/guessBandHealthLR"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -31,31 +31,31 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:id="@+id/guessStarHeart1"
+                    android:id="@+id/guessBandHeart1"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginEnd="1dp"
                     android:layout_marginRight="1dp"
-                    android:layout_toStartOf="@+id/guessStarHeart2"
-                    android:layout_toLeftOf="@+id/guessStarHeart2"
+                    android:layout_toStartOf="@+id/guessBandHeart2"
+                    android:layout_toLeftOf="@+id/guessBandHeart2"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/heart_color" />
 
                 <ImageView
-                    android:id="@+id/guessStarHeart2"
+                    android:id="@+id/guessBandHeart2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/heart_color" />
 
                 <ImageView
-                    android:id="@+id/guessStarHeart3"
+                    android:id="@+id/guessBandHeart3"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="1dp"
                     android:layout_marginLeft="1dp"
-                    android:layout_toEndOf="@+id/guessStarHeart2"
-                    android:layout_toRightOf="@+id/guessStarHeart2"
+                    android:layout_toEndOf="@+id/guessBandHeart2"
+                    android:layout_toRightOf="@+id/guessBandHeart2"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/heart_color" />
             </RelativeLayout>
@@ -93,11 +93,16 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/tableButton"
             android:layout_below="@+id/topRL"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp">
 
             <ImageView
                 android:id="@+id/imageView"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="1dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 

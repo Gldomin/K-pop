@@ -10,7 +10,6 @@
     <string name="menuItemSettings">Настройки</string>
     <string name="menuItemAbout">О программе</string>
 
-    <string name="groupname"></string>
     <string name="achGuessStarNormal">Айдол-знаток</string>
     <string name="achGuessStarExpert">Айдол-эксперт</string>
     <string name="achGuessBandsNormal">Групповой знаток</string>
@@ -19,21 +18,21 @@
     <string name="achSwipeTwoBandsExpert">Прямо как в тиндере! (эксперт)</string>
     <string name="achGuessStarReversNormal">Адепт секретного режима</string>
     <string name="achGuessStarReversExpert">Эксперт секретного режима</string>
-    <string name="achSecretGameMode">Легче легкого</string>
-    <string name="achAdsFree">Мастер К-попа</string>
+    <string name="achTripleAdept">Легче легкого</string>
+    <string name="achTripleExpert">Мастер К-попа</string>
     <string name="achRoyal">Повелитель четырех режимов</string>
 
     <string name="achGuessStarNormalText">Вы набрали 50 очков в режиме Угадай Звезду</string>
-    <string name="achGuessStarExpertText">Вы набрали 50 очков в экспертном режиме Угадай Звезду</string>
-    <string name="achGuessBandsNormalText">Вы набрали 50 очков в режиме Отгадай Группу</string>
+    <string name="achGuessStarExpertText">Вы набрали 150 очков в экспертном режиме Угадай Звезду</string>
+    <string name="achGuessBandsNormalText">Вы набрали 15 очков в режиме Отгадай Группу</string>
     <string name="achGuessBandsExpertText">Вы набрали 50 очков в экспертном режиме Отгадай Группу</string>
-    <string name="achSwipeTwoBandsNormalText">Вы набрали 50 очков в режиме Распредели На Две Группы</string>
-    <string name="achSwipeTwoBandsExpertText">Вы набрали 50 очков в экспертном режиме Распредели На Две Группы</string>
+    <string name="achSwipeTwoBandsNormalText">Вы набрали 5 очков в режиме Распредели На Две Группы</string>
+    <string name="achSwipeTwoBandsExpertText">Вы набрали 25 очков в экспертном режиме Распредели На Две Группы</string>
     <string name="achGuessStarReversNormalText">Вы набрали 50 очков в режиме Найди Звезду</string>
-    <string name="achGuessStarReversExpertText">Вы набрали 50 очков в экспертном режиме Найди Звезду</string>
-    <string name="achSecretGameModeText">Вы открыли секретный режим!</string>
-    <string name="achAdsFreeText">Вы истинный знаток К-попа. Спасибо вам за игру, отныне всплывающая реклама отключена.</string>
-    <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! В настройках теперь доступен скромный бонус.</string>
+    <string name="achGuessStarReversExpertText">Вы набрали 150 очков в экспертном режиме Найди Звезду</string>
+    <string name="achTripleAdeptText">Вы - Адепт трех режимов!</string>
+    <string name="achTripleExpertText">Вы истинный знаток К-попа. Вы получили экспертные достижения в трех режимах!</string>
+    <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! У нас есть для вас скромный бонус</string>
 
     <string name="questionReset">Удалить рекорды?</string>
     <string name="questionConfirmTitle">Подтверждение</string>
@@ -50,7 +49,8 @@
     <string name="settings5">"Нажми ОТМЕНА"</string>
     <string name="resetRecords">Сбросить счёт</string>
     <string name="OptionsSet">Настройки сохранены</string>
-
+    
+    <string name="gameRulesAbaut">Правила игры</string>
     <string name="aboutTitle">Добро пожаловать!</string>
     <string name="aboutText">
         "\n"
@@ -77,22 +77,22 @@
     <string name="gameModeAbaut">Описание режима</string>
     <string name="guessStarGameModeAbaut">
         Игровой режим "Угадай Звезду" позволяет проверить свои познания в звездах K-pop`а."\n"
-        Отгадывай имена К-pop артистов по фотографиям. Тебе не важно знать в какой группе состоит звезда на экране, но важно знать его или её имя. Каждый угаданный артист увеличесвает твой счет! А неверно угаданный, соответсвенно, уменьшает. Но думаю ты разберешься."\n"
-        Отгадай их всех!
+        Отгадывай имена К-pop артистов по фотографиям. Тебе не важно знать в какой группе состоит звезда на экране, но важно знать его или её имя. У тебя есть 3 жизни. Правильный ответ будет увеличивать твой счет, а неправильные - забирать жизни.  Кроме того, за каждые 50 очков, тебе будут добавлять 1 жизнь. Но думаю ты разберешься."\n"
+        Удачи :)
     </string>
     <string name="guessBandGameModeAbaut">
         Игровой режим "Угадай Группу" позволяет проверить свои познания самых знаменитых k-pop групп в истории!
-        Отгадывай группу в которой состоит звезда на экране. Каждый верный ответ увеличесвает твой счет! А неверный, соответсвенно, уменьшает. Но думаю ты разберешься."\n"
-        Угадай их всех!
+        Отгадывай группу в которой состоит артист на экране. Каждый верный ответ увеличесвает твой счет! А неверный, уменьшает жизни. Понятное дело, что при окончании жизней, игра будет окончена."\n"
+        Кроме того, у тебя есть 3 подсказки на игру, которые подскажут тебе буквы из которых состоит название k-pop группы, а за каждые 10 отгаданных груп, тебе будут давать 1 жизнь и 1 подсказку. Но думаю ты разберешься."\n"
+        Удачи ;)
     </string>
     <string name="twoBandsTinderGameModeAbaut">
         Игровой режим "Распредели по Группам" позволяет проверить свои познания в k-pop группах"\n"
         Тебе в распоряжение дается набор из различных звезд K-pop`a, а тебе нужно распределить их на 2 группы. Что бы распределить карточки артистов, их нужно свайпнуть в соответсвующую K-pop-группе стороны экрана. "\n"
-        В любой момент ты можешь просмотреть все карточки артистов и перераспределить их. Если ты неправильно распределишь карточки, тебе так же предложат исправить результат. Но с каждой новой попыткой, потенциальный счет будет все меньше."\n"
-        Но думаю ты разберешься."\n"
-        Распредели их всех!
+        В любой момент ты можешь просмотреть все карточки артистов и перераспределить их. После того, как ты подтвердишь свое распределение, тебе покажут правильно ли все распределено, после чего, ты перейдешь к следующей паре групп. Каждый раз, когда ты ошибаешься больше чем на одного артиста, одна из твоих жизней сгорает. Как только кончатся все - настанет конец игры. Кроме того, чем меньше ты будешь делать ошибок, тем больше будет счет. "\n"
+        На деле все гараздо проще - удачи!"\n"
+        Распредели их всех ツ
     </string>
-
 
     <string name="score_text">Ваш счет:</string>
     <string name="record_text">Ваш рекорд:</string>
@@ -103,4 +103,11 @@
     <string name="endGameYes">Да</string>
     <string name="endGameNo">Нет</string>
     <string name="endGameRewardShow">Посмотреть рекламу</string>
+
+    <string name="settingRed">Красный</string>
+    <string name="settingGreen">Зеленый</string>
+    <string name="settingPink">Розовый</string>
+    <string name="settingRabbit">Кролик</string>
+    <string name="settingHamster">Хомячок</string>
+    <string name="settingCat">Котик</string>
 </resources>

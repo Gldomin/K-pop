@@ -50,7 +50,8 @@
                             android:id="@+id/ach1BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achGuessStarNormal" />
+                            android:text="@string/achGuessStarNormal"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach1SmallText"
@@ -86,7 +87,8 @@
                             android:id="@+id/ach2BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achGuessStarExpert" />
+                            android:text="@string/achGuessStarExpert"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach2SmallText"
@@ -122,7 +124,8 @@
                             android:id="@+id/ach3BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achGuessBandsNormal" />
+                            android:text="@string/achGuessBandsNormal"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach3SmallText"
@@ -157,7 +160,8 @@
                             android:id="@+id/ach4BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achGuessBandsExpert" />
+                            android:text="@string/achGuessBandsExpert"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach4SmallText"
@@ -192,7 +196,8 @@
                             android:id="@+id/ach5BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achSwipeTwoBandsNormal" />
+                            android:text="@string/achSwipeTwoBandsNormal"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach5SmallText"
@@ -227,7 +232,8 @@
                             android:id="@+id/ach6BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achSwipeTwoBandsExpert" />
+                            android:text="@string/achSwipeTwoBandsExpert"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach6SmallText"
@@ -239,10 +245,12 @@
                     </LinearLayout>
 
                 </TableRow>
+
                 <TableRow
-                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/ach7"
@@ -261,7 +269,8 @@
                             android:id="@+id/ach7BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achGuessStarReversNormal" />
+                            android:text="@string/achGuessStarReversNormal"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach7SmallText"
@@ -273,10 +282,12 @@
                     </LinearLayout>
 
                 </TableRow>
+
                 <TableRow
-                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/ach8"
@@ -295,7 +306,8 @@
                             android:id="@+id/ach8BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achGuessStarReversExpert" />
+                            android:text="@string/achGuessStarReversExpert"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach8SmallText"
@@ -329,14 +341,15 @@
                             android:id="@+id/ach9BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achSecretGameMode" />
+                            android:text="@string/achTripleAdept"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach9SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="@string/achSecretGameModeText" />
+                            android:text="@string/achTripleAdeptText" />
 
                     </LinearLayout>
 
@@ -363,23 +376,26 @@
                             android:id="@+id/ach10BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achAdsFree" />
+                            android:text="@string/achTripleExpert"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach10SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="@string/achAdsFreeText" />
+                            android:text="@string/achTripleExpertText" />
 
                     </LinearLayout>
 
                 </TableRow>
+
                 <TableRow
 
-                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/ach11"
@@ -398,7 +414,8 @@
                             android:id="@+id/ach11BigText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/achRoyal" />
+                            android:text="@string/achRoyal"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ach11SmallText"
@@ -413,14 +430,5 @@
             </TableLayout>
         </LinearLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Открыть все ачивки"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

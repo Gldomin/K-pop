@@ -1,6 +1,7 @@
 package com.star.k_pop.helper;
 
 import android.app.Activity;
+import android.util.Log;
 
 import com.star.k_pop.R;
 
@@ -8,46 +9,40 @@ public class Theme {
 
     Activity activity;
     boolean darkMode;
-    boolean lightCat, lightHamster, lightRabbit = false;
     int themeCount, themeCount2;
 
     public Theme(Activity activity) {
         this.activity = activity;
+        Storage storage = new Storage(activity, "settings");
+        darkMode = storage.getBoolean("darkMode");
+        themeCount = storage.getInt("themeCount");
     }
 
     public void setTheme() {
-        Storage storage2 = new Storage(activity, "settings");
-        darkMode = storage2.getBoolean("darkMode");
-        themeCount = storage2.getInt("themeCount");
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
         } else if (themeCount == 1) {
             activity.setTheme(R.style.AppThemeLightRabbit);
-            lightRabbit = true;
         } else if (themeCount == 2) {
             activity.setTheme(R.style.AppThemeLightHamster);
-            lightHamster = true;
         } else if (themeCount == 3) {
             activity.setTheme(R.style.AppThemeLightCat);
-            lightCat = true;
         }
     }
 
     public void setThemeSecond() {
-        Storage storage2 = new Storage(activity, "settings");
-        darkMode = storage2.getBoolean("darkMode");
-        themeCount = storage2.getInt("themeCount");
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
-        } else if(themeCount==1){ activity.setTheme(R.style.AppThemeLightRabbit2);
-        }
-        else if(themeCount==2){ activity.setTheme(R.style.AppThemeLightHamster2);
-        }
-        else if(themeCount==3){ activity.setTheme(R.style.AppThemeLightCat2);
+        } else if (themeCount == 1) {
+            activity.setTheme(R.style.AppThemeLightRabbit2);
+        } else if (themeCount == 2) {
+            activity.setTheme(R.style.AppThemeLightHamster2);
+        } else if (themeCount == 3) {
+            activity.setTheme(R.style.AppThemeLightCat2);
         }
     }
 
-   /* public int getThemeBackground() {
+    public int getThemeBackground() {
         if (darkMode) {
             return R.drawable.main_background2;
         } else if (themeCount == 1) {
@@ -59,12 +54,13 @@ public class Theme {
         } else {
             return R.drawable.main_background;
         }
-    }*/
+    }
 
     public int getThemeBackground2() {
         /*if (darkMode) {
             return R.drawable.main_background2;
-        } else*/ if (themeCount == 1) {
+        } else*/
+        if (themeCount == 1) {
             return R.drawable.main_background;
         } else if (themeCount == 2) {
             return R.drawable.main_background_hamster;
@@ -78,13 +74,11 @@ public class Theme {
     public int getAlertDialogStyle() {
         if (darkMode) {
             return R.style.AlertDialog1;
-        } else if (themeCount == 1)
+        } else if (themeCount == 1) {
             return R.style.AlertDialog2;
-        else if (themeCount == 2) {
-            activity.setTheme(R.style.AppThemeLightHamster);
+        } else if (themeCount == 2) {
             return R.style.AlertDialog3;
         } else if (themeCount == 3) {
-            activity.setTheme(R.style.AppThemeLightCat);
             return R.style.AlertDialog4;
         }
         return R.style.AlertDialog1;
@@ -105,22 +99,22 @@ public class Theme {
     }
 
     public int getBackgroundResource() {
-        /*if (darkMode) {
-            return R.drawable.stylebutton_dark;
-        } else */
         if (themeCount == 1) {
-            if(darkMode){return R.drawable.stylebutton_dark;}
-            else {
+            if (darkMode) {
+                return R.drawable.stylebutton_dark;
+            } else {
                 return R.drawable.stylebutton;
             }
         } else if (themeCount == 2) {
-            if(darkMode){return R.drawable.stylebutton_dark_green;}
-            else {
+            if (darkMode) {
+                return R.drawable.stylebutton_dark_green;
+            } else {
                 return R.drawable.stylebutton_hamster;
             }
         } else if (themeCount == 3) {
-            if(darkMode){return R.drawable.stylebutton_dark_pink;}
-            else {
+            if (darkMode) {
+                return R.drawable.stylebutton_dark_pink;
+            } else {
                 return R.drawable.stylebutton_cat;
             }
         } else {
@@ -177,17 +171,5 @@ public class Theme {
 
     public boolean isDarkMode() {
         return darkMode;
-    }
-
-    public boolean isLightCat() {
-        return lightCat;
-    }
-
-    public boolean isLightHamster() {
-        return lightHamster;
-    }
-
-    public boolean isLightRabbit() {
-        return lightRabbit;
     }
 }
