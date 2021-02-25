@@ -29,16 +29,10 @@ import com.star.k_pop.lib.SomeMethods;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
-
 public class Settings extends AppCompatActivity {
     OptionsSet tempSettingsSet = new OptionsSet(false, false);
     Theme theme;
     SharedPreferences sp;
-    int themeCount = 1;
-
-    private static final int[] RADIO_IDS = {
-            R.id.blueVar, R.id.redVar
-    };
 
     RadioGroup radGroup;
     RadioButton blueBut;
@@ -47,13 +41,8 @@ public class Settings extends AppCompatActivity {
     RadioButton catBut;
     Switch darkThemeSwitch;
 
-    //OptionsSet tempSettingsSet2 = new OptionsSet(false, false); //переменная для считывания состояния свиича на darkmod
-    String buttonStyleChange = "stylebutton";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        Storage storage = new Storage(this, "settings");
 
         theme = new Theme(this);
 
@@ -134,22 +123,8 @@ public class Settings extends AppCompatActivity {
                 } else if (catBut.isChecked()) {
                     chooseTheme(3);
                 }
-                // final ConstraintLayout cl = findViewById(R.id.constraint);
-                // cl.setBackgroundColor(000000);
             }
         });
-       /* optionSwitch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                tempSettingsSet.option4 = optionSwitch4.isChecked();
-            }
-        });
-        optionSwitch5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                tempSettingsSet.option5 = optionSwitch5.isChecked();
-            }
-        });*/
 
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
         settingsConfirmButton.setBackgroundResource(theme.getBackgroundResource());
@@ -214,31 +189,19 @@ public class Settings extends AppCompatActivity {
 
 ///////Read Settings//////
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
-        if (sp.contains("hardMode") && sp.contains("hintMode") && sp.contains("option5")) {
-            storage = new Storage(this, "settings");
-            tempSettingsSet.hintMode = storage.getBoolean("hintMode"); //считывание настроек из Хранилища
-            tempSettingsSet.hardMode = storage.getBoolean("hardMode");
-            tempSettingsSet.darkMode = storage.getBoolean("darkMode");
-            tempSettingsSet.option4 = storage.getBoolean("option4");
-            tempSettingsSet.option5 = storage.getBoolean("option5");
-            tempSettingsSet.themeCount = storage.getInt("themeCount");
+        Storage storage = new Storage(this, "settings");
+        tempSettingsSet.darkMode = storage.getBoolean("darkMode");
+        tempSettingsSet.themeCount = storage.getInt("themeCount");
 
-            darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
+        darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
 
-            if (tempSettingsSet.themeCount == 1) radGroup.check(R.id.blueVar);
-            if (tempSettingsSet.themeCount == 2) radGroup.check(R.id.redVar);
-            if (tempSettingsSet.themeCount == 3) radGroup.check(R.id.catVar);
+        if (tempSettingsSet.themeCount == 1) radGroup.check(R.id.blueVar);
+        if (tempSettingsSet.themeCount == 2) radGroup.check(R.id.redVar);
+        if (tempSettingsSet.themeCount == 3) radGroup.check(R.id.catVar);
 
-            //optionSwitch4.setChecked(tempSettingsSet.option4);
-            //optionSwitch5.setChecked(tempSettingsSet.option5);
-        } else {
-            saveSettings();
-        }
     }
 
     void chooseTheme(int num) {
-
-
         if (num == 1) {
             if (darkThemeSwitch.isChecked()) {
                 themeIm.setImageResource(R.drawable.stylebutton_dark);
@@ -287,19 +250,13 @@ public class Settings extends AppCompatActivity {
 
     void saveSettings() {
         Storage storage = new Storage(this, "settings");
-        storage.saveValue("hintMode", tempSettingsSet.hintMode);
-        storage.saveValue("hardMode", tempSettingsSet.hardMode);
         storage.saveValue("darkMode", tempSettingsSet.darkMode);
-        storage.saveValue("option4", tempSettingsSet.option4);
-        storage.saveValue("option5", tempSettingsSet.option5);
         storage.saveValue("themeCount", tempSettingsSet.themeCount);
         Toast.makeText(Settings.this, getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
     }
 
     @Override
     protected void onPause() {
-        //save Settings
-        //saveSettings();
         super.onPause();
     }
 

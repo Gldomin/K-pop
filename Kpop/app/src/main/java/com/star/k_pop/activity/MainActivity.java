@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,18 +33,18 @@ public class MainActivity extends AppCompatActivity {
 
         String nameOfStorage = "appStatus";
         sp = getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
-        appStatusGeneration(); //создание статусов приложения, не создаст, если статусы уже существуют
         if (sp.contains("noticeWatched")) {
             if (!storage.getBoolean("noticeWatched")) {
                 storage.saveValue("noticeWatched", true);
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, BasicNotice.class);
+                image.putExtra("text", R.string.aboutText);
+                image.putExtra("title", R.string.aboutTitle);
                 startActivity(image);
             }
         }
 
 ///////////////////////////////////СВИЧИ ДЛЯ ПРОВЕРКИ СТУТУСОВ - начало////////////////// //TODO удалить блок вместе с ScrollView из активити и readStatus() с saveStatus()
-
 
         //   tempSettingsSet.hintMode = storage.getBoolean(nameOfStorage, "hintMode"); //считывание настроек из Хранилища
 
@@ -95,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
                 image.setClass(MainActivity.this, Settings.class);
                 startActivityForResult(image, REQUEST_CODE);
             }
-
-
         });
 
         ImageView achievement = findViewById(R.id.achievementButton);
@@ -126,29 +123,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-    }
-
-    protected void appStatusGeneration() { //генерация первоначального статуса
-        Storage tempStorage = new Storage(this, "appStatus"); //хранилище всяких состояний приложения
-        sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
-        if (!sp.contains("noticeWatched") || !sp.contains("achGuessStarNormal")) {
-            tempStorage.saveValue("noticeWatched", false);  //Если равно False - игра запущена в первый раз
-
-            tempStorage.saveValue("achGuessStarNormal", false); //ачивка, если равно True - получена
-            tempStorage.saveValue("achGuessStarExpert", false); //ачивка
-            tempStorage.saveValue("achGuessBandsNormal", false); //ачивка
-            tempStorage.saveValue("achGuessBandsExpert", false); //ачивка
-            tempStorage.saveValue("achSwipeTwoBandsNormal", false); //ачивка
-            tempStorage.saveValue("achSwipeTwoBandsExpert", false); //ачивка
-            tempStorage.saveValue("achGuessStarReversNormal", false); //ачивка
-            tempStorage.saveValue("achGuessStarReversExpert", false); //ачивка
-            tempStorage.saveValue("achTripleAdept", false); //ачивка
-            tempStorage.saveValue("achTripleExpert", false); //ачивка
-            tempStorage.saveValue("achRoyal", false); //ачивка
-
-            tempStorage.saveValue("gameBuyed", false); //TODO надо сделать возможность купить игру, отключая рекламу. за это может быть ачивка
-
-        }
     }
 
     Theme theme;//переменная для считывания состояния свиича на darkmod
