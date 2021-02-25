@@ -200,9 +200,9 @@ public class MainActivity extends AppCompatActivity {
         final Switch achAdsFreeText = findViewById(R.id.achAdsFreeText);
         final Switch achRoyalText = findViewById(R.id.achRoyalText);
 
-        noticeWatched.setVisibility(View.INVISIBLE);
-        achGuessStarNormalText.setVisibility(View.INVISIBLE);
-        achGuessStarExpertText.setVisibility(View.INVISIBLE);
+        //noticeWatched.setVisibility(View.INVISIBLE);
+        //achGuessStarNormalText.setVisibility(View.INVISIBLE);
+        //achGuessStarExpertText.setVisibility(View.INVISIBLE);
         achGuessBandsNormalText.setVisibility(View.INVISIBLE);
         achGuessBandsExpertText.setVisibility(View.INVISIBLE);
         achSwipeTwoBandsNormalText.setVisibility(View.INVISIBLE);

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -59,7 +60,7 @@ public class GuessBands extends AppCompatActivity {
     TextView fastScoreText; //текущий счет
     ImageView groupPhoto;
     EditText grName;
-    ImageButton podsk;
+    ImageButton podsk, podsk2;
 
     //Создаем лист для кнопок
     private List<Button> buttons;
@@ -108,8 +109,14 @@ public class GuessBands extends AppCompatActivity {
 
 
         podsk = findViewById(R.id.podsk);
+        podsk2 = findViewById(R.id.podsk_dark);
         if (theme.isDarkMode()) {
-            podsk.setBackgroundResource(R.drawable.hint2);
+            podsk.setVisibility(View.INVISIBLE);
+            podsk2.setVisibility(View.VISIBLE);
+        }
+        else {
+            podsk.setVisibility(View.VISIBLE);
+            podsk2.setVisibility(View.INVISIBLE);
         }
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
