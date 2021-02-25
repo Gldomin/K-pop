@@ -11,12 +11,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -132,6 +129,9 @@ public class GuessStar extends AppCompatActivity {
                             artists = Importer.getRandomArtists();
                             count = 0;
                         }
+                        if (scoreNow % 10 == 0) {
+                            heathBarTest.restore();
+                        }
                         if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.normalgs, "achGuessStarNormal"); //ачивочка
                         }
@@ -172,7 +172,7 @@ public class GuessStar extends AppCompatActivity {
                 startActivity(image);
             }
         });
-
+        
         // TODO Удалить перед релизом
         imageView.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
 
@@ -201,7 +201,7 @@ public class GuessStar extends AppCompatActivity {
         nextArtist();
     }
 
-    private void createHeathBar(){
+    private void createHeathBar() {
         ImageView imageView1 = findViewById(R.id.guessBandHeart1);
         ImageView imageView2 = findViewById(R.id.guessBandHeart2);
         ImageView imageView3 = findViewById(R.id.guessBandHeart3);
@@ -238,7 +238,6 @@ public class GuessStar extends AppCompatActivity {
                     getResources().getString(R.string.record_text), scoreNow));
         }
     }
-
 
 
     void nextArtist() {
