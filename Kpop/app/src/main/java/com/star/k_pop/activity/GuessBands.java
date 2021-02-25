@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -50,6 +49,10 @@ public class GuessBands extends AppCompatActivity {
     private SharedPreferences spBands;
     SharedPreferences sp;
     Theme theme;
+
+    boolean onRewardedHint = true;
+    int hintCount = 3;
+    boolean hintShow = false;
 
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
@@ -127,8 +130,7 @@ public class GuessBands extends AppCompatActivity {
         if (theme.isDarkMode()) {
             podsk.setVisibility(View.INVISIBLE);
             podsk2.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             podsk.setVisibility(View.VISIBLE);
             podsk2.setVisibility(View.INVISIBLE);
         }
@@ -198,21 +200,29 @@ public class GuessBands extends AppCompatActivity {
                         }
                         break;
                     case R.id.podsk:
-                        String textGroupHint = artists.get(count).getGroups();
-                        char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
-                        for (int j = 0; j < textHint.length; j++) {
-                            String textHintTwo = "" + textHint[j];
-                            textHintTwo = textHintTwo.toUpperCase();
-                            textHint[j] = textHintTwo.charAt(0);
-                        }
-                        for (Button b : buttons) {
-                            if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
-                                continue;
-                            for (char c : textHint) {
-                                if (b.getText().charAt(0) == c) {
-                                    b.setBackgroundResource(theme.getBackgroundButton());
-                                    break;
+                        if (hintCount > 0 && !hintShow) {
+                            hintShow = true;
+                            String textGroupHint = artists.get(count).getGroups();
+                            char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
+                            for (int j = 0; j < textHint.length; j++) {
+                                String textHintTwo = "" + textHint[j];
+                                textHintTwo = textHintTwo.toUpperCase();
+                                textHint[j] = textHintTwo.charAt(0);
+                            }
+                            for (Button b : buttons) {
+                                if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
+                                    continue;
+                                for (char c : textHint) {
+                                    if (b.getText().charAt(0) == c) {
+                                        b.setBackgroundResource(theme.getBackgroundButton());
+                                        break;
+                                    }
                                 }
+                            }
+                            hintCount--;
+                        } else {
+                            if (!hintShow) {
+                                onRewardHint();
                             }
                         }
                         break;
@@ -270,6 +280,7 @@ public class GuessBands extends AppCompatActivity {
         for (Button b : buttons) {
             b.setBackgroundResource(theme.getBackgroundResource());
         }
+        hintShow = false;
         grName.setText("");
         // TODO Удалить перед релизом
         /*String answ = artists.get(count).getGroups();
@@ -311,6 +322,7 @@ public class GuessBands extends AppCompatActivity {
                             artists = Importer.getRandomArtists();
                             count = 0;
                         }
+                        hintCount = 3;
                         onRewarded = true;
                         change();
                     }
@@ -325,13 +337,13 @@ public class GuessBands extends AppCompatActivity {
                             rewarded.show(GuessBands.this, new OnUserEarnedRewardListener() {
                                 @Override
                                 public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
-                                    onRewarded = false;
                                     showReward = true;
                                 }
                             }, new Rewarded.RewardDelay() {
                                 @Override
                                 public void onShowDismissed() {
                                     if (showReward) {
+                                        onRewarded = false;
                                         heathBarTest.restore();
                                     } else {
                                         heathBarTest.setHp(3);
@@ -341,6 +353,7 @@ public class GuessBands extends AppCompatActivity {
                                             artists = Importer.getRandomArtists();
                                             count = 0;
                                         }
+                                        hintCount = 3;
                                         onRewarded = true;
                                         change();
                                     }
@@ -352,5 +365,60 @@ public class GuessBands extends AppCompatActivity {
         }
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    private void onRewardHint() {
+        if (rewarded.onLoaded() && onRewardedHint) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+            builder.setTitle(getResources().getString(R.string.endHintCongratulate))
+                    .setMessage(String.format("%s", getResources().getString(R.string.endHintReward)))
+                    .setCancelable(false)
+                    .setNegativeButton(getResources().getString(R.string.endHintNo), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    })
+                    .setPositiveButton(getResources().getString(R.string.endHintYes), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            rewarded.show(GuessBands.this, new OnUserEarnedRewardListener() {
+                                @Override
+                                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                                    showReward = true;
+                                }
+                            }, new Rewarded.RewardDelay() {
+                                @Override
+                                public void onShowDismissed() {
+                                    if (showReward) {
+                                        onRewardedHint = false;
+                                        String textGroupHint = artists.get(count).getGroups();
+                                        char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
+                                        for (int j = 0; j < textHint.length; j++) {
+                                            String textHintTwo = "" + textHint[j];
+                                            textHintTwo = textHintTwo.toUpperCase();
+                                            textHint[j] = textHintTwo.charAt(0);
+                                        }
+                                        for (Button b : buttons) {
+                                            if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
+                                                continue;
+                                            for (char c : textHint) {
+                                                if (b.getText().charAt(0) == c) {
+                                                    b.setBackgroundResource(theme.getBackgroundButton());
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        onRewardedHint = true;
+                                    }
+                                    showReward = false;
+                                }
+                            });
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
     }
 }

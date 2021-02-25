@@ -111,6 +111,11 @@ Distribute them all!
     <string name="endGameNo">Нет</string>
     <string name="endGameRewardShow">Посмотреть рекламу</string>
 
+    <string name="endHintCongratulate">Внимание!</string>
+    <string name="endHintReward">Посмотреть рекламу что бы использовать подсказку?</string>
+    <string name="endHintYes">Да</string>
+    <string name="endHintNo">Нет</string>
+
     <string name="settingRed">Красный</string>
     <string name="settingGreen">Зеленый</string>
     <string name="settingPink">Розовый</string>
