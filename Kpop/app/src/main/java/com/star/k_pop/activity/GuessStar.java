@@ -255,7 +255,7 @@ public class GuessStar extends AppCompatActivity {
                 rand = count;
             } else {
                 rand = new Random().nextInt(artists.size()); //выбор артиста из пула артистов
-                while (artists.get(rand).isInit() || artists.get(rand).isSex() != sex) {  //перевыбор артиста из пула артистов
+                while (artists.get(rand).isInit() || artists.get(rand).isSex() != sex || rand == count) {  //перевыбор артиста из пула артистов
                     rand = new Random().nextInt(artists.size());
                 }
             }
