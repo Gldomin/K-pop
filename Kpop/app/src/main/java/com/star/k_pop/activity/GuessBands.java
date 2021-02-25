@@ -45,10 +45,12 @@ public class GuessBands extends AppCompatActivity {
 
     int count = 0;
     int score;
+    int countHints =3;
     int fastscore = 0;
     private SharedPreferences spBands;
     SharedPreferences sp;
     Theme theme;
+
 
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
@@ -58,6 +60,7 @@ public class GuessBands extends AppCompatActivity {
 
     TextView scoreText; //рекорд
     TextView fastScoreText; //текущий счет
+    TextView counterHint;
     ImageView groupPhoto;
     EditText grName;
     ImageButton podsk, podsk2;
@@ -109,15 +112,16 @@ public class GuessBands extends AppCompatActivity {
 
 
         podsk = findViewById(R.id.podsk);
-        podsk2 = findViewById(R.id.podsk_dark);
+        counterHint = findViewById(R.id.counter_Hints);
+        counterHint.setText(""+countHints);
         if (theme.isDarkMode()) {
-            podsk.setVisibility(View.INVISIBLE);
-            podsk2.setVisibility(View.VISIBLE);
+            podsk.setImageResource(R.drawable.hint2);
         }
         else {
-            podsk.setVisibility(View.VISIBLE);
-            podsk2.setVisibility(View.INVISIBLE);
+            podsk.setImageResource(R.drawable.hint);
         }
+
+
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
         createHeathBar();
@@ -181,6 +185,9 @@ public class GuessBands extends AppCompatActivity {
                         }
                         break;
                     case R.id.podsk:
+                        if (countHints>0){
+                            countHints--;
+                            counterHint.setText(countHints);
                         String textGroupHint = artists.get(count).getGroups();
                         char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
                         for (int j = 0; j < textHint.length; j++) {
@@ -197,7 +204,11 @@ public class GuessBands extends AppCompatActivity {
                                     break;
                                 }
                             }
+                        }}
+                        else {
+                            podsk.setClickable(false);
                         }
+
                         break;
                     default:
                         grName.append("" + ((Button) view).getText().charAt(0));

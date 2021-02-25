@@ -14,16 +14,16 @@
     <string name="menuItemSettings">Settings</string>
     <string name="menuItemAbout">About</string>
 
-    <string name="achGuessStarNormal">Айдол-знаток</string>
-    <string name="achGuessStarExpert">Айдол-эксперт</string>
-    <string name="achGuessBandsNormal">Групповой знаток</string>
-    <string name="achGuessBandsExpert">Групповой эксперт</string>
-    <string name="achSwipeTwoBandsNormal">Прямо как в тиндере!</string>
-    <string name="achSwipeTwoBandsExpert">Прямо как в тиндере! (эксперт)</string>
-    <string name="achGuessStarReversNormal">Адепт секретного режима</string>
-    <string name="achGuessStarReversExpert">Эксперт секретного режима</string>
-    <string name="achTripleAdept">Легче легкого</string>
-    <string name="achTripleExpert">Мастер К-попа</string>
+    <string name="achGuessStarNormal">Idol scholar</string>
+    <string name="achGuessStarExpert">Idol expert</string>
+    <string name="achGuessBandsNormal">Band scholar</string>
+    <string name="achGuessBandsExpert">Band expert</string>
+    <string name="achSwipeTwoBandsNormal">Like in Tinder!</string>
+    <string name="achSwipeTwoBandsExpert">Like in Tinder! (expert)</string>
+    <string name="achGuessStarReversNormal">Secret mode adept</string>
+    <string name="achGuessStarReversExpert">Secret mode expert</string>
+    <string name="achTripleAdept">As a piece of cake</string>
+    <string name="achTripleExpert">K-pop Master</string>
     <string name="achRoyal">Повелитель четырех режимов</string>
 
     <string name="achGuessStarNormalText">Вы набрали 50 очков в режиме Угадай Звезду</string>
