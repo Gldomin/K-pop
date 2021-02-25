@@ -63,7 +63,7 @@
          Welcome to Guess K-pop app! In this application, you can test your knowledge of K-pop. In this application, you are offered 3 main game modes: "\n"
          1) Guess the Star "\n"
          2) Guess the Group "\n"
-         3) Assign to groups (Coming soon!)"\n"
+         3) Divide to bands (Coming soon!)"\n"
          With these game modes, you can memorize all of K-pop most famous bands, as well as all of their incredible members! "\n"
          Each game mode has achievements! "\n"
          Good luck! :)
@@ -94,7 +94,7 @@ Guess band name use artist on the screen. You have 3 lives and 3 hints. Each cor
 Guess them all!
     </string>
     <string name="twoBandsTinderGameModeAbaut">
-The game mode "Assign by Groups" allows you to test your knowledge of K-pop groups "\n"
+The game mode "Divide to bands" allows you to test your knowledge of K-pop groups "\n"
 You are given a set of different K-pop stars, and you need to divide them into 2 groups. To distribute the artist cards, you need to swipe them to the corresponding K-pop group on the side of the screen. "\n"
 At any time, you can view all artist cards and redistribute them. If you distribute the cards incorrectly, you will also be asked to correct the result. But with each new attempt, the potential score will get smaller. "\n"
 But I think you can figure it out. "\n"
@@ -105,10 +105,10 @@ Distribute them all!
     <string name="record_text">Record:</string>
 
 
-    <string name="endHintCongratulate">Внимание!</string>
-    <string name="endHintReward">Посмотреть рекламу что бы использовать подсказку?</string>
-    <string name="endHintYes">Да</string>
-    <string name="endHintNo">Нет</string>
+    <string name="endHintCongratulate">Attention!</string>
+    <string name="endHintReward">View ad for hint?</string>
+    <string name="endHintYes">Yes</string>
+    <string name="endHintNo">No</string>
 
     <string name="endGameCongratulate">Congratulations!</string>
     <string name="endGameNewGame">Start new game?</string>
