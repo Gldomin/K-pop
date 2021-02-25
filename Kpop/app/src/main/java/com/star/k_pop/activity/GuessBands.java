@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -59,7 +61,7 @@ public class GuessBands extends AppCompatActivity {
     TextView fastScoreText; //текущий счет
     ImageView groupPhoto;
     EditText grName;
-    ImageButton podsk;
+    ImageButton podsk, podsk2;
 
     //Создаем лист для кнопок
     private List<Button> buttons;
@@ -99,6 +101,7 @@ public class GuessBands extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
 
+
         rewarded = new Rewarded(this);
         theme.setThemeSecond();
 
@@ -106,10 +109,28 @@ public class GuessBands extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands);
 
+        ImageButton about = findViewById(R.id.guessBandAbautButton);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(GuessBands.this, BasicNotice.class);
+                image.putExtra("text", R.string.guessBandGameModeAbaut);
+                image.putExtra("title", R.string.gameModeAbaut);
+                startActivity(image);
+            }
+        });
+
 
         podsk = findViewById(R.id.podsk);
+        podsk2 = findViewById(R.id.podsk_dark);
         if (theme.isDarkMode()) {
-            podsk.setBackgroundResource(R.drawable.hint2);
+            podsk.setVisibility(View.INVISIBLE);
+            podsk2.setVisibility(View.VISIBLE);
+        }
+        else {
+            podsk.setVisibility(View.VISIBLE);
+            podsk2.setVisibility(View.INVISIBLE);
         }
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
@@ -153,8 +174,11 @@ public class GuessBands extends AppCompatActivity {
                             change();
                             //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
                             //на момент релиза удалить.
-                            if (fastscore == 5) { //ачивка за 5 - achGuessBandsNormal. Условие ачивки 
-                                SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normaldb, "achGuessBandsNormal"); //ачивочка
+                            if (fastscore == 15) { //ачивка за 15 - achGuessBandsNormal. Условие ачивки
+                                SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normalgb, "achGuessBandsNormal"); //ачивочка
+                            }
+                            if (fastscore == 50) { //ачивка за 50
+                                SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsExpert, R.drawable.expertgb, "achGuessBandsExpert"); //ачивочка
                             }
                         } else {
                             heathBarTest.blow();
@@ -248,9 +272,9 @@ public class GuessBands extends AppCompatActivity {
         }
         grName.setText("");
         // TODO Удалить перед релизом
-        String answ = artists.get(count).getGroups();
+        /*String answ = artists.get(count).getGroups();
         answ = answ.toUpperCase();
-        grName.setText(answ);
+        grName.setText(answ);*/
         // TODO Конец удаления
         fastScoreText.setText(String.format("%s %d",
                 getResources().getString(R.string.score_text), fastscore));

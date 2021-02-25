@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import com.star.k_pop.R;
 import com.star.k_pop.gallery.activity.Gallery;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
+import com.star.k_pop.lib.SomeMethods;
 
 public class MainActivity extends AppCompatActivity {
     final int REQUEST_CODE = 1;
@@ -41,6 +43,21 @@ public class MainActivity extends AppCompatActivity {
                 image.putExtra("text", R.string.aboutText);
                 image.putExtra("title", R.string.aboutTitle);
                 startActivity(image);
+            }
+            Log.i("boolInfo", "achGuessStarNormal=" +storage.getBoolean("achGuessStarNormal"));
+            Log.i("boolInfo", "achGuessBandsNormal=" +storage.getBoolean("achGuessBandsNormal"));
+            Log.i("boolInfo", "achSwipeTwoBandsNormal=" +storage.getBoolean("achSwipeTwoBandsNormal"));
+            Log.i("boolInfo", "achGuessStarExpert=" +storage.getBoolean("achGuessStarExpert"));
+            Log.i("boolInfo", "achGuessBandsExpert=" +storage.getBoolean("achGuessBandsExpert"));
+            Log.i("boolInfo", "achSwipeTwoBandsExpert=" +storage.getBoolean("achSwipeTwoBandsExpert"));
+            if (!storage.getBoolean("achTripleAdept"))
+            if (storage.getBoolean("achGuessStarNormal") && storage.getBoolean("achGuessBandsNormal") && storage.getBoolean("achSwipeTwoBandsNormal")) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
+                SomeMethods.achievementGetted(MainActivity.this, R.string.achTripleAdept, R.drawable.kpoplove, "achTripleAdept"); //ачивочка
+            }
+            if (!storage.getBoolean("achTripleExpert"))
+            if (storage.getBoolean("achTripleAdept") && storage.getBoolean("achGuessStarExpert") && storage.getBoolean("achGuessBandsExpert") && storage.getBoolean("achSwipeTwoBandsExpert")) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
+                SomeMethods.achievementGetted(MainActivity.this, R.string.achTripleExpert, R.drawable.royal, "achTripleExpert"); //ачивочка
+
             }
         }
 
@@ -124,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
     }
+
 
     Theme theme;//переменная для считывания состояния свиича на darkmod
 
