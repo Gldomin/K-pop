@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -58,6 +59,7 @@ public class GuessBands extends AppCompatActivity {
     TextView fastScoreText; //текущий счет
     ImageView groupPhoto;
     EditText grName;
+    ImageButton podsk;
 
     //Создаем лист для кнопок
     private List<Button> buttons;
@@ -68,7 +70,7 @@ public class GuessBands extends AppCompatActivity {
             R.id.litA, R.id.litS, R.id.litD, R.id.litF, R.id.litG, R.id.litH, R.id.litJ, R.id.litK, R.id.litL,
             R.id.litZ, R.id.litX, R.id.litC, R.id.litV, R.id.litB, R.id.litN, R.id.litM, R.id.litEnt, R.id.litDel,
             R.id.space, R.id.num0, R.id.num1, R.id.num2, R.id.num3, R.id.num4, R.id.num5, R.id.num6, R.id.num7,
-            R.id.num8, R.id.num9, R.id.podsk
+            R.id.num8, R.id.num9//, R.id.podsk
     };
 
     //сохранение результата на переключении активити и выключении проги
@@ -100,9 +102,15 @@ public class GuessBands extends AppCompatActivity {
         rewarded = new Rewarded(this);
         theme.setThemeSecond();
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands);
 
+
+        podsk = findViewById(R.id.podsk);
+        if (theme.isDarkMode()) {
+            podsk.setBackgroundResource(R.drawable.hint2);
+        }
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
         createHeathBar();
@@ -178,7 +186,7 @@ public class GuessBands extends AppCompatActivity {
                                 continue;
                             for (char c : textHint) {
                                 if (b.getText().charAt(0) == c) {
-                                    b.setBackgroundResource(R.drawable.stylebutton_hint);
+                                    b.setBackgroundResource(theme.getBackgroundButton());
                                     break;
                                 }
                             }
@@ -191,6 +199,7 @@ public class GuessBands extends AppCompatActivity {
 
         };
 
+        podsk.setOnClickListener(clkGr);
         //Инициализация кнопок, добавление дополнительных символов
         for (int id : BUTTON_IDS) {
             Button button = findViewById(id);

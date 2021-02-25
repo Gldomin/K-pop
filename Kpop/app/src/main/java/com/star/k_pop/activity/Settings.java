@@ -84,11 +84,9 @@ public class Settings extends AppCompatActivity {
             blueBut.setText(getResources().getString(R.string.settingRabbit));
             redBut.setText(getResources().getString(R.string.settingHamster));
             catBut.setText(getResources().getString(R.string.settingCat));
+
         }
-        if (theme.isDarkMode())
-            themeIm.setImageResource(R.drawable.stylebutton_dark);
-        else
-            themeIm.setImageResource(R.drawable.main_background);
+        themeIm.setImageResource(theme.getBackgroundButton2());
 
         radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
@@ -101,13 +99,6 @@ public class Settings extends AppCompatActivity {
                                                     } else if (checkedId == R.id.catVar) {
                                                         chooseTheme(3);
                                                     }
-                                                    //switch (radGroup.getId()){
-                                                    // case R.id.blueVar:
-                                                    //  tempSettingsSet.themeCount=1;
-                                                    //  break;
-                                                    //case R.id.redVar:
-                                                    //   tempSettingsSet.themeCount=2;
-                                                    // }
                                                 }
                                             }
         );
@@ -237,7 +228,6 @@ public class Settings extends AppCompatActivity {
     void chooseTheme(int num) {
 
 
-        
         if (num == 1) {
             if (darkThemeSwitch.isChecked()) {
                 themeIm.setImageResource(R.drawable.stylebutton_dark);

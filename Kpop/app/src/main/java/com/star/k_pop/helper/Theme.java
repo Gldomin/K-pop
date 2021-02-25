@@ -122,6 +122,53 @@ public class Theme {
         }
     }
 
+    public int getBackgroundButton() {
+        /*if (darkMode) {
+            return R.drawable.stylebutton_dark;
+        } else */
+        if (themeCount == 1) {
+            if(darkMode){return R.drawable.stylebutton_hint_dark_red;}
+            else {
+                return R.drawable.stylebutton_hint;
+            }
+        } else if (themeCount == 2) {
+            if(darkMode){return R.drawable.stylebutton_hint_dark_green;}
+            else {
+                return R.drawable.stylebutton_hint_hamster;
+            }
+        } else if (themeCount == 3) {
+            if(darkMode){return R.drawable.stylebutton_hint_dark_pink;}
+            else {
+                return R.drawable.stylebutton_hint_cat;
+            }
+        } else {
+            return R.drawable.stylebutton;
+        }
+    }
+
+    public int getBackgroundButton2() {
+        if (themeCount == 1) {
+            if(darkMode){return R.drawable.stylebutton_dark;}
+            else {
+                return R.drawable.main_background;
+            }
+        } else if (themeCount == 2) {
+            if(darkMode){return R.drawable.stylebutton_dark_green;}
+            else {
+                return R.drawable.main_background_hamster;
+            }
+        } else if (themeCount == 3) {
+            if(darkMode){return R.drawable.stylebutton_dark_pink;}
+            else {
+                return R.drawable.main_background_cat;
+            }
+        } else {
+            return R.drawable.main_background;
+        }
+    }
+
+
+
     public boolean isDarkMode() {
         return darkMode;
     }
