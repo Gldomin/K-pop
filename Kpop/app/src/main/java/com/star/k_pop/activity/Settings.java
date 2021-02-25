@@ -99,6 +99,17 @@ public class Settings extends AppCompatActivity {
                                                     } else if (checkedId == R.id.catVar) {
                                                         chooseTheme(3);
                                                     }
+
+
+                                                    //switch (radGroup.getId()){
+                                                    // case R.id.blueVar:
+                                                    //  tempSettingsSet.themeCount=1;
+                                                    //  break;
+                                                    //case R.id.redVar:
+                                                    //   tempSettingsSet.themeCount=2;
+                                                    // }
+
+
                                                 }
                                             }
         );
