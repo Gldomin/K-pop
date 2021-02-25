@@ -22,45 +22,41 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/menuItemGuessStar" />
-
-        <Button
-            android:id="@+id/guessStarReverseButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/menuItemGuessStarReverse" />
 
         <Button
             android:id="@+id/guessGroupButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/menuItemGuessBand" />
-
-        <Button
-            android:id="@+id/chooseTinderButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/menuItemTinderSwipe" />
-
 
         <Button
             android:id="@+id/galleryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/menuItemGallery" />
 
         <Button
             android:id="@+id/settingsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/menuItemSettings" />
 
         <Button
             android:id="@+id/abautButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/menuItemAbout" />
     </LinearLayout>
 
@@ -75,112 +71,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="1.0" />
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Атрибуты приложения. менять на свой риск" />
-
-                <Switch
-                    android:id="@+id/noticeWatched"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="noticeWatched" />
-
-                <Switch
-                    android:id="@+id/achGuessStarNormalText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achGuessStarNormalText" />
-
-                <Switch
-                    android:id="@+id/achGuessStarExpertText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achGuessStarExpertText" />
-
-                <Switch
-                    android:id="@+id/achGuessBandsNormalText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achGuessBandsNormalText" />
-
-                <Switch
-                    android:id="@+id/achGuessBandsExpertText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achGuessBandsExpertText" />
-
-                <Switch
-                    android:id="@+id/achSwipeTwoBandsNormalText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achSwipeTwoBandsNormalText" />
-
-                <Switch
-                    android:id="@+id/achSwipeTwoBandsExpertText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achSwipeTwoBandsExpertText" />
-
-                <Switch
-                    android:id="@+id/achGuessStarReversNormalText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achGuessStarReversNormalText" />
-
-                <Switch
-                    android:id="@+id/achGuessStarReversExpertText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achGuessStarReversExpertText" />
-
-                <Switch
-                    android:id="@+id/achSecretGameModeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achSecretGameModeText" />
-
-                <Switch
-                    android:id="@+id/achAdsFreeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achAdsFreeText" />
-
-                <Switch
-                    android:id="@+id/achRoyalText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="achRoyalText" />
-
-                <Button
-                    android:id="@+id/saveStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Сохранить" />
-            </LinearLayout>
-        </ScrollView>
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

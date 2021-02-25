@@ -15,15 +15,11 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_id_account"/>
-        <activity android:name=".activity.GuessStarReverse" />
         <activity
             android:name=".activity.BasicNotice"
             android:theme="@style/NoticeTheme" />
         <activity
             android:name=".activity.Achievements"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.TwoBandsTinder"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.Settings"

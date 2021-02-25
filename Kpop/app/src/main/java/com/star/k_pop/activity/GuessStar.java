@@ -44,7 +44,6 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class GuessStar extends AppCompatActivity {
 
-    Button cheaterButton; // TODO Удалить перед релизом
     Button[] buttons = new Button[4];
     ImageView imageView;
     TextView textScore;
@@ -84,7 +83,6 @@ public class GuessStar extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         textScore = findViewById(R.id.scoreText);
         ImageButton about = findViewById(R.id.guessStarAbautButton);
-        cheaterButton = findViewById(R.id.cheaterButton); // TODO Удалить перед релизом
 
         artists = Importer.getRandomArtists();
 
@@ -175,33 +173,7 @@ public class GuessStar extends AppCompatActivity {
             }
         });
 
-
-
         // TODO Удалить перед релизом
-        cheaterButton.setBackgroundResource(theme.getBackgroundResource());
-        cheaterButton.setTextColor(theme.getTextColor());
-        cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onClick(View view) {
-
-                for (int i = 0; i < 4; i++) {
-                    buttons[i].setTextColor(theme.getTextColor());
-                }
-                //количетво скипнутых артистов
-                count++;
-                scoreNow++;
-                if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
-                {
-                    artists = Importer.getRandomArtists();
-                    count = 0;
-                }
-                updateScore();
-                nextArtist();
-                heathBarTest.restore();
-            }
-        });
-
         imageView.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
 
         imageView.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку

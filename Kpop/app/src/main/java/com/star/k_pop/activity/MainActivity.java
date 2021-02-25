@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //+++FirstLaunchHelp+++\\ // блок для первичного задания статусов (ачивок и прочего), а так же отображения приветсвия новых пользователей
-        //Storage storage = new Storage(this);
+
         String nameOfStorage = "appStatus";
         sp = getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
         appStatusGeneration(); //создание статусов приложения, не создаст, если статусы уже существуют
@@ -45,16 +45,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 ///////////////////////////////////СВИЧИ ДЛЯ ПРОВЕРКИ СТУТУСОВ - начало////////////////// //TODO удалить блок вместе с ScrollView из активити и readStatus() с saveStatus()
-        readStatus();
-
-        final Button saveStatus = findViewById(R.id.saveStatus);
-        saveStatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveStatus();
-                readStatus();
-            }
-        });
 
 
         //   tempSettingsSet.hintMode = storage.getBoolean(nameOfStorage, "hintMode"); //считывание настроек из Хранилища
@@ -69,17 +59,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, GuessStar.class);
-                startActivity(image);
-            }
-        });
-
-        Button guessStarReverseButton = findViewById(R.id.guessStarReverseButton);
-        guessStarReverseButton.setBackgroundResource(theme.getBackgroundResource());
-        guessStarReverseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, GuessStarReverse.class);
                 startActivity(image);
             }
         });
@@ -118,18 +97,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-        });
-
-
-        Button tinderButton = findViewById(R.id.chooseTinderButton);
-        tinderButton.setBackgroundResource(theme.getBackgroundResource());
-        tinderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, TwoBandsTinder.class);
-                startActivity(image);
-            }
         });
 
         ImageView achievement = findViewById(R.id.achievementButton);
@@ -182,70 +149,6 @@ public class MainActivity extends AppCompatActivity {
             tempStorage.saveValue("gameBuyed", false); //TODO надо сделать возможность купить игру, отключая рекламу. за это может быть ачивка
 
         }
-    }
-
-    protected void readStatus() { //считывает статус/атрибуты приложения //TODO удалить
-        Storage storage = new Storage(this, "appStatus");
-        sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
-        final Switch noticeWatched = findViewById(R.id.noticeWatched);
-        final Switch achGuessStarNormalText = findViewById(R.id.achGuessStarNormalText);
-        final Switch achGuessStarExpertText = findViewById(R.id.achGuessStarExpertText);
-        final Switch achGuessBandsNormalText = findViewById(R.id.achGuessBandsNormalText);
-        final Switch achGuessBandsExpertText = findViewById(R.id.achGuessBandsExpertText);
-        final Switch achSwipeTwoBandsNormalText = findViewById(R.id.achSwipeTwoBandsNormalText);
-        final Switch achSwipeTwoBandsExpertText = findViewById(R.id.achSwipeTwoBandsExpertText);
-        final Switch achGuessStarReversNormalText = findViewById(R.id.achGuessStarReversNormalText);
-        final Switch achGuessStarReversExpertText = findViewById(R.id.achGuessStarReversExpertText);
-        final Switch achSecretGameModeText = findViewById(R.id.achSecretGameModeText);
-        final Switch achAdsFreeText = findViewById(R.id.achAdsFreeText);
-        final Switch achRoyalText = findViewById(R.id.achRoyalText);
-
-
-        noticeWatched.setChecked(storage.getBoolean("noticeWatched"));
-        achGuessStarNormalText.setChecked(storage.getBoolean("achGuessStarNormal"));
-        achGuessStarExpertText.setChecked(storage.getBoolean("achGuessStarExpert"));
-        achGuessBandsNormalText.setChecked(storage.getBoolean("achGuessBandsNormal"));
-        achGuessBandsExpertText.setChecked(storage.getBoolean("achGuessBandsExpert"));
-        achSwipeTwoBandsNormalText.setChecked(storage.getBoolean("achSwipeTwoBandsNormal"));
-        achSwipeTwoBandsExpertText.setChecked(storage.getBoolean("achSwipeTwoBandsExpert"));
-        achGuessStarReversNormalText.setChecked(storage.getBoolean("achGuessStarReversNormal"));
-        achGuessStarReversExpertText.setChecked(storage.getBoolean("achGuessStarReversExpert"));
-        achSecretGameModeText.setChecked(storage.getBoolean("achTripleAdept"));
-        achAdsFreeText.setChecked(storage.getBoolean("achTripleExpert"));
-        achRoyalText.setChecked(storage.getBoolean("achRoyal"));
-    }
-
-    protected void saveStatus() { //сохраняет значения свичей меняя атрибуты //TODO удалить
-        Storage storage = new Storage(this, "appStatus");
-        sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
-        final Switch noticeWatched = findViewById(R.id.noticeWatched);
-        final Switch achGuessStarNormalText = findViewById(R.id.achGuessStarNormalText);
-        final Switch achGuessStarExpertText = findViewById(R.id.achGuessStarExpertText);
-        final Switch achGuessBandsNormalText = findViewById(R.id.achGuessBandsNormalText);
-        final Switch achGuessBandsExpertText = findViewById(R.id.achGuessBandsExpertText);
-        final Switch achSwipeTwoBandsNormalText = findViewById(R.id.achSwipeTwoBandsNormalText);
-        final Switch achSwipeTwoBandsExpertText = findViewById(R.id.achSwipeTwoBandsExpertText);
-        final Switch achGuessStarReversNormalText = findViewById(R.id.achGuessStarReversNormalText);
-        final Switch achGuessStarReversExpertText = findViewById(R.id.achGuessStarReversExpertText);
-        final Switch achSecretGameModeText = findViewById(R.id.achSecretGameModeText);
-        final Switch achAdsFreeText = findViewById(R.id.achAdsFreeText);
-        final Switch achRoyalText = findViewById(R.id.achRoyalText);
-
-
-        storage.saveValue("noticeWatched", noticeWatched.isChecked());
-        storage.saveValue("achGuessStarNormal", achGuessStarNormalText.isChecked());
-        storage.saveValue("achGuessStarExpert", achGuessStarExpertText.isChecked());
-        storage.saveValue("achGuessBandsNormal", achGuessBandsNormalText.isChecked());
-        storage.saveValue("achGuessBandsExpert", achGuessBandsExpertText.isChecked());
-        storage.saveValue("achSwipeTwoBandsNormal", achSwipeTwoBandsNormalText.isChecked());
-        storage.saveValue("achSwipeTwoBandsExpert", achSwipeTwoBandsExpertText.isChecked());
-        storage.saveValue("achGuessStarReversNormal", achGuessStarReversNormalText.isChecked());
-        storage.saveValue("achGuessStarReversExpert", achGuessStarReversExpertText.isChecked());
-        storage.saveValue("achTripleAdept", achSecretGameModeText.isChecked());
-        storage.saveValue("achTripleExpert", achAdsFreeText.isChecked());
-        storage.saveValue("achRoyal", achRoyalText.isChecked());
-
-
     }
 
     Theme theme;//переменная для считывания состояния свиича на darkmod
