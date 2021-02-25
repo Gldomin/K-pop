@@ -44,6 +44,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     ArrayList<Bands> bands = Importer.getRandomBands(); //берем список всех групп
     ArrayList<Artist> artists = new ArrayList<>(); //лист для того чтобы переносить артистов из двух групп
+    ArrayList<String> imgList = new ArrayList<>();
     boolean menuChanged , conformChoices;
     int artistCount;
     ArrayList<String> artChoices;
@@ -61,6 +62,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     boolean left;
     boolean right;
     TextView score;
+    final String nonChoice = "NaN";
     ViewGroup.MarginLayoutParams padding;
     Storage storage2 = new Storage(this, "settings");
 
@@ -85,14 +87,20 @@ public class TwoBandsTinder extends AppCompatActivity {
             LinearLayout cardLayot = view.findViewById(R.id.cardLayout);
             ImageView actorImage = view.findViewById(R.id.cardImage);
             TextView actorName = view.findViewById(R.id.cardNameTop);
+            TextView GroupName = view.findViewById(R.id.cardNameBottom);
+            if(artChoices.get(i) != nonChoice){
+                GroupName.setText(artChoices.get(i));
+            }
+            else {
+                GroupName.setText("");
+            }
             actorName.setText(artists.get(i).getName());
             TextView groupName = view.findViewById(R.id.cardNameBottom);
 //            groupName.setText(artChoices.get(i).toString());
-            Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(i).getFolder()))
+            Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + imgList.get(i)))
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .transition(withCrossFade())
                     .into(actorImage);
-
             final int finalI = i;
             chooseActLay.addView(view);
             chooseActLay.computeScroll();
@@ -133,20 +141,22 @@ public class TwoBandsTinder extends AppCompatActivity {
     private void changeBands() {
         if (bandsCount >= bands.size()) return;
         if (bandsCount + 1 >= bands.size()) return;
-
         Log.i("Test2", "bands size" + bands.size());
         oneBand.setText(bands.get(bandsCount).getName());
         secondBand.setText(bands.get(bandsCount + 1).getName());
         if (artists.size() != 0) artists.clear();
+        if (imgList.size() != 0) imgList.clear();
         artists.addAll(bands.get(bandsCount).getArtists());
         Log.i("Test2", "band artists count" + bands.get(bandsCount).getArtists().size());
         artists.addAll(bands.get(bandsCount + 1).getArtists());
+
         Log.i("Test2", "artist size" + artists.size());
         Collections.shuffle(artists);
         number_of_artist = 0;
         artChoices = new ArrayList<>(artists.size());
         for(Artist art: artists){
-            artChoices.add("0");
+            artChoices.add(nonChoice);
+            imgList.add(art.getFolder());
         }
         if (conformChoices) changeArtist();
         bandsCount = bandsCount + 2;
@@ -165,6 +175,12 @@ public class TwoBandsTinder extends AppCompatActivity {
         return false;
     }
 
+    @Override
+    public void onBackPressed() {
+        if(twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.twoBandsGroup))) {twoBandFlip.showNext();}
+        else{super.onBackPressed();}
+    }
+
     private void changeArtist() {
 
 
@@ -172,17 +188,19 @@ public class TwoBandsTinder extends AppCompatActivity {
 
             if (number_of_artist + 1 < artists.size())
                 Log.i("Wrong", "WTF " + artists.get(number_of_artist).getName());
-            imageBand.animate().x(padding.leftMargin).y(padding.topMargin).rotation(0).setDuration(0);
+            imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
             if(!menuChanged)
             {
-            imBTmp.setVisibility(View.VISIBLE);
-            imBTmp.setY(imageBand.getY());
-            imBTmp.setX(imageBand.getX());
-            imBTmp.setImageDrawable(imageBand.getDrawable());
-            imBTmp.setRotation(0);
-            imBTmp.setScaleX(1);
-            imBTmp.setScaleY(1);
-            imBTmp.setAlpha(1.0f);
+                if(number_of_artist +1 <= artists.size()) {
+                    imBTmp.setVisibility(View.VISIBLE);
+                    imBTmp.setY(imageBand.getY());
+                    imBTmp.setX(imageBand.getX());
+                    imBTmp.setImageDrawable(imageBand.getDrawable());
+                    imBTmp.setRotation(0);
+                    imBTmp.setScaleX(1);
+                    imBTmp.setScaleY(1);
+                    imBTmp.setAlpha(1.0f);
+                }
             }
             if (left) {
                 Log.i("Fuck", "when im going here");
@@ -215,7 +233,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             //imBTmp.setVisibility(View.VISIBLE);
             Log.i("defX", "onTouch:imbTx " + imBTmp.animate().getDuration() + " imbTy " + imBTmp.getY() + " imagex " + imageBand.getX() + " imagey " + paddingY + " ");
             if (number_of_artist + 1 <= artists.size()) {
-                Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(number_of_artist).getFolder()))
+                Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + imgList.get(number_of_artist)))
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .transition(withCrossFade())
                         .into(imageBand);
@@ -254,6 +272,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             public boolean onLeftCheck() {
                 left = true;
                 right = false;
+                menuChanged = true ;
                 if (number_of_artist <= artists.size()) changeArtist();
 
                 return true;
@@ -344,7 +363,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                     // Log.i("defX", "onTouch:right "+leftCheck+" left"+rightCheck+" padding "+paddingYx);
                     // если картинка не находится слева и справа
                     if (!leftCheck && !rightCheck) {
-                        v.animate().setDuration(400).x(paddingX).y(paddingYx).rotation(0);
+                        v.animate().setDuration(400).translationX(0).translationY(0).rotation(0);
                     }//v.animate().x(paddingX).y(paddingY).rotation(0);
 
                     if (leftCheck) {
