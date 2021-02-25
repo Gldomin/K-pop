@@ -100,16 +100,15 @@ public class GuessBands extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
-
-
+        
         rewarded = new Rewarded(this);
         theme.setThemeSecond();
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands);
 
         ImageButton about = findViewById(R.id.guessBandAbautButton);
+        about.setBackgroundResource(theme.getBackgroundResource());
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,7 +119,6 @@ public class GuessBands extends AppCompatActivity {
                 startActivity(image);
             }
         });
-
 
         podsk = findViewById(R.id.podsk);
         podsk2 = findViewById(R.id.podsk_dark);
