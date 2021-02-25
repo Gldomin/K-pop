@@ -21,7 +21,7 @@
             android:id="@+id/RecordScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:text="Рекорд:0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -32,7 +32,7 @@
             android:id="@+id/scoreBands"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/Score"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,14 +43,14 @@
             android:layout_width="fill_parent"
             android:layout_height="450dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="16dp"
             android:layout_marginRight="5dp"
             android:foreground="@drawable/roundedimageview"
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scoreBands"
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
@@ -58,7 +58,7 @@
             android:layout_width="fill_parent"
             android:layout_height="450dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="16dp"
             android:layout_marginRight="5dp"
             android:adjustViewBounds="false"
             android:cropToPadding="false"
@@ -67,7 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scoreBands"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -76,23 +76,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
             android:layout_marginLeft="80dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="16dp"
             android:text="TextView"
             app:layout_constraintEnd_toStartOf="@+id/secondBand"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageBand" />
+            app:layout_constraintTop_toBottomOf="@+id/artistName" />
 
         <TextView
             android:id="@+id/secondBand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="80dp"
             android:layout_marginRight="80dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageBand" />
+            app:layout_constraintTop_toBottomOf="@+id/artistName" />
 
         <TextView
             android:id="@+id/artistName"
