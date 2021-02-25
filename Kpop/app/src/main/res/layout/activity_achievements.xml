@@ -175,9 +175,10 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/ach5"
@@ -211,9 +212,10 @@
                 </TableRow>
 
                 <TableRow
-                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/ach6"
@@ -319,10 +321,12 @@
                     </LinearLayout>
 
                 </TableRow>
+
                 <TableRow
-                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/ach9"
@@ -354,10 +358,12 @@
                     </LinearLayout>
 
                 </TableRow>
+
                 <TableRow
-                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/ach10"
