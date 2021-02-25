@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
@@ -100,12 +101,25 @@ public class GuessBands extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
 
+
         rewarded = new Rewarded(this);
         theme.setThemeSecond();
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands);
+
+        ImageButton about = findViewById(R.id.guessBandAbautButton);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(GuessBands.this, BasicNotice.class);
+                image.putExtra("text", R.string.guessBandGameModeAbaut);
+                image.putExtra("title", R.string.gameModeAbaut);
+                startActivity(image);
+            }
+        });
 
 
         podsk = findViewById(R.id.podsk);
@@ -160,9 +174,12 @@ public class GuessBands extends AppCompatActivity {
                             change();
                             //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
                             //на момент релиза удалить.
-                            /*if (fastscore == 5) { //ачивка за 5 - achGuessBandsNormal. Условие ачивки
-                                SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normaldb, "achGuessBandsNormal"); //ачивочка
-                            }*/
+                            if (fastscore == 15) { //ачивка за 15 - achGuessBandsNormal. Условие ачивки
+                                SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normalgb, "achGuessBandsNormal"); //ачивочка
+                            }
+                            if (fastscore == 50) { //ачивка за 50
+                                SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsExpert, R.drawable.expertgb, "achGuessBandsExpert"); //ачивочка
+                            }
                         } else {
                             heathBarTest.blow();
                             if (heathBarTest.getHp() == 0) {

@@ -22,17 +22,17 @@
     <string name="achTripleExpert">Мастер К-попа</string>
     <string name="achRoyal">Повелитель четырех режимов</string>
 
-    <string name="achGuessStarNormalText">Вы набрали 50 очков в режиме Угадай Звезду</string>
-    <string name="achGuessStarExpertText">Вы набрали 150 очков в экспертном режиме Угадай Звезду</string>
-    <string name="achGuessBandsNormalText">Вы набрали 15 очков в режиме Отгадай Группу</string>
-    <string name="achGuessBandsExpertText">Вы набрали 50 очков в экспертном режиме Отгадай Группу</string>
-    <string name="achSwipeTwoBandsNormalText">Вы набрали 5 очков в режиме Распредели На Две Группы</string>
-    <string name="achSwipeTwoBandsExpertText">Вы набрали 25 очков в экспертном режиме Распредели На Две Группы</string>
-    <string name="achGuessStarReversNormalText">Вы набрали 50 очков в режиме Найди Звезду</string>
-    <string name="achGuessStarReversExpertText">Вы набрали 150 очков в экспертном режиме Найди Звезду</string>
-    <string name="achTripleAdeptText">Вы - Адепт трех режимов!</string>
-    <string name="achTripleExpertText">Вы истинный знаток К-попа. Вы получили экспертные достижения в трех режимах!</string>
-    <string name="achRoyalText">Вы открыли все, что только возможно! Поздравляем! У нас есть для вас скромный бонус</string>
+    <string name="achGuessStarNormalText">"\t"Вы набрали 50 очков в режиме Угадай Звезду</string>
+    <string name="achGuessStarExpertText">"\t"Вы набрали 150 очков в экспертном режиме Угадай Звезду</string>
+    <string name="achGuessBandsNormalText">"\t"Вы набрали 15 очков в режиме Отгадай Группу</string>
+    <string name="achGuessBandsExpertText">"\t"Вы набрали 50 очков в экспертном режиме Отгадай Группу</string>
+    <string name="achSwipeTwoBandsNormalText">"\t"Вы набрали 5 очков в режиме Распредели На Две Группы</string>
+    <string name="achSwipeTwoBandsExpertText">"\t"Вы набрали 25 очков в экспертном режиме Распредели На Две Группы</string>
+    <string name="achGuessStarReversNormalText">"\t"Вы набрали 50 очков в режиме Найди Звезду</string>
+    <string name="achGuessStarReversExpertText">"\t"Вы набрали 150 очков в экспертном режиме Найди Звезду</string>
+    <string name="achTripleAdeptText">"\t"Вы - Адепт трех режимов!</string>
+    <string name="achTripleExpertText">"\t"Вы истинный знаток К-попа. Вы получили экспертные достижения в трех режимах!</string>
+    <string name="achRoyalText">"\t"Вы открыли все, что только возможно! Поздравляем! У нас есть для вас скромный бонус</string>
 
     <string name="questionReset">Удалить рекорды?</string>
     <string name="questionConfirmTitle">Подтверждение</string>
@@ -53,12 +53,12 @@
     <string name="gameRulesAbaut">Правила игры</string>
     <string name="aboutTitle">Добро пожаловать!</string>
     <string name="aboutText">
-        "\n"
+  "\t"
         Добро пожаловать в приложение Угадай K-pop! В данном приложении, вы можете испытать свои познания в K-pop. В данном приложении вам предлагается 3 основных игровых режима:"\n"
         1) Угадай Звезду"\n"
         2) Угадай Группу"\n"
         3) Распредели по группам"\n"
-        С помощью данных игровых режимов, вы можете запомнить все самые знаменитые группы К-попа, а так же всех их невероятных участников!"\n"
+  "\t"      С помощью данных игровых режимов, вы можете запомнить все самые знаменитые группы К-попа, а так же всех их невероятных участников!"\n"
         В каждом игровом режиме есть достижения!"\n"
         Желаем удачи!
          </string>

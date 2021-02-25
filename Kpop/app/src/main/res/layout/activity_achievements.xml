@@ -57,6 +57,7 @@
                             android:id="@+id/ach1SmallText"
                             android:layout_width="230dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achGuessStarNormalText" />
 
@@ -94,8 +95,9 @@
                             android:id="@+id/ach2SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_margin="5dp"
 
+                            android:layout_weight="1"
                             android:text="@string/achGuessStarExpertText" />
 
                     </LinearLayout>
@@ -131,6 +133,7 @@
                             android:id="@+id/ach3SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achGuessBandsNormalText" />
 
@@ -167,6 +170,7 @@
                             android:id="@+id/ach4SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achGuessBandsExpertText" />
 
@@ -203,6 +207,7 @@
                             android:id="@+id/ach5SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achSwipeTwoBandsNormalText" />
 
@@ -239,6 +244,7 @@
                             android:id="@+id/ach6SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achSwipeTwoBandsExpertText" />
 
@@ -276,6 +282,7 @@
                             android:id="@+id/ach7SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achGuessStarReversNormalText" />
 
@@ -313,6 +320,7 @@
                             android:id="@+id/ach8SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achGuessStarReversExpertText" />
 
@@ -348,6 +356,7 @@
                             android:id="@+id/ach9SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achTripleAdeptText" />
 
@@ -383,6 +392,7 @@
                             android:id="@+id/ach10SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achTripleExpertText" />
 
@@ -421,6 +431,7 @@
                             android:id="@+id/ach11SmallText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:text="@string/achRoyalText" />
 
