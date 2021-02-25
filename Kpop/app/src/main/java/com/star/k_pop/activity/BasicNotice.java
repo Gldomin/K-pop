@@ -21,8 +21,8 @@ public class BasicNotice extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_notice);
-       // RelativeLayout relativeLayout = findViewById(R.id.relNotice);
-       // relativeLayout.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
+        // RelativeLayout relativeLayout = findViewById(R.id.relNotice);
+        // relativeLayout.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
 
         int idStringSmall = getIntent().getIntExtra("text", 0);
         TextView textView1 = findViewById(R.id.abautSmallText);

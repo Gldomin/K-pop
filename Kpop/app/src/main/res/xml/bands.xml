@@ -10,14 +10,14 @@
         </Artist>
         <Artist>
             <NameArtist>G-Dragon</NameArtist>
-            <ImageArtists>G-Dragon.png</ImageArtists>
+            <ImageArtists>G-Dragon.jpg</ImageArtists>
             <ImageArtists>G-Dragon2.jpg</ImageArtists>
             <ImageArtists>G-Dragon3.jpg</ImageArtists>
             <ImageArtists>G-Dragon4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Seungri</NameArtist>
-            <ImageArtists>Seungri0.jpg</ImageArtists>
+            <ImageArtists>seungri.jpg</ImageArtists>
             <ImageArtists>Seungri2.jpg</ImageArtists>
             <ImageArtists>Seungri3.jpg</ImageArtists>
             <ImageArtists>Seungri4.jpg</ImageArtists>
@@ -50,14 +50,14 @@
         <Artist>
             <NameArtist>Kim Jisoo</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>Kim Jisoo.png</ImageArtists>
-            <ImageArtists>Kim Jisoo2.png</ImageArtists>
+            <ImageArtists>Kim Jisoo.jpg</ImageArtists>
+            <ImageArtists>Kim Jisoo2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Lalisa</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>Lalisa.png</ImageArtists>
-            <ImageArtists>Lalisa2.png</ImageArtists>
+            <ImageArtists>Lalisa.jpg</ImageArtists>
+            <ImageArtists>Lalisa2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Rose</NameArtist>
@@ -70,31 +70,50 @@
         <NameBand>BTS</NameBand>
         <Artist>
             <NameArtist>J-Hope</NameArtist>
-            <ImageArtists>J-Hope.png</ImageArtists>
+            <ImageArtists>J-Hope.jpg</ImageArtists>
+            <ImageArtists>jhope.jpg</ImageArtists>
+            <ImageArtists>jhope1.jpg</ImageArtists>
+            <ImageArtists>jhope2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jimin</NameArtist>
-            <ImageArtists>Jimin.png</ImageArtists>
+            <ImageArtists>chimin.jpg</ImageArtists>
+            <ImageArtists>chimin1.jpg</ImageArtists>
+            <ImageArtists>chimin2.jpg</ImageArtists>
+            <ImageArtists>Jimin.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jin</NameArtist>
-            <ImageArtists>Jin.png</ImageArtists>
+            <ImageArtists>jin.jpg</ImageArtists>
+            <ImageArtists>jin1.jpg</ImageArtists>
+            <ImageArtists>jin2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jungkook</NameArtist>
-            <ImageArtists>Jungkook.png</ImageArtists>
+            <ImageArtists>chunguk.jpg</ImageArtists>
+            <ImageArtists>chunguk1.jpg</ImageArtists>
+            <ImageArtists>chunguk2.jpg</ImageArtists>
+            <ImageArtists>Jungkook.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>RM</NameArtist>
-            <ImageArtists>RM.png</ImageArtists>
+            <ImageArtists>RM.jpg</ImageArtists>
+            <ImageArtists>RM1.jpg</ImageArtists>
+            <ImageArtists>RM2.jpg</ImageArtists>
+            <ImageArtists>RM3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Suga</NameArtist>
-            <ImageArtists>Suga.png</ImageArtists>
+            <ImageArtists>suga.jpg</ImageArtists>
+            <ImageArtists>Suga1.jpg</ImageArtists>
+            <ImageArtists>suga2.jpg</ImageArtists>
+            <ImageArtists>suga3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>V</NameArtist>
-            <ImageArtists>V.png</ImageArtists>
+            <ImageArtists>V.jpg</ImageArtists>
+            <ImageArtists>V2.jpg</ImageArtists>
+            <ImageArtists>V3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
@@ -146,7 +165,7 @@
         <NameBand>GOT7</NameBand>
         <Artist>
             <NameArtist>Bam-Bam</NameArtist>
-            <ImageArtists>Bambam.png</ImageArtists>
+            <ImageArtists>Bambam.jpg</ImageArtists>
             <ImageArtists>Bambam2.jpg</ImageArtists>
             <ImageArtists>Bambam3.jpg</ImageArtists>
             <ImageArtists>Bambam4.jpg</ImageArtists>
@@ -154,7 +173,7 @@
         </Artist>
         <Artist>
             <NameArtist>Jackson</NameArtist>
-            <ImageArtists>Jackson.png</ImageArtists>
+            <ImageArtists>Jackson.jpg</ImageArtists>
             <ImageArtists>Jackson2.jpg</ImageArtists>
             <ImageArtists>Jackson3.jpg</ImageArtists>
         </Artist>
@@ -201,22 +220,27 @@
         <NameBand>iKON</NameBand>
         <Artist>
             <NameArtist>Bobby</NameArtist>
-            <ImageArtists>Bobby.png</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>D.O</NameArtist>
-            <ImageArtists>D.O..jpg</ImageArtists>
+            <ImageArtists>bobby.jpg</ImageArtists>
+            <ImageArtists>bobby1.jpg</ImageArtists>
+            <ImageArtists>Bobby2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Dong Hyuk</NameArtist>
-            <ImageArtists>Dong Hyuk.png</ImageArtists>
+            <ImageArtists>dk.jpg</ImageArtists>
+            <ImageArtists>dk1.jpg</ImageArtists>
+            <ImageArtists>Dong Hyuk.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jin Hwan</NameArtist>
+            <ImageArtists>jey.jpg</ImageArtists>
+            <ImageArtists>jey1.jpg</ImageArtists>
             <ImageArtists>Jin Hwan.jpg</ImageArtists>
+            <ImageArtists>Jin.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jung Chan</NameArtist>
+            <ImageArtists>chan.jpg</ImageArtists>
+            <ImageArtists>chan1.jpg</ImageArtists>
             <ImageArtists>Jung Chan.jpg</ImageArtists>
         </Artist>
         <Artist>
@@ -225,11 +249,15 @@
         </Artist>
         <Artist>
             <NameArtist>Ku Jun He</NameArtist>
+            <ImageArtists>june.jpg</ImageArtists>
+            <ImageArtists>june1.jpg</ImageArtists>
             <ImageArtists>Ku Jun He.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Song Yun Hyeong</NameArtist>
             <ImageArtists>Song Yun Hyeong.jpg</ImageArtists>
+            <ImageArtists>song.jpg</ImageArtists>
+            <ImageArtists>song1.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
@@ -340,8 +368,8 @@
         <Artist>
             <NameArtist>Jonghyun</NameArtist>
             <ImageArtists>Jonghyun (1).jpg</ImageArtists>
-            <ImageArtists>Jonghyun (1).png</ImageArtists>
             <ImageArtists>Jonghyun (2).jpg</ImageArtists>
+            <ImageArtists>Jonghyun.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Key</NameArtist>
@@ -364,8 +392,8 @@
         <Artist>
             <NameArtist>Taemin</NameArtist>
             <ImageArtists>Taemin (1).jpg</ImageArtists>
-            <ImageArtists>Taemin (1).png</ImageArtists>
             <ImageArtists>Taemin (2).jpg</ImageArtists>
+            <ImageArtists>Taemin.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
@@ -409,8 +437,8 @@
         <Artist>
             <NameArtist>Lee Know</NameArtist>
             <ImageArtists>lee_know.jpg</ImageArtists>
-            <ImageArtists>lee_know2.jpg</ImageArtists>
             <ImageArtists>lee_know3.jpg</ImageArtists>
+            <ImageArtists>lee_know4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Seungmin</NameArtist>
@@ -424,47 +452,67 @@
         <Artist>
             <NameArtist>Chaeyoung</NameArtist>
             <Sex>Female</Sex>
+            <ImageArtists>Chaeyoung.jpg</ImageArtists>
+            <ImageArtists>Chaeyoung1.jpg</ImageArtists>
             <ImageArtists>Son Chae Young.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Dahyun</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>Dahyun.jpg</ImageArtists>
+            <ImageArtists>Dahyun1.jpg</ImageArtists>
+            <ImageArtists>Dahyun3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jihyo</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>Jihyo.jpg</ImageArtists>
+            <ImageArtists>Jihyo2.jpg</ImageArtists>
+            <ImageArtists>Jihyo4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jungyeon</NameArtist>
             <Sex>Female</Sex>
+            <ImageArtists>Jeongyeon1.jpg</ImageArtists>
+            <ImageArtists>Jeongyeon2.jpg</ImageArtists>
+            <ImageArtists>Jeongyeon3.jpg</ImageArtists>
             <ImageArtists>Jungyeon.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Mina</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>Mina.jpg</ImageArtists>
+            <ImageArtists>mina1.jpg</ImageArtists>
+            <ImageArtists>mina3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Momo</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>Momo.jpg</ImageArtists>
+            <ImageArtists>momo1.jpg</ImageArtists>
+            <ImageArtists>momo2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Nayeon</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>Nayeon.jpg</ImageArtists>
+            <ImageArtists>Nayeon2.jpg</ImageArtists>
+            <ImageArtists>Nayeon3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sana</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>Sana.jpg</ImageArtists>
+            <ImageArtists>sana1.jpg</ImageArtists>
+            <ImageArtists>sana2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Tzuyu</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>Tzuyu.jpg</ImageArtists>
+            <ImageArtists>Tzuyu1.jpg</ImageArtists>
+            <ImageArtists>Tzuyu2.jpeg</ImageArtists>
+            <ImageArtists>Tzuyu3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
@@ -473,7 +521,6 @@
             <NameArtist>Jinwoo</NameArtist>
             <ImageArtists>Jinwoo.jpg</ImageArtists>
             <ImageArtists>Jinwoo1.jpg</ImageArtists>
-            <ImageArtists>Jinwoo2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Mino</NameArtist>
@@ -491,7 +538,6 @@
             <NameArtist>Seungyoon</NameArtist>
             <ImageArtists>Seungyoon.jpg</ImageArtists>
             <ImageArtists>Seungyoon1.jpg</ImageArtists>
-            <ImageArtists>Seungyoon2.jpg</ImageArtists>
         </Artist>
     </Band>
 </Bands>
