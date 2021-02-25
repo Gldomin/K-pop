@@ -63,10 +63,10 @@
          Welcome to Guess K-pop app! In this application, you can test your knowledge of K-pop. In this application, you are offered 3 main game modes: "\n"
          1) Guess the Star "\n"
          2) Guess the Group "\n"
-         3) Assign to groups "\n"
+         3) Assign to groups (Coming soon!)"\n"
          With these game modes, you can memorize all of K-pop most famous bands, as well as all of their incredible members! "\n"
          Each game mode has achievements! "\n"
-         Good luck!
+         Good luck! :)
     </string>
 
     //scorestuff
@@ -77,20 +77,20 @@
 
     <string name="achievementUnlocked">Achievement unlocked!</string>
 
-    <string name="newRecordTitle">Новый рекорд!</string>
-    <string name="newRecordText">Поздравляем! Вы достигли нового рекорда:</string>
-    <string name="endGameTitle">Конец игры</string>
-    <string name="endGameTextScoreNow">Ваш счет:</string>
-    <string name="endGameTextRecordNow">Ваш рекорд:</string>
-    <string name="gameModeAbaut">Описание режима</string>
+    <string name="newRecordTitle">New record!</string>
+    <string name="newRecordText">Congratulations! You have reached new record:</string>
+    <string name="endGameTitle">Game over</string>
+    <string name="endGameTextScoreNow">Your score:</string>
+    <string name="endGameTextRecordNow">Your record</string>
+    <string name="gameModeAbaut">About game mode</string>
     <string name="guessStarGameModeAbaut">
-Guess the Star game mode lets you test your knowledge of K-pop stars. "\n"
-Guess the names of K-pop artists from photos. It is not important for you to know which group a star is on screen, but it is important to know his or her name. Each artist you guess will increase your score! A wrong guess, accordingly, reduces. But I think you can figure it out. "\n"
+GuessStar game mode lets you test your knowledge of K-pop stars. "\n"
+Guess the names of K-pop artists from photos. It is not important for you to know which group a star is on screen, but it is important to know his or her name. You have 3 lives. Each artist you guess will increase your score! A wrong guess, accordingly, reduces your lives. If you lose all lives, game will be ended. But I think you can figure it out. "\n"
 Guess them all!
     </string>
     <string name="guessBandGameModeAbaut">
-Guess the Group game mode lets you test your knowledge of the most famous K-pop groups in history! "\n"
-Guess the group the star is on the screen. Each correct answer will increase your score! And the wrong one, accordingly, reduces. But I think you can figure it out. "\n"
+GuessBand game mode lets you test your knowledge of the most famous K-pop groups in the history! "\n"
+Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. But I think you can figure it out. "\n"
 Guess them all!
     </string>
     <string name="twoBandsTinderGameModeAbaut">
@@ -104,23 +104,24 @@ Distribute them all!
     <string name="score_text">Score:</string>
     <string name="record_text">Record:</string>
 
-    <string name="endGameCongratulate">Поздравляем!</string>
-    <string name="endGameNewGame">Начинаем новую игру?</string>
-    <string name="endGameReward">Или посмотреть рекламу что бы добавить одну жизнь?</string>
-    <string name="endGameYes">Да</string>
-    <string name="endGameNo">Нет</string>
-    <string name="endGameRewardShow">Посмотреть рекламу</string>
 
     <string name="endHintCongratulate">Внимание!</string>
     <string name="endHintReward">Посмотреть рекламу что бы использовать подсказку?</string>
     <string name="endHintYes">Да</string>
     <string name="endHintNo">Нет</string>
 
-    <string name="settingRed">Красный</string>
-    <string name="settingGreen">Зеленый</string>
-    <string name="settingPink">Розовый</string>
-    <string name="settingRabbit">Кролик</string>
-    <string name="settingHamster">Хомячок</string>
-    <string name="settingCat">Котик</string>
+    <string name="endGameCongratulate">Congratulations!</string>
+    <string name="endGameNewGame">Start new game?</string>
+    <string name="endGameReward">Or view ad for 1 extra life?</string>
+    <string name="endGameYes">Yes</string>
+    <string name="endGameNo">No</string>
+    <string name="endGameRewardShow">Get extra life</string>
+
+    <string name="settingRed">Red</string>
+    <string name="settingGreen">Green</string>
+    <string name="settingPink">Pastel</string>
+    <string name="settingRabbit">Rabbit</string>
+    <string name="settingHamster">Hamster</string>
+    <string name="settingCat">Kitty</string>
 
 </resources>
