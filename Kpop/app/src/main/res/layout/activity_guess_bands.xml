@@ -495,22 +495,20 @@
             android:minHeight="10dp"
             android:scaleType="centerInside"
             android:src="@drawable/hint" />
-        <ImageButton
-            android:id="@+id/podsk_dark"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+
+        <TextView
+            android:id="@+id/counter_Hints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="17dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@android:drawable/menuitem_background"
-            android:minWidth="10dp"
-            android:minHeight="10dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/hint2" />
+            android:text="TextView" />
+
 
     </RelativeLayout>
 

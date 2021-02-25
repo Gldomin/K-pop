@@ -45,6 +45,7 @@ public class GuessBands extends AppCompatActivity {
 
     int count = 0;
     int score;
+    int countHints =3;
     int fastscore = 0;
     private SharedPreferences spBands;
     SharedPreferences sp;
@@ -54,6 +55,7 @@ public class GuessBands extends AppCompatActivity {
     int hintCount = 3;
     boolean hintShow = false;
 
+
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
@@ -62,6 +64,7 @@ public class GuessBands extends AppCompatActivity {
 
     TextView scoreText; //рекорд
     TextView fastScoreText; //текущий счет
+    TextView counterHint;
     ImageView groupPhoto;
     EditText grName;
     ImageButton podsk, podsk2;
@@ -126,14 +129,16 @@ public class GuessBands extends AppCompatActivity {
 
 
         podsk = findViewById(R.id.podsk);
-        podsk2 = findViewById(R.id.podsk_dark);
+        counterHint = findViewById(R.id.counter_Hints);
+        counterHint.setText(""+countHints);
         if (theme.isDarkMode()) {
-            podsk.setVisibility(View.INVISIBLE);
-            podsk2.setVisibility(View.VISIBLE);
-        } else {
-            podsk.setVisibility(View.VISIBLE);
-            podsk2.setVisibility(View.INVISIBLE);
+            podsk.setImageResource(R.drawable.hint2);
         }
+        else {
+            podsk.setImageResource(R.drawable.hint);
+        }
+
+
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
         createHeathBar();
@@ -225,6 +230,7 @@ public class GuessBands extends AppCompatActivity {
                                 onRewardHint();
                             }
                         }
+
                         break;
                     default:
                         grName.append("" + ((Button) view).getText().charAt(0));
