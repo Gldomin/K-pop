@@ -104,7 +104,6 @@ public class Settings extends AppCompatActivity {
                                                         themeIm.setImageResource(R.drawable.main_background_cat);
                                                         tempSettingsSet.themeCount = 3;}
                                                     }
-<<<<<<< Updated upstream
 
                                                     //switch (radGroup.getId()){
                                                     // case R.id.blueVar:
@@ -113,8 +112,7 @@ public class Settings extends AppCompatActivity {
                                                     //case R.id.redVar:
                                                     //   tempSettingsSet.themeCount=2;
                                                     // }
-=======
->>>>>>> Stashed changes
+
                                                 }
                                             }
         );
