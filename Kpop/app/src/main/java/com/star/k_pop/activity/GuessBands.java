@@ -134,6 +134,7 @@ public class GuessBands extends AppCompatActivity {
             podsk.setImageResource(R.drawable.hint);
         }
 
+        podsk.setBackgroundResource(theme.getBackgroundResource());
 
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
