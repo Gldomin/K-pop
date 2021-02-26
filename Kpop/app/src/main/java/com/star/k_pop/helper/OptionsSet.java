@@ -12,7 +12,7 @@ public class OptionsSet { //объект хранения настроек пр�
      public OptionsSet(Boolean hint, Boolean hard) {
         hintMode = hint;
         hardMode = hard;
-        darkMode = false; //TODO нужны ли? заменить
+        darkMode = false;
         option4 = false;
         option5 = false;
     }

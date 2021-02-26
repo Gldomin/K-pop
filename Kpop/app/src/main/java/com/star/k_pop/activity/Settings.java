@@ -98,7 +98,7 @@ public class Settings extends AppCompatActivity {
         darkThemeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                tempSettingsSet.darkMode = darkThemeSwitch.isChecked(); //TODO Надо сделать темную тему
+                tempSettingsSet.darkMode = darkThemeSwitch.isChecked();
                 if (darkThemeSwitch.isChecked()) {
                     blueBut.setText(getResources().getString(R.string.settingRed));
                     redBut.setText(getResources().getString(R.string.settingGreen));
@@ -132,7 +132,7 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-        Button creepyGuy = findViewById(R.id.settingsCancel); //TODO delete this shit
+        Button creepyGuy = findViewById(R.id.settingsCancel);
         creepyGuy.setBackgroundResource(theme.getBackgroundResource());
 
         creepyGuy.setOnClickListener(new View.OnClickListener() {

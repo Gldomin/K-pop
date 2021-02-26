@@ -51,9 +51,6 @@ public class ApplicationStart extends MultiDexApplication {
 
         }
 
-        // TODO Добавить инициализацию значений поумолчанию и создать все файлы и ключи для коректной работы
-
-
         SharedPreferences sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
         if (!sp.contains("noticeWatched") || !sp.contains("achGuessStarNormal")) {
             Log.v("TAG", "noticeWatched");
@@ -70,7 +67,7 @@ public class ApplicationStart extends MultiDexApplication {
             tempStorage.saveValue("achTripleAdept", false); //ачивка
             tempStorage.saveValue("achTripleExpert", false); //ачивка
             tempStorage.saveValue("achRoyal", false); //ачивка
-            tempStorage.saveValue("gameBuyed", false); //TODO надо сделать возможность купить игру, отключая рекламу. за это может быть ачивка
+            tempStorage.saveValue("gameBuyed", false);
 
             Storage storage = new Storage(this, "settings");
             storage.saveValue("darkMode", false);

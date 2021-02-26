@@ -296,11 +296,6 @@ public class GuessBands extends AppCompatActivity {
         }
         hintShow = false;
         grName.setText("");
-        // TODO Удалить перед релизом
-        /*String answ = artists.get(count).getGroups();
-        answ = answ.toUpperCase();
-        grName.setText(answ);*/
-        // TODO Конец удаления
         fastScoreText.setText(String.format("%s %d",
                 getResources().getString(R.string.score_text), fastscore));
         if (fastscore > score) score = fastscore;

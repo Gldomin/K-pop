@@ -57,9 +57,6 @@ public class GuessStar extends AppCompatActivity {
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
 
-
-    boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
-
     Theme theme; //переменная для считывания состояния свиича на darkmod
 
     Rewarded rewarded;          //Класс для работы с рекламой
@@ -142,12 +139,6 @@ public class GuessStar extends AppCompatActivity {
                             YandexMetrica.reportEvent("GuessStar - Ачивка 150 угаданных артистов");
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
                         }
-
-                        // TODO Удалить перед релизом
-                        for (int i = 0; i < 4; i++) {
-                            buttons[i].setTextColor(theme.getTextColor());
-                        }
-                        // TODO Конец удаления
                         nextArtist();
                     } else {
                         YandexMetrica.reportEvent("GuessStar - Неправильный ответ: " + ((Button) view).getText() + ", правильный: " + artists.get(count).getName());
@@ -174,31 +165,6 @@ public class GuessStar extends AppCompatActivity {
                 startActivity(image);
             }
         });
-
-        // TODO Удалить перед релизом
-        imageView.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
-
-        imageView.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onClick(View view) {
-                cheatOn = !cheatOn;
-                if (cheatOn) {
-                    for (int i = 0; i < 4; i++) {
-                        if (i == chosenOne)
-                            buttons[i].setTextColor(Color.RED);
-                        else {
-                            buttons[i].setTextColor(theme.getTextColor());
-                        }
-                    }
-                    Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-                } else {
-                    buttons[chosenOne].setTextColor(theme.getTextColor());
-                    Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-                }
-            }
-        });
-        // TODO Конец удаления
         updateScore();
         nextArtist();
     }
@@ -248,11 +214,6 @@ public class GuessStar extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
             int rand;
             if (i == chosenOne) {
-                // TODO Удалить перед релизом
-                if (cheatOn) {
-                    buttons[i].setTextColor(Color.RED);
-                }
-                // TODO Конец удаления
                 rand = count;
             } else {
                 rand = new Random().nextInt(artists.size()); //выбор артиста из пула артистов
