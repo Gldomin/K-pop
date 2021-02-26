@@ -129,7 +129,7 @@ public class GuessStar extends AppCompatActivity {
                             artists = Importer.getRandomArtists();
                             count = 0;
                         }
-                        if (scoreNow % 10 == 0) {
+                        if (scoreNow % 50 == 0) {
                             heathBarTest.restore();
                         }
                         if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
@@ -137,7 +137,6 @@ public class GuessStar extends AppCompatActivity {
                         }
                         if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
-
                         }
 
                         // TODO Удалить перед релизом
