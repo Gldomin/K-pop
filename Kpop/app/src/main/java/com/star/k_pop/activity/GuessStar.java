@@ -122,6 +122,7 @@ public class GuessStar extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (((Button) view).getText().equals(artists.get(count).getName())) {
+                        YandexMetrica.reportEvent("GuessStar - Правильный ответ: " + artists.get(count).getName());
                         count++;
                         scoreNow++;
                         if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
@@ -130,12 +131,15 @@ public class GuessStar extends AppCompatActivity {
                             count = 0;
                         }
                         if (scoreNow % 50 == 0) {
+                            YandexMetrica.reportEvent("GuessStar - Добавлено хп");
                             heathBarTest.restore();
                         }
                         if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
+                            YandexMetrica.reportEvent("GuessStar - Ачивка 50 угаданных артистов");
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.normalgs, "achGuessStarNormal"); //ачивочка
                         }
                         if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
+                            YandexMetrica.reportEvent("GuessStar - Ачивка 150 угаданных артистов");
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
                         }
 
@@ -144,11 +148,10 @@ public class GuessStar extends AppCompatActivity {
                             buttons[i].setTextColor(theme.getTextColor());
                         }
                         // TODO Конец удаления
-                        YandexMetrica.reportEvent("GuessStarRightClick");
                         nextArtist();
                     } else {
+                        YandexMetrica.reportEvent("GuessStar - Неправильный ответ: " + ((Button) view).getText() + ", правильный: " + artists.get(count).getName());
                         heathBarTest.blow(); //снижение хп
-                        YandexMetrica.reportEvent("GuessStarLoseClick");  //метрика на неправильный клик
                         if (heathBarTest.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
                             startLosingDialog();
                         }
@@ -171,7 +174,7 @@ public class GuessStar extends AppCompatActivity {
                 startActivity(image);
             }
         });
-        
+
         // TODO Удалить перед релизом
         imageView.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
 
@@ -279,12 +282,14 @@ public class GuessStar extends AppCompatActivity {
                 .setNegativeButton(getResources().getString(R.string.endGameNo), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        YandexMetrica.reportEvent("GuessStar - Игра окончена, нет");
                         finish();
                     }
                 })
                 .setPositiveButton(getResources().getString(R.string.endGameYes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        YandexMetrica.reportEvent("GuessStar - Игра окончена, да");
                         endGame = false;
                         heathBarTest.setHp(3);
                         scoreNow = 0;
@@ -304,19 +309,23 @@ public class GuessStar extends AppCompatActivity {
                     .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            YandexMetrica.reportEvent("GuessStar - Игра окончена, реклама");
                             endGame = false;
                             rewarded.show(GuessStar.this, new OnUserEarnedRewardListener() {
                                 @Override
                                 public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
                                     onRewarded = false;
                                     showReward = true;
+                                    YandexMetrica.reportEvent("GuessStar - Реклама просмотрена");
                                 }
                             }, new Rewarded.RewardDelay() {
                                 @Override
                                 public void onShowDismissed() {
                                     if (showReward) {
                                         heathBarTest.restore();
+                                        YandexMetrica.reportEvent("GuessStar - добавлено хп");
                                     } else {
+                                        YandexMetrica.reportEvent("GuessStar - Реклама не просмотрена");
                                         heathBarTest.setHp(3);
                                         scoreNow = 0;
                                         count++;

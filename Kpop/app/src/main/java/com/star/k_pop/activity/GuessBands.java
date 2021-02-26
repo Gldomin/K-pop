@@ -32,6 +32,7 @@ import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.model.Artist;
+import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +105,7 @@ public class GuessBands extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
-        
+
         rewarded = new Rewarded(this);
         theme.setThemeSecond();
 
@@ -171,22 +172,30 @@ public class GuessBands extends AppCompatActivity {
                     case R.id.litEnt:
                         String textAnsw = grName.getText().toString();
                         if (artists.get(count).checkGroup(textAnsw)) {
+                            YandexMetrica.reportEvent("GuessBands - Правильный ответ: " + textAnsw);
                             fastscore++;
                             count++;
                             change();
                             if (fastscore % 10 == 0) {
+                                YandexMetrica.reportEvent("GuessBands - Доп хп");
                                 heathBarTest.restore();
-                                hintCount++;
+                            }
+                            if (fastscore % 15 == 0) {
+                                YandexMetrica.reportEvent("GuessBands - Доп подсказка");
+                                hintCount += 2;
                             }
                             //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
                             //на момент релиза удалить.
                             if (fastscore == 15) { //ачивка за 15 - achGuessBandsNormal. Условие ачивки
+                                YandexMetrica.reportEvent("GuessBands - Ачивка 15 угаданных групп");
                                 SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normalgb, "achGuessBandsNormal"); //ачивочка
                             }
                             if (fastscore == 50) { //ачивка за 50
+                                YandexMetrica.reportEvent("GuessBands - Ачивка 50 угаданных групп");
                                 SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsExpert, R.drawable.expertgb, "achGuessBandsExpert"); //ачивочка
                             }
                         } else {
+                            YandexMetrica.reportEvent("GuessBands - Неправильный ответ: " + textAnsw);
                             heathBarTest.blow();
                             if (heathBarTest.getHp() == 0) {
                                 startLosingDialog();
@@ -204,7 +213,8 @@ public class GuessBands extends AppCompatActivity {
                         }
                         break;
                     case R.id.podsk:
-                        if (hintCount > 1 && !hintShow) {
+                        YandexMetrica.reportEvent("GuessBands - Подсказка");
+                        if (hintCount > 1) {
                             hintShow = true;
                             hintCount--;
                             counterHint.setText(String.format("%d", hintCount));
@@ -225,12 +235,9 @@ public class GuessBands extends AppCompatActivity {
                                     }
                                 }
                             }
-                        } else {
-                            if (!hintShow) {
-                                onRewardHint();
-                            }
+                        } else if (hintCount == 1) {
+                            onRewardHint();
                         }
-
                         break;
                     default:
                         grName.append("" + ((Button) view).getText().charAt(0));
@@ -314,12 +321,14 @@ public class GuessBands extends AppCompatActivity {
                 .setNegativeButton(getResources().getString(R.string.endGameNo), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        YandexMetrica.reportEvent("GuessStar - Игра окончена, нет");
                         finish();
                     }
                 })
                 .setPositiveButton(getResources().getString(R.string.endGameYes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        YandexMetrica.reportEvent("GuessStar - Игра окончена, да");
                         endGame = false;
                         heathBarTest.setHp(3);
                         fastscore = 0;
@@ -341,11 +350,13 @@ public class GuessBands extends AppCompatActivity {
                     .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            YandexMetrica.reportEvent("GuessBands - Игра окончена, реклама");
                             endGame = false;
                             rewarded.show(GuessBands.this, new OnUserEarnedRewardListener() {
                                 @Override
                                 public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
                                     showReward = true;
+                                    YandexMetrica.reportEvent("GuessBands - Реклама просмотрена");
                                 }
                             }, new Rewarded.RewardDelay() {
                                 @Override
@@ -353,7 +364,9 @@ public class GuessBands extends AppCompatActivity {
                                     if (showReward) {
                                         onRewarded = false;
                                         heathBarTest.restore();
+                                        YandexMetrica.reportEvent("GuessBands - добавлено хп");
                                     } else {
+                                        YandexMetrica.reportEvent("GuessBands - Реклама не просмотрена");
                                         heathBarTest.setHp(3);
                                         fastscore = 0;
                                         count++;
@@ -386,21 +399,24 @@ public class GuessBands extends AppCompatActivity {
                     .setNegativeButton(getResources().getString(R.string.endHintNo), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
+                            YandexMetrica.reportEvent("GuessBands - последняя подсказка, нет");
                         }
                     })
                     .setPositiveButton(getResources().getString(R.string.endHintYes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            YandexMetrica.reportEvent("GuessBands - последняя подсказка, да");
                             rewarded.show(GuessBands.this, new OnUserEarnedRewardListener() {
                                 @Override
                                 public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
                                     showReward = true;
+                                    YandexMetrica.reportEvent("GuessBands - Реклама просмотрена, подсказка");
                                 }
                             }, new Rewarded.RewardDelay() {
                                 @Override
                                 public void onShowDismissed() {
                                     if (showReward) {
+                                        YandexMetrica.reportEvent("GuessBands - открыта подсказка за рекламу");
                                         onRewardedHint = false;
                                         String textGroupHint = artists.get(count).getGroups();
                                         char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
@@ -422,6 +438,7 @@ public class GuessBands extends AppCompatActivity {
                                         hintCount--;
                                         counterHint.setText(String.format("%d", hintCount));
                                     } else {
+                                        YandexMetrica.reportEvent("GuessBands - Реклама не просмотрена");
                                         onRewardedHint = true;
                                     }
                                     showReward = false;

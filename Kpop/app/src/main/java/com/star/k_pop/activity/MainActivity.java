@@ -17,10 +17,12 @@ import com.star.k_pop.gallery.activity.Gallery;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.SomeMethods;
+import com.yandex.metrica.YandexMetrica;
 
 public class MainActivity extends AppCompatActivity {
     final int REQUEST_CODE = 1;
 
+    Theme theme;//переменная для считывания состояния свиича на darkmod
     SharedPreferences sp;
 
     @Override
@@ -30,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         theme.setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //+++FirstLaunchHelp+++\\ // блок для первичного задания статусов (ачивок и прочего), а так же отображения приветсвия новых пользователей
 
         String nameOfStorage = "appStatus";
         sp = getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
@@ -44,35 +44,14 @@ public class MainActivity extends AppCompatActivity {
                 image.putExtra("title", R.string.aboutTitle);
                 startActivity(image);
             }
-            Log.i("boolInfo", "achGuessStarNormal=" +storage.getBoolean("achGuessStarNormal"));
-            Log.i("boolInfo", "achGuessBandsNormal=" +storage.getBoolean("achGuessBandsNormal"));
-            Log.i("boolInfo", "achSwipeTwoBandsNormal=" +storage.getBoolean("achSwipeTwoBandsNormal"));
-            Log.i("boolInfo", "achGuessStarExpert=" +storage.getBoolean("achGuessStarExpert"));
-            Log.i("boolInfo", "achGuessBandsExpert=" +storage.getBoolean("achGuessBandsExpert"));
-            Log.i("boolInfo", "achSwipeTwoBandsExpert=" +storage.getBoolean("achSwipeTwoBandsExpert"));
-            if (!storage.getBoolean("achTripleAdept"))
-            if (storage.getBoolean("achGuessStarNormal") && storage.getBoolean("achGuessBandsNormal") && storage.getBoolean("achSwipeTwoBandsNormal")) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                SomeMethods.achievementGetted(MainActivity.this, R.string.achTripleAdept, R.drawable.kpoplove, "achTripleAdept"); //ачивочка
-            }
-            if (!storage.getBoolean("achTripleExpert"))
-            if (storage.getBoolean("achTripleAdept") && storage.getBoolean("achGuessStarExpert") && storage.getBoolean("achGuessBandsExpert") && storage.getBoolean("achSwipeTwoBandsExpert")) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                SomeMethods.achievementGetted(MainActivity.this, R.string.achTripleExpert, R.drawable.royal, "achTripleExpert"); //ачивочка
-
-            }
         }
-
-///////////////////////////////////СВИЧИ ДЛЯ ПРОВЕРКИ СТУТУСОВ - начало////////////////// //TODO удалить блок вместе с ScrollView из активити и readStatus() с saveStatus()
-
-        //   tempSettingsSet.hintMode = storage.getBoolean(nameOfStorage, "hintMode"); //считывание настроек из Хранилища
-
-//////////////////////////////////СВИЧИ ДЛЯ ПРОВЕРКИ СТУТУСОВ - конец//////////////////
-
 
         Button guessStarButton = findViewById(R.id.guessStarButton);
         guessStarButton.setBackgroundResource(theme.getBackgroundResource());
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - guessStarButton");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, GuessStar.class);
                 startActivity(image);
@@ -84,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - guessBandButton");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, GuessBands.class);
                 startActivity(image);
@@ -95,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - buttonLibrary");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Gallery.class);
                 startActivity(image);
@@ -107,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - settingsButton");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Settings.class);
                 startActivityForResult(image, REQUEST_CODE);
@@ -117,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         achievement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - achievement");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Achievements.class);
                 startActivity(image);
@@ -128,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - about");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, BasicNotice.class);
                 image.putExtra("text", R.string.aboutText);
@@ -142,10 +126,6 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-
-    Theme theme;//переменная для считывания состояния свиича на darkmod
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -154,10 +134,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-     /*public class Restart {
-        public void reStart() {
-            recreate();
-        }
-     }*/
 
 }

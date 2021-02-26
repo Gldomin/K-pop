@@ -1,10 +1,7 @@
 package com.star.k_pop.activity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,25 +11,19 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.helper.OptionsSet;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.SomeMethods;
-
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+import com.yandex.metrica.YandexMetrica;
 
 public class Settings extends AppCompatActivity {
     OptionsSet tempSettingsSet = new OptionsSet(false, false);
     Theme theme;
-    SharedPreferences sp;
 
     RadioGroup radGroup;
     RadioButton blueBut;
@@ -77,6 +68,16 @@ public class Settings extends AppCompatActivity {
         }
         themeIm.setImageResource(theme.getBackgroundButton2());
 
+        Storage storage = new Storage(this, "settings");
+        tempSettingsSet.darkMode = storage.getBoolean("darkMode");
+        tempSettingsSet.themeCount = storage.getInt("themeCount");
+
+        darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
+
+        if (tempSettingsSet.themeCount == 1) radGroup.check(R.id.blueVar);
+        if (tempSettingsSet.themeCount == 2) radGroup.check(R.id.redVar);
+        if (tempSettingsSet.themeCount == 3) radGroup.check(R.id.catVar);
+
         radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
                                                 @Override
@@ -88,17 +89,6 @@ public class Settings extends AppCompatActivity {
                                                     } else if (checkedId == R.id.catVar) {
                                                         chooseTheme(3);
                                                     }
-
-
-                                                    //switch (radGroup.getId()){
-                                                    // case R.id.blueVar:
-                                                    //  tempSettingsSet.themeCount=1;
-                                                    //  break;
-                                                    //case R.id.redVar:
-                                                    //   tempSettingsSet.themeCount=2;
-                                                    // }
-
-
                                                 }
                                             }
         );
@@ -146,15 +136,7 @@ public class Settings extends AppCompatActivity {
         creepyGuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImageView imageView = new ImageView(Settings.this);
-                ConstraintLayout constraintLayout = findViewById(R.id.constraint);
-                constraintLayout.addView(imageView);
-                Glide.with(Settings.this).load(getResources().getDrawable(R.drawable.error))
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .transition(withCrossFade())
-                        .into(imageView);
-                Alert alert = new Alert();
-                alert.execute();
+                finish();
             }
         });
 
@@ -171,6 +153,7 @@ public class Settings extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                YandexMetrica.reportEvent("Сброс рекорда");
                                 Log.i("Settings", "" + recordStorage.getInt("userScoreGuessStar"));
                                 recordStorage.saveValue("userScoreGuessStar", 0);
                                 recordStorage.saveValue("userScoreGuessBand", 0);
@@ -185,19 +168,6 @@ public class Settings extends AppCompatActivity {
                         });
             }
         });
-
-
-///////Read Settings//////
-        sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
-        Storage storage = new Storage(this, "settings");
-        tempSettingsSet.darkMode = storage.getBoolean("darkMode");
-        tempSettingsSet.themeCount = storage.getInt("themeCount");
-
-        darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
-
-        if (tempSettingsSet.themeCount == 1) radGroup.check(R.id.blueVar);
-        if (tempSettingsSet.themeCount == 2) radGroup.check(R.id.redVar);
-        if (tempSettingsSet.themeCount == 3) radGroup.check(R.id.catVar);
 
     }
 
@@ -229,30 +199,12 @@ public class Settings extends AppCompatActivity {
         }
     }
 
-    class Alert extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            finish();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try {
-                Thread.sleep(5350);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-    }
-
     void saveSettings() {
+        YandexMetrica.reportEvent("Темная тема: " + darkThemeSwitch.isChecked() + ", Выбранная тема: " + tempSettingsSet.themeCount);
         Storage storage = new Storage(this, "settings");
         storage.saveValue("darkMode", tempSettingsSet.darkMode);
         storage.saveValue("themeCount", tempSettingsSet.themeCount);
-        Toast.makeText(Settings.this, getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+        //Toast.makeText(Settings.this, getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
     }
 
     @Override
