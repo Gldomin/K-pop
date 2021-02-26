@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.star.k_pop.R;
 import com.star.k_pop.helper.OptionsSet;
@@ -30,7 +32,7 @@ public class Settings extends AppCompatActivity {
     ImageView themeIm;
     RadioButton redBut;
     RadioButton catBut;
-    Switch darkThemeSwitch;
+    SwitchCompat darkThemeSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
