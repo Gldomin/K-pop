@@ -69,7 +69,7 @@ public class GuessStar extends AppCompatActivity {
         theme = new Theme(this);
         theme.setThemeSecond();
 
-        rewarded = new Rewarded(this);
+        rewarded = new Rewarded(this, R.string.admob_id_reward_star);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);

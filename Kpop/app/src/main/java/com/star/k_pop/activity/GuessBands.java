@@ -107,7 +107,7 @@ public class GuessBands extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
 
-        rewarded = new Rewarded(this);
+        rewarded = new Rewarded(this, R.string.admob_id_reward_bands);
         theme.setThemeSecond();
 
         super.onCreate(savedInstanceState);
