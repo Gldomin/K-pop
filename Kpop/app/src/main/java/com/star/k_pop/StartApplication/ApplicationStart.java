@@ -71,7 +71,7 @@ public class ApplicationStart extends MultiDexApplication {
 
             Storage storage = new Storage(this, "settings");
             storage.saveValue("darkMode", false);
-            storage.saveValue("themeCount", 1);
+            storage.saveValue("themeCount", 2);
         }
     }
 }
