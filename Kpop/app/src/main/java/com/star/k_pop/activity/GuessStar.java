@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -207,10 +208,11 @@ public class GuessStar extends AppCompatActivity {
         }
     }
 
-
     void nextArtist() {
         chosenOne = new Random().nextInt(4);
         boolean sex = artists.get(count).isSex();
+
+        Log.i("answer=", artists.get(count).getName()); //чит-лог
         for (int i = 0; i < 4; i++) {
             int rand;
             if (i == chosenOne) {

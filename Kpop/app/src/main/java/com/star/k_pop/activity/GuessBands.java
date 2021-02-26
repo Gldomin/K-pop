@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -296,6 +297,9 @@ public class GuessBands extends AppCompatActivity {
         }
         hintShow = false;
         grName.setText("");
+
+        Log.i("answer=",artists.get(count).getGroups()); //чит-лог
+
         fastScoreText.setText(String.format("%s %d",
                 getResources().getString(R.string.score_text), fastscore));
         if (fastscore > score) score = fastscore;
