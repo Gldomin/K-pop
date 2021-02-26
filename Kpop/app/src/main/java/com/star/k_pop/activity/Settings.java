@@ -17,6 +17,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
@@ -39,7 +40,7 @@ public class Settings extends AppCompatActivity {
     ImageView themeIm;
     RadioButton redBut;
     RadioButton catBut;
-    Switch darkThemeSwitch;
+    SwitchCompat darkThemeSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
