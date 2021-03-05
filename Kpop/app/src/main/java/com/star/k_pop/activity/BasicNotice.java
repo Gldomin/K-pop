@@ -1,12 +1,10 @@
 package com.star.k_pop.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.RelativeLayout;
+import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.star.k_pop.R;
 import com.star.k_pop.helper.Theme;
@@ -14,6 +12,7 @@ import com.star.k_pop.helper.Theme;
 public class BasicNotice extends AppCompatActivity {
 
     Theme theme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
@@ -29,5 +28,14 @@ public class BasicNotice extends AppCompatActivity {
         int idStringBig = getIntent().getIntExtra("title", 0);
         TextView textView2 = findViewById(R.id.abautTitleText);
         textView2.setText(idStringBig);
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        };
+        textView2.setOnClickListener(listener);
+        textView1.setOnClickListener(listener);
+
     }
 }

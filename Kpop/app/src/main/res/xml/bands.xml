@@ -72,7 +72,6 @@
             <NameArtist>J-Hope</NameArtist>
             <ImageArtists>J-Hope.jpg</ImageArtists>
             <ImageArtists>jhope.jpg</ImageArtists>
-            <ImageArtists>jhope1.jpg</ImageArtists>
             <ImageArtists>jhope2.jpg</ImageArtists>
         </Artist>
         <Artist>
@@ -80,6 +79,7 @@
             <ImageArtists>chimin.jpg</ImageArtists>
             <ImageArtists>chimin1.jpg</ImageArtists>
             <ImageArtists>chimin2.jpg</ImageArtists>
+            <ImageArtists>chimin3.jpg</ImageArtists>
             <ImageArtists>Jimin.jpg</ImageArtists>
         </Artist>
         <Artist>
@@ -87,6 +87,7 @@
             <ImageArtists>jin.jpg</ImageArtists>
             <ImageArtists>jin1.jpg</ImageArtists>
             <ImageArtists>jin2.jpg</ImageArtists>
+            <ImageArtists>Jin3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jungkook</NameArtist>
@@ -235,7 +236,6 @@
             <ImageArtists>jey.jpg</ImageArtists>
             <ImageArtists>jey1.jpg</ImageArtists>
             <ImageArtists>Jin Hwan.jpg</ImageArtists>
-            <ImageArtists>Jin.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jung Chan</NameArtist>
