@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +18,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -98,8 +96,10 @@ public class GuessStar extends AppCompatActivity {
                     getResources().getString(R.string.record_text), 0));
         }
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
             scoreNow = savedInstanceState.getInt("scoreNow");
+            record = savedInstanceState.getInt("record");
+        }
 
         for (int i = 0; i < 4; i++) {
             buttons[i] = new Button(this);
@@ -127,6 +127,9 @@ public class GuessStar extends AppCompatActivity {
                         YandexMetrica.reportEvent("GuessStar - Правильный ответ: " + artists.get(count).getName());
                         count++;
                         scoreNow++;
+                        if (record < scoreNow) {
+                            record++;
+                        }
                         if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
                         {
                             artists = Importer.getRandomArtists();
@@ -147,6 +150,8 @@ public class GuessStar extends AppCompatActivity {
                         nextArtist();
                     } else {
                         YandexMetrica.reportEvent("GuessStar - Неправильный ответ: " + ((Button) view).getText() + ", правильный: " + artists.get(count).getName());
+                        view.setBackgroundResource(theme.getBackgroundButton());
+                        view.setClickable(false);
                         heathBarTest.blow(); //снижение хп
                         if (heathBarTest.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
                             startLosingDialog();
@@ -190,15 +195,16 @@ public class GuessStar extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt("scoreNow", scoreNow);
+        outState.putInt("record", record);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onPause() {
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE); //сохранение Счета
-        if (sp.getInt("userScoreGuessStar", -1) < scoreNow) {
+        if (sp.getInt("userScoreGuessStar", -1) < record) {
             SharedPreferences.Editor e = sp.edit();
-            e.putInt("userScoreGuessStar", scoreNow);
+            e.putInt("userScoreGuessStar", record);
             e.apply();
         }
         super.onPause();
@@ -208,10 +214,8 @@ public class GuessStar extends AppCompatActivity {
     void updateScore() {
         textScore.setText(String.format("%s %d",
                 getResources().getString(R.string.score_text), scoreNow));
-        if (scoreNow > record) {
-            textRecord.setText(String.format("%s %d",
-                    getResources().getString(R.string.record_text), scoreNow));
-        }
+        textRecord.setText(String.format("%s %d",
+                getResources().getString(R.string.record_text), record));
     }
 
     void nextArtist() {
@@ -229,6 +233,8 @@ public class GuessStar extends AppCompatActivity {
                     rand = new Random().nextInt(artists.size());
                 }
             }
+            buttons[i].setClickable(true);
+            buttons[i].setBackgroundResource(theme.getBackgroundResource());
             buttons[i].setText(artists.get(rand).getName());
             artists.get(rand).Init();
         }
