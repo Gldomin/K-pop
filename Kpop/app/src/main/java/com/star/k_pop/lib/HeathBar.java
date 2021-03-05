@@ -2,6 +2,8 @@ package com.star.k_pop.lib;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -12,23 +14,24 @@ import java.util.List;
 
 public class HeathBar {
     ArrayList<ImageView> heathBarImageViews;
-    Context context;
+
     private int hp;
     private int maxHp;
+    Animation animation;
 
-    public HeathBar(ArrayList<ImageView> heathBarImageViews, int hpNow) {
-        //List <Integer> heathBarImageViewsID;
-        //for (int i=0; i<heathBarImageViews.size();i++)
+    public HeathBar(ArrayList<ImageView> heathBarImageViews, int hpNow, Animation animation) {
         this.heathBarImageViews = heathBarImageViews;
-        this.context = context;
         hp = hpNow;
         maxHp = heathBarImageViews.size();
+        this.animation = animation;
     }
 
     public void setHp(int hpNow) {
         hp = hpNow;
         refresh();
+
     }
+
     public int getHp() {
         return hp;
     }
@@ -36,6 +39,7 @@ public class HeathBar {
     public void blow() { //минус 1 хп
         if (hp > 0) hp--;
         refresh();
+
     }
 
     public void restore() { //плюс 1 хп
@@ -45,11 +49,16 @@ public class HeathBar {
 
     public void refresh() // метод для обновления индикатора хп
     {
+
         for (int i = 0; i < heathBarImageViews.size(); i++) { //обратный for для тотбражения хп, путем замены картинок начиная с последней
-            if (i >= hp)
+            if (i >= hp) {
                 heathBarImageViews.get(i).setImageResource(R.drawable.heart_colorless);
-            else
+            } else {
                 heathBarImageViews.get(i).setImageResource(R.drawable.heart_color);
+
+                heathBarImageViews.get(i).startAnimation(animation);
+            }
+
         }
         //heathBarImageViews.get(hp).setImageResource(R.drawable.hide);
     }

@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -98,7 +100,9 @@ public class GuessBands extends AppCompatActivity {
         imageViewList.add(imageView1);
         imageViewList.add(imageView2);
         imageViewList.add(imageView3);
-        heathBarTest = new HeathBar(imageViewList, 3);
+
+        Animation lifeBrokeAnimation = AnimationUtils.loadAnimation(this,R.anim.heart_broke_animation);
+        heathBarTest = new HeathBar(imageViewList, 3, lifeBrokeAnimation);
     }
 
 

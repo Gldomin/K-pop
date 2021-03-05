@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -68,6 +70,8 @@ public class GuessStar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
         theme.setThemeSecond();
+
+
 
         rewarded = new Rewarded(this, R.string.admob_id_reward_star);
 
@@ -178,7 +182,9 @@ public class GuessStar extends AppCompatActivity {
         imageViewList.add(imageView1);
         imageViewList.add(imageView2);
         imageViewList.add(imageView3);
-        heathBarTest = new HeathBar(imageViewList, 3);
+
+        Animation lifeBrokeAnimation = AnimationUtils.loadAnimation(this,R.anim.heart_broke_animation);
+        heathBarTest = new HeathBar(imageViewList, 3, lifeBrokeAnimation);
     }
 
     @Override
