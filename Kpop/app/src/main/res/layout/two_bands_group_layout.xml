@@ -21,30 +21,6 @@
         android:scaleType="fitCenter"
         tools:srcCompat="@tools:sample/avatars"></ImageView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@android:color/transparent"
-        android:fadeScrollbars="false"
-        android:fadingEdge="none"
-        android:filterTouchesWhenObscured="false"
-        android:hapticFeedbackEnabled="false"
-        android:keepScreenOn="false"
-        android:scrollbarAlwaysDrawHorizontalTrack="false"
-        android:scrollbarAlwaysDrawVerticalTrack="false"
-        android:scrollbarThumbHorizontal="@android:color/transparent"
-        android:scrollbarThumbVertical="@android:color/transparent"
-        android:theme="@style/AppTheme"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardCornerRadius="40dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="false">
-
-    </androidx.cardview.widget.CardView>
-
     <TextView
         android:id="@+id/cardNameTop"
         android:layout_width="match_parent"
@@ -57,6 +33,7 @@
         android:id="@+id/cardNameBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_weight="1"
         android:gravity="center|top"
         android:text="TextView" />
