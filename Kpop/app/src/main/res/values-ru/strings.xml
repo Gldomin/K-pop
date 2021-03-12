@@ -5,6 +5,7 @@
     <string name="menuItemGuessStar">Угадай звезду</string>
     <string name="menuItemGuessStarReverse">Угадай звезду наоборот</string>
     <string name="menuItemGuessBand">Угадай группу</string>
+    <string name="menuItemGuessBand2">Угадай группу2</string>
     <string name="menuItemTinderSwipe">Распредели по группам</string>
     <string name="menuItemGallery">Галлерея</string>
     <string name="menuItemSettings">Настройки</string>

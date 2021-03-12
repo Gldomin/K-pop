@@ -9,6 +9,7 @@
     <string name="menuItemGuessStar">Guess Star</string>
     <string name="menuItemGuessStarReverse">Guess Star Reverse</string>
     <string name="menuItemGuessBand">Guess Band</string>
+    <string name="menuItemGuessBand2">Guess Band2</string>
     <string name="menuItemTinderSwipe">Choose Group</string>
     <string name="menuItemGallery">Gallery</string>
     <string name="menuItemSettings">Settings</string>
