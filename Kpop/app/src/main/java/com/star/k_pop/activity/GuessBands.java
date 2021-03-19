@@ -55,7 +55,7 @@ public class GuessBands extends AppCompatActivity {
     Theme theme;
 
     boolean onRewardedHint = true;
-    int hintCount = 4;
+    int hintCount = 7;
     boolean hintShow = false;
 
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
@@ -230,6 +230,8 @@ public class GuessBands extends AppCompatActivity {
                                 String textHintTwo = "" + textHint[j];
                                 textHintTwo = textHintTwo.toUpperCase();
                                 textHint[j] = textHintTwo.charAt(0);
+                                grName.setText("");
+                                grName.append(""+textHint[0]);
                             }
                             for (Button b : buttons) {
                                 if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
