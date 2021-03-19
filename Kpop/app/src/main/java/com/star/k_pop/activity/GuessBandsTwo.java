@@ -10,6 +10,6 @@ public class GuessBandsTwo extends AppCompatActivity {
 
     protected void OnCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guess_group_two);
+        setContentView(R.layout.activity_guess_bands_2);
     }
 }
