@@ -113,17 +113,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button guessBandButton2 = findViewById(R.id.guessGroupButton2);
-        guessBandButton.setBackgroundResource(theme.getBackgroundResource());
-        guessBandButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, GuessBandsTwo.class);
-                startActivity(image);
-            }
-        });
-
         Button buttonLibrary = findViewById(R.id.galleryButton);
         buttonLibrary.setBackgroundResource(theme.getBackgroundResource());
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
