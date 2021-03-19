@@ -36,6 +36,9 @@
             android:name=".activity.GuessBands"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.GuessBandEasy"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".gallery.activity.Gallery"
             android:screenOrientation="portrait" />
         <activity

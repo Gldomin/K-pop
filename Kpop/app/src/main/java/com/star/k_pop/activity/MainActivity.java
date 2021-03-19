@@ -139,6 +139,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        Button easy  = findViewById(R.id.guessEasyButton);
+        easy.setBackgroundResource(theme.getBackgroundResource());
+        easy.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(MainActivity.this, GuessBandEasy.class);
+                startActivity(image);
+            }
+        });
+
+
+
         Button tinderButton = findViewById(R.id.chooseTinderButton);
         tinderButton.setBackgroundResource(theme.getBackgroundResource());
         tinderButton.setOnClickListener(new View.OnClickListener() {
