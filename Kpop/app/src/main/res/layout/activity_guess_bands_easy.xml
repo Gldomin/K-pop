@@ -7,7 +7,10 @@
     android:layout_height="match_parent"
     >
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/highBar"
@@ -39,44 +42,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:layout_weight="0.4"
         app:layout_constraintTop_toBottomOf="@+id/highBar"
+
         >
 
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/photo1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/photos2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/photos">
-
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/answerEdit"
@@ -221,7 +200,8 @@
             android:id="@+id/keyssecondline"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent" >
             <Button
                 android:id="@+id/key7"
                 android:layout_width="wrap_content"
@@ -262,6 +242,7 @@
         </LinearLayout>
 
     </LinearLayout>
+</LinearLayout>
 
 
 
