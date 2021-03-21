@@ -35,6 +35,7 @@ import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.model.Artist;
+import com.star.k_pop.model.Bands;
 import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class GuessBands extends AppCompatActivity {
 
-    ArrayList<Artist> artists = Importer.getRandomArtists();
+    ArrayList<Bands> artists = Importer.getRandomBands();
     HeathBar heathBarTest; // объявление хп
 
     int count = 0;
@@ -224,7 +225,7 @@ public class GuessBands extends AppCompatActivity {
                             hintShow = true;
                             hintCount--;
                             counterHint.setText(String.format("%d", hintCount));
-                            String textGroupHint = artists.get(count).getGroups();
+                            String textGroupHint = artists.get(count).getName();
                             char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
                             for (int j = 0; j < textHint.length; j++) {
                                 String textHintTwo = "" + textHint[j];
@@ -295,7 +296,7 @@ public class GuessBands extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     private void change() {
         if (count >= artists.size()) {
-            artists = Importer.getRandomArtists();
+            artists = Importer.getRandomBands();
             count = 0;
         }
         for (Button b : buttons) {
@@ -304,7 +305,7 @@ public class GuessBands extends AppCompatActivity {
         hintShow = false;
         grName.setText("");
 
-        Log.i("answer=",artists.get(count).getGroups()); //чит-лог
+        Log.i("answer=",artists.get(count).getName()); //чит-лог
 
         fastScoreText.setText(String.format("%s %d",
                 getResources().getString(R.string.score_text), fastscore));
@@ -340,7 +341,7 @@ public class GuessBands extends AppCompatActivity {
                         fastscore = 0;
                         count++;
                         if (count >= artists.size() - 1) {
-                            artists = Importer.getRandomArtists();
+                            artists = Importer.getRandomBands();
                             count = 0;
                         }
                         hintCount = 4;
@@ -377,7 +378,7 @@ public class GuessBands extends AppCompatActivity {
                                         fastscore = 0;
                                         count++;
                                         if (count >= artists.size() - 1) {
-                                            artists = Importer.getRandomArtists();
+                                            artists = Importer.getRandomBands();
                                             count = 0;
                                         }
                                         hintCount = 4;
@@ -424,7 +425,7 @@ public class GuessBands extends AppCompatActivity {
                                     if (showReward) {
                                         YandexMetrica.reportEvent("GuessBands - открыта подсказка за рекламу");
                                         onRewardedHint = false;
-                                        String textGroupHint = artists.get(count).getGroups();
+                                        String textGroupHint = artists.get(count).getName();
                                         char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
                                         for (int j = 0; j < textHint.length; j++) {
                                             String textHintTwo = "" + textHint[j];

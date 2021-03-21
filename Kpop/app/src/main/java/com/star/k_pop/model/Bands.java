@@ -1,5 +1,7 @@
 package com.star.k_pop.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -41,6 +43,16 @@ public class Bands {
         }
         Random rand = new Random();
         return imagesBands[rand.nextInt(imagesBands.length)];
+    }
+
+    public boolean checkGroup(String group) {
+        for (String g : name) {
+            Log.v("TAG", group.replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
+            if (group.replaceAll(" ", "").equals(g.toUpperCase().replaceAll(" ", ""))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
