@@ -41,12 +41,18 @@ public class Importer {
         ArrayList<Artist> artistsBand = new ArrayList<>();
         ArrayList<String> images = new ArrayList<>();
         ArrayList<String> nameBand = new ArrayList<>();
+        ArrayList<String> imageBand = new ArrayList<>();
         String nameArtist = "artist";
         boolean sex = false;
         try {
             while (parser.getEventType() != XmlPullParser.END_DOCUMENT) {
                 switch (parser.getEventType()) {
                     case XmlPullParser.START_TAG:
+                        if (parser.getName().equals("Image")) {
+                            parser.next();
+                            imageBand.add(parser.getText());
+                            break;
+                        }
                         if (parser.getName().equals("NameBand")) {
                             parser.next();
                             nameBand.add(parser.getText());
@@ -77,9 +83,10 @@ public class Importer {
                         }
                         if (parser.getName().equals("Band")) {
                             artists.addAll(artistsBand);
-                            bands.add(new Bands(nameBand.toArray(new String[0]), artistsBand, null));
+                            bands.add(new Bands(nameBand.toArray(new String[0]), artistsBand, imageBand.toArray(new String[0])));
                             nameBand.clear();
                             artistsBand.clear();
+                            imageBand.clear();
                         }
                         break;
                     default:
