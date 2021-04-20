@@ -59,6 +59,7 @@ public class GuessBands extends AppCompatActivity {
     int hintCount = 4;
     boolean hintShow = false;
 
+    boolean hintUsed = false; // ограничение на одну подсказку на группу  (что бы несколько раз не протыкивали)
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
@@ -182,6 +183,7 @@ public class GuessBands extends AppCompatActivity {
                             YandexMetrica.reportEvent("GuessBands - Правильный ответ: " + textAnsw);
                             fastscore++;
                             count++;
+                            hintUsed=false; //подсказку можно исопльзовать вновь
                             change();
                             if (fastscore % 10 == 0) {
                                 YandexMetrica.reportEvent("GuessBands - Доп хп");
@@ -220,31 +222,34 @@ public class GuessBands extends AppCompatActivity {
                         }
                         break;
                     case R.id.podsk:
-                        YandexMetrica.reportEvent("GuessBands - Подсказка");
-                        if (hintCount > 1) {
-                            hintShow = true;
-                            hintCount--;
-                            counterHint.setText(String.format("%d", hintCount));
-                            String textGroupHint = artists.get(count).getName();
-                            char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
-                            for (int j = 0; j < textHint.length; j++) {
-                                String textHintTwo = "" + textHint[j];
-                                textHintTwo = textHintTwo.toUpperCase();
-                                textHint[j] = textHintTwo.charAt(0);
-                                grName.setText("");
-                            }
-                            for (Button b : buttons) {
-                                if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
-                                    continue;
-                                for (char c : textHint) {
-                                    if (b.getText().charAt(0) == c) {
-                                        b.setBackgroundResource(theme.getBackgroundButton());
-                                        break;
+                        if (!hintUsed) {
+                            YandexMetrica.reportEvent("GuessBands - Подсказка");
+                            if (hintCount > 1) {
+                                hintShow = true;
+                                hintCount--;
+                                counterHint.setText(String.format("%d", hintCount));
+                                String textGroupHint = artists.get(count).getName();
+                                char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
+                                for (int j = 0; j < textHint.length; j++) {
+                                    String textHintTwo = "" + textHint[j];
+                                    textHintTwo = textHintTwo.toUpperCase();
+                                    textHint[j] = textHintTwo.charAt(0);
+                                    grName.setText("");
+                                }
+                                for (Button b : buttons) {
+                                    if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
+                                        continue;
+                                    for (char c : textHint) {
+                                        if (b.getText().charAt(0) == c) {
+                                            b.setBackgroundResource(theme.getBackgroundButton());
+                                            break;
+                                        }
                                     }
                                 }
+                            } else if (hintCount == 1) {
+                                onRewardHint();
                             }
-                        } else if (hintCount == 1) {
-                            onRewardHint();
+                            hintUsed=true; //подсказка использована
                         }
                         break;
                     default:

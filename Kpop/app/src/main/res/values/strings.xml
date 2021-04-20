@@ -27,15 +27,15 @@
     <string name="achTripleExpert">K-pop Master</string>
     <string name="achRoyal">Lord of four modes</string>
 
-    <string name="achGuessStarNormalText">You got 50 points in Guess Star</string>
-    <string name="achGuessStarExpertText">You got 150 points in Guess Star expert mode</string>
-    <string name="achGuessBandsNormalText">You got 15 points in Guess Band</string>
-    <string name="achGuessBandsExpertText">You got 50 points in Guess Band expert mode</string>
-    <string name="achSwipeTwoBandsNormalText">You got 5 points in Divide to bands</string>
-    <string name="achSwipeTwoBandsExpertText">You got 25 points in Divide to bands expert mode</string>
-    <string name="achGuessStarReversNormalText">You got 50 points in Find the Star</string>
-    <string name="achGuessStarReversExpertText">You got 150 points in Find the Star expert mode</string>
-    <string name="achTripleAdeptText">You have unlocked Secret mode</string>
+    <string name="achGuessStarNormalText">You got 50 points in Guess Star gamemode</string>
+    <string name="achGuessStarExpertText">You got 150 points in Guess Star gamemode</string>
+    <string name="achGuessBandsNormalText">You got 15 points in Guess Band gamemode</string>
+    <string name="achGuessBandsExpertText">You got 50 points in Guess Band gamemode</string>
+    <string name="achSwipeTwoBandsNormalText">You got 5 points in Divide to bands gamemode</string>
+    <string name="achSwipeTwoBandsExpertText">You got 25 points in Divide to bands gamemode</string>
+    <string name="achGuessStarReversNormalText">You got 50 points in Find the Star gamemode</string>
+    <string name="achGuessStarReversExpertText">You got 150 points in Find the Star gamemode</string>
+    <string name="achTripleAdeptText">You have unlocked Secret gamemode</string>
     <string name="achTripleExpertText">You are the true K-pop scholar. Thank you for game, now all ads will be disabled.</string>
     <string name="achRoyalText">You unlock them all! Congratulations! You can receive a little bonus in settings.</string>
 

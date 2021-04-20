@@ -6,7 +6,7 @@
     <string name="menuItemGuessStarReverse">Угадай звезду наоборот</string>
     <string name="menuItemGuessBand">Угадай группу</string>
     <string name="menuItemTinderSwipe">Распредели по группам</string>
-    <string name="menuItemGallery">Галлерея</string>
+    <string name="menuItemGallery">Галерея</string>
     <string name="menuItemSettings">Настройки</string>
     <string name="menuItemAbout">О программе</string>
 
@@ -23,13 +23,13 @@
     <string name="achRoyal">Повелитель четырех режимов</string>
 
     <string name="achGuessStarNormalText">"\t"Вы набрали 50 очков в режиме Угадай Звезду</string>
-    <string name="achGuessStarExpertText">"\t"Вы набрали 150 очков в экспертном режиме Угадай Звезду</string>
+    <string name="achGuessStarExpertText">"\t"Вы набрали 150 очков в режиме Угадай Звезду</string>
     <string name="achGuessBandsNormalText">"\t"Вы набрали 15 очков в режиме Отгадай Группу</string>
-    <string name="achGuessBandsExpertText">"\t"Вы набрали 50 очков в экспертном режиме Отгадай Группу</string>
+    <string name="achGuessBandsExpertText">"\t"Вы набрали 50 очков в режиме Отгадай Группу</string>
     <string name="achSwipeTwoBandsNormalText">"\t"Вы набрали 5 очков в режиме Распредели На Две Группы</string>
-    <string name="achSwipeTwoBandsExpertText">"\t"Вы набрали 25 очков в экспертном режиме Распредели На Две Группы</string>
+    <string name="achSwipeTwoBandsExpertText">"\t"Вы набрали 25 очков в режиме Распредели На Две Группы</string>
     <string name="achGuessStarReversNormalText">"\t"Вы набрали 50 очков в режиме Найди Звезду</string>
-    <string name="achGuessStarReversExpertText">"\t"Вы набрали 150 очков в экспертном режиме Найди Звезду</string>
+    <string name="achGuessStarReversExpertText">"\t"Вы набрали 150 очков режиме Найди Звезду</string>
     <string name="achTripleAdeptText">"\t"Вы - Адепт трех режимов!</string>
     <string name="achTripleExpertText">"\t"Вы истинный знаток К-попа. Вы получили экспертные достижения в трех режимах!</string>
     <string name="achRoyalText">"\t"Вы открыли все, что только возможно! Поздравляем! У нас есть для вас скромный бонус</string>
