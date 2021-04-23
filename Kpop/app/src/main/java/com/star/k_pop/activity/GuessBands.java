@@ -34,6 +34,7 @@ import com.star.k_pop.helper.Rewarded;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
+import com.star.k_pop.lib.SoundPlayer;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
 import com.yandex.metrica.YandexMetrica;
@@ -47,6 +48,7 @@ public class GuessBands extends AppCompatActivity {
 
     ArrayList<Bands> artists = Importer.getRandomBands();
     HeathBar heathBarTest; // объявление хп
+    SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
 
     int count = 0;
     int score;
@@ -176,6 +178,8 @@ public class GuessBands extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                Log.i("sound","-> key_click"); //чит-лог
+                soundPlayer.play(R.raw.key_click); //звук кнопок
                 switch (view.getId()) {
                     case R.id.litEnt:
                         String textAnsw = grName.getText().toString();
@@ -268,6 +272,8 @@ public class GuessBands extends AppCompatActivity {
             button.setOnLongClickListener(new OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
+
+
                     switch (v.getId()) {
                         case R.id.num1:
                         case R.id.num2:

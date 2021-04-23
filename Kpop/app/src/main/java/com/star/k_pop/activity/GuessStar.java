@@ -32,6 +32,7 @@ import com.star.k_pop.helper.Rewarded;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
+import com.star.k_pop.lib.SoundPlayer;
 import com.star.k_pop.model.Artist;
 import com.yandex.metrica.YandexMetrica;
 
@@ -47,6 +48,7 @@ public class GuessStar extends AppCompatActivity {
     TextView textScore;
     TextView textRecord;
 
+    SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
     ArrayList<Artist> artists = new ArrayList<>();
 
     int chosenOne = -1;     //избранный артист (правильный артист)
@@ -120,6 +122,8 @@ public class GuessStar extends AppCompatActivity {
             buttons[i].setPadding(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
 
+
+
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -148,6 +152,8 @@ public class GuessStar extends AppCompatActivity {
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
                         }
                         nextArtist();
+                        soundPlayer.play(R.raw.long_switch); //звук правильного ответа
+
                     } else {
                         YandexMetrica.reportEvent("GuessStar - Неправильный ответ: " + ((Button) view).getText() + ", правильный: " + artists.get(count).getName());
                         view.setBackgroundResource(theme.getBackgroundButton());
@@ -155,9 +161,12 @@ public class GuessStar extends AppCompatActivity {
                         heathBarTest.blow(); //снижение хп
                         if (heathBarTest.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
                             startLosingDialog();
+
                         }
+                        soundPlayer.play(R.raw.ping_click); //звук неправильного ответа
                     }
                     updateScore();
+
                 }
             });
             tableRow.addView(buttons[i]);
@@ -173,6 +182,7 @@ public class GuessStar extends AppCompatActivity {
                 image.putExtra("text", R.string.guessStarGameModeAbaut);
                 image.putExtra("title", R.string.gameModeAbaut);
                 startActivity(image);
+                soundPlayer.play(R.raw.ping_click); //звук кнопки
             }
         });
         updateScore();
