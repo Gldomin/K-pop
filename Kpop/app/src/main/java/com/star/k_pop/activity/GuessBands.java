@@ -114,12 +114,12 @@ public class GuessBands extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
-
         rewarded = new Rewarded(this, R.string.admob_id_reward_bands);
         theme.setThemeSecond();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands);
+
+        final int keyClickID=soundPlayer.load(R.raw.key_click);
 
         ImageButton about = findViewById(R.id.guessBandAbautButton);
         about.setBackgroundResource(theme.getBackgroundResource());
@@ -179,7 +179,8 @@ public class GuessBands extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i("sound","-> key_click"); //чит-лог
-                soundPlayer.play(R.raw.key_click); //звук кнопок
+
+                soundPlayer.playSoundStream(keyClickID); //звук кнопок
                 switch (view.getId()) {
                     case R.id.litEnt:
                         String textAnsw = grName.getText().toString();

@@ -71,12 +71,13 @@ public class GuessStar extends AppCompatActivity {
         theme = new Theme(this);
         theme.setThemeSecond();
 
-
-
         rewarded = new Rewarded(this, R.string.admob_id_reward_star);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
+
+        final int pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
+        final int longSwitchID = soundPlayer.load(R.raw.long_switch);
 
         textRecord = findViewById(R.id.scoreText2);
         imageView = findViewById(R.id.imageView);
@@ -152,8 +153,8 @@ public class GuessStar extends AppCompatActivity {
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
                         }
                         nextArtist();
-                        soundPlayer.play(R.raw.long_switch); //звук правильного ответа
 
+                        soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
                     } else {
                         YandexMetrica.reportEvent("GuessStar - Неправильный ответ: " + ((Button) view).getText() + ", правильный: " + artists.get(count).getName());
                         view.setBackgroundResource(theme.getBackgroundButton());
@@ -163,7 +164,8 @@ public class GuessStar extends AppCompatActivity {
                             startLosingDialog();
 
                         }
-                        soundPlayer.play(R.raw.ping_click); //звук неправильного ответа
+
+                        soundPlayer.playSoundStream(pingClickID);//звук неправильного ответа
                     }
                     updateScore();
 
@@ -182,7 +184,8 @@ public class GuessStar extends AppCompatActivity {
                 image.putExtra("text", R.string.guessStarGameModeAbaut);
                 image.putExtra("title", R.string.gameModeAbaut);
                 startActivity(image);
-                soundPlayer.play(R.raw.ping_click); //звук кнопки
+                //soundPlayer.play(R.raw.ping_click); //звук кнопки\
+                soundPlayer.playSoundStream(pingClickID);
             }
         });
         updateScore();
