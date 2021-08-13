@@ -14,12 +14,28 @@ public class Bands {
     private final ArrayList<Artist> artists;  // Список артистов
     private final byte numberOfPeople;        // Количество человек
     private final String[] imagesBands;       // Названия картинок
+    private final Sex sex;
+
+    public enum Sex {
+        MALE,
+        FEMALE,
+        MIXED
+    }
 
     public Bands(String[] name, ArrayList<Artist> artists, String[] imagesBands) {
         this.name = name;
         this.artists = new ArrayList<>(artists);
         this.numberOfPeople = (byte) artists.size();
         this.imagesBands = imagesBands;
+        this.sex = Sex.MIXED;
+    }
+
+    public Bands(String[] name, ArrayList<Artist> artists, String[] imagesBands, Sex sex) {
+        this.name = name;
+        this.artists = new ArrayList<>(artists);
+        this.numberOfPeople = (byte) artists.size();
+        this.imagesBands = imagesBands;
+        this.sex = sex;
     }
 
     public String getName() {
@@ -53,6 +69,17 @@ public class Bands {
             }
         }
         return false;
+    }
+
+    public int getSex() {
+        switch (sex) {
+            case MALE:
+                return 1;
+            case FEMALE:
+                return 2;
+            default:
+                return 0;
+        }
     }
 
     /**
