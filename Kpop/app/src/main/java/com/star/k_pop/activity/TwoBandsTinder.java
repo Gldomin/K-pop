@@ -2,10 +2,8 @@ package com.star.k_pop.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -13,7 +11,6 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -22,7 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.gridlayout.widget.GridLayout;
 
@@ -30,7 +26,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
-import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
@@ -42,38 +37,120 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class TwoBandsTinder extends AppCompatActivity {
 
-    ArrayList<Bands> bands = Importer.getRandomBands(); //берем список всех групп
-    ArrayList<Artist> artists = new ArrayList<>(); //лист для того чтобы переносить артистов из двух групп
-    ArrayList<String> imgList = new ArrayList<>();
-    boolean menuChanged, conformChoices;
-    int artistCount;
-    ArrayList<String> artChoices;
-    int bandsCount;
-    float paddingY;
-    float paddingX;
+    private final String TAG = "TWO BANDS ";
 
-    GridLayout gridFirst;
-    GridLayout gridSecond;
+    private final ArrayList<Bands> bands = Importer.getRandomBands(); //берем список всех групп
+    private final ArrayList<Artist> artists = new ArrayList<>(); //лист для того чтобы переносить артистов из двух групп
+    private final ArrayList<String> imgList = new ArrayList<>();
+    private boolean conformChoices;
+    private ArrayList<String> artChoices;
+    private int bandsCount;
 
-    ImageView imageBand;
-    ImageView imBTmp;
-    TextView oneBand;
-    TextView secondBand;
-    TextView artistName;
-    ViewFlipper twoBandFlip;
-    ImageButton chooseActorButton;
-    byte number_of_artist;
-    boolean left;
-    boolean right;
-    TextView score;
-    final String nonChoice = "NaN";
-    ViewGroup.MarginLayoutParams padding;
-    Storage storage2 = new Storage(this, "settings");
+    private GridLayout gridFirst;
+    private GridLayout gridSecond;
 
+    private ImageView imageBand;
+    private ImageView imBTmp;
+    private TextView oneBand;
+    private TextView secondBand;
+    private TextView artistName;
+    private ViewFlipper twoBandFlip;
+    private byte number_of_artist;
+    private boolean left;
+    private boolean right;
+    private TextView score;
+    private final String nonChoice = "NaN";
 
-    Theme theme;
 
     private static final String IMAGEVIEW_TAG = "icon bitmap";
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Theme theme = new Theme(this);
+        theme.setThemeSecond();
+
+        super.onCreate(savedInstanceState);
+        Log.i(TAG + "Wrong", "We are here now");
+        setContentView(R.layout.acitivity_two_bands_temp);
+
+        ImageButton chooseActorButton = findViewById(R.id.ttChoseActorButton);
+        ImageButton confirmButton = findViewById(R.id.ttConfirmButton);
+
+        imageBand = findViewById(R.id.imageBand);
+        imBTmp = findViewById(R.id.imgBTmp);
+        oneBand = findViewById(R.id.oneBand);
+        secondBand = findViewById(R.id.secondBand);
+        score = findViewById(R.id.RecordScore);
+        artistName = findViewById(R.id.artistName);
+        twoBandFlip = findViewById(R.id.twoBandFlipper);
+        gridFirst = findViewById(R.id.ttGridFGroupLayout);
+        gridSecond = findViewById(R.id.ttGridSGroupLayout);
+
+        chooseActorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (twoBandFlip != null) {
+                    twoBandFlip.showNext();
+                }
+                switchOnBands();
+            }
+        });
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
+                if (groupCheck(artChoices)) {
+                    changeBands();
+                    resetPosition();
+                    number_of_artist = 0;
+                    changeArtist(false);
+                } else {
+                    imageBand.startAnimation(anim);
+                }
+            }
+        });
+
+        imageBand.setOnTouchListener(new OnSwipeTinderListener() {
+
+            public void onRightCheck() {
+                left = false;
+                right = true;
+                if (number_of_artist <= artists.size()) {
+                    changeArtist(true);
+                }
+            }
+
+            public void onLeftCheck() {
+                left = true;
+                right = false;
+
+                if (number_of_artist <= artists.size()) {
+                    changeArtist(true);
+                }
+
+            }
+        });
+
+        guessTwoBands();
+    }
+
+    private void guessTwoBands() {
+
+        imageBand.setTag(IMAGEVIEW_TAG);
+
+        bandsCount = 0;
+        conformChoices = false;
+        if (artists != null) {
+            artists.clear();
+        }
+
+        left = false;
+        right = false;
+        changeBands();
+        changeArtist(false);
+    }
 
     private void startFinishSection() {
         Display display = getWindowManager().getDefaultDisplay();
@@ -84,86 +161,79 @@ public class TwoBandsTinder extends AppCompatActivity {
     private void switchOnBands() {
 
         GridLayout chooseActLay = findViewById(R.id.ttChoseGroupGLay);
-        if (chooseActLay != null) chooseActLay.removeAllViews();
+        if (chooseActLay != null) {
+            chooseActLay.removeAllViews();
+        }
         for (int i = 0; i < artists.size(); i++) {
-            View view = LayoutInflater.from(this).inflate(R.layout.two_bands_group_layout, null, false);
+            View view = LayoutInflater.from(this).inflate(R.layout.two_bands_group_layout, chooseActLay, false);
             LinearLayout cardLayot = view.findViewById(R.id.cardLayout);
             ImageView actorImage = view.findViewById(R.id.cardImage);
             TextView actorName = view.findViewById(R.id.cardNameTop);
             TextView GroupName = view.findViewById(R.id.cardNameBottom);
-            if (artChoices.get(i) != nonChoice) {
+            if (!artChoices.get(i).equals(nonChoice)) {
                 GroupName.setText(artChoices.get(i));
             } else {
                 GroupName.setText("");
             }
             actorName.setText(artists.get(i).getName());
-            TextView groupName = view.findViewById(R.id.cardNameBottom);
-//            groupName.setText(artChoices.get(i).toString());
             Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + imgList.get(i)))
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .transition(withCrossFade())
                     .into(actorImage);
             final int finalI = i;
-            chooseActLay.addView(view);
-            chooseActLay.computeScroll();
+            if (chooseActLay != null) {
+                chooseActLay.addView(view);
+                chooseActLay.computeScroll();
+            }
             cardLayot.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     number_of_artist = (byte) finalI;
                     twoBandFlip.showNext();
                     resetPosition();
-                    menuChanged = true;
-                    changeArtist();
+                    changeArtist(false);
                 }
             });
         }
     }
 
-    public void onButtonGroupPress(View view) {
-        if (twoBandFlip != null) twoBandFlip.showNext();
-        switchOnBands();
-    }
-
-    public void onButtonConfirmPress(View view) {
-        Animation anim = AnimationUtils.loadAnimation(this, R.anim.wrong_answer_anim);
-        if (groupCheck(artChoices)) {
-            changeBands();
-            resetPosition();
-            number_of_artist = 0;
-            changeArtist();
-        } else {
-            imageBand.startAnimation(anim);
-
-        }
-    }
-
     private void changeBands() {
-        if (bandsCount >= bands.size()) return;
-        if (bandsCount + 1 >= bands.size()) return;
-        Log.i("Test2", "bands size" + bands.size());
+        if (bandsCount >= bands.size()) {
+            return;
+        }
+        if (bandsCount + 1 >= bands.size()) {
+            return;
+        }
+        Log.i(TAG + "Test2", "bands size" + bands.size());
         oneBand.setText(bands.get(bandsCount).getName());
         secondBand.setText(bands.get(bandsCount + 1).getName());
-        if (artists.size() != 0) artists.clear();
-        if (imgList.size() != 0) imgList.clear();
+        if (artists.size() != 0) {
+            artists.clear();
+        }
+        if (imgList.size() != 0) {
+            imgList.clear();
+        }
         artists.addAll(bands.get(bandsCount).getArtists());
-        Log.i("Test2", "band artists count" + bands.get(bandsCount).getArtists().size());
+        Log.i(TAG + "Test2", "band artists count" + bands.get(bandsCount).getArtists().size());
         artists.addAll(bands.get(bandsCount + 1).getArtists());
-        if(gridFirst.getChildCount()!=0){gridFirst.removeAllViews();}
-        if(gridSecond.getChildCount()!=0){gridSecond.removeAllViews();}
+        if (gridFirst.getChildCount() != 0) {
+            gridFirst.removeAllViews();
+        }
+        if (gridSecond.getChildCount() != 0) {
+            gridSecond.removeAllViews();
+        }
 
-        for(byte i = 0; i <= bands.get(bandsCount).getNumberOfPeople() ; i++)
-        {
+        for (byte i = 0; i <= bands.get(bandsCount).getNumberOfPeople(); i++) {
             ImageView gridBox = new ImageView(this);
-            gridBox.setImageResource(R.drawable.tt_rect_empty);;
+            gridBox.setImageResource(R.drawable.tt_rect_empty);
             gridFirst.addView(gridBox);
         }
-        for(byte i = 0; i <= bands.get(bandsCount+1).getNumberOfPeople() ; i++)
-        {
+        for (byte i = 0; i <= bands.get(bandsCount + 1).getNumberOfPeople(); i++) {
             ImageView gridBox = new ImageView(this);
             gridBox.setImageResource(R.drawable.tt_rect_empty);
             gridSecond.addView(gridBox);
         }
-        Log.i("Test2", "artist size" + artists.size());
+        Log.i(TAG + "Test2", "artist size" + artists.size());
         Collections.shuffle(artists);
         number_of_artist = 0;
         artChoices = new ArrayList<>(artists.size());
@@ -171,7 +241,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             artChoices.add(nonChoice);
             imgList.add(art.getFolder());
         }
-        if (conformChoices) changeArtist();
+        if (conformChoices) changeArtist(false);
         bandsCount = bandsCount + 2;
     }
 
@@ -179,11 +249,13 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (playerChoice.size() == artists.size()) {
             byte rightGuesses = 0;
             for (int i = 0; i <= artists.size() - 1; i++) {
-                Log.i("tWheck", "Shit is not workin group is " + artists.get(i).getName().trim() + " and answer " + playerChoice.get(i).trim());
-                if (artists.get(i).getGroup().trim() == playerChoice.get(i).trim()) rightGuesses++;
+                Log.i(TAG + "tWheck", "Shit is not workin group is " + artists.get(i).getName().trim() + " and answer " + playerChoice.get(i).trim());
+                if (artists.get(i).getGroup().trim().equals(playerChoice.get(i).trim())) {
+                    rightGuesses++;
+                }
             }
-            Log.i("tWheck", "Shit is not workin rightGuesses" + rightGuesses + " and guys are " + artists.size());
-            if (rightGuesses == playerChoice.size()) return true;
+            Log.i(TAG + "tWheck", "Shit is not workin rightGuesses" + rightGuesses + " and guys are " + artists.size());
+            return rightGuesses == playerChoice.size();
         }
         return false;
     }
@@ -197,120 +269,58 @@ public class TwoBandsTinder extends AppCompatActivity {
         }
     }
 
-    private void changeArtist() {
-
-
+    private void changeArtist(boolean animate) {
         if (number_of_artist < artists.size()) {
-
             if (number_of_artist + 1 < artists.size())
-                Log.i("Wrong", "WTF " + artists.get(number_of_artist).getName());
+                Log.i(TAG + "Wrong", "WTF " + artists.get(number_of_artist).getName());
             imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
-            if (!menuChanged) {
-                if (number_of_artist + 1 <= artists.size()) {
-                    imBTmp.setVisibility(View.VISIBLE);
-                    imBTmp.setY(imageBand.getY());
-                    imBTmp.setX(imageBand.getX());
-                    imBTmp.setImageDrawable(imageBand.getDrawable());
-                    imBTmp.setRotation(0);
-                    imBTmp.setScaleX(1);
-                    imBTmp.setScaleY(1);
-                    imBTmp.setAlpha(1.0f);
-                }
-            }
-            if (left) {
-                Log.i("Fuck", "when im going here");
-                imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(30).alpha(0.1f).setDuration(400).setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        imBTmp.setVisibility(View.GONE);
-                    }
-                });
-                String choice = secondBand.getText() + "";
-                artChoices.set(number_of_artist, oneBand.getText().toString());
-                Log.i("Wrong", "" + number_of_artist);
-                number_of_artist++;
+            if (animate) {
+                imBTmp.setVisibility(View.VISIBLE);
+                imBTmp.setY(imageBand.getY());
+                imBTmp.setX(imageBand.getX());
+                imBTmp.setImageDrawable(imageBand.getDrawable());
+                imBTmp.setRotation(0);
+                imBTmp.setScaleX(1);
+                imBTmp.setScaleY(1);
+                imBTmp.setAlpha(1.0f);
             }
             if (right) {
-
                 imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(-30).alpha(0.1f).setDuration(400).setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        imBTmp.setVisibility(View.GONE);
+                        imBTmp.setVisibility(View.INVISIBLE);
                     }
                 });
-                String choice = secondBand.getText() + "";
+
                 artChoices.set(number_of_artist, secondBand.getText().toString());
-                Log.i("Wrong", "" + number_of_artist);
+                Log.i(TAG + "Wrong", "" + number_of_artist);
+                number_of_artist++;
+            }
+            if (left) {
+                Log.i(TAG + "Fuck", "when im going here");
+                imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(30).alpha(0.1f).setDuration(400).setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        imBTmp.setVisibility(View.INVISIBLE);
+                    }
+                });
+                artChoices.set(number_of_artist, oneBand.getText().toString());
+                Log.i(TAG + "Wrong", "" + number_of_artist);
                 number_of_artist++;
             }
             //imBTmp.setVisibility(View.VISIBLE);
-            Log.i("defX", "onTouch:imbTx " + imBTmp.animate().getDuration() + " imbTy " + imBTmp.getY() + " imagex " + imageBand.getX() + " imagey " + paddingY + " ");
+            Log.i(TAG + "defX", "onTouch:imbTx " + imBTmp.animate().getDuration() + " imbTy " + imBTmp.getY() + " imagex " + imageBand.getX() + " imagey ");
             if (number_of_artist + 1 <= artists.size()) {
                 Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + imgList.get(number_of_artist)))
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .transition(withCrossFade())
                         .into(imageBand);
                 artistName.setText(artists.get(number_of_artist).getName());
-                score.setText("" + number_of_artist);
+                score.setText(String.format("%s", number_of_artist));
             }
         }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private void guessTwoBands() {
-
-        imageBand = findViewById(R.id.imageBand);
-        imBTmp = findViewById(R.id.imgBTmp);
-        oneBand = findViewById(R.id.oneBand);
-        secondBand = findViewById(R.id.secondBand);
-        score = findViewById(R.id.RecordScore);
-        artistName = findViewById(R.id.artistName);
-        twoBandFlip = findViewById(R.id.twoBandFlipper);
-        chooseActorButton = findViewById(R.id.ttChoseActorButton);
-        gridFirst = findViewById(R.id.ttGridFGroupLayout);
-        gridSecond = findViewById(R.id.ttGridSGroupLayout);
-        padding = (ViewGroup.MarginLayoutParams) imageBand.getLayoutParams();
-        imageBand.setTag(IMAGEVIEW_TAG);
-
-        bandsCount = 0;
-        artistCount = 0;
-        menuChanged = false;
-        conformChoices = false;
-        if (artists != null) artists.clear();
-        imageBand.setOnTouchListener(new OnSwipeTinderListener() {
-            public boolean onRightCheck() {
-                left = false;
-                right = true;
-                if (number_of_artist <= artists.size()) changeArtist();
-                return true;
-            }
-
-            public boolean onLeftCheck() {
-                left = true;
-                right = false;
-                menuChanged = true;
-                if (number_of_artist <= artists.size()) changeArtist();
-
-                return true;
-            }
-        });
-        left = false;
-        right = false;
-        changeBands();
-        changeArtist();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        theme = new Theme(this);
-        theme.setTheme();
-
-        super.onCreate(savedInstanceState);
-        Log.i("Wrong", "We are here now");
-        setContentView(R.layout.acitivity_two_bands_temp);
-        guessTwoBands();
     }
 
     private void resetPosition() {
@@ -318,9 +328,8 @@ public class TwoBandsTinder extends AppCompatActivity {
         right = false;
     }
 
-
     // класс listener для моего обьекта
-    class OnSwipeTinderListener implements View.OnTouchListener {
+    static class OnSwipeTinderListener implements View.OnTouchListener {
         //переменные для положения x
         float dX;
         float defX;
@@ -334,9 +343,9 @@ public class TwoBandsTinder extends AppCompatActivity {
         boolean rightCheck;
         float paddingYx;
         //ViewGroup.MarginLayoutParams padding;
-        float b;
 
-        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(final View v, final MotionEvent event) {
             //получаем размер экрана чтобы различать в какую сторону скинули
@@ -344,15 +353,12 @@ public class TwoBandsTinder extends AppCompatActivity {
             //padding = (ViewGroup.MarginLayoutParams)  v.getLayoutParams();
             v.getDisplay().getMetrics(metrics);
             int width = metrics.widthPixels;
-            //размер границы картинки от левого края
-            final int paddingX = (width - v.getWidth()) / 2;
             //формулы для определения в какую сторону была скинута картинка
-            leftCheck = (defX < (width / 2 - width + 30));
-            rightCheck = (defX > (width / 2 - 30));
+            leftCheck = (defX < (width / 2f - width + 30));
+            rightCheck = (defX > (width / 2f - 30));
             //формула для для вычисление поворота
             roatx = (event.getRawX() / width) * 45 - 17.5f;
             droatx = dX / width * 45 + 17.5f;
-
 
             switch (event.getAction()) {
                 //обработка события нажатия на экран
@@ -371,7 +377,6 @@ public class TwoBandsTinder extends AppCompatActivity {
                     defX = dX + event.getRawX();
                     defY = dY + event.getRawY();
                     //droat и roat та же логика
-                    ObjectAnimator b = new ObjectAnimator();
                     v.animate().setDuration(0);
                     v.animate().x(defX).y(defY).rotation(roatx + droatx).start();
                     // Log.i("dX", "onTouch:getrawX "+defX+"dX"+roatx);
@@ -397,12 +402,10 @@ public class TwoBandsTinder extends AppCompatActivity {
             return true;
         }
 
-        public boolean onLeftCheck() {
-            return false;
+        public void onLeftCheck() {
         }
 
-        public boolean onRightCheck() {
-            return false;
+        public void onRightCheck() {
         }
     }
 }

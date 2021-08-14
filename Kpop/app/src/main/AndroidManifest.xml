@@ -35,6 +35,9 @@
             android:name=".gallery.activity.Gallery"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.TwoBandsTinder"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>

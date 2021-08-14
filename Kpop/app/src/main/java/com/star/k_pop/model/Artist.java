@@ -35,7 +35,7 @@ public class Artist {
         return name;
     }
 
-    public String getGroups() {
+    public String getGroup() {
         return groups[0];
     }
 
