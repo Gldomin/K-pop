@@ -1,7 +1,6 @@
 //Класс для работы свайпов у элементов
 package com.star.k_pop.interfaces;
 
-import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,9 +10,6 @@ import android.view.View.OnTouchListener;
  * Класс интерфейс для добавления слайдов на любой view
  */
 public class OnSwipeTouchListener implements OnTouchListener {
-
-    private final GestureDetector gestureDetector = new GestureDetector(new GestureListener());
-    float dX, dY;
 
     @Override
     public boolean onTouch(final View v, final MotionEvent event) {

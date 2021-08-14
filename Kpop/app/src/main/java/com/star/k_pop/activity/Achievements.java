@@ -1,8 +1,6 @@
 package com.star.k_pop.activity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.star.k_pop.R;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
-
 
 public class Achievements extends AppCompatActivity {
 
@@ -24,7 +21,6 @@ public class Achievements extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievements);
-
 
         final ImageView ach1 = findViewById(R.id.ach1);
         final ImageView ach2 = findViewById(R.id.ach2);
@@ -63,9 +59,7 @@ public class Achievements extends AppCompatActivity {
         if (storage.getBoolean("achRoyal"))
             ach11.setImageResource(R.drawable.kpoplove);
 
-
         //SomeMethods.showToast(this, "Достижение открыто!", R.drawable.achievement);
-
-
+        
     }
 }

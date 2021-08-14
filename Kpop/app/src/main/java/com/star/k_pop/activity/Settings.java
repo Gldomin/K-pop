@@ -10,11 +10,9 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.star.k_pop.R;
 import com.star.k_pop.helper.OptionsSet;
@@ -177,27 +175,24 @@ public class Settings extends AppCompatActivity {
         if (num == 1) {
             if (darkThemeSwitch.isChecked()) {
                 themeIm.setImageResource(R.drawable.stylebutton_dark);
-                tempSettingsSet.themeCount = 1;
             } else {
                 themeIm.setImageResource(R.drawable.main_background);
-                tempSettingsSet.themeCount = 1;
             }
+            tempSettingsSet.themeCount = 1;
         } else if (num == 2) {
             if (darkThemeSwitch.isChecked()) {
                 themeIm.setImageResource(R.drawable.stylebutton_dark_green);
-                tempSettingsSet.themeCount = 2;
             } else {
                 themeIm.setImageResource(R.drawable.main_background_hamster);
-                tempSettingsSet.themeCount = 2;
             }
+            tempSettingsSet.themeCount = 2;
         } else if (num == 3) {
             if (darkThemeSwitch.isChecked()) {
                 themeIm.setImageResource(R.drawable.stylebutton_dark_pink);
-                tempSettingsSet.themeCount = 3;
             } else {
                 themeIm.setImageResource(R.drawable.main_background_cat);
-                tempSettingsSet.themeCount = 3;
             }
+            tempSettingsSet.themeCount = 3;
         }
     }
 

@@ -1,5 +1,6 @@
 package com.star.k_pop.gallery.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -25,21 +27,14 @@ import java.util.ArrayList;
  */
 public class GallerySlideshowDialogFragment extends DialogFragment {
 
-    private String TAG = GallerySlideshowDialogFragment.class.getSimpleName();
+    private final String TAG = GallerySlideshowDialogFragment.class.getSimpleName();
     private ArrayList<ImageGallery> imageGalleries;
     private ViewPager viewPager;
-    private MyViewPagerAdapter myViewPagerAdapter;
     private TextView lblCount, lblTitle, lblDate;
     private int selectedPosition = 0;
 
     public static GallerySlideshowDialogFragment newInstance() {
         return new GallerySlideshowDialogFragment();
-    }
-
-    @Override
-    public void onPause() {
-        getActivity().overridePendingTransition(R.anim.alpha_off, R.anim.bottom_off);
-        super.onPause();
     }
 
     @Override
@@ -53,7 +48,7 @@ public class GallerySlideshowDialogFragment extends DialogFragment {
         selectedPosition = getArguments().getInt("position");
         Log.e(TAG, "position: " + selectedPosition);
         Log.e(TAG, "images size: " + imageGalleries.size());
-        myViewPagerAdapter = new MyViewPagerAdapter();
+        MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
         setCurrentItem(selectedPosition);
@@ -82,8 +77,9 @@ public class GallerySlideshowDialogFragment extends DialogFragment {
         }
     };
 
+    @SuppressLint("DefaultLocale")
     private void displayMetaInfo(int position) {
-        lblCount.setText((position + 1) + " of " + imageGalleries.size());
+        lblCount.setText(String.format("%d of %d", position + 1, imageGalleries.size()));
         ImageGallery imageGallery = imageGalleries.get(position);
         lblTitle.setText(imageGallery.getName());
         lblTitle.setText(imageGallery.getName());
@@ -99,16 +95,15 @@ public class GallerySlideshowDialogFragment extends DialogFragment {
     //	adapter
     public class MyViewPagerAdapter extends PagerAdapter {
 
-        private LayoutInflater layoutInflater;
-
         public MyViewPagerAdapter() {
         }
 
+        @NonNull
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = layoutInflater.inflate(R.layout.gallery_image_fullscreen_preview, container, false);
-            ImageView imageViewPreview = (ImageView) view.findViewById(R.id.image_preview);
+            ImageView imageViewPreview = view.findViewById(R.id.image_preview);
             ImageGallery imageGallery = imageGalleries.get(position);
             Glide.with(getActivity()).load(imageGallery.getUri())
                     .thumbnail(0.5f)
@@ -124,12 +119,12 @@ public class GallerySlideshowDialogFragment extends DialogFragment {
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object obj) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object obj) {
             return view == ((View) obj);
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
             container.removeView((View) object);
         }
     }

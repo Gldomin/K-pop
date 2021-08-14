@@ -22,14 +22,6 @@ public class Bands {
         MIXED
     }
 
-    public Bands(String[] name, ArrayList<Artist> artists, String[] imagesBands) {
-        this.name = name;
-        this.artists = new ArrayList<>(artists);
-        this.numberOfPeople = (byte) artists.size();
-        this.imagesBands = imagesBands;
-        this.sex = Sex.MIXED;
-    }
-
     public Bands(String[] name, ArrayList<Artist> artists, String[] imagesBands, Sex sex) {
         this.name = name;
         this.artists = new ArrayList<>(artists);

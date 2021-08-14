@@ -81,7 +81,7 @@ public class Importer {
                                 sexBand = Bands.Sex.MALE;
                             } else if (sexBandText.equals("Female")) {
                                 sexBand = Bands.Sex.FEMALE;
-                            } else{
+                            } else {
                                 sexBand = Bands.Sex.MIXED;
                             }
                             break;

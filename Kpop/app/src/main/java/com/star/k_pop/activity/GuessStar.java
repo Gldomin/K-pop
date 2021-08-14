@@ -60,7 +60,7 @@ public class GuessStar extends AppCompatActivity {
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
 
-    Theme theme; //переменная для считывания состояния свиича на darkmod
+    Theme theme; //переменная для считывания состояния свиича на darkMod
 
     Rewarded rewarded;          //Класс для работы с рекламой
     HeathBar heathBarTest;
@@ -122,7 +122,6 @@ public class GuessStar extends AppCompatActivity {
 
             buttons[i].setPadding(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
-
 
 
             buttons[i].setOnClickListener(new View.OnClickListener() {
@@ -201,7 +200,7 @@ public class GuessStar extends AppCompatActivity {
         imageViewList.add(imageView2);
         imageViewList.add(imageView3);
 
-        Animation lifeBrokeAnimation = AnimationUtils.loadAnimation(this,R.anim.heart_broke_animation);
+        Animation lifeBrokeAnimation = AnimationUtils.loadAnimation(this, R.anim.heart_broke_animation);
         heathBarTest = new HeathBar(imageViewList, 3, lifeBrokeAnimation);
     }
 

@@ -1,7 +1,6 @@
 package com.star.k_pop.helper;
 
 import android.app.Activity;
-import android.util.Log;
 
 import com.star.k_pop.R;
 
@@ -9,7 +8,7 @@ public class Theme {
 
     Activity activity;
     boolean darkMode;
-    int themeCount, themeCount2;
+    int themeCount;
 
     public Theme(Activity activity) {
         this.activity = activity;
@@ -127,18 +126,21 @@ public class Theme {
             return R.drawable.stylebutton_dark;
         } else */
         if (themeCount == 1) {
-            if(darkMode){return R.drawable.stylebutton_hint_dark_red;}
-            else {
+            if (darkMode) {
+                return R.drawable.stylebutton_hint_dark_red;
+            } else {
                 return R.drawable.stylebutton_hint;
             }
         } else if (themeCount == 2) {
-            if(darkMode){return R.drawable.stylebutton_hint_dark_green;}
-            else {
+            if (darkMode) {
+                return R.drawable.stylebutton_hint_dark_green;
+            } else {
                 return R.drawable.stylebutton_hint_hamster;
             }
         } else if (themeCount == 3) {
-            if(darkMode){return R.drawable.stylebutton_hint_dark_pink;}
-            else {
+            if (darkMode) {
+                return R.drawable.stylebutton_hint_dark_pink;
+            } else {
                 return R.drawable.stylebutton_hint_cat;
             }
         } else {
@@ -148,25 +150,27 @@ public class Theme {
 
     public int getBackgroundButton2() {
         if (themeCount == 1) {
-            if(darkMode){return R.drawable.stylebutton_dark;}
-            else {
+            if (darkMode) {
+                return R.drawable.stylebutton_dark;
+            } else {
                 return R.drawable.main_background;
             }
         } else if (themeCount == 2) {
-            if(darkMode){return R.drawable.stylebutton_dark_green;}
-            else {
+            if (darkMode) {
+                return R.drawable.stylebutton_dark_green;
+            } else {
                 return R.drawable.main_background_hamster;
             }
         } else if (themeCount == 3) {
-            if(darkMode){return R.drawable.stylebutton_dark_pink;}
-            else {
+            if (darkMode) {
+                return R.drawable.stylebutton_dark_pink;
+            } else {
                 return R.drawable.main_background_cat;
             }
         } else {
             return R.drawable.main_background;
         }
     }
-
 
 
     public boolean isDarkMode() {
