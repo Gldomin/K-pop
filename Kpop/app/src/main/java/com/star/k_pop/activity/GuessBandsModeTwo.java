@@ -2,6 +2,10 @@ package com.star.k_pop.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,22 +13,30 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.helper.Rewarded;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.model.Bands;
+import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
@@ -36,12 +48,22 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     Theme theme;
     HeathBar heathBarTest;
 
+    private int record;
+    private int scoreNow = -1;
     private int count = 0;
     private int startButtonNumber;
     private int countLetter;
     private String nameGroup;
     private boolean countClick = false;
 
+    private boolean onRewarded = true;
+    private boolean showReward = false;
+
+    private boolean onRewardedHint = true;
+    private boolean hintUsed = false;
+    private int hintCount = 4;
+
+    private int[] ref;
     private List<Button> buttons;
     private List<Button> buttonsEnd;
     private ArrayList<Bands> artists = Importer.getRandomBands();
@@ -56,8 +78,15 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             R.id.end6, R.id.end7, R.id.end8, R.id.end9, R.id.end10
     };
 
+    private SharedPreferences spBands;
+    Rewarded rewarded;
+
     private ImageView groupPhoto;
     private Button slideButton;
+    private ImageButton hintButton;
+    private TextView recordText; //рекорд
+    private TextView scoreNowText; //текущий счет
+    private TextView counterHint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +95,37 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands_mode_two);
 
+        rewarded = new Rewarded(this, R.string.admob_id_reward_bands);
+
         groupPhoto = findViewById(R.id.groupPhoto);
+        hintButton = findViewById(R.id.podsk);
+        slideButton = findViewById(R.id.button);
+        recordText = findViewById(R.id.scoreBands);
+        scoreNowText = findViewById(R.id.fastscoreBands);
 
         groupPhoto.setBackground(AppCompatResources.getDrawable(this, theme.getBackgroundResource()));
+        hintButton.setBackgroundResource(theme.getBackgroundResource());
+        if (theme.isDarkMode()) {
+            hintButton.setImageResource(R.drawable.hint2);
+        } else {
+            hintButton.setImageResource(R.drawable.hint);
+        }
 
-        slideButton = findViewById(R.id.button);
+        spBands = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
+
+        if (spBands.contains("userScoreGuessBandModeTwo")) {
+            record = spBands.getInt("userScoreGuessBandModeTwo", -1);
+        } else {
+            record = -1;
+        }
+
+        counterHint = findViewById(R.id.counter_Hints);
+        counterHint.setText(String.format("%d", hintCount));
+        recordText.setText(String.format("%s %d",
+                getResources().getString(R.string.record_text), record));
+        scoreNowText.setText(String.format("%s %d",
+                getResources().getString(R.string.score_text), scoreNow));
+
         slideButton.setBackgroundResource(R.drawable.roundedimageview);
         slideButton.setVisibility(View.INVISIBLE);
 
@@ -91,8 +146,43 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             buttonsEnd.add(button);
         }
 
+        hintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!hintUsed) {
+                    if (hintCount > 1) {
+                        hintCount--;
+                        counterHint.setText(String.format("%d", hintCount));
+                        for (int i = 0; i < ref.length; i++) {
+                            if (i < countLetter && nameGroup.charAt(i) != ' ') {
+                                buttons.get(ref[i]).setText("" + nameGroup.charAt(i));
+                            } else {
+                                buttons.get(ref[i]).setVisibility(View.INVISIBLE);
+                            }
+                        }
+                        for (Button b : buttonsEnd) {
+                            if (b.getText() != " ") {
+                                b.setText("_");
+                            }
+                        }
+                        hintUsed = true;
+                    } else if (hintCount == 1) {
+                        onRewardHint();
+                    }
+                }
+            }
+        });
+
         createHeathBar();
         change();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor editor = spBands.edit();
+        editor.putInt("userScoreGuessBandModeTwo", record);
+        editor.apply();
     }
 
     private void createHeathBar() {
@@ -110,6 +200,15 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
     private void change() {
         count++;
+        scoreNow++;
+        hintUsed = false;
+        scoreNowText.setText(String.format("%s %d",
+                getResources().getString(R.string.score_text), scoreNow));
+        if (scoreNow > record) {
+            record = scoreNow;
+            recordText.setText(String.format("%s %d",
+                    getResources().getString(R.string.record_text), record));
+        }
         if (count >= artists.size() || count < 0) {
             artists = Importer.getRandomBands();
             count = 0;
@@ -127,20 +226,21 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                 buttonsEnd.get(i).setText("_");
             }
         }
-        int[] ref = createRandomButton();
+        ref = createRandomButton();
         for (int i = 0; i < ref.length; i++) {
-            Log.i("TAGS", "" + ref[i]);
             if (i < countLetter && nameGroup.charAt(i) != ' ') {
                 buttons.get(ref[i]).setText("" + nameGroup.charAt(i));
             } else {
                 buttons.get(ref[i]).setText("" + (char) ('a' + new Random().nextInt(26)));
             }
+            buttons.get(ref[i]).setVisibility(View.VISIBLE);
         }
-        Log.i("TAGS", artists.get(count).getName()); //чит-лог
         Glide.with(this).load(Uri.parse(artists.get(count).getFolderRandom()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(groupPhoto);
+
+        Log.i("TAGS", artists.get(count).getName()); //чит-лог
     }
 
     private int[] createRandomButton() {
@@ -163,11 +263,16 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private void checkWin() {
         StringBuilder win = new StringBuilder();
         for (Button b : buttonsEnd) {
-            if (!b.getText().toString().equals("_"))
+            if (!b.getText().toString().equals(" "))
                 win.append(b.getText().toString());
         }
         if (artists.get(count).checkGroup(win.toString())) {
             change();
+        } else {
+            heathBarTest.blow();
+            if (heathBarTest.getHp() == 0) {
+                startLosingDialog();
+            }
         }
     }
 
@@ -190,7 +295,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             buttons.get(positionButton).setText(str);
             countClick = false;
 
-            if (positionButton - startButtonNumber == countLetter - 1) {
+            if (positionButton - startButtonNumber == countLetter - 1 && buttons == buttonsEnd) {
                 checkWin();
             }
         }
@@ -247,5 +352,126 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                     .y(positionEnd[1])
                     .setListener(new AnimatorCustom(buttonsClick, positionButton, str));
         }
+    }
+
+    private void onRewardHint() {
+        if (rewarded.onLoaded() && onRewardedHint) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+            builder.setTitle(getResources().getString(R.string.endHintCongratulate))
+                    .setMessage(String.format("%s", getResources().getString(R.string.endHintReward)))
+                    .setCancelable(false)
+                    .setNegativeButton(getResources().getString(R.string.endHintNo), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            YandexMetrica.reportEvent("GuessBands - последняя подсказка, нет");
+                        }
+                    })
+                    .setPositiveButton(getResources().getString(R.string.endHintYes), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            YandexMetrica.reportEvent("GuessBands - последняя подсказка, да");
+                            rewarded.show(GuessBandsModeTwo.this, new OnUserEarnedRewardListener() {
+                                @Override
+                                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                                    showReward = true;
+                                    YandexMetrica.reportEvent("GuessBands - Реклама просмотрена, подсказка");
+                                }
+                            }, new Rewarded.RewardDelay() {
+                                @Override
+                                public void onShowDismissed() {
+                                    if (showReward) {
+                                        YandexMetrica.reportEvent("GuessBands - открыта подсказка за рекламу");
+                                        onRewardedHint = false;
+                                        for (int i = 0; i < ref.length; i++) {
+                                            if (i < countLetter && nameGroup.charAt(i) != ' ') {
+                                                buttons.get(ref[i]).setText("" + nameGroup.charAt(i));
+                                            } else {
+                                                buttons.get(ref[i]).setVisibility(View.INVISIBLE);
+                                            }
+                                        }
+                                        for (Button b : buttonsEnd) {
+                                            if (b.getText() != " ") {
+                                                b.setText("_");
+                                            }
+                                        }
+                                        hintCount--;
+                                        counterHint.setText(String.format(new Locale("ru"), "%d", hintCount));
+                                    } else {
+                                        YandexMetrica.reportEvent("GuessBands - Реклама не просмотрена");
+                                        onRewardedHint = true;
+                                    }
+                                    showReward = false;
+                                }
+                            });
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+    }
+
+    private void startLosingDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+        builder.setTitle(getResources().getString(R.string.endGameCongratulate))
+                .setMessage(String.format("%s %d! %s", getResources().getString(R.string.score_text), scoreNow, getResources().getString(R.string.endGameNewGame)))
+                .setCancelable(false)
+                .setNegativeButton(getResources().getString(R.string.endGameNo), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        YandexMetrica.reportEvent("GuessStar - Игра окончена, нет");
+                        finish();
+                    }
+                })
+                .setPositiveButton(getResources().getString(R.string.endGameYes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        YandexMetrica.reportEvent("GuessStar - Игра окончена, да");
+                        heathBarTest.setHp(3);
+                        scoreNow = -1;
+                        hintCount = 4;
+                        counterHint.setText(String.format("%d", hintCount));
+                        onRewarded = true;
+                        onRewardedHint = true;
+                        change();
+                    }
+                });
+        if (rewarded.onLoaded() && onRewarded) {
+            builder.setMessage(String.format("%s %d! %s %s", getResources().getString(R.string.score_text),
+                    scoreNow, getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
+                    .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            YandexMetrica.reportEvent("GuessBands - Игра окончена, реклама");
+                            rewarded.show(GuessBandsModeTwo.this, new OnUserEarnedRewardListener() {
+                                @Override
+                                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                                    showReward = true;
+                                    YandexMetrica.reportEvent("GuessBands - Реклама просмотрена");
+                                }
+                            }, new Rewarded.RewardDelay() {
+                                @Override
+                                public void onShowDismissed() {
+                                    if (showReward) {
+                                        onRewarded = false;
+                                        heathBarTest.restore();
+                                        YandexMetrica.reportEvent("GuessBands - добавлено хп");
+                                    } else {
+                                        YandexMetrica.reportEvent("GuessBands - Реклама не просмотрена");
+                                        heathBarTest.setHp(3);
+                                        scoreNow = -1;
+                                        hintCount = 4;
+                                        counterHint.setText(String.format("%d", hintCount));
+                                        onRewarded = true;
+                                        onRewardedHint = true;
+                                        change();
+                                    }
+                                    showReward = false;
+                                }
+                            });
+                        }
+                    });
+        }
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
