@@ -59,8 +59,8 @@ public class Bands {
 
     public boolean checkGroup(String group) {
         for (String g : name) {
-            Log.v("TAG", group.replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
-            if (group.replaceAll(" ", "").equals(g.toUpperCase().replaceAll(" ", ""))) {
+            Log.v("TAG", group.toUpperCase().replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
+            if (group.toUpperCase().replaceAll(" ", "").equals(g.toUpperCase().replaceAll(" ", ""))) {
                 return true;
             }
         }

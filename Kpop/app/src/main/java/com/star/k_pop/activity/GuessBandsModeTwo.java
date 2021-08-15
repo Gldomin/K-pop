@@ -99,9 +99,6 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                 final String str = ((Button) view).getText().toString();
                 final int finalPositionButton = positionButton;
 
-                Log.i(TAG + " view", positionStart[0] + " " + positionStart[1]);
-                Log.i(TAG + " buttonsEnd", positionEnd[0] + " " + positionEnd[1]);
-
                 slideButton.setX(positionStart[0]);
                 slideButton.setY(positionStart[1]);
                 slideButton.setWidth(view.getWidth());
@@ -122,6 +119,9 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                                 slideButton.setVisibility(View.INVISIBLE);
                                 buttonsEnd.get(finalPositionButton).setText(str);
                                 countClick = false;
+                                if (finalPositionButton - startButtonNumber == countLetter-1){
+                                    checkWin();
+                                }
                             }
                         });
             }
@@ -224,6 +224,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             count = 0;
         }
         for (Button b : buttonsEnd) {
+            b.setText("_");
             b.setVisibility(View.INVISIBLE);
         }
         nameGroup = artists.get(count).getNameCorrect();
@@ -264,5 +265,16 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             ret[i] = integers.get(i);
         }
         return ret;
+    }
+
+    private void checkWin() {
+        StringBuilder win = new StringBuilder();
+        for (Button b : buttonsEnd) {
+            if (!b.getText().toString().equals("_"))
+                win.append(b.getText().toString());
+        }
+        if (artists.get(count).checkGroup(win.toString())) {
+            change();
+        }
     }
 }
