@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -110,6 +111,19 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         } else {
             hintButton.setImageResource(R.drawable.hint);
         }
+
+        ImageButton about = findViewById(R.id.guessBandAbautButton);
+        about.setBackgroundResource(theme.getBackgroundResource());
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent image = new Intent();
+                image.setClass(GuessBandsModeTwo.this, BasicNotice.class);
+                image.putExtra("text", R.string.guessBandGameModeTwoAbaut);
+                image.putExtra("title", R.string.gameModeAbaut);
+                startActivity(image);
+            }
+        });
 
         spBands = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
 
