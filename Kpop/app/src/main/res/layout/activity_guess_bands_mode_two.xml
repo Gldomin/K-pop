@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".activity.GuessBandsModeTwo">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:text="k"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <LinearLayout
         android:id="@+id/keys"
         android:layout_width="match_parent"

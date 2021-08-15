@@ -1,5 +1,7 @@
 package com.star.k_pop.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,11 +31,16 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class GuessBandsModeTwo extends AppCompatActivity {
 
+    private final String TAG = "Mode Two";
+
     Theme theme;
     HeathBar heathBarTest;
 
     private int count = 0;
+    private int startButtonNumber;
+    private int countLetter;
     private String nameGroup;
+    private boolean countClick = false;
 
     private List<Button> buttons;
     private List<Button> buttonsEnd;
@@ -50,6 +57,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     };
 
     private ImageView groupPhoto;
+    private Button slideButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +72,117 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
         View.OnClickListener clkGr = new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                view.setVisibility(View.INVISIBLE);
+            public void onClick(final View view) {
+                if (((Button) view).getText() == "" || countClick) {
+                    return;
+                }
+                countClick = true;
+                int positionButton = -1;
+                for (int i = startButtonNumber; i < startButtonNumber + countLetter; i++) {
+                    if (buttonsEnd.get(i).getText().toString().equals("_")
+                            && nameGroup.charAt(i - startButtonNumber) != ' ') {
+                        positionButton = i;
+                        break;
+                    }
+                }
+                if (positionButton == -1) {
+                    countClick = false;
+                    return;
+                }
+
+                int[] positionStart = new int[2];
+                view.getLocationInWindow(positionStart);
+
+                int[] positionEnd = new int[2];
+                buttonsEnd.get(positionButton).getLocationInWindow(positionEnd);
+
+                final String str = ((Button) view).getText().toString();
+                final int finalPositionButton = positionButton;
+
+                Log.i(TAG + " view", positionStart[0] + " " + positionStart[1]);
+                Log.i(TAG + " buttonsEnd", positionEnd[0] + " " + positionEnd[1]);
+
+                slideButton.setX(positionStart[0]);
+                slideButton.setY(positionStart[1]);
+                slideButton.setWidth(view.getWidth());
+                slideButton.setHeight(view.getHeight());
+                slideButton.setText(((Button) view).getText());
+                slideButton.setVisibility(View.VISIBLE);
+                ((Button) view).setText("");
+
+                slideButton.animate().setDuration(400)
+                        .x(positionEnd[0])
+                        .y(positionEnd[1])
+                        .scaleX(1.1f)
+                        .scaleY(1.1f)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                slideButton.setVisibility(View.INVISIBLE);
+                                buttonsEnd.get(finalPositionButton).setText(str);
+                                countClick = false;
+                            }
+                        });
             }
         };
 
         View.OnClickListener clkGrEnd = new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                view.setVisibility(View.INVISIBLE);
+            public void onClick(final View view) {
+                if (((Button) view).getText() == "_" || countClick) {
+                    return;
+                }
+                countClick = true;
+                int positionButton = -1;
+                for (int i = 0; i < buttons.size(); i++) {
+                    if (buttons.get(i).getText().toString().equals("")) {
+                        positionButton = i;
+                        break;
+                    }
+                }
+                if (positionButton == -1) {
+                    countClick = false;
+                    return;
+                }
+
+                int[] positionStart = new int[2];
+                view.getLocationInWindow(positionStart);
+
+                int[] positionEnd = new int[2];
+                buttons.get(positionButton).getLocationInWindow(positionEnd);
+
+                final String str = ((Button) view).getText().toString();
+                final int finalPositionButton = positionButton;
+
+                slideButton.setX(positionStart[0]);
+                slideButton.setY(positionStart[1]);
+                slideButton.setWidth(view.getWidth());
+                slideButton.setHeight(view.getHeight());
+                slideButton.setText(((Button) view).getText());
+                slideButton.setVisibility(View.VISIBLE);
+                ((Button) view).setText("_");
+
+                slideButton.animate().setDuration(400)
+                        .x(positionEnd[0])
+                        .y(positionEnd[1])
+                        .scaleX(0.9f)
+                        .scaleY(0.9f)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                slideButton.setVisibility(View.INVISIBLE);
+                                buttons.get(finalPositionButton).setText(str);
+                                countClick = false;
+                            }
+                        });
             }
         };
+
+        slideButton = findViewById(R.id.button);
+        slideButton.setBackgroundResource(R.drawable.roundedimageview);
+        slideButton.setVisibility(View.INVISIBLE);
 
         buttons = new ArrayList<>();
         for (int id : BUTTON_IDS) {
@@ -119,8 +227,8 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             b.setVisibility(View.INVISIBLE);
         }
         nameGroup = artists.get(count).getNameCorrect();
-        int countLetter = nameGroup.length();
-        int startButtonNumber = 5 - countLetter / 2;
+        countLetter = nameGroup.length();
+        startButtonNumber = 5 - countLetter / 2;
         for (int i = startButtonNumber; i < startButtonNumber + countLetter; i++) {
             if (nameGroup.charAt(i - startButtonNumber) != ' ')
                 buttonsEnd.get(i).setVisibility(View.VISIBLE);
