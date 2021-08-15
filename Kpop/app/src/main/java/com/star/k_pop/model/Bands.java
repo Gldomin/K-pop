@@ -34,6 +34,10 @@ public class Bands {
         return name[0];
     }
 
+    public String getNameCorrect() {
+        return name[name.length - 1];
+    }
+
     public ArrayList<Artist> getArtists() {
         return artists;
     }
@@ -79,5 +83,15 @@ public class Bands {
      */
     public String getFolder() {
         return name[0] + "/" + getNamesImages();
+    }
+
+    public String getFolderRandom() {
+        String folder = "file:///android_asset/Groups/";
+        if (new Random().nextInt(10) > 1) {
+            folder += artists.get(new Random().nextInt(numberOfPeople)).getFolder();
+        } else {
+            folder += getFolder();
+        }
+        return folder;
     }
 }

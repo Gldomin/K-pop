@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 YandexMetrica.reportEvent("Main - guessBandButton");
                 Intent image = new Intent();
-                image.setClass(MainActivity.this, GuessBands.class);
+                image.setClass(MainActivity.this, GuessBandsModeTwo.class);
                 startActivity(image);
             }
         });
