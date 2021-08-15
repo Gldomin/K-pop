@@ -310,7 +310,7 @@ public class GuessBands extends AppCompatActivity {
         if (fastScore > score) score = fastScore;
         scoreText.setText(String.format("%s %d",
                 getResources().getString(R.string.record_text), score));
-        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(count).getFolder()))
+        Glide.with(this).load(Uri.parse(artists.get(count).getFolderRandom()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(groupPhoto);
