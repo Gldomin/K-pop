@@ -140,7 +140,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         scoreNowText.setText(String.format("%s %d",
                 getResources().getString(R.string.score_text), scoreNow));
 
-        slideButton.setBackgroundResource(R.drawable.roundedimageview);
+        slideButton.setBackgroundResource(theme.getBackgroundResource());
         slideButton.setVisibility(View.INVISIBLE);
 
         buttons = new ArrayList<>();
@@ -156,7 +156,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         for (int id : BUTTON_IDS_END) {
             Button button = findViewById(id);
             button.setOnClickListener(new OnClickListenerCustom(buttons, "_", ""));
-            button.setBackgroundResource(theme.getBackgroundResource());
+            button.setBackgroundResource(R.drawable.roundedimageview);
             buttonsEnd.add(button);
         }
 
@@ -230,6 +230,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         for (Button b : buttonsEnd) {
             b.setText(" ");
             b.setVisibility(View.INVISIBLE);
+            b.setBackgroundResource(R.drawable.roundedimageview);
         }
         nameGroup = artists.get(count).getNameCorrect();
         countLetter = nameGroup.length();
@@ -308,10 +309,14 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             slideButton.setVisibility(View.INVISIBLE);
             buttons.get(positionButton).setText(str);
             countClick = false;
-
+            buttons.get(positionButton).setVisibility(View.VISIBLE);
+            if (buttons == buttonsEnd){
+                buttons.get(positionButton).setBackgroundResource(theme.getBackgroundResource());
+            }
             if (positionButton - startButtonNumber == countLetter - 1 && buttons == buttonsEnd) {
                 checkWin();
             }
+
         }
     }
 
@@ -360,6 +365,11 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             slideButton.setText(((Button) view).getText());
             slideButton.setVisibility(View.VISIBLE);
             ((Button) view).setText(textStart);
+            if (textEnd.equals("_"))
+                view.setVisibility(View.INVISIBLE);
+            if (textEnd.equals("")){
+                view.setBackgroundResource(R.drawable.roundedimageview);
+            }
 
             slideButton.animate().setDuration(400)
                     .x(positionEnd[0])
