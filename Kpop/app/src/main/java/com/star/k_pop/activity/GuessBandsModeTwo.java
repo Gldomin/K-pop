@@ -115,11 +115,46 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             artists = Importer.getRandomBands();
             count = 0;
         }
+        for (Button b : buttonsEnd) {
+            b.setVisibility(View.INVISIBLE);
+        }
         nameGroup = artists.get(count).getNameCorrect();
+        int countLetter = nameGroup.length();
+        int startButtonNumber = 5 - countLetter / 2;
+        for (int i = startButtonNumber; i < startButtonNumber + countLetter; i++) {
+            if (nameGroup.charAt(i - startButtonNumber) != ' ')
+                buttonsEnd.get(i).setVisibility(View.VISIBLE);
+        }
+        int[] ref = createRandomButton();
+        for (int i = 0; i < ref.length; i++) {
+            Log.i("TAGS", "" + ref[i]);
+            if (i < countLetter && nameGroup.charAt(i) != ' ') {
+                buttons.get(ref[i]).setText("" + nameGroup.charAt(i));
+            } else {
+                buttons.get(ref[i]).setText("" + (char) ('a' + new Random().nextInt(26)));
+            }
+        }
         Log.i("TAGS", artists.get(count).getName()); //чит-лог
         Glide.with(this).load(Uri.parse(artists.get(count).getFolderRandom()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(groupPhoto);
+    }
+
+    private int[] createRandomButton() {
+        List<Integer> fill = new ArrayList<>();
+        for (int i = 0; i < BUTTON_IDS.length; i++) {
+            fill.add(i);
+        }
+        Collections.shuffle(fill);
+        return convertIntegers(fill);
+    }
+
+    public static int[] convertIntegers(List<Integer> integers) {
+        int[] ret = new int[integers.size()];
+        for (int i = 0; i < ret.length; i++) {
+            ret[i] = integers.get(i);
+        }
+        return ret;
     }
 }
