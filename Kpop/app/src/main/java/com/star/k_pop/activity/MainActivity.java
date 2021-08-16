@@ -80,28 +80,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonLibrary = findViewById(R.id.galleryButton);
-        buttonLibrary.setBackgroundResource(theme.getBackgroundResource());
+        ImageView buttonLibrary = findViewById(R.id.galleryButton);
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                YandexMetrica.reportEvent("Main - buttonLibrary");
+                YandexMetrica.reportEvent("Main - gallary");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Gallery.class);
                 startActivity(image);
             }
         });
 
-        Button settingsButton = findViewById(R.id.settingsButton);
-        settingsButton.setBackgroundResource(theme.getBackgroundResource());
-
+        ImageView settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                YandexMetrica.reportEvent("Main - settingsButton");
+                YandexMetrica.reportEvent("Main - setting");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Settings.class);
-                startActivityForResult(image, REQUEST_CODE);
+                startActivity(image);
             }
         });
 
