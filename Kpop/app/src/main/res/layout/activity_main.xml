@@ -8,14 +8,16 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="242dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.58">
 
         <Button
             android:id="@+id/guessStarButton"
@@ -24,7 +26,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/menuItemGuessStar" />
+            android:text="@string/menuItemGuessStar"
+            android:elevation="3dp"
+            android:stateListAnimator="@null"
+            android:translationZ="1dp"
+            />
 
         <Button
             android:id="@+id/guessGroupButton"
@@ -33,7 +39,10 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/menuItemGuessBand" />
+            android:text="@string/menuItemGuessBand"
+            android:elevation="3dp"
+            android:stateListAnimator="@null"
+            android:translationZ="1dp"/>
 
         <Button
             android:id="@+id/guessTwoBands"
@@ -42,7 +51,10 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/menuItemTinderSwipe" />
+            android:text="@string/menuItemTinderSwipe"
+            android:elevation="3dp"
+            android:stateListAnimator="@null"
+            android:translationZ="1dp"/>
 
         <Button
             android:id="@+id/abautButton"
@@ -50,7 +62,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/menuItemAbout" />
+            android:text="@string/menuItemAbout"
+            android:elevation="3dp"
+            android:stateListAnimator="@null"
+            android:translationZ="1dp"
+            />
     </LinearLayout>
 
     <ImageView
@@ -68,6 +84,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
+        android:padding="10dp"
         android:paddingLeft="7dp"
         android:paddingTop="7dp"
         android:src="@drawable/setting_gear"
@@ -89,5 +106,14 @@
         android:src="@drawable/gallary_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/settingsButton" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="259dp"
+        android:layout_height="237dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
