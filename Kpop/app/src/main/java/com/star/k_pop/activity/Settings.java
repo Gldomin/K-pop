@@ -45,7 +45,7 @@ public class Settings extends AppCompatActivity {
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
 
         darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
-        darkThemeSwitch.setTextColor(theme.getTextColor());
+        darkThemeSwitch.setTextColor(theme.getButtonTextColor());
 
         radGroup = findViewById(R.id.radGroup);
         blueBut = findViewById(R.id.blueVar);
@@ -53,9 +53,9 @@ public class Settings extends AppCompatActivity {
         redBut = findViewById(R.id.redVar);
         catBut = findViewById(R.id.catVar);
 
-        blueBut.setTextColor(theme.getTextColor());
-        redBut.setTextColor(theme.getTextColor());
-        catBut.setTextColor(theme.getTextColor());
+        blueBut.setTextColor(theme.getButtonTextColor());
+        redBut.setTextColor(theme.getButtonTextColor());
+        catBut.setTextColor(theme.getButtonTextColor());
         if (theme.isDarkMode()) {
             blueBut.setText(getResources().getString(R.string.settingRed));
             redBut.setText(getResources().getString(R.string.settingGreen));
@@ -181,7 +181,7 @@ public class Settings extends AppCompatActivity {
             tempSettingsSet.themeCount = 1;
         } else if (num == 2) {
             if (darkThemeSwitch.isChecked()) {
-                themeIm.setImageResource(R.drawable.stylebutton_dark_green);
+                themeIm.setImageResource(R.drawable.stylebutton_dark_purple);
             } else {
                 themeIm.setImageResource(R.drawable.main_background_hamster);
             }

@@ -158,6 +158,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             button.setOnClickListener(new OnClickListenerCustom(buttons, "_", ""));
             button.setBackgroundResource(R.drawable.roundedimageview);
             buttonsEnd.add(button);
+            button.setTextColor(theme.getTextColor());
         }
 
         hintButton.setOnClickListener(new View.OnClickListener() {

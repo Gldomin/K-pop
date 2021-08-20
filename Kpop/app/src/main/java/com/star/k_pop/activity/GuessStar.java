@@ -82,6 +82,8 @@ public class GuessStar extends AppCompatActivity {
         textRecord = findViewById(R.id.scoreText2);
         imageView = findViewById(R.id.imageView);
         textScore = findViewById(R.id.scoreText);
+        textRecord.setTextColor(theme.getTextColor());
+        textScore.setTextColor(theme.getTextColor());
         ImageButton about = findViewById(R.id.guessStarAbautButton);
 
         artists = Importer.getRandomArtists();
@@ -114,7 +116,7 @@ public class GuessStar extends AppCompatActivity {
             }
 
             buttons[i].setBackgroundResource(theme.getBackgroundResource());
-            buttons[i].setTextColor(theme.getTextColor());
+            buttons[i].setTextColor(theme.getButtonTextColor());
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);

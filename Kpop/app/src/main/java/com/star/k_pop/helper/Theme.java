@@ -20,39 +20,25 @@ public class Theme {
     public void setTheme() {
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
-        } else if (themeCount == 1) {
+        } else
             activity.setTheme(R.style.AppThemeLightRabbit);
-        } else if (themeCount == 2) {
-            activity.setTheme(R.style.AppThemeLightHamster);
-        } else if (themeCount == 3) {
-            activity.setTheme(R.style.AppThemeLightCat);
-        }
+
     }
 
     public void setThemeSecond() {
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
-        } else if (themeCount == 1) {
+        } else
             activity.setTheme(R.style.AppThemeLightRabbit2);
-        } else if (themeCount == 2) {
-            activity.setTheme(R.style.AppThemeLightHamster2);
-        } else if (themeCount == 3) {
-            activity.setTheme(R.style.AppThemeLightCat2);
-        }
+
     }
 
     public int getThemeBackground() {
         if (darkMode) {
+            return R.drawable.light_background;
+        } else
             return R.drawable.main_background2;
-        } else if (themeCount == 1) {
-            return R.drawable.main_background2;
-        } else if (themeCount == 2) {
-            return R.drawable.main_background_hamster2;
-        } else if (themeCount == 3) {
-            return R.drawable.main_background_cat2;
-        } else {
-            return R.drawable.main_background;
-        }
+
     }
 
     public int getThemeBackground2() {
@@ -60,116 +46,57 @@ public class Theme {
             return R.drawable.main_background2;
         } else*/
         if (themeCount == 1) {
-            return R.drawable.main_background;
-        } else if (themeCount == 2) {
+            return R.drawable.light_background;
+        } else
             return R.drawable.main_background_hamster;
-        } else if (themeCount == 3) {
-            return R.drawable.main_background_cat;
-        } else {
-            return R.drawable.main_background;
-        }
+
     }
 
     public int getAlertDialogStyle() {
         if (darkMode) {
             return R.style.AlertDialog1;
-        } else if (themeCount == 1) {
+        } else
             return R.style.AlertDialog2;
-        } else if (themeCount == 2) {
-            return R.style.AlertDialog3;
-        } else if (themeCount == 3) {
-            return R.style.AlertDialog4;
-        }
-        return R.style.AlertDialog1;
     }
 
     public int getTextColor() {
         if (darkMode) {
-            return activity.getResources().getColor(R.color.colorText);
-        } else if (themeCount == 1)
-            return activity.getResources().getColor(R.color.colorTextRabbit);
-        else if (themeCount == 2) {
-            return activity.getResources().getColor(R.color.colorTextHamster);
-        } else if (themeCount == 3) {
-            return activity.getResources().getColor(R.color.colorTextCat);
-        } else {
-            return activity.getResources().getColor(R.color.colorTextRabbit);
-        }
+            return activity.getResources().getColor(R.color.whiteColor);
+        } else
+            return activity.getResources().getColor(R.color.blackColor);
+
+    }
+
+    public int getButtonTextColor() {
+        if (darkMode) {
+            return activity.getResources().getColor(R.color.blackColor);
+        } else
+            return activity.getResources().getColor(R.color.blackColor);
     }
 
     public int getBackgroundResource() {
-        if (themeCount == 1) {
             if (darkMode) {
-                return R.drawable.stylebutton_dark;
+                return R.drawable.stylebutton_dark_purple;
             } else {
                 return R.drawable.stylebutton;
             }
-        } else if (themeCount == 2) {
-            if (darkMode) {
-                return R.drawable.stylebutton_dark_green;
-            } else {
-                return R.drawable.stylebutton_hamster;
-            }
-        } else if (themeCount == 3) {
-            if (darkMode) {
-                return R.drawable.stylebutton_dark_pink;
-            } else {
-                return R.drawable.stylebutton_cat;
-            }
-        } else {
-            return R.drawable.stylebutton;
-        }
+
     }
 
     public int getBackgroundButton() {
-        /*if (darkMode) {
-            return R.drawable.stylebutton_dark;
-        } else */
-        if (themeCount == 1) {
+
             if (darkMode) {
-                return R.drawable.stylebutton_hint_dark_red;
-            } else {
-                return R.drawable.stylebutton_hint;
-            }
-        } else if (themeCount == 2) {
-            if (darkMode) {
-                return R.drawable.stylebutton_hint_dark_green;
-            } else {
-                return R.drawable.stylebutton_hint_hamster;
-            }
-        } else if (themeCount == 3) {
-            if (darkMode) {
-                return R.drawable.stylebutton_hint_dark_pink;
-            } else {
-                return R.drawable.stylebutton_hint_cat;
-            }
-        } else {
-            return R.drawable.stylebutton;
-        }
+                return R.drawable.stylebutton_dark_purple;
+            } else return R.drawable.stylebutton;
+
     }
 
     public int getBackgroundButton2() {
-        if (themeCount == 1) {
             if (darkMode) {
-                return R.drawable.stylebutton_dark;
-            } else {
-                return R.drawable.main_background;
-            }
-        } else if (themeCount == 2) {
-            if (darkMode) {
-                return R.drawable.stylebutton_dark_green;
-            } else {
-                return R.drawable.main_background_hamster;
-            }
-        } else if (themeCount == 3) {
-            if (darkMode) {
-                return R.drawable.stylebutton_dark_pink;
-            } else {
-                return R.drawable.main_background_cat;
-            }
-        } else {
-            return R.drawable.main_background;
-        }
+                return R.drawable.stylebutton_dark_purple;
+            } else
+                return R.drawable.light_background;
+
     }
 
 

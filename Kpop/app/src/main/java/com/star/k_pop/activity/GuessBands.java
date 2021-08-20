@@ -153,6 +153,8 @@ public class GuessBands extends AppCompatActivity {
         scoreText = findViewById(R.id.scoreBands);                  //рекорд
         fastScoreText = findViewById(R.id.fastscoreBands);          //текущий счет
         groupPhoto = findViewById(R.id.groupPhoto);
+        scoreText.setTextColor(theme.getTextColor());
+        fastScoreText.setTextColor(theme.getTextColor());
 
         groupPhoto.setBackground(AppCompatResources.getDrawable(this, theme.getBackgroundResource()));
 
@@ -170,7 +172,7 @@ public class GuessBands extends AppCompatActivity {
 
         buttons = new ArrayList<>();
         grName = findViewById(R.id.groupName);
-        grName.setTextColor(theme.getTextColor());
+        grName.setTextColor(theme.getButtonTextColor());
         grName.setLongClickable(false);
         grName.setFocusable(false);
 
@@ -245,6 +247,7 @@ public class GuessBands extends AppCompatActivity {
                                 for (char c : textHint) {
                                     if (b.getText().charAt(0) == c) {
                                         b.setBackgroundResource(theme.getBackgroundButton());
+
                                         break;
                                     }
                                 }
