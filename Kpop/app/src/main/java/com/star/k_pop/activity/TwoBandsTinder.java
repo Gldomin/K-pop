@@ -3,12 +3,16 @@ package com.star.k_pop.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +29,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.adapter.TinderAdapter;
-import com.star.k_pop.gallery.adapter.GalleryAdapter;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
@@ -117,20 +120,19 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
         });
 //----------------------not changed
-//        confirmButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
-//                if (groupCheck(artChoices)) {
-//                   // changeBands();
-//                    resetPosition();
-//                    number_of_artist = 0;
-//                    changeArtist(false);
-//                } else {
-//                    imageBand.startAnimation(anim);
-//                }
-//            }
-//        });
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
+                if (checkresult()) {
+                    bandsCount = bandsCount + 2;
+                    mainProcedure();
+                } else {
+                    imageBand.startAnimation(anim);
+                    losescreen();
+                }
+            }
+        });
 
 
 //-----------------------now working----------------------------------------------------------------------
@@ -141,25 +143,34 @@ public class TwoBandsTinder extends AppCompatActivity {
                 left = true;
                 right = false;
                 ansverMap.put(artists_turn.get(pictnumb), first_band.getName());
-                if (pictnumb < ansverMap.size()) {
+                if (pictnumb < ansverMap.size() - 1) {
                     pictnumb++;
                     fadeAnimation(true);
                     setupImage(pictnumb);
                 }
-                checkresult();
+                if (checkresult()) {
+                    if (bandsCount + 2 < bands.size()) {
+                        bandsCount = bandsCount + 2;
+                        mainProcedure();
+                    } else resultsSequence();
+                }
             }
 
             public void onRightCheck() {
                 left = false;
                 right = true;
                 ansverMap.put(artists_turn.get(pictnumb), second_band.getName());
-                if (pictnumb < ansverMap.size()) {
+                if (pictnumb < ansverMap.size() - 1) {
                     pictnumb++;
                     fadeAnimation(true);
                     setupImage(pictnumb);
                 }
-                checkresult();
-
+                if (checkresult()) {
+                    if (bandsCount + 2 < bands.size()) {
+                        bandsCount = bandsCount + 2;
+                        mainProcedure();
+                    } else resultsSequence();
+                }
             }
         });
 //--------------------------------------------------------------------------------------------------
@@ -293,7 +304,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         }
     }
 
-    public void checkresult() {
+    public boolean checkresult() {
         int rightAnsvers = 0;
         if (!ansverMap.values().contains("null")) {
             for (Map.Entry<Artist, String> art : ansverMap.entrySet()) {
@@ -301,11 +312,50 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
         }
         if (rightAnsvers == ansverMap.size()) {
-            bandsCount = bandsCount + 2;
-            mainProcedure();
+            return true;
         }
+        return false;
     }
 
+    public void ttClickCheck(View view) {
+        if (checkresult()) {
+
+            if (bandsCount + 2 < bands.size()) {
+                bandsCount = bandsCount + 2;
+                mainProcedure();
+            } else resultsSequence();
+        }
+        else losescreen();
+    }
+
+    public void resultsSequence() {
+        bandsCount = 0;
+        Collections.shuffle(bands);
+        mainProcedure();
+    }
+
+    private int mistakescount() {
+        int mistakes = 0;
+        for (Map.Entry<Artist, String> map : ansverMap.entrySet()) {
+            if (map.getKey().getGroup() == map.getValue()) mistakes++;
+        }
+        return mistakes;
+    }
+
+    public void losescreen() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(" Готово ");
+        alert.setMessage("вы совершили " + mistakescount());
+        alert.setPositiveButton("окей", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (bandsCount + 2 < bands.size()) {
+                    bandsCount = bandsCount + 2;
+                    mainProcedure();
+                } else resultsSequence();
+            }
+        });
+    }
     //--------------------------------------------------------------------------------------------------
 
     //-------------------------------------------------------------------------------------------------
@@ -416,15 +466,15 @@ public class TwoBandsTinder extends AppCompatActivity {
 //        }
 //        return false;
 //    }
-
-    @Override
-    public void onBackPressed() {
-        if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.twoBandsGroup))) {
-            twoBandFlip.showNext();
-        } else {
-            super.onBackPressed();
-        }
-    }
+    //@Override
+//    public void onBackPressed() {
+//        if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
+//            twoBandFlip.showNext();
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
+//
 //
 //    private void changeArtist(boolean animate) {
 //        if (number_of_artist < artists.size()) {
