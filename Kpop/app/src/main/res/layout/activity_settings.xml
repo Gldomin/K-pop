@@ -78,8 +78,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:track="@color/colorAccentLight"
-            app:trackTintMode="add" />
+             />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/optionSwitch1"
@@ -87,7 +86,6 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:checked="true"
             android:text="@string/settings3"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
