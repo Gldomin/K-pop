@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 YandexMetrica.reportEvent("Main - setting");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Settings.class);
-                startActivity(image);
+                startActivityForResult(image, REQUEST_CODE);
             }
         });
 
