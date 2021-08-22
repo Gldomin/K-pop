@@ -22,14 +22,6 @@ public class Bands {
         MIXED
     }
 
-    public Bands(String[] name, ArrayList<Artist> artists, String[] imagesBands) {
-        this.name = name;
-        this.artists = new ArrayList<>(artists);
-        this.numberOfPeople = (byte) artists.size();
-        this.imagesBands = imagesBands;
-        this.sex = Sex.MIXED;
-    }
-
     public Bands(String[] name, ArrayList<Artist> artists, String[] imagesBands, Sex sex) {
         this.name = name;
         this.artists = new ArrayList<>(artists);
@@ -40,6 +32,10 @@ public class Bands {
 
     public String getName() {
         return name[0];
+    }
+
+    public String getNameCorrect() {
+        return name[name.length - 1];
     }
 
     public ArrayList<Artist> getArtists() {
@@ -63,8 +59,8 @@ public class Bands {
 
     public boolean checkGroup(String group) {
         for (String g : name) {
-            Log.v("TAG", group.replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
-            if (group.replaceAll(" ", "").equals(g.toUpperCase().replaceAll(" ", ""))) {
+            Log.v("TAG", group.toUpperCase().replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
+            if (group.toUpperCase().replaceAll(" ", "").equals(g.toUpperCase().replaceAll(" ", ""))) {
                 return true;
             }
         }
@@ -87,5 +83,15 @@ public class Bands {
      */
     public String getFolder() {
         return name[0] + "/" + getNamesImages();
+    }
+
+    public String getFolderRandom() {
+        String folder = "file:///android_asset/Groups/";
+        if (new Random().nextInt(10) > 1) {
+            folder += artists.get(new Random().nextInt(numberOfPeople)).getFolder();
+        } else {
+            folder += getFolder();
+        }
+        return folder;
     }
 }

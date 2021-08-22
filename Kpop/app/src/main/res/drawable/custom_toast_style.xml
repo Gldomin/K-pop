@@ -4,5 +4,5 @@
     <corners android:radius="3dp"/>
     <stroke android:color="#CE000000" android:width="3dp"/>
 
-    <solid android:color="#DFFF9CBE"/>
+    <solid android:color="@color/lighterPurpleButtonColor"/>
 </shape>

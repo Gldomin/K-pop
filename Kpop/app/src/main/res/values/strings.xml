@@ -3,9 +3,15 @@
 
     <string name="yandex_id_metrica" translatable="false">7f5528ae-626c-4298-a361-5635a0ad148a</string>
 
-    <string name="admob_id_account" translatable="false">ca-app-pub-1704760570617777~3272301452</string>
-    <string name="admob_id_reward_star" translatable="false">ca-app-pub-1704760570617777/1487897750</string>
-    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-1704760570617777/8141484754</string>
+    <!--    <string name="admob_id_account" translatable="false">ca-app-pub-1704760570617777~3272301452</string>-->
+    <!--    <string name="admob_id_reward_star" translatable="false">ca-app-pub-1704760570617777/1487897750</string>-->
+    <!--    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-1704760570617777/8141484754</string>-->
+    <!--    <string name="admob_id_interstitial" translatable="false">ca-app-pub-1704760570617777/7888214522</string>-->
+
+    <string name="admob_id_account" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_id_reward_star" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="admob_id_interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
 
     <string name="menuItemGuessStar">Guess Star</string>
     <string name="menuItemGuessStarReverse">Guess Star Reverse</string>
@@ -90,6 +96,11 @@ Guess the names of K-pop artists from photos. It is not important for you to kno
 Good luck! :)
     </string>
     <string name="guessBandGameModeAbaut">
+GuessBand game mode lets you test your knowledge of the most famous K-pop groups in the history! "\n"
+Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. Off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. Every tenth band will restore 1 life, and every fifteenth band give extra hint. But I think you can figure it out. "\n"
+Good luck! ;)
+    </string>
+    <string name="guessBandGameModeTwoAbaut">
 GuessBand game mode lets you test your knowledge of the most famous K-pop groups in the history! "\n"
 Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. Off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. Every tenth band will restore 1 life, and every fifteenth band give extra hint. But I think you can figure it out. "\n"
 Good luck! ;)

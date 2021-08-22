@@ -1,22 +1,17 @@
 package com.star.k_pop.lib;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.star.k_pop.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HeathBar {
     ArrayList<ImageView> heathBarImageViews;
 
     private int hp;
-    private int maxHp;
+    private final int maxHp;
     Animation animation;
 
     public HeathBar(ArrayList<ImageView> heathBarImageViews, int hpNow, Animation animation) {

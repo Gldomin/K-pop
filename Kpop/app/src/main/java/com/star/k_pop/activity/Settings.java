@@ -10,11 +10,9 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.star.k_pop.R;
 import com.star.k_pop.helper.OptionsSet;
@@ -47,7 +45,7 @@ public class Settings extends AppCompatActivity {
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
 
         darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
-        darkThemeSwitch.setTextColor(theme.getTextColor());
+        darkThemeSwitch.setTextColor(theme.getButtonTextColor());
 
         radGroup = findViewById(R.id.radGroup);
         blueBut = findViewById(R.id.blueVar);
@@ -55,9 +53,9 @@ public class Settings extends AppCompatActivity {
         redBut = findViewById(R.id.redVar);
         catBut = findViewById(R.id.catVar);
 
-        blueBut.setTextColor(theme.getTextColor());
-        redBut.setTextColor(theme.getTextColor());
-        catBut.setTextColor(theme.getTextColor());
+        blueBut.setTextColor(theme.getButtonTextColor());
+        redBut.setTextColor(theme.getButtonTextColor());
+        catBut.setTextColor(theme.getButtonTextColor());
         if (theme.isDarkMode()) {
             blueBut.setText(getResources().getString(R.string.settingRed));
             redBut.setText(getResources().getString(R.string.settingGreen));
@@ -176,28 +174,12 @@ public class Settings extends AppCompatActivity {
     void chooseTheme(int num) {
         if (num == 1) {
             if (darkThemeSwitch.isChecked()) {
-                themeIm.setImageResource(R.drawable.stylebutton_dark);
-                tempSettingsSet.themeCount = 1;
+                themeIm.setImageResource(R.drawable.stylebutton_purple);
             } else {
-                themeIm.setImageResource(R.drawable.main_background);
-                tempSettingsSet.themeCount = 1;
+                themeIm.setImageResource(R.drawable.stylebutton_yellow);
             }
-        } else if (num == 2) {
-            if (darkThemeSwitch.isChecked()) {
-                themeIm.setImageResource(R.drawable.stylebutton_dark_green);
-                tempSettingsSet.themeCount = 2;
-            } else {
-                themeIm.setImageResource(R.drawable.main_background_hamster);
-                tempSettingsSet.themeCount = 2;
-            }
-        } else if (num == 3) {
-            if (darkThemeSwitch.isChecked()) {
-                themeIm.setImageResource(R.drawable.stylebutton_dark_pink);
-                tempSettingsSet.themeCount = 3;
-            } else {
-                themeIm.setImageResource(R.drawable.main_background_cat);
-                tempSettingsSet.themeCount = 3;
-            }
+            tempSettingsSet.themeCount = 1;
+
         }
     }
 

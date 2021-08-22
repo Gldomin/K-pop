@@ -8,25 +8,13 @@ public class OptionsSet { //объект хранения настроек пр�
     public Boolean option5; //временное название
     public int themeCount;
 
-
-     public OptionsSet(Boolean hint, Boolean hard) {
+    public OptionsSet(Boolean hint, Boolean hard) {
         hintMode = hint;
         hardMode = hard;
         darkMode = false;
         option4 = false;
         option5 = false;
     }
-
-    //OVERLOAD
-    OptionsSet() {
-        hintMode = false;
-        hardMode = false;
-        darkMode = false;
-        option4 = false;
-        option5 = false;
-        themeCount = 1;
-    }
-
 
 }
 

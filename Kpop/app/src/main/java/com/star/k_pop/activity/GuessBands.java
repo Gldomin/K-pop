@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -35,12 +36,12 @@ import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.lib.SoundPlayer;
-import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
 import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -52,7 +53,7 @@ public class GuessBands extends AppCompatActivity {
 
     int count = 0;
     int score;
-    int fastscore = 0;
+    int fastScore = 0;
     private SharedPreferences spBands;
     SharedPreferences sp;
     Theme theme;
@@ -73,18 +74,18 @@ public class GuessBands extends AppCompatActivity {
     TextView counterHint;
     ImageView groupPhoto;
     EditText grName;
-    ImageButton podsk;
+    ImageButton hintButton;
 
     //Создаем лист для кнопок
     private List<Button> buttons;
 
-    //Массив id'шников, к которым будет обращаться программа для инициализации кнопок
+    //Массив id шников, к которым будет обращаться программа для инициализации кнопок
     private static final int[] BUTTON_IDS = {
             R.id.litQ, R.id.litW, R.id.litE, R.id.litR, R.id.litT, R.id.litY, R.id.litU, R.id.litI, R.id.litO, R.id.litP,
             R.id.litA, R.id.litS, R.id.litD, R.id.litF, R.id.litG, R.id.litH, R.id.litJ, R.id.litK, R.id.litL,
             R.id.litZ, R.id.litX, R.id.litC, R.id.litV, R.id.litB, R.id.litN, R.id.litM, R.id.litEnt, R.id.litDel,
             R.id.space, R.id.num0, R.id.num1, R.id.num2, R.id.num3, R.id.num4, R.id.num5, R.id.num6, R.id.num7,
-            R.id.num8, R.id.num9//, R.id.podsk
+            R.id.num8, R.id.num9
     };
 
     //сохранение результата на переключении активити и выключении проги
@@ -122,7 +123,7 @@ public class GuessBands extends AppCompatActivity {
         final int keyClickID=soundPlayer.load(R.raw.key_click);
 
         ImageButton about = findViewById(R.id.guessBandAbautButton);
-        about.setBackgroundResource(theme.getBackgroundResource());
+        about.setBackgroundResource(theme.getBackgroundButton());
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,16 +135,16 @@ public class GuessBands extends AppCompatActivity {
             }
         });
 
-        podsk = findViewById(R.id.podsk);
+        hintButton = findViewById(R.id.podsk);
         counterHint = findViewById(R.id.counter_Hints);
         counterHint.setText(String.format("%d", hintCount));
         if (theme.isDarkMode()) {
-            podsk.setImageResource(R.drawable.hint2);
+            hintButton.setImageResource(R.drawable.hint2);
         } else {
-            podsk.setImageResource(R.drawable.hint);
+            hintButton.setImageResource(R.drawable.hint);
         }
 
-        podsk.setBackgroundResource(theme.getBackgroundResource());
+        hintButton.setBackgroundResource(theme.getBackgroundButton());
 
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
@@ -152,8 +153,10 @@ public class GuessBands extends AppCompatActivity {
         scoreText = findViewById(R.id.scoreBands);                  //рекорд
         fastScoreText = findViewById(R.id.fastscoreBands);          //текущий счет
         groupPhoto = findViewById(R.id.groupPhoto);
+        scoreText.setTextColor(theme.getTextColor());
+        fastScoreText.setTextColor(theme.getTextColor());
 
-        groupPhoto.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
+        groupPhoto.setBackground(AppCompatResources.getDrawable(this, theme.getBackgroundButton()));
 
         spBands = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
 
@@ -165,11 +168,11 @@ public class GuessBands extends AppCompatActivity {
         scoreText.setText(String.format("%s %d",
                 getResources().getString(R.string.record_text), score));
         fastScoreText.setText(String.format("%s %d",
-                getResources().getString(R.string.score_text), fastscore));
+                getResources().getString(R.string.score_text), fastScore));
 
         buttons = new ArrayList<>();
         grName = findViewById(R.id.groupName);
-        grName.setTextColor(theme.getTextColor());
+        grName.setTextColor(theme.getButtonTextColor());
         grName.setLongClickable(false);
         grName.setFocusable(false);
 
@@ -181,90 +184,87 @@ public class GuessBands extends AppCompatActivity {
                 Log.i("sound","-> key_click"); //чит-лог
 
                 soundPlayer.playSoundStream(keyClickID); //звук кнопок
-                switch (view.getId()) {
-                    case R.id.litEnt:
-                        String textAnsw = grName.getText().toString();
-                        if (artists.get(count).checkGroup(textAnsw)) {
-                            YandexMetrica.reportEvent("GuessBands - Правильный ответ: " + textAnsw);
-                            fastscore++;
-                            count++;
-                            hintUsed=false; //подсказку можно исопльзовать вновь
-                            change();
-                            if (fastscore % 10 == 0) {
-                                YandexMetrica.reportEvent("GuessBands - Доп хп");
-                                heathBarTest.restore();
-                            }
-                            if (fastscore % 15 == 0) {
-                                YandexMetrica.reportEvent("GuessBands - Доп подсказка");
-                                hintCount += 2;
-                            }
-                            //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
-                            //на момент релиза удалить.
-                            if (fastscore == 15) { //ачивка за 15 - achGuessBandsNormal. Условие ачивки
-                                YandexMetrica.reportEvent("GuessBands - Ачивка 15 угаданных групп");
-                                SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normalgb, "achGuessBandsNormal"); //ачивочка
-                            }
-                            if (fastscore == 50) { //ачивка за 50
-                                YandexMetrica.reportEvent("GuessBands - Ачивка 50 угаданных групп");
-                                SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsExpert, R.drawable.expertgb, "achGuessBandsExpert"); //ачивочка
-                            }
-                        } else {
-                            YandexMetrica.reportEvent("GuessBands - Неправильный ответ: " + textAnsw);
-                            heathBarTest.blow();
-                            if (heathBarTest.getHp() == 0) {
-                                startLosingDialog();
-                            }
+                int id = view.getId();
+                if (id == R.id.litEnt) {
+                    String textAnswer = grName.getText().toString();
+                    if (artists.get(count).checkGroup(textAnswer)) {
+                        YandexMetrica.reportEvent("GuessBands - Правильный ответ: " + textAnswer);
+                        fastScore++;
+                        count++;
+                        hintUsed = false; //подсказку можно исопльзовать вновь
+                        change();
+                        if (fastScore % 10 == 0) {
+                            YandexMetrica.reportEvent("GuessBands - Доп хп");
+                            heathBarTest.restore();
                         }
-                        break;
-                    case R.id.space:
-                        grName.append(" ");
-                        break;
-                    case R.id.litDel:
-                        Editable textGro = grName.getText();
-                        if (textGro.length() > 0) {
-                            textGro.delete(textGro.length() - 1, textGro.length());
-                            grName.setText(textGro);
+                        if (fastScore % 15 == 0) {
+                            YandexMetrica.reportEvent("GuessBands - Доп подсказка");
+                            hintCount += 2;
                         }
-                        break;
-                    case R.id.podsk:
-                        if (!hintUsed) {
-                            YandexMetrica.reportEvent("GuessBands - Подсказка");
-                            if (hintCount > 1) {
-                                hintShow = true;
-                                hintCount--;
-                                counterHint.setText(String.format("%d", hintCount));
-                                String textGroupHint = artists.get(count).getName();
-                                char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
-                                for (int j = 0; j < textHint.length; j++) {
-                                    String textHintTwo = "" + textHint[j];
-                                    textHintTwo = textHintTwo.toUpperCase();
-                                    textHint[j] = textHintTwo.charAt(0);
-                                    grName.setText("");
-                                }
-                                for (Button b : buttons) {
-                                    if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
-                                        continue;
-                                    for (char c : textHint) {
-                                        if (b.getText().charAt(0) == c) {
-                                            b.setBackgroundResource(theme.getBackgroundButton());
-                                            break;
-                                        }
+                        //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
+                        //на момент релиза удалить.
+                        if (fastScore == 15) { //ачивка за 15 - achGuessBandsNormal. Условие ачивки
+                            YandexMetrica.reportEvent("GuessBands - Ачивка 15 угаданных групп");
+                            SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsNormal, R.drawable.normalgb, "achGuessBandsNormal"); //ачивочка
+                        }
+                        if (fastScore == 50) { //ачивка за 50
+                            YandexMetrica.reportEvent("GuessBands - Ачивка 50 угаданных групп");
+                            SomeMethods.achievementGetted(GuessBands.this, R.string.achGuessBandsExpert, R.drawable.expertgb, "achGuessBandsExpert"); //ачивочка
+                        }
+                    } else {
+                        YandexMetrica.reportEvent("GuessBands - Неправильный ответ: " + textAnswer);
+                        heathBarTest.blow();
+                        if (heathBarTest.getHp() == 0) {
+                            startLosingDialog();
+                        }
+                    }
+                } else if (id == R.id.space) {
+                    grName.append(" ");
+                } else if (id == R.id.litDel) {
+                    Editable textGro = grName.getText();
+                    if (textGro.length() > 0) {
+                        textGro.delete(textGro.length() - 1, textGro.length());
+                        grName.setText(textGro);
+                    }
+                } else if (id == R.id.podsk) {
+                    if (!hintUsed) {
+                        YandexMetrica.reportEvent("GuessBands - Подсказка");
+                        if (hintCount > 1) {
+                            hintShow = true;
+                            hintCount--;
+                            counterHint.setText(String.format("%d", hintCount));
+                            String textGroupHint = artists.get(count).getName();
+                            char[] textHint = textGroupHint.toCharArray(); // Преобразуем строку str в массив символов (char)
+                            for (int j = 0; j < textHint.length; j++) {
+                                String textHintTwo = "" + textHint[j];
+                                textHintTwo = textHintTwo.toUpperCase();
+                                textHint[j] = textHintTwo.charAt(0);
+                                grName.setText("");
+                            }
+                            for (Button b : buttons) {
+                                if ((b.getId() == R.id.litDel) || (b.getId() == R.id.litEnt) || (b.getId() == R.id.podsk))
+                                    continue;
+                                for (char c : textHint) {
+                                    if (b.getText().charAt(0) == c) {
+                                        b.setBackgroundResource(theme.getBackgroundButton());
+
+                                        break;
                                     }
                                 }
-                            } else if (hintCount == 1) {
-                                onRewardHint();
                             }
-                            hintUsed=true; //подсказка использована
+                        } else if (hintCount == 1) {
+                            onRewardHint();
                         }
-                        break;
-                    default:
-                        grName.append("" + ((Button) view).getText().charAt(0));
+                        hintUsed = true; //подсказка использована
+                    }
+                } else {
+                    grName.append("" + ((Button) view).getText().charAt(0));
                 }
             }
 
         };
 
-        podsk.setOnClickListener(clkGr);
+        hintButton.setOnClickListener(clkGr);
         //Инициализация кнопок, добавление дополнительных символов
         for (int id : BUTTON_IDS) {
             Button button = findViewById(id);
@@ -273,24 +273,14 @@ public class GuessBands extends AppCompatActivity {
             button.setOnLongClickListener(new OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-
-
-                    switch (v.getId()) {
-                        case R.id.num1:
-                        case R.id.num2:
-                        case R.id.num3:
-                        case R.id.num5:
-                        case R.id.num6:
-                        case R.id.num7:
-                        case R.id.num8:
-                        case R.id.num9:
-                        case R.id.num0:
-                            grName.append("" + ((Button) v).getText().charAt(2));
-                            break;
-                        case R.id.num4:
-                            String word = "'";
-                            grName.append(word);
-                            break;
+                    int vId = v.getId();
+                    if (vId == R.id.num1 || vId == R.id.num2 || vId == R.id.num3
+                            || vId == R.id.num5 || vId == R.id.num6 || vId == R.id.num7
+                            || vId == R.id.num8 || vId == R.id.num9 || vId == R.id.num0) {
+                        grName.append("" + ((Button) v).getText().charAt(2));
+                    } else if (vId == R.id.num4) {
+                        String word = "'";
+                        grName.append(word);
                     }
                     return true;
                 }
@@ -298,7 +288,7 @@ public class GuessBands extends AppCompatActivity {
             buttons.add(button);
         }
         for (Button b : buttons) {
-            b.setBackgroundResource(theme.getBackgroundResource());
+            b.setBackgroundResource(theme.getBackgroundButton());
         }
         change();
     }
@@ -311,7 +301,7 @@ public class GuessBands extends AppCompatActivity {
             count = 0;
         }
         for (Button b : buttons) {
-            b.setBackgroundResource(theme.getBackgroundResource());
+            b.setBackgroundResource(theme.getBackgroundButton());
         }
         hintShow = false;
         grName.setText("");
@@ -319,11 +309,11 @@ public class GuessBands extends AppCompatActivity {
         Log.i("answer=",artists.get(count).getName()); //чит-лог
 
         fastScoreText.setText(String.format("%s %d",
-                getResources().getString(R.string.score_text), fastscore));
-        if (fastscore > score) score = fastscore;
+                getResources().getString(R.string.score_text), fastScore));
+        if (fastScore > score) score = fastScore;
         scoreText.setText(String.format("%s %d",
                 getResources().getString(R.string.record_text), score));
-        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(count).getFolder()))
+        Glide.with(this).load(Uri.parse(artists.get(count).getFolderRandom()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(groupPhoto);
@@ -334,7 +324,7 @@ public class GuessBands extends AppCompatActivity {
         endGame = true;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
         builder.setTitle(getResources().getString(R.string.endGameCongratulate))
-                .setMessage(String.format("%s %d! %s", getResources().getString(R.string.score_text), fastscore, getResources().getString(R.string.endGameNewGame)))
+                .setMessage(String.format("%s %d! %s", getResources().getString(R.string.score_text), fastScore, getResources().getString(R.string.endGameNewGame)))
                 .setCancelable(false)
                 .setNegativeButton(getResources().getString(R.string.endGameNo), new DialogInterface.OnClickListener() {
                     @Override
@@ -349,7 +339,7 @@ public class GuessBands extends AppCompatActivity {
                         YandexMetrica.reportEvent("GuessStar - Игра окончена, да");
                         endGame = false;
                         heathBarTest.setHp(3);
-                        fastscore = 0;
+                        fastScore = 0;
                         count++;
                         if (count >= artists.size() - 1) {
                             artists = Importer.getRandomBands();
@@ -364,7 +354,7 @@ public class GuessBands extends AppCompatActivity {
                 });
         if (rewarded.onLoaded() && onRewarded) {
             builder.setMessage(String.format("%s %d! %s %s", getResources().getString(R.string.score_text),
-                    fastscore, getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
+                    fastScore, getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
                     .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -386,7 +376,7 @@ public class GuessBands extends AppCompatActivity {
                                     } else {
                                         YandexMetrica.reportEvent("GuessBands - Реклама не просмотрена");
                                         heathBarTest.setHp(3);
-                                        fastscore = 0;
+                                        fastScore = 0;
                                         count++;
                                         if (count >= artists.size() - 1) {
                                             artists = Importer.getRandomBands();
@@ -454,7 +444,7 @@ public class GuessBands extends AppCompatActivity {
                                             }
                                         }
                                         hintCount--;
-                                        counterHint.setText(String.format("%d", hintCount));
+                                        counterHint.setText(String.format(new Locale("ru"),"%d", hintCount));
                                     } else {
                                         YandexMetrica.reportEvent("GuessBands - Реклама не просмотрена");
                                         onRewardedHint = true;

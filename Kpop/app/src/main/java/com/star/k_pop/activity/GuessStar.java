@@ -60,7 +60,7 @@ public class GuessStar extends AppCompatActivity {
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
 
-    Theme theme; //переменная для считывания состояния свиича на darkmod
+    Theme theme; //переменная для считывания состояния свиича на darkMod
 
     Rewarded rewarded;          //Класс для работы с рекламой
     HeathBar heathBarTest;
@@ -82,11 +82,13 @@ public class GuessStar extends AppCompatActivity {
         textRecord = findViewById(R.id.scoreText2);
         imageView = findViewById(R.id.imageView);
         textScore = findViewById(R.id.scoreText);
+        textRecord.setTextColor(theme.getTextColor());
+        textScore.setTextColor(theme.getTextColor());
         ImageButton about = findViewById(R.id.guessStarAbautButton);
 
         artists = Importer.getRandomArtists();
 
-        about.setBackgroundResource(theme.getBackgroundResource());
+        about.setBackgroundResource(theme.getBackgroundButton());
 
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         if (sp.contains("userScoreGuessStar")) {
@@ -113,8 +115,8 @@ public class GuessStar extends AppCompatActivity {
                 tableRow = findViewById(R.id.row2);
             }
 
-            buttons[i].setBackgroundResource(theme.getBackgroundResource());
-            buttons[i].setTextColor(theme.getTextColor());
+            buttons[i].setBackgroundResource(theme.getBackgroundButton());
+            buttons[i].setTextColor(theme.getButtonTextColor());
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
@@ -122,7 +124,6 @@ public class GuessStar extends AppCompatActivity {
 
             buttons[i].setPadding(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
-
 
 
             buttons[i].setOnClickListener(new View.OnClickListener() {
@@ -201,7 +202,7 @@ public class GuessStar extends AppCompatActivity {
         imageViewList.add(imageView2);
         imageViewList.add(imageView3);
 
-        Animation lifeBrokeAnimation = AnimationUtils.loadAnimation(this,R.anim.heart_broke_animation);
+        Animation lifeBrokeAnimation = AnimationUtils.loadAnimation(this, R.anim.heart_broke_animation);
         heathBarTest = new HeathBar(imageViewList, 3, lifeBrokeAnimation);
     }
 
@@ -247,7 +248,7 @@ public class GuessStar extends AppCompatActivity {
                 }
             }
             buttons[i].setClickable(true);
-            buttons[i].setBackgroundResource(theme.getBackgroundResource());
+            buttons[i].setBackgroundResource(theme.getBackgroundButton());
             buttons[i].setText(artists.get(rand).getName());
             artists.get(rand).Init();
         }
