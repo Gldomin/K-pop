@@ -97,6 +97,12 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         ImageButton chooseActorButton = findViewById(R.id.ttChoseActorButton);
         ImageButton confirmButton = findViewById(R.id.ttConfirmButton);
+        ImageButton helpButton = findViewById(R.id.helpTindButton);
+
+
+        confirmButton.setBackgroundResource(theme.getBackgroundButton());
+        chooseActorButton.setBackgroundResource(theme.getBackgroundButton());
+        helpButton.setBackgroundResource(theme.getBackgroundButton());
 
         imageBand = findViewById(R.id.imageBand);
         imBTmp = findViewById(R.id.imgBTmp);
