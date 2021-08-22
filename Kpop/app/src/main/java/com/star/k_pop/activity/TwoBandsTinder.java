@@ -9,6 +9,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -105,20 +107,18 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
         });
 //----------------------not changed
-//        confirmButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
-//                if (groupCheck(artChoices)) {
-//                   // changeBands();
-//                    resetPosition();
-//                    number_of_artist = 0;
-//                    changeArtist(false);
-//                } else {
-//                    imageBand.startAnimation(anim);
-//                }
-//            }
-//        });
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
+                if (checkresult()) {
+                    bandsCount = bandsCount + 2;
+                    mainProcedure();
+                } else {
+                    imageBand.startAnimation(anim);
+                }
+            }
+        });
 
 
 //-----------------------now working----------------------------------------------------------------------
@@ -127,12 +127,15 @@ public class TwoBandsTinder extends AppCompatActivity {
                 left = false;
                 right = true;
                 ansverMap.put(artists_turn.get(pictnumb), first_band.getName());
-                if (pictnumb < ansverMap.size()) {
+                if (pictnumb < ansverMap.size()-1) {
                     pictnumb++;
                     fadeAnimation(true);
                     setupImage(pictnumb);
                 }
-                checkresult();
+                if (checkresult()) {
+                    bandsCount = bandsCount + 2;
+                    mainProcedure();
+                }
 
             }
 
@@ -140,12 +143,15 @@ public class TwoBandsTinder extends AppCompatActivity {
                 left = true;
                 right = false;
                 ansverMap.put(artists_turn.get(pictnumb), second_band.getName());
-                if (pictnumb < ansverMap.size()) {
+                if (pictnumb < ansverMap.size()-1) {
                     pictnumb++;
                     fadeAnimation(true);
                     setupImage(pictnumb);
                 }
-                checkresult();
+                if (checkresult()) {
+                    bandsCount = bandsCount + 2;
+                    mainProcedure();
+                }
             }
         });
 //--------------------------------------------------------------------------------------------------
@@ -198,7 +204,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     public void mainProcedure() {
         startSequance();
-        setupImage(pictnumb + 1);
+        setupImage(pictnumb);
         setupBandText();
 
     }
@@ -266,7 +272,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         }
     }
 
-    public void checkresult() {
+    public boolean checkresult() {
         int rightAnsvers = 0;
         if (!ansverMap.values().contains("null")) {
             for (Map.Entry<Artist, String> art : ansverMap.entrySet()) {
@@ -274,9 +280,9 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
         }
         if (rightAnsvers == ansverMap.size()) {
-            bandsCount = bandsCount + 2;
-            mainProcedure();
+            return true;
         }
+        return false;
     }
 
     //--------------------------------------------------------------------------------------------------
