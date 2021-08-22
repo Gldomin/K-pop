@@ -311,10 +311,16 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             buttons.get(positionButton).setText(str);
             countClick = false;
             buttons.get(positionButton).setVisibility(View.VISIBLE);
-            if (buttons == buttonsEnd){
+            if (buttons == buttonsEnd) {
                 buttons.get(positionButton).setBackgroundResource(theme.getBackgroundButton());
             }
-            if (positionButton - startButtonNumber == countLetter - 1 && buttons == buttonsEnd) {
+            boolean check = true;
+            for (Button b : buttonsEnd) {
+                if (b.getText().equals("_")) {
+                    check = false;
+                }
+            }
+            if (check) {
                 checkWin();
             }
 
@@ -368,7 +374,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             ((Button) view).setText(textStart);
             if (textEnd.equals("_"))
                 view.setVisibility(View.INVISIBLE);
-            if (textEnd.equals("")){
+            if (textEnd.equals("")) {
                 view.setBackgroundResource(R.drawable.roundedimageview);
             }
 
