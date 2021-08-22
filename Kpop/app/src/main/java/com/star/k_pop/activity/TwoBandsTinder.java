@@ -326,6 +326,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             } else resultsSequence();
         }
         else losescreen();
+
     }
 
     public void resultsSequence() {
@@ -343,10 +344,10 @@ public class TwoBandsTinder extends AppCompatActivity {
     }
 
     public void losescreen() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle(" Готово ");
-        alert.setMessage("вы совершили " + mistakescount());
-        alert.setPositiveButton("окей", new DialogInterface.OnClickListener() {
+        AlertDialog.Builder alertbuild = new AlertDialog.Builder(this);
+        alertbuild.setTitle(" Готово ");
+        alertbuild.setMessage("вы совершили " + mistakescount());
+        alertbuild.setPositiveButton("окей", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (bandsCount + 2 < bands.size()) {
@@ -355,6 +356,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                 } else resultsSequence();
             }
         });
+        AlertDialog alert = alertbuild.create();
+        alert.show();
     }
     //--------------------------------------------------------------------------------------------------
 
