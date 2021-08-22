@@ -104,8 +104,8 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         recordText = findViewById(R.id.scoreBands);
         scoreNowText = findViewById(R.id.fastscoreBands);
 
-        groupPhoto.setBackground(AppCompatResources.getDrawable(this, theme.getBackgroundResource()));
-        hintButton.setBackgroundResource(theme.getBackgroundResource());
+        groupPhoto.setBackground(AppCompatResources.getDrawable(this, theme.getBackgroundButton()));
+        hintButton.setBackgroundResource(theme.getBackgroundButton());
         if (theme.isDarkMode()) {
             hintButton.setImageResource(R.drawable.hint2);
         } else {
@@ -113,7 +113,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         }
 
         ImageButton about = findViewById(R.id.guessBandAbautButton);
-        about.setBackgroundResource(theme.getBackgroundResource());
+        about.setBackgroundResource(theme.getBackgroundButton());
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,7 +140,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         scoreNowText.setText(String.format("%s %d",
                 getResources().getString(R.string.score_text), scoreNow));
 
-        slideButton.setBackgroundResource(theme.getBackgroundResource());
+        slideButton.setBackgroundResource(theme.getBackgroundButton());
         slideButton.setVisibility(View.INVISIBLE);
 
         buttons = new ArrayList<>();
@@ -149,7 +149,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         for (int id : BUTTON_IDS) {
             Button button = findViewById(id);
             button.setOnClickListener(new OnClickListenerCustom(buttonsEnd, "", "_"));
-            button.setBackgroundResource(theme.getBackgroundResource());
+            button.setBackgroundResource(theme.getBackgroundButton());
             buttons.add(button);
         }
 
@@ -312,7 +312,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             countClick = false;
             buttons.get(positionButton).setVisibility(View.VISIBLE);
             if (buttons == buttonsEnd){
-                buttons.get(positionButton).setBackgroundResource(theme.getBackgroundResource());
+                buttons.get(positionButton).setBackgroundResource(theme.getBackgroundButton());
             }
             if (positionButton - startButtonNumber == countLetter - 1 && buttons == buttonsEnd) {
                 checkWin();

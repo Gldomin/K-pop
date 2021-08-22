@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Button guessStarButton = findViewById(R.id.guessStarButton);
-        guessStarButton.setBackgroundResource(theme.getBackgroundResource());
+        guessStarButton.setBackgroundResource(theme.getBackgroundButton());
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button guessBandButton = findViewById(R.id.guessGroupButton);
-        guessBandButton.setBackgroundResource(theme.getBackgroundResource());
+        guessBandButton.setBackgroundResource(theme.getBackgroundButton());
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button guessTwoBandsTinder = findViewById(R.id.guessTwoBands);
-        guessTwoBandsTinder.setBackgroundResource(theme.getBackgroundResource());
+        guessTwoBandsTinder.setBackgroundResource(theme.getBackgroundButton());
         guessTwoBandsTinder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button about = findViewById(R.id.abautButton);
-        about.setBackgroundResource(theme.getBackgroundResource());
+        about.setBackgroundResource(theme.getBackgroundButton());
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -174,25 +174,12 @@ public class Settings extends AppCompatActivity {
     void chooseTheme(int num) {
         if (num == 1) {
             if (darkThemeSwitch.isChecked()) {
-                themeIm.setImageResource(R.drawable.stylebutton_dark);
+                themeIm.setImageResource(R.drawable.stylebutton_purple);
             } else {
-                themeIm.setImageResource(R.drawable.main_background);
+                themeIm.setImageResource(R.drawable.stylebutton_yellow);
             }
             tempSettingsSet.themeCount = 1;
-        } else if (num == 2) {
-            if (darkThemeSwitch.isChecked()) {
-                themeIm.setImageResource(R.drawable.stylebutton_dark_purple);
-            } else {
-                themeIm.setImageResource(R.drawable.main_background_hamster);
-            }
-            tempSettingsSet.themeCount = 2;
-        } else if (num == 3) {
-            if (darkThemeSwitch.isChecked()) {
-                themeIm.setImageResource(R.drawable.stylebutton_dark_pink);
-            } else {
-                themeIm.setImageResource(R.drawable.main_background_cat);
-            }
-            tempSettingsSet.themeCount = 3;
+
         }
     }
 

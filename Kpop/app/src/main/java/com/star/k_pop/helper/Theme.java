@@ -17,7 +17,7 @@ public class Theme {
         themeCount = storage.getInt("themeCount");
     }
 
-    public void setTheme() {
+    public void setTheme() { //первая тема для меню
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
         } else
@@ -25,7 +25,7 @@ public class Theme {
 
     }
 
-    public void setThemeSecond() {
+    public void setThemeSecond() {  //вторая тема для игровых активити
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
         } else
@@ -54,9 +54,9 @@ public class Theme {
 
     public int getAlertDialogStyle() {
         if (darkMode) {
-            return R.style.AlertDialog1;
+            return R.style.DarkAlertDialog;
         } else
-            return R.style.AlertDialog2;
+            return R.style.StandartAlertDialog;
     }
 
     public int getTextColor() {
@@ -76,9 +76,9 @@ public class Theme {
 
     public int getBackgroundResource() {
             if (darkMode) {
-                return R.drawable.stylebutton_dark_purple;
+                return R.drawable.stylebutton_purple;
             } else {
-                return R.drawable.stylebutton;
+                return R.drawable.stylebutton_yellow;
             }
 
     }
@@ -86,14 +86,14 @@ public class Theme {
     public int getBackgroundButton() {
 
             if (darkMode) {
-                return R.drawable.stylebutton_dark_purple;
-            } else return R.drawable.stylebutton;
+                return R.drawable.stylebutton_pink;
+            } else return R.drawable.stylebutton_yellow;
 
     }
 
     public int getBackgroundButton2() {
             if (darkMode) {
-                return R.drawable.stylebutton_dark_purple;
+                return R.drawable.stylebutton_pink;
             } else
                 return R.drawable.light_background;
 

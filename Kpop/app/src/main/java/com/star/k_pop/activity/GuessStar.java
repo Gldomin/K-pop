@@ -88,7 +88,7 @@ public class GuessStar extends AppCompatActivity {
 
         artists = Importer.getRandomArtists();
 
-        about.setBackgroundResource(theme.getBackgroundResource());
+        about.setBackgroundResource(theme.getBackgroundButton());
 
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         if (sp.contains("userScoreGuessStar")) {
@@ -115,7 +115,7 @@ public class GuessStar extends AppCompatActivity {
                 tableRow = findViewById(R.id.row2);
             }
 
-            buttons[i].setBackgroundResource(theme.getBackgroundResource());
+            buttons[i].setBackgroundResource(theme.getBackgroundButton());
             buttons[i].setTextColor(theme.getButtonTextColor());
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -248,7 +248,7 @@ public class GuessStar extends AppCompatActivity {
                 }
             }
             buttons[i].setClickable(true);
-            buttons[i].setBackgroundResource(theme.getBackgroundResource());
+            buttons[i].setBackgroundResource(theme.getBackgroundButton());
             buttons[i].setText(artists.get(rand).getName());
             artists.get(rand).Init();
         }

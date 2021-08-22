@@ -123,7 +123,7 @@ public class GuessBands extends AppCompatActivity {
         final int keyClickID=soundPlayer.load(R.raw.key_click);
 
         ImageButton about = findViewById(R.id.guessBandAbautButton);
-        about.setBackgroundResource(theme.getBackgroundResource());
+        about.setBackgroundResource(theme.getBackgroundButton());
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,7 +144,7 @@ public class GuessBands extends AppCompatActivity {
             hintButton.setImageResource(R.drawable.hint);
         }
 
-        hintButton.setBackgroundResource(theme.getBackgroundResource());
+        hintButton.setBackgroundResource(theme.getBackgroundButton());
 
         sp = getSharedPreferences("settings", Context.MODE_PRIVATE);
 
@@ -156,7 +156,7 @@ public class GuessBands extends AppCompatActivity {
         scoreText.setTextColor(theme.getTextColor());
         fastScoreText.setTextColor(theme.getTextColor());
 
-        groupPhoto.setBackground(AppCompatResources.getDrawable(this, theme.getBackgroundResource()));
+        groupPhoto.setBackground(AppCompatResources.getDrawable(this, theme.getBackgroundButton()));
 
         spBands = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
 
@@ -288,7 +288,7 @@ public class GuessBands extends AppCompatActivity {
             buttons.add(button);
         }
         for (Button b : buttons) {
-            b.setBackgroundResource(theme.getBackgroundResource());
+            b.setBackgroundResource(theme.getBackgroundButton());
         }
         change();
     }
@@ -301,7 +301,7 @@ public class GuessBands extends AppCompatActivity {
             count = 0;
         }
         for (Button b : buttons) {
-            b.setBackgroundResource(theme.getBackgroundResource());
+            b.setBackgroundResource(theme.getBackgroundButton());
         }
         hintShow = false;
         grName.setText("");
