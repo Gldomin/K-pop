@@ -21,13 +21,14 @@ import com.star.k_pop.model.Artist;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Класс адаптер для загрузки изображений в плитки
  */
 public class TinderAdapter extends RecyclerView.Adapter<TinderAdapter.MyViewHolder> {
 
-    private final HashMap<Artist, String> imageGalleries;
+    private final Map<Artist, String> imageGalleries;
     private final ArrayList<Artist> artistArrayList;
     private final Context mContext;
     private final String group;
@@ -41,7 +42,7 @@ public class TinderAdapter extends RecyclerView.Adapter<TinderAdapter.MyViewHold
         }
     }
 
-    public TinderAdapter(Context context, HashMap<Artist, String> imageGalleries,
+    public TinderAdapter(Context context, Map<Artist, String> imageGalleries,
                          ArrayList<Artist> artistArrayList, String group) {
         mContext = context;
         this.imageGalleries = imageGalleries;
@@ -63,13 +64,18 @@ public class TinderAdapter extends RecyclerView.Adapter<TinderAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         String group = imageGalleries.get(artistArrayList.get(position));
         if (this.group.equals(group)) {
+            holder.itemView.setVisibility(View.VISIBLE);
+            holder.thumbnail.setVisibility(View.VISIBLE);
+            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
             Glide.with(mContext).load(Uri.parse(artistArrayList.get(position).getUriFolderString()))
                     .thumbnail(0.25f)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.thumbnail);
-            holder.itemView.setVisibility(View.VISIBLE);
         } else {
+            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
             holder.itemView.setVisibility(View.GONE);
+            holder.thumbnail.setVisibility(View.GONE);
         }
     }
 

@@ -16,11 +16,16 @@ import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.gridlayout.widget.GridLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.adapter.TinderAdapter;
+import com.star.k_pop.gallery.adapter.GalleryAdapter;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
@@ -49,6 +54,11 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     private GridLayout gridFirst;
     private GridLayout gridSecond;
+
+
+    private RecyclerView recyclerView1;
+    private RecyclerView recyclerView2;
+
 
     private ImageView imageBand;
     private ImageView imBTmp;
@@ -94,6 +104,8 @@ public class TwoBandsTinder extends AppCompatActivity {
         twoBandFlip = findViewById(R.id.twoBandFlipper);
         gridFirst = findViewById(R.id.ttGridFGroupLayout);
         gridSecond = findViewById(R.id.ttGridSGroupLayout);
+        recyclerView1 = findViewById(R.id.groupLeft);
+        recyclerView2 = findViewById(R.id.groupRight);
 //----------------------not changed
         chooseActorButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,9 +135,11 @@ public class TwoBandsTinder extends AppCompatActivity {
 
 //-----------------------now working----------------------------------------------------------------------
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
-            public void onRightCheck() {
-                left = false;
-                right = true;
+
+
+            public void onLeftCheck() {
+                left = true;
+                right = false;
                 ansverMap.put(artists_turn.get(pictnumb), first_band.getName());
                 if (pictnumb < ansverMap.size()) {
                     pictnumb++;
@@ -133,12 +147,11 @@ public class TwoBandsTinder extends AppCompatActivity {
                     setupImage(pictnumb);
                 }
                 checkresult();
-
             }
 
-            public void onLeftCheck() {
-                left = true;
-                right = false;
+            public void onRightCheck() {
+                left = false;
+                right = true;
                 ansverMap.put(artists_turn.get(pictnumb), second_band.getName());
                 if (pictnumb < ansverMap.size()) {
                     pictnumb++;
@@ -146,6 +159,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                     setupImage(pictnumb);
                 }
                 checkresult();
+
             }
         });
 //--------------------------------------------------------------------------------------------------
@@ -198,8 +212,21 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     public void mainProcedure() {
         startSequance();
-        setupImage(pictnumb + 1);
+        setupImage(pictnumb);
         setupBandText();
+
+        TinderAdapter mAdapter1 = new TinderAdapter(getApplicationContext(), ansverMap, artists_turn, first_band.getName());
+        TinderAdapter mAdapter2 = new TinderAdapter(getApplicationContext(), ansverMap, artists_turn, second_band.getName());
+
+        RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(getApplicationContext(), 1);
+        recyclerView1.setLayoutManager(mLayoutManager1);
+        recyclerView1.setItemAnimator(new DefaultItemAnimator());
+        recyclerView1.setAdapter(mAdapter1);
+
+        RecyclerView.LayoutManager mLayoutManager2 = new GridLayoutManager(getApplicationContext(), 1);
+        recyclerView2.setLayoutManager(mLayoutManager2);
+        recyclerView2.setItemAnimator(new DefaultItemAnimator());
+        recyclerView2.setAdapter(mAdapter2);
 
     }
 
