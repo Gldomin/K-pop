@@ -29,6 +29,7 @@ import com.google.android.gms.ads.rewarded.RewardItem;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.helper.Rewarded;
+import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
@@ -49,6 +50,8 @@ public class GuessStar extends AppCompatActivity {
     TextView textRecord;
 
     SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
+    boolean sound=false; //включен ли звук
+
     ArrayList<Artist> artists = new ArrayList<>();
 
     int chosenOne = -1;     //избранный артист (правильный артист)
@@ -59,6 +62,8 @@ public class GuessStar extends AppCompatActivity {
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
+
+
 
     Theme theme; //переменная для считывания состояния свиича на darkMod
 
@@ -78,6 +83,9 @@ public class GuessStar extends AppCompatActivity {
 
         final int pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
         final int longSwitchID = soundPlayer.load(R.raw.long_switch);
+        Storage storage = new Storage(this, "settings"); //хранилище для извлечения
+        sound = storage.getBoolean("soundMode"); //настроек звука
+
 
         textRecord = findViewById(R.id.scoreText2);
         imageView = findViewById(R.id.imageView);
@@ -155,6 +163,7 @@ public class GuessStar extends AppCompatActivity {
                         }
                         nextArtist();
 
+                        if (sound)
                         soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
                     } else {
                         YandexMetrica.reportEvent("GuessStar - Неправильный ответ: " + ((Button) view).getText() + ", правильный: " + artists.get(count).getName());
@@ -166,6 +175,7 @@ public class GuessStar extends AppCompatActivity {
 
                         }
 
+                        if (sound)
                         soundPlayer.playSoundStream(pingClickID);//звук неправильного ответа
                     }
                     updateScore();
@@ -186,6 +196,7 @@ public class GuessStar extends AppCompatActivity {
                 image.putExtra("title", R.string.gameModeAbaut);
                 startActivity(image);
                 //soundPlayer.play(R.raw.ping_click); //звук кнопки\
+                if(sound)
                 soundPlayer.playSoundStream(pingClickID);
             }
         });

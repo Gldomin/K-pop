@@ -9,13 +9,13 @@
 
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/settingTitleTextView"
         android:layout_width="135dp"
         android:layout_height="42dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="@string/settings0"
-        android:textSize="24sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,59 +60,37 @@
         android:layout_height="459dp"
         app:layout_constraintBottom_toTopOf="@+id/rl3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        app:layout_constraintTop_toBottomOf="@+id/settingTitleTextView"
+        app:layout_constraintVertical_bias="0.528">
+
 
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/optionSwitch3"
+            android:id="@+id/optionSwitch2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/optionSwitch1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:text="@string/settings3"
+            android:layout_marginTop="20dp"
+            android:text="@string/settings4"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <RadioGroup
-            android:id="@+id/radGroup"
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/optionSwitch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/optionSwitch3"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/blueVar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Зайка" />
-
-            <RadioButton
-                android:id="@+id/redVar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Хомячок" />
-
-            <RadioButton
-                android:id="@+id/catVar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Котик" />
-
-        </RadioGroup>
-
-        <ImageView
-            android:id="@+id/exampleBack"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_below="@+id/radGroup"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_marginTop="30dp"
+            android:checked="true"
+            android:text="@string/settings3"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/resetRecordButton"

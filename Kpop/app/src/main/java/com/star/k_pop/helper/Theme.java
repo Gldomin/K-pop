@@ -21,7 +21,7 @@ public class Theme {
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
         } else
-            activity.setTheme(R.style.AppThemeLightRabbit);
+            activity.setTheme(R.style.AppThemeLight);
 
     }
 
@@ -29,26 +29,7 @@ public class Theme {
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
         } else
-            activity.setTheme(R.style.AppThemeLightRabbit2);
-
-    }
-
-    public int getThemeBackground() {
-        if (darkMode) {
-            return R.drawable.light_background;
-        } else
-            return R.drawable.main_background2;
-
-    }
-
-    public int getThemeBackground2() {
-        /*if (darkMode) {
-            return R.drawable.main_background2;
-        } else*/
-        if (themeCount == 1) {
-            return R.drawable.light_background;
-        } else
-            return R.drawable.main_background_hamster;
+            activity.setTheme(R.style.AppThemeLight);
 
     }
 

@@ -24,10 +24,12 @@ public class BasicNotice extends AppCompatActivity {
         int idStringSmall = getIntent().getIntExtra("text", 0);
         TextView textView1 = findViewById(R.id.abautSmallText);
         textView1.setText(idStringSmall);
+        textView1.setTextColor(theme.getTextColor());
 
         int idStringBig = getIntent().getIntExtra("title", 0);
         TextView textView2 = findViewById(R.id.abautTitleText);
         textView2.setText(idStringBig);
+        textView2.setTextColor(theme.getTextColor());
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {

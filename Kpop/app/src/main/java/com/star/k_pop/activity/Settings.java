@@ -10,6 +10,9 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
@@ -22,102 +25,47 @@ import com.star.k_pop.lib.SomeMethods;
 import com.yandex.metrica.YandexMetrica;
 
 public class Settings extends AppCompatActivity {
-    OptionsSet tempSettingsSet = new OptionsSet(false, false);
+
     Theme theme;
-
-    RadioGroup radGroup;
-    RadioButton blueBut;
-    ImageView themeIm;
-    RadioButton redBut;
-    RadioButton catBut;
-    SwitchCompat darkThemeSwitch;
-
+    SwitchCompat optionSwitch1;
+    SwitchCompat optionSwitch2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         theme = new Theme(this);
-
         theme.setThemeSecond();
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_settings);
+
+        final TextView settingText = findViewById(R.id.settingTitleTextView);
+        settingText.setTextColor(theme.getTextColor());
+
+         optionSwitch1 = findViewById(R.id.optionSwitch1); //darkMode переключалка
+        optionSwitch1.setTextColor(theme.getTextColor());
+
+         optionSwitch2 = findViewById(R.id.optionSwitch2); //sound переключалка
+        optionSwitch2.setTextColor(theme.getTextColor());
+
+
+
+
+
+
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
 
-        darkThemeSwitch = findViewById(R.id.optionSwitch3); //darkMode переключалка
-        darkThemeSwitch.setTextColor(theme.getButtonTextColor());
 
-        radGroup = findViewById(R.id.radGroup);
-        blueBut = findViewById(R.id.blueVar);
-        themeIm = findViewById(R.id.exampleBack);
-        redBut = findViewById(R.id.redVar);
-        catBut = findViewById(R.id.catVar);
 
-        blueBut.setTextColor(theme.getButtonTextColor());
-        redBut.setTextColor(theme.getButtonTextColor());
-        catBut.setTextColor(theme.getButtonTextColor());
-        if (theme.isDarkMode()) {
-            blueBut.setText(getResources().getString(R.string.settingRed));
-            redBut.setText(getResources().getString(R.string.settingGreen));
-            catBut.setText(getResources().getString(R.string.settingPink));
-        } else {
-            blueBut.setText(getResources().getString(R.string.settingRabbit));
-            redBut.setText(getResources().getString(R.string.settingHamster));
-            catBut.setText(getResources().getString(R.string.settingCat));
-
-        }
-        themeIm.setImageResource(theme.getBackgroundButton2());
 
         Storage storage = new Storage(this, "settings");
-        tempSettingsSet.darkMode = storage.getBoolean("darkMode");
-        tempSettingsSet.themeCount = storage.getInt("themeCount");
 
-        darkThemeSwitch.setChecked(tempSettingsSet.darkMode);
+        optionSwitch1.setChecked(storage.getBoolean("darkMode"));
+        optionSwitch2.setChecked(storage.getBoolean("soundMode"));
 
-        if (tempSettingsSet.themeCount == 1) radGroup.check(R.id.blueVar);
-        if (tempSettingsSet.themeCount == 2) radGroup.check(R.id.redVar);
-        if (tempSettingsSet.themeCount == 3) radGroup.check(R.id.catVar);
 
-        radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-                                                @Override
-                                                public void onCheckedChanged(RadioGroup radGroup, int checkedId) {
-                                                    if (checkedId == R.id.blueVar) {
-                                                        chooseTheme(1);
-                                                    } else if (checkedId == R.id.redVar) {
-                                                        chooseTheme(2);
-                                                    } else if (checkedId == R.id.catVar) {
-                                                        chooseTheme(3);
-                                                    }
-                                                }
-                                            }
-        );
-
-        darkThemeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                tempSettingsSet.darkMode = darkThemeSwitch.isChecked();
-                if (darkThemeSwitch.isChecked()) {
-                    blueBut.setText(getResources().getString(R.string.settingRed));
-                    redBut.setText(getResources().getString(R.string.settingGreen));
-                    catBut.setText(getResources().getString(R.string.settingPink));
-                } else {
-                    blueBut.setText(getResources().getString(R.string.settingRabbit));
-                    redBut.setText(getResources().getString(R.string.settingHamster));
-                    catBut.setText(getResources().getString(R.string.settingCat));
-                }
-                if (blueBut.isChecked()) {
-                    chooseTheme(1);
-                } else if (redBut.isChecked()) {
-                    chooseTheme(2);
-                } else if (catBut.isChecked()) {
-                    chooseTheme(3);
-                }
-            }
-        });
 
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
-        settingsConfirmButton.setBackgroundResource(theme.getBackgroundResource());
+        settingsConfirmButton.setBackgroundResource(theme.getBackgroundButton());
 
         settingsConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +79,7 @@ public class Settings extends AppCompatActivity {
         });
 
         Button creepyGuy = findViewById(R.id.settingsCancel);
-        creepyGuy.setBackgroundResource(theme.getBackgroundResource());
+        creepyGuy.setBackgroundResource(theme.getBackgroundButton());
 
         creepyGuy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,7 +89,7 @@ public class Settings extends AppCompatActivity {
         });
 
         Button resetButton = findViewById(R.id.resetRecordButton); //кнопка сброса счета
-        resetButton.setBackgroundResource(theme.getBackgroundResource());
+        resetButton.setBackgroundResource(theme.getBackgroundButton());
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,24 +119,13 @@ public class Settings extends AppCompatActivity {
 
     }
 
-    void chooseTheme(int num) {
-        if (num == 1) {
-            if (darkThemeSwitch.isChecked()) {
-                themeIm.setImageResource(R.drawable.stylebutton_purple);
-            } else {
-                themeIm.setImageResource(R.drawable.stylebutton_yellow);
-            }
-            tempSettingsSet.themeCount = 1;
 
-        }
-    }
 
     void saveSettings() {
-        YandexMetrica.reportEvent("Темная тема: " + darkThemeSwitch.isChecked() + ", Выбранная тема: " + tempSettingsSet.themeCount);
+        YandexMetrica.reportEvent("Темная тема: Darkmode - " + optionSwitch1.isChecked());
         Storage storage = new Storage(this, "settings");
-        storage.saveValue("darkMode", tempSettingsSet.darkMode);
-        storage.saveValue("themeCount", tempSettingsSet.themeCount);
-        //Toast.makeText(Settings.this, getResources().getString(R.string.OptionsSet), Toast.LENGTH_LONG).show(); //отправка сообщения на экран
+        storage.saveValue("darkMode", optionSwitch1.isChecked());
+        storage.saveValue("soundMode",optionSwitch2.isChecked());
     }
 
     @Override

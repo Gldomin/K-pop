@@ -29,8 +29,10 @@ import com.google.android.gms.ads.rewarded.RewardItem;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.helper.Rewarded;
+import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
+import com.star.k_pop.lib.SoundPlayer;
 import com.star.k_pop.model.Bands;
 import com.yandex.metrica.YandexMetrica;
 
@@ -48,6 +50,12 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
     Theme theme;
     HeathBar heathBarTest;
+
+    SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
+    boolean sound=false; //включен ли звук
+     int pingClickID;
+     int longSwitchID;
+
 
     private int record;
     private int scoreNow = -1;
@@ -96,6 +104,12 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands_mode_two);
 
+
+        pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
+        longSwitchID = soundPlayer.load(R.raw.long_switch);
+        Storage storage = new Storage(this, "settings"); //хранилище для извлечения
+        sound = storage.getBoolean("soundMode"); //настроек звука
+
         rewarded = new Rewarded(this, R.string.admob_id_reward_bands);
 
         groupPhoto = findViewById(R.id.groupPhoto);
@@ -103,8 +117,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         slideButton = findViewById(R.id.button);
         recordText = findViewById(R.id.scoreBands);
         scoreNowText = findViewById(R.id.fastscoreBands);
+        recordText.setTextColor(theme.getTextColor());
+        scoreNowText.setTextColor(theme.getTextColor());
 
-        groupPhoto.setBackground(AppCompatResources.getDrawable(this, theme.getBackgroundButton()));
+        //groupPhoto.setBackground(AppCompatResources.getDrawable(this, theme.getBackgroundButton()));
         hintButton.setBackgroundResource(theme.getBackgroundButton());
         if (theme.isDarkMode()) {
             hintButton.setImageResource(R.drawable.hint2);
@@ -284,9 +300,14 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         }
         if (artists.get(count).checkGroup(win.toString())) {
             change();
+            if (sound)
+                soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
         } else {
+            if (sound)
+                soundPlayer.playSoundStream(pingClickID);//звук неправильного ответа
             heathBarTest.blow();
             if (heathBarTest.getHp() == 0) {
+
                 startLosingDialog();
             }
         }
