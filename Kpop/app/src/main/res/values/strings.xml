@@ -136,4 +136,7 @@ Distribute them all! ツ
     <string name="settingHamster">Hamster</string>
     <string name="settingCat">Kitty</string>
 
+
+    <string name="ttWrongAnswer">Finish! You made</string>
+
 </resources>

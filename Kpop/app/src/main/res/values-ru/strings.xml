@@ -121,4 +121,8 @@
     <string name="settingRabbit">Кролик</string>
     <string name="settingHamster">Хомячок</string>
     <string name="settingCat">Котик</string>
+
+
+    <string name="ttWrongAnswer">No</string>
+
 </resources>
