@@ -51,6 +51,10 @@ public class Artist {
         return groups[0] + "/" + name + "/" + getNamesImages();
     }
 
+    public String getUriFolderString() {
+        return "file:///android_asset/Groups/" + groups[0] + "/" + name + "/" + getNamesImages();
+    }
+
     public boolean checkGroup(String group) {
         for (String g : groups) {
             Log.v("TAG", group.replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
