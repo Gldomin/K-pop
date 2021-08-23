@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -170,8 +171,8 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             Button button = findViewById(id);
             button.setOnClickListener(new OnClickListenerCustom(buttons, "_", ""));
             button.setBackgroundResource(R.drawable.roundedimageview);
-            buttonsEnd.add(button);
             button.setTextColor(theme.getTextColor());
+            buttonsEnd.add(button);
         }
 
         hintButton.setOnClickListener(new View.OnClickListener() {
@@ -338,6 +339,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             buttons.get(positionButton).setVisibility(View.VISIBLE);
             if (buttons == buttonsEnd) {
                 buttons.get(positionButton).setBackgroundResource(theme.getBackgroundButton());
+                buttons.get(positionButton).setTextColor(Color.BLACK);
             }
             boolean check = true;
             for (Button b : buttonsEnd) {
@@ -397,10 +399,12 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             slideButton.setText(((Button) view).getText());
             slideButton.setVisibility(View.VISIBLE);
             ((Button) view).setText(textStart);
-            if (textEnd.equals("_"))
+            if (textEnd.equals("_")){
                 view.setVisibility(View.INVISIBLE);
+            }
             if (textEnd.equals("")) {
                 view.setBackgroundResource(R.drawable.roundedimageview);
+                ((Button) view).setTextColor(theme.getTextColor());
             }
 
             slideButton.animate().setDuration(400)
