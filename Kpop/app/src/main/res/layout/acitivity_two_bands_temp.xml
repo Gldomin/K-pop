@@ -19,39 +19,137 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/RecordScore"
+        <com.star.k_pop.helper.DividerView
+            android:id="@+id/dividerView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Рекорд:0"
+            android:layout_height="0dp"
+            android:layerType="software"
+            app:color="#FFFFFF"
+            app:dashGap="20dp"
+            app:dashLength="20dp"
+            app:dashThickness="7dp"
+            app:layout_constraintBottom_toBottomOf="@+id/titleTinderBot"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/titleTinderGroup"
+            app:orientationDivider="vertical" />
 
-        <TextView
-            android:id="@+id/scoreBands"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/Score"
+        <RelativeLayout
+
+            android:id="@+id/scorebar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/RecordScore" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <ImageButton
+                android:id="@+id/helpTindButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="2dp"
+                android:layout_toStartOf="@+id/podsk"
+                app:srcCompat="@android:drawable/ic_menu_help" />
+
+            <RelativeLayout
+                android:id="@+id/guessBandHealthLR"
+                android:layout_width="137dp"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/guessBandHeart1"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_toStartOf="@+id/guessBandHeart2"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart_color" />
+
+                <ImageView
+                    android:id="@+id/guessBandHeart2"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart_color" />
+
+                <ImageView
+                    android:id="@+id/guessBandHeart3"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_toEndOf="@+id/guessBandHeart2"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart_color" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/RecordScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/scoreBands"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="1dp"
+                android:layout_toStartOf="@+id/guessBandHealthLR"
+                android:text="Ваш счет: 0" />
+
+            <TextView
+                android:id="@+id/scoreBands"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="1dp"
+                android:layout_toStartOf="@+id/guessBandHealthLR"
+                android:text="Ваш рекорд: 0" />
+
+            <ImageButton
+                android:id="@+id/podsk"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="1dp"
+                android:background="@android:drawable/menuitem_background"
+                android:contentDescription="TODO"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="4dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/hint" />
+
+            <TextView
+                android:id="@+id/counter_Hints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/podsk"
+                android:layout_alignEnd="@+id/podsk"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="3" />
+
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/imageBand"
             android:layout_width="fill_parent"
             android:layout_height="450dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="5dp"
+            android:layout_marginBottom="8dp"
             android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/titleTinderBot"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scoreBands"
+            app:layout_constraintTop_toTopOf="@+id/dividerView"
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
@@ -59,16 +157,19 @@
             android:layout_width="fill_parent"
             android:layout_height="450dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="5dp"
+            android:layout_marginBottom="8dp"
             android:adjustViewBounds="false"
             android:cropToPadding="false"
             android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/titleTinderBot"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scoreBands"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="@+id/dividerView"
+            tools:srcCompat="@tools:sample/avatars"
+            tools:visibility="invisible" />
 
         <TextView
             android:id="@+id/oneBand"
@@ -105,82 +206,136 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageBand" />
 
-        <ImageButton
-            android:id="@+id/helpTindButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_help" />
-
-        <ImageButton
-            android:id="@+id/ttChoseActorButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/helpTindButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_dialog_dialer" />
-
-        <ImageButton
+        <Button
             android:id="@+id/ttConfirmButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:contentDescription="TODO"
-            app:layout_constraintEnd_toStartOf="@+id/secondBand"
-            app:layout_constraintStart_toEndOf="@+id/oneBand"
-            app:layout_constraintTop_toBottomOf="@+id/artistName"
-            app:srcCompat="@android:drawable/ic_menu_directions" />
-
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/ttGridFGroupLayout"
-            android:layout_width="120dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginLeft="48dp"
-            android:layout_marginBottom="8dp"
-            android:foregroundGravity="fill_horizontal|fill_vertical"
-            app:alignmentMode="alignMargins"
-            app:barrierMargin="@dimen/default_gap"
-            app:columnCount="10"
-            app:layout_constraintBottom_toTopOf="@+id/oneBand"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_goneMarginLeft="3dp"
-            app:layout_goneMarginRight="4dp"
-            app:rowCount="10"
-            app:useDefaultMargins="false">
-
-
-        </androidx.gridlayout.widget.GridLayout>
-
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/ttGridSGroupLayout"
-            android:layout_width="120dp"
-            android:layout_height="26dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginRight="48dp"
-            android:layout_marginBottom="8dp"
-            android:addStatesFromChildren="false"
-            android:foregroundGravity="fill"
-            app:alignmentMode="alignBounds"
-            app:barrierMargin="3dp"
-            app:columnCount="10"
-            app:layout_constraintBottom_toTopOf="@+id/secondBand"
+            android:text="Перераспределить"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:rowCount="2"
-            app:useDefaultMargins="false">
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <androidx.constraintlayout.widget.Group
-                android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/titleTinderGroup"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFDD2"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scorebar">
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp" />
-        </androidx.gridlayout.widget.GridLayout>
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="GOT7"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="или"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="BTS"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/titleTinderBot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="#FFFDD2"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/ttConfirmButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Распределено участников:"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="GOT7"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="BTS"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="8/7"
+                    android:textColor="#FF0000"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="4/6"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -209,14 +364,14 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <com.star.k_pop.helper.DividerView
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layerType="software"
                 app:color="#FFFFFF"
                 app:dashGap="20dp"
                 app:dashLength="20dp"
                 app:dashThickness="7dp"
-                app:orientationDivider="vertical"
-                android:layout_width="5dp"
-                android:layout_height="match_parent"
-                android:layerType="software" />
+                app:orientationDivider="vertical" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/groupRight"
@@ -308,7 +463,7 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:onClick="ttClickCheck"
-            android:text="Button" />
+            android:text="Подтвердить" />
 
     </RelativeLayout>
 

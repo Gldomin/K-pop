@@ -13,13 +13,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.gridlayout.widget.GridLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,21 +43,11 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 public class TwoBandsTinder extends AppCompatActivity {
 
     private final String TAG = "TWO BANDS ";
-    //-------------------------------------------------------------------------------------------------
-    private final int NO_BAND = 0;
-    private final int FIRST_BAND = 1;
-    private final int SECOND_BAND = 2;
+
     //-------------------------------------------------------------------------------------------------
     private final ArrayList<Bands> bands = Importer.getRandomBands(); //берем список всех групп
-    private final ArrayList<Artist> artists = new ArrayList<>(); //лист для того чтобы переносить артистов из двух групп
-    private final ArrayList<String> imgList = new ArrayList<>();
     private boolean conformChoices;
-    private ArrayList<String> artChoices;
     private int bandsCount;
-
-    private GridLayout gridFirst;
-    private GridLayout gridSecond;
-
 
     private RecyclerView recyclerView1;
     private RecyclerView recyclerView2;
@@ -95,14 +85,13 @@ public class TwoBandsTinder extends AppCompatActivity {
         Log.i(TAG + "Wrong", "We are here now");
         setContentView(R.layout.acitivity_two_bands_temp);
 
-        ImageButton chooseActorButton = findViewById(R.id.ttChoseActorButton);
-        ImageButton confirmButton = findViewById(R.id.ttConfirmButton);
+        Button confirmButton = findViewById(R.id.ttConfirmButton);
         ImageButton helpButton = findViewById(R.id.helpTindButton);
-
+        ImageButton hintButton = findViewById(R.id.podsk);
 
         confirmButton.setBackgroundResource(theme.getBackgroundButton());
-        chooseActorButton.setBackgroundResource(theme.getBackgroundButton());
         helpButton.setBackgroundResource(theme.getBackgroundButton());
+        hintButton.setBackgroundResource(theme.getBackgroundButton());
 
         imageBand = findViewById(R.id.imageBand);
         imBTmp = findViewById(R.id.imgBTmp);
@@ -111,32 +100,24 @@ public class TwoBandsTinder extends AppCompatActivity {
         score = findViewById(R.id.RecordScore);
         artistName = findViewById(R.id.artistName);
         twoBandFlip = findViewById(R.id.twoBandFlipper);
-        gridFirst = findViewById(R.id.ttGridFGroupLayout);
-        gridSecond = findViewById(R.id.ttGridSGroupLayout);
         recyclerView1 = findViewById(R.id.groupLeft);
         recyclerView2 = findViewById(R.id.groupRight);
+
 //----------------------not changed
-        chooseActorButton.setOnClickListener(new View.OnClickListener() {
+        confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (twoBandFlip != null) {
                     twoBandFlip.showNext();
                 }
-                //switchOnBands();
-            }
-        });
-//----------------------not changed
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
-                if (checkresult()) {
-                    bandsCount = bandsCount + 2;
-                    mainProcedure();
-                } else {
-                    imageBand.startAnimation(anim);
-                    losescreen();
-                }
+//                Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
+//                if (checkresult()) {
+//                    bandsCount = bandsCount + 2;
+//                    mainProcedure();
+//                } else {
+//                    imageBand.startAnimation(anim);
+//                    losescreen();
+//                }
             }
         });
 
@@ -216,9 +197,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         bandsCount = 0;
         conformChoices = false;
-        if (artists != null) {
-            artists.clear();
-        }
+
 
         left = false;
         right = false;
