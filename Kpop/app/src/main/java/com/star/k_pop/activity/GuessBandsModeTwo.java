@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -48,19 +47,17 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
     private final String TAG = "Mode Two";
 
-    Theme theme;
-    HeathBar heathBarTest;
+    private Theme theme;
+    private HeathBar heathBarTest;
 
-    SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
-    boolean sound=false; //включен ли звук
-     int pingClickID;
-     int longSwitchID;
-
+    private final SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
+    private boolean sound = false; //включен ли звук
+    private int pingClickID;
+    private int longSwitchID;
 
     private int record;
     private int scoreNow = -1;
     private int count = 0;
-    private int startButtonNumber;
     private int countLetter;
     private String nameGroup;
     private boolean countClick = false;
@@ -187,13 +184,16 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                         for (int i = 0; i < ref.length; i++) {
                             if (i < countLetter && nameGroup.charAt(i) != ' ') {
                                 buttons.get(ref[i]).setText("" + nameGroup.charAt(i));
+                                buttons.get(ref[i]).setVisibility(View.VISIBLE);
                             } else {
+                                buttons.get(ref[i]).setText("");
                                 buttons.get(ref[i]).setVisibility(View.INVISIBLE);
                             }
                         }
                         for (Button b : buttonsEnd) {
                             if (b.getText() != " ") {
                                 b.setText("_");
+                                b.setBackgroundResource(R.drawable.roundedimageview);
                             }
                         }
                         hintUsed = true;
@@ -251,7 +251,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         }
         nameGroup = artists.get(count).getNameCorrect();
         countLetter = nameGroup.length();
-        startButtonNumber = 5 - countLetter / 2;
+        int startButtonNumber = 5 - countLetter / 2;
         for (int i = startButtonNumber; i < startButtonNumber + countLetter; i++) {
             if (nameGroup.charAt(i - startButtonNumber) != ' ') {
                 buttonsEnd.get(i).setVisibility(View.VISIBLE);
@@ -263,7 +263,11 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             if (i < countLetter && nameGroup.charAt(i) != ' ') {
                 buttons.get(ref[i]).setText("" + nameGroup.charAt(i));
             } else {
-                buttons.get(ref[i]).setText("" + (char) ('a' + new Random().nextInt(26)));
+                if (new Random().nextInt(25) > 0) {
+                    buttons.get(ref[i]).setText("" + (char) ('a' + new Random().nextInt(26)));
+                } else {
+                    buttons.get(ref[i]).setText("" + (char) ('0' + new Random().nextInt(10)));
+                }
             }
             buttons.get(ref[i]).setVisibility(View.VISIBLE);
         }
