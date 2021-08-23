@@ -48,6 +48,13 @@ public class Theme {
 
     }
 
+    public int getColorPrimary() {
+        if (darkMode) {
+            return activity.getResources().getColor(R.color.standartPurpleButtonColor);
+        } else
+            return activity.getResources().getColor(R.color.lighterYellowButtonColor);
+    }
+
     public int getButtonTextColor() {
         if (darkMode) {
             return activity.getResources().getColor(R.color.blackColor);

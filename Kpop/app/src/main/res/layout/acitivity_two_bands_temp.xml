@@ -212,9 +212,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:contentDescription="TODO"
-            android:text="Перераспределить"
-            android:paddingEnd="10dp"
             android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Перераспределить"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -224,8 +224,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#FFFDD2"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scorebar">
@@ -322,7 +322,6 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="8/7"
-                    android:textColor="#FF0000"
                     android:textSize="20sp" />
 
                 <TextView
@@ -342,8 +341,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#B6E0FF">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -438,7 +436,6 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="8/7"
-                    android:textColor="#FF0000"
                     android:textSize="20sp" />
 
                 <TextView
@@ -463,6 +460,8 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:onClick="ttClickCheck"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:text="Подтвердить" />
 
     </RelativeLayout>

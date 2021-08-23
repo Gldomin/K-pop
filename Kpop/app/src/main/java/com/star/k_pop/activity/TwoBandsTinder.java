@@ -5,17 +5,17 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -58,12 +58,34 @@ public class TwoBandsTinder extends AppCompatActivity {
     private TextView oneBand;
     private TextView secondBand;
     private TextView artistName;
+
+    private TextView groupNameFirstOne;
+    private TextView groupNameSecondOne;
+    private TextView groupNameFirstTwo;
+    private TextView groupNameSecondTwo;
+    private TextView groupNameFirstThree;
+    private TextView groupNameSecondThree;
+
+    private TextView countGroupTextFirstOne;
+    private TextView countGroupTextSecondOne;
+
+    private TextView countGroupTextFirstTwo;
+    private TextView countGroupTextSecondTwo;
+
     private ViewFlipper twoBandFlip;
     private byte number_of_artist;
     private boolean left;
     private boolean right;
-    private TextView score;
+    private TextView scoreText;
+    private TextView recordText;
     private final String nonChoice = "NaN";
+
+    private String countGroupMaxOne;
+    private String countGroupMaxTwo;
+    private int countGroupOne;
+    private int countGroupTwo;
+
+    Theme theme;
 
     //--------------------------------------------------------------------------------------------------
     Bands first_band;
@@ -78,7 +100,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Theme theme = new Theme(this);
+        theme = new Theme(this);
         theme.setThemeSecond();
 
         super.onCreate(savedInstanceState);
@@ -86,10 +108,12 @@ public class TwoBandsTinder extends AppCompatActivity {
         setContentView(R.layout.acitivity_two_bands_temp);
 
         Button confirmButton = findViewById(R.id.ttConfirmButton);
+        Button endButton = findViewById(R.id.button2);
         ImageButton helpButton = findViewById(R.id.helpTindButton);
         ImageButton hintButton = findViewById(R.id.podsk);
 
         confirmButton.setBackgroundResource(theme.getBackgroundButton());
+        endButton.setBackgroundResource(theme.getBackgroundButton());
         helpButton.setBackgroundResource(theme.getBackgroundButton());
         hintButton.setBackgroundResource(theme.getBackgroundButton());
 
@@ -97,11 +121,35 @@ public class TwoBandsTinder extends AppCompatActivity {
         imBTmp = findViewById(R.id.imgBTmp);
         oneBand = findViewById(R.id.oneBand);
         secondBand = findViewById(R.id.secondBand);
-        score = findViewById(R.id.RecordScore);
+        scoreText = findViewById(R.id.scoreBands);
+        recordText = findViewById(R.id.RecordScore);
         artistName = findViewById(R.id.artistName);
         twoBandFlip = findViewById(R.id.twoBandFlipper);
         recyclerView1 = findViewById(R.id.groupLeft);
         recyclerView2 = findViewById(R.id.groupRight);
+
+        groupNameFirstOne = findViewById(R.id.textView12);
+        groupNameSecondOne = findViewById(R.id.textView13);
+        groupNameFirstTwo = findViewById(R.id.textView2);
+        groupNameSecondTwo = findViewById(R.id.textView3);
+        groupNameFirstThree = findViewById(R.id.textView21);
+        groupNameSecondThree = findViewById(R.id.textView23);
+
+        countGroupTextFirstOne = findViewById(R.id.textView14);
+        countGroupTextSecondOne = findViewById(R.id.textView15);
+        countGroupTextFirstTwo = findViewById(R.id.textView4);
+        countGroupTextSecondTwo = findViewById(R.id.textView5);
+
+        LinearLayout layout1 = findViewById(R.id.titleTinderBot);
+        LinearLayout layout2 = findViewById(R.id.titleTinderGroup);
+        LinearLayout layout3 = findViewById(R.id.titleTinder);
+
+        layout1.setBackgroundColor(theme.getColorPrimary());
+        layout2.setBackgroundColor(theme.getColorPrimary());
+        layout3.setBackgroundColor(theme.getColorPrimary());
+
+        scoreText.setTextColor(theme.getTextColor());
+        recordText.setTextColor(theme.getTextColor());
 
 //----------------------not changed
         confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +157,8 @@ public class TwoBandsTinder extends AppCompatActivity {
             public void onClick(View view) {
                 if (twoBandFlip != null) {
                     twoBandFlip.showNext();
+                    countGroupTextFirstTwo.setText(countGroupOne + countGroupMaxOne);
+                    countGroupTextSecondTwo.setText(countGroupTwo + countGroupMaxOne);
                 }
 //                Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
 //                if (checkresult()) {
@@ -122,6 +172,18 @@ public class TwoBandsTinder extends AppCompatActivity {
         });
 
 
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent image = new Intent();
+                image.setClass(TwoBandsTinder.this, BasicNotice.class);
+                image.putExtra("text", R.string.twoBandsTinderGameModeAbaut);
+                image.putExtra("title", R.string.gameModeAbaut);
+                startActivity(image);
+            }
+        });
+
+
 //-----------------------now working----------------------------------------------------------------------
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
 
@@ -130,6 +192,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 left = true;
                 right = false;
                 ansverMap.put(artists_turn.get(pictnumb), first_band.getName());
+                countGroupTextFirstOne.setText(++countGroupOne + countGroupMaxOne);
                 if (pictnumb < ansverMap.size() - 1) {
                     pictnumb++;
                     fadeAnimation(true);
@@ -147,6 +210,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 left = false;
                 right = true;
                 ansverMap.put(artists_turn.get(pictnumb), second_band.getName());
+                countGroupTextSecondOne.setText(++countGroupTwo + countGroupMaxTwo);
                 if (pictnumb < ansverMap.size() - 1) {
                     pictnumb++;
                     fadeAnimation(true);
@@ -238,6 +302,8 @@ public class TwoBandsTinder extends AppCompatActivity {
         for (Artist i : artists_turn) {
             ansverMap.put(i, "null");
         }
+        countGroupOne = 0;
+        countGroupTwo = 0;
     }
 
     public void setupImage(int numbpict) {
@@ -253,6 +319,16 @@ public class TwoBandsTinder extends AppCompatActivity {
     public void setupBandText() {
         oneBand.setText(first_band.getName());
         secondBand.setText(second_band.getName());
+        groupNameFirstOne.setText(first_band.getName());
+        groupNameSecondOne.setText(second_band.getName());
+        groupNameFirstTwo.setText(first_band.getName());
+        groupNameSecondTwo.setText(second_band.getName());
+        groupNameFirstThree.setText(first_band.getName());
+        groupNameSecondThree.setText(second_band.getName());
+        countGroupMaxOne = "/" + first_band.getNumberOfPeople();
+        countGroupMaxTwo = "/" + second_band.getNumberOfPeople();
+        countGroupTextFirstOne.setText("0" + countGroupMaxOne);
+        countGroupTextSecondOne.setText("0" + countGroupMaxTwo);
     }
 
     public void fadeAnimation(boolean anim) {
@@ -296,21 +372,20 @@ public class TwoBandsTinder extends AppCompatActivity {
                 if (art.getKey().checkGroup(art.getValue())) rightAnsvers++;
             }
         }
-        if (rightAnsvers == ansverMap.size()) {
-            return true;
-        }
-        return false;
+        return rightAnsvers == ansverMap.size();
     }
 
     public void ttClickCheck(View view) {
         if (checkresult()) {
-
             if (bandsCount + 2 < bands.size()) {
                 bandsCount = bandsCount + 2;
                 mainProcedure();
-            } else resultsSequence();
+            } else {
+                resultsSequence();
+            }
+        } else {
+            losescreen();
         }
-        else losescreen();
 
     }
 
@@ -329,7 +404,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     }
 
     public void losescreen() {
-        AlertDialog.Builder alertbuild = new AlertDialog.Builder(this);
+        AlertDialog.Builder alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
         alertbuild.setTitle(" Готово ");
         alertbuild.setMessage("вы совершили " + mistakescount());
         alertbuild.setPositiveButton("окей", new DialogInterface.OnClickListener() {
