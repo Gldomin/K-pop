@@ -55,9 +55,6 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     private ImageView imageBand;
     private ImageView imBTmp;
-    private TextView oneBand;
-    private TextView secondBand;
-    private TextView artistName;
 
     private TextView groupNameFirstOne;
     private TextView groupNameSecondOne;
@@ -119,11 +116,8 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         imageBand = findViewById(R.id.imageBand);
         imBTmp = findViewById(R.id.imgBTmp);
-        oneBand = findViewById(R.id.oneBand);
-        secondBand = findViewById(R.id.secondBand);
         scoreText = findViewById(R.id.scoreBands);
         recordText = findViewById(R.id.RecordScore);
-        artistName = findViewById(R.id.artistName);
         twoBandFlip = findViewById(R.id.twoBandFlipper);
         recyclerView1 = findViewById(R.id.groupLeft);
         recyclerView2 = findViewById(R.id.groupRight);
@@ -144,9 +138,9 @@ public class TwoBandsTinder extends AppCompatActivity {
         LinearLayout layout2 = findViewById(R.id.titleTinderGroup);
         LinearLayout layout3 = findViewById(R.id.titleTinder);
 
-        layout1.setBackgroundColor(theme.getColorPrimary());
-        layout2.setBackgroundColor(theme.getColorPrimary());
-        layout3.setBackgroundColor(theme.getColorPrimary());
+        layout1.setBackgroundColor(theme.getColorLighter());
+        layout2.setBackgroundColor(theme.getColorLighter());
+        layout3.setBackgroundColor(theme.getColorLighter());
 
         scoreText.setTextColor(theme.getTextColor());
         recordText.setTextColor(theme.getTextColor());
@@ -312,13 +306,10 @@ public class TwoBandsTinder extends AppCompatActivity {
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .transition(withCrossFade())
                     .into(imageBand);
-            artistName.setText(artists_turn.get(numbpict).getName());
         }
     }
 
     public void setupBandText() {
-        oneBand.setText(first_band.getName());
-        secondBand.setText(second_band.getName());
         groupNameFirstOne.setText(first_band.getName());
         groupNameSecondOne.setText(second_band.getName());
         groupNameFirstTwo.setText(first_band.getName());

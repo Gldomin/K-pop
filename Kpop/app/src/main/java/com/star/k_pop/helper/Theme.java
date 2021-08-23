@@ -20,70 +20,79 @@ public class Theme {
     public void setTheme() { //первая тема для меню
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
-        } else
+        } else {
             activity.setTheme(R.style.AppThemeLight);
+        }
 
     }
 
     public void setThemeSecond() {  //вторая тема для игровых активити
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
-        } else
+        } else {
             activity.setTheme(R.style.AppThemeLight);
+        }
 
     }
 
     public int getAlertDialogStyle() {
         if (darkMode) {
             return R.style.DarkAlertDialog;
-        } else
+        } else {
             return R.style.StandartAlertDialog;
+        }
     }
 
     public int getTextColor() {
         if (darkMode) {
             return activity.getResources().getColor(R.color.whiteColor);
-        } else
+        } else {
             return activity.getResources().getColor(R.color.blackColor);
+        }
 
     }
 
-    public int getColorPrimary() {
+    public int getColorLighter() {
         if (darkMode) {
-            return activity.getResources().getColor(R.color.standartPurpleButtonColor);
-        } else
+            return activity.getResources().getColor(R.color.lighterPurpleButtonColor);
+        } else {
             return activity.getResources().getColor(R.color.lighterYellowButtonColor);
+        }
     }
 
     public int getButtonTextColor() {
         if (darkMode) {
             return activity.getResources().getColor(R.color.blackColor);
-        } else
+        } else {
             return activity.getResources().getColor(R.color.blackColor);
+        }
     }
 
     public int getBackgroundResource() {
-            if (darkMode) {
-                return R.drawable.stylebutton_purple;
-            } else {
-                return R.drawable.stylebutton_yellow;
-            }
+        if (darkMode) {
+            return R.drawable.stylebutton_purple;
+        } else {
+            return R.drawable.stylebutton_yellow;
+        }
 
     }
 
     public int getBackgroundButton() {
 
-            if (darkMode) {
-                return R.drawable.stylebutton_pink;
-            } else return R.drawable.stylebutton_yellow;
+        if (darkMode) {
+            return R.drawable.stylebutton_pink;
+        } else {
+            return R.drawable.stylebutton_yellow;
+        }
 
     }
 
     public int getBackgroundButton2() {
-            if (darkMode) {
-                return R.drawable.stylebutton_pink;
-            } else
-                return R.drawable.light_background;
+        if (darkMode) {
+            return R.drawable.stylebutton_pink;
+        } else {
+            return R.drawable.light_background;
+        }
 
     }
 
