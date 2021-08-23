@@ -9,11 +9,14 @@
 
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="124dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="28dp"
+        android:id="@+id/settingTitleTextView"
+        android:layout_width="135dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:text="@string/settings0"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,77 +56,57 @@
 
     <RelativeLayout
         android:id="@+id/rl2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="432dp"
+        android:layout_height="459dp"
         app:layout_constraintBottom_toTopOf="@+id/rl3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        app:layout_constraintTop_toBottomOf="@+id/settingTitleTextView"
+        app:layout_constraintVertical_bias="0.528">
+
 
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/optionSwitch3"
+            android:id="@+id/optionSwitch2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="136dp"
-            android:layout_marginLeft="136dp"
-            android:layout_marginTop="14dp"
-            android:text="@string/settings3"
+            android:layout_below="@+id/optionSwitch1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/settings4"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
 
-        <RadioGroup
-            android:id="@+id/radGroup"
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/optionSwitch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/optionSwitch3"
             android:layout_centerHorizontal="true"
-            android:orientation="horizontal">
-            <RadioButton
-                android:id="@+id/blueVar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Зайка"
-                />
-            <RadioButton
-                android:id="@+id/redVar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Хомячок"/>
-            <RadioButton
-                android:id="@+id/catVar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Котик"/>
-
-        </RadioGroup>
-
-        <ImageView
-            android:id="@+id/exampleBack"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@+id/radGroup"
-            android:layout_centerHorizontal="true"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_marginTop="30dp"
+            android:text="@string/settings3"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <Button
             android:id="@+id/resetRecordButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/exampleBack"
 
-           android:layout_alignParentStart="true"
-        android:layout_alignParentLeft ="true"
-       android:layout_marginStart="123dp"
-        android:layout_marginLeft="123dp"
-android:layout_marginTop="10dp"
-
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
             android:text="@string/resetRecords"
-            android:textFontWeight="1"/>
+            android:textFontWeight="1" />
 
 
     </RelativeLayout>

@@ -42,6 +42,7 @@ public class Importer {
         ArrayList<String> images = new ArrayList<>();
         ArrayList<String> nameBand = new ArrayList<>();
         ArrayList<String> imageBand = new ArrayList<>();
+        Bands.Sex sexBand = Bands.Sex.MIXED;
         String nameArtist = "artist";
         boolean sex = false;
         try {
@@ -73,6 +74,18 @@ public class Importer {
                             sex = parser.getText().equals("Female");
                             break;
                         }
+                        if (parser.getName().equals("SexBand")) {
+                            parser.next();
+                            String sexBandText = parser.getText();
+                            if (sexBandText.equals("Male")) {
+                                sexBand = Bands.Sex.MALE;
+                            } else if (sexBandText.equals("Female")) {
+                                sexBand = Bands.Sex.FEMALE;
+                            } else {
+                                sexBand = Bands.Sex.MIXED;
+                            }
+                            break;
+                        }
                         break;
                     case XmlPullParser.END_TAG:
                         if (parser.getName().equals("Artist")) {
@@ -83,7 +96,7 @@ public class Importer {
                         }
                         if (parser.getName().equals("Band")) {
                             artists.addAll(artistsBand);
-                            bands.add(new Bands(nameBand.toArray(new String[0]), artistsBand, imageBand.toArray(new String[0])));
+                            bands.add(new Bands(nameBand.toArray(new String[0]), artistsBand, imageBand.toArray(new String[0]), sexBand));
                             nameBand.clear();
                             artistsBand.clear();
                             imageBand.clear();

@@ -6,7 +6,7 @@
     <string name="menuItemGuessStarReverse">Угадай звезду наоборот</string>
     <string name="menuItemGuessBand">Угадай группу</string>
     <string name="menuItemTinderSwipe">Распредели по группам</string>
-    <string name="menuItemGallery">Галлерея</string>
+    <string name="menuItemGallery">Галерея</string>
     <string name="menuItemSettings">Настройки</string>
     <string name="menuItemAbout">О программе</string>
 
@@ -23,13 +23,13 @@
     <string name="achRoyal">Повелитель четырех режимов</string>
 
     <string name="achGuessStarNormalText">"\t"Вы набрали 50 очков в режиме Угадай Звезду</string>
-    <string name="achGuessStarExpertText">"\t"Вы набрали 150 очков в экспертном режиме Угадай Звезду</string>
+    <string name="achGuessStarExpertText">"\t"Вы набрали 150 очков в режиме Угадай Звезду</string>
     <string name="achGuessBandsNormalText">"\t"Вы набрали 15 очков в режиме Отгадай Группу</string>
-    <string name="achGuessBandsExpertText">"\t"Вы набрали 50 очков в экспертном режиме Отгадай Группу</string>
+    <string name="achGuessBandsExpertText">"\t"Вы набрали 50 очков в режиме Отгадай Группу</string>
     <string name="achSwipeTwoBandsNormalText">"\t"Вы набрали 5 очков в режиме Распредели На Две Группы</string>
-    <string name="achSwipeTwoBandsExpertText">"\t"Вы набрали 25 очков в экспертном режиме Распредели На Две Группы</string>
+    <string name="achSwipeTwoBandsExpertText">"\t"Вы набрали 25 очков в режиме Распредели На Две Группы</string>
     <string name="achGuessStarReversNormalText">"\t"Вы набрали 50 очков в режиме Найди Звезду</string>
-    <string name="achGuessStarReversExpertText">"\t"Вы набрали 150 очков в экспертном режиме Найди Звезду</string>
+    <string name="achGuessStarReversExpertText">"\t"Вы набрали 150 очков режиме Найди Звезду</string>
     <string name="achTripleAdeptText">"\t"Вы - Адепт трех режимов!</string>
     <string name="achTripleExpertText">"\t"Вы истинный знаток К-попа. Вы получили экспертные достижения в трех режимах!</string>
     <string name="achRoyalText">"\t"Вы открыли все, что только возможно! Поздравляем! У нас есть для вас скромный бонус</string>
@@ -45,19 +45,19 @@
     <string name="settings1">Подсказки</string>
     <string name="settings2">Усложненный режим</string>
     <string name="settings3">Темная тема</string>
-    <string name="settings4">"Нажми ОТМЕНА"</string>
+    <string name="settings4">"Включить звуки"</string>
     <string name="settings5">"Нажми ОТМЕНА"</string>
     <string name="resetRecords">Сбросить счёт</string>
     <string name="OptionsSet">Настройки сохранены</string>
-    
+
     <string name="gameRulesAbaut">Правила игры</string>
     <string name="aboutTitle">Добро пожаловать!</string>
     <string name="aboutText">
   "\t"
-        Добро пожаловать в приложение Угадай K-pop! В данном приложении, вы можете испытать свои познания в K-pop. В данном приложении вам предлагается 3 основных игровых режима:"\n"
+        Добро пожаловать в приложение Угадай K-pop! В данном приложении, вы можете испытать свои познания в K-pop. Вам предлагается 3 основных игровых режима:"\n"
         1) Угадай Звезду"\n"
         2) Угадай Группу"\n"
-        3) Распредели по группам"\n"
+        3) Распредели по группам (выйдет в ближайшем обновлении!)"\n"
   "\t"      С помощью данных игровых режимов, вы можете запомнить все самые знаменитые группы К-попа, а так же всех их невероятных участников!"\n"
         В каждом игровом режиме есть достижения!"\n"
         Желаем удачи!
@@ -83,7 +83,13 @@
     <string name="guessBandGameModeAbaut">
         Игровой режим "Угадай Группу" позволяет проверить свои познания самых знаменитых k-pop групп в истории!
         Отгадывай группу в которой состоит артист на экране. Каждый верный ответ увеличесвает твой счет! А неверный, уменьшает жизни. Понятное дело, что при окончании жизней, игра будет окончена."\n"
-        Кроме того, у тебя есть 3 подсказки на игру, которые подскажут тебе буквы из которых состоит название k-pop группы, а за каждые 10 отгаданных груп, тебе будут давать 1 жизнь и 1 подсказку. Но думаю ты разберешься."\n"
+        Кроме того, у тебя есть 3 подсказки на игру, которые подскажут тебе буквы из которых состоит название k-pop группы. Каждая 10-ая отгаданная группа, будет восстанавливать тебе одну жизнь. А каждая 15-ая будет добавлять подсказки. Но думаю ты разберешься."\n"
+        Удачи ;)
+    </string>
+    <string name="guessBandGameModeTwoAbaut">
+        Игровой режим "Угадай Группу" позволяет проверить свои познания самых знаменитых k-pop групп в истории!
+        Отгадывай группу в которой состоит артист на экране. Каждый верный ответ увеличесвает твой счет! А неверный, уменьшает жизни. Понятное дело, что при окончании жизней, игра будет окончена."\n"
+        Кроме того, у тебя есть 3 подсказки на игру, которые подскажут тебе буквы из которых состоит название k-pop группы. Каждая 10-ая отгаданная группа, будет восстанавливать тебе одну жизнь. А каждая 15-ая будет добавлять подсказки. Но думаю ты разберешься."\n"
         Удачи ;)
     </string>
     <string name="twoBandsTinderGameModeAbaut">
@@ -115,4 +121,8 @@
     <string name="settingRabbit">Кролик</string>
     <string name="settingHamster">Хомячок</string>
     <string name="settingCat">Котик</string>
+
+
+    <string name="ttWrongAnswer">No</string>
+
 </resources>

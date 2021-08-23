@@ -15,29 +15,29 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkLight</item>
         <item name="colorAccent">@color/colorAccentLight</item>
         <item name="android:textColorPrimary">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="android:textColor">@color/colorText</item>>
+        <item name="android:windowBackground">@drawable/gradient_background</item>
+        <item name="android:textColor">@color/blackColor</item>>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorControlActivated">@color/colorText</item>
-        <item name="colorSwitchThumbNormal">@color/colorText</item>
-        <item name="android:colorForeground">@color/colorText</item>
+        <item name="colorControlActivated">@color/standartPurpleButtonColor</item>
+        <item name="colorSwitchThumbNormal">@color/whiteColor</item>
+        <item name="android:colorForeground">@color/whiteColor</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="AppThemeLightRabbit" parent="Theme.AppCompat.DayNight">
+    <style name="AppThemeLight" parent="Theme.AppCompat.DayNight">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:windowBackground">@color/colorBackgroundLight</item>-->
-        <item name="android:windowBackground">@drawable/main_background</item>
+        <item name="android:windowBackground">@drawable/light_background</item>
         <item name="android:textColor">@color/colorTextRabbit</item>>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="colorControlNormal">@color/colorTextRabbit</item>
-        <item name="colorControlActivated">@color/colorTextRabbit</item>
-        <item name="colorControlHighlight">@color/colorTextRabbit</item>
+        <item name="colorControlNormal">@color/whiteColor</item>
+        <item name="colorControlActivated">@color/standartYellowButtonColor</item>
+        <item name="colorControlHighlight">@color/whiteColor</item>
     </style>
 
     <style name="AppThemeLightHamster" parent="Theme.AppCompat.DayNight">
@@ -112,7 +112,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:windowBackground">@color/colorBackgroundLight</item>-->
-        <item name="android:windowBackground">@drawable/main_background2</item>
+        <item name="android:windowBackground">@drawable/light_background</item>
         <item name="android:textColor">@color/colorTextRabbit</item>>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -128,34 +128,18 @@
         <item name="materialAlertDialogBodyTextStyle">@color/colorAccent</item>
     </style>
 
-    <style name="AlertDialog1" parent="Base.Theme.AppCompat.Light.Dialog">
-        <item name="android:windowBackground">@color/colorAlertDialogBackgroundStyle1</item>            <!-- Цвет фона -->
-        <item name="android:textColor">@color/colorAlertDialogTextStyle1</item>                         <!-- Цвет текста кнопок и заголовка -->
+    <style name="DarkAlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@color/middleBackGroundGradient</item>            <!-- Цвет фона -->
+        <item name="android:textColor">@color/standartPurpleButtonColor</item>                         <!-- Цвет текста кнопок и заголовка -->
         <item name="android:textColorPrimary">@color/colorAlertDialogTextPrimaryStyle1</item>           <!-- Цвет текста обращения -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AlertDialog2" parent="Base.Theme.AppCompat.Light.Dialog">
-        <item name="android:windowBackground">@color/colorAlertDialogBackgroundStyle2</item>            <!-- Цвет фона -->
-        <item name="android:textColor">@color/colorAlertDialogTextStyle2</item>                         <!-- Цвет текста кнопок и заголовка -->
-        <item name="android:textColorPrimary">@color/colorAlertDialogTextPrimaryStyle2</item>           <!-- Цвет текста обращения -->
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AlertDialog3" parent="Base.Theme.AppCompat.Light.Dialog">
-        <item name="android:windowBackground">@color/colorAlertDialogBackgroundStyle3</item>            <!-- Цвет фона -->
-        <item name="android:textColor">@color/colorAlertDialogTextStyle3</item>                         <!-- Цвет текста кнопок и заголовка -->
-        <item name="android:textColorPrimary">@color/colorAlertDialogTextPrimaryStyle3</item>           <!-- Цвет текста обращения -->
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AlertDialog4" parent="Base.Theme.AppCompat.Light.Dialog">
-        <item name="android:windowBackground">@color/colorAlertDialogBackgroundStyle4</item>            <!-- Цвет фона -->
-        <item name="android:textColor">@color/colorAlertDialogTextStyle4</item>                         <!-- Цвет текста кнопок и заголовка -->
-        <item name="android:textColorPrimary">@color/colorAlertDialogTextPrimaryStyle4</item>           <!-- Цвет текста обращения -->
+    <style name="StandartAlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@color/standartYellowButtonColor</item>            <!-- Цвет фона -->
+        <item name="android:textColor">@color/lightBlueBackgroundColor</item>                         <!-- Цвет текста кнопок и заголовка -->
+        <item name="android:textColorPrimary">@color/blackColor</item>           <!-- Цвет текста обращения -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

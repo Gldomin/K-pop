@@ -23,8 +23,8 @@ public class Storage {
     /**
      * Тип String
      *
-     * @param nameOfValue   название значения (ключ)
-     * @param value         значение
+     * @param nameOfValue название значения (ключ)
+     * @param value       значение
      */
     public void saveValue(String nameOfValue, String value) {
         SharedPreferences sp = context.getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
@@ -36,8 +36,8 @@ public class Storage {
     /**
      * Тип Int
      *
-     * @param nameOfValue   название значения (ключ)
-     * @param value         значение
+     * @param nameOfValue название значения (ключ)
+     * @param value       значение
      */
     public void saveValue(String nameOfValue, int value) {
         SharedPreferences sp = context.getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
@@ -49,8 +49,8 @@ public class Storage {
     /**
      * Тип Boolean
      *
-     * @param nameOfValue   название значения (ключ)
-     * @param value         значение
+     * @param nameOfValue название значения (ключ)
+     * @param value       значение
      */
     public void saveValue(String nameOfValue, boolean value) {
         SharedPreferences sp = context.getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
@@ -62,8 +62,8 @@ public class Storage {
     /**
      * Тип Float
      *
-     * @param nameOfValue   название значения (ключ)
-     * @param value         значение
+     * @param nameOfValue название значения (ключ)
+     * @param value       значение
      */
     public void saveValue(String nameOfValue, float value) {
         SharedPreferences sp = context.getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
@@ -77,7 +77,7 @@ public class Storage {
     /**
      * Тип String
      *
-     * @param nameOfValue   название значения (ключ)
+     * @param nameOfValue название значения (ключ)
      * @return значение
      */
     public String getString(String nameOfValue) {
@@ -96,7 +96,7 @@ public class Storage {
     /**
      * Тип Int
      *
-     * @param nameOfValue   название значения (ключ)
+     * @param nameOfValue название значения (ключ)
      * @return значение
      */
     public int getInt(String nameOfValue) {
@@ -115,7 +115,7 @@ public class Storage {
     /**
      * Тип Boolean
      *
-     * @param nameOfValue   название значения (ключ)
+     * @param nameOfValue название значения (ключ)
      * @return значение
      */
     public boolean getBoolean(String nameOfValue) {
@@ -134,7 +134,7 @@ public class Storage {
     /**
      * Тип Float
      *
-     * @param nameOfValue   название значения (ключ)
+     * @param nameOfValue название значения (ключ)
      * @return значение
      */
     public float getFloat(String nameOfValue) {

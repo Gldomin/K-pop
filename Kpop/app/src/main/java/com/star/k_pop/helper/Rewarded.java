@@ -12,7 +12,6 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.OnUserEarnedRewardListener;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
-import com.star.k_pop.R;
 
 public class Rewarded {
 
@@ -23,11 +22,13 @@ public class Rewarded {
     Context context;
     RewardedAd mRewardedAd;
     RewardDelay rewardDelay;
+    int rewardId;
 
-    public Rewarded(Context context) {
+    public Rewarded(Context context, int rewardId) {
         this.context = context;
+        this.rewardId = rewardId;
         AdRequest adRequest = new AdRequest.Builder().build();
-        RewardedAd.load(context, context.getResources().getString(R.string.admob_id_reward),
+        RewardedAd.load(context, context.getResources().getString(rewardId),
                 adRequest, new RewardedAdLoadCallbackCustom());
     }
 
@@ -57,7 +58,7 @@ public class Rewarded {
                 public void onAdShowedFullScreenContent() {
                     mRewardedAd = null;
                     AdRequest adRequest = new AdRequest.Builder().build();
-                    RewardedAd.load(context, context.getResources().getString(R.string.admob_id_reward),
+                    RewardedAd.load(context, context.getResources().getString(rewardId),
                             adRequest, new RewardedAdLoadCallbackCustom());
                 }
 

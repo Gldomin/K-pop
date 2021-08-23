@@ -6,17 +6,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,9 +29,11 @@ import com.google.android.gms.ads.rewarded.RewardItem;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.helper.Rewarded;
+import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
+import com.star.k_pop.lib.SoundPlayer;
 import com.star.k_pop.model.Artist;
 import com.yandex.metrica.YandexMetrica;
 
@@ -41,11 +44,13 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class GuessStar extends AppCompatActivity {
 
-    Button cheaterButton; // TODO Удалить перед релизом
     Button[] buttons = new Button[4];
     ImageView imageView;
     TextView textScore;
     TextView textRecord;
+
+    SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
+    boolean sound=false; //включен ли звук
 
     ArrayList<Artist> artists = new ArrayList<>();
 
@@ -59,9 +64,8 @@ public class GuessStar extends AppCompatActivity {
     boolean endGame = false;
 
 
-    boolean cheatOn = false;//Режим читера // TODO Удалить перед релизом
 
-    Theme theme; //переменная для считывания состояния свиича на darkmod
+    Theme theme; //переменная для считывания состояния свиича на darkMod
 
     Rewarded rewarded;          //Класс для работы с рекламой
     HeathBar heathBarTest;
@@ -72,20 +76,27 @@ public class GuessStar extends AppCompatActivity {
         theme = new Theme(this);
         theme.setThemeSecond();
 
-        rewarded = new Rewarded(this);
+        rewarded = new Rewarded(this, R.string.admob_id_reward_star);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
 
+        final int pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
+        final int longSwitchID = soundPlayer.load(R.raw.long_switch);
+        Storage storage = new Storage(this, "settings"); //хранилище для извлечения
+        sound = storage.getBoolean("soundMode"); //настроек звука
+
+
         textRecord = findViewById(R.id.scoreText2);
         imageView = findViewById(R.id.imageView);
         textScore = findViewById(R.id.scoreText);
+        textRecord.setTextColor(theme.getTextColor());
+        textScore.setTextColor(theme.getTextColor());
         ImageButton about = findViewById(R.id.guessStarAbautButton);
-        cheaterButton = findViewById(R.id.cheaterButton); // TODO Удалить перед релизом
 
         artists = Importer.getRandomArtists();
 
-        about.setBackgroundResource(theme.getBackgroundResource());
+        about.setBackgroundResource(theme.getBackgroundButton());
 
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         if (sp.contains("userScoreGuessStar")) {
@@ -98,8 +109,10 @@ public class GuessStar extends AppCompatActivity {
                     getResources().getString(R.string.record_text), 0));
         }
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
             scoreNow = savedInstanceState.getInt("scoreNow");
+            record = savedInstanceState.getInt("record");
+        }
 
         for (int i = 0; i < 4; i++) {
             buttons[i] = new Button(this);
@@ -110,8 +123,8 @@ public class GuessStar extends AppCompatActivity {
                 tableRow = findViewById(R.id.row2);
             }
 
-            buttons[i].setBackgroundResource(theme.getBackgroundResource());
-            buttons[i].setTextColor(theme.getTextColor());
+            buttons[i].setBackgroundResource(theme.getBackgroundButton());
+            buttons[i].setTextColor(theme.getButtonTextColor());
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
@@ -120,43 +133,53 @@ public class GuessStar extends AppCompatActivity {
             buttons[i].setPadding(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
 
+
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (((Button) view).getText().equals(artists.get(count).getName())) {
+                        YandexMetrica.reportEvent("GuessStar - Правильный ответ: " + artists.get(count).getName());
                         count++;
                         scoreNow++;
+                        if (record < scoreNow) {
+                            record++;
+                        }
                         if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
                         {
                             artists = Importer.getRandomArtists();
                             count = 0;
                         }
-                        if (scoreNow % 10 == 0) {
+                        if (scoreNow % 50 == 0) {
+                            YandexMetrica.reportEvent("GuessStar - Добавлено хп");
                             heathBarTest.restore();
                         }
                         if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
+                            YandexMetrica.reportEvent("GuessStar - Ачивка 50 угаданных артистов");
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.normalgs, "achGuessStarNormal"); //ачивочка
                         }
                         if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
+                            YandexMetrica.reportEvent("GuessStar - Ачивка 150 угаданных артистов");
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
-
                         }
-
-                        // TODO Удалить перед релизом
-                        for (int i = 0; i < 4; i++) {
-                            buttons[i].setTextColor(theme.getTextColor());
-                        }
-                        // TODO Конец удаления
-                        YandexMetrica.reportEvent("GuessStarRightClick");
                         nextArtist();
+
+                        if (sound)
+                        soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
                     } else {
+                        YandexMetrica.reportEvent("GuessStar - Неправильный ответ: " + ((Button) view).getText() + ", правильный: " + artists.get(count).getName());
+                        view.setBackgroundResource(theme.getBackgroundButton());
+                        view.setClickable(false);
                         heathBarTest.blow(); //снижение хп
-                        YandexMetrica.reportEvent("GuessStarLoseClick");  //метрика на неправильный клик
                         if (heathBarTest.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
                             startLosingDialog();
+
                         }
+
+                        if (sound)
+                        soundPlayer.playSoundStream(pingClickID);//звук неправильного ответа
                     }
                     updateScore();
+
                 }
             });
             tableRow.addView(buttons[i]);
@@ -172,58 +195,11 @@ public class GuessStar extends AppCompatActivity {
                 image.putExtra("text", R.string.guessStarGameModeAbaut);
                 image.putExtra("title", R.string.gameModeAbaut);
                 startActivity(image);
+                //soundPlayer.play(R.raw.ping_click); //звук кнопки\
+                if(sound)
+                soundPlayer.playSoundStream(pingClickID);
             }
         });
-
-
-        // TODO Удалить перед релизом
-        cheaterButton.setBackgroundResource(theme.getBackgroundResource());
-        cheaterButton.setTextColor(theme.getTextColor());
-        cheaterButton.setOnClickListener(new View.OnClickListener() { //читерская кнопка для быстрого тестирования
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onClick(View view) {
-
-                for (int i = 0; i < 4; i++) {
-                    buttons[i].setTextColor(theme.getTextColor());
-                }
-                //количетво скипнутых артистов
-                count++;
-                scoreNow++;
-                if (count >= artists.size() - 1)      //обработка конца списка. Что бы играть можно было вечно
-                {
-                    artists = Importer.getRandomArtists();
-                    count = 0;
-                }
-                updateScore();
-                nextArtist();
-                heathBarTest.restore();
-            }
-        });
-
-        imageView.setBackground(getResources().getDrawable(theme.getBackgroundResource()));
-
-        imageView.setOnClickListener(new View.OnClickListener() { //включение/выключение читов при нажатии на фотку
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onClick(View view) {
-                cheatOn = !cheatOn;
-                if (cheatOn) {
-                    for (int i = 0; i < 4; i++) {
-                        if (i == chosenOne)
-                            buttons[i].setTextColor(Color.RED);
-                        else {
-                            buttons[i].setTextColor(theme.getTextColor());
-                        }
-                    }
-                    Toast.makeText(GuessStar.this, "Читы активированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-                } else {
-                    buttons[chosenOne].setTextColor(theme.getTextColor());
-                    Toast.makeText(GuessStar.this, "Читы деактивированы!", Toast.LENGTH_LONG).show(); //отправка сообщения на экран
-                }
-            }
-        });
-        // TODO Конец удаления
         updateScore();
         nextArtist();
     }
@@ -236,21 +212,24 @@ public class GuessStar extends AppCompatActivity {
         imageViewList.add(imageView1);
         imageViewList.add(imageView2);
         imageViewList.add(imageView3);
-        heathBarTest = new HeathBar(imageViewList, 3);
+
+        Animation lifeBrokeAnimation = AnimationUtils.loadAnimation(this, R.anim.heart_broke_animation);
+        heathBarTest = new HeathBar(imageViewList, 3, lifeBrokeAnimation);
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt("scoreNow", scoreNow);
+        outState.putInt("record", record);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onPause() {
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE); //сохранение Счета
-        if (sp.getInt("userScoreGuessStar", -1) < scoreNow) {
+        if (sp.getInt("userScoreGuessStar", -1) < record) {
             SharedPreferences.Editor e = sp.edit();
-            e.putInt("userScoreGuessStar", scoreNow);
+            e.putInt("userScoreGuessStar", record);
             e.apply();
         }
         super.onPause();
@@ -260,24 +239,18 @@ public class GuessStar extends AppCompatActivity {
     void updateScore() {
         textScore.setText(String.format("%s %d",
                 getResources().getString(R.string.score_text), scoreNow));
-        if (scoreNow > record) {
-            textRecord.setText(String.format("%s %d",
-                    getResources().getString(R.string.record_text), scoreNow));
-        }
+        textRecord.setText(String.format("%s %d",
+                getResources().getString(R.string.record_text), record));
     }
-
 
     void nextArtist() {
         chosenOne = new Random().nextInt(4);
         boolean sex = artists.get(count).isSex();
+
+        Log.i("answer=", artists.get(count).getName()); //чит-лог
         for (int i = 0; i < 4; i++) {
             int rand;
             if (i == chosenOne) {
-                // TODO Удалить перед релизом
-                if (cheatOn) {
-                    buttons[i].setTextColor(Color.RED);
-                }
-                // TODO Конец удаления
                 rand = count;
             } else {
                 rand = new Random().nextInt(artists.size()); //выбор артиста из пула артистов
@@ -285,6 +258,8 @@ public class GuessStar extends AppCompatActivity {
                     rand = new Random().nextInt(artists.size());
                 }
             }
+            buttons[i].setClickable(true);
+            buttons[i].setBackgroundResource(theme.getBackgroundButton());
             buttons[i].setText(artists.get(rand).getName());
             artists.get(rand).Init();
         }
@@ -307,12 +282,14 @@ public class GuessStar extends AppCompatActivity {
                 .setNegativeButton(getResources().getString(R.string.endGameNo), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        YandexMetrica.reportEvent("GuessStar - Игра окончена, нет");
                         finish();
                     }
                 })
                 .setPositiveButton(getResources().getString(R.string.endGameYes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        YandexMetrica.reportEvent("GuessStar - Игра окончена, да");
                         endGame = false;
                         heathBarTest.setHp(3);
                         scoreNow = 0;
@@ -332,19 +309,23 @@ public class GuessStar extends AppCompatActivity {
                     .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            YandexMetrica.reportEvent("GuessStar - Игра окончена, реклама");
                             endGame = false;
                             rewarded.show(GuessStar.this, new OnUserEarnedRewardListener() {
                                 @Override
                                 public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
                                     onRewarded = false;
                                     showReward = true;
+                                    YandexMetrica.reportEvent("GuessStar - Реклама просмотрена");
                                 }
                             }, new Rewarded.RewardDelay() {
                                 @Override
                                 public void onShowDismissed() {
                                     if (showReward) {
                                         heathBarTest.restore();
+                                        YandexMetrica.reportEvent("GuessStar - добавлено хп");
                                     } else {
+                                        YandexMetrica.reportEvent("GuessStar - Реклама не просмотрена");
                                         heathBarTest.setHp(3);
                                         scoreNow = 0;
                                         count++;

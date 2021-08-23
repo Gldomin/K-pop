@@ -4,7 +4,28 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#000000</color>
     <color name="colorBackground">#000000</color>
-    <color name="colorText">#FFFFFF</color>
+
+
+    <!-- универсалии -->
+    <color name = "wrongRedColor">#FF0000</color>
+    <color name = "correctGreenColor">#92FF8F</color>
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="blackColor">#000000</color>
+    <!--  светлая тема  -->
+    <color name = "standartYellowButtonColor">#FFFBA1</color>
+    <color name = "lighterYellowButtonColor">#FFFDD2</color>
+    <color name = "contrastYellowButtonColor">#FFF856</color>
+    <color name = "lightBlueBackgroundColor">#B6E0FF</color>
+    <!--  темная тема  -->
+    <color name = "standartPurpleButtonColor">#FD8AFF</color>
+    <color name = "lighterPurpleButtonColor">#FEC3FF</color>
+    <color name = "contrastPurpleButtonColor">#FB4AFF</color>
+    <color name = "startBackGroundGradient">#150026</color>
+    <color name = "middleBackGroundGradient">#7600BD</color>
+
+
+
+
 
     <color name="colorAccentLight">#626d71</color>
     <color name="colorPrimaryLight">#626d71</color>

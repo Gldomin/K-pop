@@ -3,8 +3,15 @@
 
     <string name="yandex_id_metrica" translatable="false">7f5528ae-626c-4298-a361-5635a0ad148a</string>
 
+    <!--    <string name="admob_id_account" translatable="false">ca-app-pub-1704760570617777~3272301452</string>-->
+    <!--    <string name="admob_id_reward_star" translatable="false">ca-app-pub-1704760570617777/1487897750</string>-->
+    <!--    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-1704760570617777/8141484754</string>-->
+    <!--    <string name="admob_id_interstitial" translatable="false">ca-app-pub-1704760570617777/7888214522</string>-->
+
     <string name="admob_id_account" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="admob_id_reward" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="admob_id_reward_star" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="admob_id_interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
 
     <string name="menuItemGuessStar">Guess Star</string>
     <string name="menuItemGuessStarReverse">Guess Star Reverse</string>
@@ -26,15 +33,15 @@
     <string name="achTripleExpert">K-pop Master</string>
     <string name="achRoyal">Lord of four modes</string>
 
-    <string name="achGuessStarNormalText">You got 50 points in Guess Star</string>
-    <string name="achGuessStarExpertText">You got 50 points in Guess Star expert mode</string>
-    <string name="achGuessBandsNormalText">You got 50 points in Guess Band</string>
-    <string name="achGuessBandsExpertText">You got 50 points in Guess Band expert mode</string>
-    <string name="achSwipeTwoBandsNormalText">You got 50 points in Divide to bands</string>
-    <string name="achSwipeTwoBandsExpertText">You got 50 points in Divide to bands expert mode</string>
-    <string name="achGuessStarReversNormalText">You got 50 points in Find the Star</string>
-    <string name="achGuessStarReversExpertText">You got 50 points in Find the Star expert mode</string>
-    <string name="achTripleAdeptText">You have unlocked Secret mode</string>
+    <string name="achGuessStarNormalText">You got 50 points in Guess Star gamemode</string>
+    <string name="achGuessStarExpertText">You got 150 points in Guess Star gamemode</string>
+    <string name="achGuessBandsNormalText">You got 15 points in Guess Band gamemode</string>
+    <string name="achGuessBandsExpertText">You got 50 points in Guess Band gamemode</string>
+    <string name="achSwipeTwoBandsNormalText">You got 5 points in Divide to bands gamemode</string>
+    <string name="achSwipeTwoBandsExpertText">You got 25 points in Divide to bands gamemode</string>
+    <string name="achGuessStarReversNormalText">You got 50 points in Find the Star gamemode</string>
+    <string name="achGuessStarReversExpertText">You got 150 points in Find the Star gamemode</string>
+    <string name="achTripleAdeptText">You have unlocked Secret gamemode</string>
     <string name="achTripleExpertText">You are the true K-pop scholar. Thank you for game, now all ads will be disabled.</string>
     <string name="achRoyalText">You unlock them all! Congratulations! You can receive a little bonus in settings.</string>
 
@@ -43,9 +50,9 @@
     <string name="settings1">Hint mode</string>
     <string name="settings2">Hard mode</string>
     <string name="settings3">Dark theme</string>
-    <string name="settings4">Parameter 4</string>
+    <string name="settings4">Sound enabled</string>
     <string name="settings5">Parameter 5</string>
-    <string name="resetRecords">Reset the account</string>
+    <string name="resetRecords">Score reset</string>
 
     <string name="OptionsSet">Settings saved</string>
 
@@ -60,10 +67,10 @@
     <string name="gameRulesAbaut">Games Rules</string>
     <string name="aboutTitle">Welcome!</string>
     <string name="aboutText">
-         Welcome to Guess K-pop app! In this application, you can test your knowledge of K-pop. In this application, you are offered 3 main game modes: "\n"
+         Welcome to Guess K-pop app! In this application, you can test your knowledge of K-pop. You are offered 3 main game modes: "\n"
          1) Guess the Star "\n"
          2) Guess the Group "\n"
-         3) Assign to groups (Coming soon!)"\n"
+         3) Divide to bands (coming soon!)"\n"
          With these game modes, you can memorize all of K-pop most famous bands, as well as all of their incredible members! "\n"
          Each game mode has achievements! "\n"
          Good luck! :)
@@ -86,29 +93,34 @@
     <string name="guessStarGameModeAbaut">
 GuessStar game mode lets you test your knowledge of K-pop stars. "\n"
 Guess the names of K-pop artists from photos. It is not important for you to know which group a star is on screen, but it is important to know his or her name. You have 3 lives. Each artist you guess will increase your score! A wrong guess, accordingly, reduces your lives. If you lose all lives, game will be ended. But I think you can figure it out. "\n"
-Guess them all!
+Good luck! :)
     </string>
     <string name="guessBandGameModeAbaut">
 GuessBand game mode lets you test your knowledge of the most famous K-pop groups in the history! "\n"
-Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. But I think you can figure it out. "\n"
-Guess them all!
+Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. Off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. Every tenth band will restore 1 life, and every fifteenth band give extra hint. But I think you can figure it out. "\n"
+Good luck! ;)
+    </string>
+    <string name="guessBandGameModeTwoAbaut">
+GuessBand game mode lets you test your knowledge of the most famous K-pop groups in the history! "\n"
+Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. Off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. Every tenth band will restore 1 life, and every fifteenth band give extra hint. But I think you can figure it out. "\n"
+Good luck! ;)
     </string>
     <string name="twoBandsTinderGameModeAbaut">
-The game mode "Assign by Groups" allows you to test your knowledge of K-pop groups "\n"
+The game mode "Divide to bands" allows you to test your knowledge of K-pop groups "\n"
 You are given a set of different K-pop stars, and you need to divide them into 2 groups. To distribute the artist cards, you need to swipe them to the corresponding K-pop group on the side of the screen. "\n"
 At any time, you can view all artist cards and redistribute them. If you distribute the cards incorrectly, you will also be asked to correct the result. But with each new attempt, the potential score will get smaller. "\n"
 But I think you can figure it out. "\n"
-Distribute them all!
+Distribute them all! ツ
     </string>
 
     <string name="score_text">Score:</string>
     <string name="record_text">Record:</string>
 
 
-    <string name="endHintCongratulate">Внимание!</string>
-    <string name="endHintReward">Посмотреть рекламу что бы использовать подсказку?</string>
-    <string name="endHintYes">Да</string>
-    <string name="endHintNo">Нет</string>
+    <string name="endHintCongratulate">Attention!</string>
+    <string name="endHintReward">View ad for hint?</string>
+    <string name="endHintYes">Yes</string>
+    <string name="endHintNo">No</string>
 
     <string name="endGameCongratulate">Congratulations!</string>
     <string name="endGameNewGame">Start new game?</string>
@@ -123,5 +135,8 @@ Distribute them all!
     <string name="settingRabbit">Rabbit</string>
     <string name="settingHamster">Hamster</string>
     <string name="settingCat">Kitty</string>
+
+
+    <string name="ttWrongAnswer">Finish! You made</string>
 
 </resources>

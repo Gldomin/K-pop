@@ -35,7 +35,7 @@ public class Artist {
         return name;
     }
 
-    public String getGroups() {
+    public String getGroup() {
         return groups[0];
     }
 
@@ -49,6 +49,10 @@ public class Artist {
 
     public String getFolder() {
         return groups[0] + "/" + name + "/" + getNamesImages();
+    }
+
+    public String getUriFolderString() {
+        return "file:///android_asset/Groups/" + groups[0] + "/" + name + "/" + getNamesImages();
     }
 
     public boolean checkGroup(String group) {

@@ -23,8 +23,6 @@ import java.util.ArrayList;
 public class Gallery extends AppCompatActivity {
 
     private ArrayList<ImageGallery> imageGalleries;
-    private GalleryAdapter mAdapter;
-    private RecyclerView recyclerView;
     Theme theme;
 
     @Override
@@ -35,10 +33,10 @@ public class Gallery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
         imageGalleries = new ArrayList<>();
-        mAdapter = new GalleryAdapter(getApplicationContext(), imageGalleries);
+        GalleryAdapter mAdapter = new GalleryAdapter(getApplicationContext(), imageGalleries);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -69,7 +67,7 @@ public class Gallery extends AppCompatActivity {
     private void createArray() {
         ArrayList<Artist> artists = Importer.getArtists();
         for (Artist a : artists) {
-            imageGalleries.add(new ImageGallery(a.getName(), a.getGroups(), a.getFolder()));
+            imageGalleries.add(new ImageGallery(a.getName(), a.getGroup(), a.getFolder()));
         }
     }
 }

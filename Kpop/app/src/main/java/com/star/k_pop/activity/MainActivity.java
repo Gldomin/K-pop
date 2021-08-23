@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,11 +15,12 @@ import com.star.k_pop.R;
 import com.star.k_pop.gallery.activity.Gallery;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
-import com.star.k_pop.lib.SomeMethods;
+import com.yandex.metrica.YandexMetrica;
 
 public class MainActivity extends AppCompatActivity {
     final int REQUEST_CODE = 1;
 
+    Theme theme;//переменная для считывания состояния свиича на darkMod
     SharedPreferences sp;
 
     @Override
@@ -32,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //+++FirstLaunchHelp+++\\ // блок для первичного задания статусов (ачивок и прочего), а так же отображения приветсвия новых пользователей
-        //Storage storage = new Storage(this);
         String nameOfStorage = "appStatus";
         sp = getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
         if (sp.contains("noticeWatched")) {
@@ -45,108 +42,63 @@ public class MainActivity extends AppCompatActivity {
                 image.putExtra("title", R.string.aboutTitle);
                 startActivity(image);
             }
-            Log.i("boolInfo", "achGuessStarNormal=" +storage.getBoolean("achGuessStarNormal"));
-            Log.i("boolInfo", "achGuessBandsNormal=" +storage.getBoolean("achGuessBandsNormal"));
-            Log.i("boolInfo", "achSwipeTwoBandsNormal=" +storage.getBoolean("achSwipeTwoBandsNormal"));
-            Log.i("boolInfo", "achGuessStarExpert=" +storage.getBoolean("achGuessStarExpert"));
-            Log.i("boolInfo", "achGuessBandsExpert=" +storage.getBoolean("achGuessBandsExpert"));
-            Log.i("boolInfo", "achSwipeTwoBandsExpert=" +storage.getBoolean("achSwipeTwoBandsExpert"));
-            if (!storage.getBoolean("achTripleAdept"))
-            if (storage.getBoolean("achGuessStarNormal") && storage.getBoolean("achGuessBandsNormal") && storage.getBoolean("achSwipeTwoBandsNormal")) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                SomeMethods.achievementGetted(MainActivity.this, R.string.achTripleAdept, R.drawable.kpoplove, "achTripleAdept"); //ачивочка
-            }
-            if (!storage.getBoolean("achTripleExpert"))
-            if (storage.getBoolean("achTripleAdept") && storage.getBoolean("achGuessStarExpert") && storage.getBoolean("achGuessBandsExpert") && storage.getBoolean("achSwipeTwoBandsExpert")) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                SomeMethods.achievementGetted(MainActivity.this, R.string.achTripleExpert, R.drawable.royal, "achTripleExpert"); //ачивочка
-
-            }
         }
 
-///////////////////////////////////СВИЧИ ДЛЯ ПРОВЕРКИ СТУТУСОВ - начало////////////////// //TODO удалить блок вместе с ScrollView из активити и readStatus() с saveStatus()
-        readStatus();
-
-        final Button saveStatus = findViewById(R.id.saveStatus);
-        saveStatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveStatus();
-                readStatus();
-            }
-        });
-
-
-        //   tempSettingsSet.hintMode = storage.getBoolean(nameOfStorage, "hintMode"); //считывание настроек из Хранилища
-
-//////////////////////////////////СВИЧИ ДЛЯ ПРОВЕРКИ СТУТУСОВ - конец//////////////////
-
-
         Button guessStarButton = findViewById(R.id.guessStarButton);
-        guessStarButton.setBackgroundResource(theme.getBackgroundResource());
+        guessStarButton.setBackgroundResource(theme.getBackgroundButton());
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - guessStarButton");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, GuessStar.class);
                 startActivity(image);
             }
         });
 
-        Button guessStarReverseButton = findViewById(R.id.guessStarReverseButton);
-        guessStarReverseButton.setBackgroundResource(theme.getBackgroundResource());
-        guessStarReverseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, GuessStarReverse.class);
-                startActivity(image);
-            }
-        });
-
         Button guessBandButton = findViewById(R.id.guessGroupButton);
-        guessBandButton.setBackgroundResource(theme.getBackgroundResource());
+        guessBandButton.setBackgroundResource(theme.getBackgroundButton());
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - guessBandButton");
                 Intent image = new Intent();
-                image.setClass(MainActivity.this, GuessBands.class);
+                image.setClass(MainActivity.this, GuessBandsModeTwo.class);
                 startActivity(image);
             }
         });
 
-        Button buttonLibrary = findViewById(R.id.galleryButton);
-        buttonLibrary.setBackgroundResource(theme.getBackgroundResource());
+        Button guessTwoBandsTinder = findViewById(R.id.guessTwoBands);
+        guessTwoBandsTinder.setBackgroundResource(theme.getBackgroundButton());
+        guessTwoBandsTinder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - guessTwoBands");
+                Intent image = new Intent();
+                image.setClass(MainActivity.this, TwoBandsTinder.class);
+                startActivity(image);
+            }
+        });
+
+        ImageView buttonLibrary = findViewById(R.id.galleryButton);
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - gallary");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Gallery.class);
                 startActivity(image);
             }
         });
 
-        Button settingsButton = findViewById(R.id.settingsButton);
-        settingsButton.setBackgroundResource(theme.getBackgroundResource());
-
+        ImageView settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - setting");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Settings.class);
                 startActivityForResult(image, REQUEST_CODE);
-            }
-
-
-        });
-
-
-        Button tinderButton = findViewById(R.id.chooseTinderButton);
-        tinderButton.setBackgroundResource(theme.getBackgroundResource());
-        tinderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, TwoBandsTinder.class);
-                startActivity(image);
             }
         });
 
@@ -154,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         achievement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - achievement");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Achievements.class);
                 startActivity(image);
@@ -161,10 +114,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button about = findViewById(R.id.abautButton);
-        about.setBackgroundResource(theme.getBackgroundResource());
+        about.setBackgroundResource(theme.getBackgroundButton());
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - about");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, BasicNotice.class);
                 image.putExtra("text", R.string.aboutText);
@@ -179,98 +133,12 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-    protected void readStatus() { //считывает статус/атрибуты приложения //TODO удалить
-        Storage storage = new Storage(this, "appStatus");
-        sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
-        final Switch noticeWatched = findViewById(R.id.noticeWatched);
-        final Switch achGuessStarNormalText = findViewById(R.id.achGuessStarNormalText);
-        final Switch achGuessStarExpertText = findViewById(R.id.achGuessStarExpertText);
-        final Switch achGuessBandsNormalText = findViewById(R.id.achGuessBandsNormalText);
-        final Switch achGuessBandsExpertText = findViewById(R.id.achGuessBandsExpertText);
-        final Switch achSwipeTwoBandsNormalText = findViewById(R.id.achSwipeTwoBandsNormalText);
-        final Switch achSwipeTwoBandsExpertText = findViewById(R.id.achSwipeTwoBandsExpertText);
-        final Switch achGuessStarReversNormalText = findViewById(R.id.achGuessStarReversNormalText);
-        final Switch achGuessStarReversExpertText = findViewById(R.id.achGuessStarReversExpertText);
-        final Switch achSecretGameModeText = findViewById(R.id.achSecretGameModeText);
-        final Switch achAdsFreeText = findViewById(R.id.achAdsFreeText);
-        final Switch achRoyalText = findViewById(R.id.achRoyalText);
-
-        //noticeWatched.setVisibility(View.INVISIBLE);
-        //achGuessStarNormalText.setVisibility(View.INVISIBLE);
-        //achGuessStarExpertText.setVisibility(View.INVISIBLE);
-        achGuessBandsNormalText.setVisibility(View.INVISIBLE);
-        achGuessBandsExpertText.setVisibility(View.INVISIBLE);
-        achSwipeTwoBandsNormalText.setVisibility(View.INVISIBLE);
-        achSwipeTwoBandsExpertText.setVisibility(View.INVISIBLE);
-        achGuessStarReversNormalText.setVisibility(View.INVISIBLE);
-        achGuessStarReversExpertText.setVisibility(View.INVISIBLE);
-        achSecretGameModeText.setVisibility(View.INVISIBLE);
-        achAdsFreeText.setVisibility(View.INVISIBLE);
-        achRoyalText.setVisibility(View.INVISIBLE);
-
-
-        noticeWatched.setChecked(storage.getBoolean("noticeWatched"));
-        achGuessStarNormalText.setChecked(storage.getBoolean("achGuessStarNormal"));
-        achGuessStarExpertText.setChecked(storage.getBoolean("achGuessStarExpert"));
-        achGuessBandsNormalText.setChecked(storage.getBoolean("achGuessBandsNormal"));
-        achGuessBandsExpertText.setChecked(storage.getBoolean("achGuessBandsExpert"));
-        achSwipeTwoBandsNormalText.setChecked(storage.getBoolean("achSwipeTwoBandsNormal"));
-        achSwipeTwoBandsExpertText.setChecked(storage.getBoolean("achSwipeTwoBandsExpert"));
-        achGuessStarReversNormalText.setChecked(storage.getBoolean("achGuessStarReversNormal"));
-        achGuessStarReversExpertText.setChecked(storage.getBoolean("achGuessStarReversExpert"));
-        achSecretGameModeText.setChecked(storage.getBoolean("achTripleAdept"));
-        achAdsFreeText.setChecked(storage.getBoolean("achTripleExpert"));
-        achRoyalText.setChecked(storage.getBoolean("achRoyal"));
-    }
-
-    protected void saveStatus() { //сохраняет значения свичей меняя атрибуты //TODO удалить
-        Storage storage = new Storage(this, "appStatus");
-        sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
-        final Switch noticeWatched = findViewById(R.id.noticeWatched);
-        final Switch achGuessStarNormalText = findViewById(R.id.achGuessStarNormalText);
-        final Switch achGuessStarExpertText = findViewById(R.id.achGuessStarExpertText);
-        final Switch achGuessBandsNormalText = findViewById(R.id.achGuessBandsNormalText);
-        final Switch achGuessBandsExpertText = findViewById(R.id.achGuessBandsExpertText);
-        final Switch achSwipeTwoBandsNormalText = findViewById(R.id.achSwipeTwoBandsNormalText);
-        final Switch achSwipeTwoBandsExpertText = findViewById(R.id.achSwipeTwoBandsExpertText);
-        final Switch achGuessStarReversNormalText = findViewById(R.id.achGuessStarReversNormalText);
-        final Switch achGuessStarReversExpertText = findViewById(R.id.achGuessStarReversExpertText);
-        final Switch achSecretGameModeText = findViewById(R.id.achSecretGameModeText);
-        final Switch achAdsFreeText = findViewById(R.id.achAdsFreeText);
-        final Switch achRoyalText = findViewById(R.id.achRoyalText);
-
-
-        storage.saveValue("noticeWatched", noticeWatched.isChecked());
-        storage.saveValue("achGuessStarNormal", achGuessStarNormalText.isChecked());
-        storage.saveValue("achGuessStarExpert", achGuessStarExpertText.isChecked());
-        storage.saveValue("achGuessBandsNormal", achGuessBandsNormalText.isChecked());
-        storage.saveValue("achGuessBandsExpert", achGuessBandsExpertText.isChecked());
-        storage.saveValue("achSwipeTwoBandsNormal", achSwipeTwoBandsNormalText.isChecked());
-        storage.saveValue("achSwipeTwoBandsExpert", achSwipeTwoBandsExpertText.isChecked());
-        storage.saveValue("achGuessStarReversNormal", achGuessStarReversNormalText.isChecked());
-        storage.saveValue("achGuessStarReversExpert", achGuessStarReversExpertText.isChecked());
-        storage.saveValue("achTripleAdept", achSecretGameModeText.isChecked());
-        storage.saveValue("achTripleExpert", achAdsFreeText.isChecked());
-        storage.saveValue("achRoyal", achRoyalText.isChecked());
-
-
-    }
-
-    Theme theme;//переменная для считывания состояния свиича на darkmod
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             recreate();
         }
-
     }
-     /*public class Restart {
-        public void reStart() {
-            recreate();
-        }
-     }*/
 
 }
