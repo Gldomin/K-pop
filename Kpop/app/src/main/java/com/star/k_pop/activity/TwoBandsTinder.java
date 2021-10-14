@@ -399,7 +399,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
-            twoBandFlip.showPrevious();
+            twoBandFlip.showNext();
         } else {
             super.onBackPressed();
         }
