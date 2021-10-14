@@ -178,7 +178,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         });
 
 
-//-----------------------now working----------------------------------------------------------------------
+//-----------------------working----------------------------------------------------------------------
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
 
 
@@ -198,6 +198,11 @@ public class TwoBandsTinder extends AppCompatActivity {
                         mainProcedure();
                     } else resultsSequence();
                 }
+                if(pictnumb==ansverMap.size()-1)
+                {
+                    twoBandFlip.showNext();
+                    imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
+                }
             }
 
             public void onRightCheck() {
@@ -215,6 +220,11 @@ public class TwoBandsTinder extends AppCompatActivity {
                         bandsCount = bandsCount + 2;
                         mainProcedure();
                     } else resultsSequence();
+                }
+                if(pictnumb==ansverMap.size()-1)
+                {
+                    twoBandFlip.showNext();
+                    imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
                 }
             }
         });
@@ -389,7 +399,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     private int mistakescount() {
         int mistakes = 0;
         for (Map.Entry<Artist, String> map : ansverMap.entrySet()) {
-            if (map.getKey().getGroup() == map.getValue()) mistakes++;
+            if (map.getKey().getGroup() != map.getValue()) mistakes++;
         }
         return mistakes;
     }
@@ -409,6 +419,14 @@ public class TwoBandsTinder extends AppCompatActivity {
         });
         AlertDialog alert = alertbuild.create();
         alert.show();
+    }
+    @Override
+    public void onBackPressed() {
+        if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
+            twoBandFlip.showNext();
+        } else {
+            super.onBackPressed();
+        }
     }
     //--------------------------------------------------------------------------------------------------
 
@@ -520,15 +538,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 //        }
 //        return false;
 //    }
-    //@Override
-//    public void onBackPressed() {
-//        if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
-//            twoBandFlip.showNext();
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-//
+
 //
 //    private void changeArtist(boolean animate) {
 //        if (number_of_artist < artists.size()) {
