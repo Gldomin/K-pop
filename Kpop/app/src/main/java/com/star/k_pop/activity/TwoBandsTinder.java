@@ -52,7 +52,6 @@ public class TwoBandsTinder extends AppCompatActivity {
     private RecyclerView recyclerView1;
     private RecyclerView recyclerView2;
 
-
     private ImageView imageBand;
     private ImageView imBTmp;
 
@@ -90,7 +89,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     ArrayList<Artist> artists_turn;
     Map<Artist, String> ansverMap;
     private int pictnumb;
-//--------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------
 
     private static final String IMAGEVIEW_TAG = "icon bitmap";
 
@@ -145,14 +144,14 @@ public class TwoBandsTinder extends AppCompatActivity {
         scoreText.setTextColor(theme.getTextColor());
         recordText.setTextColor(theme.getTextColor());
 
-//----------------------not changed
+        //----------------------not changed
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (twoBandFlip != null) {
                     twoBandFlip.showNext();
                     countGroupTextFirstTwo.setText(countGroupOne + countGroupMaxOne);
-                    countGroupTextSecondTwo.setText(countGroupTwo + countGroupMaxOne);
+                    countGroupTextSecondTwo.setText(countGroupTwo + countGroupMaxTwo);
                 }
 //                Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
 //                if (checkresult()) {
@@ -181,7 +180,6 @@ public class TwoBandsTinder extends AppCompatActivity {
 //-----------------------working----------------------------------------------------------------------
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
 
-
             public void onLeftCheck() {
                 left = true;
                 right = false;
@@ -200,6 +198,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                 }
                 if(pictnumb==ansverMap.size()-1)
                 {
+                    countGroupTextFirstTwo.setText(countGroupOne + countGroupMaxOne);
+                    countGroupTextSecondTwo.setText(countGroupTwo + countGroupMaxTwo);
                     twoBandFlip.showNext();
                     imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
                 }
@@ -223,36 +223,13 @@ public class TwoBandsTinder extends AppCompatActivity {
                 }
                 if(pictnumb==ansverMap.size()-1)
                 {
+                    countGroupTextFirstTwo.setText(countGroupOne + countGroupMaxOne);
+                    countGroupTextSecondTwo.setText(countGroupTwo + countGroupMaxTwo);
                     twoBandFlip.showNext();
                     imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
                 }
             }
         });
-//--------------------------------------------------------------------------------------------------
-
-//
-//
-//        imageBand.setOnTouchListener(new OnSwipeTinderListener() {
-//
-//            public void onRightCheck() {
-//                left = false;
-//                right = true;
-//                if (number_of_artist <= artists.size()) {
-//                    changeArtist(true);
-//                }
-//            }
-//
-//            public void onLeftCheck() {
-//                left = true;
-//                right = false;
-//
-//                if (number_of_artist <= artists.size()) {
-//                    changeArtist(true);
-//                }
-//
-//            }
-//        });
-
         guessTwoBands();
     }
 
@@ -260,12 +237,10 @@ public class TwoBandsTinder extends AppCompatActivity {
 
 
     private void guessTwoBands() {
-
         imageBand.setTag(IMAGEVIEW_TAG);
 
         bandsCount = 0;
         conformChoices = false;
-
 
         left = false;
         right = false;
@@ -377,6 +352,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     }
 
     public void ttClickCheck(View view) {
+        twoBandFlip.showNext();
         if (checkresult()) {
             if (bandsCount + 2 < bands.size()) {
                 bandsCount = bandsCount + 2;
@@ -387,7 +363,6 @@ public class TwoBandsTinder extends AppCompatActivity {
         } else {
             losescreen();
         }
-
     }
 
     public void resultsSequence() {
@@ -420,10 +395,11 @@ public class TwoBandsTinder extends AppCompatActivity {
         AlertDialog alert = alertbuild.create();
         alert.show();
     }
+
     @Override
     public void onBackPressed() {
         if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
-            twoBandFlip.showNext();
+            twoBandFlip.showPrevious();
         } else {
             super.onBackPressed();
         }
