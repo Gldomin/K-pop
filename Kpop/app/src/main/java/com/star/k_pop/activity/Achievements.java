@@ -85,9 +85,9 @@ public class Achievements extends AppCompatActivity {
             ach1.setImageResource(R.drawable.normalgs);
         if (storage.getBoolean("achGuessStarExpert"))
             ach2.setImageResource(R.drawable.expertgs);
-        if (storage.getBoolean("achGuessBandsNormal"))
+        if (storage.getBoolean("achGuessBandsModeTwoNormal"))
             ach3.setImageResource(R.drawable.normalgb);
-        if (storage.getBoolean("achGuessBandsExpert"))
+        if (storage.getBoolean("achGuessBandsModeTwoExpert"))
             ach4.setImageResource(R.drawable.expertgb);
         if (storage.getBoolean("achSwipeTwoBandsNormal"))
             ach5.setImageResource(R.drawable.normaldb);

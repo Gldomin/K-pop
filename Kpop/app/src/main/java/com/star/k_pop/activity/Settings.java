@@ -29,6 +29,7 @@ public class Settings extends AppCompatActivity {
     Theme theme;
     SwitchCompat optionSwitch1;
     SwitchCompat optionSwitch2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,28 +42,18 @@ public class Settings extends AppCompatActivity {
         final TextView settingText = findViewById(R.id.settingTitleTextView);
         settingText.setTextColor(theme.getTextColor());
 
-         optionSwitch1 = findViewById(R.id.optionSwitch1); //darkMode переключалка
+        optionSwitch1 = findViewById(R.id.optionSwitch1); //darkMode переключалка
         optionSwitch1.setTextColor(theme.getTextColor());
 
-         optionSwitch2 = findViewById(R.id.optionSwitch2); //sound переключалка
+        optionSwitch2 = findViewById(R.id.optionSwitch2); //sound переключалка
         optionSwitch2.setTextColor(theme.getTextColor());
 
-
-
-
-
-
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
-
-
-
 
         Storage storage = new Storage(this, "settings");
 
         optionSwitch1.setChecked(storage.getBoolean("darkMode"));
         optionSwitch2.setChecked(storage.getBoolean("soundMode"));
-
-
 
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
         settingsConfirmButton.setBackgroundResource(theme.getBackgroundButton());
@@ -101,12 +92,10 @@ public class Settings extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                YandexMetrica.reportEvent("Сброс рекорда");
-                                Log.i("Settings", "" + recordStorage.getInt("userScoreGuessStar"));
+                                YandexMetrica.reportEvent("Settings", "{\"Score\":{\"Сброс счета\"}}");
                                 recordStorage.saveValue("userScoreGuessStar", 0);
                                 recordStorage.saveValue("userScoreGuessBand", 0);
                                 recordStorage.saveValue("userScoreGuessStarReverse", 0);
-                                Log.i("Settings", "" + recordStorage.getInt("userScoreGuessStar"));
                             }
                         }, new DialogInterface.OnClickListener() {
                             @Override
@@ -119,13 +108,14 @@ public class Settings extends AppCompatActivity {
 
     }
 
-
-
     void saveSettings() {
-        YandexMetrica.reportEvent("Темная тема: Darkmode - " + optionSwitch1.isChecked());
+        String darkMode = optionSwitch1.isChecked() ? "Темная тема" : "Светлая тема";
+        YandexMetrica.reportEvent("Settings", "{\"Theme\":{\"" + darkMode + "\"}}");
+        String soundMode = optionSwitch1.isChecked() ? "Звук включен" : "Звук выключен";
+        YandexMetrica.reportEvent("Settings", "{\"Theme\":{\"" + soundMode + "\"}}");
         Storage storage = new Storage(this, "settings");
         storage.saveValue("darkMode", optionSwitch1.isChecked());
-        storage.saveValue("soundMode",optionSwitch2.isChecked());
+        storage.saveValue("soundMode", optionSwitch2.isChecked());
     }
 
     @Override
