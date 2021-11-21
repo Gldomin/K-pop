@@ -16,12 +16,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Space;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.gridlayout.widget.GridLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -91,6 +92,24 @@ public class TwoBandsTinder extends AppCompatActivity {
     private int pictnumb;
     //--------------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    private ScrollView allActScrollViewLay;
+    private GridLayout allActGridLayout;
+    private LinearLayout AllActlayoutMainLay;
+    private LinearLayout AllActlayoutCardLeftLay;
+    private LinearLayout AllActlayoutCardRightLay;
+    private LinearLayout AllActlayoutCardBaseLay;
+    private LinearLayout AllActlayoutUnslvLay;
+    private TextView allActLeftCardGroupText;
+    private TextView allActRightCardGroupText;
+    private Button allActRightCardButton;
+    private Button allActLeftCardButton;
+    private ImageView allActLeftSlvPict;
+    private ImageView allActRightSlvPict;
+    private ImageView allActUnslvPictPict;
+    private Space allActSpacer;
+    //----------------------------------------------------------------------------------------------
+
     private static final String IMAGEVIEW_TAG = "icon bitmap";
 
     @SuppressLint("ClickableViewAccessibility")
@@ -104,7 +123,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         setContentView(R.layout.acitivity_two_bands_temp);
 
         Button confirmButton = findViewById(R.id.ttConfirmButton);
-        Button endButton = findViewById(R.id.button2);
+        Button endButton = findViewById(R.id.allAct_Accept);
         ImageButton helpButton = findViewById(R.id.helpTindButton);
         ImageButton hintButton = findViewById(R.id.podsk);
 
@@ -118,8 +137,8 @@ public class TwoBandsTinder extends AppCompatActivity {
         scoreText = findViewById(R.id.scoreBands);
         recordText = findViewById(R.id.RecordScore);
         twoBandFlip = findViewById(R.id.twoBandFlipper);
-        recyclerView1 = findViewById(R.id.groupLeft);
-        recyclerView2 = findViewById(R.id.groupRight);
+        //recyclerView1 = findViewById(R.id.groupLeft);
+        //recyclerView2 = findViewById(R.id.groupRight);
 
         groupNameFirstOne = findViewById(R.id.textView12);
         groupNameSecondOne = findViewById(R.id.textView13);
@@ -144,12 +163,31 @@ public class TwoBandsTinder extends AppCompatActivity {
         scoreText.setTextColor(theme.getTextColor());
         recordText.setTextColor(theme.getTextColor());
 
+        //--------------------------------------------------------------------------------------
+        allActScrollViewLay = findViewById(R.id.allActorsScrlVw);
+        AllActlayoutMainLay = findViewById(R.id.allActorLLay);
+        allActGridLayout = findViewById(R.id.allActor_Resolve_GridLay);
+        AllActlayoutCardLeftLay = findViewById(R.id.allAct_Card_LLay);
+        AllActlayoutCardRightLay = findViewById(R.id.allAct_Card_RLay);
+        AllActlayoutCardBaseLay = findViewById(R.id.allAct_CardLay);
+        AllActlayoutUnslvLay = findViewById(R.id.allAct_UnslvFold);
+        allActLeftCardGroupText = findViewById(R.id.allAct_Unslv_LGrpText);
+        allActRightCardGroupText = findViewById(R.id.allAct_Unslv_RGrpText);
+        allActRightCardButton = findViewById(R.id.allAct_Card_RightABtn);
+        allActLeftCardButton = findViewById(R.id.allAct_Card_LeftABtn);
+        allActLeftSlvPict = findViewById(R.id.allAct_slv_LPict);
+        allActRightSlvPict = findViewById(R.id.allAct_slv_RPict);
+        allActUnslvPictPict = findViewById(R.id.allAct_Unslv_Pict);
+        allActSpacer = findViewById(R.id.allActSpacer);
+        //--------------------------------------------------------------------------------------
         //----------------------not changed
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (twoBandFlip != null) {
+                    menuFlipEventInstance();
                     twoBandFlip.showNext();
+
                     countGroupTextFirstTwo.setText(countGroupOne + countGroupMaxOne);
                     countGroupTextSecondTwo.setText(countGroupTwo + countGroupMaxTwo);
                 }
@@ -257,15 +295,15 @@ public class TwoBandsTinder extends AppCompatActivity {
         TinderAdapter mAdapter1 = new TinderAdapter(getApplicationContext(), ansverMap, artists_turn, first_band.getName());
         TinderAdapter mAdapter2 = new TinderAdapter(getApplicationContext(), ansverMap, artists_turn, second_band.getName());
 
-        RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(getApplicationContext(), 1);
-        recyclerView1.setLayoutManager(mLayoutManager1);
-        recyclerView1.setItemAnimator(new DefaultItemAnimator());
-        recyclerView1.setAdapter(mAdapter1);
-
-        RecyclerView.LayoutManager mLayoutManager2 = new GridLayoutManager(getApplicationContext(), 1);
-        recyclerView2.setLayoutManager(mLayoutManager2);
-        recyclerView2.setItemAnimator(new DefaultItemAnimator());
-        recyclerView2.setAdapter(mAdapter2);
+//        RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(getApplicationContext(), 1);
+//        recyclerView1.setLayoutManager(mLayoutManager1);
+//        recyclerView1.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView1.setAdapter(mAdapter1);
+//
+//        RecyclerView.LayoutManager mLayoutManager2 = new GridLayoutManager(getApplicationContext(), 1);
+//        recyclerView2.setLayoutManager(mLayoutManager2);
+//        recyclerView2.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView2.setAdapter(mAdapter2);
 
     }
 
@@ -405,6 +443,54 @@ public class TwoBandsTinder extends AppCompatActivity {
         }
     }
     //--------------------------------------------------------------------------------------------------
+
+    public void menuFlipEventInstance()
+    {
+        int i =0;
+        int j = 2;
+        int artcount=0;
+        allActGridLayout.removeAllViews();
+        for(Map.Entry<Artist,String> ansver: ansverMap.entrySet())
+        {
+            Log.i("MenuFlip", "menuFlipEventInstance i: "+i);
+            ImageView LeftPict = new ImageView(this);
+            ImageView RightPict = new ImageView(this);
+            Space spacer = new Space(this);
+            spacer.setLayoutParams(allActSpacer.getLayoutParams());
+            Space spacer1 = new Space(this);
+            spacer1.setLayoutParams(allActSpacer.getLayoutParams());
+            Space spacer2 = new Space(this);
+            spacer2.setLayoutParams(allActSpacer.getLayoutParams());
+            //GridLayout gridAct = new GridLayout(this);
+            allActGridLayout.addView(spacer,artcount);
+            allActGridLayout.addView(spacer1,artcount+1);
+            allActGridLayout.addView(spacer2,artcount+2);
+            //allActGridLayout.setColumnCount(ansverMap.size());
+            if(ansver.getValue()==first_band.getName()){
+                Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + ansver.getKey().getFolder()))
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .transition(withCrossFade())
+                        .into(LeftPict);
+                //LeftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+                allActGridLayout.removeViewAt(i);
+                allActGridLayout.addView(LeftPict,i,allActLeftSlvPict.getLayoutParams());
+                i=i+3;
+            }
+            if(ansver.getValue()==second_band.getName()){
+                Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + ansver.getKey().getFolder()))
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .transition(withCrossFade())
+                        .into(RightPict);
+                //RightPict.setLayoutParams();
+                allActGridLayout.removeViewAt(j);
+                allActGridLayout.addView(RightPict,j,allActRightSlvPict.getLayoutParams());
+                j=j+3;
+            }
+            artcount=+3;
+        }
+
+    }
+
 
     //-------------------------------------------------------------------------------------------------
 //    private void startFinishSection() {
