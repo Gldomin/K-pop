@@ -4,8 +4,10 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -23,11 +25,15 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.cardview.widget.CardView;
 import androidx.gridlayout.widget.GridLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.transcode.ResourceTranscoder;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.adapter.TinderAdapter;
@@ -54,8 +60,8 @@ public class TwoBandsTinder extends AppCompatActivity {
     private RecyclerView recyclerView1;
     private RecyclerView recyclerView2;
 
-    private ImageView imageBand;
-    private ImageView imBTmp;
+    private ShapeableImageView imageBand;
+    private ShapeableImageView imBTmp;
 
     private TextView groupNameFirstOne;
     private TextView groupNameSecondOne;
@@ -109,6 +115,8 @@ public class TwoBandsTinder extends AppCompatActivity {
     private ImageView allActRightSlvPict;
     private ImageView allActUnslvPictPict;
     private Space allActSpacer;
+
+    private CardView allActCardView;
 
     private LinearLayout allActGuessSolvedLay;
     private LinearLayout allActGuessSolvedLeftLay;
@@ -191,6 +199,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         allActGuessSolvedLeftLay = findViewById(R.id.allActorGuessLeftLay);
         allActGuessSolvedRightLay = findViewById(R.id.allActorGuessRightLay);
 
+        allActCardView = findViewById(R.id.allAct_Card);
 
 
 
@@ -242,7 +251,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 if (pictnumb < ansverMap.size() - 1) {
                     pictnumb++;
                     fadeAnimation(true);
-                    setupImage(pictnumb);
+                    setupImage(artists_turn.get(pictnumb).getFolder(),imageBand);
                 }
                 if (checkresult()) {
                     if (bandsCount + 2 < bands.size()) {
@@ -268,7 +277,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 if (pictnumb < ansverMap.size() - 1) {
                     pictnumb++;
                     fadeAnimation(true);
-                    setupImage(pictnumb);
+                    setupImage(artists_turn.get(pictnumb).getFolder(),imageBand);
                 }
                 if (checkresult()) {
                     if (bandsCount + 2 < bands.size()) {
@@ -309,7 +318,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     public void mainProcedure() {
         //Главная процедура, запускается начальная последовательность , устанавливается главная картинка, указывается текст групп
         startSequance();
-        setupImage(pictnumb);
+        setupImage(artists_turn.get(pictnumb).getFolder(),imageBand);
         setupBandText();
         //адаптеры на
         //TinderAdapter mAdapter1 = new TinderAdapter(getApplicationContext(), ansverMap, artists_turn, first_band.getName());
@@ -345,16 +354,28 @@ public class TwoBandsTinder extends AppCompatActivity {
         countGroupTwo = 0;
     }
 
-    public void setupImage(int numbpict) {
+//    public void setupImage(int numbpict) {
+//        //установка главной фотки которая перемещается
+//        if (numbpict + 1 <= artists_turn.size()) {
+//            //Context contextTheme = new ContextThemeWrapper(this, R.style.roundedCorners);
+//            Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists_turn.get(numbpict).getFolder()))
+//                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+//
+//                    .transition(withCrossFade())
+//                    .into(imageBand);
+//        }
+//    }
+//    Новый метод старый не особо удобен и приходится копировать
+    public void setupImage(String pathtoFolder,ImageView img) {
         //установка главной фотки которая перемещается
-        if (numbpict + 1 <= artists_turn.size()) {
-            Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists_turn.get(numbpict).getFolder()))
+       {
+            //Context contextTheme = new ContextThemeWrapper(this, R.style.roundedCorners);
+            Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + pathtoFolder))
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .transition(withCrossFade())
-                    .into(imageBand);
+                    .into(img);
         }
     }
-
     public void setupBandText() {
         //указываются названия групп и число ответов
         groupNameFirstOne.setText(first_band.getName());
@@ -480,34 +501,112 @@ public class TwoBandsTinder extends AppCompatActivity {
         int i =0;
         int j = 2;
         int artcount=0;
+        //очистка шаблонов ( так надо)
         allActGuessSolvedRightLay.removeAllViews();
         allActGuessSolvedLeftLay.removeAllViews();
+        AllActlayoutUnslvLay.removeAllViews();
+        // Отображение всех отгаданых типов
         for(Map.Entry<Artist,String> ansver: ansverMap.entrySet())
         {
-            ImageView LeftPict = new ImageView(this);
-            ImageView RightPict = new ImageView(this);
-            LeftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-            RightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
-            LeftPict.setScaleType(ImageView.ScaleType.MATRIX);
-            RightPict.setScaleType(ImageView.ScaleType.MATRIX);
+            ImageView leftPict = new ImageView(this);
+            ImageView rightPict = new ImageView(this);
+            //Параметры отображения этих типов, задаются в шаблонах Set устанавливает их
+            leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+            rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
+            //Чтобы нормально размеры отображались указывает ебучий зум (Надо отстандартить фотки)
+            leftPict.setScaleType(ImageView.ScaleType.MATRIX);
+            rightPict.setScaleType(ImageView.ScaleType.MATRIX);
 
+            // Проверки в какую колонку они определяются
             if(ansver.getValue().equals(first_band.getName())){
-                Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + ansver.getKey().getFolder()))
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .transition(withCrossFade())
-                        .into(LeftPict);
+                setupImage(ansver.getKey().getFolder(),leftPict);
                 //LeftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-                allActGuessSolvedLeftLay.addView(LeftPict);
+                allActGuessSolvedLeftLay.addView(leftPict);
             }
             if(ansver.getValue().equals(second_band.getName())){
-                Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + ansver.getKey().getFolder()))
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .transition(withCrossFade())
-                        .into(RightPict);
+                setupImage(ansver.getKey().getFolder(),rightPict);
                 //RightPict.setLayoutParams();
-                allActGuessSolvedRightLay.addView(RightPict);
+                allActGuessSolvedRightLay.addView(rightPict);
             }
 
+        }
+        //Не отгаданные типы, см шаблон
+        for(final Artist others: artists_turn)
+        {
+            if (ansverMap.get(others)=="null")
+            {
+                // инициализация переменных final те которые не изменны, нужны для удаления и добавления
+                final CardView maincard = new CardView(this);
+                Button leftButton = new Button(this);
+                Button rightButton = new Button(this);
+                TextView leftGroupName = new TextView(this);
+                TextView rightGroupName = new TextView(this);
+                final ImageView cardimg = new ImageView(this);
+                LinearLayout leftCardLay = new LinearLayout(this);
+                LinearLayout rightCardLay = new LinearLayout(this);
+                final LinearLayout cardLay = new LinearLayout(this);
+
+
+
+                //Отображение параметров взятых из шаблона
+                maincard.setLayoutParams(allActCardView.getLayoutParams());
+                leftButton.setLayoutParams(allActLeftCardButton.getLayoutParams());
+                rightButton.setLayoutParams(allActRightCardButton.getLayoutParams());
+                leftGroupName.setLayoutParams(allActLeftCardGroupText.getLayoutParams());
+                rightGroupName.setLayoutParams(allActRightCardGroupText.getLayoutParams());
+                cardimg.setLayoutParams(allActUnslvPictPict.getLayoutParams());
+                leftCardLay.setLayoutParams(AllActlayoutCardLeftLay.getLayoutParams());
+                leftCardLay.setOrientation(LinearLayout.VERTICAL);
+                rightCardLay.setLayoutParams(AllActlayoutCardRightLay.getLayoutParams());
+                rightCardLay.setOrientation(LinearLayout.VERTICAL);
+                cardLay.setLayoutParams(AllActlayoutMainLay.getLayoutParams());
+                cardLay.setOrientation(LinearLayout.HORIZONTAL);
+
+
+                //Задача переменных Картинку и путь до папки отправляем в метод он указывает глайду
+                leftGroupName.setText(first_band.getName());
+                rightGroupName.setText(second_band.getName());
+
+                setupImage(others.getFolder(),cardimg);
+
+                // разбивка по верстке как в шаблоне
+                leftCardLay.addView(leftGroupName);
+                leftCardLay.addView(leftButton);
+
+                rightCardLay.addView(rightGroupName);
+                rightCardLay.addView(rightButton);
+
+                cardLay.addView(leftCardLay);
+                cardLay.addView(cardimg);
+                cardLay.addView(rightCardLay);
+
+                maincard.addView(cardLay);
+
+                // добавляет карточку в финальную верстку
+                AllActlayoutUnslvLay.addView(maincard);
+                //при клике на кнопку добавляет ответ в карту ответов, потом чистит карточки чтобы
+                //добавить картинку в столбики ответов
+                leftButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ansverMap.put(others, first_band.getName());
+                        AllActlayoutUnslvLay.removeView(maincard);
+                        maincard.removeAllViews();
+                        cardLay.removeAllViews();
+                        allActGuessSolvedLeftLay.addView(cardimg);
+                    }
+                });
+                rightButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ansverMap.put(others, second_band.getName());
+                        AllActlayoutUnslvLay.removeView(maincard);
+                        maincard.removeAllViews();
+                        cardLay.removeAllViews();
+                        allActGuessSolvedRightLay.addView(cardimg);
+                    }
+                });
+            }
         }
 
     }
