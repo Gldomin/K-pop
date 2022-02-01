@@ -109,32 +109,52 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.gridlayout.widget.GridLayout
-                    android:id="@+id/allActor_Resolve_GridLay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    app:columnCount="3"
-                    app:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/allActorGuessLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/allAct_slv_LPict"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        tools:srcCompat="@tools:sample/avatars" />
+                    <LinearLayout
+                        android:id="@+id/allActorGuessLeftLay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/allActGuessLeftPict"
+                            android:layout_width="180dp"
+                            android:layout_height="240dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
+                            android:scaleType="fitXY"
+                            tools:srcCompat="@tools:sample/avatars" />
+
+                    </LinearLayout>
 
                     <Space
-                        android:id="@+id/allActSpacer"
-                        android:layout_width="20dp"
-                        android:layout_height="120dp" />
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent" />
 
-                    <ImageView
-                        android:id="@+id/allAct_slv_RPict"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        tools:srcCompat="@tools:sample/avatars" />
+                    <LinearLayout
+                        android:id="@+id/allActorGuessRightLay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                </androidx.gridlayout.widget.GridLayout>
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/allActGuessRightPict"
+                            android:layout_width="180dp"
+                            android:layout_height="240dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
+                            android:scaleType="fitXY"
+                            tools:srcCompat="@tools:sample/avatars" />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/allAct_UnslvHead"
@@ -151,8 +171,10 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/allAct_Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_width="wrap_content"
+                        android:layout_height="140dp"
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@android:color/transparent">
 
                         <LinearLayout
                             android:id="@+id/allAct_CardLay"
@@ -180,10 +202,11 @@
                                     android:text="Button" />
                             </LinearLayout>
 
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/allAct_Unslv_Pict"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="160dp"
+                                android:layout_height="120dp"
+                                android:scaleType="center"
                                 tools:srcCompat="@tools:sample/avatars" />
 
                             <LinearLayout
@@ -302,7 +325,7 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/guessBandHeart1"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
@@ -311,14 +334,14 @@
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/heart_color" />
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/guessBandHeart2"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/heart_color" />
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/guessBandHeart3"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
@@ -494,33 +517,35 @@
             </LinearLayout>
         </LinearLayout>
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageBand"
-            android:layout_width="fill_parent"
-            android:layout_height="450dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:padding="5dp"
             app:layout_constraintBottom_toTopOf="@+id/titleTinderBot"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/dividerView"
+            app:srcCompat="@color/acceptGreen"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgBTmp"
-            android:layout_width="fill_parent"
-            android:layout_height="450dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:adjustViewBounds="false"
             android:cropToPadding="false"
             android:padding="5dp"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/titleTinderBot"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
