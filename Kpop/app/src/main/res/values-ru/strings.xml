@@ -24,8 +24,8 @@
 
     <string name="achGuessStarNormalText">"\t"Вы набрали 50 очков в режиме Угадай Звезду</string>
     <string name="achGuessStarExpertText">"\t"Вы набрали 150 очков в режиме Угадай Звезду</string>
-    <string name="achGuessBandsNormalText">"\t"Вы набрали 15 очков в режиме Отгадай Группу</string>
-    <string name="achGuessBandsExpertText">"\t"Вы набрали 50 очков в режиме Отгадай Группу</string>
+    <string name="achGuessBandsNormalText">"\t"Вы набрали 25 очков в режиме Отгадай Группу</string>
+    <string name="achGuessBandsExpertText">"\t"Вы набрали 75 очков в режиме Отгадай Группу</string>
     <string name="achSwipeTwoBandsNormalText">"\t"Вы набрали 5 очков в режиме Распредели На Две Группы</string>
     <string name="achSwipeTwoBandsExpertText">"\t"Вы набрали 25 очков в режиме Распредели На Две Группы</string>
     <string name="achGuessStarReversNormalText">"\t"Вы набрали 50 очков в режиме Найди Звезду</string>

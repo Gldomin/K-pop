@@ -50,19 +50,19 @@ public class GuessStar extends AppCompatActivity {
     TextView textRecord;
 
     SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
-    boolean sound=false; //включен ли звук
+    boolean sound = false; //включен ли звук
 
     ArrayList<Artist> artists = new ArrayList<>();
 
     int chosenOne = -1;     //избранный артист (правильный артист)
     int scoreNow = 0;       //текущий счет
+    private int scoreGlobal = 0;
     int record = 0;         //рекорд
     int count = 0;          //номер артиста из сгенерированного списка (текущий)
 
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
-
 
 
     Theme theme; //переменная для считывания состояния свиича на darkMod
@@ -138,7 +138,6 @@ public class GuessStar extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (((Button) view).getText().equals(artists.get(count).getName())) {
-                        YandexMetrica.reportEvent("GuessStar - Правильный ответ: " + artists.get(count).getName());
                         count++;
                         scoreNow++;
                         if (record < scoreNow) {
@@ -150,23 +149,28 @@ public class GuessStar extends AppCompatActivity {
                             count = 0;
                         }
                         if (scoreNow % 50 == 0) {
-                            YandexMetrica.reportEvent("GuessStar - Добавлено хп");
+                            YandexMetrica.reportEvent("GuessStar", "{\"Score\":{\"Добавлено хп\"}}");
                             heathBarTest.restore();
                         }
                         if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                            YandexMetrica.reportEvent("GuessStar - Ачивка 50 угаданных артистов");
+                            Storage storage = new Storage(getApplicationContext(), "appStatus");
+                            if (!storage.getBoolean("achGuessStarNormal")) {
+                                YandexMetrica.reportEvent("Achievements", "{\"GuessStar\":{\"Ачивка 50 угаданных артистов\"}}");
+                            }
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.normalgs, "achGuessStarNormal"); //ачивочка
                         }
                         if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
-                            YandexMetrica.reportEvent("GuessStar - Ачивка 150 угаданных артистов");
+                            Storage storage = new Storage(getApplicationContext(), "appStatus");
+                            if (!storage.getBoolean("achGuessStarExpert")) {
+                                YandexMetrica.reportEvent("Achievements", "{\"GuessStar\":{\"Ачивка 150 угаданных артистов\"}}");
+                            }
                             SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
                         }
                         nextArtist();
 
                         if (sound)
-                        soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
+                            soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
                     } else {
-                        YandexMetrica.reportEvent("GuessStar - Неправильный ответ: " + ((Button) view).getText() + ", правильный: " + artists.get(count).getName());
                         view.setBackgroundResource(theme.getBackgroundButton());
                         view.setClickable(false);
                         heathBarTest.blow(); //снижение хп
@@ -176,7 +180,7 @@ public class GuessStar extends AppCompatActivity {
                         }
 
                         if (sound)
-                        soundPlayer.playSoundStream(pingClickID);//звук неправильного ответа
+                            soundPlayer.playSoundStream(pingClickID);//звук неправильного ответа
                     }
                     updateScore();
 
@@ -196,8 +200,8 @@ public class GuessStar extends AppCompatActivity {
                 image.putExtra("title", R.string.gameModeAbaut);
                 startActivity(image);
                 //soundPlayer.play(R.raw.ping_click); //звук кнопки\
-                if(sound)
-                soundPlayer.playSoundStream(pingClickID);
+                if (sound)
+                    soundPlayer.playSoundStream(pingClickID);
             }
         });
         updateScore();
@@ -282,16 +286,23 @@ public class GuessStar extends AppCompatActivity {
                 .setNegativeButton(getResources().getString(R.string.endGameNo), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        YandexMetrica.reportEvent("GuessStar - Игра окончена, нет");
+                        YandexMetrica.reportEvent("GuessStar", "{\"Game over\":\"Выход из игры\"}");
+                        String jsonValue = "{\"Score\":{\"Количество очков\":\"" + scoreNow + "\"}}";
+                        YandexMetrica.reportEvent("GuessStar", jsonValue);
+                        scoreGlobal += scoreNow;
+                        YandexMetrica.reportEvent("GuessStar", "{\"Score\":\"Количество очков за сессию: " + scoreGlobal + "\"}");
                         finish();
                     }
                 })
                 .setPositiveButton(getResources().getString(R.string.endGameYes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        YandexMetrica.reportEvent("GuessStar - Игра окончена, да");
+                        YandexMetrica.reportEvent("GuessStar", "{\"Game over\":\"Продолжить игру\"}");
+                        String jsonValue = "{\"Game over\":{\"Количество очков\":\"" + scoreNow + "\"}}";
+                        YandexMetrica.reportEvent("GuessStar", jsonValue);
                         endGame = false;
                         heathBarTest.setHp(3);
+                        scoreGlobal += scoreNow;
                         scoreNow = 0;
                         count++;
                         if (count >= artists.size() - 1) {
@@ -309,24 +320,25 @@ public class GuessStar extends AppCompatActivity {
                     .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            YandexMetrica.reportEvent("GuessStar - Игра окончена, реклама");
+                            YandexMetrica.reportEvent("Reward", "{\"GuessStar\":{\"Game over\":\"Игра окончена, реклама\"}}");
                             endGame = false;
                             rewarded.show(GuessStar.this, new OnUserEarnedRewardListener() {
                                 @Override
                                 public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
                                     onRewarded = false;
                                     showReward = true;
-                                    YandexMetrica.reportEvent("GuessStar - Реклама просмотрена");
+                                    YandexMetrica.reportEvent("Reward", "{\"GuessStar\":{\"Game over\":\"Реклама просмотрена\"}}");
                                 }
                             }, new Rewarded.RewardDelay() {
                                 @Override
                                 public void onShowDismissed() {
                                     if (showReward) {
                                         heathBarTest.restore();
-                                        YandexMetrica.reportEvent("GuessStar - добавлено хп");
+                                        YandexMetrica.reportEvent("Reward", "{\"GuessStar\":{\"Game over\":\"Добавлено хп\"}}");
                                     } else {
-                                        YandexMetrica.reportEvent("GuessStar - Реклама не просмотрена");
+                                        YandexMetrica.reportEvent("Reward", "{\"GuessStar\":{\"Game over\":\"Реклама не просмотрена\"}}");
                                         heathBarTest.setHp(3);
+                                        scoreGlobal += scoreNow;
                                         scoreNow = 0;
                                         count++;
                                         if (count >= artists.size() - 1) {
@@ -347,4 +359,12 @@ public class GuessStar extends AppCompatActivity {
         alert.show();
     }
 
+    @Override
+    public void onBackPressed() {
+        YandexMetrica.reportEvent("GuessStar", "{\"Back\":\"Выход без окончания игры\"}");
+        YandexMetrica.reportEvent("GuessStar", "{\"Back\":\"Количество очков: " + scoreNow + "\"}");
+        scoreGlobal += scoreNow;
+        YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Score\":\"Количество очков за сессию: " + scoreGlobal + "\"}");
+        super.onBackPressed();
+    }
 }
