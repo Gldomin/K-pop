@@ -19,8 +19,7 @@ public class ApplicationStart extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        // Загрузка в Importer данных о всех артистах
-        Importer.createListArtists(getResources());
+
         // Подключение яндекс метрики
         try {
             YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder(getResources().getString(R.string.yandex_id_metrica)).build();

@@ -34,7 +34,7 @@ public class Importer {
      *
      * @param res ресурсы приложения
      */
-    protected static void createListArtists(Resources res) {
+    public static void createListArtists(Resources res) {
         XmlPullParser parser = res.getXml(R.xml.bands);
         artists = new ArrayList<>();
         bands = new ArrayList<>();
