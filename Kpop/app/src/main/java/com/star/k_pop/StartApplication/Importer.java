@@ -172,12 +172,12 @@ public class Importer {
         artistsNotAll = new ArrayList<>();
         bandsNotAll = new ArrayList<>();
         for(int i = 0; i < artists.size(); i++){
-            if (bandsActive.contains(artists.get(i).getGroup())){
+            if (!bandsActive.contains(artists.get(i).getGroup())){
                 artistsNotAll.add(artists.get(i));
             }
         }
         for(int i = 0; i < bands.size(); i++){
-            if (bandsActive.contains(bands.get(i).getName())){
+            if (!bandsActive.contains(bands.get(i).getName())){
                 bandsNotAll.add(bands.get(i));
             }
         }
@@ -211,10 +211,10 @@ public class Importer {
     public static boolean isGetNameActive(int i){
         for(String bands : bandsActive){
             if (bands.equals(bandsAll.get(i))){
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public static int getSizeNameActive(){

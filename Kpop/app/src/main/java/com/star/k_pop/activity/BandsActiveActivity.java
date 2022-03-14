@@ -80,7 +80,7 @@ public class BandsActiveActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ArrayList<String> bandsActive = new ArrayList<>();
                 for(SwitchCompat name : nameBandsActive){
-                    if (name.isChecked()){
+                    if (!name.isChecked()){
                         bandsActive.add(name.getText().toString());
                     }
                 }
