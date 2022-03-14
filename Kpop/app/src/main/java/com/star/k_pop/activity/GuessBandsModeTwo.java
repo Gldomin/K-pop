@@ -102,7 +102,6 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_bands_mode_two);
 
-
         pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
         longSwitchID = soundPlayer.load(R.raw.long_switch);
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
@@ -248,6 +247,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         for (Button b : buttonsEnd) {
             b.setText(" ");
             b.setVisibility(View.INVISIBLE);
+            b.setTextColor(theme.getTextColor());
             b.setBackgroundResource(R.drawable.roundedimageview);
         }
         nameGroup = artists.get(count).getNameCorrect();
@@ -260,14 +260,24 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             }
         }
         ref = createRandomButton();
+        String nameTwo;
+        do {
+            nameTwo = artists.get(new Random().nextInt(artists.size())).getNameCorrect();
+        } while (nameTwo.equals(nameGroup));
+        int countNameTwoChar = 0;
         for (int i = 0; i < ref.length; i++) {
             if (i < countLetter && nameGroup.charAt(i) != ' ') {
                 buttons.get(ref[i]).setText("" + nameGroup.charAt(i));
             } else {
-                if (new Random().nextInt(25) > 0) {
-                    buttons.get(ref[i]).setText("" + (char) ('a' + new Random().nextInt(26)));
+                if (countNameTwoChar < nameTwo.length() && nameTwo.charAt(countNameTwoChar) != ' ') {
+                    buttons.get(ref[i]).setText("" + nameTwo.charAt(countNameTwoChar));
+                    countNameTwoChar++;
                 } else {
-                    buttons.get(ref[i]).setText("" + (char) ('0' + new Random().nextInt(10)));
+                    if (new Random().nextInt(25) > 0) {
+                        buttons.get(ref[i]).setText("" + (char) ('a' + new Random().nextInt(26)));
+                    } else {
+                        buttons.get(ref[i]).setText("" + (char) ('0' + new Random().nextInt(10)));
+                    }
                 }
             }
             buttons.get(ref[i]).setVisibility(View.VISIBLE);
@@ -399,7 +409,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             slideButton.setText(((Button) view).getText());
             slideButton.setVisibility(View.VISIBLE);
             ((Button) view).setText(textStart);
-            if (textEnd.equals("_")){
+            if (textEnd.equals("_")) {
                 view.setVisibility(View.INVISIBLE);
             }
             if (textEnd.equals("")) {
