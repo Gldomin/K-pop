@@ -53,6 +53,8 @@
     <string name="settings4">Sound enabled</string>
     <string name="settings5">Parameter 5</string>
     <string name="resetRecords">Score reset</string>
+    <string name="bandsActiveButton">Change available bands</string>
+    <string name="bandsActiveTitle">Change available bands</string>
 
     <string name="OptionsSet">Settings saved</string>
 

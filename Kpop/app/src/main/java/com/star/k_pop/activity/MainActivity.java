@@ -27,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Загрузка в Importer данных о всех артистах
-        Importer.createListArtists(getResources());
+
+        Importer.createListArtists(getResources(), this);
+
         Storage storage = new Storage(this, "appStatus");
         theme = new Theme(this);
         theme.setTheme();
