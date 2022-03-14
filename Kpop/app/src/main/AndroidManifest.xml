@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.GuessBandsModeTwo"></activity>
+
+        <activity android:name=".activity.GuessBandsModeTwo" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -39,6 +40,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.TwoBandsTinder"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BandsActiveActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MainActivity"

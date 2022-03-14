@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.star.k_pop.R;
+import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.gallery.activity.Gallery;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
@@ -25,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Загрузка в Importer данных о всех артистах
+        Importer.createListArtists(getResources(), this);
+
         Storage storage = new Storage(this, "appStatus");
         theme = new Theme(this);
         theme.setTheme();

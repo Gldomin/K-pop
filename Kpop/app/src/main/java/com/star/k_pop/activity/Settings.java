@@ -117,6 +117,18 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        Button buttonBandsActive = findViewById(R.id.bandsActive);
+        buttonBandsActive.setBackgroundResource(theme.getBackgroundButton());
+        buttonBandsActive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                YandexMetrica.reportEvent("Setting - BandsActive");
+                Intent image = new Intent();
+                image.setClass(Settings.this, BandsActiveActivity.class);
+                startActivity(image);
+            }
+        });
+
     }
 
 
