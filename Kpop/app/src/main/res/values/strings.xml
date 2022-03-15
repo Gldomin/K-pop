@@ -3,15 +3,15 @@
 
     <string name="yandex_id_metrica" translatable="false">7f5528ae-626c-4298-a361-5635a0ad148a</string>
 
-    <!--    <string name="admob_id_account" translatable="false">ca-app-pub-1704760570617777~3272301452</string>-->
-    <!--    <string name="admob_id_reward_star" translatable="false">ca-app-pub-1704760570617777/1487897750</string>-->
-    <!--    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-1704760570617777/8141484754</string>-->
-    <!--    <string name="admob_id_interstitial" translatable="false">ca-app-pub-1704760570617777/7888214522</string>-->
+    <string name="admob_id_account" translatable="false">ca-app-pub-1704760570617777~3272301452</string>
+    <string name="admob_id_reward_star" translatable="false">ca-app-pub-1704760570617777/1487897750</string>
+    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-1704760570617777/8141484754</string>
+    <string name="admob_id_interstitial" translatable="false">ca-app-pub-1704760570617777/7888214522</string>
 
-    <string name="admob_id_account" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="admob_id_reward_star" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
-    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
-    <string name="admob_id_interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <!--    <string name="admob_id_account" translatable="false">ca-app-pub-3940256099942544~3347511713</string>-->
+    <!--    <string name="admob_id_reward_star" translatable="false">ca-app-pub-3940256099942544/5224354917</string>-->
+    <!--    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-3940256099942544/5224354917</string>-->
+    <!--    <string name="admob_id_interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>-->
 
     <string name="menuItemGuessStar">Guess Star</string>
     <string name="menuItemGuessStarReverse">Guess Star Reverse</string>
