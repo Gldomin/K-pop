@@ -35,8 +35,8 @@
 
     <string name="achGuessStarNormalText">You got 50 points in Guess Star gamemode</string>
     <string name="achGuessStarExpertText">You got 150 points in Guess Star gamemode</string>
-    <string name="achGuessBandsNormalText">You got 15 points in Guess Band gamemode</string>
-    <string name="achGuessBandsExpertText">You got 50 points in Guess Band gamemode</string>
+    <string name="achGuessBandsNormalText">You got 25 points in Guess Band gamemode</string>
+    <string name="achGuessBandsExpertText">You got 75 points in Guess Band gamemode</string>
     <string name="achSwipeTwoBandsNormalText">You got 5 points in Divide to bands gamemode</string>
     <string name="achSwipeTwoBandsExpertText">You got 25 points in Divide to bands gamemode</string>
     <string name="achGuessStarReversNormalText">You got 50 points in Find the Star gamemode</string>

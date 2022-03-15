@@ -199,7 +199,7 @@ public class GuessBands extends AppCompatActivity {
                         }
                         if (fastScore % 15 == 0) {
                             YandexMetrica.reportEvent("GuessBands - Доп подсказка");
-                            hintCount += 2;
+                            hintCount += 1;
                         }
                         //три нижние строчки - для отладки, автоматически ставит название группы в текстовое поле
                         //на момент релиза удалить.
