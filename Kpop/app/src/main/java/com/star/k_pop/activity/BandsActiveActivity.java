@@ -44,7 +44,7 @@ public class BandsActiveActivity extends AppCompatActivity {
             TableRow.LayoutParams lp = new TableRow.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(80, 20, 80, 20);
+            lp.setMargins(80, 0, 80, 80);
 
             nameBand.setLayoutParams(lp);
             nameBand.setTextSize(24);
