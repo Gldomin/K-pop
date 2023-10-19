@@ -49,6 +49,8 @@
     <string name="settings5">"Нажми ОТМЕНА"</string>
     <string name="resetRecords">Сбросить счёт</string>
     <string name="OptionsSet">Настройки сохранены</string>
+    <string name="bandsActiveButton">Изменить доступные группы</string>
+    <string name="bandsActiveTitle">Изменить доступные группы</string>
 
     <string name="gameRulesAbaut">Правила игры</string>
     <string name="aboutTitle">Добро пожаловать!</string>

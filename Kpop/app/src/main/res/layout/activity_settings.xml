@@ -36,9 +36,9 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:background="@color/cancelRed"
-            android:layout_marginRight="40dp"
             android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/cancelRed"
             android:text="@string/answerCancel" />
 
         <Button
@@ -48,9 +48,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:background="@color/acceptGreen"
-            android:layout_marginLeft="40dp"
             android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:background="@color/acceptGreen"
             android:text="@string/answerAccept" />
     </RelativeLayout>
 
@@ -106,6 +106,22 @@
             android:paddingRight="10dp"
             android:paddingBottom="5dp"
             android:text="@string/resetRecords"
+            android:textFontWeight="1" />
+
+        <Button
+            android:id="@+id/bandsActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/optionSwitch2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/bandsActiveButton"
             android:textFontWeight="1" />
 
 

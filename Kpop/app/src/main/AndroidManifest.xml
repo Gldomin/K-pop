@@ -13,7 +13,6 @@
         android:supportsRtl="true"
 
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.GuessBandsModeTwo"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -32,13 +31,13 @@
             android:name=".activity.GuessStar"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.GuessBands"
+            android:name=".activity.GuessBandsModeTwo"
             android:screenOrientation="portrait" />
         <activity
             android:name=".gallery.activity.Gallery"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.TwoBandsTinder"
+            android:name=".activity.BandsActiveActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MainActivity"

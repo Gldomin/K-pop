@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.star.k_pop.R;
+import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.gallery.activity.Gallery;
 import com.star.k_pop.helper.Interstitial;
 import com.star.k_pop.helper.Storage;
@@ -28,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Загрузка в Importer данных о всех артистах
+
+        Importer.createListArtists(getResources(), this);
+
         Storage storage = new Storage(this, "appStatus");
         theme = new Theme(this);
         theme.setTheme();
@@ -76,25 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 YandexMetrica.reportEvent("Menu","{\"Button\":\"guessBandButton\"}");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, GuessBandsModeTwo.class);
-                startActivity(image);
-                if (mInterstitialAd.onLoaded() && reward) {
-                    mInterstitialAd.show(MainActivity.this);
-                    YandexMetrica.reportEvent("Reward","{\"Menu\":\"Show\"}");
-                }
-                if (!reward){
-                    reward = true;
-                }
-            }
-        });
-
-        Button guessTwoBandsTinder = findViewById(R.id.guessTwoBands);
-        guessTwoBandsTinder.setBackgroundResource(theme.getBackgroundButton());
-        guessTwoBandsTinder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu","{\"Button\":\"guessTwoBandsTinder\"}");
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, TwoBandsTinder.class);
                 startActivity(image);
                 if (mInterstitialAd.onLoaded() && reward) {
                     mInterstitialAd.show(MainActivity.this);
