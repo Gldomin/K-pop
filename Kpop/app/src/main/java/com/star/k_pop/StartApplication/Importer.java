@@ -122,7 +122,7 @@ public class Importer {
                 }
                 parser.next();
             }
-            bandsActive = new ArrayList<>(bandsAll);
+            bandsActive = new ArrayList<>();
             LoadBandsActive(context);
         } catch (XmlPullParserException | IOException e) {
             e.printStackTrace();

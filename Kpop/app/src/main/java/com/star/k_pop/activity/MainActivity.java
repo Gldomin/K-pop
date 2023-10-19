@@ -73,6 +73,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button guessTwoBandsTinder = findViewById(R.id.guessTwoBands);
+        guessTwoBandsTinder.setBackgroundResource(theme.getBackgroundButton());
+        guessTwoBandsTinder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                YandexMetrica.reportEvent("Main - guessTwoBands");
+                Intent image = new Intent();
+                image.setClass(MainActivity.this, TwoBandsTinder.class);
+                startActivity(image);
+            }
+        });
+
         Button guessBandButton = findViewById(R.id.guessGroupButton);
         guessBandButton.setBackgroundResource(theme.getBackgroundButton());
         guessBandButton.setOnClickListener(new View.OnClickListener() {
