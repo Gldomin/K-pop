@@ -187,8 +187,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                     menuFlipEventInstance();
                     twoBandFlip.showNext();
 
-                    countGroupTextFirstTwo.setText(countGroupOne +"/"+ countGroupMaxOne);
-                    countGroupTextSecondTwo.setText(countGroupTwo +"/"+ countGroupMaxTwo);
+                    countGroupTextFirstTwo.setText(countGroupOne + "/" + countGroupMaxOne);
+                    countGroupTextSecondTwo.setText(countGroupTwo + "/" + countGroupMaxTwo);
                 }
 /*
                 Animation anim = AnimationUtils.loadAnimation(TwoBandsTinder.this, R.anim.wrong_answer_anim);
@@ -225,12 +225,12 @@ public class TwoBandsTinder extends AppCompatActivity {
                 left = true;
                 right = false;
                 ansverMap.put(artists_turn.get(pictNumbCurrent), first_band.getName());
-                countGroupTextFirstOne.setText(++countGroupOne +"/"+ countGroupMaxOne);
+                countGroupTextFirstOne.setText(++countGroupOne + "/" + countGroupMaxOne);
                 pictnumb++;
                 if (pictnumb < ansverMap.size()) {
                     fadeAnimation(true);
-                    for (int i =0; i <ansverMap.size();i++){
-                        if (ansverMap.get(artists_turn.get(i)).equals("null")){
+                    for (int i = 0; i < ansverMap.size(); i++) {
+                        if (ansverMap.get(artists_turn.get(i)).equals("null")) {
                             pictNumbCurrent = i;
                             break;
                         }
@@ -244,8 +244,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                     } else resultsSequence();
                 }
                 if (pictnumb >= ansverMap.size()) {
-                    countGroupTextFirstTwo.setText(countGroupOne +"/"+ countGroupMaxOne);
-                    countGroupTextSecondTwo.setText(countGroupTwo +"/"+ countGroupMaxTwo);
+                    countGroupTextFirstTwo.setText(countGroupOne + "/" + countGroupMaxOne);
+                    countGroupTextSecondTwo.setText(countGroupTwo + "/" + countGroupMaxTwo);
                     twoBandFlip.showNext();
                     menuFlipEventInstance();
                     imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
@@ -258,13 +258,13 @@ public class TwoBandsTinder extends AppCompatActivity {
                 left = false;
                 right = true;
                 ansverMap.put(artists_turn.get(pictNumbCurrent), second_band.getName());
-                countGroupTextSecondOne.setText(++countGroupTwo +"/"+ countGroupMaxTwo);
+                countGroupTextSecondOne.setText(++countGroupTwo + "/" + countGroupMaxTwo);
                 pictnumb++;
                 if (pictnumb < ansverMap.size()) {
                     fadeAnimation(true);
-                    for (int i =0; i < ansverMap.size(); i++){
+                    for (int i = 0; i < ansverMap.size(); i++) {
                         Log.e("DEBUGINGGAME", ansverMap.get(artists_turn.get(i)));
-                        if (ansverMap.get(artists_turn.get(i)).equals("null")){
+                        if (ansverMap.get(artists_turn.get(i)).equals("null")) {
                             pictNumbCurrent = i;
                             break;
                         }
@@ -278,8 +278,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                     } else resultsSequence();
                 }
                 if (pictnumb >= ansverMap.size()) {
-                    countGroupTextFirstTwo.setText(countGroupOne +"/"+ countGroupMaxOne);
-                    countGroupTextSecondTwo.setText(countGroupTwo +"/"+ countGroupMaxTwo);
+                    countGroupTextFirstTwo.setText(countGroupOne + "/" + countGroupMaxOne);
+                    countGroupTextSecondTwo.setText(countGroupTwo + "/" + countGroupMaxTwo);
                     twoBandFlip.showNext();
                     menuFlipEventInstance();
                     imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
@@ -328,7 +328,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         //ОсновнаяПоследовательностьРежима берутся две группы,создается лист артистов из двух групп обнуляются карты ответов , перемешиваются артисты
         //
         pictnumb = 0;
-        pictNumbCurrent=0;
+        pictNumbCurrent = 0;
         first_band = bands.get(bandsCount);
         second_band = bands.get(bandsCount + 1);
         artists_turn = new ArrayList<Artist>();
@@ -344,7 +344,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     }
 
 
-//    Новый метод старый не особо удобен и приходится копировать
+    //    Новый метод старый не особо удобен и приходится копировать
     public void setupImage(String pathtoFolder, ImageView img) {
         //установка главной фотки которая перемещается
         {
@@ -365,7 +365,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         groupNameSecondTwo.setText(second_band.getName());
         groupNameFirstThree.setText(first_band.getName());
         groupNameSecondThree.setText(second_band.getName());
-        countGroupMaxOne =  first_band.getNumberOfPeople();
+        countGroupMaxOne = first_band.getNumberOfPeople();
         countGroupMaxTwo = second_band.getNumberOfPeople();
         countGroupTextFirstOne.setText("0/" + countGroupMaxOne);
         countGroupTextSecondOne.setText("0/" + countGroupMaxTwo);
@@ -452,7 +452,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         //финал пройгрыша
         AlertDialog.Builder alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
         alertbuild.setTitle(" Готово ");
-        alertbuild.setMessage("У вас " + mistakescount() +" ошибок");
+        alertbuild.setMessage("У вас " + mistakescount() + " ошибок");
         alertbuild.setPositiveButton("окей", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -470,12 +470,12 @@ public class TwoBandsTinder extends AppCompatActivity {
     public void onBackPressed() {
         //кнопка возврата
         if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
-            if (pictnumb < ansverMap.size()){
+            if (pictnumb < ansverMap.size()) {
                 twoBandFlip.showNext();
-                countGroupTextFirstOne.setText(countGroupOne +"/"+ countGroupMaxOne);
-                countGroupTextSecondOne.setText(countGroupTwo +"/"+ countGroupMaxTwo);
-                for (int i =0; i <ansverMap.size();i++){
-                    if (ansverMap.get(artists_turn.get(i)).equals("null")){
+                countGroupTextFirstOne.setText(countGroupOne + "/" + countGroupMaxOne);
+                countGroupTextSecondOne.setText(countGroupTwo + "/" + countGroupMaxTwo);
+                for (int i = 0; i < ansverMap.size(); i++) {
+                    if (ansverMap.get(artists_turn.get(i)).equals("null")) {
                         pictNumbCurrent = i;
                         break;
                     }
@@ -496,7 +496,9 @@ public class TwoBandsTinder extends AppCompatActivity {
         // Отображение всех отгаданых типов
         for (Map.Entry<Artist, String> ansver : ansverMap.entrySet()) {
             ImageView leftPict = new ImageView(this);
+            leftPict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()),true));
             ImageView rightPict = new ImageView(this);
+            rightPict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()),false));
             //Параметры отображения этих типов, задаются в шаблонах Set устанавливает их
             leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
             rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
@@ -531,7 +533,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 
                 //Отображение параметров взятых из шаблона
                 LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) allActCardView.getLayoutParams();
-                layoutParams.setMargins(0,10,0,10);
+                layoutParams.setMargins(0, 10, 0, 10);
 
                 maincard.setLayoutParams(layoutParams);
                 leftButton.setLayoutParams(allActLeftCardButton.getLayoutParams());
@@ -590,15 +592,20 @@ public class TwoBandsTinder extends AppCompatActivity {
                 leftButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (countGroupOne< countGroupMaxOne){
+                        if (countGroupOne < countGroupMaxOne) {
                             pictnumb++;
                             countGroupOne++;
-                            countGroupTextFirstTwo.setText(countGroupOne +"/"+ countGroupMaxOne);
+                            countGroupTextFirstTwo.setText(countGroupOne + "/" + countGroupMaxOne);
                             ansverMap.put(others, first_band.getName());
                             AllActlayoutUnslvLay.removeView(maincard);
                             maincard.removeAllViews();
                             cardLay.removeAllViews();
-                            allActGuessSolvedLeftLay.addView(cardimg);
+                            ImageView pict = new ImageView(TwoBandsTinder.this);
+                            pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+                            pict.setScaleType(ImageView.ScaleType.MATRIX);
+                            pict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others),true));
+                            setupImage(others.getFolder(), pict);
+                            allActGuessSolvedLeftLay.addView(pict);
                         }
 
 
@@ -607,21 +614,47 @@ public class TwoBandsTinder extends AppCompatActivity {
                 rightButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (countGroupTwo<countGroupMaxTwo){
+                        if (countGroupTwo < countGroupMaxTwo) {
                             pictnumb++;
                             countGroupTwo++;
-                            countGroupTextSecondTwo.setText(countGroupTwo +"/"+ countGroupMaxTwo);
+                            countGroupTextSecondTwo.setText(countGroupTwo + "/" + countGroupMaxTwo);
                             ansverMap.put(others, second_band.getName());
                             AllActlayoutUnslvLay.removeView(maincard);
                             maincard.removeAllViews();
                             cardLay.removeAllViews();
-                            allActGuessSolvedRightLay.addView(cardimg);
+                            ImageView pict = new ImageView(TwoBandsTinder.this);
+                            pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+                            pict.setScaleType(ImageView.ScaleType.MATRIX);
+                            pict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others),false));
+                            setupImage(others.getFolder(), pict);
+                            allActGuessSolvedRightLay.addView(pict);
                         }
                     }
                 });
             }
         }
 
+    }
+
+    private class TouchSwitchImage implements View.OnClickListener {
+
+        int count;
+        boolean isLeft;
+
+        public TouchSwitchImage(int count, boolean isLeft) {
+            this.count = count;
+            this.isLeft = isLeft;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (isLeft) {
+                Log.i("OnClickList", "Click left " + allActGuessSolvedLeftLay.getChildCount() + " " + count);
+            } else {
+                Log.i("OnClickList", "Click right " + allActGuessSolvedRightLay.getChildCount() + " " + count);
+            }
+
+        }
     }
 
     // класс listener для моего обьекта
@@ -686,10 +719,10 @@ public class TwoBandsTinder extends AppCompatActivity {
                     }//v.animate().x(paddingX).y(paddingY).rotation(0);
 
                     if (leftCheck) {
-                        if (countGroupOne != countGroupMaxOne){
+                        if (countGroupOne != countGroupMaxOne) {
                             v.animate().y(paddingYx);
                             onLeftCheck();
-                        }else{
+                        } else {
                             v.animate().setDuration(400).translationX(0).translationY(0).rotation(0);
                         }
                     }
@@ -697,7 +730,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                         if (countGroupTwo != countGroupMaxTwo) {
                             v.animate().y(paddingYx);
                             onRightCheck();
-                        }else{
+                        } else {
                             v.animate().setDuration(400).translationX(0).translationY(0).rotation(0);
                         }
                     }
