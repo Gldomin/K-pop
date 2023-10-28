@@ -14,6 +14,8 @@ public class Artist {
     private final String[] namesImages;     // Имена картинок
     private final boolean sex;              // Пол артиста
 
+    public int countRandom = -1;
+
     public Artist(String[] groups, String name, String[] namesImages, boolean sex) {
         this.groups = groups;
         this.name = name;
@@ -25,6 +27,18 @@ public class Artist {
     public String getNamesImages() {
         Random rand = new Random();
         return namesImages[rand.nextInt(namesImages.length)]; //возвращаем рандомную фотку Артиста
+    }
+
+    public String getNameImagesNotRandom(){
+        if (countRandom < 0){
+            Random rand = new Random();
+            countRandom = rand.nextInt(namesImages.length);
+        }
+        return namesImages[countRandom]; //возвращаем рандомную фотку Артиста
+    }
+
+    public void removeRandomCount(){
+        countRandom = -1;
     }
 
     public boolean isSex() {
@@ -51,14 +65,18 @@ public class Artist {
         return groups[0] + "/" + name + "/" + getNamesImages();
     }
 
+    public String getFolderNotRandom() {
+        return groups[0] + "/" + name + "/" + getNameImagesNotRandom();
+    }
+
     public String getUriFolderString() {
         return "file:///android_asset/Groups/" + groups[0] + "/" + name + "/" + getNamesImages();
     }
 
     public boolean checkGroup(String group) {
         for (String g : groups) {
-            Log.v("TAG", group.replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
-            if (group.replaceAll(" ", "").equals(g.toUpperCase().replaceAll(" ", ""))) {
+            Log.v("TAG", group.toUpperCase().replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
+            if (group.toUpperCase().replaceAll(" ", "").equals(g.toUpperCase().replaceAll(" ", ""))) {
                 return true;
             }
         }
