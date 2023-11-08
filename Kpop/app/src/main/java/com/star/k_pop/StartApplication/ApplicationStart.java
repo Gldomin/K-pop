@@ -49,7 +49,6 @@ public class ApplicationStart extends MultiDexApplication {
         } catch (Exception ignored) {
 
         }
-
         SharedPreferences sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
         if (!sp.contains("noticeWatched") || !sp.contains("achGuessStarNormal")) {
             Log.v("TAG", "noticeWatched");

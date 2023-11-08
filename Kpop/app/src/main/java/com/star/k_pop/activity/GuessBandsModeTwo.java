@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -19,16 +18,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.android.gms.ads.OnUserEarnedRewardListener;
-import com.google.android.gms.ads.rewarded.RewardItem;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
-import com.star.k_pop.helper.Rewarded;
+import com.star.k_pop.ad.RewardedCustom;
+import com.star.k_pop.ad.RewardedCustomGoogle;
+import com.star.k_pop.ad.RewardedCustomYandex;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
@@ -46,8 +44,6 @@ import java.util.Random;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class GuessBandsModeTwo extends AppCompatActivity {
-
-    private final String TAG = "Mode Two";
 
     private Theme theme;
     private HeathBar heathBarTest;
@@ -88,11 +84,11 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     };
 
     private SharedPreferences spBands;
-    Rewarded rewarded;
+
+    RewardedCustom rewardedCustom; //Класс для работы с рекламой
 
     private ImageView groupPhoto;
     private Button slideButton;
-    private ImageButton hintButton;
     private TextView recordText; //рекорд
     private TextView scoreNowText; //текущий счет
     private TextView counterHint;
@@ -109,10 +105,14 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
         sound = storage.getBoolean("soundMode"); //настроек звука
 
-        rewarded = new Rewarded(this, R.string.admob_id_reward_bands);
+        if (Locale.getDefault().getLanguage().equals("ru")) {
+            rewardedCustom = new RewardedCustomYandex(this);
+        } else {
+            rewardedCustom = new RewardedCustomGoogle(this, R.string.admob_id_reward_star);
+        }
 
         groupPhoto = findViewById(R.id.groupPhoto);
-        hintButton = findViewById(R.id.podsk);
+        ImageButton hintButton = findViewById(R.id.podsk);
         slideButton = findViewById(R.id.button);
         recordText = findViewById(R.id.scoreBands);
         scoreNowText = findViewById(R.id.fastscoreBands);
@@ -446,7 +446,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     }
 
     private void onRewardHint() {
-        if (rewarded.onLoaded() && onRewardedHint) {
+        if (rewardedCustom.onLoaded() && onRewardedHint) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
             builder.setTitle(getResources().getString(R.string.endHintCongratulate))
                     .setMessage(String.format("%s", getResources().getString(R.string.endHintReward)))
@@ -461,15 +461,14 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Hint\":\"Последняя подсказка, да\"}}");
-                            rewarded.show(GuessBandsModeTwo.this, new OnUserEarnedRewardListener() {
+                            rewardedCustom.show(GuessBandsModeTwo.this, new RewardedCustom.RewardedInterface() {
                                 @Override
-                                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                                public void onRewarded() {
                                     showReward = true;
-                                    YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Hint\":\"Реклама просмотрена, подсказка\"}}");
                                 }
-                            }, new Rewarded.RewardDelay() {
+
                                 @Override
-                                public void onShowDismissed() {
+                                public void onDismissed() {
                                     if (showReward) {
                                         YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Hint\":\"Открыта подсказка за рекламу\"}}");
                                         onRewardedHint = false;
@@ -494,6 +493,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                                     showReward = false;
                                 }
                             });
+
                         }
                     });
             AlertDialog alert = builder.create();
@@ -533,22 +533,21 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                         change();
                     }
                 });
-        if (rewarded.onLoaded() && onRewarded) {
+        if (rewardedCustom.onLoaded() && onRewarded) {
             builder.setMessage(String.format("%s %d! %s %s", getResources().getString(R.string.score_text),
-                    scoreNow, getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
+                            scoreNow, getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
                     .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Game over\":\"Игра окончена, реклама\"}}");
-                            rewarded.show(GuessBandsModeTwo.this, new OnUserEarnedRewardListener() {
+                            rewardedCustom.show(GuessBandsModeTwo.this, new RewardedCustom.RewardedInterface() {
                                 @Override
-                                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                                public void onRewarded() {
                                     showReward = true;
-                                    YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Game over\":\"Реклама просмотрена\"}}");
                                 }
-                            }, new Rewarded.RewardDelay() {
+
                                 @Override
-                                public void onShowDismissed() {
+                                public void onDismissed() {
                                     if (showReward) {
                                         onRewarded = false;
                                         heathBarTest.restore();

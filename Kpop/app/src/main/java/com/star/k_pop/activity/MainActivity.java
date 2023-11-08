@@ -13,19 +13,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.ad.InterstitialCustomGoogle;
+import com.star.k_pop.ad.InterstitialCustomYandex;
+import com.star.k_pop.ad.RewardedCustomGoogle;
+import com.star.k_pop.ad.RewardedCustomYandex;
 import com.star.k_pop.gallery.activity.Gallery;
-import com.star.k_pop.helper.Interstitial;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.yandex.metrica.YandexMetrica;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     final int REQUEST_CODE = 1;
 
     Theme theme;//переменная для считывания состояния свиича на darkMod
     SharedPreferences sp;
-    private Interstitial mInterstitialAd;
-    private boolean reward = false;
+    private InterstitialCustomGoogle mInterstitialAdGoogle;
+    private InterstitialCustomYandex mInterstitialAdYandex;
+
+    private int countAd = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mInterstitialAd = new Interstitial(this,R.string.admob_id_interstitial);
+        if (Locale.getDefault().getLanguage().equals("ru")) {
+            mInterstitialAdYandex = new InterstitialCustomYandex(this);
+        } else {
+            mInterstitialAdGoogle = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
+        }
+
 
         String nameOfStorage = "appStatus";
         sp = getSharedPreferences(nameOfStorage, Context.MODE_PRIVATE);
@@ -59,17 +71,13 @@ public class MainActivity extends AppCompatActivity {
         guessStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu","{\"Button\":\"guessStarButton\"}");
+                YandexMetrica.reportEvent("Menu", "{\"Button\":\"guessStarButton\"}");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, GuessStar.class);
                 startActivity(image);
-                if (mInterstitialAd.onLoaded() && reward) {
-                    mInterstitialAd.show(MainActivity.this);
-                    YandexMetrica.reportEvent("Reward","{\"Menu\":\"Show\"}");
-                }
-                if (!reward){
-                    reward = true;
-                }
+                interstitialShow();
+                YandexMetrica.reportEvent("Reward", "{\"Menu\":\"Show\"}");
+
             }
         });
 
@@ -82,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, TwoBandsTinder.class);
                 startActivity(image);
+                interstitialShow();
             }
         });
 
@@ -90,17 +99,12 @@ public class MainActivity extends AppCompatActivity {
         guessBandButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu","{\"Button\":\"guessBandButton\"}");
+                YandexMetrica.reportEvent("Menu", "{\"Button\":\"guessBandButton\"}");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, GuessBandsModeTwo.class);
                 startActivity(image);
-                if (mInterstitialAd.onLoaded() && reward) {
-                    mInterstitialAd.show(MainActivity.this);
-                    YandexMetrica.reportEvent("Reward","{\"Menu\":\"Show\"}");
-                }
-                if (!reward){
-                    reward = true;
-                }
+                interstitialShow();
+                YandexMetrica.reportEvent("Reward", "{\"Menu\":\"Show\"}");
             }
         });
 
@@ -108,16 +112,11 @@ public class MainActivity extends AppCompatActivity {
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu","{\"Button\":\"buttonLibrary\"}");
+                YandexMetrica.reportEvent("Menu", "{\"Button\":\"buttonLibrary\"}");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Gallery.class);
                 startActivity(image);
-                if (mInterstitialAd.onLoaded() && reward) {
-                    mInterstitialAd.show(MainActivity.this);
-                }
-                if (!reward){
-                    reward = true;
-                }
+                interstitialShow();
             }
         });
 
@@ -125,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu","{\"Button\":\"settingsButton\"}");
+                YandexMetrica.reportEvent("Menu", "{\"Button\":\"settingsButton\"}");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Settings.class);
                 startActivityForResult(image, REQUEST_CODE);
@@ -136,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         achievement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu","{\"Button\":\"achievement\"}");
+                YandexMetrica.reportEvent("Menu", "{\"Button\":\"achievement\"}");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, Achievements.class);
                 startActivity(image);
@@ -148,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu","{\"Button\":\"about\"}");
+                YandexMetrica.reportEvent("Menu", "{\"Button\":\"about\"}");
                 Intent image = new Intent();
                 image.setClass(MainActivity.this, BasicNotice.class);
                 image.putExtra("text", R.string.aboutText);
@@ -169,6 +168,19 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             recreate();
         }
+    }
+
+    private void interstitialShow() {
+        if (countAd <= 0) {
+            countAd = 4;
+            if (Locale.getDefault().getLanguage().equals("ru")) {
+                mInterstitialAdYandex.show(this);
+            }else{
+                mInterstitialAdGoogle.show();
+            }
+
+        }
+        countAd--;
     }
 
 }

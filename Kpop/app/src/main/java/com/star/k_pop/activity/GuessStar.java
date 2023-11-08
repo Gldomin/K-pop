@@ -24,11 +24,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.android.gms.ads.OnUserEarnedRewardListener;
-import com.google.android.gms.ads.rewarded.RewardItem;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
-import com.star.k_pop.helper.Rewarded;
+import com.star.k_pop.ad.RewardedCustom;
+import com.star.k_pop.ad.RewardedCustomGoogle;
+import com.star.k_pop.ad.RewardedCustomYandex;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
@@ -38,6 +38,7 @@ import com.star.k_pop.model.Artist;
 import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
@@ -56,18 +57,14 @@ public class GuessStar extends AppCompatActivity {
 
     int chosenOne = -1;     //избранный артист (правильный артист)
     int scoreNow = 0;       //текущий счет
-    private int scoreGlobal = 0;
     int record = 0;         //рекорд
     int count = 0;          //номер артиста из сгенерированного списка (текущий)
 
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
-
-
     Theme theme; //переменная для считывания состояния свиича на darkMod
-
-    Rewarded rewarded;          //Класс для работы с рекламой
+    RewardedCustom rewardedCustom;          //Класс для работы с рекламой
     HeathBar heathBarTest;
 
     @SuppressLint("DefaultLocale")
@@ -76,8 +73,11 @@ public class GuessStar extends AppCompatActivity {
         theme = new Theme(this);
         theme.setThemeSecond();
 
-        rewarded = new Rewarded(this, R.string.admob_id_reward_star);
-
+        if (Locale.getDefault().getLanguage().equals("ru")) {
+            rewardedCustom = new RewardedCustomYandex(this);
+        } else {
+            rewardedCustom = new RewardedCustomGoogle(this, R.string.admob_id_reward_star);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
 
@@ -132,8 +132,6 @@ public class GuessStar extends AppCompatActivity {
 
             buttons[i].setPadding(10, 10, 10, 10);
             buttons[i].setLayoutParams(lp);
-
-
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -168,19 +166,20 @@ public class GuessStar extends AppCompatActivity {
                         }
                         nextArtist();
 
-                        if (sound)
+                        if (sound) {
                             soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
+                        }
                     } else {
                         view.setBackgroundResource(theme.getBackgroundButton());
                         view.setClickable(false);
                         heathBarTest.blow(); //снижение хп
                         if (heathBarTest.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
                             startLosingDialog();
-
                         }
 
-                        if (sound)
+                        if (sound) {
                             soundPlayer.playSoundStream(pingClickID);//звук неправильного ответа
+                        }
                     }
                     updateScore();
 
@@ -199,9 +198,9 @@ public class GuessStar extends AppCompatActivity {
                 image.putExtra("text", R.string.guessStarGameModeAbaut);
                 image.putExtra("title", R.string.gameModeAbaut);
                 startActivity(image);
-                //soundPlayer.play(R.raw.ping_click); //звук кнопки\
-                if (sound)
-                    soundPlayer.playSoundStream(pingClickID);
+                if (sound) {
+                    soundPlayer.playSoundStream(pingClickID);//звук кнопки
+                }
             }
         });
         updateScore();
@@ -289,8 +288,6 @@ public class GuessStar extends AppCompatActivity {
                         YandexMetrica.reportEvent("GuessStar", "{\"Game over\":\"Выход из игры\"}");
                         String jsonValue = "{\"Score\":{\"Количество очков\":\"" + scoreNow + "\"}}";
                         YandexMetrica.reportEvent("GuessStar", jsonValue);
-                        scoreGlobal += scoreNow;
-                        YandexMetrica.reportEvent("GuessStar", "{\"Score\":\"Количество очков за сессию: " + scoreGlobal + "\"}");
                         finish();
                     }
                 })
@@ -302,7 +299,6 @@ public class GuessStar extends AppCompatActivity {
                         YandexMetrica.reportEvent("GuessStar", jsonValue);
                         endGame = false;
                         heathBarTest.setHp(3);
-                        scoreGlobal += scoreNow;
                         scoreNow = 0;
                         count++;
                         if (count >= artists.size() - 1) {
@@ -314,31 +310,29 @@ public class GuessStar extends AppCompatActivity {
                         updateScore();
                     }
                 });
-        if (rewarded.onLoaded() && onRewarded) {
+        if (onRewarded && rewardedCustom.onLoaded()) {
             builder.setMessage(String.format("%s %d! %s %s", getResources().getString(R.string.score_text),
-                    scoreNow, getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
+                            scoreNow, getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
                     .setNeutralButton(getResources().getString(R.string.endGameRewardShow), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             YandexMetrica.reportEvent("Reward", "{\"GuessStar\":{\"Game over\":\"Игра окончена, реклама\"}}");
                             endGame = false;
-                            rewarded.show(GuessStar.this, new OnUserEarnedRewardListener() {
+                            rewardedCustom.show(GuessStar.this, new RewardedCustom.RewardedInterface() {
                                 @Override
-                                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                                public void onRewarded() {
                                     onRewarded = false;
                                     showReward = true;
-                                    YandexMetrica.reportEvent("Reward", "{\"GuessStar\":{\"Game over\":\"Реклама просмотрена\"}}");
                                 }
-                            }, new Rewarded.RewardDelay() {
+
                                 @Override
-                                public void onShowDismissed() {
+                                public void onDismissed() {
                                     if (showReward) {
                                         heathBarTest.restore();
                                         YandexMetrica.reportEvent("Reward", "{\"GuessStar\":{\"Game over\":\"Добавлено хп\"}}");
                                     } else {
                                         YandexMetrica.reportEvent("Reward", "{\"GuessStar\":{\"Game over\":\"Реклама не просмотрена\"}}");
                                         heathBarTest.setHp(3);
-                                        scoreGlobal += scoreNow;
                                         scoreNow = 0;
                                         count++;
                                         if (count >= artists.size() - 1) {
@@ -363,8 +357,6 @@ public class GuessStar extends AppCompatActivity {
     public void onBackPressed() {
         YandexMetrica.reportEvent("GuessStar", "{\"Back\":\"Выход без окончания игры\"}");
         YandexMetrica.reportEvent("GuessStar", "{\"Back\":\"Количество очков: " + scoreNow + "\"}");
-        scoreGlobal += scoreNow;
-        YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Score\":\"Количество очков за сессию: " + scoreGlobal + "\"}");
         super.onBackPressed();
     }
 }

@@ -4,7 +4,6 @@ package com.star.k_pop.StartApplication;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.widget.Toast;
 
 import com.star.k_pop.R;
 import com.star.k_pop.model.Artist;

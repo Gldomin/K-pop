@@ -5,8 +5,8 @@ android {
         applicationId "com.star.k_pop"
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 7
-        versionName "1.2"
+        versionCode 8
+        versionName "1.3"
 
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -38,7 +38,7 @@ dependencies {
 
     implementation 'com.android.support:multidex:1.0.3'
 
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
 
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
     implementation 'androidx.navigation:navigation-fragment:2.7.4'
@@ -48,7 +48,8 @@ dependencies {
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     testImplementation 'junit:junit:4.13.2'
 
-    implementation 'com.yandex.android:mobmetricalib:5.0.0'
+    implementation 'com.yandex.android:mobmetricalib:5.3.0'
+    implementation 'com.yandex.android:mobileads:6.1.0'
     implementation 'com.android.installreferrer:installreferrer:2.2'
 
     implementation 'androidx.appcompat:appcompat:1.7.0-alpha03'
