@@ -24,6 +24,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.ad.InterstitialCustom;
+import com.star.k_pop.ad.InterstitialCustomGoogle;
+import com.star.k_pop.ad.InterstitialCustomYandex;
 import com.star.k_pop.ad.RewardedCustom;
 import com.star.k_pop.ad.RewardedCustomGoogle;
 import com.star.k_pop.ad.RewardedCustomYandex;
@@ -93,6 +96,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private TextView scoreNowText; //текущий счет
     private TextView counterHint;
 
+    private InterstitialCustom mInterstitialAd;
+
+    private int countAd = 5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
@@ -107,8 +114,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
         if (Locale.getDefault().getLanguage().equals("ru")) {
             rewardedCustom = new RewardedCustomYandex(this);
+            mInterstitialAd = new InterstitialCustomYandex(this);
         } else {
-            rewardedCustom = new RewardedCustomGoogle(this, R.string.admob_id_reward_star);
+            rewardedCustom = new RewardedCustomGoogle(this, R.string.admob_id_reward_bands);
+            mInterstitialAd = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
         }
 
         groupPhoto = findViewById(R.id.groupPhoto);
@@ -528,8 +537,15 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                         scoreNow = -1;
                         hintCount = 4;
                         counterHint.setText(String.format("%d", hintCount));
+                        if (countAd<=0 && onRewarded){
+                            countAd = 5;
+                            mInterstitialAd.show();
+                        }else{
+                            countAd--;
+                        }
                         onRewarded = true;
                         onRewardedHint = true;
+
                         change();
                     }
                 });

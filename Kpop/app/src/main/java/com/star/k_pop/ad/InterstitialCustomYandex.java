@@ -14,14 +14,15 @@ import com.yandex.mobile.ads.interstitial.InterstitialAdEventListener;
 import com.yandex.mobile.ads.interstitial.InterstitialAdLoadListener;
 import com.yandex.mobile.ads.interstitial.InterstitialAdLoader;
 
-public class InterstitialCustomYandex {
+public class InterstitialCustomYandex extends InterstitialCustom {
     private static final String AdUnitId = "R-M-1594557-1";
     private InterstitialAd mInterstitialAd = null;
-    private InterstitialAdLoader mInterstitialAdLoader = null;
+    private final Activity context;
+    private final InterstitialAdLoader mInterstitialAdLoader;
 
     public InterstitialCustomYandex(Activity context) {
-
-        mInterstitialAdLoader = new InterstitialAdLoader(context);
+        this.context = context;
+        mInterstitialAdLoader = new InterstitialAdLoader(this.context);
         mInterstitialAdLoader.setAdLoadListener(new InterstitialAdLoadListener() {
             @Override
             public void onAdLoaded(@NonNull final InterstitialAd interstitialAd) {
@@ -46,7 +47,8 @@ public class InterstitialCustomYandex {
         }
     }
 
-    public void show(Activity context) {
+    @Override
+    public void show() {
         if (mInterstitialAd != null) {
             mInterstitialAd.setAdEventListener(new InterstitialAdEventListener() {
                 @Override

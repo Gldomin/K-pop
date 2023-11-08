@@ -26,6 +26,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.ad.InterstitialCustom;
+import com.star.k_pop.ad.InterstitialCustomGoogle;
+import com.star.k_pop.ad.InterstitialCustomYandex;
 import com.star.k_pop.ad.RewardedCustom;
 import com.star.k_pop.ad.RewardedCustomGoogle;
 import com.star.k_pop.ad.RewardedCustomYandex;
@@ -63,8 +66,12 @@ public class GuessStar extends AppCompatActivity {
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
     boolean endGame = false;
-    Theme theme; //переменная для считывания состояния свиича на darkMod
-    RewardedCustom rewardedCustom;          //Класс для работы с рекламой
+    private Theme theme; //переменная для считывания состояния свиича на darkMod
+    private RewardedCustom rewardedCustom;          //Класс для работы с рекламой
+    private InterstitialCustom mInterstitialAd;
+
+    private int countAd = 4;
+
     HeathBar heathBarTest;
 
     @SuppressLint("DefaultLocale")
@@ -75,8 +82,10 @@ public class GuessStar extends AppCompatActivity {
 
         if (Locale.getDefault().getLanguage().equals("ru")) {
             rewardedCustom = new RewardedCustomYandex(this);
+            mInterstitialAd = new InterstitialCustomYandex(this);
         } else {
             rewardedCustom = new RewardedCustomGoogle(this, R.string.admob_id_reward_star);
+            mInterstitialAd = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
@@ -304,6 +313,12 @@ public class GuessStar extends AppCompatActivity {
                         if (count >= artists.size() - 1) {
                             artists = Importer.getRandomArtists();
                             count = 0;
+                        }
+                        if (countAd<=0 && onRewarded){
+                            countAd = 4;
+                            mInterstitialAd.show();
+                        }else{
+                            countAd--;
                         }
                         onRewarded = true;
                         nextArtist();

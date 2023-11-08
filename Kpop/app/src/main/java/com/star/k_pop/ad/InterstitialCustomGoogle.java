@@ -13,7 +13,7 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
-public class InterstitialCustomGoogle {
+public class InterstitialCustomGoogle extends InterstitialCustom{
 
     private InterstitialAd mInterstitialAd;
     private final Activity context;
@@ -82,6 +82,7 @@ public class InterstitialCustomGoogle {
                 });
     }
 
+    @Override
     public void show(){
         if (mInterstitialAd != null) {
             mInterstitialAd.show(context);

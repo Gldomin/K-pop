@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
+import com.star.k_pop.ad.InterstitialCustom;
 import com.star.k_pop.ad.InterstitialCustomGoogle;
 import com.star.k_pop.ad.InterstitialCustomYandex;
 import com.star.k_pop.ad.RewardedCustomGoogle;
@@ -29,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     Theme theme;//переменная для считывания состояния свиича на darkMod
     SharedPreferences sp;
-    private InterstitialCustomGoogle mInterstitialAdGoogle;
-    private InterstitialCustomYandex mInterstitialAdYandex;
+
+    private InterstitialCustom mInterstitialAd;
 
     private int countAd = 1;
 
@@ -47,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (Locale.getDefault().getLanguage().equals("ru")) {
-            mInterstitialAdYandex = new InterstitialCustomYandex(this);
+            mInterstitialAd = new InterstitialCustomYandex(this);
         } else {
-            mInterstitialAdGoogle = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
+            mInterstitialAd = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
         }
 
 
@@ -173,12 +174,7 @@ public class MainActivity extends AppCompatActivity {
     private void interstitialShow() {
         if (countAd <= 0) {
             countAd = 4;
-            if (Locale.getDefault().getLanguage().equals("ru")) {
-                mInterstitialAdYandex.show(this);
-            }else{
-                mInterstitialAdGoogle.show();
-            }
-
+            mInterstitialAd.show();
         }
         countAd--;
     }
