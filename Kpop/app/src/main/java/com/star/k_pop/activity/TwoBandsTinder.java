@@ -4,8 +4,10 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
@@ -14,6 +16,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -30,12 +35,14 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.helper.Theme;
+import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
@@ -99,9 +106,16 @@ public class TwoBandsTinder extends AppCompatActivity {
     private LinearLayout allActGuessSolvedLeftLay;
     private LinearLayout allActGuessSolvedRightLay;
 
+    private HeathBar heathBarTest;
+
+    private int score = 0;
+    private int scoreRecord = 0;
     //----------------------------------------------------------------------------------------------
 
     private static final String IMAGEVIEW_TAG = "icon bitmap";
+    private TextView scoreText;
+    private TextView scoreRecordText;
+    AlertDialog.Builder alertbuild;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -119,17 +133,15 @@ public class TwoBandsTinder extends AppCompatActivity {
         Button confirmButton = findViewById(R.id.ttConfirmButton);
         Button endButton = findViewById(R.id.allAct_Accept);
         ImageButton helpButton = findViewById(R.id.helpTindButton);
-        ImageButton hintButton = findViewById(R.id.podsk);
 
         confirmButton.setBackgroundResource(theme.getBackgroundButton());
         endButton.setBackgroundResource(theme.getBackgroundButton());
         helpButton.setBackgroundResource(theme.getBackgroundButton());
-        hintButton.setBackgroundResource(theme.getBackgroundButton());
 
         imageBand = findViewById(R.id.imageBand);
         imBTmp = findViewById(R.id.imgBTmp);
-        TextView scoreText = findViewById(R.id.scoreBands);
-        TextView recordText = findViewById(R.id.RecordScore);
+        scoreText = findViewById(R.id.Score);
+        scoreRecordText = findViewById(R.id.scoreRecord);
         twoBandFlip = findViewById(R.id.twoBandFlipper);
 
         groupNameFirstOne = findViewById(R.id.textView12);
@@ -153,7 +165,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         layout3.setBackgroundColor(theme.getColorLighter());
 
         scoreText.setTextColor(theme.getTextColor());
-        recordText.setTextColor(theme.getTextColor());
+        scoreRecordText.setTextColor(theme.getTextColor());
 
         //--------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
@@ -173,7 +185,20 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         allActCardView = findViewById(R.id.allAct_Card);
 
+        SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
+        if (sp.contains("userScoreTinder")) {
+            scoreRecord = sp.getInt("userScoreTinder", 0);
+            scoreRecordText.setText(String.format(Locale.getDefault(), "%s %d",
+                    getResources().getString(R.string.record_text), scoreRecord));
+        } else {
+            scoreRecordText.setText(String.format(Locale.getDefault(), "%s %d",
+                    getResources().getString(R.string.record_text), 0));
+        }
 
+        if (savedInstanceState != null) {
+            score = savedInstanceState.getInt("scoreTinder");
+            scoreRecord = savedInstanceState.getInt("scoreRecordTinder");
+        }
         //----------------------not changed
         //нажатие на кнопку меняет окно на другое
         confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -273,7 +298,44 @@ public class TwoBandsTinder extends AppCompatActivity {
                 }
             }
         });
+        createHeathBar();
         guessTwoBands();
+    }
+
+
+    private void createHeathBar() {
+        ImageView imageView1 = findViewById(R.id.guessBandHeart1);
+        ImageView imageView2 = findViewById(R.id.guessBandHeart2);
+        ImageView imageView3 = findViewById(R.id.guessBandHeart3);
+        ImageView imageView4 = findViewById(R.id.guessBandHeart4);
+        ImageView imageView5 = findViewById(R.id.guessBandHeart5);
+        ArrayList<ImageView> imageViewList = new ArrayList<>();
+        imageViewList.add(imageView1);
+        imageViewList.add(imageView2);
+        imageViewList.add(imageView3);
+        imageViewList.add(imageView4);
+        imageViewList.add(imageView5);
+
+        Animation lifeBrokeAnimation = AnimationUtils.loadAnimation(this, R.anim.heart_broke_animation);
+        heathBarTest = new HeathBar(imageViewList, 5, lifeBrokeAnimation);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putInt("scoreTinder", score);
+        outState.putInt("scoreRecordTinder", scoreRecord);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onPause() {
+        SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE); //сохранение Счета
+        if (sp.getInt("userScoreTinder", -1) < scoreRecord) {
+            SharedPreferences.Editor e = sp.edit();
+            e.putInt("userScoreTinder", scoreRecord);
+            e.apply();
+        }
+        super.onPause();
     }
 
     //--------------------------------------------------------------------------------------------------
@@ -316,8 +378,8 @@ public class TwoBandsTinder extends AppCompatActivity {
         //
         pictnumb = 0;
         pictNumbCurrent = 0;
-        if (artists_turn != null){
-            for (Artist artist: artists_turn) {
+        if (artists_turn != null) {
+            for (Artist artist : artists_turn) {
                 artist.removeRandomCount();
             }
         }
@@ -398,25 +460,11 @@ public class TwoBandsTinder extends AppCompatActivity {
         imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
     }
 
-    public boolean checkresult() {
-        //метод проверки результатов, если количество правильных ответов совпадает возвращает правду
-        int rightAnsvers = 0;
-        if (!ansverMap.containsValue("null")) {
-            for (Map.Entry<Artist, String> art : ansverMap.entrySet()) {
-                if (art.getKey().checkGroup(art.getValue())) {
-                    rightAnsvers++;
-                }
-            }
-        }
-        Log.e("OnClickList","" + rightAnsvers);
-        return rightAnsvers == ansverMap.size();
-    }
-
     public void ttClickCheck(View view) {
         //не доделан кнопка финальная, на втором экране
-        if (countGroupOne == countGroupMaxOne && countGroupTwo == countGroupMaxTwo){
+        if (countGroupOne == countGroupMaxOne && countGroupTwo == countGroupMaxTwo) {
             losescreen();
-        }else{
+        } else {
             errorScreen();
         }
 
@@ -440,7 +488,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         return mistakes;
     }
 
-    public void errorScreen(){
+    public void errorScreen() {
         AlertDialog.Builder alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
         alertbuild.setTitle(" Ошибка ");
         alertbuild.setMessage("Количество артистов в группах не совпадает");
@@ -456,26 +504,55 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     public void losescreen() {
         //финал пройгрыша
-        AlertDialog.Builder alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+        alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
         alertbuild.setTitle(" Готово ");
         int misstake = mistakescount();
-        if (misstake == 0){
-            alertbuild.setMessage("Все распределены правильно");
-        }else {
-            alertbuild.setMessage("Количество ошибок: " + misstake);
+        int countCorrect = ansverMap.size() - misstake;
+        countCorrect /= 2;
+        score += countCorrect;
+        if (scoreRecord < score) {
+            scoreRecord = score;
         }
-        alertbuild.setPositiveButton("Продолжить", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                twoBandFlip.showNext();
-                if (bandsCount + 2 < bands.size()) {
-                    bandsCount = bandsCount + 2;
-                    mainProcedure();
-                } else resultsSequence();
-            }
-        });
+        if (misstake == 0) {
+            alertbuild.setMessage("Вы идеально знаете обе группы! Поздравляем! Количество полученных очков: " + countCorrect + "!");
+        } else {
+            alertbuild.setMessage("Неплохо! Вы набрали " + countCorrect + " из " + ansverMap.size() / 2 + " очков! К сожалению, вы ошибочно определили некоторых участников");
+        }
+        if (misstake > 0) {
+            heathBarTest.blow();
+        }
+        alertbuild.setPositiveButton("Продолжить", (dialogInterface, i) -> nextArtist());
+        alertbuild.setOnCancelListener(dialog -> nextArtist());
         AlertDialog alert = alertbuild.create();
         alert.show();
+    }
+
+    private void nextArtist() {
+        if (heathBarTest.getHp() < 1) {
+            alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+            alertbuild.setTitle(" Конец игры ");
+            alertbuild.setMessage("Ваш счет: " + score + "\nРекорд: " + scoreRecord);
+            alertbuild.setPositiveButton("Начать заного", (dialogInterface, i) -> {
+                score = 0;
+                heathBarTest.restartHp();
+                nextArtist();
+            });
+            alertbuild.setNegativeButton("Выход", (dialog, which) -> finish());
+            alertbuild.setOnCancelListener(dialog -> finish());
+            AlertDialog alert = alertbuild.create();
+            alert.show();
+        } else {
+            twoBandFlip.showNext();
+            scoreText.setText("Ваш счет: " + score);
+            scoreRecordText.setText("Ваш рекорд: " + scoreRecord);
+            if (bandsCount + 2 < bands.size()) {
+                bandsCount = bandsCount + 2;
+                mainProcedure();
+            } else {
+                resultsSequence();
+            }
+        }
+
     }
 
     @Override
@@ -508,9 +585,9 @@ public class TwoBandsTinder extends AppCompatActivity {
         // Отображение всех отгаданых типов
         for (Map.Entry<Artist, String> ansver : ansverMap.entrySet()) {
             ImageView leftPict = new ImageView(this);
-            leftPict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()),true, leftPict));
+            leftPict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()), true, leftPict));
             ImageView rightPict = new ImageView(this);
-            rightPict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()),false, rightPict));
+            rightPict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()), false, rightPict));
             //Параметры отображения этих типов, задаются в шаблонах Set устанавливает их
             leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
             rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
@@ -571,8 +648,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                 maincard.setBackgroundResource(theme.getBackgroundCart());
                 leftButton.setBackgroundResource(theme.getBackgroundButton());
                 rightButton.setBackgroundResource(theme.getBackgroundButton());
-                leftButton.setTextColor(theme.getTextColor());
-                rightButton.setTextColor(theme.getTextColor());
+                leftButton.setTextColor(theme.getButtonTextColor());
+                rightButton.setTextColor(theme.getButtonTextColor());
 
                 //Задача переменных Картинку и путь до папки отправляем в метод он указывает глайду
                 leftButton.setText(first_band.getName());
@@ -615,7 +692,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                             ImageView pict = new ImageView(TwoBandsTinder.this);
                             pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
                             pict.setScaleType(ImageView.ScaleType.MATRIX);
-                            pict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others),true, pict));
+                            pict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others), true, pict));
                             setupImage(others.getFolderNotRandom(), pict);
                             allActGuessSolvedLeftLay.addView(pict);
                         }
@@ -637,7 +714,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                             ImageView pict = new ImageView(TwoBandsTinder.this);
                             pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
                             pict.setScaleType(ImageView.ScaleType.MATRIX);
-                            pict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others),false, pict));
+                            pict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others), false, pict));
                             setupImage(others.getFolderNotRandom(), pict);
                             allActGuessSolvedRightLay.addView(pict);
                         }
@@ -666,7 +743,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 ImageView pict = new ImageView(TwoBandsTinder.this);
                 pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
                 pict.setScaleType(ImageView.ScaleType.MATRIX);
-                pict.setOnClickListener(new TouchSwitchImage(count,false, pict));
+                pict.setOnClickListener(new TouchSwitchImage(count, false, pict));
                 setupImage(artists_turn.get(count).getFolderNotRandom(), pict);
                 allActGuessSolvedLeftLay.removeView(imageView);
                 imageView = null;
@@ -680,7 +757,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 ImageView pict = new ImageView(TwoBandsTinder.this);
                 pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
                 pict.setScaleType(ImageView.ScaleType.MATRIX);
-                pict.setOnClickListener(new TouchSwitchImage(count,true, pict));
+                pict.setOnClickListener(new TouchSwitchImage(count, true, pict));
                 setupImage(artists_turn.get(count).getFolderNotRandom(), pict);
                 allActGuessSolvedRightLay.removeView(imageView);
                 ansverMap.put(artists_turn.get(count), first_band.getName());

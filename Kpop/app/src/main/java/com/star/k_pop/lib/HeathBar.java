@@ -24,7 +24,11 @@ public class HeathBar {
     public void setHp(int hpNow) {
         hp = hpNow;
         refresh();
+    }
 
+    public void restartHp(){
+        hp = maxHp;
+        refresh();
     }
 
     public int getHp() {
@@ -50,7 +54,6 @@ public class HeathBar {
                 heathBarImageViews.get(i).setImageResource(R.drawable.heart_colorless);
             } else {
                 heathBarImageViews.get(i).setImageResource(R.drawable.heart_color);
-
                 heathBarImageViews.get(i).startAnimation(animation);
             }
 

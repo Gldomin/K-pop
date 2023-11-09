@@ -50,12 +50,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
     private Theme theme;
     private HeathBar heathBarTest;
-
     private final SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
     private boolean sound = false; //включен ли звук
     private int pingClickID;
     private int longSwitchID;
-
     private int record;
     private int scoreNow = -1;
     private int scoreGlobal = 0;
@@ -63,14 +61,11 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private int countLetter;
     private String nameGroup;
     private boolean countClick = false;
-
     private boolean onRewarded = true;
     private boolean showReward = false;
-
     private boolean onRewardedHint = true;
     private boolean hintUsed = false;
     private int hintCount = 4;
-
     private int[] ref;
     private List<Button> buttons;
     private List<Button> buttonsEnd;

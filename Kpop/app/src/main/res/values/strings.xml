@@ -124,7 +124,7 @@ Distribute them all! ツ
     <string name="endHintYes">Yes</string>
     <string name="endHintNo">No</string>
 
-    <string name="endGameCongratulate">Congratulations!</string>
+    <string name="endGameCongratulate">Game over!</string>
     <string name="endGameNewGame">Start new game?</string>
     <string name="endGameReward">Or view ad for 1 extra life?</string>
     <string name="endGameYes">Yes</string>

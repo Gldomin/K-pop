@@ -72,17 +72,18 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="2dp"
-                android:layout_toStartOf="@+id/podsk"
+                android:layout_marginEnd="10dp"
                 app:srcCompat="@android:drawable/ic_menu_help" />
 
             <RelativeLayout
                 android:id="@+id/guessBandHealthLR"
-                android:layout_width="137dp"
+                android:layout_width="250dp"
                 android:layout_height="60dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="0dp"
+                android:layout_toStartOf="@+id/helpTindButton"
                 android:gravity="center">
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -98,6 +99,8 @@
                     android:id="@+id/guessBandHeart2"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_toStartOf="@+id/guessBandHeart3"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/heart_color" />
 
@@ -106,58 +109,64 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="1dp"
-                    android:layout_toEndOf="@+id/guessBandHeart2"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart_color" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/guessBandHeart4"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_toEndOf="@+id/guessBandHeart3"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/heart_color" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/guessBandHeart5"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_toEndOf="@+id/guessBandHeart4"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/heart_color" />
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/RecordScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/scoreBands"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="1dp"
-                android:layout_toStartOf="@+id/guessBandHealthLR"
-                android:text="Ваш счет: 0" />
-
-            <TextView
-                android:id="@+id/scoreBands"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="false"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="1dp"
-                android:layout_toStartOf="@+id/guessBandHealthLR"
-                android:text="Ваш рекорд: 0" />
-
-            <ImageButton
-                android:id="@+id/podsk"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="1dp"
-                android:background="@android:drawable/menuitem_background"
-                android:contentDescription="TODO"
-                android:minWidth="10dp"
-                android:minHeight="10dp"
-                android:padding="4dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/hint" />
-
-            <TextView
-                android:id="@+id/counter_Hints"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/podsk"
-                android:layout_alignEnd="@+id/podsk"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:text="3" />
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:id="@+id/scoreLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@+id/scorebar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="Ваш счет: 0" />
+
+            <TextView
+                android:id="@+id/scoreRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="Ваш рекорд: 0" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/titleTinderGroup"
@@ -168,7 +177,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scorebar">
+            app:layout_constraintTop_toBottomOf="@+id/scoreLayout">
 
             <TextView
                 android:id="@+id/textView21"

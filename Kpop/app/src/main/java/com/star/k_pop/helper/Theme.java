@@ -91,7 +91,7 @@ public class Theme {
         if (darkMode) {
             return R.drawable.gradient_background;
         } else {
-            return R.drawable.light_background;
+            return R.drawable.gradient_background_light;
         }
     }
 
