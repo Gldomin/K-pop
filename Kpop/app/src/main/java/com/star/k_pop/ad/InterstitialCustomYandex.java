@@ -15,13 +15,14 @@ import com.yandex.mobile.ads.interstitial.InterstitialAdLoadListener;
 import com.yandex.mobile.ads.interstitial.InterstitialAdLoader;
 
 public class InterstitialCustomYandex extends InterstitialCustom {
-    private static final String AdUnitId = "R-M-1594557-1";
+    private static String AdUnitId;
     private InterstitialAd mInterstitialAd = null;
     private final Activity context;
     private final InterstitialAdLoader mInterstitialAdLoader;
 
-    public InterstitialCustomYandex(Activity context) {
+    public InterstitialCustomYandex(Activity context, String adUnitAd) {
         this.context = context;
+        AdUnitId = adUnitAd;
         mInterstitialAdLoader = new InterstitialAdLoader(this.context);
         mInterstitialAdLoader.setAdLoadListener(new InterstitialAdLoadListener() {
             @Override

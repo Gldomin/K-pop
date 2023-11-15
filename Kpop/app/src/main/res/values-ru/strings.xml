@@ -124,6 +124,14 @@
     <string name="settingHamster">Хомячок</string>
     <string name="settingCat">Котик</string>
 
+    <string name="tinderCountGroupError">Количество артистов в группах не совпадает!</string>
+    <string name="tinderContinue">Продолжить</string>
+    <string name="tinderLoseScreenTitle">Готово!</string>
+    <string name="tinderLoseScreenWinMessage">Вы идеально знаете обе группы! Поздравляем! Количество полученных очков: </string>
+    <string name="tinderLoseScreenLoseMessage1">Неплохо! Вы набрали </string>
+    <string name="tinderLoseScreenLoseMessage2"> из </string>
+    <string name="tinderLoseScreenLoseMessage3">" очков! К сожалению, вы ошибочно определили некоторых участников!"</string>
+    <string name="tinderLoseScreenExit">Выход</string>
 
     <string name="ttWrongAnswer">No</string>
 

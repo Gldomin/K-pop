@@ -126,7 +126,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        bands = Importer.getRandomBands();
+        bands = Importer.getRandomBandsSex();
         Log.i(TAG + "Wrong", "We are here now");
         setContentView(R.layout.activity_two_bands_temp);
 
@@ -473,7 +473,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     public void resultsSequence() {
         //финальная последовательность, запускается после нее основная
         bandsCount = 0;
-        Collections.shuffle(bands);
+        bands = Importer.getRandomBandsSex();
         mainProcedure();
     }
 
@@ -490,9 +490,9 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     public void errorScreen() {
         AlertDialog.Builder alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
-        alertbuild.setTitle(" Ошибка ");
-        alertbuild.setMessage("Количество артистов в группах не совпадает");
-        alertbuild.setPositiveButton("Продолжить", new DialogInterface.OnClickListener() {
+        alertbuild.setTitle(getResources().getString(R.string.endHintCongratulate));
+        alertbuild.setMessage(getResources().getString(R.string.tinderCountGroupError));
+        alertbuild.setPositiveButton(getResources().getString(R.string.tinderContinue), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.cancel();
@@ -505,7 +505,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     public void losescreen() {
         //финал пройгрыша
         alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
-        alertbuild.setTitle(" Готово ");
+        alertbuild.setTitle(getResources().getString(R.string.tinderLoseScreenTitle));
         int misstake = mistakescount();
         int countCorrect = ansverMap.size() - misstake;
         countCorrect /= 2;
@@ -514,14 +514,16 @@ public class TwoBandsTinder extends AppCompatActivity {
             scoreRecord = score;
         }
         if (misstake == 0) {
-            alertbuild.setMessage("Вы идеально знаете обе группы! Поздравляем! Количество полученных очков: " + countCorrect + "!");
+            alertbuild.setMessage(getResources().getString(R.string.tinderLoseScreenWinMessage) +" "+ countCorrect + "!");
         } else {
-            alertbuild.setMessage("Неплохо! Вы набрали " + countCorrect + " из " + ansverMap.size() / 2 + " очков! К сожалению, вы ошибочно определили некоторых участников");
+            alertbuild.setMessage(getResources().getString(R.string.tinderLoseScreenLoseMessage1) +" "+ countCorrect
+                    +" "+ getResources().getString(R.string.tinderLoseScreenLoseMessage2) +" "+ ansverMap.size() / 2
+                    +" "+ getResources().getString(R.string.tinderLoseScreenLoseMessage3));
         }
         if (misstake > 0) {
             heathBarTest.blow();
         }
-        alertbuild.setPositiveButton("Продолжить", (dialogInterface, i) -> nextArtist());
+        alertbuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> nextArtist());
         alertbuild.setOnCancelListener(dialog -> nextArtist());
         AlertDialog alert = alertbuild.create();
         alert.show();
@@ -530,21 +532,21 @@ public class TwoBandsTinder extends AppCompatActivity {
     private void nextArtist() {
         if (heathBarTest.getHp() < 1) {
             alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
-            alertbuild.setTitle(" Конец игры ");
-            alertbuild.setMessage("Ваш счет: " + score + "\nРекорд: " + scoreRecord);
-            alertbuild.setPositiveButton("Начать заного", (dialogInterface, i) -> {
+            alertbuild.setTitle(getResources().getString(R.string.endGameTitle));
+            alertbuild.setMessage(getResources().getString(R.string.endGameTextScoreNow) + " " + score + "\n"+ getResources().getString(R.string.endGameTextRecordNow) +" " + scoreRecord);
+            alertbuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> {
                 score = 0;
                 heathBarTest.restartHp();
                 nextArtist();
             });
-            alertbuild.setNegativeButton("Выход", (dialog, which) -> finish());
+            alertbuild.setNegativeButton(getResources().getString(R.string.tinderLoseScreenExit), (dialog, which) -> finish());
             alertbuild.setOnCancelListener(dialog -> finish());
             AlertDialog alert = alertbuild.create();
             alert.show();
         } else {
             twoBandFlip.showNext();
-            scoreText.setText("Ваш счет: " + score);
-            scoreRecordText.setText("Ваш рекорд: " + scoreRecord);
+            scoreText.setText(getResources().getString(R.string.endGameTextScoreNow) + " " + score);
+            scoreRecordText.setText(getResources().getString(R.string.endGameTextRecordNow) +" " + scoreRecord);
             if (bandsCount + 2 < bands.size()) {
                 bandsCount = bandsCount + 2;
                 mainProcedure();

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (Locale.getDefault().getLanguage().equals("ru")) {
-            mInterstitialAd = new InterstitialCustomYandex(this);
+            mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_menu));
         } else {
             mInterstitialAd = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
         }

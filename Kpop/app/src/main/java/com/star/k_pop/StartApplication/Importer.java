@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 /*
@@ -166,6 +167,34 @@ public class Importer {
         ArrayList<Bands> bands = getBands();
         Collections.shuffle(bands);
         return bands;
+    }
+
+    public static ArrayList<Bands> getRandomBandsSex(){
+        ArrayList<Bands> bands = getBands();
+        Collections.shuffle(bands);
+        ArrayList<Bands> bandsFemale = new ArrayList<>();
+        ArrayList<Bands> bandsMale = new ArrayList<>();
+        ArrayList<Bands> bandsMix = new ArrayList<>();
+        for (Bands b: bands) {
+            if (b.getSex() == 1){
+                bandsMale.add(b);
+            }else if (b.getSex() == 2){
+                bandsFemale.add(b);
+            }else{
+                bandsMix.add(b);
+            }
+        }
+        ArrayList<Bands> bandsReturn = new ArrayList<>();
+        if (new Random().nextBoolean()){
+            bandsReturn.addAll(bandsFemale);
+            bandsReturn.addAll(bandsMix);
+            bandsReturn.addAll(bandsMale);
+        }else{
+            bandsReturn.addAll(bandsMale);
+            bandsReturn.addAll(bandsMix);
+            bandsReturn.addAll(bandsFemale);
+        }
+        return bandsReturn;
     }
 
     private static void UpdateBandsActive(){

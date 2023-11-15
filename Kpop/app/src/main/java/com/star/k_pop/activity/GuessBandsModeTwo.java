@@ -109,7 +109,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
         if (Locale.getDefault().getLanguage().equals("ru")) {
             rewardedCustom = new RewardedCustomYandex(this);
-            mInterstitialAd = new InterstitialCustomYandex(this);
+            mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
         } else {
             rewardedCustom = new RewardedCustomGoogle(this, R.string.admob_id_reward_bands);
             mInterstitialAd = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
