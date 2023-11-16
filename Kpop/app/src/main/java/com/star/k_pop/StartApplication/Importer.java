@@ -219,7 +219,9 @@ public class Importer {
             Set<String> names = sp.getStringSet("nameBandsActiveSave", new HashSet<>());
             String[] name = new String[names.size()];
             name = names.toArray(name);
-            Collections.addAll(bandsActive, name);
+            if (name.length <= bands.size()-7){
+                Collections.addAll(bandsActive, name);
+            }
         }
         UpdateBandsActive();
     }
