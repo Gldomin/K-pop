@@ -138,6 +138,10 @@ public class Importer {
         return new ArrayList<>(artistsNotAll);
     }
 
+    public static ArrayList<Artist> getArtistsAll() {
+        return new ArrayList<>(artists);
+    }
+
     /**
      * Получение списка артистов
      *

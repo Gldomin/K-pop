@@ -65,7 +65,7 @@ public class Gallery extends AppCompatActivity {
     }
 
     private void createArray() {
-        ArrayList<Artist> artists = Importer.getArtists();
+        ArrayList<Artist> artists = Importer.getArtistsAll();
         for (Artist a : artists) {
             imageGalleries.add(new ImageGallery(a.getName(), a.getGroup(), a.getFolder()));
         }
