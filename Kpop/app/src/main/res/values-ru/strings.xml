@@ -66,7 +66,6 @@
          </string>
 
     //Для счета
-    <string name="Score">Ваш Счет</string>
     <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
 
     <string name="achievementUnlocked">Достижение открыто!!</string>
@@ -74,27 +73,27 @@
     <string name="newRecordTitle">Новый рекорд!</string>
     <string name="newRecordText">Поздравляем! Вы достигли нового рекорда:</string>
     <string name="endGameTitle">Конец игры</string>
-    <string name="endGameTextScoreNow">Ваш счет:</string>
-    <string name="endGameTextRecordNow">Ваш рекорд:</string>
-    <string name="gameModeAbaut">Описание режима</string>
-    <string name="guessStarGameModeAbaut">
+    <string name="endGameTextScoreNow">Ваш счет: %d</string>
+    <string name="endGameTextRecordNow">Ваш рекорд: %d</string>
+    <string name="gameModeAbout">Описание режима</string>
+    <string name="guessStarGameModeAbout">
         Игровой режим "Угадай Звезду" позволяет проверить свои познания в звездах K-pop`а."\n"
         Отгадывай имена К-pop артистов по фотографиям. Тебе не важно знать в какой группе состоит звезда на экране, но важно знать его или её имя. У тебя есть 3 жизни. Правильный ответ будет увеличивать твой счет, а неправильные - забирать жизни.  Кроме того, за каждые 50 очков, тебе будут добавлять 1 жизнь. Но думаю ты разберешься."\n"
         Удачи :)
     </string>
-    <string name="guessBandGameModeAbaut">
+    <string name="guessBandGameModeAbout">
         Игровой режим "Угадай Группу" позволяет проверить свои познания самых знаменитых k-pop групп в истории!
         Отгадывай группу в которой состоит артист на экране. Каждый верный ответ увеличесвает твой счет! А неверный, уменьшает жизни. Понятное дело, что при окончании жизней, игра будет окончена."\n"
         Кроме того, у тебя есть 3 подсказки на игру, которые подскажут тебе буквы из которых состоит название k-pop группы. Каждая 10-ая отгаданная группа, будет восстанавливать тебе одну жизнь. А каждая 15-ая будет добавлять подсказки. Но думаю ты разберешься."\n"
         Удачи ;)
     </string>
-    <string name="guessBandGameModeTwoAbaut">
+    <string name="guessBandGameModeTwoAbout">
         Игровой режим "Угадай Группу" позволяет проверить свои познания самых знаменитых k-pop групп в истории!
         Отгадывай группу в которой состоит артист на экране. Каждый верный ответ увеличесвает твой счет! А неверный, уменьшает жизни. Понятное дело, что при окончании жизней, игра будет окончена."\n"
         Кроме того, у тебя есть 3 подсказки на игру, которые подскажут тебе буквы из которых состоит название k-pop группы. Каждая 10-ая отгаданная группа, будет восстанавливать тебе одну жизнь. А каждая 15-ая будет добавлять подсказки. Но думаю ты разберешься."\n"
         Удачи ;)
     </string>
-    <string name="twoBandsTinderGameModeAbaut">
+    <string name="twoBandsTinderGameModeAbout">
         Игровой режим "Распредели по Группам" позволяет проверить свои познания в k-pop группах"\n"
         Тебе в распоряжение дается набор из различных звезд K-pop`a, а тебе нужно распределить их на 2 группы. Что бы распределить карточки артистов, их нужно свайпнуть в соответсвующую K-pop-группе стороны экрана. "\n"
         В любой момент ты можешь просмотреть все карточки артистов и перераспределить их. После того, как ты подтвердишь свое распределение, тебе покажут правильно ли все распределено, после чего, ты перейдешь к следующей паре групп. Каждый раз, когда ты ошибаешься больше чем на одного артиста, одна из твоих жизней сгорает. Как только кончатся все - настанет конец игры. Кроме того, чем меньше ты будешь делать ошибок, тем больше будет счет. "\n"
@@ -102,8 +101,8 @@
         Распредели их всех ツ
     </string>
 
-    <string name="score_text">Ваш счет:</string>
-    <string name="record_text">Ваш рекорд:</string>
+    <string name="score_text">Ваш счет: %d</string>
+    <string name="record_text">Ваш рекорд: %d</string>
 
     <string name="endGameCongratulate">Поздравляем!</string>
     <string name="endGameNewGame">Начинаем новую игру?</string>
@@ -127,10 +126,8 @@
     <string name="tinderCountGroupError">Количество артистов в группах не совпадает!</string>
     <string name="tinderContinue">Продолжить</string>
     <string name="tinderLoseScreenTitle">Готово!</string>
-    <string name="tinderLoseScreenWinMessage">Вы идеально знаете обе группы! Поздравляем! Количество полученных очков: </string>
-    <string name="tinderLoseScreenLoseMessage1">Неплохо! Вы набрали </string>
-    <string name="tinderLoseScreenLoseMessage2"> из </string>
-    <string name="tinderLoseScreenLoseMessage3">" очков! К сожалению, вы ошибочно определили некоторых участников!"</string>
+    <string name="tinderLoseScreenWinMessage">Вы идеально знаете обе группы! Поздравляем! Количество полученных очков: %d!</string>
+    <string name="tinderLoseScreenLoseMessage">Неплохо! Вы набрали %d из %d очков! К сожалению, вы ошибочно определили некоторых участников!</string>
     <string name="tinderLoseScreenExit">Выход</string>
 
     <string name="ttWrongAnswer">No</string>

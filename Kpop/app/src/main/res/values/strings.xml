@@ -82,36 +82,32 @@
          Good luck! :)
     </string>
 
-    //scorestuff
-    <string name="Score">Your score</string>
-
     <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
-
 
     <string name="achievementUnlocked">Achievement unlocked!</string>
 
     <string name="newRecordTitle">New record!</string>
     <string name="newRecordText">Congratulations! You have reached new record:</string>
     <string name="endGameTitle">Game over</string>
-    <string name="endGameTextScoreNow">Your score:</string>
-    <string name="endGameTextRecordNow">Your record</string>
-    <string name="gameModeAbaut">About game mode</string>
-    <string name="guessStarGameModeAbaut">
+    <string name="endGameTextScoreNow">Your score: %d</string>
+    <string name="endGameTextRecordNow">Your record: %d</string>
+    <string name="gameModeAbout">About game mode</string>
+    <string name="guessStarGameModeAbout">
 GuessStar game mode lets you test your knowledge of K-pop stars. "\n"
 Guess the names of K-pop artists from photos. It is not important for you to know which group a star is on screen, but it is important to know his or her name. You have 3 lives. Each artist you guess will increase your score! A wrong guess, accordingly, reduces your lives. If you lose all lives, game will be ended. But I think you can figure it out. "\n"
 Good luck! :)
     </string>
-    <string name="guessBandGameModeAbaut">
+    <string name="guessBandGameModeAbout">
 GuessBand game mode lets you test your knowledge of the most famous K-pop groups in the history! "\n"
 Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. Off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. Every tenth band will restore 1 life, and every fifteenth band give extra hint. But I think you can figure it out. "\n"
 Good luck! ;)
     </string>
-    <string name="guessBandGameModeTwoAbaut">
+    <string name="guessBandGameModeTwoAbout">
 GuessBand game mode lets you test your knowledge of the most famous K-pop groups in the history! "\n"
 Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. Off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. Every tenth band will restore 1 life, and every fifteenth band give extra hint. But I think you can figure it out. "\n"
 Good luck! ;)
     </string>
-    <string name="twoBandsTinderGameModeAbaut">
+    <string name="twoBandsTinderGameModeAbout">
 The game mode "Divide to bands" allows you to test your knowledge of K-pop groups "\n"
 You are given a set of different K-pop stars, and you need to divide them into 2 groups. To distribute the artist cards, you need to swipe them to the corresponding K-pop group on the side of the screen. "\n"
 At any time, you can view all artist cards and redistribute them. If you distribute the cards incorrectly, you will also be asked to correct the result. But with each new attempt, the potential score will get smaller. "\n"
@@ -119,9 +115,8 @@ But I think you can figure it out. "\n"
 Distribute them all! ツ
     </string>
 
-    <string name="score_text">Score:</string>
-    <string name="record_text">Record:</string>
-
+    <string name="score_text">Score: %d</string>
+    <string name="record_text">Record: %d</string>
 
     <string name="endHintCongratulate">Attention!</string>
     <string name="endHintReward">View ad for hint?</string>
@@ -146,10 +141,8 @@ Distribute them all! ツ
     <string name="ttWrongAnswer">Finish! You made</string>
     <string name="tinderCountGroupError">The number of artists in the groups is not the same!</string>
     <string name="tinderLoseScreenTitle">Done!</string>
-    <string name="tinderLoseScreenWinMessage">"You know both bands perfectly! Congratulations! The number of points received: "</string>
-    <string name="tinderLoseScreenLoseMessage1">"Not bad! You scored "</string>
-    <string name="tinderLoseScreenLoseMessage2">" out of "</string>
-    <string name="tinderLoseScreenLoseMessage3">" points! Unfortunately, you misidentified some of the contestants!"</string>
+    <string name="tinderLoseScreenWinMessage">"You know both bands perfectly! Congratulations! The number of points received: %d!"</string>
+    <string name="tinderLoseScreenLoseMessage">"Not bad! You scored %d out of %d points! Unfortunately, you misidentified some of the contestants!"</string>
     <string name="tinderContinue">Continue</string>
     <string name="tinderLoseScreenExit">Exit</string>
 
