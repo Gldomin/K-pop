@@ -1,24 +1,14 @@
 package com.star.k_pop.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.star.k_pop.R;
-import com.star.k_pop.helper.OptionsSet;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.SomeMethods;
@@ -58,64 +48,44 @@ public class Settings extends AppCompatActivity {
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
         settingsConfirmButton.setBackgroundResource(theme.getBackgroundButton());
 
-        settingsConfirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("name", 1);
-                setResult(RESULT_OK, intent);
-                saveSettings();
-                finish();
-            }
+        settingsConfirmButton.setOnClickListener(view -> {
+            Intent intent = new Intent();
+            intent.putExtra("name", 1);
+            setResult(RESULT_OK, intent);
+            saveSettings();
+            finish();
         });
 
         Button creepyGuy = findViewById(R.id.settingsCancel);
         creepyGuy.setBackgroundResource(theme.getBackgroundButton());
 
-        creepyGuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        creepyGuy.setOnClickListener(view -> finish());
 
         Button resetButton = findViewById(R.id.resetRecordButton); //кнопка сброса счета
         resetButton.setBackgroundResource(theme.getBackgroundButton());
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SomeMethods.showAlertDialog(Settings.this, theme.getAlertDialogStyle(),
-                        getResources().getString(R.string.questionConfirmTitle),
-                        getResources().getString(R.string.questionReset),
-                        getResources().getString(R.string.answerYes),
-                        getResources().getString(R.string.answerNo),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                YandexMetrica.reportEvent("Settings", "{\"Score\":{\"Сброс счета\"}}");
-                                recordStorage.saveValue("userScoreGuessStar", 0);
-                                recordStorage.saveValue("userScoreGuessBand", 0);
-                                recordStorage.saveValue("userScoreGuessStarReverse", 0);
-                            }
-                        }, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+        resetButton.setOnClickListener(view -> SomeMethods.showAlertDialog(Settings.this, theme.getAlertDialogStyle(),
+                getResources().getString(R.string.questionConfirmTitle),
+                getResources().getString(R.string.questionReset),
+                getResources().getString(R.string.answerYes),
+                getResources().getString(R.string.answerNo),
+                (dialogInterface, i) -> {
+                    YandexMetrica.reportEvent("Settings", "{\"Score\":{\"Сброс счета\"}}");
+                    recordStorage.saveValue("userScoreGuessStar", 0);
+                    recordStorage.saveValue("userScoreGuessBand", 0);
+                    recordStorage.saveValue("userScoreGuessTinder", 0);
+                    recordStorage.saveValue("userScoreGuessBandModeTwo", 0);
+                    recordStorage.saveValue("userScoreGuessStarReverse", 0);
+                }, (dialogInterface, i) -> {
 
-                            }
-                        });
-            }
-        });
+                }));
 
         Button buttonBandsActive = findViewById(R.id.bandsActive);
         buttonBandsActive.setBackgroundResource(theme.getBackgroundButton());
-        buttonBandsActive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                YandexMetrica.reportEvent("Setting - BandsActive");
-                Intent image = new Intent();
-                image.setClass(Settings.this, BandsActiveActivity.class);
-                startActivity(image);
-            }
+        buttonBandsActive.setOnClickListener(view -> {
+            YandexMetrica.reportEvent("Setting - BandsActive");
+            Intent image = new Intent();
+            image.setClass(Settings.this, BandsActiveActivity.class);
+            startActivity(image);
         });
 
     }

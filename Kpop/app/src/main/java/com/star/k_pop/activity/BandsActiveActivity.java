@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
@@ -51,12 +48,7 @@ public class BandsActiveActivity extends AppCompatActivity {
             nameBand.setText(Importer.getNameActiveText(i));
             nameBand.setChecked(Importer.isGetNameActive(i));
 
-            nameBand.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    CheckedMinBands();
-                }
-            });
+            nameBand.setOnCheckedChangeListener((compoundButton, b) -> CheckedMinBands());
 
             nameBandsActive.add(nameBand);
             container.addView(nameBandsActive.get(i));
@@ -65,28 +57,20 @@ public class BandsActiveActivity extends AppCompatActivity {
         Button buttonCancelActive = findViewById(R.id.buttonCancelActive);
         buttonCancelActive.setBackgroundResource(theme.getBackgroundButton());
 
-        buttonCancelActive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        buttonCancelActive.setOnClickListener(view -> finish());
 
         Button buttonSaveActive = findViewById(R.id.buttonSaveActive);
         buttonSaveActive.setBackgroundResource(theme.getBackgroundButton());
 
-        buttonSaveActive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ArrayList<String> bandsActive = new ArrayList<>();
-                for(SwitchCompat name : nameBandsActive){
-                    if (!name.isChecked()){
-                        bandsActive.add(name.getText().toString());
-                    }
+        buttonSaveActive.setOnClickListener(view -> {
+            ArrayList<String> bandsActive = new ArrayList<>();
+            for(SwitchCompat name : nameBandsActive){
+                if (!name.isChecked()){
+                    bandsActive.add(name.getText().toString());
                 }
-                Importer.SaveBandsActive(BandsActiveActivity.this, bandsActive);
-                finish();
             }
+            Importer.SaveBandsActive(BandsActiveActivity.this, bandsActive);
+            finish();
         });
         CheckedMinBands();
     }

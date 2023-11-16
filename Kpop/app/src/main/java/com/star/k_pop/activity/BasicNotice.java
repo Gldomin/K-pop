@@ -30,12 +30,7 @@ public class BasicNotice extends AppCompatActivity {
         TextView textView2 = findViewById(R.id.abautTitleText);
         textView2.setText(idStringBig);
         textView2.setTextColor(theme.getTextColor());
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        };
+        View.OnClickListener listener = view -> finish();
         textView2.setOnClickListener(listener);
         textView1.setOnClickListener(listener);
 

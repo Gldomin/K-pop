@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.multidex.MultiDexApplication;
 
 import com.star.k_pop.R;
@@ -32,16 +31,12 @@ public class ApplicationStart extends MultiDexApplication {
         try {
             final Thread.UncaughtExceptionHandler mAndroidCrashHandler = Thread.getDefaultUncaughtExceptionHandler();
 
-            final Thread.UncaughtExceptionHandler mUncaughtExceptionHandler = new Thread.UncaughtExceptionHandler() {
-
-                @Override
-                public void uncaughtException(@NonNull Thread thread, @NonNull Throwable exception) {
-                    try {
-                        YandexMetrica.reportError(exception.toString(), exception);
-                    } finally {
-                        if (null != mAndroidCrashHandler) {
-                            mAndroidCrashHandler.uncaughtException(thread, exception);
-                        }
+            final Thread.UncaughtExceptionHandler mUncaughtExceptionHandler = (thread, exception) -> {
+                try {
+                    YandexMetrica.reportError(exception.toString(), exception);
+                } finally {
+                    if (null != mAndroidCrashHandler) {
+                        mAndroidCrashHandler.uncaughtException(thread, exception);
                     }
                 }
             };

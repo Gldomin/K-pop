@@ -1,7 +1,6 @@
 package com.star.k_pop.ad;
 
 import android.app.Activity;
-import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -53,7 +52,7 @@ public class InterstitialCustomGoogle extends InterstitialCustom{
                             }
 
                             @Override
-                            public void onAdFailedToShowFullScreenContent(AdError adError) {
+                            public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
                                 // Called when ad fails to show.
                                 Log.e(TAG, "Ad failed to show fullscreen content.");
                                 mInterstitialAd = null;

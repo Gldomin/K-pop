@@ -61,20 +61,7 @@ public class Theme {
     }
 
     public int getButtonTextColor() {
-        if (darkMode) {
-            return activity.getResources().getColor(R.color.blackColor);
-        } else {
-            return activity.getResources().getColor(R.color.blackColor);
-        }
-    }
-
-    public int getBackgroundResource() {
-        if (darkMode) {
-            return R.drawable.stylebutton_purple;
-        } else {
-            return R.drawable.stylebutton_yellow;
-        }
-
+        return activity.getResources().getColor(R.color.blackColor);
     }
 
     public int getBackgroundButton() {
@@ -94,16 +81,6 @@ public class Theme {
             return R.drawable.gradient_background_light;
         }
     }
-
-    public int getBackgroundButton2() {
-        if (darkMode) {
-            return R.drawable.stylebutton_pink;
-        } else {
-            return R.drawable.light_background;
-        }
-
-    }
-
 
     public boolean isDarkMode() {
         return darkMode;

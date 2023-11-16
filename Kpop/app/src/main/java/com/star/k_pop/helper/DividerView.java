@@ -12,7 +12,6 @@ import com.star.k_pop.R;
 
 public class DividerView extends View {
     static public int ORIENTATION_HORIZONTAL = 0;
-    static public int ORIENTATION_VERTICAL = 1;
     private final Paint mPaint;
     private final int orientation;
 

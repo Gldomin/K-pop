@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -16,8 +15,6 @@ import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.ad.InterstitialCustom;
 import com.star.k_pop.ad.InterstitialCustomGoogle;
 import com.star.k_pop.ad.InterstitialCustomYandex;
-import com.star.k_pop.ad.RewardedCustomGoogle;
-import com.star.k_pop.ad.RewardedCustomYandex;
 import com.star.k_pop.gallery.activity.Gallery;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
@@ -69,92 +66,71 @@ public class MainActivity extends AppCompatActivity {
 
         Button guessStarButton = findViewById(R.id.guessStarButton);
         guessStarButton.setBackgroundResource(theme.getBackgroundButton());
-        guessStarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu", "{\"Button\":\"guessStarButton\"}");
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, GuessStar.class);
-                startActivity(image);
-                interstitialShow();
-                YandexMetrica.reportEvent("Reward", "{\"Menu\":\"Show\"}");
+        guessStarButton.setOnClickListener(view -> {
+            YandexMetrica.reportEvent("Menu", "{\"Button\":\"guessStarButton\"}");
+            Intent image = new Intent();
+            image.setClass(MainActivity.this, GuessStar.class);
+            startActivity(image);
+            interstitialShow();
+            YandexMetrica.reportEvent("Reward", "{\"Menu\":\"Show\"}");
 
-            }
         });
 
         Button guessTwoBandsTinder = findViewById(R.id.guessTwoBands);
         guessTwoBandsTinder.setBackgroundResource(theme.getBackgroundButton());
-        guessTwoBandsTinder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                YandexMetrica.reportEvent("Main - guessTwoBands");
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, TwoBandsTinder.class);
-                startActivity(image);
-                interstitialShow();
-            }
+        guessTwoBandsTinder.setOnClickListener(view -> {
+            YandexMetrica.reportEvent("Main - guessTwoBands");
+            Intent image = new Intent();
+            image.setClass(MainActivity.this, TwoBandsTinder.class);
+            startActivity(image);
+            interstitialShow();
         });
 
         Button guessBandButton = findViewById(R.id.guessGroupButton);
         guessBandButton.setBackgroundResource(theme.getBackgroundButton());
-        guessBandButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu", "{\"Button\":\"guessBandButton\"}");
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, GuessBandsModeTwo.class);
-                startActivity(image);
-                interstitialShow();
-                YandexMetrica.reportEvent("Reward", "{\"Menu\":\"Show\"}");
-            }
+        guessBandButton.setOnClickListener(view -> {
+            YandexMetrica.reportEvent("Menu", "{\"Button\":\"guessBandButton\"}");
+            Intent image = new Intent();
+            image.setClass(MainActivity.this, GuessBandsModeTwo.class);
+            startActivity(image);
+            interstitialShow();
+            YandexMetrica.reportEvent("Reward", "{\"Menu\":\"Show\"}");
         });
 
         ImageView buttonLibrary = findViewById(R.id.galleryButton);
-        buttonLibrary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu", "{\"Button\":\"buttonLibrary\"}");
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, Gallery.class);
-                startActivity(image);
-                interstitialShow();
-            }
+        buttonLibrary.setOnClickListener(view -> {
+            YandexMetrica.reportEvent("Menu", "{\"Button\":\"buttonLibrary\"}");
+            Intent image = new Intent();
+            image.setClass(MainActivity.this, Gallery.class);
+            startActivity(image);
+            interstitialShow();
         });
 
         ImageView settingsButton = findViewById(R.id.settingsButton);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu", "{\"Button\":\"settingsButton\"}");
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, Settings.class);
-                startActivityForResult(image, REQUEST_CODE);
-            }
+        settingsButton.setOnClickListener(view -> {
+            YandexMetrica.reportEvent("Menu", "{\"Button\":\"settingsButton\"}");
+            Intent image = new Intent();
+            image.setClass(MainActivity.this, Settings.class);
+            startActivityForResult(image, REQUEST_CODE);
         });
 
         ImageView achievement = findViewById(R.id.achievementButton);
-        achievement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu", "{\"Button\":\"achievement\"}");
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, Achievements.class);
-                startActivity(image);
-            }
+        achievement.setOnClickListener(view -> {
+            YandexMetrica.reportEvent("Menu", "{\"Button\":\"achievement\"}");
+            Intent image = new Intent();
+            image.setClass(MainActivity.this, Achievements.class);
+            startActivity(image);
         });
 
         Button about = findViewById(R.id.abautButton);
         about.setBackgroundResource(theme.getBackgroundButton());
-        about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                YandexMetrica.reportEvent("Menu", "{\"Button\":\"about\"}");
-                Intent image = new Intent();
-                image.setClass(MainActivity.this, BasicNotice.class);
-                image.putExtra("text", R.string.aboutText);
-                image.putExtra("title", R.string.aboutTitle);
-                startActivity(image);
-            }
+        about.setOnClickListener(view -> {
+            YandexMetrica.reportEvent("Menu", "{\"Button\":\"about\"}");
+            Intent image = new Intent();
+            image.setClass(MainActivity.this, BasicNotice.class);
+            image.putExtra("text", R.string.aboutText);
+            image.putExtra("title", R.string.aboutTitle);
+            startActivity(image);
         });
     }
 

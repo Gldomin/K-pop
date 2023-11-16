@@ -216,7 +216,7 @@ public class Importer {
         SharedPreferences sp = context.getSharedPreferences(NAME_FILE_BANDS_ACTIVE, Context.MODE_PRIVATE);
         if (sp.contains("nameBandsActiveSave")) {
             bandsActive = new ArrayList<>();
-            Set<String> names = sp.getStringSet("nameBandsActiveSave", new HashSet<String>());
+            Set<String> names = sp.getStringSet("nameBandsActiveSave", new HashSet<>());
             String[] name = new String[names.size()];
             name = names.toArray(name);
             Collections.addAll(bandsActive, name);

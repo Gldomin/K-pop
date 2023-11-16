@@ -63,7 +63,7 @@ public class RewardedCustomGoogle extends RewardedCustom {
                     }
 
                     @Override
-                    public void onAdFailedToShowFullScreenContent(AdError adError) {
+                    public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
                         // Called when ad fails to show.
                         Log.e(TAG, "Ad failed to show fullscreen content.");
                         mRewardedAd = null;
