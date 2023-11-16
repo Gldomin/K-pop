@@ -34,7 +34,7 @@
                 android:contentDescription="TODO"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:text="Перераспределить"
+                android:text="@string/tinderRedistribute"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -153,7 +153,7 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:text="Ваш счет: 0" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/scoreRecord"
@@ -164,7 +164,7 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:text="Ваш рекорд: 0" />
+                android:text="" />
 
         </LinearLayout>
 
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="GOT7"
+                android:text=""
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -195,7 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="или"
+                android:text="@string/tinderOr"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -205,7 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="BTS"
+                android:text=""
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -227,7 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Распределено участников:"
+                android:text="@string/tinderDistributeGroup"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -243,7 +243,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="GOT7"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -253,7 +253,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="BTS"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -270,7 +270,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="8/7"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -280,7 +280,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="4/6"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -342,7 +342,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Распределено участников:"
+                android:text="@string/tinderDistributeGroup"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -358,7 +358,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="GOT7"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -368,7 +368,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="BTS"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -385,7 +385,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="8/7"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -395,7 +395,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="4/6"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -498,7 +498,7 @@
                                     android:id="@+id/allAct_Card_LeftABtn"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Button" />
+                                    android:text="" />
                             </LinearLayout>
 
                             <com.google.android.material.imageview.ShapeableImageView
@@ -518,7 +518,7 @@
                                     android:id="@+id/allAct_Card_RightABtn"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Button" />
+                                    android:text="" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -540,7 +540,7 @@
             android:onClick="ttClickCheck"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:text="Подтвердить" />
+            android:text="@string/answerAccept" />
 
     </RelativeLayout>
 

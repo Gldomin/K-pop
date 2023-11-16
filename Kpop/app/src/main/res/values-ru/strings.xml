@@ -130,6 +130,11 @@
     <string name="tinderLoseScreenLoseMessage">Неплохо! Вы набрали %d из %d очков! К сожалению, вы ошибочно определили некоторых участников!</string>
     <string name="tinderLoseScreenExit">Выход</string>
 
+    <string name="tinderRedistribute">Перераспределить</string>
+    <string name="tinderOr">или</string>
+    <string name="tinderDistributeGroup">Распределено участников:</string>
+
+
     <string name="ttWrongAnswer">No</string>
 
 </resources>

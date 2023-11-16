@@ -145,5 +145,8 @@ Distribute them all! ツ
     <string name="tinderLoseScreenLoseMessage">"Not bad! You scored %d out of %d points! Unfortunately, you misidentified some of the contestants!"</string>
     <string name="tinderContinue">Continue</string>
     <string name="tinderLoseScreenExit">Exit</string>
+    <string name="tinderRedistribute">Redistribute</string>
+    <string name="tinderOr">or</string>
+    <string name="tinderDistributeGroup">Distributed artists:</string>
 
 </resources>

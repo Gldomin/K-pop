@@ -187,7 +187,6 @@ public class TwoBandsTinder extends AppCompatActivity {
         allActLeftSlvPict = findViewById(R.id.allActGuessLeftPict);
         allActRightSlvPict = findViewById(R.id.allActGuessRightPict);
         allActUnslvPictPict = findViewById(R.id.allAct_Unslv_Pict);
-        //allActSpacer = findViewById(R.id.allActSpacer);
         //--------------------------------------------------------------------------------------
         allActGuessSolvedLeftLay = findViewById(R.id.allActorGuessLeftLay);
         allActGuessSolvedRightLay = findViewById(R.id.allActorGuessRightLay);
@@ -197,7 +196,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         scoreRecord = sp.getInt("userScoreTinder", 0);
         scoreRecordText.setText(getResources().getString(R.string.record_text, scoreRecord));
-
+        scoreText.setText(getResources().getString(R.string.score_text, score));
         if (savedInstanceState != null) {
             score = savedInstanceState.getInt("scoreTinder");
             scoreRecord = savedInstanceState.getInt("scoreRecordTinder");
