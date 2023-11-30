@@ -510,7 +510,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             twoBandFlip.showNext();
             scoreText.setText(getResources().getString(R.string.endGameTextScoreNow, score));
             scoreRecordText.setText(getResources().getString(R.string.endGameTextRecordNow, scoreRecord));
-            if (bandsCount + 2 < bands.size()) {
+            if (bandsCount + 3 < bands.size()) {
                 bandsCount = bandsCount + 2;
                 mainProcedure();
             } else {

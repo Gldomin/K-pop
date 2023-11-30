@@ -18,7 +18,7 @@ public class ApplicationStart extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        Importer.createListArtists(getResources(),this);
         // Подключение яндекс метрики
         try {
             YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder(getResources().getString(R.string.yandex_id_metrica)).build();

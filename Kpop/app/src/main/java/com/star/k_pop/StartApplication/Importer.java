@@ -32,12 +32,12 @@ import java.util.Set;
 public class Importer {
 
     private static final String NAME_FILE_BANDS_ACTIVE = "bandsActive";
-    private static ArrayList<Artist> artists;   //Список артистов
-    private static ArrayList<Bands> bands;      //Список групп
-    private static ArrayList<String> bandsActive; //Список групп что выбрал игрок
-    private static ArrayList<String> bandsAll; //Список всех групп
-    private static ArrayList<Artist> artistsNotAll;   //Список артистов без нужных групп
-    private static ArrayList<Bands> bandsNotAll;      //Список групп без нужных групп
+    private static ArrayList<Artist> artists = new ArrayList<>();   //Список артистов
+    private static ArrayList<Bands> bands = new ArrayList<>();      //Список групп
+    private static ArrayList<String> bandsActive = new ArrayList<>(); //Список групп что выбрал игрок
+    private static ArrayList<String> bandsAll = new ArrayList<>(); //Список всех групп
+    private static ArrayList<Artist> artistsNotAll = new ArrayList<>();   //Список артистов без нужных групп
+    private static ArrayList<Bands> bandsNotAll = new ArrayList<>();      //Список групп без нужных групп
 
     /**
      * Создание списков артистов и групп для работы приложения
@@ -45,7 +45,9 @@ public class Importer {
      * @param res ресурсы приложения
      */
     public static void createListArtists(Resources res, Context context) {
-
+        if (bands.size() > 0 && artists.size() > 0) {
+            return;
+        }
         XmlPullParser parser = res.getXml(R.xml.bands);
         artists = new ArrayList<>();
         bands = new ArrayList<>();
@@ -173,27 +175,27 @@ public class Importer {
         return bands;
     }
 
-    public static ArrayList<Bands> getRandomBandsSex(){
+    public static ArrayList<Bands> getRandomBandsSex() {
         ArrayList<Bands> bands = getBands();
         Collections.shuffle(bands);
         ArrayList<Bands> bandsFemale = new ArrayList<>();
         ArrayList<Bands> bandsMale = new ArrayList<>();
         ArrayList<Bands> bandsMix = new ArrayList<>();
-        for (Bands b: bands) {
-            if (b.getSex() == 1){
+        for (Bands b : bands) {
+            if (b.getSex() == 1) {
                 bandsMale.add(b);
-            }else if (b.getSex() == 2){
+            } else if (b.getSex() == 2) {
                 bandsFemale.add(b);
-            }else{
+            } else {
                 bandsMix.add(b);
             }
         }
         ArrayList<Bands> bandsReturn = new ArrayList<>();
-        if (new Random().nextBoolean()){
+        if (new Random().nextBoolean()) {
             bandsReturn.addAll(bandsFemale);
             bandsReturn.addAll(bandsMix);
             bandsReturn.addAll(bandsMale);
-        }else{
+        } else {
             bandsReturn.addAll(bandsMale);
             bandsReturn.addAll(bandsMix);
             bandsReturn.addAll(bandsFemale);
@@ -201,36 +203,36 @@ public class Importer {
         return bandsReturn;
     }
 
-    private static void UpdateBandsActive(){
+    private static void UpdateBandsActive() {
         artistsNotAll = new ArrayList<>();
         bandsNotAll = new ArrayList<>();
-        for(int i = 0; i < artists.size(); i++){
-            if (!bandsActive.contains(artists.get(i).getGroup())){
+        for (int i = 0; i < artists.size(); i++) {
+            if (!bandsActive.contains(artists.get(i).getGroup())) {
                 artistsNotAll.add(artists.get(i));
             }
         }
-        for(int i = 0; i < bands.size(); i++){
-            if (!bandsActive.contains(bands.get(i).getName())){
+        for (int i = 0; i < bands.size(); i++) {
+            if (!bandsActive.contains(bands.get(i).getName())) {
                 bandsNotAll.add(bands.get(i));
             }
         }
     }
 
-    private static void LoadBandsActive(Context context){
+    private static void LoadBandsActive(Context context) {
         SharedPreferences sp = context.getSharedPreferences(NAME_FILE_BANDS_ACTIVE, Context.MODE_PRIVATE);
         if (sp.contains("nameBandsActiveSave")) {
             bandsActive = new ArrayList<>();
             Set<String> names = sp.getStringSet("nameBandsActiveSave", new HashSet<>());
             String[] name = new String[names.size()];
             name = names.toArray(name);
-            if (name.length <= bands.size()-7){
+            if (name.length <= bands.size() - 7) {
                 Collections.addAll(bandsActive, name);
             }
         }
         UpdateBandsActive();
     }
 
-    public static void SaveBandsActive(Context context, ArrayList<String> bandsActiveNew){
+    public static void SaveBandsActive(Context context, ArrayList<String> bandsActiveNew) {
         bandsActive = new ArrayList<>(bandsActiveNew);
         SharedPreferences sp = context.getSharedPreferences(NAME_FILE_BANDS_ACTIVE, Context.MODE_PRIVATE);
         SharedPreferences.Editor e = sp.edit();
@@ -239,20 +241,20 @@ public class Importer {
         UpdateBandsActive();
     }
 
-    public static String getNameActiveText(int i){
+    public static String getNameActiveText(int i) {
         return bandsAll.get(i);
     }
 
-    public static boolean isGetNameActive(int i){
-        for(String bands : bandsActive){
-            if (bands.equals(bandsAll.get(i))){
+    public static boolean isGetNameActive(int i) {
+        for (String bands : bandsActive) {
+            if (bands.equals(bandsAll.get(i))) {
                 return false;
             }
         }
         return true;
     }
 
-    public static int getSizeNameActive(){
+    public static int getSizeNameActive() {
         return bandsAll.size();
     }
 }
