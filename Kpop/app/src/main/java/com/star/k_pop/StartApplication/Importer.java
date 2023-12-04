@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import com.star.k_pop.R;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
+import com.yandex.metrica.YandexMetrica;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -32,12 +33,14 @@ import java.util.Set;
 public class Importer {
 
     private static final String NAME_FILE_BANDS_ACTIVE = "bandsActive";
-    private static ArrayList<Artist> artists = new ArrayList<>();   //Список артистов
-    private static ArrayList<Bands> bands = new ArrayList<>();      //Список групп
-    private static ArrayList<String> bandsActive = new ArrayList<>(); //Список групп что выбрал игрок
-    private static ArrayList<String> bandsAll = new ArrayList<>(); //Список всех групп
-    private static ArrayList<Artist> artistsNotAll = new ArrayList<>();   //Список артистов без нужных групп
-    private static ArrayList<Bands> bandsNotAll = new ArrayList<>();      //Список групп без нужных групп
+    private static final ArrayList<Artist> artists = new ArrayList<>();   //Список артистов
+    private static final ArrayList<Bands> bands = new ArrayList<>();      //Список групп
+    private static final ArrayList<String> bandsActive = new ArrayList<>(); //Список групп что выбрал игрок
+    private static final ArrayList<String> bandsAll = new ArrayList<>(); //Список всех групп
+    private static final ArrayList<Artist> artistsNotAll = new ArrayList<>();   //Список артистов без нужных групп
+    private static final ArrayList<Bands> bandsNotAll = new ArrayList<>();      //Список групп без нужных групп
+
+    private static int countLoading = 0;
 
     /**
      * Создание списков артистов и групп для работы приложения
@@ -49,11 +52,6 @@ public class Importer {
             return;
         }
         XmlPullParser parser = res.getXml(R.xml.bands);
-        artists = new ArrayList<>();
-        bands = new ArrayList<>();
-        artistsNotAll = new ArrayList<>();
-        bandsNotAll = new ArrayList<>();
-        bandsAll = new ArrayList<>();
         ArrayList<Artist> artistsBand = new ArrayList<>();
         ArrayList<String> images = new ArrayList<>();
         ArrayList<String> nameBand = new ArrayList<>();
@@ -124,10 +122,14 @@ public class Importer {
                 }
                 parser.next();
             }
-            bandsActive = new ArrayList<>();
             LoadBandsActive(context);
         } catch (XmlPullParserException | IOException e) {
+            YandexMetrica.reportEvent("Importer error " + countLoading + " " + e.getMessage());
             e.printStackTrace();
+            countLoading++;
+            if (countLoading < 5) {
+                createListArtists(res, context);
+            }
         }
     }
 
@@ -137,7 +139,10 @@ public class Importer {
      * @return список артистов
      */
     public static ArrayList<Artist> getArtists() {
-        return new ArrayList<>(artistsNotAll);
+        if (artistsNotAll.size() > 0) {
+            return new ArrayList<>(artistsNotAll);
+        }
+        return new ArrayList<>(artists);
     }
 
     public static ArrayList<Artist> getArtistsAll() {
@@ -161,7 +166,10 @@ public class Importer {
      * @return список групп
      */
     public static ArrayList<Bands> getBands() {
-        return new ArrayList<>(bandsNotAll);
+        if (bandsNotAll.size() > 0) {
+            return new ArrayList<>(bandsNotAll);
+        }
+        return new ArrayList<>(bands);
     }
 
     /**
@@ -204,8 +212,8 @@ public class Importer {
     }
 
     private static void UpdateBandsActive() {
-        artistsNotAll = new ArrayList<>();
-        bandsNotAll = new ArrayList<>();
+        artistsNotAll.clear();
+        bandsNotAll.clear();
         for (int i = 0; i < artists.size(); i++) {
             if (!bandsActive.contains(artists.get(i).getGroup())) {
                 artistsNotAll.add(artists.get(i));
@@ -221,7 +229,7 @@ public class Importer {
     private static void LoadBandsActive(Context context) {
         SharedPreferences sp = context.getSharedPreferences(NAME_FILE_BANDS_ACTIVE, Context.MODE_PRIVATE);
         if (sp.contains("nameBandsActiveSave")) {
-            bandsActive = new ArrayList<>();
+            bandsActive.clear();
             Set<String> names = sp.getStringSet("nameBandsActiveSave", new HashSet<>());
             String[] name = new String[names.size()];
             name = names.toArray(name);
@@ -233,7 +241,8 @@ public class Importer {
     }
 
     public static void SaveBandsActive(Context context, ArrayList<String> bandsActiveNew) {
-        bandsActive = new ArrayList<>(bandsActiveNew);
+        bandsActive.clear();
+        bandsActive.addAll(bandsActiveNew);
         SharedPreferences sp = context.getSharedPreferences(NAME_FILE_BANDS_ACTIVE, Context.MODE_PRIVATE);
         SharedPreferences.Editor e = sp.edit();
         e.putStringSet("nameBandsActiveSave", new HashSet<>(bandsActive));

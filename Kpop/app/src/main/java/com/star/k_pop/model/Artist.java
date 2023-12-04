@@ -24,17 +24,8 @@ public class Artist {
         init = false;
     }
 
-    public String getNamesImages() {
-        Random rand = new Random();
-        return namesImages[rand.nextInt(namesImages.length)]; //возвращаем рандомную фотку Артиста
-    }
-
-    public String getNameImagesNotRandom(){
-        if (countRandom < 0){
-            Random rand = new Random();
-            countRandom = rand.nextInt(namesImages.length);
-        }
-        return namesImages[countRandom]; //возвращаем рандомную фотку Артиста
+    public String getNamesImage(int i) {
+        return namesImages[i]; //возвращаем рандомную фотку Артиста
     }
 
     public void removeRandomCount(){
@@ -62,25 +53,24 @@ public class Artist {
     }
 
     public String getFolder() {
-        return groups[0] + "/" + name + "/" + getNamesImages();
+        Random rand = new Random();
+        return groups[0] + "/" + name + "/" + getNamesImage(rand.nextInt(namesImages.length));
+    }
+
+    public int getCountImages(){
+        return namesImages.length;
+    }
+
+    public String getFolder(int i) {
+        return groups[0] + "/" + name + "/" + getNamesImage(i);
     }
 
     public String getFolderNotRandom() {
-        return groups[0] + "/" + name + "/" + getNameImagesNotRandom();
-    }
-
-    public String getUriFolderString() {
-        return "file:///android_asset/Groups/" + groups[0] + "/" + name + "/" + getNamesImages();
-    }
-
-    public boolean checkGroup(String group) {
-        for (String g : groups) {
-            Log.v("TAG", group.toUpperCase().replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
-            if (group.toUpperCase().replaceAll(" ", "").equals(g.toUpperCase().replaceAll(" ", ""))) {
-                return true;
-            }
+        if (countRandom < 0){
+            Random rand = new Random();
+            countRandom = rand.nextInt(namesImages.length);
         }
-        return false;
+        return groups[0] + "/" + name + "/" + getNamesImage(countRandom);
     }
 
     public boolean isInit() {

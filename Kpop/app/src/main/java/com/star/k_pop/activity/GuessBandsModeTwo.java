@@ -68,7 +68,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private int[] ref;
     private List<Button> buttons;
     private List<Button> buttonsEnd;
-    private ArrayList<Bands> artists = Importer.getRandomBands();
+    private ArrayList<Bands> bands;
 
     private static final int[] BUTTON_IDS = {
             R.id.lit1, R.id.lit2, R.id.lit3, R.id.lit4, R.id.lit5, R.id.lit6, R.id.lit7, R.id.lit8, R.id.lit9,
@@ -105,6 +105,11 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         longSwitchID = soundPlayer.load(R.raw.long_switch);
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
         sound = storage.getBoolean("soundMode"); //настроек звука
+
+        bands = Importer.getRandomBands();
+        if (bands.size() == 0){
+            finish();
+        }
 
         if (Locale.getDefault().getLanguage().equals("ru")) {
             rewardedCustom = new RewardedCustomYandex(this);
@@ -233,8 +238,8 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             record = scoreNow;
             recordText.setText(getResources().getString(R.string.record_text, record));
         }
-        if (count >= artists.size() || count < 0) {
-            artists = Importer.getRandomBands();
+        if (count >= bands.size() || count < 0) {
+            bands = Importer.getRandomBands();
             count = 0;
         }
         for (Button b : buttonsEnd) {
@@ -243,7 +248,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             b.setTextColor(theme.getTextColor());
             b.setBackgroundResource(R.drawable.roundedimageview);
         }
-        nameGroup = artists.get(count).getNameCorrect();
+        nameGroup = bands.get(count).getNameCorrect();
         countLetter = nameGroup.length();
         int startButtonNumber = 5 - countLetter / 2;
         for (int i = startButtonNumber; i < startButtonNumber + countLetter; i++) {
@@ -255,7 +260,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         ref = createRandomButton();
         String nameTwo;
         do {
-            nameTwo = artists.get(new Random().nextInt(artists.size())).getNameCorrect();
+            nameTwo = bands.get(new Random().nextInt(bands.size())).getNameCorrect();
         } while (nameTwo.equals(nameGroup));
         int countNameTwoChar = 0;
         for (int i = 0; i < ref.length; i++) {
@@ -275,7 +280,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             }
             buttons.get(ref[i]).setVisibility(View.VISIBLE);
         }
-        Glide.with(this).load(Uri.parse(artists.get(count).getFolderRandom()))
+        Glide.with(this).load(Uri.parse(bands.get(count).getFolderRandom()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(groupPhoto);
@@ -304,7 +309,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             if (!b.getText().toString().equals(" "))
                 win.append(b.getText().toString());
         }
-        if (artists.get(count).checkGroup(win.toString())) {
+        if (bands.get(count).checkGroup(win.toString())) {
             if (scoreNow % 20 == 0) {
                 YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Score\":{\"Добавлено хп\"}}");
                 heathBarTest.restore();

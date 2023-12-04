@@ -68,7 +68,7 @@ public class GuessStar extends AppCompatActivity {
     private RewardedCustom rewardedCustom;          //Класс для работы с рекламой
     private InterstitialCustom mInterstitialAd;
 
-    private int countAd = 4;
+    private int countAd = 5;
 
     HeathBar heathBarTest;
 
@@ -102,6 +102,9 @@ public class GuessStar extends AppCompatActivity {
         ImageButton about = findViewById(R.id.guessStarAbautButton);
 
         artists = Importer.getRandomArtists();
+        if (artists.size() == 0){
+            finish();
+        }
 
         about.setBackgroundResource(theme.getBackgroundButton());
 
@@ -175,7 +178,7 @@ public class GuessStar extends AppCompatActivity {
                         soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
                     }
                 } else {
-                    view.setBackgroundResource(theme.getBackgroundButton());
+                    view.setBackgroundResource(theme.getBackgroundButtonEnable());
                     view.setClickable(false);
                     heathBarTest.blow(); //снижение хп
                     if (heathBarTest.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба

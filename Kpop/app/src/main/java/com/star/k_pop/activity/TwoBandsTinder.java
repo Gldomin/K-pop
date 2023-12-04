@@ -131,6 +131,9 @@ public class TwoBandsTinder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         bands = Importer.getRandomBandsSex();
+        if (bands.size() < 2){
+            finish();
+        }
 
         if (Locale.getDefault().getLanguage().equals("ru")) {
             mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private InterstitialCustom mInterstitialAd;
 
-    private int countAd = 1;
+    private int countAd = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -74,6 +74,15 @@ public class Theme {
 
     }
 
+    public int getBackgroundButtonEnable() {
+        if (darkMode) {
+            return R.drawable.stylebutton_purple;
+        } else {
+            return R.drawable.stylebutton_yellow_dark;
+        }
+
+    }
+
     public int getBackgroundCart(){
         if (darkMode) {
             return R.drawable.gradient_background;
