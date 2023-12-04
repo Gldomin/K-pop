@@ -124,7 +124,7 @@ public class Importer {
             }
             LoadBandsActive(context);
         } catch (XmlPullParserException | IOException e) {
-            YandexMetrica.reportEvent("Importer error " + countLoading + " " + e.getMessage());
+            YandexMetrica.reportEvent("Importer error " + countLoading + " " + e.getMessage() + " ");
             e.printStackTrace();
             countLoading++;
             if (countLoading < 5) {
