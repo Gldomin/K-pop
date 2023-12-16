@@ -1,7 +1,5 @@
 package com.star.k_pop.model;
 
-import android.util.Log;
-
 import java.util.Random;
 
 /**

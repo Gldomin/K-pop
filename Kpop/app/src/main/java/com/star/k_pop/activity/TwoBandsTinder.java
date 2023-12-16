@@ -91,15 +91,15 @@ public class TwoBandsTinder extends AppCompatActivity {
     private int pictNumbCurrent;
     //--------------------------------------------------------------------------------------------------
 
-    private LinearLayout AllActlayoutMainLay;
-    private LinearLayout AllActlayoutCardLeftLay;
-    private LinearLayout AllActlayoutCardRightLay;
-    private LinearLayout AllActlayoutUnslvLay;
+    private LinearLayout AllActLayoutMainLay;
+    private LinearLayout AllActLayoutCardLeftLay;
+    private LinearLayout AllActLayoutCardRightLay;
+    private LinearLayout AllActLayoutUnsLvLay;
     private Button allActRightCardButton;
     private Button allActLeftCardButton;
     private ImageView allActLeftSlvPict;
     private ImageView allActRightSlvPict;
-    private ImageView allActUnslvPictPict;
+    private ImageView allActUnsLvPictPict;
 
     private CardView allActCardView;
 
@@ -116,7 +116,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     private static final String IMAGEVIEW_TAG = "icon bitmap";
     private TextView scoreText;
     private TextView scoreRecordText;
-    AlertDialog.Builder alertbuild;
+    AlertDialog.Builder alertBuild;
 
     private InterstitialCustom mInterstitialAd;
     private int countAd = 5;
@@ -131,7 +131,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         bands = Importer.getRandomBandsSex();
-        if (bands.size() < 2){
+        if (bands.size() < 2) {
             finish();
         }
 
@@ -181,15 +181,15 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         //--------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
-        AllActlayoutMainLay = findViewById(R.id.allActorLLay);
-        AllActlayoutCardLeftLay = findViewById(R.id.allAct_Card_LLay);
-        AllActlayoutCardRightLay = findViewById(R.id.allAct_Card_RLay);
-        AllActlayoutUnslvLay = findViewById(R.id.allAct_UnslvFold);
+        AllActLayoutMainLay = findViewById(R.id.allActorLLay);
+        AllActLayoutCardLeftLay = findViewById(R.id.allAct_Card_LLay);
+        AllActLayoutCardRightLay = findViewById(R.id.allAct_Card_RLay);
+        AllActLayoutUnsLvLay = findViewById(R.id.allAct_UnslvFold);
         allActRightCardButton = findViewById(R.id.allAct_Card_RightABtn);
         allActLeftCardButton = findViewById(R.id.allAct_Card_LeftABtn);
         allActLeftSlvPict = findViewById(R.id.allActGuessLeftPict);
         allActRightSlvPict = findViewById(R.id.allActGuessRightPict);
-        allActUnslvPictPict = findViewById(R.id.allAct_Unslv_Pict);
+        allActUnsLvPictPict = findViewById(R.id.allAct_Unslv_Pict);
         //--------------------------------------------------------------------------------------
         allActGuessSolvedLeftLay = findViewById(R.id.allActorGuessLeftLay);
         allActGuessSolvedRightLay = findViewById(R.id.allActorGuessRightLay);
@@ -345,7 +345,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     }
 
     public void startSequance() {
-        //ОсновнаяПоследовательностьРежима берутся две группы,создается лист артистов из двух групп обнуляются карты ответов , перемешиваются артисты
+        //Основная Последовательность Режима берутся две группы,создается лист артистов из двух групп обнуляются карты ответов , перемешиваются артисты
         pictnumb = 0;
         pictNumbCurrent = 0;
         if (artists_turn != null) {
@@ -370,14 +370,10 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     //    Новый метод старый не особо удобен и приходится копировать
     public void setupImage(String pathtoFolder, ImageView img) {
-        //установка главной фотки которая перемещается
-        {
-            //Context contextTheme = new ContextThemeWrapper(this, R.style.roundedCorners);
-            Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + pathtoFolder))
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .transition(withCrossFade())
-                    .into(img);
-        }
+        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + pathtoFolder))
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .transition(withCrossFade())
+                .into(img);
     }
 
     public void setupBandText() {
@@ -466,8 +462,8 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     public void losescreen() {
         //финал пройгрыша
-        alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
-        alertbuild.setTitle(getResources().getString(R.string.tinderLoseScreenTitle));
+        alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+        alertBuild.setTitle(getResources().getString(R.string.tinderLoseScreenTitle));
         int misstake = mistakescount();
         int countCorrect = ansverMap.size() - misstake;
         countCorrect /= 2;
@@ -476,16 +472,16 @@ public class TwoBandsTinder extends AppCompatActivity {
             scoreRecord = score;
         }
         if (misstake == 0) {
-            alertbuild.setMessage(getResources().getString(R.string.tinderLoseScreenWinMessage, countCorrect));
+            alertBuild.setMessage(getResources().getString(R.string.tinderLoseScreenWinMessage, countCorrect));
         } else {
-            alertbuild.setMessage(getResources().getString(R.string.tinderLoseScreenLoseMessage, countCorrect, ansverMap.size() / 2));
+            alertBuild.setMessage(getResources().getString(R.string.tinderLoseScreenLoseMessage, countCorrect, ansverMap.size() / 2));
         }
         if (misstake > 0) {
             heathBarTest.blow();
         }
-        alertbuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> nextArtist());
-        alertbuild.setOnCancelListener(dialog -> nextArtist());
-        AlertDialog alert = alertbuild.create();
+        alertBuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> nextArtist());
+        alertBuild.setOnCancelListener(dialog -> nextArtist());
+        AlertDialog alert = alertBuild.create();
         alert.show();
     }
 
@@ -495,19 +491,19 @@ public class TwoBandsTinder extends AppCompatActivity {
             heathBarTest.restore();
         }
         if (heathBarTest.getHp() < 1) {
-            alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
-            alertbuild.setTitle(getResources().getString(R.string.endGameTitle));
-            alertbuild.setMessage(getResources().getString(R.string.endGameTextScoreNow, score) + "\n" + getResources().getString(R.string.endGameTextRecordNow, scoreRecord));
-            alertbuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> {
+            alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+            alertBuild.setTitle(getResources().getString(R.string.endGameTitle));
+            alertBuild.setMessage(getResources().getString(R.string.endGameTextScoreNow, score) + "\n" + getResources().getString(R.string.endGameTextRecordNow, scoreRecord));
+            alertBuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> {
                 score = 0;
                 scoreHealth = 0;
                 heathBarTest.restartHp();
                 nextArtist();
                 interstitialShow();
             });
-            alertbuild.setNegativeButton(getResources().getString(R.string.tinderLoseScreenExit), (dialog, which) -> finish());
-            alertbuild.setOnCancelListener(dialog -> finish());
-            AlertDialog alert = alertbuild.create();
+            alertBuild.setNegativeButton(getResources().getString(R.string.tinderLoseScreenExit), (dialog, which) -> finish());
+            alertBuild.setOnCancelListener(dialog -> finish());
+            AlertDialog alert = alertBuild.create();
             alert.show();
         } else {
             twoBandFlip.showNext();
@@ -550,7 +546,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         allActGuessSolvedRightLay.removeAllViews();
         allActGuessSolvedLeftLay.removeAllViews();
-        AllActlayoutUnslvLay.removeAllViews();
+        AllActLayoutUnsLvLay.removeAllViews();
         // Отображение всех отгаданых типов
         for (Map.Entry<Artist, String> ansver : ansverMap.entrySet()) {
             ImageView leftPict = new ImageView(this);
@@ -580,10 +576,10 @@ public class TwoBandsTinder extends AppCompatActivity {
         for (final Artist others : artists_turn) {
             if (Objects.equals(ansverMap.get(others), "null")) {
                 // инициализация переменных final те которые не изменны, нужны для удаления и добавления
-                final CardView maincard = new CardView(this);
+                final CardView mainCard = new CardView(this);
                 Button leftButton = new Button(this);
                 Button rightButton = new Button(this);
-                final ImageView cardimg = new ImageView(this);
+                final ImageView cardImg = new ImageView(this);
                 LinearLayout leftCardLay = new LinearLayout(this);
                 LinearLayout rightCardLay = new LinearLayout(this);
                 final LinearLayout cardLay = new LinearLayout(this);
@@ -593,28 +589,28 @@ public class TwoBandsTinder extends AppCompatActivity {
                 LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) allActCardView.getLayoutParams();
                 layoutParams.setMargins(0, 10, 0, 10);
 
-                maincard.setLayoutParams(layoutParams);
+                mainCard.setLayoutParams(layoutParams);
                 leftButton.setLayoutParams(allActLeftCardButton.getLayoutParams());
                 rightButton.setLayoutParams(allActRightCardButton.getLayoutParams());
 
-                layoutParams = (LinearLayout.LayoutParams) allActUnslvPictPict.getLayoutParams();
+                layoutParams = (LinearLayout.LayoutParams) allActUnsLvPictPict.getLayoutParams();
                 layoutParams.weight = 1;
-                cardimg.setLayoutParams(layoutParams);
+                cardImg.setLayoutParams(layoutParams);
 
-                layoutParams = (LinearLayout.LayoutParams) AllActlayoutCardLeftLay.getLayoutParams();
+                layoutParams = (LinearLayout.LayoutParams) AllActLayoutCardLeftLay.getLayoutParams();
                 layoutParams.weight = 1;
                 leftCardLay.setLayoutParams(layoutParams);
                 leftCardLay.setOrientation(LinearLayout.VERTICAL);
 
-                layoutParams = (LinearLayout.LayoutParams) AllActlayoutCardRightLay.getLayoutParams();
+                layoutParams = (LinearLayout.LayoutParams) AllActLayoutCardRightLay.getLayoutParams();
                 layoutParams.weight = 1;
                 rightCardLay.setLayoutParams(layoutParams);
                 rightCardLay.setOrientation(LinearLayout.VERTICAL);
 
-                cardLay.setLayoutParams(AllActlayoutMainLay.getLayoutParams());
+                cardLay.setLayoutParams(AllActLayoutMainLay.getLayoutParams());
                 cardLay.setOrientation(LinearLayout.HORIZONTAL);
 
-                maincard.setBackgroundResource(theme.getBackgroundCart());
+                mainCard.setBackgroundResource(theme.getBackgroundCart());
                 leftButton.setBackgroundResource(theme.getBackgroundButton());
                 rightButton.setBackgroundResource(theme.getBackgroundButton());
                 leftButton.setTextColor(theme.getButtonTextColor());
@@ -624,7 +620,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 leftButton.setText(first_band.getName());
                 rightButton.setText(second_band.getName());
 
-                setupImage(others.getFolderNotRandom(), cardimg);
+                setupImage(others.getFolderNotRandom(), cardImg);
 
                 leftCardLay.setGravity(Gravity.CENTER);
                 // разбивка по верстке как в шаблоне
@@ -638,13 +634,13 @@ public class TwoBandsTinder extends AppCompatActivity {
                 cardLay.setWeightSum(3);
                 cardLay.setGravity(Gravity.CENTER);
                 cardLay.addView(leftCardLay);
-                cardLay.addView(cardimg);
+                cardLay.addView(cardImg);
                 cardLay.addView(rightCardLay);
 
-                maincard.addView(cardLay);
+                mainCard.addView(cardLay);
 
                 // добавляет карточку в финальную верстку
-                AllActlayoutUnslvLay.addView(maincard);
+                AllActLayoutUnsLvLay.addView(mainCard);
                 //при клике на кнопку добавляет ответ в карту ответов, потом чистит карточки чтобы
                 //добавить картинку в столбики ответов
                 leftButton.setOnClickListener(v -> {
@@ -653,8 +649,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                         countGroupOne++;
                         countGroupTextFirstTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupOne, countGroupMaxOne));
                         ansverMap.put(others, first_band.getName());
-                        AllActlayoutUnslvLay.removeView(maincard);
-                        maincard.removeAllViews();
+                        AllActLayoutUnsLvLay.removeView(mainCard);
+                        mainCard.removeAllViews();
                         cardLay.removeAllViews();
                         ImageView pict = new ImageView(TwoBandsTinder.this);
                         pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
@@ -670,8 +666,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                         countGroupTwo++;
                         countGroupTextSecondTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupTwo, countGroupMaxTwo));
                         ansverMap.put(others, second_band.getName());
-                        AllActlayoutUnslvLay.removeView(maincard);
-                        maincard.removeAllViews();
+                        AllActLayoutUnsLvLay.removeView(mainCard);
+                        mainCard.removeAllViews();
                         cardLay.removeAllViews();
                         ImageView pict = new ImageView(TwoBandsTinder.this);
                         pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());

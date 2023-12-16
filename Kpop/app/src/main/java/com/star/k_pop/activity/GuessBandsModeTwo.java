@@ -35,7 +35,6 @@ import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.lib.SoundPlayer;
 import com.star.k_pop.model.Bands;
-import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,7 +54,6 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private int longSwitchID;
     private int record;
     private int scoreNow = -1;
-    private int scoreGlobal = 0;
     private int count = 0;
     private int countLetter;
     private String nameGroup;
@@ -107,7 +105,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         sound = storage.getBoolean("soundMode"); //настроек звука
 
         bands = Importer.getRandomBands();
-        if (bands.size() == 0){
+        if (bands.size() == 0) {
             finish();
         }
 
@@ -311,25 +309,15 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         }
         if (bands.get(count).checkGroup(win.toString())) {
             if (scoreNow % 20 == 0) {
-                YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Score\":{\"Добавлено хп\"}}");
                 heathBarTest.restore();
             }
             if (scoreNow % 40 == 0) {
-                YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Score\":{\"Добавлена подсказка\"}}");
                 hintCount += 1;
             }
             if (scoreNow == 25) { //ачивка за 25 - achGuessBandsNormal. Условие ачивки
-                Storage storage = new Storage(getApplicationContext(), "appStatus");
-                if (!storage.getBoolean("achGuessBandsModeTwoNormal")) {
-                    YandexMetrica.reportEvent("Achievements", "{\"GuessBandsModeTwo\":{\"Ачивка 25 угаданных групп\"}}");
-                }
                 SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsNormal, R.drawable.normalgb, "achGuessBandsModeTwoNormal"); //ачивочка
             }
             if (scoreNow == 75) { //ачивка за 75
-                Storage storage = new Storage(getApplicationContext(), "appStatus");
-                if (!storage.getBoolean("achGuessBandsModeTwoExpert")) {
-                    YandexMetrica.reportEvent("Achievements", "{\"GuessBandsModeTwo\":{\"Ачивка 75 угаданных групп\"}}");
-                }
                 SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsExpert, R.drawable.expertgb, "achGuessBandsModeTwoExpert"); //ачивочка
             }
             change();
@@ -448,43 +436,39 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                     .setMessage(String.format("%s", getResources().getString(R.string.endHintReward)))
                     .setCancelable(false)
                     .setNegativeButton(getResources().getString(R.string.endHintNo),
-                            (dialogInterface, i) -> YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Hint\":\"Последняя подсказка, нет\"}}"))
-                    .setPositiveButton(getResources().getString(R.string.endHintYes), (dialogInterface, i) -> {
-                        YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Hint\":\"Последняя подсказка, да\"}}");
-                        rewardedCustom.show(GuessBandsModeTwo.this, new RewardedCustom.RewardedInterface() {
-                            @Override
-                            public void onRewarded() {
-                                showReward = true;
-                            }
-
-                            @Override
-                            public void onDismissed() {
-                                if (showReward) {
-                                    YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Hint\":\"Открыта подсказка за рекламу\"}}");
-                                    onRewardedHint = false;
-                                    for (int i = 0; i < ref.length; i++) {
-                                        if (i < countLetter && nameGroup.charAt(i) != ' ') {
-                                            buttons.get(ref[i]).setText(String.format("%s", nameGroup.charAt(i)));
-                                        } else {
-                                            buttons.get(ref[i]).setVisibility(View.INVISIBLE);
-                                        }
-                                    }
-                                    for (Button b : buttonsEnd) {
-                                        if (b.getText() != " ") {
-                                            b.setText("_");
-                                        }
-                                    }
-                                    hintCount--;
-                                    counterHint.setText(String.format(new Locale("ru"), "%d", hintCount));
-                                } else {
-                                    YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Hint\":\"Реклама не просмотрена\"}}");
-                                    onRewardedHint = true;
+                            (dialogInterface, i) -> {
+                            })
+                    .setPositiveButton(getResources().getString(R.string.endHintYes), (dialogInterface, i) ->
+                            rewardedCustom.show(GuessBandsModeTwo.this, new RewardedCustom.RewardedInterface() {
+                                @Override
+                                public void onRewarded() {
+                                    showReward = true;
                                 }
-                                showReward = false;
-                            }
-                        });
 
-                    });
+                                @Override
+                                public void onDismissed() {
+                                    if (showReward) {
+                                        onRewardedHint = false;
+                                        for (int i = 0; i < ref.length; i++) {
+                                            if (i < countLetter && nameGroup.charAt(i) != ' ') {
+                                                buttons.get(ref[i]).setText(String.format("%s", nameGroup.charAt(i)));
+                                            } else {
+                                                buttons.get(ref[i]).setVisibility(View.INVISIBLE);
+                                            }
+                                        }
+                                        for (Button b : buttonsEnd) {
+                                            if (b.getText() != " ") {
+                                                b.setText("_");
+                                            }
+                                        }
+                                        hintCount--;
+                                        counterHint.setText(String.format(new Locale("ru"), "%d", hintCount));
+                                    } else {
+                                        onRewardedHint = true;
+                                    }
+                                    showReward = false;
+                                }
+                            }));
             AlertDialog alert = builder.create();
             alert.show();
         }
@@ -495,20 +479,9 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         builder.setTitle(getResources().getString(R.string.endGameCongratulate))
                 .setMessage(String.format("%s! %s", getResources().getString(R.string.score_text, scoreNow), getResources().getString(R.string.endGameNewGame)))
                 .setCancelable(false)
-                .setNegativeButton(getResources().getString(R.string.endGameNo), (dialogInterface, i) -> {
-                    YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Game over\":\"Выход из игры\"}");
-                    String jsonValue = "{\"Score\":{\"Количество очков\":\"" + scoreNow + "\"}}";
-                    YandexMetrica.reportEvent("GuessBandsModeTwo", jsonValue);
-                    scoreGlobal += scoreNow;
-                    YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Score\":\"Количество очков за сессию: " + scoreGlobal + "\"}");
-                    finish();
-                })
+                .setNegativeButton(getResources().getString(R.string.endGameNo), (dialogInterface, i) -> finish())
                 .setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
-                    YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Game over\":\"Продолжить игру\"}");
-                    String jsonValue = "{\"Game over\":{\"Количество очков\":\"" + scoreNow + "\"}}";
-                    YandexMetrica.reportEvent("GuessBandsModeTwo", jsonValue);
                     heathBarTest.setHp(3);
-                    scoreGlobal += scoreNow;
                     scoreNow = -1;
                     hintCount = 4;
                     counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
@@ -520,41 +493,35 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                     }
                     onRewarded = true;
                     onRewardedHint = true;
-
                     change();
                 });
         if (rewardedCustom.onLoaded() && onRewarded) {
             builder.setMessage(String.format("%s! %s %s", getResources().getString(R.string.score_text, scoreNow),
                             getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
-                    .setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) -> {
-                        YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Game over\":\"Игра окончена, реклама\"}}");
-                        rewardedCustom.show(GuessBandsModeTwo.this, new RewardedCustom.RewardedInterface() {
-                            @Override
-                            public void onRewarded() {
-                                showReward = true;
-                            }
-
-                            @Override
-                            public void onDismissed() {
-                                if (showReward) {
-                                    onRewarded = false;
-                                    heathBarTest.restore();
-                                    YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Game over\":\"Добавлено хп\"}}");
-                                } else {
-                                    YandexMetrica.reportEvent("Reward", "{\"GuessBandsModeTwo\":{\"Game over\":\"Реклама не просмотрена\"}}");
-                                    heathBarTest.setHp(3);
-                                    scoreGlobal += scoreNow;
-                                    scoreNow = -1;
-                                    hintCount = 4;
-                                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
-                                    onRewarded = true;
-                                    onRewardedHint = true;
-                                    change();
+                    .setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) ->
+                            rewardedCustom.show(GuessBandsModeTwo.this, new RewardedCustom.RewardedInterface() {
+                                @Override
+                                public void onRewarded() {
+                                    showReward = true;
                                 }
-                                showReward = false;
-                            }
-                        });
-                    });
+
+                                @Override
+                                public void onDismissed() {
+                                    if (showReward) {
+                                        onRewarded = false;
+                                        heathBarTest.restore();
+                                    } else {
+                                        heathBarTest.setHp(3);
+                                        scoreNow = -1;
+                                        hintCount = 4;
+                                        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+                                        onRewarded = true;
+                                        onRewardedHint = true;
+                                        change();
+                                    }
+                                    showReward = false;
+                                }
+                            }));
         }
         AlertDialog alert = builder.create();
         alert.show();
@@ -562,10 +529,6 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Back\":\"Выход без окончания игры\"}");
-        YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Back\":\"Количество очков: " + scoreNow + "\"}");
-        scoreGlobal += scoreNow;
-        YandexMetrica.reportEvent("GuessBandsModeTwo", "{\"Score\":\"Количество очков за сессию: " + scoreGlobal + "\"}");
         super.onBackPressed();
     }
 }

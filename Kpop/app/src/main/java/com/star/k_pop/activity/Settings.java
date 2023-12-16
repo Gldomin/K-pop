@@ -12,7 +12,6 @@ import com.star.k_pop.R;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.SomeMethods;
-import com.yandex.metrica.YandexMetrica;
 
 public class Settings extends AppCompatActivity {
 
@@ -69,7 +68,6 @@ public class Settings extends AppCompatActivity {
                 getResources().getString(R.string.answerYes),
                 getResources().getString(R.string.answerNo),
                 (dialogInterface, i) -> {
-                    YandexMetrica.reportEvent("Settings", "{\"Score\":{\"Сброс счета\"}}");
                     recordStorage.saveValue("userScoreGuessStar", 0);
                     recordStorage.saveValue("userScoreGuessBand", 0);
                     recordStorage.saveValue("userScoreGuessTinder", 0);
@@ -82,7 +80,6 @@ public class Settings extends AppCompatActivity {
         Button buttonBandsActive = findViewById(R.id.bandsActive);
         buttonBandsActive.setBackgroundResource(theme.getBackgroundButton());
         buttonBandsActive.setOnClickListener(view -> {
-            YandexMetrica.reportEvent("Setting - BandsActive");
             Intent image = new Intent();
             image.setClass(Settings.this, BandsActiveActivity.class);
             startActivity(image);
@@ -91,10 +88,6 @@ public class Settings extends AppCompatActivity {
     }
 
     void saveSettings() {
-        String darkMode = optionSwitch1.isChecked() ? "Темная тема" : "Светлая тема";
-        YandexMetrica.reportEvent("Settings", "{\"Theme\":{\"" + darkMode + "\"}}");
-        String soundMode = optionSwitch1.isChecked() ? "Звук включен" : "Звук выключен";
-        YandexMetrica.reportEvent("Settings", "{\"Theme\":{\"" + soundMode + "\"}}");
         Storage storage = new Storage(this, "settings");
         storage.saveValue("darkMode", optionSwitch1.isChecked());
         storage.saveValue("soundMode", optionSwitch2.isChecked());

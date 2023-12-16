@@ -60,9 +60,9 @@ public class SomeMethods {
         ImageView image = layout.findViewById(R.id.custom_toast_image);
         image.setImageResource(drawable);
 
-        TextView textView1 = layout.findViewById(R.id.custom_toast_text);
+        //TextView textView1 = layout.findViewById(R.id.custom_toast_text);
         TextView textView2 = layout.findViewById(R.id.custom_toast_text);
-        textView1.setText(graceText);
+        //textView1.setText(graceText);
         textView2.setText(achievementName);
         Toast toast = new Toast(act.getApplicationContext());
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);

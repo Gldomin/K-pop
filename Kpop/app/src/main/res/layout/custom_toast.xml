@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/custom_toast_style"
     android:orientation="vertical"
+    android:gravity="center|top"
     android:padding="8dp">
 
     <ImageView

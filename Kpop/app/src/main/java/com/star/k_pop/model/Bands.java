@@ -87,7 +87,7 @@ public class Bands {
 
     public String getFolderRandom() {
         String folder = "file:///android_asset/Groups/";
-        if (new Random().nextInt(10) > 1) {
+        if (new Random().nextInt(10) > 5) {
             folder += artists.get(new Random().nextInt(numberOfPeople)).getFolder();
         } else {
             folder += getFolder();

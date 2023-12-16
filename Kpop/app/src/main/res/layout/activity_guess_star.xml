@@ -64,13 +64,26 @@
                 android:id="@+id/guessStarAbautButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                app:srcCompat="@android:drawable/ic_menu_help" />
+
+            <ImageButton
+                android:id="@+id/podskStart"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                android:background="@android:drawable/menuitem_background"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="4dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/hint" />
 
         </RelativeLayout>
 

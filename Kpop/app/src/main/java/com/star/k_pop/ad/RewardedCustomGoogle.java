@@ -9,8 +9,6 @@ import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.OnUserEarnedRewardListener;
-import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
@@ -95,12 +93,7 @@ public class RewardedCustomGoogle extends RewardedCustom {
     public void show(Activity activity, RewardedInterface rewardGoggleInterface) {
         if (mRewardedAd != null) {
             this.rewardGoggleInterface = rewardGoggleInterface;
-            mRewardedAd.show(activity, new OnUserEarnedRewardListener() {
-                @Override
-                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
-                    rewardGoggleInterface.onRewarded();
-                }
-            });
+            mRewardedAd.show(activity, rewardItem -> rewardGoggleInterface.onRewarded());
         } else {
             Log.d(TAG, "Error load reward");
         }
