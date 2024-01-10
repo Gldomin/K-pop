@@ -49,15 +49,19 @@ public class ApplicationStart extends MultiDexApplication {
             Log.v("TAG", "noticeWatched");
             Storage tempStorage = new Storage(this, "appStatus");
             tempStorage.saveValue("noticeWatched", false);  //Если равно False - игра запущена в первый раз
+
+            tempStorage.saveValue("achGuessStarBeginner", false); //ачивка
             tempStorage.saveValue("achGuessStarNormal", false); //ачивка, если равно True - получена
             tempStorage.saveValue("achGuessStarExpert", false); //ачивка
-            tempStorage.saveValue("achGuessBandsNormal", false); //ачивка
-            tempStorage.saveValue("achGuessBandsExpert", false); //ачивка
+
+            tempStorage.saveValue("achGuessBandsModeTwoBeginner", false); //ачивка
+            tempStorage.saveValue("achGuessBandsModeTwoNormal", false); //ачивка
+            tempStorage.saveValue("achGuessBandsModeTwoExpert", false); //ачивка
+
+            tempStorage.saveValue("achSwipeTwoBandsBeginner", false); //ачивка
             tempStorage.saveValue("achSwipeTwoBandsNormal", false); //ачивка
             tempStorage.saveValue("achSwipeTwoBandsExpert", false); //ачивка
-            tempStorage.saveValue("achGuessStarReversNormal", false); //ачивка
-            tempStorage.saveValue("achGuessStarReversExpert", false); //ачивка
-            tempStorage.saveValue("achTripleAdept", false); //ачивка
+
             tempStorage.saveValue("achTripleExpert", false); //ачивка
             tempStorage.saveValue("achRoyal", false); //ачивка
             tempStorage.saveValue("gameBuyed", false);

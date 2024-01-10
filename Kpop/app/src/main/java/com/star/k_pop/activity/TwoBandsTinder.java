@@ -37,6 +37,7 @@ import com.star.k_pop.ad.InterstitialCustomGoogle;
 import com.star.k_pop.ad.InterstitialCustomYandex;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
+import com.star.k_pop.lib.SomeMethods;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
 
@@ -506,6 +507,15 @@ public class TwoBandsTinder extends AppCompatActivity {
             AlertDialog alert = alertBuild.create();
             alert.show();
         } else {
+            if (score >= 15 && score <40) { //ачивка за 15 - achDistributeByBandsBeginner. небольшой костыль используется в условаиях, т к счет в Тиндере может прыгать через 1-5 пунктов
+                SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.guess_star10, "achSwipeTwoBandsBeginner"); //ачивочка
+            }
+            if (score >= 75 && score <100) {
+                SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsNormal, R.drawable.guess_star50, "achSwipeTwoBandsNormal"); //ачивочка
+            }
+            if (score >= 225 && score <250) {
+                SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsExpert, R.drawable.guess_star150, "achSwipeTwoBandsExpert"); //ачивочка
+            }
             twoBandFlip.showNext();
             scoreText.setText(getResources().getString(R.string.endGameTextScoreNow, score));
             scoreRecordText.setText(getResources().getString(R.string.endGameTextRecordNow, scoreRecord));

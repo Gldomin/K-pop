@@ -87,18 +87,21 @@ public class Achievements extends AppCompatActivity {
             ach1.setImageResource(R.drawable.guess_star50);
         if (storage.getBoolean("achGuessStarExpert"))
             ach2.setImageResource(R.drawable.guess_star150);
+
         if (storage.getBoolean("achGuessBandsModeTwoBeginner"))
             ach3.setImageResource(R.drawable.guess_band5);
         if (storage.getBoolean("achGuessBandsModeTwoNormal"))
             ach3.setImageResource(R.drawable.guess_band25);
         if (storage.getBoolean("achGuessBandsModeTwoExpert"))
             ach4.setImageResource(R.drawable.guess_band75);
+
         if (storage.getBoolean("achSwipeTwoBandsBeginner"))
-            ach5.setImageResource(R.drawable.devide_bands5);
+            ach5.setImageResource(R.drawable.devide_bands15);
         if (storage.getBoolean("achSwipeTwoBandsNormal"))
-            ach5.setImageResource(R.drawable.devide_bands25);
+            ach5.setImageResource(R.drawable.devide_bands75);
         if (storage.getBoolean("achSwipeTwoBandsExpert"))
-            ach6.setImageResource(R.drawable.devide_bands75);
+            ach6.setImageResource(R.drawable.devide_bands225);
+
         if (storage.getBoolean("achTripleExpert"))
             ach10.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean("achRoyal"))
