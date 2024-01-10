@@ -314,11 +314,14 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             if (scoreNow % 40 == 0) {
                 hintCount += 1;
             }
+            if (scoreNow == 5) { //ачивка за 5
+                SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsBeginner, R.drawable.guess_band5, "achGuessBandsModeTwoNormal"); //ачивочка
+            }
             if (scoreNow == 25) { //ачивка за 25 - achGuessBandsNormal. Условие ачивки
-                SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsNormal, R.drawable.normalgb, "achGuessBandsModeTwoNormal"); //ачивочка
+                SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsNormal, R.drawable.guess_band25, "achGuessBandsModeTwoNormal"); //ачивочка
             }
             if (scoreNow == 75) { //ачивка за 75
-                SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsExpert, R.drawable.expertgb, "achGuessBandsModeTwoExpert"); //ачивочка
+                SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsExpert, R.drawable.guess_band75, "achGuessBandsModeTwoExpert"); //ачивочка
             }
             change();
             if (sound)

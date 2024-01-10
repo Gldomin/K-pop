@@ -25,30 +25,29 @@
     <string name="menuItemSettings">Settings</string>
     <string name="menuItemAbout">About</string>
 
+    <string name="achGuessStarBeginner">Idol neophyte</string>
     <string name="achGuessStarNormal">Idol scholar</string>
     <string name="achGuessStarExpert">Idol expert</string>
-    <string name="achGuessBandsNormal">Band scholar</string>
-    <string name="achGuessBandsExpert">Band expert</string>
-    <string name="achSwipeTwoBandsNormal">Like in Tinder!</string>
-    <string name="achSwipeTwoBandsExpert">Like in Tinder! (expert)</string>
-    <string name="achGuessStarReversNormal">Secret mode adept</string>
-    <string name="achGuessStarReversExpert">Secret mode expert</string>
-    <string name="achTripleAdept">As a piece of cake</string>
+    <string name="achGuessBandsBeginner">Guess Band neophyte</string>
+    <string name="achGuessBandsNormal">Guess Band scholar</string>
+    <string name="achGuessBandsExpert">Guess Band expert</string>
+    <string name="achDistributeByBandsBeginner">Distribute band neophyte</string>
+    <string name="achDistributeByBandsNormal">Distribute band scholar</string>
+    <string name="achDistributeByBandsExpert">Distribute band expert</string>
     <string name="achTripleExpert">K-pop Master</string>
-    <string name="achRoyal">Lord of four modes</string>
+    <string name="achSecretAch">Secret achievement</string>
 
+    <string name="achGuessStarBeginnerText">You got 50 points in Guess Star gamemode</string>
     <string name="achGuessStarNormalText">You got 50 points in Guess Star gamemode</string>
     <string name="achGuessStarExpertText">You got 150 points in Guess Star gamemode</string>
+    <string name="achGuessBandsBeginnerText">You got 25 points in Guess Band gamemode</string>
     <string name="achGuessBandsNormalText">You got 25 points in Guess Band gamemode</string>
     <string name="achGuessBandsExpertText">You got 75 points in Guess Band gamemode</string>
-    <string name="achSwipeTwoBandsNormalText">You got 5 points in Divide to bands gamemode</string>
-    <string name="achSwipeTwoBandsExpertText">You got 25 points in Divide to bands gamemode</string>
-    <string name="achGuessStarReversNormalText">You got 50 points in Find the Star gamemode</string>
-    <string name="achGuessStarReversExpertText">You got 150 points in Find the Star gamemode</string>
-    <string name="achTripleAdeptText">You have unlocked Secret gamemode</string>
-    <string name="achTripleExpertText">You are the true K-pop scholar. Thank you for game, now all ads will be disabled.</string>
-    <string name="achRoyalText">You unlock them all! Congratulations! You can receive a little bonus in settings.</string>
-
+    <string name="achDistributeByBandsBeginnerText">You got 5 points in Distribute by bands gamemode</string>
+    <string name="achDistributeByBandsNormalText">You got 25 points in Distribute by bands gamemode</string>
+    <string name="achDistributeByBandsExpertText">You got 75 points in Distribute by bands gamemode</string>
+    <string name="achTripleExpertText">You are an expert in all three modes. By unlocking this achievement, all advertising will be disabled. Only the most worthy will pass.</string>
+    <string name="achSecretAchText">What is it?</string>
 
     <string name="settings0">Settings</string>
     <string name="settings1">Hint mode</string>
@@ -108,7 +107,7 @@ Guess band name use artist on the screen. You have 3 lives and 3 hints. Each cor
 Good luck! ;)
     </string>
     <string name="twoBandsTinderGameModeAbout">
-The game mode "Divide to bands" allows you to test your knowledge of K-pop groups "\n"
+The game mode "Distribute bands" allows you to test your knowledge of K-pop groups "\n"
 You are given a set of different K-pop stars, and you need to divide them into 2 groups. To distribute the artist cards, you need to swipe them to the corresponding K-pop group on the side of the screen. "\n"
 At any time, you can view all artist cards and redistribute them. If you distribute the cards incorrectly, you will also be asked to correct the result. But with each new attempt, the potential score will get smaller. "\n"
 But I think you can figure it out. "\n"

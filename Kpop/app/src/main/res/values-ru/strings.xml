@@ -10,29 +10,29 @@
     <string name="menuItemSettings">Настройки</string>
     <string name="menuItemAbout">О программе</string>
 
+    <string name="achGuessStarBeginner">Айдол-неофит</string>
     <string name="achGuessStarNormal">Айдол-знаток</string>
     <string name="achGuessStarExpert">Айдол-эксперт</string>
+    <string name="achGuessBandsBeginner">Групповой неофит</string>
     <string name="achGuessBandsNormal">Групповой знаток</string>
     <string name="achGuessBandsExpert">Групповой эксперт</string>
-    <string name="achSwipeTwoBandsNormal">Прямо как в тиндере!</string>
-    <string name="achSwipeTwoBandsExpert">Прямо как в тиндере! (эксперт)</string>
-    <string name="achGuessStarReversNormal">Адепт секретного режима</string>
-    <string name="achGuessStarReversExpert">Эксперт секретного режима</string>
-    <string name="achTripleAdept">Легче легкого</string>
-    <string name="achTripleExpert">Мастер К-попа</string>
-    <string name="achRoyal">Повелитель четырех режимов</string>
+    <string name="achDistributeByBandsBeginner">Распределительный неофит</string>
+    <string name="achDistributeByBandsNormal">Распределительный знаток</string>
+    <string name="achDistributeByBandsExpert">Распределительный эксперт</string>
+    <string name="achTripleExpert">Повелитель К-попа</string>
+    <string name="achSecretAch">Секретное достижение</string>
 
+    <string name="achGuessStarBeginnerText">"\t"Вы набрали 10 очков в режиме Угадай Звезду</string>
     <string name="achGuessStarNormalText">"\t"Вы набрали 50 очков в режиме Угадай Звезду</string>
     <string name="achGuessStarExpertText">"\t"Вы набрали 150 очков в режиме Угадай Звезду</string>
+    <string name="achGuessBandsBeginnerText">"\t"Вы набрали 5 очков в режиме Отгадай Группу</string>
     <string name="achGuessBandsNormalText">"\t"Вы набрали 25 очков в режиме Отгадай Группу</string>
     <string name="achGuessBandsExpertText">"\t"Вы набрали 75 очков в режиме Отгадай Группу</string>
-    <string name="achSwipeTwoBandsNormalText">"\t"Вы набрали 5 очков в режиме Распредели На Две Группы</string>
-    <string name="achSwipeTwoBandsExpertText">"\t"Вы набрали 25 очков в режиме Распредели На Две Группы</string>
-    <string name="achGuessStarReversNormalText">"\t"Вы набрали 50 очков в режиме Найди Звезду</string>
-    <string name="achGuessStarReversExpertText">"\t"Вы набрали 150 очков режиме Найди Звезду</string>
-    <string name="achTripleAdeptText">"\t"Вы - Адепт трех режимов!</string>
-    <string name="achTripleExpertText">"\t"Вы истинный знаток К-попа. Вы получили экспертные достижения в трех режимах!</string>
-    <string name="achRoyalText">"\t"Вы открыли все, что только возможно! Поздравляем! У нас есть для вас скромный бонус</string>
+    <string name="achDistributeByBandsBeginnerText">"\t"Вы набрали 5 очков в режиме Распредели Участников</string>
+    <string name="achDistributeByBandsNormalText">"\t"Вы набрали 25 очков в режиме Распредели Участников</string>
+    <string name="achDistributeByBandsExpertText">"\t"Вы набрали 75 очков в режиме Распредели Участников</string>
+    <string name="achTripleExpertText">"\t"Вы стали экспертом всех трех режимов. Открыв это достижение, вся реклама будет отключена. Пройдут лишь достойнейшие.</string>
+    <string name="achSecretAchText">Что же это может быть?</string>
 
     <string name="questionReset">Удалить рекорды?</string>
     <string name="questionConfirmTitle">Подтверждение</string>

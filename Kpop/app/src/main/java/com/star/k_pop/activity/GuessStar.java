@@ -159,11 +159,14 @@ public class GuessStar extends AppCompatActivity {
                     if (scoreNow % 50 == 0) {
                         heathBarTest.restore();
                     }
+                    if (scoreNow == 10) { //ачивка за 10 - achGuessStarNormalText. Условие ачивки
+                        SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.guess_star10, "achGuessStarBeginner"); //ачивочка
+                    }
                     if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                        SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.normalgs, "achGuessStarNormal"); //ачивочка
+                        SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.guess_star50, "achGuessStarNormal"); //ачивочка
                     }
                     if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
-                        SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.expertgs, "achGuessStarExpert"); //ачивочка
+                        SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.guess_star150, "achGuessStarExpert"); //ачивочка
                     }
                     nextArtist();
 

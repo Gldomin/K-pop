@@ -81,28 +81,28 @@ public class Achievements extends AppCompatActivity {
 
         Storage storage = new Storage(this, "appStatus");
 
+        if (storage.getBoolean("achGuessStarBeginner"))
+            ach1.setImageResource(R.drawable.guess_star10);
         if (storage.getBoolean("achGuessStarNormal")) //почему-то R.drawable.achievement слишком большая
-            ach1.setImageResource(R.drawable.normalgs);
+            ach1.setImageResource(R.drawable.guess_star50);
         if (storage.getBoolean("achGuessStarExpert"))
-            ach2.setImageResource(R.drawable.expertgs);
+            ach2.setImageResource(R.drawable.guess_star150);
+        if (storage.getBoolean("achGuessBandsModeTwoBeginner"))
+            ach3.setImageResource(R.drawable.guess_band5);
         if (storage.getBoolean("achGuessBandsModeTwoNormal"))
-            ach3.setImageResource(R.drawable.normalgb);
+            ach3.setImageResource(R.drawable.guess_band25);
         if (storage.getBoolean("achGuessBandsModeTwoExpert"))
-            ach4.setImageResource(R.drawable.expertgb);
+            ach4.setImageResource(R.drawable.guess_band75);
+        if (storage.getBoolean("achSwipeTwoBandsBeginner"))
+            ach5.setImageResource(R.drawable.devide_bands5);
         if (storage.getBoolean("achSwipeTwoBandsNormal"))
-            ach5.setImageResource(R.drawable.normaldb);
+            ach5.setImageResource(R.drawable.devide_bands25);
         if (storage.getBoolean("achSwipeTwoBandsExpert"))
-            ach6.setImageResource(R.drawable.expertdb);
-        if (storage.getBoolean("achGuessStarReversNormal"))
-            ach7.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean("achGuessStarReversExpert"))
-            ach8.setImageResource(R.drawable.kpoplove);
-        if (storage.getBoolean("achTripleAdept"))
-            ach9.setImageResource(R.drawable.kpoplove);
+            ach6.setImageResource(R.drawable.devide_bands75);
         if (storage.getBoolean("achTripleExpert"))
-            ach10.setImageResource(R.drawable.royal);
+            ach10.setImageResource(R.drawable.kpoplove);
         if (storage.getBoolean("achRoyal"))
-            ach11.setImageResource(R.drawable.kpoplove);
+            ach11.setImageResource(R.drawable.adept);
 
         //SomeMethods.showToast(this, "Достижение открыто!", R.drawable.achievement);
 
