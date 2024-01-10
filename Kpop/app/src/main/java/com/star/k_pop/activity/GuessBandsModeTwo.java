@@ -52,6 +52,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private boolean sound = false; //включен ли звук
     private int pingClickID;
     private int longSwitchID;
+    private int grace;
     private int record;
     private int scoreNow = -1;
     private int count = 0;
@@ -101,6 +102,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
         pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
         longSwitchID = soundPlayer.load(R.raw.long_switch);
+        grace = soundPlayer.load(R.raw.bells);
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
         sound = storage.getBoolean("soundMode"); //настроек звука
 
@@ -314,18 +316,35 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             if (scoreNow % 40 == 0) {
                 hintCount += 1;
             }
-            if (scoreNow == 5) { //ачивка за 5
-                SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsBeginner, R.drawable.guess_band5, "achGuessBandsModeTwoNormal"); //ачивочка
+
+            boolean achievemented = false;
+            if (scoreNow+1 == 5) { //ачивка за 5
+                if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsBeginner, R.drawable.guess_band5, "achGuessBandsModeTwoBeginner")) //ачивочка
+                {
+                    achievemented = true;
+                }
             }
-            if (scoreNow == 25) { //ачивка за 25 - achGuessBandsNormal. Условие ачивки
-                SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsNormal, R.drawable.guess_band25, "achGuessBandsModeTwoNormal"); //ачивочка
+            if (scoreNow+1 == 25) { //ачивка за 25
+                if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsNormal, R.drawable.guess_band25, "achGuessBandsModeTwoNormal")) //ачивочка
+                {
+                    achievemented = true;
+                }
             }
-            if (scoreNow == 75) { //ачивка за 75
-                SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsExpert, R.drawable.guess_band75, "achGuessBandsModeTwoExpert"); //ачивочка
+            if (scoreNow+1 == 75) { //ачивка за 75
+                if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsExpert, R.drawable.guess_band75, "achGuessBandsModeTwoExpert")) //ачивочка
+                {
+                    achievemented = true;
+                }
             }
+            if (sound) {
+                if (achievemented) {
+                    soundPlayer.playSoundStream(grace);//звук правильного ответа
+                } else {
+                    soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
+                }
+            }
+
             change();
-            if (sound)
-                soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
         } else {
             if (sound)
                 soundPlayer.playSoundStream(pingClickID);//звук неправильного ответа

@@ -8,6 +8,20 @@
     android:gravity="center|top"
     android:padding="8dp">
 
+    <TextView
+        android:id="@+id/custom_toast_text_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:shadowColor="@color/text_shadow"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:text="@string/achievementUnlocked"
+        android:textColor="@color/light_font"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/custom_toast_image"
         android:layout_width="200dp"
@@ -19,7 +33,7 @@
         />
 
     <TextView
-        android:id="@+id/custom_toast_text"
+        android:id="@+id/custom_toast_text_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

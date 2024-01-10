@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.star.k_pop.R;
+import com.star.k_pop.activity.GuessStar;
 import com.star.k_pop.helper.Storage;
 
 public class SomeMethods {
@@ -29,7 +30,9 @@ public class SomeMethods {
         ImageView image = layout.findViewById(R.id.custom_toast_image);
         image.setImageResource(drawable);
 
-        TextView textView = layout.findViewById(R.id.custom_toast_text);
+        TextView textViewHeader = layout.findViewById(R.id.custom_toast_text_header);
+        textViewHeader.setText("");
+        TextView textView = layout.findViewById(R.id.custom_toast_text_body);
         textView.setText(text);
 
         Toast toast = new Toast(act.getApplicationContext());
@@ -39,15 +42,27 @@ public class SomeMethods {
         toast.show();
     }
 
-    static public void achievementGetted(Activity act, int achievementNameStringId, int drawableId, String nameOfAchievement) { //метод для выдачи ачивки. после вызова сохраняет ачивку в хранилище, после чего вызывает Toast с поздравлением и названием ачивки
+    static public boolean achievementGetted(Activity act, int achievementNameStringId, int drawableId, String nameOfAchievement) { //метод для выдачи ачивки. после вызова сохраняет ачивку в хранилище, после чего вызывает Toast с поздравлением и названием ачивки
         //achievementNameStringId это айдишка-указатель на название R.String которое хранит название ачивки
         //drawableId это картинка нужная для сообщения
         //nameOfAchievement это Строка-название по которому идет запись в Хранилище
         Storage storage = new Storage(act.getApplicationContext(), "appStatus");
-
         if (!storage.getBoolean(nameOfAchievement)) {
             SomeMethods.showAchievementToast(act, act.getResources().getString(R.string.achievementUnlocked), act.getResources().getString(achievementNameStringId), drawableId);
             storage.saveValue(nameOfAchievement, true);
+
+            autoAchieve(act, storage);
+            return true;
+        }
+        return false;
+    }
+
+    static public void autoAchieve(Activity act, Storage storage) {
+        boolean gsExpert = storage.getBoolean("achGuessStarExpert");
+        boolean gbExpert = storage.getBoolean("achGuessBandsModeTwoExpert");
+        boolean dbExpert = storage.getBoolean("achSwipeTwoBandsExpert");
+        if (gsExpert && gbExpert && dbExpert) {
+            achievementGetted(act, R.string.achTripleExpert, R.drawable.kpoplove, "achTripleExpert"); //ачивочка
         }
     }
 
@@ -60,9 +75,9 @@ public class SomeMethods {
         ImageView image = layout.findViewById(R.id.custom_toast_image);
         image.setImageResource(drawable);
 
-        //TextView textView1 = layout.findViewById(R.id.custom_toast_text);
-        TextView textView2 = layout.findViewById(R.id.custom_toast_text);
-        //textView1.setText(graceText);
+        TextView textView1 = layout.findViewById(R.id.custom_toast_text_header);
+        TextView textView2 = layout.findViewById(R.id.custom_toast_text_body);
+        textView1.setText(graceText);
         textView2.setText(achievementName);
         Toast toast = new Toast(act.getApplicationContext());
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
@@ -77,7 +92,7 @@ public class SomeMethods {
 
     public static String getStringAnswerAlertDeialog(final Activity act, String title, String question, final String first, final String second) { //метод для отображения простых окон да/нет или типа того. вариация работает со стрингами, главное быть осторожным на счет локализации
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(act,R.style.DarkAlertDialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(act, R.style.DarkAlertDialog);
         builder.setTitle(title)
                 .setMessage(question)
                 .setCancelable(false)
@@ -155,7 +170,7 @@ public class SomeMethods {
         alert.show();
     }
 
-    public static void showAlertDialog(Activity act, int style, String title, String question, String positive, String negative, DialogInterface.OnClickListener s, DialogInterface.OnClickListener d){
+    public static void showAlertDialog(Activity act, int style, String title, String question, String positive, String negative, DialogInterface.OnClickListener s, DialogInterface.OnClickListener d) {
         AlertDialog.Builder builder = new AlertDialog.Builder(act, style);
         builder.setTitle(title)
                 .setMessage(question)

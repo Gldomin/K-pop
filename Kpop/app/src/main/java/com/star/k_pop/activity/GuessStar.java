@@ -93,6 +93,7 @@ public class GuessStar extends AppCompatActivity {
 
         final int pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
         final int longSwitchID = soundPlayer.load(R.raw.long_switch);
+        final int grace = soundPlayer.load(R.raw.bells);
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
         sound = storage.getBoolean("soundMode"); //настроек звука
 
@@ -104,7 +105,7 @@ public class GuessStar extends AppCompatActivity {
         ImageButton about = findViewById(R.id.guessStarAbautButton);
 
         artists = Importer.getRandomArtists();
-        if (artists.size() == 0){
+        if (artists.size() == 0) {
             finish();
         }
 
@@ -159,20 +160,33 @@ public class GuessStar extends AppCompatActivity {
                     if (scoreNow % 50 == 0) {
                         heathBarTest.restore();
                     }
+                    boolean achievemented = false;
                     if (scoreNow == 10) { //ачивка за 10 - achGuessStarNormalText. Условие ачивки
-                        SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.guess_star10, "achGuessStarBeginner"); //ачивочка
+                        if (SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarBeginner, R.drawable.guess_star10, "achGuessStarBeginner")) //ачивочка
+                        {
+                            achievemented = true;
+                        }
                     }
                     if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                        SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.guess_star50, "achGuessStarNormal"); //ачивочка
+                        if (SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.guess_star50, "achGuessStarNormal")) //ачивочка
+                        {
+                            achievemented = true;
+                        }
                     }
                     if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
-                        SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.guess_star150, "achGuessStarExpert"); //ачивочка
+                        if (SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.guess_star150, "achGuessStarExpert")) //ачивочка
+                        {
+                            achievemented = true;
+                        }
+                    }
+                    if (sound) {
+                        if (achievemented) {
+                            soundPlayer.playSoundStream(grace);//звук правильного ответа
+                        } else {
+                            soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
+                        }
                     }
                     nextArtist();
-
-                    if (sound) {
-                        soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
-                    }
                 } else {
                     view.setBackgroundResource(theme.getBackgroundButtonEnable());
                     view.setClickable(false);
@@ -203,22 +217,22 @@ public class GuessStar extends AppCompatActivity {
                 if (hintCount > 1) {
                     hintCount--;
                     int number = 0;
-                    for (int i = 0; i<4; i++){
-                        if (buttons[i].getText().equals(artists.get(count).getName())){
+                    for (int i = 0; i < 4; i++) {
+                        if (buttons[i].getText().equals(artists.get(count).getName())) {
                             number = i;
                         }
                     }
-                    if (new Random().nextBoolean()){
-                        for (int i =0; i<2; i++){
-                            if (++number > 3){
+                    if (new Random().nextBoolean()) {
+                        for (int i = 0; i < 2; i++) {
+                            if (++number > 3) {
                                 number = 0;
                             }
                             buttons[number].setBackgroundResource(theme.getBackgroundButtonEnable());
                             buttons[number].setClickable(false);
                         }
-                    }else{
-                        for (int i =0; i<2; i++){
-                            if (--number < 0){
+                    } else {
+                        for (int i = 0; i < 2; i++) {
+                            if (--number < 0) {
                                 number = 3;
                             }
                             buttons[number].setBackgroundResource(theme.getBackgroundButtonEnable());
@@ -268,22 +282,22 @@ public class GuessStar extends AppCompatActivity {
                                 public void onDismissed() {
                                     if (showReward) {
                                         int number = 0;
-                                        for (int i = 0; i<4; i++){
-                                            if (buttons[i].getText().equals(artists.get(count).getName())){
+                                        for (int i = 0; i < 4; i++) {
+                                            if (buttons[i].getText().equals(artists.get(count).getName())) {
                                                 number = i;
                                             }
                                         }
-                                        if (new Random().nextBoolean()){
-                                            for (int i =0; i<2; i++){
-                                                if (++number > 3){
+                                        if (new Random().nextBoolean()) {
+                                            for (int i = 0; i < 2; i++) {
+                                                if (++number > 3) {
                                                     number = 0;
                                                 }
                                                 buttons[number].setBackgroundResource(theme.getBackgroundButtonEnable());
                                                 buttons[number].setClickable(false);
                                             }
-                                        }else{
-                                            for (int i =0; i<2; i++){
-                                                if (--number < 0){
+                                        } else {
+                                            for (int i = 0; i < 2; i++) {
+                                                if (--number < 0) {
                                                     number = 3;
                                                 }
                                                 buttons[number].setBackgroundResource(theme.getBackgroundButtonEnable());
@@ -383,10 +397,10 @@ public class GuessStar extends AppCompatActivity {
                         artists = Importer.getRandomArtists();
                         count = 0;
                     }
-                    if (countAd<=0 && onRewarded){
+                    if (countAd <= 0 && onRewarded) {
                         countAd = 4;
                         mInterstitialAd.show();
-                    }else{
+                    } else {
                         countAd--;
                     }
                     onRewarded = true;

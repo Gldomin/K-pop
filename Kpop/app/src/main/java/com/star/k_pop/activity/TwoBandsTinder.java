@@ -35,9 +35,11 @@ import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.ad.InterstitialCustom;
 import com.star.k_pop.ad.InterstitialCustomGoogle;
 import com.star.k_pop.ad.InterstitialCustomYandex;
+import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
 import com.star.k_pop.lib.SomeMethods;
+import com.star.k_pop.lib.SoundPlayer;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
 
@@ -114,6 +116,11 @@ public class TwoBandsTinder extends AppCompatActivity {
     private int scoreRecord = 0;
     //----------------------------------------------------------------------------------------------
 
+    SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
+    int pingClickID; //id загруженного потока
+    int longSwitchID;
+    int grace;
+    private boolean sound = false; //включен ли звук
     private static final String IMAGEVIEW_TAG = "icon bitmap";
     private TextView scoreText;
     private TextView scoreRecordText;
@@ -130,6 +137,12 @@ public class TwoBandsTinder extends AppCompatActivity {
         theme.setThemeSecond();
 
         super.onCreate(savedInstanceState);
+
+        pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
+        longSwitchID = soundPlayer.load(R.raw.long_switch);
+        grace = soundPlayer.load(R.raw.bells);
+        Storage storage = new Storage(this, "settings"); //хранилище для извлечения
+        sound = storage.getBoolean("soundMode"); //настроек звука
 
         bands = Importer.getRandomBandsSex();
         if (bands.size() < 2) {
@@ -507,15 +520,35 @@ public class TwoBandsTinder extends AppCompatActivity {
             AlertDialog alert = alertBuild.create();
             alert.show();
         } else {
-            if (score >= 15 && score <40) { //ачивка за 15 - achDistributeByBandsBeginner. небольшой костыль используется в условаиях, т к счет в Тиндере может прыгать через 1-5 пунктов
-                SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.guess_star10, "achSwipeTwoBandsBeginner"); //ачивочка
+
+            boolean achievemented = false;
+            if (score >= 15) { //ачивка за 15 - achGuessStarNormalText. Условие ачивки
+                if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.devide_bands15, "achSwipeTwoBandsBeginner")) //ачивочка
+                {
+                    achievemented = true;
+                }
             }
-            if (score >= 75 && score <100) {
-                SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsNormal, R.drawable.guess_star50, "achSwipeTwoBandsNormal"); //ачивочка
+            if (score >= 75) { //ачивка за 75 - achGuessStarNormalText. Условие ачивки
+                if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsNormal, R.drawable.devide_bands75, "achSwipeTwoBandsNormal")) //ачивочка
+                {
+                    achievemented = true;
+                }
             }
-            if (score >= 225 && score <250) {
-                SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsExpert, R.drawable.guess_star150, "achSwipeTwoBandsExpert"); //ачивочка
+            if (score >= 225) { //ачивка за 225 - achGuessStarNormalText. Условие ачивки
+                if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsExpert, R.drawable.devide_bands225, "achSwipeTwoBandsExpert")) //ачивочка
+                {
+                    achievemented = true;
+                }
             }
+
+            if (sound) {
+                if (achievemented) {
+                    soundPlayer.playSoundStream(grace);//звук правильного ответа
+                } else {
+                    soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
+                }
+            }
+
             twoBandFlip.showNext();
             scoreText.setText(getResources().getString(R.string.endGameTextScoreNow, score));
             scoreRecordText.setText(getResources().getString(R.string.endGameTextRecordNow, scoreRecord));

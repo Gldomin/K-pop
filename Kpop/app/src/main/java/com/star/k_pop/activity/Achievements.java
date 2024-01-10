@@ -84,23 +84,23 @@ public class Achievements extends AppCompatActivity {
         if (storage.getBoolean("achGuessStarBeginner"))
             ach1.setImageResource(R.drawable.guess_star10);
         if (storage.getBoolean("achGuessStarNormal")) //почему-то R.drawable.achievement слишком большая
-            ach1.setImageResource(R.drawable.guess_star50);
+            ach2.setImageResource(R.drawable.guess_star50);
         if (storage.getBoolean("achGuessStarExpert"))
-            ach2.setImageResource(R.drawable.guess_star150);
+            ach3.setImageResource(R.drawable.guess_star150);
 
         if (storage.getBoolean("achGuessBandsModeTwoBeginner"))
-            ach3.setImageResource(R.drawable.guess_band5);
+            ach4.setImageResource(R.drawable.guess_band5);
         if (storage.getBoolean("achGuessBandsModeTwoNormal"))
-            ach3.setImageResource(R.drawable.guess_band25);
+            ach5.setImageResource(R.drawable.guess_band25);
         if (storage.getBoolean("achGuessBandsModeTwoExpert"))
-            ach4.setImageResource(R.drawable.guess_band75);
+            ach6.setImageResource(R.drawable.guess_band75);
 
         if (storage.getBoolean("achSwipeTwoBandsBeginner"))
-            ach5.setImageResource(R.drawable.devide_bands15);
+            ach7.setImageResource(R.drawable.devide_bands15);
         if (storage.getBoolean("achSwipeTwoBandsNormal"))
-            ach5.setImageResource(R.drawable.devide_bands75);
+            ach8.setImageResource(R.drawable.devide_bands75);
         if (storage.getBoolean("achSwipeTwoBandsExpert"))
-            ach6.setImageResource(R.drawable.devide_bands225);
+            ach9.setImageResource(R.drawable.devide_bands225);
 
         if (storage.getBoolean("achTripleExpert"))
             ach10.setImageResource(R.drawable.kpoplove);
