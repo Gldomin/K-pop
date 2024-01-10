@@ -15,7 +15,10 @@
     <color name = "standartYellowButtonColor">#FFFBA1</color>
     <color name = "lighterYellowButtonColor">#FFFDD2</color>
     <color name = "contrastYellowButtonColor">#FFF856</color>
+    <color name = "contrastBlueButtonColor">#2BA5FF</color>
     <color name = "lightBlueBackgroundColor">#B6E0FF</color>
+    <color name = "middleBlueBackgroundColor">#A5CAE6</color>
+
     <!--  темная тема  -->
     <color name = "standartPurpleButtonColor">#FD8AFF</color>
     <color name = "lighterPurpleButtonColor">#FEC3FF</color>

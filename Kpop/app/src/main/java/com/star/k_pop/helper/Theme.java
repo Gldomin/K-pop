@@ -74,7 +74,7 @@ public class Theme {
 
     }
 
-    public int getBackgroundButtonEnable() {
+    public int getBackgroundButtonDisable() {
         if (darkMode) {
             return R.drawable.stylebutton_purple;
         } else {

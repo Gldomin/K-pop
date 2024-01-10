@@ -188,7 +188,7 @@ public class GuessStar extends AppCompatActivity {
                     }
                     nextArtist();
                 } else {
-                    view.setBackgroundResource(theme.getBackgroundButtonEnable());
+                    view.setBackgroundResource(theme.getBackgroundButtonDisable());
                     view.setClickable(false);
                     heathBarTest.blow(); //снижение хп
                     if (heathBarTest.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
@@ -227,7 +227,7 @@ public class GuessStar extends AppCompatActivity {
                             if (++number > 3) {
                                 number = 0;
                             }
-                            buttons[number].setBackgroundResource(theme.getBackgroundButtonEnable());
+                            buttons[number].setBackgroundResource(theme.getBackgroundButtonDisable());
                             buttons[number].setClickable(false);
                         }
                     } else {
@@ -235,7 +235,7 @@ public class GuessStar extends AppCompatActivity {
                             if (--number < 0) {
                                 number = 3;
                             }
-                            buttons[number].setBackgroundResource(theme.getBackgroundButtonEnable());
+                            buttons[number].setBackgroundResource(theme.getBackgroundButtonDisable());
                             buttons[number].setClickable(false);
                         }
                     }
@@ -292,7 +292,7 @@ public class GuessStar extends AppCompatActivity {
                                                 if (++number > 3) {
                                                     number = 0;
                                                 }
-                                                buttons[number].setBackgroundResource(theme.getBackgroundButtonEnable());
+                                                buttons[number].setBackgroundResource(theme.getBackgroundButtonDisable());
                                                 buttons[number].setClickable(false);
                                             }
                                         } else {
@@ -300,7 +300,7 @@ public class GuessStar extends AppCompatActivity {
                                                 if (--number < 0) {
                                                     number = 3;
                                                 }
-                                                buttons[number].setBackgroundResource(theme.getBackgroundButtonEnable());
+                                                buttons[number].setBackgroundResource(theme.getBackgroundButtonDisable());
                                                 buttons[number].setClickable(false);
                                             }
                                         }

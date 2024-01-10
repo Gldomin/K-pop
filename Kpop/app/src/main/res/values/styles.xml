@@ -138,7 +138,7 @@
 
     <style name="StandartAlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
         <item name="android:windowBackground">@color/standartYellowButtonColor</item>            <!-- Цвет фона -->
-        <item name="android:textColor">@color/lightBlueBackgroundColor</item>                         <!-- Цвет текста кнопок и заголовка -->
+        <item name="android:textColor">@color/contrastBlueButtonColor</item>                         <!-- Цвет текста кнопок и заголовка -->
         <item name="android:textColorPrimary">@color/blackColor</item>           <!-- Цвет текста обращения -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
