@@ -438,9 +438,9 @@ public class TwoBandsTinder extends AppCompatActivity {
     }
 
     public void ttClickCheck(View view) {
-        if (isViewMissTake){
+        if (isViewMissTake) {
             nextArtist();
-        }else{
+        } else {
             if (countGroupOne == countGroupMaxOne && countGroupTwo == countGroupMaxTwo) {
                 losescreen();
             } else {
@@ -491,7 +491,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             alertBuild.setMessage(getResources().getString(R.string.tinderLoseScreenWinMessage, countCorrect));
         } else {
             alertBuild.setMessage(getResources().getString(R.string.tinderLoseScreenLoseMessage, countCorrect, ansverMap.size() / 2));
-            alertBuild.setNeutralButton(getResources().getString(R.string.tinderMissTakeView),(dialogInterface, i) -> viewMissTake());
+            alertBuild.setNeutralButton(getResources().getString(R.string.tinderMissTakeView), (dialogInterface, i) -> viewMissTake());
         }
         if (misstake > 0) {
             heathBarTest.blow();
@@ -502,7 +502,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         alert.show();
     }
 
-    private void viewMissTake(){
+    private void viewMissTake() {
         allActGuessSolvedRightLay.removeAllViews();
         allActGuessSolvedLeftLay.removeAllViews();
         AllActLayoutUnsLvLay.removeAllViews();
@@ -516,46 +516,42 @@ public class TwoBandsTinder extends AppCompatActivity {
             RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
             layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-            layoutParamsText.setMargins(0,0,0,15);
-            //textView.setLayoutParams(layoutParamsText);
-
-            ImageView leftPict = new ImageView(this);
-            ImageView rightPict = new ImageView(this);
-            //Параметры отображения этих типов, задаются в шаблонах Set устанавливает их
-            leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-            rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
-
-            leftPict.setScaleType(ImageView.ScaleType.MATRIX);
-            rightPict.setScaleType(ImageView.ScaleType.MATRIX);
-
-            relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+            layoutParamsText.setMargins(0, 0, 0, 15);
             textView.setText(String.format(Locale.getDefault(), "%s (%s)", ansver.getKey().getName(), ansver.getKey().getGroup()));
             textView.setTextSize(15);
-            textView.setShadowLayer(4,2,2, Color.BLACK);
+            textView.setShadowLayer(4, 2, 2, Color.BLACK);
             textView.setTextColor(Color.WHITE);
 
+            relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            layoutParams.setMargins(30,10,30,10);
+            layoutParams.setMargins(30, 10, 30, 10);
 
             // Проверки в какую колонку они определяются
             if (ansver.getValue().equals(first_band.getName())) {
-                if (ansver.getKey().checkGroup(first_band.getName())){
+                if (ansver.getKey().checkGroup(first_band.getName())) {
                     background.setBackgroundResource(theme.getColorMissTakeCurrent());
-                }else{
+                } else {
                     background.setBackgroundResource(theme.getColorMissTakeError());
                 }
                 relativeLayout.addView(background, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+                ImageView leftPict = new ImageView(this);
+                leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+                leftPict.setScaleType(ImageView.ScaleType.MATRIX);
                 relativeLayout.addView(leftPict, layoutParams);
                 setupImage(ansver.getKey().getFolderNotRandom(), leftPict);
                 allActGuessSolvedLeftLay.addView(relativeLayout);
             }
             if (ansver.getValue().equals(second_band.getName())) {
-                if (ansver.getKey().checkGroup(second_band.getName())){
+                if (ansver.getKey().checkGroup(second_band.getName())) {
                     background.setBackgroundResource(theme.getColorMissTakeCurrent());
-                }else{
+                } else {
                     background.setBackgroundResource(theme.getColorMissTakeError());
                 }
                 relativeLayout.addView(background, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+                ImageView rightPict = new ImageView(this);
+                rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
+                rightPict.setScaleType(ImageView.ScaleType.MATRIX);
                 relativeLayout.addView(rightPict, layoutParams);
                 setupImage(ansver.getKey().getFolderNotRandom(), rightPict);
                 allActGuessSolvedRightLay.addView(relativeLayout);
@@ -658,28 +654,43 @@ public class TwoBandsTinder extends AppCompatActivity {
         AllActLayoutUnsLvLay.removeAllViews();
         // Отображение всех отгаданых типов
         for (Map.Entry<Artist, String> ansver : ansverMap.entrySet()) {
-            ImageView leftPict = new ImageView(this);
-            leftPict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()), true, leftPict));
-            ImageView rightPict = new ImageView(this);
-            rightPict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()), false, rightPict));
-            //Параметры отображения этих типов, задаются в шаблонах Set устанавливает их
-            leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-            rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
-            //Чтобы нормально размеры отображались указывает ебучий зум (Надо отстандартить фотки)
-            leftPict.setScaleType(ImageView.ScaleType.MATRIX);
-            rightPict.setScaleType(ImageView.ScaleType.MATRIX);
+            RelativeLayout relativeLayout = new RelativeLayout(this);
 
+            TextView textView = new TextView(this);
+            RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+            layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+            layoutParamsText.setMargins(0, 0, 0, 15);
+            textView.setText(String.format(Locale.getDefault(), "%s", ansver.getKey().getName()));
+            textView.setTextSize(15);
+            textView.setShadowLayer(4, 2, 2, Color.BLACK);
+            textView.setTextColor(Color.WHITE);
+
+            relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+            layoutParams.setMargins(5, 5, 5, 5);
+            //textView.setLayoutParams(layoutParamsText);
             // Проверки в какую колонку они определяются
             if (ansver.getValue().equals(first_band.getName())) {
+                ImageView leftPict = new ImageView(this);
+                relativeLayout.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()), true, relativeLayout));
+                leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+                leftPict.setScaleType(ImageView.ScaleType.MATRIX);
+                relativeLayout.addView(leftPict, layoutParams);
                 setupImage(ansver.getKey().getFolderNotRandom(), leftPict);
-                //LeftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-                allActGuessSolvedLeftLay.addView(leftPict);
+                allActGuessSolvedLeftLay.addView(relativeLayout);
             }
             if (ansver.getValue().equals(second_band.getName())) {
+                ImageView rightPict = new ImageView(this);
+                relativeLayout.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()), false, relativeLayout));
+                rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
+                rightPict.setScaleType(ImageView.ScaleType.MATRIX);
+                relativeLayout.addView(rightPict, layoutParams);
                 setupImage(ansver.getKey().getFolderNotRandom(), rightPict);
-                //RightPict.setLayoutParams();
-                allActGuessSolvedRightLay.addView(rightPict);
+                allActGuessSolvedRightLay.addView(relativeLayout);
             }
+            relativeLayout.addView(textView, layoutParamsText);
         }
         //Не отгаданные типы, см шаблон
         for (final Artist others : artists_turn) {
@@ -761,12 +772,32 @@ public class TwoBandsTinder extends AppCompatActivity {
                         AllActLayoutUnsLvLay.removeView(mainCard);
                         mainCard.removeAllViews();
                         cardLay.removeAllViews();
+
+                        RelativeLayout layout = new RelativeLayout(TwoBandsTinder.this);
+                        TextView textView = new TextView(this);
+                        RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+                        layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+                        layoutParamsText.setMargins(0, 0, 0, 15);
+                        textView.setText(String.format(Locale.getDefault(), "%s", others.getName()));
+                        textView.setTextSize(15);
+                        textView.setShadowLayer(4, 2, 2, Color.BLACK);
+                        textView.setTextColor(Color.WHITE);
+
+                        layout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+
+                        RelativeLayout.LayoutParams layoutParamsRelative = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+                        layoutParamsRelative.setMargins(5, 5, 5, 5);
+
                         ImageView pict = new ImageView(TwoBandsTinder.this);
+                        layout.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others), true, layout));
                         pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
                         pict.setScaleType(ImageView.ScaleType.MATRIX);
-                        pict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others), true, pict));
+
+                        layout.addView(pict, layoutParamsRelative);
                         setupImage(others.getFolderNotRandom(), pict);
-                        allActGuessSolvedLeftLay.addView(pict);
+                        allActGuessSolvedLeftLay.addView(layout);
+                        layout.addView(textView, layoutParamsText);
                     }
                 });
                 rightButton.setOnClickListener(v -> {
@@ -778,12 +809,32 @@ public class TwoBandsTinder extends AppCompatActivity {
                         AllActLayoutUnsLvLay.removeView(mainCard);
                         mainCard.removeAllViews();
                         cardLay.removeAllViews();
+
+                        RelativeLayout layout = new RelativeLayout(TwoBandsTinder.this);
+                        TextView textView = new TextView(this);
+                        RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+                        layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+                        layoutParamsText.setMargins(0, 0, 0, 15);
+                        textView.setText(String.format(Locale.getDefault(), "%s", others.getName()));
+                        textView.setTextSize(15);
+                        textView.setShadowLayer(4, 2, 2, Color.BLACK);
+                        textView.setTextColor(Color.WHITE);
+
+                        layout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+
+                        RelativeLayout.LayoutParams layoutParamsRelative = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+                        layoutParamsRelative.setMargins(5, 5, 5, 5);
+
                         ImageView pict = new ImageView(TwoBandsTinder.this);
+                        layout.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others), false, layout));
                         pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
                         pict.setScaleType(ImageView.ScaleType.MATRIX);
-                        pict.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(others), false, pict));
+
+                        layout.addView(pict, layoutParamsRelative);
                         setupImage(others.getFolderNotRandom(), pict);
-                        allActGuessSolvedRightLay.addView(pict);
+                        allActGuessSolvedRightLay.addView(layout);
+                        layout.addView(textView, layoutParamsText);
                     }
                 });
             }
@@ -802,39 +853,49 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         int count;
         boolean isLeft;
-        ImageView imageView;
+        RelativeLayout relativeLayout;
 
-        public TouchSwitchImage(int count, boolean isLeft, ImageView imageView) {
+        public TouchSwitchImage(int count, boolean isLeft, RelativeLayout relativeLayout) {
             this.count = count;
             this.isLeft = isLeft;
-            this.imageView = imageView;
+            this.relativeLayout = relativeLayout;
         }
 
         @Override
         public void onClick(View v) {
+            RelativeLayout layout = new RelativeLayout(TwoBandsTinder.this);
+            TextView textView = new TextView(TwoBandsTinder.this);
+            RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+            layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+            layoutParamsText.setMargins(0, 0, 0, 15);
+            textView.setText(String.format(Locale.getDefault(), "%s", artists_turn.get(count).getName()));
+            textView.setTextSize(15);
+            textView.setShadowLayer(4, 2, 2, Color.BLACK);
+            textView.setTextColor(Color.WHITE);
+            layout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+            RelativeLayout.LayoutParams layoutParamsRelative = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+            layoutParamsRelative.setMargins(5, 5, 5, 5);
+            ImageView pict = new ImageView(TwoBandsTinder.this);
+            pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+            pict.setScaleType(ImageView.ScaleType.MATRIX);
+            setupImage(artists_turn.get(count).getFolderNotRandom(), pict);
+            layout.addView(pict, layoutParamsRelative);
+            layout.addView(textView, layoutParamsText);
             if (isLeft) {
-                ImageView pict = new ImageView(TwoBandsTinder.this);
-                pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-                pict.setScaleType(ImageView.ScaleType.MATRIX);
-                pict.setOnClickListener(new TouchSwitchImage(count, false, pict));
-                setupImage(artists_turn.get(count).getFolderNotRandom(), pict);
-                allActGuessSolvedLeftLay.removeView(imageView);
-                imageView = null;
+                layout.setOnClickListener(new TouchSwitchImage(count, false, layout));
+                allActGuessSolvedLeftLay.removeView(relativeLayout);
                 ansverMap.put(artists_turn.get(count), second_band.getName());
-                allActGuessSolvedRightLay.addView(pict);
+                relativeLayout = null;
+                allActGuessSolvedRightLay.addView(layout);
                 countGroupTextSecondTwo.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupTwo, countGroupMaxTwo));
                 countGroupTextFirstTwo.setText(String.format(Locale.getDefault(), "%d/%d", --countGroupOne, countGroupMaxOne));
-
             } else {
-                ImageView pict = new ImageView(TwoBandsTinder.this);
-                pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-                pict.setScaleType(ImageView.ScaleType.MATRIX);
-                pict.setOnClickListener(new TouchSwitchImage(count, true, pict));
-                setupImage(artists_turn.get(count).getFolderNotRandom(), pict);
-                allActGuessSolvedRightLay.removeView(imageView);
+                layout.setOnClickListener(new TouchSwitchImage(count, true, layout));
+                allActGuessSolvedRightLay.removeView(relativeLayout);
                 ansverMap.put(artists_turn.get(count), first_band.getName());
-                imageView = null;
-                allActGuessSolvedLeftLay.addView(pict);
+                relativeLayout = null;
+                allActGuessSolvedLeftLay.addView(layout);
                 countGroupTextSecondTwo.setText(String.format(Locale.getDefault(), "%d/%d", --countGroupTwo, countGroupMaxTwo));
                 countGroupTextFirstTwo.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupOne, countGroupMaxOne));
             }
