@@ -8,7 +8,6 @@ import android.content.res.Resources;
 import com.star.k_pop.R;
 import com.star.k_pop.model.Artist;
 import com.star.k_pop.model.Bands;
-import com.yandex.metrica.YandexMetrica;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -19,6 +18,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+
+import io.appmetrica.analytics.AppMetrica;
 
 /*
 класс является посредиком между Assets и основным модулем и достает нам всех артистов и группы. класс может перемешать запрашиваемый массив артистов/группы
@@ -124,7 +125,7 @@ public class Importer {
             }
             LoadBandsActive(context);
         } catch (XmlPullParserException | IOException e) {
-            YandexMetrica.reportEvent("Importer error " + countLoading + " " + e.getMessage() + " ");
+            AppMetrica.reportEvent("Importer error " + countLoading + " " + e.getMessage() + " ");
             e.printStackTrace();
             countLoading++;
             if (countLoading < 5) {

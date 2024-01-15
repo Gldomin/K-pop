@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -20,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -33,7 +35,6 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.ad.InterstitialCustom;
-import com.star.k_pop.ad.InterstitialCustomGoogle;
 import com.star.k_pop.ad.InterstitialCustomYandex;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
@@ -114,6 +115,8 @@ public class TwoBandsTinder extends AppCompatActivity {
     int scoreHealth = 0;
     private int score = 0;
     private int scoreRecord = 0;
+
+    private boolean isViewMissTake = false;
     //----------------------------------------------------------------------------------------------
 
     SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
@@ -149,11 +152,8 @@ public class TwoBandsTinder extends AppCompatActivity {
             finish();
         }
 
-        if (Locale.getDefault().getLanguage().equals("ru")) {
-            mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
-        } else {
-            mInterstitialAd = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
-        }
+        mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
+
         setContentView(R.layout.activity_two_bands_temp);
 
         Button confirmButton = findViewById(R.id.ttConfirmButton);
@@ -386,7 +386,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     public void setupImage(String pathtoFolder, ImageView img) {
         Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + pathtoFolder))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .transition(withCrossFade())
+
                 .into(img);
     }
 
@@ -438,13 +438,15 @@ public class TwoBandsTinder extends AppCompatActivity {
     }
 
     public void ttClickCheck(View view) {
-        //не доделан кнопка финальная, на втором экране
-        if (countGroupOne == countGroupMaxOne && countGroupTwo == countGroupMaxTwo) {
-            losescreen();
-        } else {
-            errorScreen();
+        if (isViewMissTake){
+            nextArtist();
+        }else{
+            if (countGroupOne == countGroupMaxOne && countGroupTwo == countGroupMaxTwo) {
+                losescreen();
+            } else {
+                errorScreen();
+            }
         }
-
     }
 
     public void resultsSequence() {
@@ -489,6 +491,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             alertBuild.setMessage(getResources().getString(R.string.tinderLoseScreenWinMessage, countCorrect));
         } else {
             alertBuild.setMessage(getResources().getString(R.string.tinderLoseScreenLoseMessage, countCorrect, ansverMap.size() / 2));
+            alertBuild.setNeutralButton(getResources().getString(R.string.tinderMissTakeView),(dialogInterface, i) -> viewMissTake());
         }
         if (misstake > 0) {
             heathBarTest.blow();
@@ -499,7 +502,70 @@ public class TwoBandsTinder extends AppCompatActivity {
         alert.show();
     }
 
+    private void viewMissTake(){
+        allActGuessSolvedRightLay.removeAllViews();
+        allActGuessSolvedLeftLay.removeAllViews();
+        AllActLayoutUnsLvLay.removeAllViews();
+        isViewMissTake = true;
+        for (Map.Entry<Artist, String> ansver : ansverMap.entrySet()) {
+            RelativeLayout relativeLayout = new RelativeLayout(this);
+
+            ImageView background = new ImageView(this);
+
+            TextView textView = new TextView(this);
+            RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+            layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+            layoutParamsText.setMargins(0,0,0,15);
+            //textView.setLayoutParams(layoutParamsText);
+
+            ImageView leftPict = new ImageView(this);
+            ImageView rightPict = new ImageView(this);
+            //Параметры отображения этих типов, задаются в шаблонах Set устанавливает их
+            leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+            rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
+
+            leftPict.setScaleType(ImageView.ScaleType.MATRIX);
+            rightPict.setScaleType(ImageView.ScaleType.MATRIX);
+
+            relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+            textView.setText(String.format(Locale.getDefault(), "%s (%s)", ansver.getKey().getName(), ansver.getKey().getGroup()));
+            textView.setTextSize(15);
+            textView.setShadowLayer(4,2,2, Color.BLACK);
+            textView.setTextColor(Color.WHITE);
+
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+            layoutParams.setMargins(30,10,30,10);
+
+            // Проверки в какую колонку они определяются
+            if (ansver.getValue().equals(first_band.getName())) {
+                if (ansver.getKey().checkGroup(first_band.getName())){
+                    background.setBackgroundResource(theme.getColorMissTakeCurrent());
+                }else{
+                    background.setBackgroundResource(theme.getColorMissTakeError());
+                }
+                relativeLayout.addView(background, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+                relativeLayout.addView(leftPict, layoutParams);
+                setupImage(ansver.getKey().getFolderNotRandom(), leftPict);
+                allActGuessSolvedLeftLay.addView(relativeLayout);
+            }
+            if (ansver.getValue().equals(second_band.getName())) {
+                if (ansver.getKey().checkGroup(second_band.getName())){
+                    background.setBackgroundResource(theme.getColorMissTakeCurrent());
+                }else{
+                    background.setBackgroundResource(theme.getColorMissTakeError());
+                }
+                relativeLayout.addView(background, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+                relativeLayout.addView(rightPict, layoutParams);
+                setupImage(ansver.getKey().getFolderNotRandom(), rightPict);
+                allActGuessSolvedRightLay.addView(relativeLayout);
+            }
+            relativeLayout.addView(textView, layoutParamsText);
+        }
+    }
+
     private void nextArtist() {
+        isViewMissTake = false;
         if (score / 25 > scoreHealth) {
             scoreHealth = score / 25;
             heathBarTest.restore();
@@ -565,7 +631,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //кнопка возврата
-        if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
+        if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout)) && !isViewMissTake) {
             if (pictnumb < ansverMap.size()) {
                 twoBandFlip.showNext();
 

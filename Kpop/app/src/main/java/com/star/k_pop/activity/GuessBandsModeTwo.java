@@ -24,10 +24,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.ad.InterstitialCustom;
-import com.star.k_pop.ad.InterstitialCustomGoogle;
 import com.star.k_pop.ad.InterstitialCustomYandex;
 import com.star.k_pop.ad.RewardedCustom;
-import com.star.k_pop.ad.RewardedCustomGoogle;
 import com.star.k_pop.ad.RewardedCustomYandex;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
@@ -111,13 +109,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             finish();
         }
 
-        if (Locale.getDefault().getLanguage().equals("ru")) {
-            rewardedCustom = new RewardedCustomYandex(this);
-            mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
-        } else {
-            rewardedCustom = new RewardedCustomGoogle(this, R.string.admob_id_reward_bands);
-            mInterstitialAd = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
-        }
+
+        rewardedCustom = new RewardedCustomYandex(this, getResources().getString(R.string.yandex_id_reward)) ;
+        mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
+
 
         groupPhoto = findViewById(R.id.groupPhoto);
         ImageButton hintButton = findViewById(R.id.podsk);
@@ -318,19 +313,19 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             }
 
             boolean achievemented = false;
-            if (scoreNow+1 == 5) { //ачивка за 5
+            if (scoreNow + 1 == 5) { //ачивка за 5
                 if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsBeginner, R.drawable.guess_band5, "achGuessBandsModeTwoBeginner")) //ачивочка
                 {
                     achievemented = true;
                 }
             }
-            if (scoreNow+1 == 25) { //ачивка за 25
+            if (scoreNow + 1 == 25) { //ачивка за 25
                 if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsNormal, R.drawable.guess_band25, "achGuessBandsModeTwoNormal")) //ачивочка
                 {
                     achievemented = true;
                 }
             }
-            if (scoreNow+1 == 75) { //ачивка за 75
+            if (scoreNow + 1 == 75) { //ачивка за 75
                 if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsExpert, R.drawable.guess_band75, "achGuessBandsModeTwoExpert")) //ачивочка
                 {
                     achievemented = true;

@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.star.k_pop.R;
-import com.star.k_pop.activity.GuessStar;
 import com.star.k_pop.helper.Storage;
 
 public class SomeMethods {

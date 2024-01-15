@@ -17,13 +17,14 @@ import com.yandex.mobile.ads.rewarded.RewardedAdLoader;
 
 public class RewardedCustomYandex extends RewardedCustom{
 
-    private static final String AdUnitId = "R-M-1594557-2";
+    private final String AdUnitId;
     private RewardedInterface yandexInterface;
     private RewardedAd mRewardedAd = null;
     @Nullable
     private final RewardedAdLoader mRewardedAdLoader;
 
-    public RewardedCustomYandex(Activity context){
+    public RewardedCustomYandex(Activity context, String AdUnitId){
+        this.AdUnitId = AdUnitId;
         mRewardedAdLoader = new RewardedAdLoader(context);
         mRewardedAdLoader.setAdLoadListener(new RewardedAdLoadListener() {
             @Override

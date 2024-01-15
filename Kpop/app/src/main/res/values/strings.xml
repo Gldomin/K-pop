@@ -143,6 +143,7 @@ Distribute them all! ツ
     <string name="tinderLoseScreenWinMessage">"You know both bands perfectly! Congratulations! The number of points received: %d!"</string>
     <string name="tinderLoseScreenLoseMessage">"Not bad! You scored %d out of %d points! Unfortunately, you misidentified some of the contestants!"</string>
     <string name="tinderContinue">Continue</string>
+    <string name="tinderMissTakeView">View misidentified</string>
     <string name="tinderLoseScreenExit">Exit</string>
     <string name="tinderRedistribute">Redistribute</string>
     <string name="tinderOr">or</string>

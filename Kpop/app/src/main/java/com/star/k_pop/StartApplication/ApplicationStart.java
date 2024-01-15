@@ -8,8 +8,9 @@ import androidx.multidex.MultiDexApplication;
 
 import com.star.k_pop.R;
 import com.star.k_pop.helper.Storage;
-import com.yandex.metrica.YandexMetrica;
-import com.yandex.metrica.YandexMetricaConfig;
+
+import io.appmetrica.analytics.AppMetrica;
+import io.appmetrica.analytics.AppMetricaConfig;
 
 /**
  * Класс запускающийся при старте приложения
@@ -21,9 +22,9 @@ public class ApplicationStart extends MultiDexApplication {
         Importer.createListArtists(getResources(),this);
         // Подключение яндекс метрики
         try {
-            YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder(getResources().getString(R.string.yandex_id_metrica)).build();
-            YandexMetrica.activate(getApplicationContext(), config);
-            YandexMetrica.enableActivityAutoTracking(this);
+            AppMetricaConfig config = AppMetricaConfig.newConfigBuilder(getResources().getString(R.string.yandex_id_metrica)).build();
+            AppMetrica.activate(getApplicationContext(), config);
+            AppMetrica.enableActivityAutoTracking(this);
         } catch (Exception ignored) {
 
         }
@@ -33,7 +34,7 @@ public class ApplicationStart extends MultiDexApplication {
 
             final Thread.UncaughtExceptionHandler mUncaughtExceptionHandler = (thread, exception) -> {
                 try {
-                    YandexMetrica.reportError(exception.toString(), exception);
+                    AppMetrica.reportError(exception.toString(), exception);
                 } finally {
                     if (null != mAndroidCrashHandler) {
                         mAndroidCrashHandler.uncaughtException(thread, exception);

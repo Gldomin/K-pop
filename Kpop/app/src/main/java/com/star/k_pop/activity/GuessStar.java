@@ -25,10 +25,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.ad.InterstitialCustom;
-import com.star.k_pop.ad.InterstitialCustomGoogle;
 import com.star.k_pop.ad.InterstitialCustomYandex;
 import com.star.k_pop.ad.RewardedCustom;
-import com.star.k_pop.ad.RewardedCustomGoogle;
 import com.star.k_pop.ad.RewardedCustomYandex;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
@@ -38,7 +36,6 @@ import com.star.k_pop.lib.SoundPlayer;
 import com.star.k_pop.model.Artist;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Random;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
@@ -81,13 +78,9 @@ public class GuessStar extends AppCompatActivity {
         theme = new Theme(this);
         theme.setThemeSecond();
 
-        if (Locale.getDefault().getLanguage().equals("ru")) {
-            rewardedCustom = new RewardedCustomYandex(this);
-            mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
-        } else {
-            rewardedCustom = new RewardedCustomGoogle(this, R.string.admob_id_reward_star);
-            mInterstitialAd = new InterstitialCustomGoogle(this, R.string.admob_id_interstitial);
-        }
+        rewardedCustom = new RewardedCustomYandex(this, getResources().getString(R.string.yandex_id_reward));
+        mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_star);
 

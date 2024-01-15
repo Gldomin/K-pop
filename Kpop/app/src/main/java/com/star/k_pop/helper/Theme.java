@@ -52,6 +52,22 @@ public class Theme {
 
     }
 
+    public int getColorMissTakeCurrent(){
+        if (darkMode) {
+            return R.color.missTakeCurrentDarkColor;
+        } else {
+            return R.color.missTakeCurrentLightColor;
+        }
+    }
+
+    public int getColorMissTakeError(){
+        if (darkMode) {
+            return R.color.missTakeErrorDarkColor;
+        } else {
+            return R.color.missTakeErrorLightColor;
+        }
+    }
+
     public int getColorLighter() {
         if (darkMode) {
             return activity.getResources().getColor(R.color.lighterPurpleButtonColor);

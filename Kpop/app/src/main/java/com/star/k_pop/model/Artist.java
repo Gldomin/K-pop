@@ -1,5 +1,7 @@
 package com.star.k_pop.model;
 
+import android.util.Log;
+
 import java.util.Random;
 
 /**
@@ -69,6 +71,16 @@ public class Artist {
             countRandom = rand.nextInt(namesImages.length);
         }
         return groups[0] + "/" + name + "/" + getNamesImage(countRandom);
+    }
+
+    public boolean checkGroup(String group) {
+        for (String g : groups) {
+            Log.v("TAG", group.toUpperCase().replaceAll(" ", "") + " " + g.toUpperCase().replaceAll(" ", ""));
+            if (group.toUpperCase().replaceAll(" ", "").equals(g.toUpperCase().replaceAll(" ", ""))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isInit() {
