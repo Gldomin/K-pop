@@ -82,7 +82,7 @@ public class BandsActiveActivity extends AppCompatActivity {
                 countChecked++;
             }
         }
-        if (countChecked <= 8){
+        if (countChecked <= 14){
             for(SwitchCompat name : nameBandsActive){
                 if (name.isChecked()){
                     name.setClickable(false);
