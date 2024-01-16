@@ -498,11 +498,14 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                     scoreNow = -1;
                     hintCount = 4;
                     counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
-                    if (countAd <= 0 && onRewarded) {
-                        countAd = 5;
-                        mInterstitialAd.show();
-                    } else {
-                        countAd--;
+                    Storage storage = new Storage(this, "appStatus");
+                    if (!storage.getBoolean("achTripleExpert")) {
+                        if (countAd <= 0 && onRewarded) {
+                            countAd = 5;
+                            mInterstitialAd.show();
+                        } else {
+                            countAd--;
+                        }
                     }
                     onRewarded = true;
                     onRewardedHint = true;

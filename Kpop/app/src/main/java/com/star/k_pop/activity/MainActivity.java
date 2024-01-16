@@ -138,11 +138,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void interstitialShow() {
-        if (countAd <= 0) {
-            countAd = 4;
-            mInterstitialAd.show();
+        Storage storage = new Storage(this, "appStatus");
+        if (!storage.getBoolean("achTripleExpert")){
+            if (countAd <= 0) {
+                countAd = 4;
+                mInterstitialAd.show();
+            }
+            countAd--;
         }
-        countAd--;
     }
 
 }

@@ -386,11 +386,14 @@ public class GuessStar extends AppCompatActivity {
                         artists = Importer.getRandomArtists();
                         count = 0;
                     }
-                    if (countAd <= 0 && onRewarded) {
-                        countAd = 4;
-                        mInterstitialAd.show();
-                    } else {
-                        countAd--;
+                    Storage storage = new Storage(this, "appStatus");
+                    if (!storage.getBoolean("achTripleExpert")) {
+                        if (countAd <= 0 && onRewarded) {
+                            countAd = 4;
+                            mInterstitialAd.show();
+                        } else {
+                            countAd--;
+                        }
                     }
                     onRewarded = true;
                     nextArtist();

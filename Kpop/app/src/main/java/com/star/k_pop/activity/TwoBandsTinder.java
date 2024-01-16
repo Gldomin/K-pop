@@ -896,11 +896,14 @@ public class TwoBandsTinder extends AppCompatActivity {
     }
 
     private void interstitialShow() {
-        if (countAd <= 0) {
-            countAd = 5;
-            mInterstitialAd.show();
+        Storage storage = new Storage(this, "appStatus");
+        if (!storage.getBoolean("achTripleExpert")) {
+            if (countAd <= 0) {
+                countAd = 5;
+                mInterstitialAd.show();
+            }
+            countAd--;
         }
-        countAd--;
     }
 
     private class TouchSwitchImage implements View.OnClickListener {
