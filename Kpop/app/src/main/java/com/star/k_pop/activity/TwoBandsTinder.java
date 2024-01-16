@@ -534,7 +534,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         alertBuild.setOnCancelListener(dialog -> nextArtist());
         AlertDialog alert = alertBuild.create();
         alert.show();
-        if (sound){
+        if (sound) {
             soundPlayer.playSoundStream(longSwitchID);
         }
     }
@@ -601,7 +601,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     private void nextArtist() {
         isViewMissTake = false;
         isHint = false;
-        if (hintCount>1){
+        if (hintCount > 1) {
             hintButton.setBackgroundResource(theme.getBackgroundButton());
         }
         layoutHint.setVisibility(View.GONE);
@@ -628,7 +628,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         } else {
 
             boolean achievemented = false;
-            if (score >= 15 && score <= 40) { //ачивка за 15 - achGuessStarNormalText. Условие ачивки
+            if (score >= 15 && score <= 40) { //ачивка за 15 Условие ачивки
                 if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.devide_bands15, "achSwipeTwoBandsBeginner")) //ачивочка
                 {
                     achievemented = true;
@@ -648,7 +648,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
 
             if (achievemented && sound) {
-                soundPlayer.playSoundStream(grace);//звук правильного ответа
+                soundPlayer.playSoundStream(grace); //звук ачивки
             }
 
             twoBandFlip.showNext();
@@ -747,7 +747,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 final LinearLayout cardLay = new LinearLayout(this);
                 TextView textViewHint = new TextView(this);
                 CardView.LayoutParams layoutParamsTextHint = new CardView.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                layoutParamsTextHint.gravity = Gravity.BOTTOM|Gravity.CENTER;
+                layoutParamsTextHint.gravity = Gravity.BOTTOM | Gravity.CENTER;
                 layoutParamsTextHint.setMargins(0, 0, 0, 15);
                 textViewHint.setTextSize(15);
                 textViewHint.setShadowLayer(4, 2, 2, Color.BLACK);
@@ -808,7 +808,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 cardLay.addView(rightCardLay);
 
                 mainCard.addView(cardLay);
-                if (isHint){
+                if (isHint) {
                     mainCard.addView(textViewHint);
                 }
                 // добавляет карточку в финальную верстку
@@ -905,7 +905,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 mInterstitialAd.show();
             }
             countAd--;
-        }else{
+        } else {
             AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"tinder\"}");
         }
     }
