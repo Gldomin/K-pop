@@ -37,15 +37,15 @@
     <string name="achTripleExpert">K-pop Master</string>
     <string name="achSecretAch">Secret achievement</string>
 
-    <string name="achGuessStarBeginnerText">You got 50 points in Guess Star gamemode</string>
+    <string name="achGuessStarBeginnerText">You got 10 points in Guess Star gamemode</string>
     <string name="achGuessStarNormalText">You got 50 points in Guess Star gamemode</string>
     <string name="achGuessStarExpertText">You got 150 points in Guess Star gamemode</string>
-    <string name="achGuessBandsBeginnerText">You got 25 points in Guess Band gamemode</string>
-    <string name="achGuessBandsNormalText">You got 25 points in Guess Band gamemode</string>
-    <string name="achGuessBandsExpertText">You got 75 points in Guess Band gamemode</string>
-    <string name="achDistributeByBandsBeginnerText">You got 5 points in Distribute by bands gamemode</string>
-    <string name="achDistributeByBandsNormalText">You got 25 points in Distribute by bands gamemode</string>
-    <string name="achDistributeByBandsExpertText">You got 75 points in Distribute by bands gamemode</string>
+    <string name="achGuessBandsBeginnerText">You got 10 points in Guess Band gamemode</string>
+    <string name="achGuessBandsNormalText">You got 50 points in Guess Band gamemode</string>
+    <string name="achGuessBandsExpertText">You got 150 points in Guess Band gamemode</string>
+    <string name="achDistributeByBandsBeginnerText">You got 15 points in Distribute by bands gamemode</string>
+    <string name="achDistributeByBandsNormalText">You got 75 points in Distribute by bands gamemode</string>
+    <string name="achDistributeByBandsExpertText">You got 225 points in Distribute by bands gamemode</string>
     <string name="achTripleExpertText">You are an expert in all three modes. By unlocking this achievement, all advertising will be disabled. Only the most worthy will pass.</string>
     <string name="achSecretAchText">What is it?</string>
 

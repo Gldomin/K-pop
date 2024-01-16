@@ -25,12 +25,12 @@
     <string name="achGuessStarBeginnerText">"\t"Вы набрали 10 очков в режиме Угадай Звезду</string>
     <string name="achGuessStarNormalText">"\t"Вы набрали 50 очков в режиме Угадай Звезду</string>
     <string name="achGuessStarExpertText">"\t"Вы набрали 150 очков в режиме Угадай Звезду</string>
-    <string name="achGuessBandsBeginnerText">"\t"Вы набрали 5 очков в режиме Отгадай Группу</string>
-    <string name="achGuessBandsNormalText">"\t"Вы набрали 25 очков в режиме Отгадай Группу</string>
-    <string name="achGuessBandsExpertText">"\t"Вы набрали 75 очков в режиме Отгадай Группу</string>
-    <string name="achDistributeByBandsBeginnerText">"\t"Вы набрали 5 очков в режиме Распредели Участников</string>
-    <string name="achDistributeByBandsNormalText">"\t"Вы набрали 25 очков в режиме Распредели Участников</string>
-    <string name="achDistributeByBandsExpertText">"\t"Вы набрали 75 очков в режиме Распредели Участников</string>
+    <string name="achGuessBandsBeginnerText">"\t"Вы набрали 10 очков в режиме Отгадай Группу</string>
+    <string name="achGuessBandsNormalText">"\t"Вы набрали 50 очков в режиме Отгадай Группу</string>
+    <string name="achGuessBandsExpertText">"\t"Вы набрали 150 очков в режиме Отгадай Группу</string>
+    <string name="achDistributeByBandsBeginnerText">"\t"Вы набрали 15 очков в режиме Распредели Участников</string>
+    <string name="achDistributeByBandsNormalText">"\t"Вы набрали 75 очков в режиме Распредели Участников</string>
+    <string name="achDistributeByBandsExpertText">"\t"Вы набрали 225 очков в режиме Распредели Участников</string>
     <string name="achTripleExpertText">"\t"Вы стали экспертом всех трех режимов. Открыв это достижение, вся реклама будет отключена. Пройдут лишь достойнейшие.</string>
     <string name="achSecretAchText">Что же это может быть?</string>
 

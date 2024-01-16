@@ -626,19 +626,19 @@ public class TwoBandsTinder extends AppCompatActivity {
         } else {
 
             boolean achievemented = false;
-            if (score >= 15) { //ачивка за 15 - achGuessStarNormalText. Условие ачивки
+            if (score >= 15 && score <= 40) { //ачивка за 15 - achGuessStarNormalText. Условие ачивки
                 if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.devide_bands15, "achSwipeTwoBandsBeginner")) //ачивочка
                 {
                     achievemented = true;
                 }
             }
-            if (score >= 75) { //ачивка за 75 - achGuessStarNormalText. Условие ачивки
+            if (score >= 75 && score <= 90) { //ачивка за 75. Условие ачивки
                 if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsNormal, R.drawable.devide_bands75, "achSwipeTwoBandsNormal")) //ачивочка
                 {
                     achievemented = true;
                 }
             }
-            if (score >= 225) { //ачивка за 225 - achGuessStarNormalText. Условие ачивки
+            if (score >= 225 && score <= 260) { //ачивка за 225. Условие ачивки
                 if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsExpert, R.drawable.devide_bands225, "achSwipeTwoBandsExpert")) //ачивочка
                 {
                     achievemented = true;

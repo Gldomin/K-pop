@@ -309,20 +309,20 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             }
 
             boolean achievemented = false;
-            if (scoreNow + 1 == 5) { //ачивка за 5
-                if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsBeginner, R.drawable.guess_band5, "achGuessBandsModeTwoBeginner")) //ачивочка
+            if (scoreNow + 1 == 10) { //ачивка за 10
+                if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsBeginner, R.drawable.guess_band_10, "achGuessBandsModeTwoBeginner")) //ачивочка
                 {
                     achievemented = true;
                 }
             }
-            if (scoreNow + 1 == 25) { //ачивка за 25
-                if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsNormal, R.drawable.guess_band25, "achGuessBandsModeTwoNormal")) //ачивочка
+            if (scoreNow + 1 == 50) { //ачивка за 50
+                if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsNormal, R.drawable.guess_band_50, "achGuessBandsModeTwoNormal")) //ачивочка
                 {
                     achievemented = true;
                 }
             }
-            if (scoreNow + 1 == 75) { //ачивка за 75
-                if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsExpert, R.drawable.guess_band75, "achGuessBandsModeTwoExpert")) //ачивочка
+            if (scoreNow + 1 == 150) { //ачивка за 150
+                if (SomeMethods.achievementGetted(GuessBandsModeTwo.this, R.string.achGuessBandsExpert, R.drawable.guess_band_150, "achGuessBandsModeTwoExpert")) //ачивочка
                 {
                     achievemented = true;
                 }
