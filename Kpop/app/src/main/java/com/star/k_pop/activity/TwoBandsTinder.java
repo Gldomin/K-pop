@@ -53,6 +53,8 @@ import java.util.Objects;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
+import io.appmetrica.analytics.AppMetrica;
+
 public class TwoBandsTinder extends AppCompatActivity {
 
     //-------------------------------------------------------------------------------------------------
@@ -903,6 +905,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                 mInterstitialAd.show();
             }
             countAd--;
+        }else{
+            AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"tinder\"}");
         }
     }
 

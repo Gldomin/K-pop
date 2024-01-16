@@ -145,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
                 mInterstitialAd.show();
             }
             countAd--;
+        }else{
+            AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"menu\"}");
         }
     }
 

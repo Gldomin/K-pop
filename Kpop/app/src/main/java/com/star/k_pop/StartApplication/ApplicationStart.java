@@ -72,5 +72,22 @@ public class ApplicationStart extends MultiDexApplication {
             storage.saveValue("themeCount", 2);
             storage.saveValue("soundMode", true);
         }
+        if (!sp.contains("update2.0")){
+            Storage tempStorage = new Storage(this, "appStatus");
+            tempStorage.saveValue("update2.0", true);
+            tempStorage.saveValue("achGuessStarBeginner", false); //ачивка
+            tempStorage.saveValue("achGuessStarNormal", false); //ачивка, если равно True - получена
+            tempStorage.saveValue("achGuessStarExpert", false); //ачивка
+
+            tempStorage.saveValue("achGuessBandsModeTwoBeginner", false); //ачивка
+            tempStorage.saveValue("achGuessBandsModeTwoNormal", false); //ачивка
+            tempStorage.saveValue("achGuessBandsModeTwoExpert", false); //ачивка
+
+            tempStorage.saveValue("achSwipeTwoBandsBeginner", false); //ачивка
+            tempStorage.saveValue("achSwipeTwoBandsNormal", false); //ачивка
+            tempStorage.saveValue("achSwipeTwoBandsExpert", false); //ачивка
+            tempStorage.saveValue("achTripleExpert", false); //ачивка
+            tempStorage.saveValue("achRoyal", false); //ачивка
+        }
     }
 }

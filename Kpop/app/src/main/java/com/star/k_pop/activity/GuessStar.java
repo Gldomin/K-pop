@@ -40,6 +40,8 @@ import java.util.Random;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
+import io.appmetrica.analytics.AppMetrica;
+
 public class GuessStar extends AppCompatActivity {
 
     Button[] buttons = new Button[4];
@@ -395,6 +397,8 @@ public class GuessStar extends AppCompatActivity {
                         } else {
                             countAd--;
                         }
+                    }else{
+                        AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"guess star\"}");
                     }
                     onRewarded = true;
                     nextArtist();

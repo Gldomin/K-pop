@@ -7,14 +7,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +45,8 @@ import java.util.Locale;
 import java.util.Random;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+
+import io.appmetrica.analytics.AppMetrica;
 
 public class GuessBandsModeTwo extends AppCompatActivity {
 
@@ -69,12 +75,15 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
     private static final int[] BUTTON_IDS = {
             R.id.lit1, R.id.lit2, R.id.lit3, R.id.lit4, R.id.lit5, R.id.lit6, R.id.lit7, R.id.lit8, R.id.lit9,
-            R.id.lit10, R.id.lit11, R.id.lit12, R.id.lit13, R.id.lit14, R.id.lit15, R.id.lit16
+            R.id.lit10, R.id.lit11, R.id.lit12, R.id.lit13, R.id.lit14, R.id.lit15, R.id.lit16, R.id.lit17, R.id.lit18,
+            R.id.lit19, R.id.lit20
     };
 
     private static final int[] BUTTON_IDS_END = {
             R.id.end1, R.id.end2, R.id.end3, R.id.end4, R.id.end5,
-            R.id.end6, R.id.end7, R.id.end8, R.id.end9, R.id.end10
+            R.id.end6, R.id.end7, R.id.end8, R.id.end9, R.id.end10,
+            R.id.end11, R.id.end12, R.id.end13, R.id.end14, R.id.end15,
+            R.id.end16, R.id.end17
     };
 
     private SharedPreferences spBands;
@@ -235,19 +244,30 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         }
         for (Button b : buttonsEnd) {
             b.setText(" ");
-            b.setVisibility(View.INVISIBLE);
+            b.setVisibility(View.GONE);
             b.setTextColor(theme.getTextColor());
             b.setBackgroundResource(R.drawable.roundedimageview);
         }
         nameGroup = bands.get(count).getNameCorrect();
         countLetter = nameGroup.length();
-        int startButtonNumber = 5 - countLetter / 2;
-        for (int i = startButtonNumber; i < startButtonNumber + countLetter; i++) {
-            if (nameGroup.charAt(i - startButtonNumber) != ' ') {
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width;
+        if (countLetter>10){
+            width = size.x / countLetter;
+        }else{
+            width = size.x / 10;
+        }
+        for (int i = 0; i < countLetter; i++) {
+            if (nameGroup.charAt(i) != ' ') {
                 buttonsEnd.get(i).setVisibility(View.VISIBLE);
                 buttonsEnd.get(i).setText("_");
             }
+            buttonsEnd.get(i).setLayoutParams(new LinearLayout.LayoutParams(width, LinearLayout.LayoutParams.WRAP_CONTENT));
         }
+        slideButton.setLayoutParams(new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT));
         ref = createRandomButton();
         String nameTwo;
         do {
@@ -506,6 +526,8 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                         } else {
                             countAd--;
                         }
+                    }else{
+                        AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"guessBands\"}");
                     }
                     onRewarded = true;
                     onRewardedHint = true;
