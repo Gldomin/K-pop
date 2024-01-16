@@ -68,6 +68,14 @@ public class Theme {
         }
     }
 
+    public int getHintDrawable(){
+        if (darkMode) {
+            return R.drawable.hint2;
+        } else {
+            return R.drawable.hint;
+        }
+    }
+
     public int getColorLighter() {
         if (darkMode) {
             return activity.getResources().getColor(R.color.lighterPurpleButtonColor);

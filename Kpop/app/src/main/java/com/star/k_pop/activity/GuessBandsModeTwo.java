@@ -122,11 +122,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         recordText.setTextColor(theme.getTextColor());
         scoreNowText.setTextColor(theme.getTextColor());
         hintButton.setBackgroundResource(theme.getBackgroundButton());
-        if (theme.isDarkMode()) {
-            hintButton.setImageResource(R.drawable.hint2);
-        } else {
-            hintButton.setImageResource(R.drawable.hint);
-        }
+        hintButton.setImageResource(theme.getHintDrawable());
 
         ImageButton about = findViewById(R.id.guessBandAbautButton);
         about.setBackgroundResource(theme.getBackgroundButton());

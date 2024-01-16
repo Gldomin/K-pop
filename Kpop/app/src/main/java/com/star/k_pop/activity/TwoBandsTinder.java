@@ -132,6 +132,14 @@ public class TwoBandsTinder extends AppCompatActivity {
     private InterstitialCustom mInterstitialAd;
     private int countAd = 5;
 
+    private int hintCount = 4;
+
+    private boolean isHint = false;
+
+    ImageButton hintButton;
+    LinearLayout layoutHint;
+    TextView textHint;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     //инициализация смотрите ебанный xml
@@ -159,10 +167,15 @@ public class TwoBandsTinder extends AppCompatActivity {
         Button confirmButton = findViewById(R.id.ttConfirmButton);
         Button endButton = findViewById(R.id.allAct_Accept);
         ImageButton helpButton = findViewById(R.id.helpTindButton);
+        hintButton = findViewById(R.id.hintTindButton);
+
 
         confirmButton.setBackgroundResource(theme.getBackgroundButton());
         endButton.setBackgroundResource(theme.getBackgroundButton());
         helpButton.setBackgroundResource(theme.getBackgroundButton());
+        hintButton.setBackgroundResource(theme.getBackgroundButton());
+
+        textHint = findViewById(R.id.textViewTinderName);
 
         imageBand = findViewById(R.id.imageBand);
         imBTmp = findViewById(R.id.imgBTmp);
@@ -185,10 +198,13 @@ public class TwoBandsTinder extends AppCompatActivity {
         LinearLayout layout1 = findViewById(R.id.titleTinderBot);
         LinearLayout layout2 = findViewById(R.id.titleTinderGroup);
         LinearLayout layout3 = findViewById(R.id.titleTinder);
+        layoutHint = findViewById(R.id.titleTinderGroupName);
 
         layout1.setBackgroundColor(theme.getColorLighter());
         layout2.setBackgroundColor(theme.getColorLighter());
         layout3.setBackgroundColor(theme.getColorLighter());
+        layoutHint.setBackgroundColor(theme.getColorLighter());
+        layoutHint.setVisibility(View.GONE);
 
         scoreText.setTextColor(theme.getTextColor());
         scoreRecordText.setTextColor(theme.getTextColor());
@@ -238,6 +254,20 @@ public class TwoBandsTinder extends AppCompatActivity {
             startActivity(image);
         });
 
+        hintButton.setImageResource(theme.getHintDrawable());
+        hintButton.setOnClickListener(v -> {
+            if (!isHint) {
+                if (hintCount-- > 1) {
+                    hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
+                    layoutHint.setVisibility(View.VISIBLE);
+                    textHint.setText(artists_turn.get(pictNumbCurrent).getName());
+                    isHint = true;
+                    if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
+                        menuFlipEventInstance();
+                    }
+                }
+            }
+        });
 
 //-----------------------working----------------------------------------------------------------------
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
@@ -259,6 +289,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                         }
                     }
                     setupImage(artists_turn.get(pictNumbCurrent).getFolder(), imageBand);
+                    textHint.setText(artists_turn.get(pictNumbCurrent).getName());
                 }
                 if (pictnumb >= ansverMap.size()) {
 
@@ -288,6 +319,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                         }
                     }
                     setupImage(artists_turn.get(pictNumbCurrent).getFolderNotRandom(), imageBand);
+                    textHint.setText(artists_turn.get(pictNumbCurrent).getName());
                 }
 
                 if (pictnumb >= ansverMap.size()) {
@@ -386,7 +418,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     public void setupImage(String pathtoFolder, ImageView img) {
         Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + pathtoFolder))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-
+                .transition(withCrossFade())
                 .into(img);
     }
 
@@ -500,6 +532,9 @@ public class TwoBandsTinder extends AppCompatActivity {
         alertBuild.setOnCancelListener(dialog -> nextArtist());
         AlertDialog alert = alertBuild.create();
         alert.show();
+        if (sound){
+            soundPlayer.playSoundStream(longSwitchID);
+        }
     }
 
     private void viewMissTake() {
@@ -517,8 +552,9 @@ public class TwoBandsTinder extends AppCompatActivity {
             layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
             layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
             layoutParamsText.setMargins(0, 0, 0, 15);
-            textView.setText(String.format(Locale.getDefault(), "%s (%s)", ansver.getKey().getName(), ansver.getKey().getGroup()));
+            textView.setText(String.format(Locale.getDefault(), "%s\n(%s)", ansver.getKey().getName(), ansver.getKey().getGroup()));
             textView.setTextSize(15);
+            textView.setGravity(Gravity.CENTER);
             textView.setShadowLayer(4, 2, 2, Color.BLACK);
             textView.setTextColor(Color.WHITE);
 
@@ -562,6 +598,11 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     private void nextArtist() {
         isViewMissTake = false;
+        isHint = false;
+        if (hintCount>1){
+            hintButton.setBackgroundResource(theme.getBackgroundButton());
+        }
+        layoutHint.setVisibility(View.GONE);
         if (score / 25 > scoreHealth) {
             scoreHealth = score / 25;
             heathBarTest.restore();
@@ -573,6 +614,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             alertBuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> {
                 score = 0;
                 scoreHealth = 0;
+                hintCount = 4;
                 heathBarTest.restartHp();
                 nextArtist();
                 interstitialShow();
@@ -603,12 +645,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                 }
             }
 
-            if (sound) {
-                if (achievemented) {
-                    soundPlayer.playSoundStream(grace);//звук правильного ответа
-                } else {
-                    soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
-                }
+            if (achievemented && sound) {
+                soundPlayer.playSoundStream(grace);//звук правильного ответа
             }
 
             twoBandFlip.showNext();
@@ -690,7 +728,9 @@ public class TwoBandsTinder extends AppCompatActivity {
                 setupImage(ansver.getKey().getFolderNotRandom(), rightPict);
                 allActGuessSolvedRightLay.addView(relativeLayout);
             }
-            relativeLayout.addView(textView, layoutParamsText);
+            if (isHint) {
+                relativeLayout.addView(textView, layoutParamsText);
+            }
         }
         //Не отгаданные типы, см шаблон
         for (final Artist others : artists_turn) {
@@ -703,7 +743,15 @@ public class TwoBandsTinder extends AppCompatActivity {
                 LinearLayout leftCardLay = new LinearLayout(this);
                 LinearLayout rightCardLay = new LinearLayout(this);
                 final LinearLayout cardLay = new LinearLayout(this);
-
+                TextView textViewHint = new TextView(this);
+                CardView.LayoutParams layoutParamsTextHint = new CardView.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                layoutParamsTextHint.gravity = Gravity.BOTTOM|Gravity.CENTER;
+                layoutParamsTextHint.setMargins(0, 0, 0, 15);
+                textViewHint.setTextSize(15);
+                textViewHint.setShadowLayer(4, 2, 2, Color.BLACK);
+                textViewHint.setTextColor(Color.WHITE);
+                textViewHint.setLayoutParams(layoutParamsTextHint);
+                textViewHint.setText(others.getName());
 
                 //Отображение параметров взятых из шаблона
                 LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) allActCardView.getLayoutParams();
@@ -758,7 +806,9 @@ public class TwoBandsTinder extends AppCompatActivity {
                 cardLay.addView(rightCardLay);
 
                 mainCard.addView(cardLay);
-
+                if (isHint){
+                    mainCard.addView(textViewHint);
+                }
                 // добавляет карточку в финальную верстку
                 AllActLayoutUnsLvLay.addView(mainCard);
                 //при клике на кнопку добавляет ответ в карту ответов, потом чистит карточки чтобы
@@ -797,7 +847,9 @@ public class TwoBandsTinder extends AppCompatActivity {
                         layout.addView(pict, layoutParamsRelative);
                         setupImage(others.getFolderNotRandom(), pict);
                         allActGuessSolvedLeftLay.addView(layout);
-                        layout.addView(textView, layoutParamsText);
+                        if (isHint) {
+                            layout.addView(textView, layoutParamsText);
+                        }
                     }
                 });
                 rightButton.setOnClickListener(v -> {
@@ -834,7 +886,9 @@ public class TwoBandsTinder extends AppCompatActivity {
                         layout.addView(pict, layoutParamsRelative);
                         setupImage(others.getFolderNotRandom(), pict);
                         allActGuessSolvedRightLay.addView(layout);
-                        layout.addView(textView, layoutParamsText);
+                        if (isHint) {
+                            layout.addView(textView, layoutParamsText);
+                        }
                     }
                 });
             }
@@ -881,7 +935,9 @@ public class TwoBandsTinder extends AppCompatActivity {
             pict.setScaleType(ImageView.ScaleType.MATRIX);
             setupImage(artists_turn.get(count).getFolderNotRandom(), pict);
             layout.addView(pict, layoutParamsRelative);
-            layout.addView(textView, layoutParamsText);
+            if (isHint) {
+                layout.addView(textView, layoutParamsText);
+            }
             if (isLeft) {
                 layout.setOnClickListener(new TouchSwitchImage(count, false, layout));
                 allActGuessSolvedLeftLay.removeView(relativeLayout);

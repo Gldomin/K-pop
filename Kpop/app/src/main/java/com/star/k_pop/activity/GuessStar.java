@@ -200,11 +200,7 @@ public class GuessStar extends AppCompatActivity {
 
         ImageButton hintButton = findViewById(R.id.podskStart);
         hintButton.setBackgroundResource(theme.getBackgroundButton());
-        if (theme.isDarkMode()) {
-            hintButton.setImageResource(R.drawable.hint2);
-        } else {
-            hintButton.setImageResource(R.drawable.hint);
-        }
+        hintButton.setImageResource(theme.getHintDrawable());
         hintButton.setOnClickListener(view -> {
             if (!hintUsed) {
                 if (hintCount > 1) {
