@@ -103,6 +103,7 @@
 
     <string name="score_text">Ваш счет: %d</string>
     <string name="record_text">Ваш рекорд: %d</string>
+    <string name="last_artist_text">Последний не угаданный: %s</string>
 
     <string name="endGameCongratulate">Поздравляем!</string>
     <string name="endGameNewGame">Начинаем новую игру?</string>

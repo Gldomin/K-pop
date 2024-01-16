@@ -1,6 +1,7 @@
 package com.star.k_pop.ad;
 
 import android.app.Activity;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +36,7 @@ public class RewardedCustomYandex extends RewardedCustom{
 
             @Override
             public void onAdFailedToLoad(@NonNull final AdRequestError adRequestError) {
+                Log.e("TAGS", "ERROR LOADING REWARD " + adRequestError.getDescription());
                 // Ad failed to load with AdRequestError.
                 // Attempting to load a new ad from the onAdFailedToLoad() method is strongly discouraged.
             }

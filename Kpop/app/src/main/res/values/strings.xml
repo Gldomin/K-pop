@@ -116,6 +116,7 @@ Distribute them all! ツ
 
     <string name="score_text">Score: %d</string>
     <string name="record_text">Record: %d</string>
+    <string name="last_artist_text">Last artist: %s</string>
 
     <string name="endHintCongratulate">Attention!</string>
     <string name="endHintReward">View ad for hint?</string>

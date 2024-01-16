@@ -374,7 +374,8 @@ public class GuessStar extends AppCompatActivity {
         endGame = true;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
         builder.setTitle(getResources().getString(R.string.endGameCongratulate))
-                .setMessage(String.format("%s! %s", getResources().getString(R.string.score_text, scoreNow), getResources().getString(R.string.endGameNewGame)))
+                .setMessage(String.format("%s.\n%s! %s", getResources().getString(R.string.last_artist_text, artists.get(count).getName()), getResources().getString(R.string.score_text, scoreNow),
+                        getResources().getString(R.string.endGameNewGame)))
                 .setCancelable(false)
                 .setNegativeButton(getResources().getString(R.string.endGameNo), (dialogInterface, i) -> finish())
                 .setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
@@ -400,7 +401,8 @@ public class GuessStar extends AppCompatActivity {
                     updateScore();
                 });
         if (onRewarded && rewardedCustom.onLoaded()) {
-            builder.setMessage(String.format("%s! %s %s", getResources().getString(R.string.score_text, scoreNow),
+            builder.setMessage(String.format("%s.\n%s %s\n%s.",getResources().getString(R.string.last_artist_text, artists.get(count).getName()),
+                            getResources().getString(R.string.score_text, scoreNow),
                             getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
                     .setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) -> {
                         endGame = false;
