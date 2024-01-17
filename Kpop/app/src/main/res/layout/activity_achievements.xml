@@ -19,26 +19,28 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TableLayout
-                android:id="@+id/tableLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TableRow
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_margin="10dp">
 
                     <ImageView
                         android:id="@+id/ach1"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toEndOf="@+id/ach1"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -54,32 +56,35 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achGuessStarBeginnerText" />
 
                     </LinearLayout>
 
-                </TableRow>
-                <TableRow
+                </RelativeLayout>
+                <RelativeLayout
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center_vertical">
+                    android:layout_height="120dp">
 
                     <ImageView
                         android:id="@+id/ach2"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide"
-
                         />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toEndOf="@+id/ach2"
                         android:orientation="vertical">
 
                         <TextView
@@ -91,25 +96,27 @@
 
                         <TextView
                             android:id="@+id/ach1SmallText"
-                            android:layout_width="230dp"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achGuessStarNormalText" />
 
                     </LinearLayout>
 
-                </TableRow>
+                </RelativeLayout>
 
-                <TableRow
+                <RelativeLayout
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="120dp">
 
                     <ImageView
                         android:id="@+id/ach3"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide"
                         />
@@ -118,6 +125,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toEndOf="@+id/ach3"
                         android:orientation="vertical">
 
                         <TextView
@@ -132,16 +143,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-
-                            android:layout_weight="1"
                             android:text="@string/achGuessStarExpertText" />
 
                     </LinearLayout>
 
-                </TableRow>
-                <TableRow
+                </RelativeLayout>
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_margin="10dp">
 
                     <ImageView
@@ -154,7 +163,11 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
                         android:gravity="center"
+                        android:layout_toEndOf="@+id/ach4"
                         android:orientation="vertical">
 
                         <TextView
@@ -169,28 +182,34 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achGuessBandsBeginnerText" />
 
                     </LinearLayout>
 
-                </TableRow>
-                <TableRow
+                </RelativeLayout>
+                <RelativeLayout
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="120dp">
 
                     <ImageView
                         android:id="@+id/ach5"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
                         android:gravity="center"
+                        android:layout_toEndOf="@+id/ach5"
                         android:orientation="vertical">
 
                         <TextView
@@ -205,29 +224,35 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achGuessBandsNormalText" />
 
                     </LinearLayout>
 
-                </TableRow>
+                </RelativeLayout>
 
-                <TableRow
+                <RelativeLayout
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="120dp">
 
                     <ImageView
                         android:id="@+id/ach6"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
                         android:gravity="center"
+                        android:layout_toEndOf="@+id/ach6"
                         android:orientation="vertical">
 
                         <TextView
@@ -242,28 +267,34 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achGuessBandsExpertText" />
 
                     </LinearLayout>
 
-                </TableRow>
-                <TableRow
+                </RelativeLayout>
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_margin="10dp">
 
                     <ImageView
                         android:id="@+id/ach7"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
                         android:gravity="center"
+                        android:layout_toEndOf="@+id/ach7"
                         android:orientation="vertical">
 
                         <TextView
@@ -278,28 +309,34 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achDistributeByBandsBeginnerText"/>
 
                     </LinearLayout>
 
-                </TableRow>
-                <TableRow
+                </RelativeLayout>
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_margin="10dp">
 
                     <ImageView
                         android:id="@+id/ach8"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
                         android:gravity="center"
+                        android:layout_toEndOf="@+id/ach8"
                         android:orientation="vertical">
 
                         <TextView
@@ -314,29 +351,35 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achDistributeByBandsNormalText" />
 
                     </LinearLayout>
 
-                </TableRow>
+                </RelativeLayout>
 
-                <TableRow
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_margin="10dp">
 
                     <ImageView
                         android:id="@+id/ach9"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
                         android:gravity="center"
+                        android:layout_toEndOf="@+id/ach9"
                         android:orientation="vertical">
 
                         <TextView
@@ -351,28 +394,34 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achDistributeByBandsExpertText" />
 
                     </LinearLayout>
 
-                </TableRow>
-                <TableRow
+                </RelativeLayout>
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_margin="10dp">
 
                     <ImageView
                         android:id="@+id/ach10"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
                         android:gravity="center"
+                        android:layout_toEndOf="@+id/ach10"
                         android:orientation="vertical">
 
                         <TextView
@@ -387,30 +436,36 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achTripleExpertText" />
 
                     </LinearLayout>
 
-                </TableRow>
+                </RelativeLayout>
 
-                <TableRow
+                <RelativeLayout
 
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_margin="10dp">
 
                     <ImageView
                         android:id="@+id/ach11"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/hide" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
                         android:gravity="center"
+                        android:layout_toEndOf="@+id/ach11"
                         android:orientation="vertical">
 
                         <TextView
@@ -425,13 +480,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:layout_weight="1"
                             android:text="@string/achSecretAchText" />
 
                     </LinearLayout>
 
-                </TableRow>
-            </TableLayout>
+                </RelativeLayout>
+
         </LinearLayout>
     </ScrollView>
 
