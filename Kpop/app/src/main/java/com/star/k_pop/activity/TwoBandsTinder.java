@@ -140,6 +140,8 @@ public class TwoBandsTinder extends AppCompatActivity {
     private InterstitialCustom mInterstitialAd;
     private int countAd = 5;
     boolean showReward = false;
+
+    boolean onRewarded = true;      // Просмотр рекламы 1 раз
     private int hintCountReward = 3;
 
     private int hintCount = 3;
@@ -668,26 +670,8 @@ public class TwoBandsTinder extends AppCompatActivity {
             hintButton.setBackgroundResource(theme.getBackgroundButton());
         }
         if (heathBarTest.getHp() < 1) {
-            alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
-            alertBuild.setTitle(getResources().getString(R.string.endGameTitle));
-            alertBuild.setMessage(getResources().getString(R.string.endGameTextScoreNow, score) + "\n" + getResources().getString(R.string.endGameTextRecordNow, scoreRecord));
-            alertBuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> {
-                score = 0;
-                scoreHealth = 0;
-                scoreHint = 0;
-                hintCount = 3;
-                hintCountReward = 3;
-                counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
-                heathBarTest.restartHp();
-                nextArtist();
-                interstitialShow();
-            });
-            alertBuild.setNegativeButton(getResources().getString(R.string.tinderLoseScreenExit), (dialog, which) -> finish());
-            alertBuild.setOnCancelListener(dialog -> finish());
-            AlertDialog alert = alertBuild.create();
-            alert.show();
+            startLosingDialog();
         } else {
-
             boolean achievemented = false;
             if (score >= 15 && score <= 40) { //ачивка за 15 Условие ачивки
                 if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.devide_bands15, "achSwipeTwoBandsBeginner")) //ачивочка
@@ -723,6 +707,62 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void startLosingDialog() {
+        alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+        alertBuild.setTitle(getResources().getString(R.string.endGameTitle));
+        alertBuild.setMessage(String.format("%s! %s",getResources().getString(R.string.score_text, score),
+                getResources().getString(R.string.endGameNewGame)));
+        alertBuild.setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
+            score = 0;
+            scoreHealth = 0;
+            scoreHint = 0;
+            hintCount = 3;
+            hintCountReward = 3;
+            onRewarded= true;
+            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+            heathBarTest.restartHp();
+            nextArtist();
+            interstitialShow();
+        });
+        if (onRewarded && rewardedCustom.onLoaded()) {
+            alertBuild.setMessage(String.format("%s! %s\n%s",getResources().getString(R.string.score_text, score),
+                    getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)));
+            alertBuild.setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) -> {
+                rewardedCustom.show(TwoBandsTinder.this, new RewardedCustom.RewardedInterface() {
+                    @Override
+                    public void onRewarded() {
+                        onRewarded = false;
+                        showReward = true;
+                    }
+
+                    @Override
+                    public void onDismissed() {
+                        if (showReward) {
+                            heathBarTest.restore();
+                            nextArtist();
+                        } else {
+                            score = 0;
+                            scoreHealth = 0;
+                            scoreHint = 0;
+                            hintCount = 3;
+                            hintCountReward = 3;
+                            onRewarded = true;
+                            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+                            heathBarTest.restartHp();
+                            nextArtist();
+                            interstitialShow();
+                        }
+                        showReward = false;
+                    }
+                });
+            });
+        }
+        alertBuild.setNegativeButton(getResources().getString(R.string.endGameNo), (dialog, which) -> finish());
+        alertBuild.setOnCancelListener(dialog -> finish());
+        AlertDialog alert = alertBuild.create();
+        alert.show();
     }
 
     @Override
