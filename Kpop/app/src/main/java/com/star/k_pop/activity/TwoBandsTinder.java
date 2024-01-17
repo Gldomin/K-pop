@@ -36,6 +36,8 @@ import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.ad.InterstitialCustom;
 import com.star.k_pop.ad.InterstitialCustomYandex;
+import com.star.k_pop.ad.RewardedCustom;
+import com.star.k_pop.ad.RewardedCustomYandex;
 import com.star.k_pop.helper.Storage;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.lib.HeathBar;
@@ -50,6 +52,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -133,10 +136,15 @@ public class TwoBandsTinder extends AppCompatActivity {
     private TextView counterHint;
     AlertDialog.Builder alertBuild;
 
+    private RewardedCustom rewardedCustom;
     private InterstitialCustom mInterstitialAd;
     private int countAd = 5;
+    boolean showReward = false;
 
-    private int hintCount = 4;
+    boolean onRewarded = true;      // Просмотр рекламы 1 раз
+    private int hintCountReward = 3;
+
+    private int hintCount = 3;
 
     private boolean isHint = false;
 
@@ -164,6 +172,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             finish();
         }
 
+        rewardedCustom = new RewardedCustomYandex(this, getResources().getString(R.string.yandex_id_reward));
         mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
 
         setContentView(R.layout.activity_two_bands_temp);
@@ -214,7 +223,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         scoreRecordText.setTextColor(theme.getTextColor());
 
         counterHint = findViewById(R.id.counter_hints_tint);
-        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
 
         //--------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
@@ -263,9 +272,10 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         hintButton.setImageResource(theme.getHintDrawable());
         hintButton.setOnClickListener(v -> {
-            if (!isHint) {
-                if (hintCount-- > 1) {
-                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+            if (!isHint && !isViewMissTake) {
+                if (hintCount > 0) {
+                    hintCount--;
+                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                     hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
                     layoutHint.setVisibility(View.VISIBLE);
                     textHint.setText(artists_turn.get(pictNumbCurrent).getName());
@@ -273,6 +283,9 @@ public class TwoBandsTinder extends AppCompatActivity {
                     if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
                         menuFlipEventInstance();
                     }
+                }
+                else if (hintCountReward > 0){
+                    onRewardHint();
                 }
             }
         });
@@ -342,6 +355,42 @@ public class TwoBandsTinder extends AppCompatActivity {
         });
         createHeathBar();
         guessTwoBands();
+    }
+
+    private void onRewardHint() {
+        if (rewardedCustom.onLoaded()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+            builder.setTitle(getResources().getString(R.string.endHintCongratulate))
+                    .setMessage(String.format("%s", getResources().getString(R.string.endHintReward, hintCountReward)))
+                    .setCancelable(false)
+                    .setNegativeButton(getResources().getString(R.string.endHintNo),
+                            (dialogInterface, i) -> {
+                            })
+                    .setPositiveButton(getResources().getString(R.string.endHintYes), (dialogInterface, i) ->
+                            rewardedCustom.show(TwoBandsTinder.this, new RewardedCustom.RewardedInterface() {
+                                @Override
+                                public void onRewarded() {
+                                    showReward = true;
+                                }
+
+                                @Override
+                                public void onDismissed() {
+                                    if (showReward) {
+                                        hintCountReward--;
+                                        hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
+                                        layoutHint.setVisibility(View.VISIBLE);
+                                        textHint.setText(artists_turn.get(pictNumbCurrent).getName());
+                                        isHint = true;
+                                        if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
+                                            menuFlipEventInstance();
+                                        }
+                                    }
+                                    showReward = false;
+                                }
+                            }));
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
     }
 
 
@@ -607,9 +656,6 @@ public class TwoBandsTinder extends AppCompatActivity {
     private void nextArtist() {
         isViewMissTake = false;
         isHint = false;
-        if (hintCount > 1) {
-            hintButton.setBackgroundResource(theme.getBackgroundButton());
-        }
         layoutHint.setVisibility(View.GONE);
         if (score / 25 > scoreHealth) {
             scoreHealth = score / 25;
@@ -618,28 +664,14 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (score / 25 > scoreHint){
             scoreHint = score / 25;
             hintCount++;
-            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+        }
+        if (hintCount > 0) {
+            hintButton.setBackgroundResource(theme.getBackgroundButton());
         }
         if (heathBarTest.getHp() < 1) {
-            alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
-            alertBuild.setTitle(getResources().getString(R.string.endGameTitle));
-            alertBuild.setMessage(getResources().getString(R.string.endGameTextScoreNow, score) + "\n" + getResources().getString(R.string.endGameTextRecordNow, scoreRecord));
-            alertBuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> {
-                score = 0;
-                scoreHealth = 0;
-                scoreHint = 0;
-                hintCount = 4;
-                counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
-                heathBarTest.restartHp();
-                nextArtist();
-                interstitialShow();
-            });
-            alertBuild.setNegativeButton(getResources().getString(R.string.tinderLoseScreenExit), (dialog, which) -> finish());
-            alertBuild.setOnCancelListener(dialog -> finish());
-            AlertDialog alert = alertBuild.create();
-            alert.show();
+            startLosingDialog();
         } else {
-
             boolean achievemented = false;
             if (score >= 15 && score <= 40) { //ачивка за 15 Условие ачивки
                 if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.devide_bands15, "achSwipeTwoBandsBeginner")) //ачивочка
@@ -675,6 +707,62 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void startLosingDialog() {
+        alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+        alertBuild.setTitle(getResources().getString(R.string.endGameTitle));
+        alertBuild.setMessage(String.format("%s! %s",getResources().getString(R.string.score_text, score),
+                getResources().getString(R.string.endGameNewGame)));
+        alertBuild.setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
+            score = 0;
+            scoreHealth = 0;
+            scoreHint = 0;
+            hintCount = 3;
+            hintCountReward = 3;
+            onRewarded= true;
+            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+            heathBarTest.restartHp();
+            nextArtist();
+            interstitialShow();
+        });
+        if (onRewarded && rewardedCustom.onLoaded()) {
+            alertBuild.setMessage(String.format("%s! %s\n%s",getResources().getString(R.string.score_text, score),
+                    getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)));
+            alertBuild.setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) -> {
+                rewardedCustom.show(TwoBandsTinder.this, new RewardedCustom.RewardedInterface() {
+                    @Override
+                    public void onRewarded() {
+                        onRewarded = false;
+                        showReward = true;
+                    }
+
+                    @Override
+                    public void onDismissed() {
+                        if (showReward) {
+                            heathBarTest.restore();
+                            nextArtist();
+                        } else {
+                            score = 0;
+                            scoreHealth = 0;
+                            scoreHint = 0;
+                            hintCount = 3;
+                            hintCountReward = 3;
+                            onRewarded = true;
+                            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+                            heathBarTest.restartHp();
+                            nextArtist();
+                            interstitialShow();
+                        }
+                        showReward = false;
+                    }
+                });
+            });
+        }
+        alertBuild.setNegativeButton(getResources().getString(R.string.endGameNo), (dialog, which) -> finish());
+        alertBuild.setOnCancelListener(dialog -> finish());
+        AlertDialog alert = alertBuild.create();
+        alert.show();
     }
 
     @Override

@@ -70,7 +70,7 @@ public class Settings extends AppCompatActivity {
                 (dialogInterface, i) -> {
                     recordStorage.saveValue("userScoreGuessStar", 0);
                     recordStorage.saveValue("userScoreGuessBand", 0);
-                    recordStorage.saveValue("userScoreGuessTinder", 0);
+                    recordStorage.saveValue("userScoreTinder", 0);
                     recordStorage.saveValue("userScoreGuessBandModeTwo", 0);
                     recordStorage.saveValue("userScoreGuessStarReverse", 0);
                 }, (dialogInterface, i) -> {

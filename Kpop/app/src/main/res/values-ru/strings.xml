@@ -113,7 +113,7 @@
     <string name="endGameRewardShow">Посмотреть рекламу</string>
 
     <string name="endHintCongratulate">Внимание!</string>
-    <string name="endHintReward">Посмотреть рекламу что бы использовать подсказку?</string>
+    <string name="endHintReward">Посмотреть рекламу что бы использовать подсказку? (осталось: %d)</string>
     <string name="endHintYes">Да</string>
     <string name="endHintNo">Нет</string>
 

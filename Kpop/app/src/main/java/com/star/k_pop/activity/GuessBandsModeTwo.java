@@ -195,6 +195,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                         if (b.getText() != " ") {
                             b.setText("_");
                             b.setBackgroundResource(R.drawable.roundedimageview);
+                            b.setTextColor(theme.getTextColor());
                         }
                     }
                     hintUsed = true;

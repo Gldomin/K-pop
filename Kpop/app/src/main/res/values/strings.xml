@@ -119,7 +119,7 @@ Distribute them all! ツ
     <string name="last_artist_text">Last artist: %s</string>
 
     <string name="endHintCongratulate">Attention!</string>
-    <string name="endHintReward">View ad for hint?</string>
+    <string name="endHintReward">View ad for hint? (remained %d)</string>
     <string name="endHintYes">Yes</string>
     <string name="endHintNo">No</string>
 
