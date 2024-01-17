@@ -17,10 +17,10 @@
     <!--    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-3940256099942544/5224354917</string>-->
     <!--    <string name="admob_id_interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>-->
 
-    <string name="menuItemGuessStar">Guess star</string>
-    <string name="menuItemGuessStarReverse">Guess star reverse</string>
+    <string name="menuItemGuessStar">Guess Star</string>
+    <string name="menuItemGuessStarReverse">Guess Star Reverse</string>
     <string name="menuItemGuessBand">Guess Band</string>
-    <string name="menuItemTinderSwipe">Distribute by bands</string>
+    <string name="menuItemTinderSwipe">Choose Group</string>
     <string name="menuItemGallery">Gallery</string>
     <string name="menuItemSettings">Settings</string>
     <string name="menuItemAbout">About</string>
@@ -72,15 +72,13 @@
     <string name="gameRulesAbaut">Games Rules</string>
     <string name="aboutTitle">Welcome!</string>
     <string name="aboutText">
-"\t"
-         Welcome to the Guess K-pop app! In this application, you can test your knowledge of K-pop. You are offered 3 main game modes: "\n"
-         1) Guess star"\n"
-         2) Guess band"\n"
-         3) Distribute by bands"\n"
-   "\t" With these game modes, you can memorize all the most famous K-pop groups, as well as all their incredible members! And of course, test your knowledge!"\n"
-         Each game mode has its own achievements. They can be viewed in the main menu."\n"
-p.s: We will be glad to receive any feedback from you on the application page in the play market "\n"
-        Good luck and have fun!
+         Welcome to Guess K-pop app! In this application, you can test your knowledge of K-pop. You are offered 3 main game modes: "\n"
+         1) Guess the Star "\n"
+         2) Guess the Group "\n"
+         3) Divide to bands (coming soon!)"\n"
+         With these game modes, you can memorize all of K-pop most famous bands, as well as all of their incredible members! "\n"
+         Each game mode has achievements! "\n"
+         Good luck! :)
     </string>
 
     <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
@@ -94,32 +92,26 @@ p.s: We will be glad to receive any feedback from you on the application page in
     <string name="endGameTextRecordNow">Your record: %d</string>
     <string name="gameModeAbout">About game mode</string>
     <string name="guessStarGameModeAbout">
-The "Guess Star" game mode allows you to test your knowledge of K-pop stars."\n"
-         Guess the names of K-pop artists from photos. It\'s not important for you to know what group the star on screen is in, but it is important to know his or her name. You have 3 lives. The correct answer will increase your score, and the wrong answer will take lives. "\n"
-         In addition, for every 35 points, 1 life will be restored to you, and for every 70 a hint will be added. But I think you'll figure it out."\n"
-         Good luck :)
+GuessStar game mode lets you test your knowledge of K-pop stars. "\n"
+Guess the names of K-pop artists from photos. It is not important for you to know which group a star is on screen, but it is important to know his or her name. You have 3 lives. Each artist you guess will increase your score! A wrong guess, accordingly, reduces your lives. If you lose all lives, game will be ended. But I think you can figure it out. "\n"
+Good luck! :)
     </string>
     <string name="guessBandGameModeAbout">
-The "Guess Band" game mode allows you to test your knowledge of the most famous K-pop groups in history!
-         Guess the group the artist is in on the screen. Every correct answer increases your score! And the unfaithful reduces life. It is clear that when lives end, the game will be over."\n"
-         In addition, you have 3 hints for the game, which will tell you the letters that make up the name of the k-pop group. Every 35th group guessed will restore one life to you. And every 70th will add a hint. But I think you'll figure it out."\n"
-         Good luck ;)
+GuessBand game mode lets you test your knowledge of the most famous K-pop groups in the history! "\n"
+Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. Off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. Every tenth band will restore 1 life, and every fifteenth band give extra hint. But I think you can figure it out. "\n"
+Good luck! ;)
     </string>
     <string name="guessBandGameModeTwoAbout">
-The "Guess Band" game mode allows you to test your knowledge of the most famous K-pop groups in history!
-         Guess the group the artist is in on the screen. Every correct answer increases your score! And the unfaithful reduces life. It is clear that when lives end, the game will be over."\n"
-         In addition, you have 3 hints for the game, which will tell you the letters that make up the name of the k-pop group. Every 35th group guessed will restore one life to you. And every 70th will add a hint. But I think you'll figure it out."\n"
-         Good luck ;)
+GuessBand game mode lets you test your knowledge of the most famous K-pop groups in the history! "\n"
+Guess band name use artist on the screen. You have 3 lives and 3 hints. Each correct answer will increase your score! And the wrong one, accordingly, reduces your lives. Off course, if all lives will be lost, game will be ended. Hints help you with usage symbols. Every tenth band will restore 1 life, and every fifteenth band give extra hint. But I think you can figure it out. "\n"
+Good luck! ;)
     </string>
     <string name="twoBandsTinderGameModeAbout">
-The "Distribute by bands" game mode allows you to test your knowledge of k-pop groups"\n"
-        You are given a set of different K-pop stars, and you need to divide them into 2 groups. To distribute artist cards, you need to swipe them to the side of the screen corresponding to the K-pop group. "\n"
-        At any time you can view all artist cards and redistribute them. After you confirm your distribution, you will be shown whether everything is distributed correctly, after which you will move on to the next pair of groups. "\n"
-        Every time you are wrong by more than one artist, one of your lives is burned. As soon as everything is over, the game will end. For each pair of correctly distributed artists, you will receive 1 point. So try to answer correctly!
-        Well, there are also hints - they will show the names of the artists, so that it would be easier for you to understand what group they are from."\n"
-        Lives are restored every 50 points, and hints are restored every 100 points. "\n"
-        In reality, everything is much simpler - good luck!"\n"
-        Distribute them all ツ
+The game mode "Distribute bands" allows you to test your knowledge of K-pop groups "\n"
+You are given a set of different K-pop stars, and you need to divide them into 2 groups. To distribute the artist cards, you need to swipe them to the corresponding K-pop group on the side of the screen. "\n"
+At any time, you can view all artist cards and redistribute them. If you distribute the cards incorrectly, you will also be asked to correct the result. But with each new attempt, the potential score will get smaller. "\n"
+But I think you can figure it out. "\n"
+Distribute them all! ツ
     </string>
 
     <string name="score_text">Score: %d</string>
