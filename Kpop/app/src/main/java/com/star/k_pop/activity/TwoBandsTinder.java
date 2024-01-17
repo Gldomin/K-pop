@@ -119,9 +119,6 @@ public class TwoBandsTinder extends AppCompatActivity {
     private int score = 0;
     private int scoreRecord = 0;
 
-    boolean hintGetRecently=true;
-    boolean heathGetRecently=true;
-
     private boolean isViewMissTake = false;
     //----------------------------------------------------------------------------------------------
 
@@ -217,7 +214,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         scoreRecordText.setTextColor(theme.getTextColor());
 
         counterHint = findViewById(R.id.counter_hints_tint);
-        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount - 1));
+        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
 
         //--------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
@@ -268,7 +265,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         hintButton.setOnClickListener(v -> {
             if (!isHint) {
                 if (hintCount-- > 1) {
-                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount - 1));
+                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
                     hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
                     layoutHint.setVisibility(View.VISIBLE);
                     textHint.setText(artists_turn.get(pictNumbCurrent).getName());
@@ -618,10 +615,10 @@ public class TwoBandsTinder extends AppCompatActivity {
             scoreHealth = score / 25;
             heathBarTest.restore();
         }
-        if (score / 25 > scoreHint) {
+        if (score / 25 > scoreHint){
             scoreHint = score / 25;
             hintCount++;
-            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount - 1));
+            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
         }
         if (heathBarTest.getHp() < 1) {
             alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
@@ -632,7 +629,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                 scoreHealth = 0;
                 scoreHint = 0;
                 hintCount = 4;
-                counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount - 1));
+                counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
                 heathBarTest.restartHp();
                 nextArtist();
                 interstitialShow();
@@ -642,28 +639,6 @@ public class TwoBandsTinder extends AppCompatActivity {
             AlertDialog alert = alertBuild.create();
             alert.show();
         } else {
-
-            int hearthRestoreScore = 50;
-            int hintRestoreScore = 100;
-            int limitSize = 10;
-            //HP restore
-            if (!heathGetRecently && score % hearthRestoreScore >= 0 && score % hearthRestoreScore <= limitSize) { //50
-                heathBarTest.restore();
-                heathGetRecently=true; //костыль для того что бы не восстанавливать хп и подсказки постоянно
-            }
-            //Если остаток от деления на hearthRestoreScore от 0 до limitSize, то восстанавливаем ХП, но ставим блок на повторное восстановление.
-            //А если остаток выйдет из этой области и есть блок -> снимаем блок
-            if (heathGetRecently && score % hearthRestoreScore > limitSize) {
-                heathGetRecently=false;
-            }
-            //hintRestore
-            if (!hintGetRecently && score % hintRestoreScore >= 0 && score % hintRestoreScore <= limitSize) { //100
-                hintCount += 1;
-                hintGetRecently=true;
-            }
-            if (hintGetRecently && score % hintRestoreScore > limitSize) {
-                hintGetRecently=false;
-            }
 
             boolean achievemented = false;
             if (score >= 15 && score <= 40) { //ачивка за 15 Условие ачивки
