@@ -37,6 +37,16 @@
             android:src="@drawable/hint"
             android:background="@android:drawable/menuitem_background" />
 
+        <TextView
+            android:id="@+id/counter_hints_tint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/hintTindButton"
+            android:layout_alignEnd="@+id/hintTindButton"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="" />
+
         <RelativeLayout
             android:id="@+id/guessBandHealthLR"
             android:layout_width="250dp"

@@ -36,6 +36,7 @@ import com.star.k_pop.lib.SoundPlayer;
 import com.star.k_pop.model.Artist;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
@@ -48,6 +49,7 @@ public class GuessStar extends AppCompatActivity {
     ImageView imageView;
     TextView textScore;
     TextView textRecord;
+    private TextView counterHint;
 
     SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
     boolean sound = false; //включен ли звук
@@ -152,6 +154,10 @@ public class GuessStar extends AppCompatActivity {
                         artists = Importer.getRandomArtists();
                         count = 0;
                     }
+                    if (scoreNow % 50 == 0){
+                        hintCount++;
+                        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+                    }
                     if (scoreNow % 50 == 0) {
                         heathBarTest.restore();
                     }
@@ -200,6 +206,9 @@ public class GuessStar extends AppCompatActivity {
             tableRow.addView(buttons[i]);
         }
 
+        counterHint = findViewById(R.id.counter_hints_star);
+        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+
         ImageButton hintButton = findViewById(R.id.podskStart);
         hintButton.setBackgroundResource(theme.getBackgroundButton());
         hintButton.setImageResource(theme.getHintDrawable());
@@ -207,6 +216,7 @@ public class GuessStar extends AppCompatActivity {
             if (!hintUsed) {
                 if (hintCount > 1) {
                     hintCount--;
+                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
                     int number = 0;
                     for (int i = 0; i < 4; i++) {
                         if (buttons[i].getText().equals(artists.get(count).getName())) {
@@ -384,6 +394,8 @@ public class GuessStar extends AppCompatActivity {
                     endGame = false;
                     heathBarTest.setHp(3);
                     scoreNow = 0;
+                    hintCount = 4;
+                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
                     count++;
                     if (count >= artists.size() - 1) {
                         artists = Importer.getRandomArtists();
@@ -391,7 +403,7 @@ public class GuessStar extends AppCompatActivity {
                     }
                     Storage storage = new Storage(this, "appStatus");
                     if (!storage.getBoolean("achTripleExpert")) {
-                        if (countAd <= 0 && onRewarded) {
+                        if (countAd <= 0) {
                             countAd = 4;
                             mInterstitialAd.show();
                         } else {
@@ -424,6 +436,8 @@ public class GuessStar extends AppCompatActivity {
                                 } else {
                                     heathBarTest.setHp(3);
                                     scoreNow = 0;
+                                    hintCount = 4;
+                                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
                                     count++;
                                     if (count >= artists.size() - 1) {
                                         artists = Importer.getRandomArtists();

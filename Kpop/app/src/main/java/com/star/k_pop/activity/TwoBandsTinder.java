@@ -115,6 +115,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     private HeathBar heathBarTest;
 
     int scoreHealth = 0;
+    int scoreHint = 0;
     private int score = 0;
     private int scoreRecord = 0;
 
@@ -129,6 +130,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     private static final String IMAGEVIEW_TAG = "icon bitmap";
     private TextView scoreText;
     private TextView scoreRecordText;
+    private TextView counterHint;
     AlertDialog.Builder alertBuild;
 
     private InterstitialCustom mInterstitialAd;
@@ -211,6 +213,9 @@ public class TwoBandsTinder extends AppCompatActivity {
         scoreText.setTextColor(theme.getTextColor());
         scoreRecordText.setTextColor(theme.getTextColor());
 
+        counterHint = findViewById(R.id.counter_hints_tint);
+        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+
         //--------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
         AllActLayoutMainLay = findViewById(R.id.allActorLLay);
@@ -260,6 +265,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         hintButton.setOnClickListener(v -> {
             if (!isHint) {
                 if (hintCount-- > 1) {
+                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
                     hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
                     layoutHint.setVisibility(View.VISIBLE);
                     textHint.setText(artists_turn.get(pictNumbCurrent).getName());
@@ -609,6 +615,11 @@ public class TwoBandsTinder extends AppCompatActivity {
             scoreHealth = score / 25;
             heathBarTest.restore();
         }
+        if (score / 25 > scoreHint){
+            scoreHint = score / 25;
+            hintCount++;
+            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+        }
         if (heathBarTest.getHp() < 1) {
             alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
             alertBuild.setTitle(getResources().getString(R.string.endGameTitle));
@@ -616,7 +627,9 @@ public class TwoBandsTinder extends AppCompatActivity {
             alertBuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> {
                 score = 0;
                 scoreHealth = 0;
+                scoreHint = 0;
                 hintCount = 4;
+                counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
                 heathBarTest.restartHp();
                 nextArtist();
                 interstitialShow();

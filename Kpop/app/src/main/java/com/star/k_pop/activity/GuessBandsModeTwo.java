@@ -151,7 +151,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
             record = -1;
         }
 
-        counterHint = findViewById(R.id.counter_Hints);
+        counterHint = findViewById(R.id.counter_hints_bands);
         counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
         recordText.setText(getResources().getString(R.string.record_text, record));
         scoreNowText.setText(getResources().getString(R.string.score_text, scoreNow));
