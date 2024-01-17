@@ -67,7 +67,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private boolean showReward = false;
     private boolean onRewardedHint = true;
     private boolean hintUsed = false;
-    private int hintCount = 4;
+    private int hintCount = 3;
     private int[] ref;
     private List<Button> buttons;
     private List<Button> buttonsEnd;
@@ -322,10 +322,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                 win.append(b.getText().toString());
         }
         if (bands.get(count).checkGroup(win.toString())) {
-            if (scoreNow % 20 == 0) {
+            if ((scoreNow+1) % 35 == 0) {
                 heathBarTest.restore();
             }
-            if (scoreNow % 40 == 0) {
+            if ((scoreNow+1) % 70 == 0) {
                 hintCount += 1;
             }
 

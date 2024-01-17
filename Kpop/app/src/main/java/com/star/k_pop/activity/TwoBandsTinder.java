@@ -122,6 +122,9 @@ public class TwoBandsTinder extends AppCompatActivity {
     private int score = 0;
     private int scoreRecord = 0;
 
+    boolean hintGetRecently=true;
+    boolean heathGetRecently=true;
+
     private boolean isViewMissTake = false;
     //----------------------------------------------------------------------------------------------
 
@@ -224,6 +227,7 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         counterHint = findViewById(R.id.counter_hints_tint);
         counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+
 
         //--------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
@@ -661,7 +665,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             scoreHealth = score / 25;
             heathBarTest.restore();
         }
-        if (score / 25 > scoreHint){
+        if (score / 25 > scoreHint) {
             scoreHint = score / 25;
             hintCount++;
             counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
@@ -672,6 +676,30 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (heathBarTest.getHp() < 1) {
             startLosingDialog();
         } else {
+
+
+            int hearthRestoreScore = 50;
+            int hintRestoreScore = 100;
+            int limitSize = 10;
+            //HP restore
+            if (!heathGetRecently && score % hearthRestoreScore >= 0 && score % hearthRestoreScore <= limitSize) { //50
+                heathBarTest.restore();
+                heathGetRecently=true; //костыль для того что бы не восстанавливать хп и подсказки постоянно
+            }
+            //Если остаток от деления на hearthRestoreScore от 0 до limitSize, то восстанавливаем ХП, но ставим блок на повторное восстановление.
+            //А если остаток выйдет из этой области и есть блок -> снимаем блок
+            if (heathGetRecently && score % hearthRestoreScore > limitSize) {
+                heathGetRecently=false;
+            }
+            //hintRestore
+            if (!hintGetRecently && score % hintRestoreScore >= 0 && score % hintRestoreScore <= limitSize) { //100
+                hintCount += 1;
+                hintGetRecently=true;
+            }
+            if (hintGetRecently && score % hintRestoreScore > limitSize) {
+                hintGetRecently=false;
+            }
+
             boolean achievemented = false;
             if (score >= 15 && score <= 40) { //ачивка за 15 Условие ачивки
                 if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.devide_bands15, "achSwipeTwoBandsBeginner")) //ачивочка

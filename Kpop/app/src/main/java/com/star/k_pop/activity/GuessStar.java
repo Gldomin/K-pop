@@ -157,12 +157,12 @@ public class GuessStar extends AppCompatActivity {
                         artists = Importer.getRandomArtists();
                         count = 0;
                     }
-                    if (scoreNow % 50 == 0){
+                    if (scoreNow % 35 == 0) {
+                        heathBarTest.restore();
+                    }
+                    if (scoreNow % 70 == 0){
                         hintCount++;
                         counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
-                    }
-                    if (scoreNow % 50 == 0) {
-                        heathBarTest.restore();
                     }
                     boolean achievemented = false;
                     if (scoreNow == 10) { //ачивка за 10 - achGuessStarNormalText. Условие ачивки
