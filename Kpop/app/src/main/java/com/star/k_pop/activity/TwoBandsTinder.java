@@ -661,12 +661,12 @@ public class TwoBandsTinder extends AppCompatActivity {
         isViewMissTake = false;
         isHint = false;
         layoutHint.setVisibility(View.GONE);
-        if (score / 25 > scoreHealth) {
-            scoreHealth = score / 25;
+        if (score / 50 > scoreHealth) { //Восстановление здоровья
+            scoreHealth = score / 50;
             heathBarTest.restore();
         }
-        if (score / 25 > scoreHint) {
-            scoreHint = score / 25;
+        if (score / 100 > scoreHint) { //Восстановление подсказки
+            scoreHint = score / 100;
             hintCount++;
             counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
         }
@@ -676,30 +676,6 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (heathBarTest.getHp() < 1) {
             startLosingDialog();
         } else {
-
-
-            int hearthRestoreScore = 50;
-            int hintRestoreScore = 100;
-            int limitSize = 10;
-            //HP restore
-            if (!heathGetRecently && score % hearthRestoreScore >= 0 && score % hearthRestoreScore <= limitSize) { //50
-                heathBarTest.restore();
-                heathGetRecently=true; //костыль для того что бы не восстанавливать хп и подсказки постоянно
-            }
-            //Если остаток от деления на hearthRestoreScore от 0 до limitSize, то восстанавливаем ХП, но ставим блок на повторное восстановление.
-            //А если остаток выйдет из этой области и есть блок -> снимаем блок
-            if (heathGetRecently && score % hearthRestoreScore > limitSize) {
-                heathGetRecently=false;
-            }
-            //hintRestore
-            if (!hintGetRecently && score % hintRestoreScore >= 0 && score % hintRestoreScore <= limitSize) { //100
-                hintCount += 1;
-                hintGetRecently=true;
-            }
-            if (hintGetRecently && score % hintRestoreScore > limitSize) {
-                hintGetRecently=false;
-            }
-
             boolean achievemented = false;
             if (score >= 15 && score <= 40) { //ачивка за 15 Условие ачивки
                 if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.devide_bands15, "achSwipeTwoBandsBeginner")) //ачивочка
