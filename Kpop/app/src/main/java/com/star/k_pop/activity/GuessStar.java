@@ -63,7 +63,7 @@ public class GuessStar extends AppCompatActivity {
 
     private boolean hintUsed = false;
 
-    private int hintCount = 4;
+    private int hintCount = 3;
 
     boolean onRewarded = true;      // Просмотр рекламы 1 раз
     boolean showReward = false;     // Просмотрена реклама до конца или нет
@@ -71,6 +71,9 @@ public class GuessStar extends AppCompatActivity {
     private Theme theme; //переменная для считывания состояния свиича на darkMod
     private RewardedCustom rewardedCustom;          //Класс для работы с рекламой
     private InterstitialCustom mInterstitialAd;
+
+    private int hintCountReward = 3;
+    ImageButton hintButton;
 
     private int countAd = 5;
 
@@ -156,7 +159,7 @@ public class GuessStar extends AppCompatActivity {
                     }
                     if (scoreNow % 50 == 0){
                         hintCount++;
-                        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+                        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                     }
                     if (scoreNow % 50 == 0) {
                         heathBarTest.restore();
@@ -209,14 +212,15 @@ public class GuessStar extends AppCompatActivity {
         counterHint = findViewById(R.id.counter_hints_star);
         counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
 
-        ImageButton hintButton = findViewById(R.id.podskStart);
+        hintButton = findViewById(R.id.podskStart);
         hintButton.setBackgroundResource(theme.getBackgroundButton());
         hintButton.setImageResource(theme.getHintDrawable());
         hintButton.setOnClickListener(view -> {
             if (!hintUsed) {
-                if (hintCount > 1) {
+                if (hintCount > 0) {
                     hintCount--;
-                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+                    hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
+                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                     int number = 0;
                     for (int i = 0; i < 4; i++) {
                         if (buttons[i].getText().equals(artists.get(count).getName())) {
@@ -241,7 +245,7 @@ public class GuessStar extends AppCompatActivity {
                         }
                     }
                     hintUsed = true;
-                } else if (hintCount == 1) {
+                } else if (hintCountReward > 0) {
                     onRewardHint();
                 }
             }
@@ -267,7 +271,7 @@ public class GuessStar extends AppCompatActivity {
         if (rewardedCustom.onLoaded()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
             builder.setTitle(getResources().getString(R.string.endHintCongratulate))
-                    .setMessage(String.format("%s", getResources().getString(R.string.endHintReward)))
+                    .setMessage(String.format("%s", getResources().getString(R.string.endHintReward, hintCountReward)))
                     .setCancelable(false)
                     .setNegativeButton(getResources().getString(R.string.endHintNo),
                             (dialogInterface, i) -> {
@@ -282,6 +286,7 @@ public class GuessStar extends AppCompatActivity {
                                 @Override
                                 public void onDismissed() {
                                     if (showReward) {
+                                        hintCountReward--;
                                         int number = 0;
                                         for (int i = 0; i < 4; i++) {
                                             if (buttons[i].getText().equals(artists.get(count).getName())) {
@@ -356,6 +361,9 @@ public class GuessStar extends AppCompatActivity {
         chosenOne = new Random().nextInt(4);
         boolean sex = artists.get(count).isSex();
         hintUsed = false;
+        if (hintCount > 0) {
+            hintButton.setBackgroundResource(theme.getBackgroundButton());
+        }
         Log.i("answer=", artists.get(count).getName()); //чит-лог
         for (int i = 0; i < 4; i++) {
             int rand;
@@ -394,8 +402,9 @@ public class GuessStar extends AppCompatActivity {
                     endGame = false;
                     heathBarTest.setHp(3);
                     scoreNow = 0;
-                    hintCount = 4;
-                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+                    hintCount = 3;
+                    hintCountReward = 3;
+                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                     count++;
                     if (count >= artists.size() - 1) {
                         artists = Importer.getRandomArtists();
@@ -436,8 +445,9 @@ public class GuessStar extends AppCompatActivity {
                                 } else {
                                     heathBarTest.setHp(3);
                                     scoreNow = 0;
-                                    hintCount = 4;
-                                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+                                    hintCount = 3;
+                                    hintCountReward = 3;
+                                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                                     count++;
                                     if (count >= artists.size() - 1) {
                                         artists = Importer.getRandomArtists();
