@@ -56,6 +56,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private boolean sound = false; //включен ли звук
     private int pingClickID;
     private int longSwitchID;
+    private int keyClickID;
     private int grace;
     private int record;
     private int scoreNow = -1;
@@ -100,6 +101,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
     private int countAd = 5;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
@@ -109,6 +111,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
         pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
         longSwitchID = soundPlayer.load(R.raw.long_switch);
+        keyClickID = soundPlayer.load(R.raw.key_click);
         grace = soundPlayer.load(R.raw.bells);
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
         sound = storage.getBoolean("soundMode"); //настроек звука
@@ -119,7 +122,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         }
 
 
-        rewardedCustom = new RewardedCustomYandex(this, getResources().getString(R.string.yandex_id_reward)) ;
+        rewardedCustom = new RewardedCustomYandex(this, getResources().getString(R.string.yandex_id_reward));
         mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
 
 
@@ -256,9 +259,9 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
         int width;
-        if (countLetter>10){
+        if (countLetter > 10) {
             width = size.x / countLetter;
-        }else{
+        } else {
             width = size.x / 10;
         }
         for (int i = 0; i < countLetter; i++) {
@@ -322,10 +325,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                 win.append(b.getText().toString());
         }
         if (bands.get(count).checkGroup(win.toString())) {
-            if ((scoreNow+1) % 35 == 0) {
+            if ((scoreNow + 1) % 35 == 0) {
                 heathBarTest.restore();
             }
-            if ((scoreNow+1) % 70 == 0) {
+            if ((scoreNow + 1) % 70 == 0) {
                 hintCount += 1;
             }
 
@@ -374,6 +377,9 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         private final List<Button> buttons;
 
         public AnimatorCustom(List<Button> buttons, int positionButton, String str) {
+            if (sound) {
+                soundPlayer.playSoundStream(keyClickID);//звук клавиши ответа
+            }
             this.positionButton = positionButton;
             this.str = str;
             this.buttons = buttons;
@@ -456,7 +462,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                 ((Button) view).setTextColor(theme.getTextColor());
             }
 
-            slideButton.animate().setDuration(400)
+            slideButton.animate().setDuration(150)
                     .x(positionEnd[0])
                     .y(positionEnd[1])
                     .setListener(new AnimatorCustom(buttonsClick, positionButton, str));
@@ -511,7 +517,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private void startLosingDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
         builder.setTitle(getResources().getString(R.string.endGameCongratulate))
-                .setMessage(String.format("%s.\n%s! %s", getResources().getString(R.string.last_artist_text, bands.get(count).getName()),getResources().getString(R.string.score_text, scoreNow), getResources().getString(R.string.endGameNewGame)))
+                .setMessage(String.format("%s.\n%s! %s", getResources().getString(R.string.last_artist_text, bands.get(count).getName()), getResources().getString(R.string.score_text, scoreNow), getResources().getString(R.string.endGameNewGame)))
                 .setCancelable(false)
                 .setNegativeButton(getResources().getString(R.string.endGameNo), (dialogInterface, i) -> finish())
                 .setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
@@ -527,7 +533,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                         } else {
                             countAd--;
                         }
-                    }else{
+                    } else {
                         AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"guessBands\"}");
                     }
                     onRewarded = true;
