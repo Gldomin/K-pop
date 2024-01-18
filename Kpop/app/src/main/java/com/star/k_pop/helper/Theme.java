@@ -109,9 +109,9 @@ public class Theme {
 
     public int getBackgroundCart(){
         if (darkMode) {
-            return R.drawable.gradient_background;
+            return R.drawable.transponent_background;
         } else {
-            return R.drawable.gradient_background_light;
+            return R.drawable.transponent_background;
         }
     }
 
