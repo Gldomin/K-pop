@@ -365,34 +365,33 @@
 
         <RelativeLayout
             android:id="@+id/guessBandHealthLR"
-            android:layout_width="137dp"
-            android:layout_height="60dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:gravity="center">
+            android:layout_marginTop="5dp">
 
             <ImageView
                 android:id="@+id/guessBandHeart1"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginEnd="1dp"
-                android:layout_toStartOf="@+id/guessBandHeart2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/heart_color" />
 
             <ImageView
                 android:id="@+id/guessBandHeart2"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/heart_color" />
 
             <ImageView
                 android:id="@+id/guessBandHeart3"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="1dp"
-                android:layout_toEndOf="@+id/guessBandHeart2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/heart_color" />
         </RelativeLayout>
@@ -423,7 +422,7 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="1dp"
+            android:layout_marginEnd="2dp"
             android:background="@android:drawable/menuitem_background"
             android:minWidth="10dp"
             android:minHeight="10dp"
