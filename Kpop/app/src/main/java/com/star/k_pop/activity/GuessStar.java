@@ -210,7 +210,7 @@ public class GuessStar extends AppCompatActivity {
         }
 
         counterHint = findViewById(R.id.counter_hints_star);
-        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount-1));
+        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
 
         hintButton = findViewById(R.id.podskStart);
         hintButton.setBackgroundResource(theme.getBackgroundButton());
