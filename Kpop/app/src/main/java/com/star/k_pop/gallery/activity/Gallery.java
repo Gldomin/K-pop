@@ -16,6 +16,7 @@ import com.star.k_pop.gallery.fragment.GallerySlideshowDialogFragment;
 import com.star.k_pop.gallery.model.ImageGallery;
 import com.star.k_pop.helper.Theme;
 import com.star.k_pop.model.Artist;
+import com.star.k_pop.model.Bands;
 
 import java.util.ArrayList;
 
@@ -65,10 +66,17 @@ public class Gallery extends AppCompatActivity {
     }
 
     private void createArray() {
-        ArrayList<Artist> artists = Importer.getArtistsAll();
-        for (Artist a : artists) {
-            for (int i = 0; i < a.getCountImages(); i++) {
-                imageGalleries.add(new ImageGallery(a.getName(), a.getGroup(), a.getFolder(i)));
+        ArrayList<Bands> bands = Importer.getBands();
+        for (Bands b: bands)
+        {
+            for(int i = 0; i < b.getNumberImage(); i++){
+                imageGalleries.add(new ImageGallery(b.getName(), b.getFolder(i)));
+            }
+            ArrayList<Artist> artists = b.getArtists();
+            for (Artist a : artists) {
+                for (int i = 0; i < a.getCountImages(); i++) {
+                    imageGalleries.add(new ImageGallery(a.getName(), a.getGroup(), a.getFolder(i)));
+                }
             }
         }
     }

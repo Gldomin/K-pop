@@ -49,12 +49,15 @@ public class Bands {
     /**
      * @return имя картинки группы
      */
-    public String getNamesImages() {
+    public String getNamesImages(int i) {
         if (imagesBands.length == 1) {
             return imagesBands[0];
         }
-        Random rand = new Random();
-        return imagesBands[rand.nextInt(imagesBands.length)];
+        return imagesBands[i];
+    }
+
+    public int getNumberImage(){
+        return imagesBands.length;
     }
 
     public boolean checkGroup(String group) {
@@ -82,7 +85,12 @@ public class Bands {
      * @return путь: имя группы/картинка
      */
     public String getFolder() {
-        return name[0] + "/" + getNamesImages();
+        Random rand = new Random();
+        return name[0] + "/" + getNamesImages(rand.nextInt(imagesBands.length));
+    }
+
+    public String getFolder(int i){
+        return name[0] + "/" + getNamesImages(i);
     }
 
     public String getFolderRandom() {

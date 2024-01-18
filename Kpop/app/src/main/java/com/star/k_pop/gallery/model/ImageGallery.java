@@ -9,17 +9,30 @@ import java.io.Serializable;
  */
 public class ImageGallery implements Serializable {
     private String name;
-    private final String group;
+    private String group;
+
+    private boolean isGroup;
     private final String folder;
 
     public ImageGallery(String name, String group, String folder) {
         this.name = name;
         this.folder = folder;
         this.group = group;
+        isGroup = false;
+    }
+
+    public ImageGallery(String group, String folder) {
+        this.group = group;
+        this.folder = folder;
+        isGroup = true;
     }
 
     public String getName() {
         return name;
+    }
+
+    public boolean isGroup() {
+        return isGroup;
     }
 
     public String getGroup() {

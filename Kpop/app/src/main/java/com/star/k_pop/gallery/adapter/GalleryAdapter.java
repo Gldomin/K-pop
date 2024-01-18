@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.star.k_pop.R;
 import com.star.k_pop.gallery.model.ImageGallery;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Класс адаптер для загрузки изображений в плитки
@@ -28,10 +30,12 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView thumbnail;
+        public TextView thumbnailText;
 
         public MyViewHolder(View view) {
             super(view);
             thumbnail = view.findViewById(R.id.thumbnail);
+            thumbnailText  = view.findViewById(R.id.thumbnailText);
         }
     }
 
@@ -52,6 +56,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         ImageGallery imageGallery = imageGalleries.get(position);
+        if (imageGalleries.get(position).isGroup()){
+            holder.thumbnailText.setText(String.format(Locale.getDefault(), "%s", imageGallery.getGroup()));
+        }else{
+            holder.thumbnailText.setText(String.format(Locale.getDefault(), "%s\n(%s)",imageGallery.getName(),imageGallery.getGroup()));
+        }
 
         Glide.with(mContext).load(imageGallery.getUri())
                 .thumbnail(0.5f)

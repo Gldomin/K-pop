@@ -150,6 +150,10 @@ public class Importer {
         return new ArrayList<>(artists);
     }
 
+    public static ArrayList<Bands> getBandsAll() {
+        return new ArrayList<>(bands);
+    }
+
     /**
      * Получение списка артистов
      *
