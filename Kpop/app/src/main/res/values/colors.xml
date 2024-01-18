@@ -26,10 +26,10 @@
     <color name = "startBackGroundGradient">#150026</color>
     <color name = "middleBackGroundGradient">#7600BD</color>
 
-    <color name="missTakeCurrentDarkColor">#00FF00</color>
-    <color name="missTakeCurrentLightColor">#00FF00</color>
-    <color name="missTakeErrorDarkColor">#FF0000</color>
-    <color name="missTakeErrorLightColor">#FF0000</color>
+    <color name="missTakeCurrentDarkColor">#64CA64</color>
+    <color name="missTakeCurrentLightColor">#00A500</color>
+    <color name="missTakeErrorDarkColor">#FF5252</color>
+    <color name="missTakeErrorLightColor">#B50000</color>
 
     <color name="colorAccentLight">#626d71</color>
     <color name="colorPrimaryLight">#626d71</color>

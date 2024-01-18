@@ -622,7 +622,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
 
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            layoutParams.setMargins(30, 10, 30, 10);
+            layoutParams.setMargins(10, 10, 10, 10);
 
             // Проверки в какую колонку они определяются
             if (ansver.getValue().equals(first_band.getName())) {
@@ -807,8 +807,8 @@ public class TwoBandsTinder extends AppCompatActivity {
             layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
             layoutParamsText.setMargins(0, 0, 0, 15);
             textView.setText(String.format(Locale.getDefault(), "%s", ansver.getKey().getName()));
-            textView.setTextSize(15);
-            textView.setShadowLayer(4, 2, 2, Color.BLACK);
+            textView.setTextSize(20);
+            textView.setShadowLayer(5, 3, 3, Color.BLACK);
             textView.setTextColor(Color.WHITE);
 
             relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
@@ -854,8 +854,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                 CardView.LayoutParams layoutParamsTextHint = new CardView.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                 layoutParamsTextHint.gravity = Gravity.BOTTOM | Gravity.CENTER;
                 layoutParamsTextHint.setMargins(0, 0, 0, 15);
-                textViewHint.setTextSize(15);
-                textViewHint.setShadowLayer(4, 2, 2, Color.BLACK);
+                textViewHint.setTextSize(20);
+                textViewHint.setShadowLayer(5, 3, 3, Color.BLACK);
                 textViewHint.setTextColor(Color.WHITE);
                 textViewHint.setLayoutParams(layoutParamsTextHint);
                 textViewHint.setText(others.getName());
