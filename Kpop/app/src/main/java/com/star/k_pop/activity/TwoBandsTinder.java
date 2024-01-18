@@ -27,7 +27,6 @@ import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -100,17 +99,9 @@ public class TwoBandsTinder extends AppCompatActivity {
     private int pictNumbCurrent;
     //--------------------------------------------------------------------------------------------------
 
-    private LinearLayout AllActLayoutMainLay;
-    private LinearLayout AllActLayoutCardLeftLay;
-    private LinearLayout AllActLayoutCardRightLay;
     private LinearLayout AllActLayoutUnsLvLay;
-    private Button allActRightCardButton;
-    private Button allActLeftCardButton;
     private ImageView allActLeftSlvPict;
     private ImageView allActRightSlvPict;
-    private ImageView allActUnsLvPictPict;
-
-    private CardView allActCardView;
 
     private LinearLayout allActGuessSolvedLeftLay;
     private LinearLayout allActGuessSolvedRightLay;
@@ -121,9 +112,6 @@ public class TwoBandsTinder extends AppCompatActivity {
     int scoreHint = 0;
     private int score = 0;
     private int scoreRecord = 0;
-
-    boolean hintGetRecently = true;
-    boolean heathGetRecently = true;
 
     private boolean isViewMissTake = false;
     //----------------------------------------------------------------------------------------------
@@ -231,20 +219,12 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         //--------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
-        AllActLayoutMainLay = findViewById(R.id.allActorLLay);
-        AllActLayoutCardLeftLay = findViewById(R.id.allAct_Card_LLay);
-        AllActLayoutCardRightLay = findViewById(R.id.allAct_Card_RLay);
         AllActLayoutUnsLvLay = findViewById(R.id.allAct_UnslvFold);
-        allActRightCardButton = findViewById(R.id.allAct_Card_RightABtn);
-        allActLeftCardButton = findViewById(R.id.allAct_Card_LeftABtn);
         allActLeftSlvPict = findViewById(R.id.allActGuessLeftPict);
         allActRightSlvPict = findViewById(R.id.allActGuessRightPict);
-        allActUnsLvPictPict = findViewById(R.id.allAct_Unslv_Pict);
         //--------------------------------------------------------------------------------------
         allActGuessSolvedLeftLay = findViewById(R.id.allActorGuessLeftLay);
         allActGuessSolvedRightLay = findViewById(R.id.allActorGuessRightLay);
-
-        allActCardView = findViewById(R.id.allAct_Card);
 
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         scoreRecord = sp.getInt("userScoreTinder", 0);
