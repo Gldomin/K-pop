@@ -131,7 +131,7 @@ p.s: Будем рады любому вашему фидбеку на стра�
 
     <string name="tinderCountGroupError">Количество артистов в группах не совпадает!</string>
     <string name="tinderContinue">Продолжить</string>
-    <string name="tinderMissTakeView">Посмортреть ошибки</string>
+    <string name="tinderMissTakeView">Посмотреть ошибки</string>
     <string name="tinderLoseScreenTitle">Готово!</string>
     <string name="tinderLoseScreenWinMessage">Вы идеально знаете обе группы! Поздравляем! Количество полученных очков: %d!</string>
     <string name="tinderLoseScreenLoseMessage">Неплохо! Вы набрали %d из %d очков! К сожалению, вы ошибочно определили некоторых участников!</string>
