@@ -168,13 +168,11 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         setContentView(R.layout.activity_two_bands_temp);
 
-        Button confirmButton = findViewById(R.id.ttConfirmButton);
         Button endButton = findViewById(R.id.allAct_Accept);
         ImageButton helpButton = findViewById(R.id.helpTindButton);
         hintButton = findViewById(R.id.hintTindButton);
 
 
-        confirmButton.setBackgroundResource(theme.getBackgroundButton());
         endButton.setBackgroundResource(theme.getBackgroundButton());
         helpButton.setBackgroundResource(theme.getBackgroundButton());
         hintButton.setBackgroundResource(theme.getBackgroundButton());
@@ -235,17 +233,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             scoreRecord = savedInstanceState.getInt("scoreRecordTinder");
         }
         //----------------------not changed
-        //нажатие на кнопку меняет окно на другое
-        confirmButton.setOnClickListener(view -> {
-            if (twoBandFlip != null) {
-                menuFlipEventInstance();
-                twoBandFlip.showNext();
-                countGroupTextFirstTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupOne, countGroupMaxOne));
-                countGroupTextSecondTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupTwo, countGroupMaxTwo));
-            }
-        });
 
-        confirmButton.setVisibility(View.INVISIBLE);
 
 
         helpButton.setOnClickListener(v -> {
@@ -604,7 +592,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             textView.setTextColor(Color.WHITE);
 
             relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-            relativeLayout.setPadding(20, 20,20,20);
+            relativeLayout.setPadding(20, 20, 20, 20);
             // TODO что-то непонянтное с отображением ошибок
 
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
@@ -656,7 +644,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             hintCount++;
             counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
         }
-        if (hintCount > 0) {
+        if (hintCount > 0 || hintCountReward > 0) {
             hintButton.setBackgroundResource(theme.getBackgroundButton());
         }
         if (heathBarTest.getHp() < 1) {
@@ -814,13 +802,13 @@ public class TwoBandsTinder extends AppCompatActivity {
     private void interstitialShow() {
         Storage storage = new Storage(this, "appStatus");
         if (!storage.getBoolean("achTripleExpert")) {
-            if (countAd <= 0) {
+            if (countAd <= 0 && onRewarded) {
                 countAd = 5;
                 mInterstitialAd.show();
             }
             countAd--;
         } else {
-            AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"tinder\"}");
+            AppMetrica.reportEvent("Remove ads", "{\"tinder\":\"interstitial\"}");
         }
     }
 

@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">Guess K-pop</string>
 
-    <string name="yandex_id_metrica" translatable="false">7f5528ae-626c-4298-a361-5635a0ad148a</string>
+    <string name="yandex_id_metrica" translatable="false">b4c83928-a477-4bf9-a55d-de34930f441c</string>
 
     <string name="admob_id_account" translatable="false">ca-app-pub-1704760570617777~3272301452</string>
-    <string name="admob_id_reward_star" translatable="false">ca-app-pub-1704760570617777/1487897750</string>
-    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-1704760570617777/8141484754</string>
-    <string name="admob_id_interstitial" translatable="false">ca-app-pub-1704760570617777/7888214522</string>
 
     <string name="yandex_id_interstitial_menu" translatable="false">R-M-1594557-1</string>
     <string name="yandex_id_reward" translatable="false">R-M-1594557-2</string>

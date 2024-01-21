@@ -60,19 +60,9 @@ public class MainActivity extends AppCompatActivity {
         Button guessStarButton = findViewById(R.id.guessStarButton);
         guessStarButton.setBackgroundResource(theme.getBackgroundButton());
         guessStarButton.setOnClickListener(view -> {
-            AppMetrica.reportEvent("Menu 2.0", "{\"Button\":\"guessStarButton\"}");
+            AppMetrica.reportEvent("Menu", "{\"ButtonStar\":\"Start\"}");
             Intent image = new Intent();
             image.setClass(MainActivity.this, GuessStar.class);
-            startActivity(image);
-            interstitialShow();
-        });
-
-        Button guessTwoBandsTinder = findViewById(R.id.guessTwoBands);
-        guessTwoBandsTinder.setBackgroundResource(theme.getBackgroundButton());
-        guessTwoBandsTinder.setOnClickListener(view -> {
-            AppMetrica.reportEvent("Menu 2.0", "{\"Button\":\"guessTwoBands\"}");
-            Intent image = new Intent();
-            image.setClass(MainActivity.this, TwoBandsTinder.class);
             startActivity(image);
             interstitialShow();
         });
@@ -80,16 +70,26 @@ public class MainActivity extends AppCompatActivity {
         Button guessBandButton = findViewById(R.id.guessGroupButton);
         guessBandButton.setBackgroundResource(theme.getBackgroundButton());
         guessBandButton.setOnClickListener(view -> {
-            AppMetrica.reportEvent("Menu 2.0", "{\"Button\":\"guessBandButton\"}");
+            AppMetrica.reportEvent("Menu", "{\"ButtonGroup\":\"Start\"}");
             Intent image = new Intent();
             image.setClass(MainActivity.this, GuessBandsModeTwo.class);
             startActivity(image);
             interstitialShow();
         });
 
+        Button guessTwoBandsTinder = findViewById(R.id.guessTwoBands);
+        guessTwoBandsTinder.setBackgroundResource(theme.getBackgroundButton());
+        guessTwoBandsTinder.setOnClickListener(view -> {
+            AppMetrica.reportEvent("Menu", "{\"ButtonTinder\":\"Start\"}");
+            Intent image = new Intent();
+            image.setClass(MainActivity.this, TwoBandsTinder.class);
+            startActivity(image);
+            interstitialShow();
+        });
+
         ImageView buttonLibrary = findViewById(R.id.galleryButton);
         buttonLibrary.setOnClickListener(view -> {
-            AppMetrica.reportEvent("Menu 2.0", "{\"Button\":\"buttonLibrary\"}");
+            AppMetrica.reportEvent("Menu", "{\"ButtonLibrary\":\"Start\"}");
             Intent image = new Intent();
             image.setClass(MainActivity.this, Gallery.class);
             startActivity(image);
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(view -> {
-            AppMetrica.reportEvent("Menu 2.0", "{\"Button\":\"settingsButton\"}");
+            AppMetrica.reportEvent("Menu", "{\"ButtonSettings\":\"Start\"}");
             Intent image = new Intent();
             image.setClass(MainActivity.this, Settings.class);
             startActivityForResult(image, REQUEST_CODE);
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView achievement = findViewById(R.id.achievementButton);
         achievement.setOnClickListener(view -> {
-            AppMetrica.reportEvent("Menu 2.0", "{\"Button\":\"achievement\"}");
+            AppMetrica.reportEvent("Menu", "{\"ButtonAchievement\":\"Start\"}");
             Intent image = new Intent();
             image.setClass(MainActivity.this, Achievements.class);
             startActivity(image);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         Button about = findViewById(R.id.abautButton);
         about.setBackgroundResource(theme.getBackgroundButton());
         about.setOnClickListener(view -> {
-            AppMetrica.reportEvent("Menu 2.0", "{\"Button\":\"about\"}");
+            AppMetrica.reportEvent("Menu", "{\"ButtonAbout\":\"Start\"}");
             Intent image = new Intent();
             image.setClass(MainActivity.this, BasicNotice.class);
             image.putExtra("text", R.string.aboutText);
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             }
             countAd--;
         }else{
-            AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"menu\"}");
+            AppMetrica.reportEvent("Remove ads", "{\"menu\":\"interstitial\"}");
         }
     }
 

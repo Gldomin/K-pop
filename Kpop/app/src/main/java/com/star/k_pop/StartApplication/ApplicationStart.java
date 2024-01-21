@@ -28,23 +28,6 @@ public class ApplicationStart extends MultiDexApplication {
         } catch (Exception ignored) {
 
         }
-        // Отправление ошибок в яндекс при крахе приложения
-        try {
-            final Thread.UncaughtExceptionHandler mAndroidCrashHandler = Thread.getDefaultUncaughtExceptionHandler();
-
-            final Thread.UncaughtExceptionHandler mUncaughtExceptionHandler = (thread, exception) -> {
-                try {
-                    AppMetrica.reportError(exception.toString(), exception);
-                } finally {
-                    if (null != mAndroidCrashHandler) {
-                        mAndroidCrashHandler.uncaughtException(thread, exception);
-                    }
-                }
-            };
-            Thread.setDefaultUncaughtExceptionHandler(mUncaughtExceptionHandler);
-        } catch (Exception ignored) {
-
-        }
         SharedPreferences sp = getSharedPreferences("appStatus", Context.MODE_PRIVATE);
         if (!sp.contains("noticeWatched") || !sp.contains("achGuessStarNormal")) {
             Log.v("TAG", "noticeWatched");

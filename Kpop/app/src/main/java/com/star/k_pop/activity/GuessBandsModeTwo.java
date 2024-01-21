@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.star.k_pop.R;
 import com.star.k_pop.StartApplication.Importer;
 import com.star.k_pop.ad.InterstitialCustom;
@@ -66,9 +67,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private boolean countClick = false;
     private boolean onRewarded = true;
     private boolean showReward = false;
-    private boolean onRewardedHint = true;
+
     private boolean hintUsed = false;
     private int hintCount = 3;
+    private int hintCountReward = 3;
     private int[] ref;
     private List<Button> buttons;
     private List<Button> buttonsEnd;
@@ -91,11 +93,12 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
     RewardedCustom rewardedCustom; //Класс для работы с рекламой
 
-    private ImageView groupPhoto;
+    private PhotoView groupPhoto;
     private Button slideButton;
     private TextView recordText; //рекорд
     private TextView scoreNowText; //текущий счет
     private TextView counterHint;
+    ImageButton hintButton;
 
     private InterstitialCustom mInterstitialAd;
 
@@ -127,7 +130,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
 
         groupPhoto = findViewById(R.id.groupPhoto);
-        ImageButton hintButton = findViewById(R.id.podsk);
+        hintButton = findViewById(R.id.podsk);
         slideButton = findViewById(R.id.button);
         recordText = findViewById(R.id.scoreBands);
         scoreNowText = findViewById(R.id.fastscoreBands);
@@ -182,8 +185,9 @@ public class GuessBandsModeTwo extends AppCompatActivity {
 
         hintButton.setOnClickListener(view -> {
             if (!hintUsed) {
-                if (hintCount > 1) {
+                if (hintCount > 0) {
                     hintCount--;
+                    hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
                     counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                     for (int i = 0; i < ref.length; i++) {
                         if (i < countLetter && nameGroup.charAt(i) != ' ') {
@@ -202,7 +206,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                         }
                     }
                     hintUsed = true;
-                } else if (hintCount == 1) {
+                } else if (hintCountReward > 0) {
                     onRewardHint();
                 }
             }
@@ -237,6 +241,9 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         count++;
         scoreNow++;
         hintUsed = false;
+        if (hintCount > 0 || hintCountReward>0) {
+            hintButton.setBackgroundResource(theme.getBackgroundButton());
+        }
         scoreNowText.setText(getResources().getString(R.string.score_text, scoreNow));
         if (scoreNow > record) {
             record = scoreNow;
@@ -470,10 +477,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     }
 
     private void onRewardHint() {
-        if (rewardedCustom.onLoaded() && onRewardedHint) {
+        if (rewardedCustom.onLoaded()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
             builder.setTitle(getResources().getString(R.string.endHintCongratulate))
-                    .setMessage(String.format("%s", getResources().getString(R.string.endHintReward)))
+                    .setMessage(String.format("%s", getResources().getString(R.string.endHintReward, hintCountReward)))
                     .setCancelable(false)
                     .setNegativeButton(getResources().getString(R.string.endHintNo),
                             (dialogInterface, i) -> {
@@ -488,7 +495,8 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                                 @Override
                                 public void onDismissed() {
                                     if (showReward) {
-                                        onRewardedHint = false;
+                                        hintCountReward--;
+                                        hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
                                         for (int i = 0; i < ref.length; i++) {
                                             if (i < countLetter && nameGroup.charAt(i) != ' ') {
                                                 buttons.get(ref[i]).setText(String.format("%s", nameGroup.charAt(i)));
@@ -501,10 +509,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                                                 b.setText("_");
                                             }
                                         }
-                                        hintCount--;
-                                        counterHint.setText(String.format(new Locale("ru"), "%d", hintCount));
-                                    } else {
-                                        onRewardedHint = true;
+                                        hintUsed = true;
                                     }
                                     showReward = false;
                                 }
@@ -523,7 +528,8 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                 .setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
                     heathBarTest.setHp(3);
                     scoreNow = -1;
-                    hintCount = 4;
+                    hintCount = 3;
+                    hintCountReward = 3;
                     counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                     Storage storage = new Storage(this, "appStatus");
                     if (!storage.getBoolean("achTripleExpert")) {
@@ -534,10 +540,9 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                             countAd--;
                         }
                     } else {
-                        AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"guessBands\"}");
+                        AppMetrica.reportEvent("Remove ads", "{\"bands\":\"interstitial\"}");
                     }
                     onRewarded = true;
-                    onRewardedHint = true;
                     change();
                 });
         if (rewardedCustom.onLoaded() && onRewarded) {
@@ -559,10 +564,10 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                                     } else {
                                         heathBarTest.setHp(3);
                                         scoreNow = -1;
-                                        hintCount = 4;
+                                        hintCount = 3;
+                                        hintCountReward = 3;
                                         counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                                         onRewarded = true;
-                                        onRewardedHint = true;
                                         change();
                                     }
                                     showReward = false;

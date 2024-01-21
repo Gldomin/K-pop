@@ -160,7 +160,7 @@ public class GuessStar extends AppCompatActivity {
                     if (scoreNow % 35 == 0) {
                         heathBarTest.restore();
                     }
-                    if (scoreNow % 70 == 0){
+                    if (scoreNow % 70 == 0) {
                         hintCount++;
                         counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                     }
@@ -287,6 +287,7 @@ public class GuessStar extends AppCompatActivity {
                                 public void onDismissed() {
                                     if (showReward) {
                                         hintCountReward--;
+                                        hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
                                         int number = 0;
                                         for (int i = 0; i < 4; i++) {
                                             if (buttons[i].getText().equals(artists.get(count).getName())) {
@@ -361,7 +362,7 @@ public class GuessStar extends AppCompatActivity {
         chosenOne = new Random().nextInt(4);
         boolean sex = artists.get(count).isSex();
         hintUsed = false;
-        if (hintCount > 0) {
+        if (hintCount > 0 || hintCountReward > 0) {
             hintButton.setBackgroundResource(theme.getBackgroundButton());
         }
         Log.i("answer=", artists.get(count).getName()); //чит-лог
@@ -412,21 +413,21 @@ public class GuessStar extends AppCompatActivity {
                     }
                     Storage storage = new Storage(this, "appStatus");
                     if (!storage.getBoolean("achTripleExpert")) {
-                        if (countAd <= 0) {
-                            countAd = 4;
+                        if (countAd <= 0 && onRewarded) {
+                            countAd = 5;
                             mInterstitialAd.show();
                         } else {
                             countAd--;
                         }
-                    }else{
-                        AppMetrica.reportEvent("ads 2.0", "{\"interstitial\":\"guess star\"}");
+                    } else {
+                        AppMetrica.reportEvent("Remove ads", "{\"star\":\"interstitial\"}");
                     }
                     onRewarded = true;
                     nextArtist();
                     updateScore();
                 });
         if (onRewarded && rewardedCustom.onLoaded()) {
-            builder.setMessage(String.format("%s.\n%s %s\n%s.",getResources().getString(R.string.last_artist_text, artists.get(count).getName()),
+            builder.setMessage(String.format("%s.\n%s %s\n%s.", getResources().getString(R.string.last_artist_text, artists.get(count).getName()),
                             getResources().getString(R.string.score_text, scoreNow),
                             getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)))
                     .setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) -> {

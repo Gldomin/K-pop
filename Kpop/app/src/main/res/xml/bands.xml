@@ -712,7 +712,7 @@
     </Band>
     <Band>
         <NameBand>(G)I-DLE</NameBand>
-        <NameBand>(G)IDLE</NameBand>
+        <NameBand>GI-DLE</NameBand>
         <Image>1.jpg</Image>
         <Image>2.jpg</Image>
         <Image>3.jpg</Image>

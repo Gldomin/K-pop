@@ -191,7 +191,7 @@
     </LinearLayout>
 
 
-    <ImageView
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/groupPhoto"
         android:layout_width="0dp"
         android:layout_height="0dp"
