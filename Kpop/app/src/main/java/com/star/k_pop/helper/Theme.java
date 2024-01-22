@@ -122,6 +122,14 @@ public class Theme {
         }
     }
 
+    public int getColorRatingStarBackground(){
+        if (darkMode) {
+            return activity.getResources().getColor(R.color.colorRatingStarBackgroundDark);
+        } else {
+            return activity.getResources().getColor(R.color.colorRatingStarBackgroundLight);
+        }
+    }
+
     public int getColorRatingButtonText(){
         if (darkMode) {
             return activity.getResources().getColor(R.color.colorRatingButtonTextDark);

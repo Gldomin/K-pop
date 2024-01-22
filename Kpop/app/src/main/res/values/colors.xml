@@ -79,5 +79,6 @@
     <color name = "colorRatingTextLight">#2BA5FF</color>
     <color name = "colorRatingButtonTextDark">#000000</color>
     <color name = "colorRatingButtonTextLight">#000000</color>
-
+    <color name = "colorRatingStarBackgroundDark">#D2D2D2</color>
+    <color name = "colorRatingStarBackgroundLight">#D2D2D2</color>
 </resources>
