@@ -1,11 +1,19 @@
 package com.star.k_pop.activity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -122,6 +130,29 @@ public class MainActivity extends AppCompatActivity {
             image.putExtra("title", R.string.aboutTitle);
             startActivity(image);
         });
+
+
+        Dialog rating = new Dialog(this, theme.getAlertDialogStyle());
+        rating.setContentView(R.layout.rating_app);
+        TextView ttx = rating.findViewById(R.id.textRating);
+        ttx.setTextColor(theme.getColorRatingText());
+        Button buttonClose = rating.findViewById(R.id.buttonClose);
+        buttonClose.setBackgroundResource(theme.getBackgroundButton());
+        buttonClose.setTextColor(theme.getButtonTextColor());
+        Button buttonCancel = rating.findViewById(R.id.buttonCancel);
+        buttonCancel.setBackgroundResource(theme.getBackgroundButton());
+        buttonCancel.setTextColor(theme.getButtonTextColor());
+        Button buttonSend = rating.findViewById(R.id.buttonSend);
+        buttonSend.setBackgroundResource(theme.getBackgroundButton());
+        buttonSend.setTextColor(theme.getButtonTextColor());
+        RatingBar ratingBar = rating.findViewById(R.id.ratingBar);
+        ratingBar.setStepSize(1);
+        ratingBar.setProgressTintList(ColorStateList.valueOf(theme.getColorRatingText()));
+        ratingBar.setSecondaryProgressTintList(ColorStateList.valueOf(theme.getColorRatingText()));
+        rating.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        RelativeLayout relativeLayoutRating = rating.findViewById(R.id.ratingLayout);
+        relativeLayoutRating.setBackgroundResource(theme.getStyleRatingBackground());
+        rating.show();
     }
 
     @Override
@@ -139,15 +170,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void interstitialShow() {
         Storage storage = new Storage(this, "appStatus");
-        if (!storage.getBoolean("achTripleExpert")){
+        if (!storage.getBoolean("achTripleExpert")) {
             if (countAd <= 0) {
                 countAd = 4;
-                if (mInterstitialAd.show()){
+                if (mInterstitialAd.show()) {
                     AppMetrica.reportEvent("Show ads", "{\"menu\":\"interstitial\"}");
                 }
             }
             countAd--;
-        }else{
+        } else {
             AppMetrica.reportEvent("Remove ads", "{\"menu\":\"interstitial\"}");
         }
     }

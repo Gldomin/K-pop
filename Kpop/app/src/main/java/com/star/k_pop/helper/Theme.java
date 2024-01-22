@@ -34,6 +34,14 @@ public class Theme {
         }
     }
 
+    public int getStyleRatingBackground() {
+        if (darkMode) {
+            return R.drawable.style_rating_dark;
+        } else {
+            return R.drawable.style_rating_light;
+        }
+    }
+
     public int getTextColor() {
         if (darkMode) {
             return activity.getResources().getColor(R.color.whiteColor);
@@ -98,11 +106,11 @@ public class Theme {
 
     }
 
-    public int getBackgroundCart(){
+    public int getColorRatingText(){
         if (darkMode) {
-            return R.drawable.transponent_background;
+            return activity.getResources().getColor(R.color.standartPurpleButtonColor);
         } else {
-            return R.drawable.transponent_background;
+            return activity.getResources().getColor(R.color.contrastBlueButtonColor);
         }
     }
 
