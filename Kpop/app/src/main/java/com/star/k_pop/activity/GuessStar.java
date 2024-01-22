@@ -1,6 +1,5 @@
 package com.star.k_pop.activity;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -46,44 +45,49 @@ import io.appmetrica.analytics.AppMetrica;
 
 public class GuessStar extends AppCompatActivity {
 
-    Button[] buttons = new Button[4];
-    ImageView imageView;
-    TextView textScore;
-    TextView textRecord;
-    private TextView counterHint;
+    private HeathBar heathBar; //Менеджер здоровья
+    private final Button[] buttons = new Button[4];//Кнопки ответов
+    private ImageView imageView;//Изображение артиста
 
-    SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
-    boolean sound = true; //включен ли звук
+    //Текущий счет
+    private TextView textScore;//Текст счета
+    private int scoreNow;//Счет
 
-    ArrayList<Artist> artists = new ArrayList<>();
+    //Рекорд
+    private TextView textRecord;//Текст рекорда
+    private int record;         //рекорд
 
-    int chosenOne = -1;     //избранный артист (правильный артист)
-    int scoreNow = 0;       //текущий счет
-    int record = 0;         //рекорд
-    int count = 0;          //номер артиста из сгенерированного списка (текущий)
+    //Подсказка
+    private ImageButton hintButton;//Кнопка подсказки
+    private TextView counterHint;//Текст количества подсказок
+    private int hintCountReward;//Количество подсказок за рекламу
+    private int hintCount;//Количество подсказок
+    private boolean hintUsed;//Использована ли подсказка
 
-    private boolean hintUsed = false;
+    //Звуки
+    private SoundPlayer soundPlayer; //это объект для воспроизведения звуков
+    private boolean sound; //включен ли звук
+    private int pingClickID; //Звук неправильного ответа
+    private int longSwitchID; // Звук правильного ответа
+    private int grace; //Звук ачивки
 
-    private int hintCount = 3;
 
-    boolean onRewarded = true;      // Просмотр рекламы 1 раз
-    boolean showReward = false;     // Просмотрена реклама до конца или нет
-    boolean endGame = false;
+    private ArrayList<Artist> artists; //Список артистов
+    private int count;          //номер артиста из сгенерированного списка (текущий)
+
+    private boolean endGame; // Окончена ли игры
     private Theme theme; //переменная для считывания состояния свиича на darkMod
-    private RewardedCustom rewardedCustom;          //Класс для работы с рекламой
-    private InterstitialCustom mInterstitialAd;
 
-    private int hintCountReward = 3;
-    ImageButton hintButton;
+    //Рекламаза вознаграждение
+    private RewardedCustom rewardedCustom;          //Реклама за вознаграждение
+    private boolean showReward;  // Просмотрена реклама до конца или нет
+    private boolean onRewarded; // Просмотр рекламы 1 раз
 
-    private int countAd = 5;
+    //Межстраничная реклама
+    private InterstitialCustom mInterstitialAd; //Межстраничная реклама
+    private int countAd; //Количество проигранных игр между рекламами
 
-    HeathBar heathBarTest;
 
-    int pingClickID;
-    int longSwitchID;
-    int grace;
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         theme = new Theme(this);
@@ -100,9 +104,10 @@ public class GuessStar extends AppCompatActivity {
         createButtonAndSound();
         createHeathBar();
 
-        nextArtist();
+        restartGame();
     }
 
+    //Инициализация данных из layout
     private void initViewElement() {
         textRecord = findViewById(R.id.scoreText2);
         imageView = findViewById(R.id.imageView);
@@ -111,8 +116,10 @@ public class GuessStar extends AppCompatActivity {
         textScore.setTextColor(theme.getTextColor());
     }
 
+    //Загрузка списка артистов и рекорда
     private void initGame(Bundle savedInstanceState) {
         artists = Importer.getRandomArtists();
+        count = 0;
         if (artists.size() == 0) {
             finish();
         }
@@ -129,10 +136,12 @@ public class GuessStar extends AppCompatActivity {
 
     }
 
-
+    // Создание звуков кнопок ответа, подсказки и сведений о режиме
     private void createButtonAndSound() {
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
+        sound = false;
         sound = storage.getBoolean("soundMode"); //настроек звука
+        soundPlayer = new SoundPlayer(this);
 
         pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
         longSwitchID = soundPlayer.load(R.raw.long_switch);
@@ -161,7 +170,6 @@ public class GuessStar extends AppCompatActivity {
         }
 
         counterHint = findViewById(R.id.counter_hints_star);
-        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
 
         hintButton = findViewById(R.id.podskStart);
         hintButton.setBackgroundResource(theme.getBackgroundButton());
@@ -188,6 +196,7 @@ public class GuessStar extends AppCompatActivity {
         });
     }
 
+    //Действие на нажание кнопки ответа
     private void buttonAnswerClick(View view) {
         if (((Button) view).getText().equals(artists.get(count).getName())) {
             count++;
@@ -201,7 +210,7 @@ public class GuessStar extends AppCompatActivity {
                 count = 0;
             }
             if (scoreNow % 35 == 0) {
-                heathBarTest.restore();
+                heathBar.restore();
             }
             if (scoreNow % 70 == 0) {
                 hintCount++;
@@ -237,8 +246,8 @@ public class GuessStar extends AppCompatActivity {
         } else {
             view.setBackgroundResource(theme.getBackgroundButtonDisable());
             view.setClickable(false);
-            heathBarTest.blow(); //снижение хп
-            if (heathBarTest.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
+            heathBar.blow(); //снижение хп
+            if (heathBar.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
                 startLosingDialog();
             }
 
@@ -248,11 +257,14 @@ public class GuessStar extends AppCompatActivity {
         }
     }
 
+    //Инициализация рекламы
     private void createAd() {
         rewardedCustom = new RewardedCustomYandex(this, getResources().getString(R.string.yandex_id_reward));
         mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
+        countAd = 5;
     }
 
+    //Получепние подсказки
     private void getHint() {
         hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
         counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
@@ -282,15 +294,14 @@ public class GuessStar extends AppCompatActivity {
         hintUsed = true;
     }
 
+    //Получение подсказки за рекламу
     private void onRewardHint() {
         if (rewardedCustom.onLoaded()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
             builder.setTitle(getResources().getString(R.string.endHintCongratulate))
                     .setMessage(String.format("%s", getResources().getString(R.string.endHintReward, hintCountReward)))
                     .setCancelable(false)
-                    .setNegativeButton(getResources().getString(R.string.endHintNo),
-                            (dialogInterface, i) -> {
-                            })
+                    .setNegativeButton(getResources().getString(R.string.endHintNo),null)
                     .setPositiveButton(getResources().getString(R.string.endHintYes), (dialogInterface, i) ->
                             rewardedCustom.show(GuessStar.this, new RewardedCustom.RewardedInterface() {
                                 @Override
@@ -312,6 +323,7 @@ public class GuessStar extends AppCompatActivity {
         }
     }
 
+    //Инициализация менеджера здоровья
     private void createHeathBar() {
         ImageView imageView1 = findViewById(R.id.guessBandHeart1);
         ImageView imageView2 = findViewById(R.id.guessBandHeart2);
@@ -322,9 +334,10 @@ public class GuessStar extends AppCompatActivity {
         imageViewList.add(imageView3);
 
         Animation lifeBrokeAnimation = AnimationUtils.loadAnimation(this, R.anim.heart_broke_animation);
-        heathBarTest = new HeathBar(imageViewList, 3, lifeBrokeAnimation);
+        heathBar = new HeathBar(imageViewList, 3, lifeBrokeAnimation);
     }
 
+    //Сохраниение данных при удалении и восстановлении активити
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt("scoreNow", scoreNow);
@@ -332,6 +345,7 @@ public class GuessStar extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
+    //Сохраниение рекорда при приостановке активности
     @Override
     protected void onPause() {
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE); //сохранение Счета
@@ -343,14 +357,16 @@ public class GuessStar extends AppCompatActivity {
         super.onPause();
     }
 
+    //Обновление счета игркоа
     private void updateScore() {
         textScore.setText(String.format(Locale.getDefault(), "%s", getResources().getString(R.string.score_text, scoreNow)));
         textRecord.setText(String.format(Locale.getDefault(), "%s", getResources().getString(R.string.record_text, record)));
     }
 
+    //Генерация следующего артиста
     private void nextArtist() {
         updateScore();
-        chosenOne = new Random().nextInt(4);
+        int chosenOne = new Random().nextInt(4);
         boolean sex = artists.get(count).isSex();
         hintUsed = false;
         if (hintCount > 0 || hintCountReward > 0) {
@@ -381,12 +397,14 @@ public class GuessStar extends AppCompatActivity {
                 .into(imageView);
     }
 
+    //Начальные значения при новой игре
     private void restartGame() {
         endGame = false;
-        heathBarTest.setHp(3);
+        heathBar.setHp(3);
         scoreNow = 0;
         hintCount = 3;
         hintCountReward = 3;
+        showReward = false;
         count++;
         if (count >= artists.size()) {
             artists = Importer.getRandomArtists();
@@ -398,6 +416,7 @@ public class GuessStar extends AppCompatActivity {
         nextArtist();
     }
 
+    //Загрузка межстраничной рекламы
     private void interstitialAd() {
         Storage storage = new Storage(this, "appStatus");
         if (!storage.getBoolean("achTripleExpert")) {
@@ -412,7 +431,7 @@ public class GuessStar extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("DefaultLocale")
+    //Показ диалога окончания игры
     private void startLosingDialog() {
         endGame = true;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
@@ -429,14 +448,13 @@ public class GuessStar extends AppCompatActivity {
                 .setMessage(textMessage)
                 .setCancelable(false)
                 .setNegativeButton(getResources().getString(R.string.endGameNo), (dialogInterface, i) -> finish())
-                .setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
-                    restartGame();
-                });
+                .setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> restartGame());
         AlertDialog alert = builder.create();
         alert.show();
     }
 
-    class RewardedGuessStart implements RewardedCustom.RewardedInterface{
+    //Класс для показа рекламы за вознаграждение при проигрыше
+    class RewardedGuessStart implements RewardedCustom.RewardedInterface {
 
         @Override
         public void onRewarded() {
@@ -447,7 +465,7 @@ public class GuessStar extends AppCompatActivity {
         @Override
         public void onDismissed() {
             if (showReward) {
-                heathBarTest.restore();
+                heathBar.restore();
             } else {
                 restartGame();
             }
