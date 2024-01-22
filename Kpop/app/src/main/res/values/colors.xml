@@ -73,5 +73,11 @@
     <color name="colorAlertDialogTextStyle4">#454545</color>
     <color name="colorAlertDialogTextPrimaryStyle4">#454545</color>
 
+    <color name = "colorRatingStarDark">#FD8AFF</color>
+    <color name = "colorRatingStarLight">#2BA5FF</color>
+    <color name = "colorRatingTextDark">#FD8AFF</color>
+    <color name = "colorRatingTextLight">#2BA5FF</color>
+    <color name = "colorRatingButtonTextDark">#000000</color>
+    <color name = "colorRatingButtonTextLight">#000000</color>
 
 </resources>

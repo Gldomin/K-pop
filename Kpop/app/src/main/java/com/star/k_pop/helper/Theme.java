@@ -108,9 +108,25 @@ public class Theme {
 
     public int getColorRatingText(){
         if (darkMode) {
-            return activity.getResources().getColor(R.color.standartPurpleButtonColor);
+            return activity.getResources().getColor(R.color.colorRatingTextDark);
         } else {
-            return activity.getResources().getColor(R.color.contrastBlueButtonColor);
+            return activity.getResources().getColor(R.color.colorRatingTextLight);
+        }
+    }
+
+    public int getColorRatingStar(){
+        if (darkMode) {
+            return activity.getResources().getColor(R.color.colorRatingStarDark);
+        } else {
+            return activity.getResources().getColor(R.color.colorRatingStarLight);
+        }
+    }
+
+    public int getColorRatingButtonText(){
+        if (darkMode) {
+            return activity.getResources().getColor(R.color.colorRatingButtonTextDark);
+        } else {
+            return activity.getResources().getColor(R.color.colorRatingButtonTextLight);
         }
     }
 
