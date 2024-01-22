@@ -49,8 +49,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -690,6 +688,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         alertBuild.setMessage(String.format("%s! %s", getResources().getString(R.string.score_text, score),
                 getResources().getString(R.string.endGameNewGame)));
         alertBuild.setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
+            AppMetrica.reportEvent("Restart", "{\"tinder\":\"record " + scoreRecord + "\"}");
             score = 0;
             scoreHealth = 0;
             scoreHint = 0;
@@ -718,6 +717,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                             heathBarTest.restore();
                             nextArtist();
                         } else {
+                            AppMetrica.reportEvent("Restart", "{\"tinder\":\"record " + scoreRecord + "\"}");
                             score = 0;
                             scoreHealth = 0;
                             scoreHint = 0;

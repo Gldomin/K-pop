@@ -400,6 +400,7 @@ public class GuessStar extends AppCompatActivity {
 
     //Начальные значения при новой игре
     private void restartGame() {
+        AppMetrica.reportEvent("Restart", "{\"star\":\"record " + record + "\"}");
         endGame = false;
         heathBar.setHp(3);
         scoreNow = 0;

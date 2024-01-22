@@ -527,6 +527,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                 .setCancelable(false)
                 .setNegativeButton(getResources().getString(R.string.endGameNo), (dialogInterface, i) -> finish())
                 .setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
+                    AppMetrica.reportEvent("Restart", "{\"bands\":\"record " + record + "\"}");
                     heathBarTest.setHp(3);
                     scoreNow = -1;
                     hintCount = 3;
@@ -565,6 +566,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                                         onRewarded = false;
                                         heathBarTest.restore();
                                     } else {
+                                        AppMetrica.reportEvent("Restart", "{\"bands\":\"record " + record + "\"}");
                                         heathBarTest.setHp(3);
                                         scoreNow = -1;
                                         hintCount = 3;
