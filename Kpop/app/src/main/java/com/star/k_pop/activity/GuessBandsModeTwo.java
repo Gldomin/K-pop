@@ -511,6 +511,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                                         }
                                         hintUsed = true;
                                     }
+                                    AppMetrica.reportEvent("Show ads", "{\"bands\":\"rewarded " + showReward + "\"}");
                                     showReward = false;
                                 }
                             }));
@@ -535,7 +536,9 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                     if (!storage.getBoolean("achTripleExpert")) {
                         if (countAd <= 0 && onRewarded) {
                             countAd = 5;
-                            mInterstitialAd.show();
+                            if (mInterstitialAd.show()){
+                                AppMetrica.reportEvent("Show ads", "{\"bands\":\"interstitial\"}");
+                            }
                         } else {
                             countAd--;
                         }
@@ -570,6 +573,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
                                         onRewarded = true;
                                         change();
                                     }
+                                    AppMetrica.reportEvent("Show ads", "{\"bands\":\"rewarded " + showReward + "\"}");
                                     showReward = false;
                                 }
                             }));

@@ -16,7 +16,7 @@ import com.yandex.mobile.ads.rewarded.RewardedAdEventListener;
 import com.yandex.mobile.ads.rewarded.RewardedAdLoadListener;
 import com.yandex.mobile.ads.rewarded.RewardedAdLoader;
 
-public class RewardedCustomYandex extends RewardedCustom{
+public class RewardedCustomYandex extends RewardedCustom {
 
     private final String AdUnitId;
     private RewardedInterface yandexInterface;
@@ -24,7 +24,7 @@ public class RewardedCustomYandex extends RewardedCustom{
     @Nullable
     private final RewardedAdLoader mRewardedAdLoader;
 
-    public RewardedCustomYandex(Activity context, String AdUnitId){
+    public RewardedCustomYandex(Activity context, String AdUnitId) {
         this.AdUnitId = AdUnitId;
         mRewardedAdLoader = new RewardedAdLoader(context);
         mRewardedAdLoader.setAdLoadListener(new RewardedAdLoadListener() {
@@ -45,7 +45,7 @@ public class RewardedCustomYandex extends RewardedCustom{
     }
 
     private void loadRewardedAd() {
-        if (mRewardedAdLoader != null ) {
+        if (mRewardedAdLoader != null) {
             final AdRequestConfiguration adRequestConfiguration =
                     new AdRequestConfiguration.Builder(AdUnitId).build();
             mRewardedAdLoader.loadAd(adRequestConfiguration);
@@ -58,7 +58,7 @@ public class RewardedCustomYandex extends RewardedCustom{
     }
 
     @Override
-    public void show(Activity context, RewardedInterface rewardYandexInterface){
+    public boolean show(Activity context, RewardedInterface rewardYandexInterface) {
         yandexInterface = rewardYandexInterface;
         if (mRewardedAd != null) {
             mRewardedAd.setAdEventListener(new RewardedAdEventListener() {
@@ -102,6 +102,9 @@ public class RewardedCustomYandex extends RewardedCustom{
                 }
             });
             mRewardedAd.show(context);
+            return true;
+        } else {
+            return false;
         }
     }
 }

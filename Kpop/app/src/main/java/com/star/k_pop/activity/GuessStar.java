@@ -301,7 +301,7 @@ public class GuessStar extends AppCompatActivity {
             builder.setTitle(getResources().getString(R.string.endHintCongratulate))
                     .setMessage(String.format("%s", getResources().getString(R.string.endHintReward, hintCountReward)))
                     .setCancelable(false)
-                    .setNegativeButton(getResources().getString(R.string.endHintNo),null)
+                    .setNegativeButton(getResources().getString(R.string.endHintNo), null)
                     .setPositiveButton(getResources().getString(R.string.endHintYes), (dialogInterface, i) ->
                             rewardedCustom.show(GuessStar.this, new RewardedCustom.RewardedInterface() {
                                 @Override
@@ -315,6 +315,7 @@ public class GuessStar extends AppCompatActivity {
                                         hintCountReward--;
                                         getHint();
                                     }
+                                    AppMetrica.reportEvent("Show ads", "{\"star\":\"rewarded " + showReward + "\"}");
                                     showReward = false;
                                 }
                             }));
@@ -422,7 +423,9 @@ public class GuessStar extends AppCompatActivity {
         if (!storage.getBoolean("achTripleExpert")) {
             if (countAd <= 0 && onRewarded) {
                 countAd = 5;
-                mInterstitialAd.show();
+                if (mInterstitialAd.show()) {
+                    AppMetrica.reportEvent("Show ads", "{\"star\":\"interstitial\"}");
+                }
             } else {
                 countAd--;
             }
@@ -469,6 +472,7 @@ public class GuessStar extends AppCompatActivity {
             } else {
                 restartGame();
             }
+            AppMetrica.reportEvent("Show ads", "{\"star\":\"rewarded " + showReward + "\"}");
             showReward = false;
         }
     }

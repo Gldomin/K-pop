@@ -142,7 +142,9 @@ public class MainActivity extends AppCompatActivity {
         if (!storage.getBoolean("achTripleExpert")){
             if (countAd <= 0) {
                 countAd = 4;
-                mInterstitialAd.show();
+                if (mInterstitialAd.show()){
+                    AppMetrica.reportEvent("Show ads", "{\"menu\":\"interstitial\"}");
+                }
             }
             countAd--;
         }else{

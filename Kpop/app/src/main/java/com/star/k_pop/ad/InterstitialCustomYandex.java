@@ -49,7 +49,7 @@ public class InterstitialCustomYandex extends InterstitialCustom {
     }
 
     @Override
-    public void show() {
+    public boolean show() {
         if (mInterstitialAd != null) {
             mInterstitialAd.setAdEventListener(new InterstitialAdEventListener() {
                 @Override
@@ -85,6 +85,9 @@ public class InterstitialCustomYandex extends InterstitialCustom {
                 }
             });
             mInterstitialAd.show(context);
+            return true;
+        } else {
+            return false;
         }
     }
 

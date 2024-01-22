@@ -11,7 +11,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -346,6 +345,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                                             textHint.setText(artists_turn.get(pictnumb).getName());
                                         }
                                     }
+                                    AppMetrica.reportEvent("Show ads", "{\"tinder\":\"rewarded " + showReward + "\"}");
                                     showReward = false;
                                 }
                             }));
@@ -719,6 +719,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                             nextArtist();
                             interstitialShow();
                         }
+                        AppMetrica.reportEvent("Show ads", "{\"tinder\":\"rewarded " + showReward + "\"}");
                         showReward = false;
                     }
                 });
@@ -791,7 +792,9 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (!storage.getBoolean("achTripleExpert")) {
             if (countAd <= 0 && onRewarded) {
                 countAd = 5;
-                mInterstitialAd.show();
+                if (mInterstitialAd.show()){
+                    AppMetrica.reportEvent("Show ads", "{\"tinder\":\"interstitial\"}");
+                }
             }
             countAd--;
         } else {
