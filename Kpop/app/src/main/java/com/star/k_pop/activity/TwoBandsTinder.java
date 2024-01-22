@@ -96,7 +96,6 @@ public class TwoBandsTinder extends AppCompatActivity {
     ArrayList<Artist> artists_turn;
     Map<Artist, String> ansverMap;
     private int pictnumb;
-    private int pictNumbCurrent;
     //--------------------------------------------------------------------------------------------------
 
     private LinearLayout AllActLayoutUnsLvLay;
@@ -252,10 +251,11 @@ public class TwoBandsTinder extends AppCompatActivity {
                     counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
                     hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
                     layoutHint.setVisibility(View.VISIBLE);
-                    textHint.setText(artists_turn.get(pictNumbCurrent).getName());
                     isHint = true;
                     if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
                         menuFlipEventInstance();
+                    }else{
+                        textHint.setText(artists_turn.get(pictnumb).getName());
                     }
                 } else if (hintCountReward > 0) {
                     onRewardHint();
@@ -270,20 +270,14 @@ public class TwoBandsTinder extends AppCompatActivity {
             public void onLeftCheck() {
                 left = true;
                 right = false;
-                ansverMap.put(artists_turn.get(pictNumbCurrent), first_band.getName());
+                ansverMap.put(artists_turn.get(pictnumb), first_band.getName());
 
                 countGroupTextFirstOne.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupOne, countGroupMaxOne));
                 pictnumb++;
                 if (pictnumb < ansverMap.size()) {
                     fadeAnimation(true);
-                    for (int i = 0; i < ansverMap.size(); i++) {
-                        if (Objects.equals(ansverMap.get(artists_turn.get(i)), "null")) {
-                            pictNumbCurrent = i;
-                            break;
-                        }
-                    }
-                    setupImage(artists_turn.get(pictNumbCurrent).getFolder(), imageBand);
-                    textHint.setText(artists_turn.get(pictNumbCurrent).getName());
+                    setupImage(artists_turn.get(pictnumb).getFolderNotRandom(), imageBand);
+                    textHint.setText(artists_turn.get(pictnumb).getName());
                 }
                 if (pictnumb >= ansverMap.size()) {
 
@@ -299,21 +293,14 @@ public class TwoBandsTinder extends AppCompatActivity {
             public void onRightCheck() {
                 left = false;
                 right = true;
-                ansverMap.put(artists_turn.get(pictNumbCurrent), second_band.getName());
+                ansverMap.put(artists_turn.get(pictnumb), second_band.getName());
 
                 countGroupTextSecondOne.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupTwo, countGroupMaxTwo));
                 pictnumb++;
                 if (pictnumb < ansverMap.size()) {
                     fadeAnimation(true);
-                    for (int i = 0; i < ansverMap.size(); i++) {
-                        Log.e("DEBUGINGGAME", ansverMap.get(artists_turn.get(i)));
-                        if (Objects.equals(ansverMap.get(artists_turn.get(i)), "null")) {
-                            pictNumbCurrent = i;
-                            break;
-                        }
-                    }
-                    setupImage(artists_turn.get(pictNumbCurrent).getFolderNotRandom(), imageBand);
-                    textHint.setText(artists_turn.get(pictNumbCurrent).getName());
+                    setupImage(artists_turn.get(pictnumb).getFolderNotRandom(), imageBand);
+                    textHint.setText(artists_turn.get(pictnumb).getName());
                 }
 
                 if (pictnumb >= ansverMap.size()) {
@@ -352,10 +339,11 @@ public class TwoBandsTinder extends AppCompatActivity {
                                         hintCountReward--;
                                         hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
                                         layoutHint.setVisibility(View.VISIBLE);
-                                        textHint.setText(artists_turn.get(pictNumbCurrent).getName());
                                         isHint = true;
                                         if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
                                             menuFlipEventInstance();
+                                        }else{
+                                            textHint.setText(artists_turn.get(pictnumb).getName());
                                         }
                                     }
                                     showReward = false;
@@ -416,14 +404,13 @@ public class TwoBandsTinder extends AppCompatActivity {
     public void mainProcedure() {
         //Главная процедура, запускается начальная последовательность , устанавливается главная картинка, указывается текст групп
         startSequance();
-        setupImage(artists_turn.get(pictNumbCurrent).getFolderNotRandom(), imageBand);
+        setupImage(artists_turn.get(pictnumb).getFolderNotRandom(), imageBand);
         setupBandText();
     }
 
     public void startSequance() {
         //Основная Последовательность Режима берутся две группы,создается лист артистов из двух групп обнуляются карты ответов , перемешиваются артисты
         pictnumb = 0;
-        pictNumbCurrent = 0;
         if (artists_turn != null) {
             for (Artist artist : artists_turn) {
                 artist.removeRandomCount();

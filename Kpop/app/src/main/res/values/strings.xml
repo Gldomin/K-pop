@@ -6,7 +6,7 @@
     <string name="admob_id_account" translatable="false">ca-app-pub-1704760570617777~3272301452</string>
 
     <string name="yandex_id_interstitial_menu" translatable="false">R-M-1594557-1</string>
-    <string name="yandex_id_reward" translatable="false">R-M-1594557-2</string>
+    <string name="yandex_id_reward" translatable="false">demo-rewarded-yandex</string>
     <string name="yandex_id_interstitial_game" translatable="false">R-M-1594557-5</string>
 
     <!--    <string name="admob_id_account" translatable="false">ca-app-pub-3940256099942544~3347511713</string>-->

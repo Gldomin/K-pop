@@ -17,15 +17,6 @@ public class Theme {
         themeCount = storage.getInt("themeCount");
     }
 
-    public void setTheme() { //первая тема для меню
-        if (darkMode) {
-            activity.setTheme(R.style.AppTheme2);
-        } else {
-            activity.setTheme(R.style.AppThemeLight);
-        }
-
-    }
-
     public void setThemeSecond() {  //вторая тема для игровых активити
         if (darkMode) {
             activity.setTheme(R.style.AppTheme2);
