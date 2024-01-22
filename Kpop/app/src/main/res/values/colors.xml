@@ -73,12 +73,19 @@
     <color name="colorAlertDialogTextStyle4">#454545</color>
     <color name="colorAlertDialogTextPrimaryStyle4">#454545</color>
 
+    <!--  Цвет звезд оценки  -->
     <color name = "colorRatingStarDark">#FD8AFF</color>
     <color name = "colorRatingStarLight">#2BA5FF</color>
+
+    <!--  Цвет заголовка оценки  -->
     <color name = "colorRatingTextDark">#FD8AFF</color>
     <color name = "colorRatingTextLight">#2BA5FF</color>
+
+    <!--  Цвет текста кнопок оценки  -->
     <color name = "colorRatingButtonTextDark">#000000</color>
     <color name = "colorRatingButtonTextLight">#000000</color>
+
+    <!--  Цвет неактивных звезд оценки  -->
     <color name = "colorRatingStarBackgroundDark">#D2D2D2</color>
     <color name = "colorRatingStarBackgroundLight">#D2D2D2</color>
 </resources>
