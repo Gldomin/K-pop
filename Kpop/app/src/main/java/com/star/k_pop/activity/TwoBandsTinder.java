@@ -418,6 +418,16 @@ public class TwoBandsTinder extends AppCompatActivity {
         }
         first_band = bands.get(bandsCount);
         second_band = bands.get(bandsCount + 1);
+        if (first_band.getSex() != second_band.getSex())
+        {
+            bandsCount = bandsCount + 2;
+            if (bandsCount + 1 < bands.size()) {
+                mainProcedure();
+            } else {
+                resultsSequence();
+            }
+            return;
+        }
         artists_turn = new ArrayList<>();
         ansverMap = new HashMap<>();
         artists_turn.addAll(first_band.getArtists());
@@ -664,8 +674,8 @@ public class TwoBandsTinder extends AppCompatActivity {
             twoBandFlip.showNext();
             scoreText.setText(getResources().getString(R.string.endGameTextScoreNow, score));
             scoreRecordText.setText(getResources().getString(R.string.endGameTextRecordNow, scoreRecord));
-            if (bandsCount + 3 < bands.size()) {
-                bandsCount = bandsCount + 2;
+            bandsCount = bandsCount + 2;
+            if (bandsCount + 1 < bands.size()) {
                 mainProcedure();
             } else {
                 resultsSequence();
