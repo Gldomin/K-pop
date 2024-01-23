@@ -216,28 +216,10 @@ public class GuessStar extends AppCompatActivity {
                 hintCount++;
                 counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
             }
-            boolean achievemented = false;
-            if (scoreNow == 10) { //ачивка за 10 - achGuessStarNormalText. Условие ачивки
-                if (SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarBeginner, R.drawable.guess_star10, "achGuessStarBeginner")) //ачивочка
-                {
-                    achievemented = true;
-                }
-            }
-            if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
-                if (SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.guess_star50, "achGuessStarNormal")) //ачивочка
-                {
-                    achievemented = true;
-                }
-            }
-            if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
-                if (SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.guess_star150, "achGuessStarExpert")) //ачивочка
-                {
-                    achievemented = true;
-                }
-            }
+            boolean achievemented = isAchievemented();
             if (sound) {
                 if (achievemented) {
-                    soundPlayer.playSoundStream(grace);//звук правильного ответа
+                    soundPlayer.playSoundStream(grace);//звук ачивки
                 } else {
                     soundPlayer.playSoundStream(longSwitchID);//звук правильного ответа
                 }
@@ -255,6 +237,21 @@ public class GuessStar extends AppCompatActivity {
                 soundPlayer.playSoundStream(pingClickID);//звук неправильного ответа
             }
         }
+    }
+
+    //проверка на ачивки
+    private boolean isAchievemented() {
+        if (scoreNow == 10) { //ачивка за 10 - achGuessStarNormalText. Условие ачивки
+            return SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarBeginner, R.drawable.guess_star10, "achGuessStarBeginner"); //ачивочка
+        }
+        if (scoreNow == 50) { //ачивка за 50 - achGuessStarNormalText. Условие ачивки
+            return SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarNormal, R.drawable.guess_star50, "achGuessStarNormal"); //ачивочка
+        }
+        if (scoreNow == 150) { //ачивка за 150 - achGuessStarNormalText. Условие ачивки
+            //ачивочка
+            return SomeMethods.achievementGetted(GuessStar.this, R.string.achGuessStarExpert, R.drawable.guess_star150, "achGuessStarExpert");
+        }
+        return false;
     }
 
     //Инициализация рекламы
