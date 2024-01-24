@@ -49,41 +49,42 @@ public class GuessStar extends AppCompatActivity {
     private final Button[] buttons = new Button[4];//Кнопки ответов
     private ImageView imageView;//Изображение артиста
 
-    //Текущий счет
+    //----------------------------------Текущий счет------------------------------------------------
     private TextView textScore;//Текст счета
     private int scoreNow;//Счет
 
-    //Рекорд
+    //-------------------------------Рекорд---------------------------------------------------------
     private TextView textRecord;//Текст рекорда
     private int record;         //рекорд
 
-    //Подсказка
+    //----------------------------------Подсказка---------------------------------------------------
     private ImageButton hintButton;//Кнопка подсказки
     private TextView counterHint;//Текст количества подсказок
     private int hintCountReward;//Количество подсказок за рекламу
     private int hintCount;//Количество подсказок
     private boolean hintUsed;//Использована ли подсказка
 
-    //Звуки
+    //--------------------------------Звуки---------------------------------------------------------
     private SoundPlayer soundPlayer; //это объект для воспроизведения звуков
     private boolean sound; //включен ли звук
     private int pingClickID; //Звук неправильного ответа
     private int longSwitchID; // Звук правильного ответа
     private int grace; //Звук ачивки
 
-
+    //----------------------------------------------------------------------------------------------
     private ArrayList<Artist> artists; //Список артистов
     private int count;          //номер артиста из сгенерированного списка (текущий)
 
+    //----------------------------------------------------------------------------------------------
     private boolean endGame; // Окончена ли игры
     private Theme theme; // Менеджер темы приложения
 
-    //Рекламаза вознаграждение
+    //--------------------------------Реклама за вознаграждение-------------------------------------
     private RewardedCustom rewardedCustom; //Реклама за вознаграждение
     private boolean showReward;  // Просмотрена реклама до конца или нет
     private boolean onRewarded; // Просмотр рекламы 1 раз
 
-    //Межстраничная реклама
+    //---------------------------Межстраничная реклама----------------------------------------------
     private InterstitialCustom mInterstitialAd; //Межстраничная реклама
     private int countAd; //Количество проигранных игр между рекламами
 

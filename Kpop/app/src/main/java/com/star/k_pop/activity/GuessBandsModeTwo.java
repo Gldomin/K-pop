@@ -67,39 +67,39 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     private List<Button> buttonsEnd; //Список кнопок ответа
     private Button slideButton; //Кнопка для анимации перемещения
     private PhotoView groupPhoto; //Изображение группы или артиста
-
+    //----------------------------------------------------------------------------------------------
     private TextView scoreNowText; //Текст счета
     private int scoreNow; //Счет
-
+    //----------------------------------------------------------------------------------------------
     private TextView recordText; //Текст рекорда
     private int record; //Рекорд
-
-    ImageButton hintButton; //Кнопка подсказки
+    //----------------------------------------------------------------------------------------------
+    private ImageButton hintButton; //Кнопка подсказки
     private TextView counterHint; //Текст количества подсказок
     private boolean hintUsed; //Использована ли подсказка
     private int hintCount; //Количество подсказок
     private int hintCountReward; //Количество подсказок за рекламу
-
+    //----------------------------------------------------------------------------------------------
     private SoundPlayer soundPlayer; //это объект для воспроизведения звуков
     private boolean sound; //включен ли звук
     private int pingClickID; //Звук неправильного ответа
     private int longSwitchID; // Звук правильного ответа
     private int keyClickID; //Звук кнопок при вводе
     private int grace; //Звук ачивки
-
+    //----------------------------------------------------------------------------------------------
     private Theme theme; // Менеджер темы приложения
-
+    //----------------------------------------------------------------------------------------------
     private ArrayList<Bands> bands; //Список групп
     private int count; //номер группы из сгенерированного списка (текущий)
     private int countLetter; //Количество букв в названии текущей группы
     private String nameGroup; //Название текущей группы
     private boolean countClick; //Работает ли анимация
     private int[] ref; //Массив случайных номеров кнопок ввода
-
-    RewardedCustom rewardedCustom; //Реклама за вознаграждение
+    //----------------------------------------------------------------------------------------------
+    private RewardedCustom rewardedCustom; //Реклама за вознаграждение
     private boolean onRewarded;  // Просмотр рекламы 1 раз
     private boolean showReward; // Просмотрена реклама до конца или нет
-
+    //----------------------------------------------------------------------------------------------
     private InterstitialCustom mInterstitialAd; //Межстраничная реклама
     private int countAd; //Количество проигранных игр между рекламами
 

@@ -56,129 +56,139 @@ import io.appmetrica.analytics.AppMetrica;
 
 public class TwoBandsTinder extends AppCompatActivity {
 
-    //-------------------------------------------------------------------------------------------------
-    private ArrayList<Bands> bands; //берем список всех групп
-    private int bandsCount;
-
-    private ShapeableImageView imageBand;
-    private ShapeableImageView imBTmp;
-
-    private TextView groupNameFirstOne;
-    private TextView groupNameSecondOne;
-    private TextView groupNameFirstTwo;
-    private TextView groupNameSecondTwo;
-    private TextView groupNameFirstThree;
-    private TextView groupNameSecondThree;
-
-    private TextView countGroupTextFirstOne;
-    private TextView countGroupTextSecondOne;
-
-    private TextView countGroupTextFirstTwo;
-    private TextView countGroupTextSecondTwo;
-
-    private ViewFlipper twoBandFlip;
-    private boolean left;
-    private boolean right;
-
-    private static int countGroupMaxOne;
-    private static int countGroupMaxTwo;
-    private static int countGroupOne;
-    private static int countGroupTwo;
-
-    Theme theme;
-
-    //--------------------------------------------------------------------------------------------------
-    Bands first_band;
-    Bands second_band;
-    ArrayList<Artist> artists_turn;
-    Map<Artist, String> ansverMap;
-    private int pictnumb;
-    //--------------------------------------------------------------------------------------------------
-
-    private LinearLayout AllActLayoutUnsLvLay;
-    private ImageView allActLeftSlvPict;
-    private ImageView allActRightSlvPict;
-
-    private LinearLayout allActGuessSolvedLeftLay;
-    private LinearLayout allActGuessSolvedRightLay;
-
     private HeathBar heathBarTest;
 
-    int scoreHealth = 0;
-    int scoreHint = 0;
-    private int score = 0;
-    private int scoreRecord = 0;
-
-    private boolean isViewMissTake = false;
     //----------------------------------------------------------------------------------------------
+    private ShapeableImageView imageBand; //Изображение артиста
+    private ShapeableImageView imBTmp; //Изображение для затухающей анимации
+    private ImageView allActLeftSlvPict; // Макет изображений после распределения в списке
+    private LinearLayout allActGuessSolvedLeftLay; // Макет с картинками артистов распределенных в первую группу
+    private LinearLayout allActGuessSolvedRightLay; // Макет с картинками артистов распределенных во вторую группу
+    //----------------------------------------------------------------------------------------------
+    private ArrayList<Bands> bands; //берем список всех групп
+    private int bandsCount; //Номер первой группы из списка
+    //----------------------------------------------------------------------------------------------
+    private TextView groupNameFirstOne; // Название первой группы на первом окне
+    private TextView groupNameSecondOne; // Название второй группы на первом окне
+    private TextView groupNameFirstTwo; // Название первой группы на втором окне
+    private TextView groupNameSecondTwo; // Название второй группы на вторм окне
+    private TextView groupNameFirstThree; // Название первой группы на первом окне
+    private TextView groupNameSecondThree; // Название второй группы на первом окне
+    //----------------------------------------------------------------------------------------------
+    private TextView countGroupTextFirstOne; // Текст количества распределенных артистов в первую группу на первом экране
+    private TextView countGroupTextSecondOne; // Текст количества распределенных артистов во вторую группу на первом экране
+    private TextView countGroupTextFirstTwo; // Текст количества распределенных артистов в первую группу на втором экране
+    private TextView countGroupTextSecondTwo; // Текст количества распределенных артистов во вторую группу на втором экране
+    private ViewFlipper twoBandFlip; // Элемент для смены вида режима
+    //----------------------------------------------------------------------------------------------
+    private TextView scoreText; //Текст счета
+    private int score; //Счет
+    private int scoreHealth; //Сколько раз получено доп хп
+    private int scoreHint;//Сколько раз получена доп подсказка
+    //----------------------------------------------------------------------------------------------
+    private boolean isViewMissTake; // Показ ошибок
+    //----------------------------------------------------------------------------------------------
+    private TextView scoreRecordText; //Текст рекорда
+    private int scoreRecord; //Рекорд
+    //----------------------------------------------------------------------------------------------
+    private ImageButton hintButton; //Кнопка подсказки
+    private TextView textHint; //Текст подсказки
+    private LinearLayout layoutHint; //доп макет с подсказкой
+    private TextView counterHint; //Текст количества подсказок
+    private int hintCount; //Количество подсказок
+    private int hintCountReward; //Количество подсказок за рекламу
+    private boolean isHint; //Использована ли подсказка
+    //----------------------------------------------------------------------------------------------
+    private SoundPlayer soundPlayer; //это объект для воспроизведения звуков
+    private int pingClickID; //Звук неправильного ответа
+    private int longSwitchID; // Звук правильного ответа
+    private int grace; //Звук ачивки
+    private boolean sound; //включен ли звук
+    //----------------------------------------------------------------------------------------------
+    private static int countGroupMaxOne; // Максимальное количество человек в первой группе
+    private static int countGroupMaxTwo; // Максимальное количество человек во второй группе
+    private static int countGroupOne;  // Текущее количество человек в первой группе
+    private static int countGroupTwo;  // Текущее количество человек в первой группе
+    //----------------------------------------------------------------------------------------------
+    private Theme theme; // Менеджер темы приложения
+    //--------------------------------------------------------------------------------------------------
+    private Bands first_band; // Первая группа
+    private Bands second_band; // Вторая группа
+    private ArrayList<Artist> artists_turn; // Все артисты первой и второй группы
+    private Map<Artist, String> ansverMap; // Карта распределения артистов по группам
+    private int pictnumb; // Номер текущего не распределенного артиста
+    //--------------------------------------------------------------------------------------------------
+    private RewardedCustom rewardedCustom; //Реклама за вознаграждение
+    boolean showReward; // Просмотрена реклама до конца или нет
+    private boolean onRewarded;      // Просмотр рекламы 1 раз
+    //----------------------------------------------------------------------------------------------
+    private InterstitialCustom mInterstitialAd; //Межстраничная реклама
+    private int countAd; //Количество проигранных игр между рекламами
 
-    SoundPlayer soundPlayer = new SoundPlayer(this); //это объект для воспроизведения звуков
-    int pingClickID; //id загруженного потока
-    int longSwitchID;
-    int grace;
-    private boolean sound = false; //включен ли звук
-    private static final String IMAGEVIEW_TAG = "icon bitmap";
-    private TextView scoreText;
-    private TextView scoreRecordText;
-    private TextView counterHint;
-    AlertDialog.Builder alertBuild;
-
-    private RewardedCustom rewardedCustom;
-    private InterstitialCustom mInterstitialAd;
-    private int countAd = 5;
-    boolean showReward = false;
-
-    boolean onRewarded = true;      // Просмотр рекламы 1 раз
-    private int hintCountReward = 3;
-
-    private int hintCount = 3;
-
-    private boolean isHint = false;
-
-    ImageButton hintButton;
-    LinearLayout layoutHint;
-    TextView textHint;
-
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     //инициализация смотрите ебанный xml
     protected void onCreate(Bundle savedInstanceState) {
+
         theme = new Theme(this);
         theme.setThemeSecond();
-
         super.onCreate(savedInstanceState);
-
-        pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
-        longSwitchID = soundPlayer.load(R.raw.long_switch);
-        grace = soundPlayer.load(R.raw.bells);
-        Storage storage = new Storage(this, "settings"); //хранилище для извлечения
-        sound = storage.getBoolean("soundMode"); //настроек звука
-
-        bands = Importer.getRandomBandsSex();
-        if (bands.size() < 2) {
-            finish();
-        }
-
-        rewardedCustom = new RewardedCustomYandex(this, getResources().getString(R.string.yandex_id_reward));
-        mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
-
         setContentView(R.layout.activity_two_bands_temp);
 
-        Button endButton = findViewById(R.id.allAct_Accept);
-        ImageButton helpButton = findViewById(R.id.helpTindButton);
-        hintButton = findViewById(R.id.hintTindButton);
+        createSounds();
+        initGame(savedInstanceState);
+        createAd();
 
+        createButtons();
 
-        endButton.setBackgroundResource(theme.getBackgroundButton());
-        helpButton.setBackgroundResource(theme.getBackgroundButton());
-        hintButton.setBackgroundResource(theme.getBackgroundButton());
+        initViewElement();
 
-        textHint = findViewById(R.id.textViewTinderName);
+        createHint();
 
+        imageSwipeCustom();
+        createHeathBar();
+        restartGame();
+    }
+
+    //проверка свайпа ansvermap получает ответ свайпа,setupimage устанавливает фотки
+    @SuppressLint("ClickableViewAccessibility")
+    private void imageSwipeCustom() {
+        imageBand.setOnTouchListener(new OnSwipeTinderListener() {
+            public void onCheck(boolean isLeft) {
+                if (isLeft){
+                    ansverMap.put(artists_turn.get(pictnumb), first_band.getName());
+                    countGroupTextFirstOne.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupOne, countGroupMaxOne));
+                }else{
+                    ansverMap.put(artists_turn.get(pictnumb), second_band.getName());
+                    countGroupTextSecondOne.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupTwo, countGroupMaxTwo));
+                }
+                pictnumb++;
+                if (pictnumb < ansverMap.size()) {
+                    fadeAnimation(true, isLeft);
+                    setupImage(artists_turn.get(pictnumb).getFolderNotRandom(), imageBand);
+                    textHint.setText(artists_turn.get(pictnumb).getName());
+                }
+                if (pictnumb >= ansverMap.size()) {
+                    countGroupTextFirstTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupOne, countGroupMaxOne));
+                    countGroupTextSecondTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupTwo, countGroupMaxTwo));
+                    twoBandFlip.showNext();
+                    menuFlipEventInstance();
+                    imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
+                }
+            }
+        });
+    }
+
+    //Инициализация данных из layout
+    private void initViewElement() {
         imageBand = findViewById(R.id.imageBand);
         imBTmp = findViewById(R.id.imgBTmp);
+
         scoreText = findViewById(R.id.Score);
+        scoreText.setTextColor(theme.getTextColor());
+
         scoreRecordText = findViewById(R.id.scoreRecord);
+        scoreRecordText.setTextColor(theme.getTextColor());
+
         twoBandFlip = findViewById(R.id.twoBandFlipper);
 
         groupNameFirstOne = findViewById(R.id.textView12);
@@ -194,44 +204,28 @@ public class TwoBandsTinder extends AppCompatActivity {
         countGroupTextSecondTwo = findViewById(R.id.textView5);
 
         LinearLayout layout1 = findViewById(R.id.titleTinderBot);
-        LinearLayout layout2 = findViewById(R.id.titleTinderGroup);
-        LinearLayout layout3 = findViewById(R.id.titleTinder);
-        layoutHint = findViewById(R.id.titleTinderGroupName);
-
         layout1.setBackgroundColor(theme.getColorLighter());
+
+        LinearLayout layout2 = findViewById(R.id.titleTinderGroup);
         layout2.setBackgroundColor(theme.getColorLighter());
+
+        LinearLayout layout3 = findViewById(R.id.titleTinder);
         layout3.setBackgroundColor(theme.getColorLighter());
-        layoutHint.setBackgroundColor(theme.getColorLighter());
-        layoutHint.setVisibility(View.GONE);
 
-        scoreText.setTextColor(theme.getTextColor());
-        scoreRecordText.setTextColor(theme.getTextColor());
-
-        counterHint = findViewById(R.id.counter_hints_tint);
-        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
-
-
-        //--------------------------------------------------------------------------------------
-        //----------------------------------------------------------------------------------------------
-        AllActLayoutUnsLvLay = findViewById(R.id.allAct_UnslvFold);
         allActLeftSlvPict = findViewById(R.id.allActGuessLeftPict);
-        allActRightSlvPict = findViewById(R.id.allActGuessRightPict);
-        //--------------------------------------------------------------------------------------
+
         allActGuessSolvedLeftLay = findViewById(R.id.allActorGuessLeftLay);
         allActGuessSolvedRightLay = findViewById(R.id.allActorGuessRightLay);
+    }
 
-        SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
-        scoreRecord = sp.getInt("userScoreTinder", 0);
-        scoreRecordText.setText(getResources().getString(R.string.record_text, scoreRecord));
-        scoreText.setText(getResources().getString(R.string.score_text, score));
-        if (savedInstanceState != null) {
-            score = savedInstanceState.getInt("scoreTinder");
-            scoreRecord = savedInstanceState.getInt("scoreRecordTinder");
-        }
-        //----------------------not changed
+    //Создание кнопок ответа и о режиме
+    private void createButtons() {
+        Button endButton = findViewById(R.id.allAct_Accept);
+        endButton.setBackgroundResource(theme.getBackgroundButton());
+        endButton.setOnClickListener(this::answerClickCheck);
 
-
-
+        ImageButton helpButton = findViewById(R.id.helpTindButton);
+        helpButton.setBackgroundResource(theme.getBackgroundButton());
         helpButton.setOnClickListener(v -> {
             Intent image = new Intent();
             image.setClass(TwoBandsTinder.this, BasicNotice.class);
@@ -239,81 +233,83 @@ public class TwoBandsTinder extends AppCompatActivity {
             image.putExtra("title", R.string.gameModeAbout);
             startActivity(image);
         });
+    }
 
+    //Загрузка сохранненых данных и списка групп
+    private void initGame(Bundle savedInstanceState) {
+        Storage storage = new Storage(this, "settings"); //хранилище для извлечения
+        sound = false;
+        sound = storage.getBoolean("soundMode"); //настроек звука
+
+        bandsCount = 0;
+        bands = Importer.getRandomBandsSex();
+        if (bands.size() < 2) {
+            finish();
+        }
+
+        SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
+        scoreRecord = sp.getInt("userScoreTinder", 0);
+        if (savedInstanceState != null) {
+            score = savedInstanceState.getInt("scoreTinder");
+            scoreRecord = savedInstanceState.getInt("scoreRecordTinder");
+        }
+    }
+
+    // Инициализация звуков
+    private void createSounds() {
+        soundPlayer = new SoundPlayer(this);
+        pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
+        longSwitchID = soundPlayer.load(R.raw.long_switch);
+        grace = soundPlayer.load(R.raw.bells);
+    }
+
+    //Инициализация рекламы
+    private void createAd() {
+        rewardedCustom = new RewardedCustomYandex(this, getResources().getString(R.string.yandex_id_reward));
+        mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
+        countAd = 5;
+    }
+
+    //Создание подсказки
+    private void createHint() {
+        counterHint = findViewById(R.id.counter_hints_tint);
+        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+
+        textHint = findViewById(R.id.textViewTinderName);
+
+        layoutHint = findViewById(R.id.titleTinderGroupName);
+        layoutHint.setBackgroundColor(theme.getColorLighter());
+        layoutHint.setVisibility(View.GONE);
+
+        hintButton = findViewById(R.id.hintTindButton);
+        hintButton.setBackgroundResource(theme.getBackgroundButton());
         hintButton.setImageResource(theme.getHintDrawable());
         hintButton.setOnClickListener(v -> {
             if (!isHint && !isViewMissTake) {
                 if (hintCount > 0) {
                     hintCount--;
-                    counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
-                    hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
-                    layoutHint.setVisibility(View.VISIBLE);
-                    isHint = true;
-                    if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
-                        menuFlipEventInstance();
-                    }else{
-                        textHint.setText(artists_turn.get(pictnumb).getName());
-                    }
+                    getHint();
                 } else if (hintCountReward > 0) {
                     onRewardHint();
                 }
             }
         });
-
-//-----------------------working----------------------------------------------------------------------
-        imageBand.setOnTouchListener(new OnSwipeTinderListener() {
-
-            //проверка свайпа ansvermap получает ответ свайпа,setupimage устанавливает фотки
-            public void onLeftCheck() {
-                left = true;
-                right = false;
-                ansverMap.put(artists_turn.get(pictnumb), first_band.getName());
-
-                countGroupTextFirstOne.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupOne, countGroupMaxOne));
-                pictnumb++;
-                if (pictnumb < ansverMap.size()) {
-                    fadeAnimation(true);
-                    setupImage(artists_turn.get(pictnumb).getFolderNotRandom(), imageBand);
-                    textHint.setText(artists_turn.get(pictnumb).getName());
-                }
-                if (pictnumb >= ansverMap.size()) {
-
-                    countGroupTextFirstTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupOne, countGroupMaxOne));
-                    countGroupTextSecondTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupTwo, countGroupMaxTwo));
-                    twoBandFlip.showNext();
-                    menuFlipEventInstance();
-                    imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
-                }
-            }
-
-            //проверка свайпа ansvermap получает ответ свайпа,setupimage устанавливает фотки
-            public void onRightCheck() {
-                left = false;
-                right = true;
-                ansverMap.put(artists_turn.get(pictnumb), second_band.getName());
-
-                countGroupTextSecondOne.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupTwo, countGroupMaxTwo));
-                pictnumb++;
-                if (pictnumb < ansverMap.size()) {
-                    fadeAnimation(true);
-                    setupImage(artists_turn.get(pictnumb).getFolderNotRandom(), imageBand);
-                    textHint.setText(artists_turn.get(pictnumb).getName());
-                }
-
-                if (pictnumb >= ansverMap.size()) {
-
-                    countGroupTextFirstTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupOne, countGroupMaxOne));
-                    countGroupTextSecondTwo.setText(String.format(Locale.getDefault(), "%d/%d", countGroupTwo, countGroupMaxTwo));
-                    twoBandFlip.showNext();
-                    menuFlipEventInstance();
-                    imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
-                }
-            }
-        });
-        createHeathBar();
-        guessTwoBands();
     }
 
+    //Получение подсказки
+    private void getHint() {
+        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+        hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
+        layoutHint.setVisibility(View.VISIBLE);
+        isHint = true;
+        if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
+            menuFlipEventInstance();
+        } else {
+            textHint.setText(artists_turn.get(pictnumb).getName());
+        }
+    }
+
+    //Получение подсказки за рекламу
     private void onRewardHint() {
         if (rewardedCustom.onLoaded()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
@@ -334,14 +330,7 @@ public class TwoBandsTinder extends AppCompatActivity {
                                 public void onDismissed() {
                                     if (showReward) {
                                         hintCountReward--;
-                                        hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
-                                        layoutHint.setVisibility(View.VISIBLE);
-                                        isHint = true;
-                                        if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
-                                            menuFlipEventInstance();
-                                        }else{
-                                            textHint.setText(artists_turn.get(pictnumb).getName());
-                                        }
+                                        getHint();
                                     }
                                     AppMetrica.reportEvent("Show ads", "{\"tinder\":\"rewarded " + showReward + "\"}");
                                     showReward = false;
@@ -352,7 +341,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         }
     }
 
-
+    //Инициализация менеджера здоровья
     private void createHeathBar() {
         ImageView imageView1 = findViewById(R.id.guessBandHeart1);
         ImageView imageView2 = findViewById(R.id.guessBandHeart2);
@@ -369,6 +358,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         heathBarTest = new HeathBar(imageViewList, 5, lifeBrokeAnimation);
     }
 
+    //Сохраниение данных при удалении и восстановлении активити
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt("scoreTinder", score);
@@ -376,6 +366,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
+    //Сохранение рекорда
     @Override
     protected void onPause() {
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE); //сохранение Счета
@@ -387,27 +378,19 @@ public class TwoBandsTinder extends AppCompatActivity {
         super.onPause();
     }
 
-    //--------------------------------------------------------------------------------------------------
-
-
-    private void guessTwoBands() {
-        //Инициализация Основного Метода, указывается Количество груп,и обнуляются свайпы
-        imageBand.setTag(IMAGEVIEW_TAG);
-        bandsCount = 0;
-        left = false;
-        right = false;
-        mainProcedure();
-    }
-
+    //Главная процедура, запускается начальная последовательность , устанавливается главная картинка, указывается текст групп
     public void mainProcedure() {
-        //Главная процедура, запускается начальная последовательность , устанавливается главная картинка, указывается текст групп
+        if (bandsCount + 1 >= bands.size()) {
+            bandsCount = 0;
+            bands = Importer.getRandomBandsSex();
+        }
         startSequance();
         setupImage(artists_turn.get(pictnumb).getFolderNotRandom(), imageBand);
         setupBandText();
     }
 
+    //Основная Последовательность Режима берутся две группы,создается лист артистов из двух групп обнуляются карты ответов , перемешиваются артисты
     public void startSequance() {
-        //Основная Последовательность Режима берутся две группы,создается лист артистов из двух групп обнуляются карты ответов , перемешиваются артисты
         pictnumb = 0;
         if (artists_turn != null) {
             for (Artist artist : artists_turn) {
@@ -416,14 +399,9 @@ public class TwoBandsTinder extends AppCompatActivity {
         }
         first_band = bands.get(bandsCount);
         second_band = bands.get(bandsCount + 1);
-        if (first_band.getSex() != second_band.getSex())
-        {
+        if (first_band.getSex() != second_band.getSex()) {
             bandsCount = bandsCount + 2;
-            if (bandsCount + 1 < bands.size()) {
-                mainProcedure();
-            } else {
-                resultsSequence();
-            }
+            mainProcedure();
             return;
         }
         artists_turn = new ArrayList<>();
@@ -439,7 +417,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     }
 
 
-    //    Новый метод старый не особо удобен и приходится копировать
+    // Установка изображения
     public void setupImage(String pathtoFolder, ImageView img) {
         Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + pathtoFolder))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -447,8 +425,8 @@ public class TwoBandsTinder extends AppCompatActivity {
                 .into(img);
     }
 
+    //указываются названия групп и число ответов
     public void setupBandText() {
-        //указываются названия групп и число ответов
         groupNameFirstOne.setText(first_band.getName());
         groupNameSecondOne.setText(second_band.getName());
         groupNameFirstTwo.setText(first_band.getName());
@@ -461,8 +439,8 @@ public class TwoBandsTinder extends AppCompatActivity {
         countGroupTextSecondOne.setText(String.format(Locale.getDefault(), "0/%d", countGroupMaxTwo));
     }
 
-    public void fadeAnimation(boolean anim) {
-        //анимация затухания, чтобы картинки красиво улетали imbTmp временная картинка которая испаряется, т.к иначе нельзя
+    //анимация затухания, чтобы картинки красиво улетали imbTmp временная картинка которая испаряется, т.к иначе нельзя
+    public void fadeAnimation(boolean anim, boolean isLeft) {
         if (anim) {
             imBTmp.setVisibility(View.VISIBLE);
             imBTmp.setY(imageBand.getY());
@@ -473,17 +451,16 @@ public class TwoBandsTinder extends AppCompatActivity {
             imBTmp.setScaleY(1);
             imBTmp.setAlpha(1.0f);
         }
-        if (right) {
-            imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(-30).alpha(0.1f).setDuration(400).setListener(new AnimatorListenerAdapter() {
+        if (isLeft) {
+            imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(30).alpha(0.1f).setDuration(400).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
                     imBTmp.setVisibility(View.INVISIBLE);
                 }
             });
-        }
-        if (left) {
-            imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(30).alpha(0.1f).setDuration(400).setListener(new AnimatorListenerAdapter() {
+        } else {
+            imBTmp.animate().scaleX(0.3f).scaleY(0.3f).rotation(-30).alpha(0.1f).setDuration(400).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
@@ -494,27 +471,21 @@ public class TwoBandsTinder extends AppCompatActivity {
         imageBand.animate().translationX(0).translationY(0).rotation(0).setDuration(0);
     }
 
-    public void ttClickCheck(View view) {
+    //Кнопка проверки ответа
+    public void answerClickCheck(View view) {
         if (isViewMissTake) {
             nextArtist();
         } else {
             if (countGroupOne == countGroupMaxOne && countGroupTwo == countGroupMaxTwo) {
-                losescreen();
+                answerScreen();
             } else {
                 errorScreen();
             }
         }
     }
 
-    public void resultsSequence() {
-        //финальная последовательность, запускается после нее основная
-        bandsCount = 0;
-        bands = Importer.getRandomBandsSex();
-        mainProcedure();
-    }
-
-    private int mistakescount() {
-        //показывает количество ошибок
+    //показывает количество ошибок
+    private int mistakesCount() {
         int mistakes = 0;
         for (Map.Entry<Artist, String> map : ansverMap.entrySet()) {
             if (!map.getKey().getGroup().equals(map.getValue())) {
@@ -524,27 +495,28 @@ public class TwoBandsTinder extends AppCompatActivity {
         return mistakes;
     }
 
+    // диалог при неправильном количестве букв
     public void errorScreen() {
-        AlertDialog.Builder alertbuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
-        alertbuild.setTitle(getResources().getString(R.string.endHintCongratulate));
-        alertbuild.setMessage(getResources().getString(R.string.tinderCountGroupError));
-        alertbuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> dialogInterface.cancel());
-        AlertDialog alert = alertbuild.create();
+        AlertDialog.Builder alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+        alertBuild.setTitle(getResources().getString(R.string.endHintCongratulate));
+        alertBuild.setMessage(getResources().getString(R.string.tinderCountGroupError));
+        alertBuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> dialogInterface.cancel());
+        AlertDialog alert = alertBuild.create();
         alert.show();
     }
 
-    public void losescreen() {
-        //финал пройгрыша
-        alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+    //Диалог проверки ответа
+    public void answerScreen() {
+        AlertDialog.Builder alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
         alertBuild.setTitle(getResources().getString(R.string.tinderLoseScreenTitle));
-        int misstake = mistakescount();
-        int countCorrect = ansverMap.size() - misstake;
+        int missTake = mistakesCount();
+        int countCorrect = ansverMap.size() - missTake;
         countCorrect /= 2;
         score += countCorrect;
         if (scoreRecord < score) {
             scoreRecord = score;
         }
-        if (misstake == 0) {
+        if (missTake == 0) {
             alertBuild.setMessage(getResources().getString(R.string.tinderLoseScreenWinMessage, countCorrect));
             if (sound) {
                 soundPlayer.playSoundStream(longSwitchID);
@@ -556,7 +528,7 @@ public class TwoBandsTinder extends AppCompatActivity {
             alertBuild.setMessage(getResources().getString(R.string.tinderLoseScreenLoseMessage, countCorrect, ansverMap.size() / 2));
             alertBuild.setNeutralButton(getResources().getString(R.string.tinderMissTakeView), (dialogInterface, i) -> viewMissTake());
         }
-        if (misstake > 0) {
+        if (missTake > 0) {
             heathBarTest.blow();
         }
         alertBuild.setPositiveButton(getResources().getString(R.string.tinderContinue), (dialogInterface, i) -> nextArtist());
@@ -565,67 +537,23 @@ public class TwoBandsTinder extends AppCompatActivity {
         alert.show();
     }
 
+    //Показ правильных и неправильных ответов
     private void viewMissTake() {
         allActGuessSolvedRightLay.removeAllViews();
         allActGuessSolvedLeftLay.removeAllViews();
-        AllActLayoutUnsLvLay.removeAllViews();
         isViewMissTake = true;
-        for (Map.Entry<Artist, String> ansver : ansverMap.entrySet()) {
-            RelativeLayout relativeLayout = new RelativeLayout(this);
-
-            ImageView background = new ImageView(this);
-
-            TextView textView = new TextView(this);
-            RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-            layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-            layoutParamsText.setMargins(0, 0, 0, 15);
-            textView.setText(String.format(Locale.getDefault(), "%s\n(%s)", ansver.getKey().getName(), ansver.getKey().getGroup()));
-            textView.setTextSize(15);
-            textView.setGravity(Gravity.CENTER);
-            textView.setShadowLayer(5, 3, 3, Color.BLACK);
-            textView.setTextColor(Color.WHITE);
-
-            relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-            relativeLayout.setPadding(20, 20, 20, 20);
-            // TODO что-то непонянтное с отображением ошибок
-
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            layoutParams.setMargins(10, 10, 10, 10);
-
+        for (Map.Entry<Artist, String> answer : ansverMap.entrySet()) {
             // Проверки в какую колонку они определяются
-            if (ansver.getValue().equals(first_band.getName())) {
-                if (ansver.getKey().checkGroup(first_band.getName())) {
-                    background.setBackgroundResource(theme.getColorMissTakeCurrent());
-                } else {
-                    background.setBackgroundResource(theme.getColorMissTakeError());
-                }
-                relativeLayout.addView(background, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-                ImageView leftPict = new ImageView(this);
-                leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-                leftPict.setScaleType(ImageView.ScaleType.MATRIX);
-                relativeLayout.addView(leftPict, layoutParams);
-                setupImage(ansver.getKey().getFolderNotRandom(), leftPict);
-                allActGuessSolvedLeftLay.addView(relativeLayout);
+            if (answer.getValue().equals(first_band.getName())) {
+                allActGuessSolvedLeftLay.addView(createImageLay(answer.getKey(), true, isViewMissTake, answer.getKey().checkGroup(first_band.getName())));
             }
-            if (ansver.getValue().equals(second_band.getName())) {
-                if (ansver.getKey().checkGroup(second_band.getName())) {
-                    background.setBackgroundResource(theme.getColorMissTakeCurrent());
-                } else {
-                    background.setBackgroundResource(theme.getColorMissTakeError());
-                }
-                relativeLayout.addView(background, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-                ImageView rightPict = new ImageView(this);
-                rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
-                rightPict.setScaleType(ImageView.ScaleType.MATRIX);
-                relativeLayout.addView(rightPict, layoutParams);
-                setupImage(ansver.getKey().getFolderNotRandom(), rightPict);
-                allActGuessSolvedRightLay.addView(relativeLayout);
+            if (answer.getValue().equals(second_band.getName())) {
+                allActGuessSolvedRightLay.addView(createImageLay(answer.getKey(), true, isViewMissTake, answer.getKey().checkGroup(second_band.getName())));
             }
-            relativeLayout.addView(textView, layoutParamsText);
         }
     }
 
+    //Смена групп для распределения
     private void nextArtist() {
         isViewMissTake = false;
         isHint = false;
@@ -642,167 +570,165 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (hintCount > 0 || hintCountReward > 0) {
             hintButton.setBackgroundResource(theme.getBackgroundButton());
         }
-        if (heathBarTest.getHp() <= 0) {
-            startLosingDialog();
-        } else {
-            boolean achievemented = false;
-            if (score >= 15) { //ачивка за 15 Условие ачивки
-                if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.devide_bands15, "achSwipeTwoBandsBeginner")) //ачивочка
-                {
-                    achievemented = true;
-                }
-            }
-            if (score >= 75) { //ачивка за 75. Условие ачивки
-                if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsNormal, R.drawable.devide_bands75, "achSwipeTwoBandsNormal")) //ачивочка
-                {
-                    achievemented = true;
-                }
-            }
-            if (score >= 225) { //ачивка за 225. Условие ачивки
-                if (SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsExpert, R.drawable.devide_bands225, "achSwipeTwoBandsExpert")) //ачивочка
-                {
-                    achievemented = true;
-                }
-            }
-
+        if (heathBarTest.getHp() > 0) {
+            boolean achievemented = isAchievemented();
             if (achievemented && sound) {
                 soundPlayer.playSoundStream(grace); //звук ачивки
             }
-
-            twoBandFlip.showNext();
+            if (twoBandFlip.getDisplayedChild() == twoBandFlip.indexOfChild(findViewById(R.id.relativeLayout))) {
+                twoBandFlip.showNext();
+            }
             scoreText.setText(getResources().getString(R.string.endGameTextScoreNow, score));
             scoreRecordText.setText(getResources().getString(R.string.endGameTextRecordNow, scoreRecord));
             bandsCount = bandsCount + 2;
-            if (bandsCount + 1 < bands.size()) {
-                mainProcedure();
-            } else {
-                resultsSequence();
-            }
+            mainProcedure();
+        } else {
+            startLosingDialog();
         }
-
     }
 
-    private void startLosingDialog() {
-        alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
-        alertBuild.setTitle(getResources().getString(R.string.endGameTitle));
-        alertBuild.setMessage(String.format("%s! %s", getResources().getString(R.string.score_text, score),
-                getResources().getString(R.string.endGameNewGame)));
-        alertBuild.setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> {
-            AppMetrica.reportEvent("Restart", "{\"tinder\":\"record " + scoreRecord + "\"}");
-            score = 0;
-            scoreHealth = 0;
-            scoreHint = 0;
-            hintCount = 3;
-            hintCountReward = 3;
-            onRewarded = true;
-            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
-            heathBarTest.restartHp();
-            nextArtist();
-            interstitialShow();
-        });
-        if (onRewarded && rewardedCustom.onLoaded()) {
-            alertBuild.setMessage(String.format("%s! %s\n%s", getResources().getString(R.string.score_text, score),
-                    getResources().getString(R.string.endGameNewGame), getResources().getString(R.string.endGameReward)));
-            alertBuild.setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) -> {
-                rewardedCustom.show(TwoBandsTinder.this, new RewardedCustom.RewardedInterface() {
-                    @Override
-                    public void onRewarded() {
-                        onRewarded = false;
-                        showReward = true;
-                    }
-
-                    @Override
-                    public void onDismissed() {
-                        if (showReward) {
-                            heathBarTest.restore();
-                            nextArtist();
-                        } else {
-                            AppMetrica.reportEvent("Restart", "{\"tinder\":\"record " + scoreRecord + "\"}");
-                            score = 0;
-                            scoreHealth = 0;
-                            scoreHint = 0;
-                            hintCount = 3;
-                            hintCountReward = 3;
-                            onRewarded = true;
-                            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
-                            heathBarTest.restartHp();
-                            nextArtist();
-                            interstitialShow();
-                        }
-                        AppMetrica.reportEvent("Show ads", "{\"tinder\":\"rewarded " + showReward + "\"}");
-                        showReward = false;
-                    }
-                });
-            });
+    //Проверка ачивок
+    private boolean isAchievemented() {
+        if (score >= 15 && score < 75) { //ачивка за 15 Условие ачивки
+            return SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsBeginner, R.drawable.devide_bands15, "achSwipeTwoBandsBeginner"); //ачивочка
         }
-        alertBuild.setNegativeButton(getResources().getString(R.string.endGameNo), (dialog, which) -> finish());
-        alertBuild.setOnCancelListener(dialog -> finish());
+        if (score >= 75 && score < 225) { //ачивка за 75. Условие ачивки
+            return SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsNormal, R.drawable.devide_bands75, "achSwipeTwoBandsNormal"); //ачивочка
+        }
+        if (score >= 225) { //ачивка за 225. Условие ачивки
+            return SomeMethods.achievementGetted(TwoBandsTinder.this, R.string.achDistributeByBandsExpert, R.drawable.devide_bands225, "achSwipeTwoBandsExpert"); //ачивочка
+        }
+        return false;
+    }
+
+    //Начальные значения при новой игре
+    private void restartGame() {
+        AppMetrica.reportEvent("Restart", "{\"tinder\":\"record " + scoreRecord + "\"}");
+        score = 0;
+        scoreHealth = 0;
+        scoreHint = 0;
+        hintCount = 3;
+        hintCountReward = 3;
+        showReward = false;
+        onRewarded = true;
+        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+        heathBarTest.restartHp();
+        nextArtist();
+        interstitialShow();
+    }
+
+    //Запуск диалога проигрыша
+    private void startLosingDialog() {
+        AlertDialog.Builder alertBuild = new AlertDialog.Builder(this, theme.getAlertDialogStyle());
+
+        String textMessage = String.format("%s! %s", getResources().getString(R.string.score_text, score), getResources().getString(R.string.endGameNewGame));
+        if (onRewarded && rewardedCustom.onLoaded()) {
+            textMessage += String.format("\n%s", getResources().getString(R.string.endGameReward));
+            alertBuild.setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) ->
+                    rewardedCustom.show(TwoBandsTinder.this, new RewardedGuessTinder()));
+        }
+        alertBuild.setTitle(getResources().getString(R.string.endGameTitle))
+                .setMessage(textMessage)
+                .setPositiveButton(getResources().getString(R.string.endGameYes), (dialogInterface, i) -> restartGame())
+                .setNegativeButton(getResources().getString(R.string.endGameNo), (dialog, which) -> finish())
+                .setOnCancelListener(dialog -> finish());
         AlertDialog alert = alertBuild.create();
         alert.show();
     }
 
-    @Override
-    public void onBackPressed() {
-        //кнопка возврата
-        super.onBackPressed();
+    //Класс для показа рекламы за вознаграждение при проигрыше
+    class RewardedGuessTinder implements RewardedCustom.RewardedInterface {
+        @Override
+        public void onRewarded() {
+            onRewarded = false;
+            showReward = true;
+        }
+
+        @Override
+        public void onDismissed() {
+            if (showReward) {
+                heathBarTest.restore();
+                nextArtist();
+            } else {
+                restartGame();
+            }
+            AppMetrica.reportEvent("Show ads", "{\"tinder\":\"rewarded " + showReward + "\"}");
+            showReward = false;
+        }
     }
-    //--------------------------------------------------------------------------------------------------
 
-    public void menuFlipEventInstance() { // ивент переворота на экран результата не доделан
-
+    // ивент переворота на экран результата
+    public void menuFlipEventInstance() {
         allActGuessSolvedRightLay.removeAllViews();
         allActGuessSolvedLeftLay.removeAllViews();
-        AllActLayoutUnsLvLay.removeAllViews();
         // Отображение всех отгаданых типов
-        for (Map.Entry<Artist, String> ansver : ansverMap.entrySet()) {
-            RelativeLayout relativeLayout = new RelativeLayout(this);
-
-            TextView textView = new TextView(this);
-            RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-            layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-            layoutParamsText.setMargins(0, 0, 0, 15);
-            textView.setText(String.format(Locale.getDefault(), "%s", ansver.getKey().getName()));
-            textView.setTextSize(20);
-            textView.setShadowLayer(5, 3, 3, Color.BLACK);
-            textView.setTextColor(Color.WHITE);
-
-            relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            layoutParams.setMargins(5, 5, 5, 5);
-            //textView.setLayoutParams(layoutParamsText);
-            // Проверки в какую колонку они определяются
-            if (ansver.getValue().equals(first_band.getName())) {
-                ImageView leftPict = new ImageView(this);
-                relativeLayout.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()), true, relativeLayout));
-                leftPict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-                leftPict.setScaleType(ImageView.ScaleType.MATRIX);
-                relativeLayout.addView(leftPict, layoutParams);
-                setupImage(ansver.getKey().getFolderNotRandom(), leftPict);
-                allActGuessSolvedLeftLay.addView(relativeLayout);
+        for (Map.Entry<Artist, String> answer : ansverMap.entrySet()) {
+            if (answer.getValue().equals(first_band.getName())) {
+                allActGuessSolvedLeftLay.addView(createImageLay(answer.getKey(), true, isViewMissTake, false));
             }
-            if (ansver.getValue().equals(second_band.getName())) {
-                ImageView rightPict = new ImageView(this);
-                relativeLayout.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(ansver.getKey()), false, relativeLayout));
-                rightPict.setLayoutParams(allActRightSlvPict.getLayoutParams());
-                rightPict.setScaleType(ImageView.ScaleType.MATRIX);
-                relativeLayout.addView(rightPict, layoutParams);
-                setupImage(ansver.getKey().getFolderNotRandom(), rightPict);
-                allActGuessSolvedRightLay.addView(relativeLayout);
-            }
-            if (isHint) {
-                relativeLayout.addView(textView, layoutParamsText);
+            if (answer.getValue().equals(second_band.getName())) {
+                allActGuessSolvedRightLay.addView(createImageLay(answer.getKey(), false, isViewMissTake, false));
             }
         }
     }
 
+    //Получение картинки распределенной в один из столбцов
+    private RelativeLayout createImageLay(Artist answer, boolean isLeft, boolean isMissTake, boolean isCurrent) {
+        RelativeLayout relativeLayout = new RelativeLayout(this);
+        relativeLayout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        layoutParams.setMargins(5, 5, 5, 5);
+
+        ImageView pict = new ImageView(this);
+        pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
+        pict.setScaleType(ImageView.ScaleType.MATRIX);
+
+        if (!isMissTake) {
+            relativeLayout.setOnClickListener(new TouchSwitchImage(artists_turn.indexOf(answer), isLeft, relativeLayout));
+        } else {
+            layoutParams.setMargins(10, 10, 10, 10);
+            relativeLayout.setPadding(20, 20, 20, 20);
+            ImageView background = new ImageView(this);
+            if (isCurrent) {
+                background.setBackgroundResource(theme.getColorMissTakeCurrent());
+            } else {
+                background.setBackgroundResource(theme.getColorMissTakeError());
+            }
+            relativeLayout.addView(background, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+        }
+
+        relativeLayout.addView(pict, layoutParams);
+        setupImage(answer.getFolderNotRandom(), pict);
+
+        if (isHint || isMissTake) {
+            TextView textView = new TextView(this);
+            String textName = String.format(Locale.getDefault(), "%s", answer.getName());
+            if (isMissTake) {
+                textName += String.format(Locale.getDefault(), "\n(%s)", answer.getGroup());
+            }
+            textView.setText(textName);
+
+            textView.setTextSize(20);
+            textView.setShadowLayer(5, 3, 3, Color.BLACK);
+            textView.setTextColor(Color.WHITE);
+            textView.setGravity(Gravity.CENTER);
+            RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+            layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+            layoutParamsText.setMargins(0, 0, 0, 15);
+            relativeLayout.addView(textView, layoutParamsText);
+        }
+        return relativeLayout;
+    }
+
+    //Показ межстраничной рекламы
     private void interstitialShow() {
         Storage storage = new Storage(this, "appStatus");
         if (!storage.getBoolean("achTripleExpert")) {
             if (countAd <= 0 && onRewarded) {
                 countAd = 5;
-                if (mInterstitialAd.show()){
+                if (mInterstitialAd.show()) {
                     AppMetrica.reportEvent("Show ads", "{\"tinder\":\"interstitial\"}");
                 }
             }
@@ -812,6 +738,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         }
     }
 
+    // Класс для перераспределения артистов по группам
     private class TouchSwitchImage implements View.OnClickListener {
 
         int count;
@@ -826,49 +753,25 @@ public class TwoBandsTinder extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            RelativeLayout layout = new RelativeLayout(TwoBandsTinder.this);
-            TextView textView = new TextView(TwoBandsTinder.this);
-            RelativeLayout.LayoutParams layoutParamsText = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            layoutParamsText.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-            layoutParamsText.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-            layoutParamsText.setMargins(0, 0, 0, 15);
-            textView.setText(String.format(Locale.getDefault(), "%s", artists_turn.get(count).getName()));
-            textView.setTextSize(15);
-            textView.setShadowLayer(4, 2, 2, Color.BLACK);
-            textView.setTextColor(Color.WHITE);
-            layout.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-            RelativeLayout.LayoutParams layoutParamsRelative = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            layoutParamsRelative.setMargins(5, 5, 5, 5);
-            ImageView pict = new ImageView(TwoBandsTinder.this);
-            pict.setLayoutParams(allActLeftSlvPict.getLayoutParams());
-            pict.setScaleType(ImageView.ScaleType.MATRIX);
-            setupImage(artists_turn.get(count).getFolderNotRandom(), pict);
-            layout.addView(pict, layoutParamsRelative);
-            if (isHint) {
-                layout.addView(textView, layoutParamsText);
-            }
             if (isLeft) {
-                layout.setOnClickListener(new TouchSwitchImage(count, false, layout));
                 allActGuessSolvedLeftLay.removeView(relativeLayout);
                 ansverMap.put(artists_turn.get(count), second_band.getName());
                 relativeLayout = null;
-                allActGuessSolvedRightLay.addView(layout);
+                allActGuessSolvedRightLay.addView(createImageLay(artists_turn.get(count), false, isViewMissTake, false));
                 countGroupTextSecondTwo.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupTwo, countGroupMaxTwo));
                 countGroupTextFirstTwo.setText(String.format(Locale.getDefault(), "%d/%d", --countGroupOne, countGroupMaxOne));
             } else {
-                layout.setOnClickListener(new TouchSwitchImage(count, true, layout));
                 allActGuessSolvedRightLay.removeView(relativeLayout);
                 ansverMap.put(artists_turn.get(count), first_band.getName());
                 relativeLayout = null;
-                allActGuessSolvedLeftLay.addView(layout);
+                allActGuessSolvedLeftLay.addView(createImageLay(artists_turn.get(count), true, isViewMissTake, false));
                 countGroupTextSecondTwo.setText(String.format(Locale.getDefault(), "%d/%d", --countGroupTwo, countGroupMaxTwo));
                 countGroupTextFirstTwo.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupOne, countGroupMaxOne));
             }
-
         }
     }
 
-    // класс listener для моего обьекта
+    // класс listener для картинки распределения вправо-влево (свайп)
     static class OnSwipeTinderListener implements View.OnTouchListener {
         //переменные для положения x
         float dX;
@@ -876,8 +779,8 @@ public class TwoBandsTinder extends AppCompatActivity {
         float dY;
         float defY;
         //переменные для поворота
-        float roatx;
-        float droatx;
+        float rotateX;
+        float dRotateX;
         //переменные для проверки финального условия
         boolean leftCheck;
         boolean rightCheck;
@@ -889,27 +792,23 @@ public class TwoBandsTinder extends AppCompatActivity {
         public boolean onTouch(final View v, final MotionEvent event) {
             //получаем размер экрана чтобы различать в какую сторону скинули
             DisplayMetrics metrics = new DisplayMetrics();
-            //padding = (ViewGroup.MarginLayoutParams)  v.getLayoutParams();
             v.getDisplay().getMetrics(metrics);
             int width = metrics.widthPixels;
             //формулы для определения в какую сторону была скинута картинка
             leftCheck = (defX < (width / 2f - width + 30));
             rightCheck = (defX > (width / 2f - 30));
             //формула для для вычисление поворота
-            roatx = (event.getRawX() / width) * 45 - 17.5f;
-            droatx = dX / width * 45 + 17.5f;
+            rotateX = (event.getRawX() / width) * 45 - 17.5f;
+            dRotateX = dX / width * 45 + 17.5f;
 
             switch (event.getAction()) {
                 //обработка события нажатия на экран
                 case MotionEvent.ACTION_DOWN:
-
-                    //Log.i("deX", "onTouch:getrawX "+defX+"dX"+dX+ "vgetx "+v.getX());
                     //задаем значение dx равное обратной позиции нажатия на экран, чтобы картинка не сьехала
                     dY = v.getY() - event.getRawY();
                     dX = v.getX() - event.getRawX();
                     paddingYx = v.getY();
                     break;
-
                 //обработка события проведение по экрану
                 case MotionEvent.ACTION_MOVE:
                     // движение картинки так как dx назначается в начале,то defx будет двигать только картинку от ее начальной позиции
@@ -917,33 +816,29 @@ public class TwoBandsTinder extends AppCompatActivity {
                     defY = dY + event.getRawY();
                     //droat и roat та же логика
                     v.animate().setDuration(0);
-                    v.animate().x(defX).y(defY).rotation(roatx + droatx).start();
-                    // Log.i("dX", "onTouch:getrawX "+defX+"dX"+roatx);
+                    v.animate().x(defX).y(defY).rotation(rotateX + dRotateX).start();
                     break;
                 // обработка события отпуск от экрана
                 case MotionEvent.ACTION_UP:
-                    // Log.i("defX", "onTouch:right "+leftCheck+" left"+rightCheck+" padding "+paddingYx);
                     // если картинка не находится слева и справа
                     if (!leftCheck && !rightCheck) {
                         v.animate().setDuration(400).translationX(0).translationY(0).rotation(0);
-                    }//v.animate().x(paddingX).y(paddingY).rotation(0);
+                    }
                     if (leftCheck) {
                         v.animate().y(paddingYx);
-                        onLeftCheck();
+                        onCheck(true);
                     }
                     if (rightCheck) {
                         v.animate().y(paddingYx);
-                        onRightCheck();
+                        onCheck(false);
                     }
                     break;
             }
             return true;
         }
 
-        public void onLeftCheck() {
-        }
+        public void onCheck(boolean isLeft) {
 
-        public void onRightCheck() {
         }
     }
 }
