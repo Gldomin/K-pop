@@ -642,7 +642,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         if (hintCount > 0 || hintCountReward > 0) {
             hintButton.setBackgroundResource(theme.getBackgroundButton());
         }
-        if (heathBarTest.getHp() < 1) {
+        if (heathBarTest.getHp() <= 0) {
             startLosingDialog();
         } else {
             boolean achievemented = false;

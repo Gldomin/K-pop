@@ -76,10 +76,10 @@ public class GuessStar extends AppCompatActivity {
     private int count;          //номер артиста из сгенерированного списка (текущий)
 
     private boolean endGame; // Окончена ли игры
-    private Theme theme; //переменная для считывания состояния свиича на darkMod
+    private Theme theme; // Менеджер темы приложения
 
     //Рекламаза вознаграждение
-    private RewardedCustom rewardedCustom;          //Реклама за вознаграждение
+    private RewardedCustom rewardedCustom; //Реклама за вознаграждение
     private boolean showReward;  // Просмотрена реклама до конца или нет
     private boolean onRewarded; // Просмотр рекламы 1 раз
 
@@ -110,10 +110,12 @@ public class GuessStar extends AppCompatActivity {
     //Инициализация данных из layout
     private void initViewElement() {
         textRecord = findViewById(R.id.scoreText2);
-        imageView = findViewById(R.id.imageView);
-        textScore = findViewById(R.id.scoreText);
         textRecord.setTextColor(theme.getTextColor());
+
+        textScore = findViewById(R.id.scoreText);
         textScore.setTextColor(theme.getTextColor());
+
+        imageView = findViewById(R.id.imageView);
     }
 
     //Загрузка списка артистов и рекорда
@@ -124,23 +126,18 @@ public class GuessStar extends AppCompatActivity {
             finish();
         }
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
-        record = 0;
-        if (sp.contains("userScoreGuessStar")) {
-            record = sp.getInt("userScoreGuessStar", record);
-        }
-
+        record = sp.getInt("userScoreGuessStar", 0);
         if (savedInstanceState != null) {
             scoreNow = savedInstanceState.getInt("scoreNow");
             record = savedInstanceState.getInt("record");
         }
-
-    }
-
-    // Создание звуков кнопок ответа, подсказки и сведений о режиме
-    private void createButtonAndSound() {
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
         sound = false;
         sound = storage.getBoolean("soundMode"); //настроек звука
+    }
+
+    // Создание звуков, кнопок ответа, подсказки и сведений о режиме
+    private void createButtonAndSound() {
         soundPlayer = new SoundPlayer(this);
 
         pingClickID = soundPlayer.load(R.raw.ping_click); //id загруженного потока
@@ -229,7 +226,7 @@ public class GuessStar extends AppCompatActivity {
             view.setBackgroundResource(theme.getBackgroundButtonDisable());
             view.setClickable(false);
             heathBar.blow(); //снижение хп
-            if (heathBar.getHp() == 0 && !endGame) {  //обнуление игры в случае проеба
+            if (heathBar.getHp() <= 0 && !endGame) {  //обнуление игры в случае проеба
                 startLosingDialog();
             }
 
@@ -399,7 +396,7 @@ public class GuessStar extends AppCompatActivity {
     private void restartGame() {
         AppMetrica.reportEvent("Restart", "{\"star\":\"record " + record + "\"}");
         endGame = false;
-        heathBar.setHp(3);
+        heathBar.restartHp();
         scoreNow = 0;
         hintCount = 3;
         hintCountReward = 3;
@@ -440,10 +437,8 @@ public class GuessStar extends AppCompatActivity {
                 getResources().getString(R.string.endGameNewGame));
         if (onRewarded && rewardedCustom.onLoaded()) {
             textMessage += String.format("\n%s", getResources().getString(R.string.endGameReward));
-            builder.setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) -> {
-                endGame = false;
-                rewardedCustom.show(GuessStar.this, new RewardedGuessStart());
-            });
+            builder.setNeutralButton(getResources().getString(R.string.endGameRewardShow), (dialogInterface, i) ->
+                    rewardedCustom.show(GuessStar.this, new RewardedGuessStart()));
         }
         builder.setTitle(getResources().getString(R.string.endGameCongratulate))
                 .setMessage(textMessage)
@@ -461,6 +456,7 @@ public class GuessStar extends AppCompatActivity {
         public void onRewarded() {
             onRewarded = false;
             showReward = true;
+            endGame = false;
         }
 
         @Override
