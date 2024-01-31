@@ -122,13 +122,6 @@ p.s: Будем рады любому вашему фидбеку на стра�
     <string name="endHintYes">Да</string>
     <string name="endHintNo">Нет</string>
 
-    <string name="settingRed">Красный</string>
-    <string name="settingGreen">Зеленый</string>
-    <string name="settingPink">Розовый</string>
-    <string name="settingRabbit">Кролик</string>
-    <string name="settingHamster">Хомячок</string>
-    <string name="settingCat">Котик</string>
-
     <string name="tinderCountGroupError">Количество артистов в группах не совпадает!</string>
     <string name="tinderContinue">Продолжить</string>
     <string name="tinderMissTakeView">Посмотреть ошибки</string>
@@ -141,7 +134,5 @@ p.s: Будем рады любому вашему фидбеку на стра�
     <string name="tinderOr">или</string>
     <string name="tinderDistributeGroup">Распределено участников:</string>
 
-
-    <string name="ttWrongAnswer">No</string>
 
 </resources>

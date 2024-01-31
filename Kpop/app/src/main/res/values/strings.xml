@@ -90,12 +90,7 @@ p.s: We will be glad to receive any feedback from you on the application page in
     <string name="endGameTextScoreNow">Your score: %d</string>
     <string name="endGameTextRecordNow">Your record: %d</string>
     <string name="gameModeAbout">About game mode</string>
-    <string name="guessStarGameModeAbout">
-The "Guess Star" game mode allows you to test your knowledge of K-pop stars."\n"
-         Guess the names of K-pop artists from photos. It\'s not important for you to know what group the star on screen is in, but it is important to know his or her name. You have 3 lives. The correct answer will increase your score, and the wrong answer will take lives. "\n"
-         In addition, for every 35 points, 1 life will be restored to you, and for every 70 a hint will be added. But I think you\'ll figure it out."\n"
-         Good luck :)
-    </string>
+    <string name="guessStarGameModeAbout">" The Guess Star game mode allows you to test your knowledge of K-pop stars.           Guess the names of K-pop artists from photos. It's not important for you to know what group the star on screen is in, but it is important to know his or her name. You have 3 lives. The correct answer will increase your score, and the wrong answer will take lives.            In addition, for every 35 points, 1 life will be restored to you, and for every 70 a hint will be added. But I think you'll figure it out.           Good luck :)     "</string>
     <string name="guessBandGameModeAbout">
 The "Guess Band" game mode allows you to test your knowledge of the most famous K-pop groups in history!
          Guess the group the artist is in on the screen. Every correct answer increases your score! And the unfaithful reduces life. It is clear that when lives end, the game will be over."\n"
@@ -135,15 +130,14 @@ The "Distribute by bands" game mode allows you to test your knowledge of k-pop g
     <string name="endGameNo">No</string>
     <string name="endGameRewardShow">Get extra life</string>
 
-    <string name="settingRed">Red</string>
-    <string name="settingGreen">Green</string>
-    <string name="settingPink">Pastel</string>
-    <string name="settingRabbit">Rabbit</string>
-    <string name="settingHamster">Hamster</string>
-    <string name="settingCat">Kitty</string>
+    <string name="settingRed" translatable="false">Red</string>
+    <string name="settingGreen" translatable="false">Green</string>
+    <string name="settingPink" translatable="false">Pastel</string>
+    <string name="settingRabbit" translatable="false">Rabbit</string>
+    <string name="settingHamster" translatable="false">Hamster</string>
+    <string name="settingCat" translatable="false">Kitty</string>
 
 
-    <string name="ttWrongAnswer">Finish! You made</string>
     <string name="tinderCountGroupError">The number of artists in the groups is not the same!</string>
     <string name="tinderLoseScreenTitle">Done!</string>
     <string name="tinderLoseScreenWinMessage">"You know both bands perfectly! Congratulations! The number of points received: %d!"</string>

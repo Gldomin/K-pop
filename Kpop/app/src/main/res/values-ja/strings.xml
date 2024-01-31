@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">K-POPを推測してください</string>
+
+    <string name="menuItemGuessStar">ゲススター</string>
+    <string name="menuItemGuessStarReverse">ゲススターリバース</string>
+    <string name="menuItemGuessBand">ゲスバンド</string>
+    <string name="menuItemTinderSwipe">バンドで手分けする</string>
+    <string name="menuItemGallery">ギャラリー</string>
+    <string name="menuItemSettings">アプリケーションの設定</string>
+    <string name="menuItemAbout">情報</string>
+
+    <string name="achGuessStarBeginner">ゲススターの初心者</string>
+    <string name="achGuessStarNormal">ゲススターの愛好家</string>
+    <string name="achGuessStarExpert">ゲススターの専門家</string>
+    <string name="achGuessBandsBeginner">ゲスバンドの初心者</string>
+    <string name="achGuessBandsNormal">ゲスバンドの愛好家</string>
+    <string name="achGuessBandsExpert">ゲスバンドの専門家</string>
+    <string name="achDistributeByBandsBeginner">手分けの初心者</string>
+    <string name="achDistributeByBandsNormal">手分けの愛好家</string>
+    <string name="achDistributeByBandsExpert">手分けの専門家</string>
+    <string name="achTripleExpert">K-POPマスター</string>
+    <string name="achSecretAch">秘密の実績</string>
+
+    <string name="achGuessStarBeginnerText">ゲススターモードで 10 ポイントを獲得します</string>
+    <string name="achGuessStarNormalText">ゲススターモードで 50 ポイントを獲得します</string>
+    <string name="achGuessStarExpertText">ゲススターモードで 150 ポイントを獲得します</string>
+    <string name="achGuessBandsBeginnerText">ゲスバンドモードで 10 ポイントを獲得します</string>
+    <string name="achGuessBandsNormalText">ゲスバンドモードで 50 ポイントを獲得します</string>
+    <string name="achGuessBandsExpertText">ゲスバンドモードで 150 ポイントを獲得します</string>
+    <string name="achDistributeByBandsBeginnerText">バンドで手分けするモードで 15 ポイントを獲得します</string>
+    <string name="achDistributeByBandsNormalText">バンドで手分けするモードで 75 ポイントを獲得します</string>
+    <string name="achDistributeByBandsExpertText">バンドで手分けするモードで 150 ポイントを獲得します</string>
+    <string name="achTripleExpertText">あなたは 3 つのモードすべてのエキスパートになりました。 この実績のロックを解除すると、すべての広告が無効になります。 最も価値のある人だけが合格します。</string>
+    <string name="achSecretAchText">これは何ですか</string>
+
+    <string name="questionReset">アカウントをリセットしたいか</string>
+    <string name="questionConfirmTitle">確認してください</string>
+    <string name="answerAccept">○</string>
+    <string name="answerCancel">X</string>
+    <string name="answerYes">はい</string>
+    <string name="answerNo">いいえ</string>
+
+    <string name="settings0">アプリケーションの設定</string>
+    <string name="settings1">ヒント</string>
+    <string name="settings2">ハードモード</string>
+    <string name="settings3">暗いテーマ</string>
+    <string name="settings4">音</string>
+    <string name="settings5">なに</string>
+    <string name="resetRecords">アカウントをリセットする</string>
+    <string name="OptionsSet">設定が保存されました</string>
+    <string name="bandsActiveButton">利用可能なバンドを変更する</string>
+    <string name="bandsActiveTitle">利用可能なバンドを変更する</string>
+
+    <string name="gameRulesAbaut">ゲームのルール</string>
+    <string name="aboutTitle">いらっしゃいませ</string>
+    <string name="aboutText">
+  "\t"
+         「K-POPを推測してください」アプリへようこそ! このアプリケーションでは、K-POP に関する知識をテストできます。 3 つの主要なゲーム モードが提供されます: "\n"
+          1) ゲススター"\n"
+          2) ゲスバンド「\n」
+          3) バンドで手分けする"\n"
+    "\t" これらのゲーム モードを使用すると、最も有名な K-POP グループとその素晴らしいメンバーをすべて覚えることができます。 そしてもちろん、自分の知識をテストしてください!"\n"
+          各ゲームモードには独自の実績があります。 これらはメイン メニューで表示できます。"\n"
+ps.s: Play マーケットのアプリケーション ページでフィードバックをお待ちしております "\n"
+         頑張って楽しんでね！
+         </string>
+
+    //Для счета
+    <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
+
+    <string name="achievementUnlocked">実績解除！</string>
+
+    <string name="newRecordTitle">新しいハイスコア！</string>
+    <string name="newRecordText">おめでとう！ 新しい記録に到達しました:</string>
+    <string name="endGameTitle">ゲームの終了</string>
+    <string name="endGameTextScoreNow">ゲームスコア: %d</string>
+    <string name="endGameTextRecordNow">ハイスコア: %d</string>
+    <string name="gameModeAbout">モードの説明</string>
+    <string name="guessStarGameModeAbout">「ゲススター」ゲームモードでは、K-POP スターに関する知識をテストできます。 写真から K-POP アーティストの名前を推測します。 画面上のスターがどのグループに属しているかを知ることは重要ではありませんが、名前を知ることは重要です。 "\n" あなたには3つの命があります。 正解すればスコアが上がり、不正解だと命が奪われます。 さらに、35ポイントごとにライフが1回復し、70ポイントごとにヒントが追加されます。 しかし、あなたはそれを理解すると思います。 幸運を ：）</string>
+    <string name="guessBandGameModeAbout">
+        「ゲスバンド」ゲームモードでは、歴史上最も有名な K-POP グループについての知識をテストできます。
+          画面上でアーティストが所属しているグループを推測してください。 正解するたびにスコアが増加します。 そして不誠実な人は命を縮めます。 ライフが終了するとゲームが終了することは明らかです。"\n"
+          さらに、ゲームには 3 つのヒントがあり、k-pop グループの名前を構成する文字を教えてくれます。 グループを 35 回推測するごとにライフが 1 つ回復します。 そして70番目ごとにヒントが追加されます。 でも、あなたなら分かると思います。"\n"
+          幸運を ;）
+    </string>
+    <string name="guessBandGameModeTwoAbout">
+        「ゲスバンド」ゲームモードでは、歴史上最も有名な K-POP グループについての知識をテストできます。
+          画面上でアーティストが所属しているグループを推測してください。 正解するたびにスコアが増加します。 そして不誠実な人は命を縮めます。 ライフが終了するとゲームが終了することは明らかです。"\n"
+          さらに、ゲームには 3 つのヒントがあり、k-pop グループの名前を構成する文字を教えてくれます。 グループを 35 回推測するごとにライフが 1 つ回復します。 そして70番目ごとにヒントが追加されます。 でも、あなたなら分かると思います。"\n"
+          幸運を ;）
+    </string>
+    <string name="twoBandsTinderGameModeAbout">
+        「バンドで手分けする」ゲーム モードでは、K-POP グループに関する知識をテストできます。"\n"
+         さまざまな K-POP スターのセットが与えられ、それらを 2 つのグループに分ける必要があります。 アーティストカードを配布するには、K-POPグループに対応する画面の横にアーティストカードをスワイプする必要があります。 「\n」
+         いつでもすべてのアーティスト カードを表示し、再配布することができます。 配布を確認すると、すべてが正しく配布されているかどうかが表示され、次のグループのペアに進みます。 「\n」
+         複数のアーティストに間違えられるたびに、あなたの人生の 1 つが燃やされます。 すべてが終わるとすぐにゲームは終了します。 正しく配布されたアーティストのペアごとに 1 ポイントを受け取ります。 だから、正しく答えてみてください！
+         そして、ヒントがあります。アーティストの名前が表示されるので、彼らがどのグループのグループであるかを理解しやすくなります。"\n"
+         ライフは50ポイントごとに回復し、ヒントは100ポイントごとに回復します。 「\n」
+         実際には、すべてはもっと簡単です。頑張ってください!"\n"
+
+    </string>
+
+    <string name="score_text">ゲームスコア: %d</string>
+    <string name="record_text">ハイスコア: %d</string>
+    <string name="last_artist_text">予想外のラストアイドル: %s</string>
+
+    <string name="endGameCongratulate">ゲームの終了</string>
+    <string name="endGameNewGame">新しのゲーム始めるか</string>
+    <string name="endGameReward">それとも広告を見てライフを 1 つ追加しますか?</string>
+    <string name="endGameYes">新しいゲームを始める</string>
+    <string name="endGameNo">ゲームを終了する</string>
+    <string name="endGameRewardShow">広告を見る</string>
+
+    <string name="endHintCongratulate">注意！</string>
+    <string name="endHintReward">広告を見てヒントを授かりたいか? (残り %d)</string>
+    <string name="endHintYes">はい</string>
+    <string name="endHintNo">いいえ</string>
+
+    <string name="tinderCountGroupError">バンド内のアーティストの数が一致しません。</string>
+    <string name="tinderContinue">続く</string>
+    <string name="tinderMissTakeView">エラーを表示する</string>
+    <string name="tinderLoseScreenTitle">やった</string>
+    <string name="tinderLoseScreenWinMessage">あなたは両方のバンドを完璧に知っています！ おめでとう！ 受け取ったポイント数: %d!</string>
+    <string name="tinderLoseScreenLoseMessage">悪くない！ %d ポイント中 %d ポイントを獲得しました! 残念ながら、一部の参加者が誤って識別されています。</string>
+    <string name="tinderLoseScreenExit">出口</string>
+
+    <string name="tinderRedistribute">再配布</string>
+    <string name="tinderOr">vs</string>
+    <string name="tinderDistributeGroup">分散参加者:</string>
+
+
+</resources>
