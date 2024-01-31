@@ -4,7 +4,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
@@ -14,7 +13,6 @@
         android:layout_marginTop="10dp"
         android:indeterminate="false"
         android:max="5" />
-
 
     <LinearLayout
         android:layout_margin="10dp"
@@ -31,7 +29,7 @@
             android:layout_height="50dp"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:text="Больше не показывать"
+            android:text="@string/ratingClose"
             android:textSize="12sp" />
 
         <Button
@@ -40,7 +38,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:textSize="12sp"
-            android:text="Оценить\nпозже" />
+            android:text="@string/ratingCancel" />
 
         <Button
             android:id="@+id/buttonSend"
@@ -49,7 +47,7 @@
             android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:textSize="12sp"
-            android:text="Отправить" />
+            android:text="@string/ratingSend" />
     </LinearLayout>
 
     <TextView
@@ -60,7 +58,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
-        android:text="Оцените приложение" />
+        android:text="@string/ratingApp" />
 
 
 </RelativeLayout>

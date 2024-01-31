@@ -129,5 +129,9 @@ ps.s: Play マーケットのアプリケーション ページでフィード�
     <string name="tinderOr">vs</string>
     <string name="tinderDistributeGroup">分散参加者:</string>
 
+    <string name="ratingApp">Оцените приложение</string>
+    <string name="ratingSend">Отправить</string>
+    <string name="ratingCancel">Оценить\nпозже</string>
+    <string name="ratingClose">Больше не показывать</string>
 
 </resources>

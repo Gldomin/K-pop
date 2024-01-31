@@ -149,4 +149,9 @@ The "Distribute by bands" game mode allows you to test your knowledge of k-pop g
     <string name="tinderOr">or</string>
     <string name="tinderDistributeGroup">Distributed artists:</string>
 
+    <string name="ratingApp">Rate the app</string>
+    <string name="ratingSend">Send</string>
+    <string name="ratingCancel">Rate later</string>
+    <string name="ratingClose">Show no more</string>
+
 </resources>

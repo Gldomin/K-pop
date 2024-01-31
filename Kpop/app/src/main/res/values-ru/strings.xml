@@ -134,5 +134,9 @@ p.s: Будем рады любому вашему фидбеку на стра�
     <string name="tinderOr">или</string>
     <string name="tinderDistributeGroup">Распределено участников:</string>
 
+    <string name="ratingApp">Оцените приложение</string>
+    <string name="ratingSend">Отправить</string>
+    <string name="ratingCancel">Оценить\nпозже</string>
+    <string name="ratingClose">Больше не показывать</string>
 
 </resources>
