@@ -66,7 +66,6 @@ public class TwoBandsTinder extends AppCompatActivity {
     private LinearLayout allActGuessSolvedRightLay; // Макет с картинками артистов распределенных во вторую группу
     //----------------------------------------------------------------------------------------------
     private ArrayList<Bands> bands; //берем список всех групп
-    private int bandsCount; //Номер первой группы из списка
     //----------------------------------------------------------------------------------------------
     private TextView groupNameFirstOne; // Название первой группы на первом окне
     private TextView groupNameSecondOne; // Название второй группы на первом окне
@@ -154,10 +153,10 @@ public class TwoBandsTinder extends AppCompatActivity {
     private void imageSwipeCustom() {
         imageBand.setOnTouchListener(new OnSwipeTinderListener() {
             public void onCheck(boolean isLeft) {
-                if (isLeft){
+                if (isLeft) {
                     ansverMap.put(artists_turn.get(pictnumb), first_band.getName());
                     countGroupTextFirstOne.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupOne, countGroupMaxOne));
-                }else{
+                } else {
                     ansverMap.put(artists_turn.get(pictnumb), second_band.getName());
                     countGroupTextSecondOne.setText(String.format(Locale.getDefault(), "%d/%d", ++countGroupTwo, countGroupMaxTwo));
                 }
@@ -240,9 +239,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
         sound = false;
         sound = storage.getBoolean("soundMode"); //настроек звука
-
-        bandsCount = 0;
-        bands = Importer.getRandomBandsSex();
+        bands = Importer.getRandomBands();
         if (bands.size() < 2) {
             finish();
         }
@@ -380,10 +377,22 @@ public class TwoBandsTinder extends AppCompatActivity {
 
     //Главная процедура, запускается начальная последовательность , устанавливается главная картинка, указывается текст групп
     public void mainProcedure() {
-        if (bandsCount + 1 >= bands.size()) {
-            bandsCount = 0;
-            bands = Importer.getRandomBandsSex();
-        }
+        boolean isSexSame = true;
+        do {
+            first_band = bands.get(0);
+            for (int i = 1; i < bands.size(); i++) {
+                if (bands.get(i).getSex() == first_band.getSex()) {
+                    second_band = bands.get(i);
+                    isSexSame = false;
+                    bands.remove(i);
+                    break;
+                }
+            }
+            bands.remove(0);
+            if (bands.isEmpty()) {
+                bands = Importer.getRandomBands();
+            }
+        } while (isSexSame);
         startSequance();
         setupImage(artists_turn.get(pictnumb).getFolderNotRandom(), imageBand);
         setupBandText();
@@ -396,13 +405,6 @@ public class TwoBandsTinder extends AppCompatActivity {
             for (Artist artist : artists_turn) {
                 artist.removeRandomCount();
             }
-        }
-        first_band = bands.get(bandsCount);
-        second_band = bands.get(bandsCount + 1);
-        if (first_band.getSex() != second_band.getSex()) {
-            bandsCount = bandsCount + 2;
-            mainProcedure();
-            return;
         }
         artists_turn = new ArrayList<>();
         ansverMap = new HashMap<>();
@@ -580,7 +582,6 @@ public class TwoBandsTinder extends AppCompatActivity {
             }
             scoreText.setText(getResources().getString(R.string.endGameTextScoreNow, score));
             scoreRecordText.setText(getResources().getString(R.string.endGameTextRecordNow, scoreRecord));
-            bandsCount = bandsCount + 2;
             mainProcedure();
         } else {
             startLosingDialog();
