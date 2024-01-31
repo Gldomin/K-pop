@@ -796,8 +796,8 @@ public class TwoBandsTinder extends AppCompatActivity {
             v.getDisplay().getMetrics(metrics);
             int width = metrics.widthPixels;
             //формулы для определения в какую сторону была скинута картинка
-            leftCheck = (defX < (width / 2f - width + 30));
-            rightCheck = (defX > (width / 2f - 30));
+            leftCheck = (defX < (width / 2f - width + 130));
+            rightCheck = (defX > (width / 2f - 130));
             //формула для для вычисление поворота
             rotateX = (event.getRawX() / width) * 45 - 17.5f;
             dRotateX = dX / width * 45 + 17.5f;

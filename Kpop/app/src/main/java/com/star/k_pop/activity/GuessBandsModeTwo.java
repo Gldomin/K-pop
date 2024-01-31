@@ -290,7 +290,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         updateButtonAnswer();
         updateButtonInput();
 
-        Glide.with(this).load(Uri.parse(bands.get(count).getFolderRandom()))
+        Glide.with(this).load(Uri.parse(bands.get(count).getFolder()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(groupPhoto);
