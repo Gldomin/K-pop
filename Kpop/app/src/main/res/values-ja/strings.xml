@@ -36,7 +36,7 @@
 
     <string name="questionReset">アカウントをリセットしたいか</string>
     <string name="questionConfirmTitle">確認してください</string>
-    <string name="answerAccept">○</string>
+    <string name="answerAccept">⭘</string>
     <string name="answerCancel">X</string>
     <string name="answerYes">はい</string>
     <string name="answerNo">いいえ</string>
@@ -129,9 +129,9 @@ ps.s: Play マーケットのアプリケーション ページでフィード�
     <string name="tinderOr">vs</string>
     <string name="tinderDistributeGroup">分散参加者:</string>
 
-    <string name="ratingApp">Оцените приложение</string>
-    <string name="ratingSend">Отправить</string>
-    <string name="ratingCancel">Оценить\nпозже</string>
-    <string name="ratingClose">Больше не показывать</string>
+    <string name="ratingApp">アプリケーションを評価する</string>
+    <string name="ratingSend">送信</string>
+    <string name="ratingCancel">後で評価する</string>
+    <string name="ratingClose">二度と表示しないでください</string>
 
 </resources>
