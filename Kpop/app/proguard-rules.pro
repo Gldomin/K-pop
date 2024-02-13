@@ -26,3 +26,5 @@
   **[] $VALUES;
   public *;
 }
+
+-dontwarn com.yandex.metrica.ModulesFacade
