@@ -86,7 +86,7 @@ public class Bands {
      */
     public String getFolder() {
         Random rand = new Random();
-        return name[0] + "/" + getNamesImages(rand.nextInt(imagesBands.length));
+        return "file:///android_asset/Groups/" + name[0] + "/" + getNamesImages(rand.nextInt(imagesBands.length));
     }
 
     public String getFolder(int i){
