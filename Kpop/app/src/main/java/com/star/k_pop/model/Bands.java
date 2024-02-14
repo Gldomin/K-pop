@@ -86,20 +86,14 @@ public class Bands {
      */
     public String getFolder() {
         Random rand = new Random();
-        return "file:///android_asset/Groups/" + name[0] + "/" + getNamesImages(rand.nextInt(imagesBands.length));
+        return convertStringToPath(getNamesImages(rand.nextInt(imagesBands.length)));
     }
 
     public String getFolder(int i){
-        return name[0] + "/" + getNamesImages(i);
+        return convertStringToPath(getNamesImages(i));
     }
 
-    public String getFolderRandom() {
-        String folder = "file:///android_asset/Groups/";
-        if (new Random().nextInt(10) > 5) {
-            folder += artists.get(new Random().nextInt(numberOfPeople)).getFolder();
-        } else {
-            folder += getFolder();
-        }
-        return folder;
+    private String convertStringToPath(String file){
+        return "file:///android_asset/Groups/" + name[0] + "/" + file;
     }
 }

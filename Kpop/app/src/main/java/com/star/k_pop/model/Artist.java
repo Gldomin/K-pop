@@ -28,7 +28,7 @@ public class Artist {
         return namesImages[i]; //возвращаем рандомную фотку Артиста
     }
 
-    public void removeRandomCount(){
+    public void removeRandomCount() {
         countRandom = -1;
     }
 
@@ -54,23 +54,27 @@ public class Artist {
 
     public String getFolder() {
         Random rand = new Random();
-        return groups[0] + "/" + name + "/" + getNamesImage(rand.nextInt(namesImages.length));
+        return convertStringToPath(getNamesImage(rand.nextInt(namesImages.length)));
     }
 
-    public int getCountImages(){
+    public int getCountImages() {
         return namesImages.length;
     }
 
     public String getFolder(int i) {
-        return groups[0] + "/" + name + "/" + getNamesImage(i);
+        return convertStringToPath(getNamesImage(i));
     }
 
     public String getFolderNotRandom() {
-        if (countRandom < 0){
+        if (countRandom < 0) {
             Random rand = new Random();
             countRandom = rand.nextInt(namesImages.length);
         }
-        return groups[0] + "/" + name + "/" + getNamesImage(countRandom);
+        return convertStringToPath(getNamesImage(countRandom));
+    }
+
+    private String convertStringToPath(String file){
+        return "file:///android_asset/Groups/" + groups[0] + "/" + name + "/" + file;
     }
 
     public boolean checkGroup(String group) {

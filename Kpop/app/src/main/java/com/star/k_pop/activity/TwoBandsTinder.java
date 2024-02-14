@@ -420,8 +420,8 @@ public class TwoBandsTinder extends AppCompatActivity {
 
 
     // Установка изображения
-    public void setupImage(String pathtoFolder, ImageView img) {
-        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + pathtoFolder))
+    public void setupImage(String pathToFolder, ImageView img) {
+        Glide.with(this).load(Uri.parse(pathToFolder))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(img);

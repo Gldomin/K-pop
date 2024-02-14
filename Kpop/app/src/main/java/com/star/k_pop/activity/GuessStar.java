@@ -387,7 +387,7 @@ public class GuessStar extends AppCompatActivity {
         for (Artist a : artists) {
             a.setInit(false);
         }
-        Glide.with(this).load(Uri.parse("file:///android_asset/Groups/" + artists.get(count).getFolder()))
+        Glide.with(this).load(Uri.parse(artists.get(count).getFolder()))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(imageView);

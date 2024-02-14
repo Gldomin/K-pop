@@ -44,6 +44,6 @@ public class ImageGallery implements Serializable {
     }
 
     public Uri getUri() {
-        return Uri.parse("file:///android_asset/Groups/" + folder);
+        return Uri.parse(folder);
     }
 }
