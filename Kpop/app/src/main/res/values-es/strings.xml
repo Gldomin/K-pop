@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Adivina K-pop</string>
+    <string name="menuItemGuessStar">Adivina la Estrella</string>
+    <string name="menuItemGuessStarReverse">Adivina Inversamente la Estrella</string>
+    <string name="menuItemGuessBand">Adivina la Banda</string>
+    <string name="menuItemTinderSwipe">Ordenar Grupos</string>
+    <string name="menuItemGallery">Galería</string>
+    <string name="menuItemSettings">Configuración</string>
+    <string name="menuItemAbout">Acerca de</string>
+
+    <string name="achGuessStarBeginner">Principiante del Ídolo</string>
+    <string name="achGuessStarNormal">Experto del Ídolo</string>
+    <string name="achGuessStarExpert">Maestro del Ídolo</string>
+    <string name="achGuessBandsBeginner">Novato del Grupo</string>
+    <string name="achGuessBandsNormal">Experto del Grupo</string>
+    <string name="achGuessBandsExpert">Maestro del Grupo</string>
+    <string name="achDistributeByBandsBeginner">Novato Clasificador</string>
+    <string name="achDistributeByBandsNormal">Experto Clasificador</string>
+    <string name="achDistributeByBandsExpert">Maestro Clasificador</string>
+    <string name="achTripleExpert">Conquistador K-pop</string>
+    <string name="achSecretAch">Logro Secreto</string>
+
+    <string name="achGuessStarBeginnerText">"\t"Obtuviste 10 puntos en el modo "Adivina la Estrella"</string>
+    <string name="achGuessStarNormalText">"\t"Obtuviste 50 puntos en el modo "Adivina la Estrella"</string>
+    <string name="achGuessStarExpertText">"\t"Obtuviste 150 puntos en el modo "Adivina la Estrella"</string>
+    <string name="achGuessBandsBeginnerText">"\t"Obtuviste 10 puntos en el modo "Adivina la Banda"</string>
+    <string name="achGuessBandsNormalText">"\t"Obtuviste 50 puntos en el modo "Adivina la Banda"</string>
+    <string name="achGuessBandsExpertText">"\t"Obtuviste 150 puntos en el modo "Adivina la Banda"</string>
+    <string name="achDistributeByBandsBeginnerText">"\t"Obtuviste 15 puntos en el modo "Ordenar Grupos"</string>
+    <string name="achDistributeByBandsNormalText">"\t"Obtuviste 75 puntos en el modo "Ordenar Grupos"</string>
+    <string name="achDistributeByBandsExpertText">"\t"Obtuviste 225 puntos en el modo "Ordenar Grupos"</string>
+    <string name="achTripleExpertText">"\t"Te convertiste en un experto en los tres modos. Desbloquear este logro desactivará todos los anuncios. Solo los más dignos pasarán."</string>
+    <string name="achSecretAchText">¿Qué podría ser esto?</string>
+
+    <string name="questionReset">¿Restablecer registros?</string>
+    <string name="questionConfirmTitle">Confirmación</string>
+    <string name="answerAccept">Confirmar</string>
+    <string name="answerCancel">Cancelar</string>
+    <string name="answerYes">Sí</string>
+    <string name="answerNo">No</string>
+
+    <string name="settings0">Configuración</string>
+    <string name="settings1">Pistas</string>
+    <string name="settings2">Modo Difícil</string>
+    <string name="settings3">Tema Oscuro</string>
+    <string name="settings4">"Habilitar sonidos"</string>
+    <string name="settings5">"Presiona CANCELAR"</string>
+    <string name="resetRecords">Restablecer puntuación</string>
+    <string name="OptionsSet">Configuración guardada</string>
+    <string name="bandsActiveButton">Cambiar grupos disponibles</string>
+    <string name="bandsActiveTitle">Cambiar grupos disponibles</string>
+
+    <string name="gameRulesAbaut">Reglas del juego</string>
+    <string name="aboutTitle">¡Bienvenido!</string>
+    <string name="aboutText">
+        "\t"¡Bienvenido a la aplicación Adivina K-pop! En esta aplicación, puedes poner a prueba tus conocimientos sobre K-pop. Tienes tres modos principales de juego:"\n"
+        1) Adivina la Estrella"\n"
+        2) Adivina la Banda"\n"
+        3) Ordenar Grupos"\n"
+        "Usando estos modos de juego, puedes memorizar todos los grupos de K-pop más famosos y sus increíbles miembros. ¡Y, por supuesto, poner a prueba tus conocimientos!"\n"
+        Cada modo de juego tiene sus propios logros, que se pueden ver en el menú principal."\n"
+        PD: Agradecemos cualquier comentario en la página de la aplicación en la Play Store "\n"
+        ¡Buena suerte y diviértete!
+    </string>
+
+    <!-- Para la puntuación -->
+    <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
+
+    <string name="achievementUnlocked">¡Logro desbloqueado!</string>
+
+    <string name="newRecordTitle">¡Nuevo récord!</string>
+    <string name="newRecordText">¡Felicidades! Has alcanzado un nuevo récord:</string>
+    <string name="endGameTitle">Fin del juego</string>
+    <string name="endGameTextScoreNow">Tu puntuación: %d</string>
+    <string name="endGameTextRecordNow">Tu récord: %d</string>
+    <string name="gameModeAbout">Descripción del modo</string>
+    <string name="guessStarGameModeAbout">
+        El modo de juego "Adivina la Estrella" te permite poner a prueba tus conocimientos sobre las estrellas de K-pop."\n"
+        Adivina los nombres de los artistas de K-pop a partir de sus fotos. No importa a qué grupo pertenezca la estrella en la pantalla, pero es importante saber su nombre. Tienes 3 vidas. Las respuestas correctas aumentarán tu puntuación y las incorrectas te quitarán vidas. "\n"
+        Además, por cada 35 puntos, obtendrás 1 vida y por cada 70 puntos, se agregará una pista. Pero creo que lo descubrirás."\n"
+        ¡Buena suerte :)
+    </string>
+    <string name="guessBandGameModeAbout">
+        El modo de juego "Adivina la Banda" te permite poner a prueba tus conocimientos sobre los grupos de K-pop más famosos de la historia.
+        Adivina el grupo al que pertenece el artista en la pantalla. ¡Cada respuesta correcta aumenta tu puntuación! Y una incorrecta reduce vidas. Por supuesto, cuando se agoten las vidas, el juego terminará."\n"
+        Además, tienes 3 pistas por juego, que mostrarán las letras que componen el nombre del grupo de K-pop. Cada grupo adivinado en el 35º restaurará una vida y en el 70º agregará una pista. Pero creo que lo descubrirás."\n"
+        ¡Buena suerte ;)
+    </string>
+    <string name="guessBandGameModeTwoAbout">
+        El modo de juego "Adivina la Banda" te permite poner a prueba tus conocimientos sobre los grupos de K-pop más famosos de la historia.
+        Adivina el grupo al que pertenece el artista en la pantalla. ¡Cada respuesta correcta aumenta tu puntuación! Y una incorrecta reduce vidas. Por supuesto, cuando se agoten las vidas, el juego terminará."\n"
+        Además, tienes 3 pistas por juego, que mostrarán las letras que componen el nombre del grupo de K-pop. Cada grupo adivinado en el 35º restaurará una vida y en el 70º agregará una pista. Pero creo que lo descubrirás."\n"
+        ¡Buena suerte ;)
+    </string>
+    <string name="twoBandsTinderGameModeAbout">
+        El modo de juego "Ordenar Grupos" te permite poner a prueba tus conocimientos sobre los grupos de K-pop"\n"
+        Se te proporciona un conjunto de diversas estrellas de K-pop y debes distribuirlas en 2 grupos. Para distribuir las tarjetas de los artistas, debes deslizarlas hacia el grupo de K-pop correspondiente en la pantalla. "\n"
+        Después de la distribución, puedes ver todas las tarjetas de los artistas y redistribuirlas. Después de confirmar tu distribución, verás si todo está distribuido correctamente, después de lo cual pasarás al siguiente par de grupos. "\n"
+        Cada vez que cometas un error de más de un artista, perderás una de tus vidas. Una vez que se agoten todas las vidas, el juego terminará. Obtendrás 1 punto por cada par de artistas distribuido correctamente. ¡Así que intenta responder correctamente!
+        También hay pistas: mostrarán los nombres de los artistas para que te sea más fácil entender a qué grupo pertenecen."\n"
+        Las vidas se restauran cada 50 puntos y las pistas cada 100 puntos. "\n"
+        En realidad, todo es mucho más fácil. ¡Buena suerte!"\n"
+        ¡Distribúyelos todos ツ
+    </string>
+
+    <string name="score_text">Tu puntuación: %d</string>
+    <string name="record_text">Tu récord: %d</string>
+    <string name="last_artist_text">Último no adivinado: %s</string>
+
+    <string name="endGameCongratulate">¡Felicidades!</string>
+    <string name="endGameNewGame">¿Comenzar un nuevo juego?</string>
+    <string name="endGameReward">¿O ver un anuncio para agregar otra vida?</string>
+    <string name="endGameYes">Comenzar un nuevo juego</string>
+    <string name="endGameNo">Menú principal</string>
+    <string name="endGameRewardShow">Ver anuncio</string>
+
+    <string name="endHintCongratulate">¡Atención!</string>
+    <string name="endHintReward">¿Ver un anuncio para usar una pista? (quedan: %d)</string>
+    <string name="endHintYes">Sí</string>
+    <string name="endHintNo">No</string>
+
+    <string name="tinderCountGroupError">¡La cantidad de artistas en los grupos no coincide!</string>
+    <string name="tinderContinue">Continuar</string>
+    <string name="tinderMissTakeView">Ver errores</string>
+    <string name="tinderLoseScreenTitle">¡Listo!</string>
+    <string name="tinderLoseScreenWinMessage">¡Conoces ambos grupos perfectamente! ¡Felicidades! Número de puntos obtenidos: %d!</string>
+    <string name="tinderLoseScreenLoseMessage">¡No está mal! ¡Obtuviste %d de %d puntos! Desafortunadamente, identificaste incorrectamente a algunos de los miembros.</string>
+    <string name="tinderLoseScreenExit">Salir</string>
+
+    <string name="tinderRedistribute">Redistribuir</string>
+    <string name="tinderOr">o</string>
+    <string name="tinderDistributeGroup">Miembros distribuidos:</string>
+
+    <string name="ratingApp">Calificar la aplicación</string>
+    <string name="ratingSend">Enviar</string>
+    <string name="ratingCancel">Calificar\nmás tarde</string>
+    <string name="ratingClose">No mostrar de nuevo</string>
+
+</resources>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">เดา K-pop</string>
+    <string name="menuItemGuessStar">เดาดาว</string>
+    <string name="menuItemGuessStarReverse">เดาดาวย้อนหลัง</string>
+    <string name="menuItemGuessBand">เดาวง</string>
+    <string name="menuItemTinderSwipe">การจัดกลุ่ม</string>
+    <string name="menuItemGallery">แกลเลอรี</string>
+    <string name="menuItemSettings">การตั้งค่า</string>
+    <string name="menuItemAbout">เกี่ยวกับ</string>
+
+    <string name="achGuessStarBeginner">นักร้องมือใหม่</string>
+    <string name="achGuessStarNormal">นักร้องมืออาชีพ</string>
+    <string name="achGuessStarExpert">นักร้องมือเชี่ยวชาญ</string>
+    <string name="achGuessBandsBeginner">วงดนตรีมือใหม่</string>
+    <string name="achGuessBandsNormal">วงดนตรีมืออาชีพ</string>
+    <string name="achGuessBandsExpert">วงดนตรีมือเชี่ยวชาญ</string>
+    <string name="achDistributeByBandsBeginner">ผู้จัดการมือใหม่</string>
+    <string name="achDistributeByBandsNormal">ผู้จัดการมืออาชีพ</string>
+    <string name="achDistributeByBandsExpert">ผู้จัดการมือเชี่ยวชาญ</string>
+    <string name="achTripleExpert">ผู้เชี่ยวชาญ K-pop</string>
+    <string name="achSecretAch">ความสำเร็จลับ</string>
+
+    <string name="achGuessStarBeginnerText">"\t"คุณได้คะแนน 10 ในโหมด "เดาดาว"</string>
+    <string name="achGuessStarNormalText">"\t"คุณได้คะแนน 50 ในโหมด "เดาดาว"</string>
+    <string name="achGuessStarExpertText">"\t"คุณได้คะแนน 150 ในโหมด "เดาดาว"</string>
+    <string name="achGuessBandsBeginnerText">"\t"คุณได้คะแนน 10 ในโหมด "เดาวง"</string>
+    <string name="achGuessBandsNormalText">"\t"คุณได้คะแนน 50 ในโหมด "เดาวง"</string>
+    <string name="achGuessBandsExpertText">"\t"คุณได้คะแนน 150 ในโหมด "เดาวง"</string>
+    <string name="achDistributeByBandsBeginnerText">"\t"คุณได้คะแนน 15 ในโหมด "การจัดกลุ่ม"</string>
+    <string name="achDistributeByBandsNormalText">"\t"คุณได้คะแนน 75 ในโหมด "การจัดกลุ่ม"</string>
+    <string name="achDistributeByBandsExpertText">"\t"คุณได้คะแนน 225 ในโหมด "การจัดกลุ่ม"</string>
+    <string name="achTripleExpertText">"\t"คุณเป็นผู้เชี่ยวชาญในทุกโหมด การปลดล็อครางวัลนี้จะปิดใช้งานโฆษณาทั้งหมด เฉพาะผู้ที่มีคุณค่าที่สุดเท่านั้น"</string>
+    <string name="achSecretAchText">นี่คืออะไร?</string>
+
+    <string name="questionReset">ล้างบันทึก?</string>
+    <string name="questionConfirmTitle">ยืนยัน</string>
+    <string name="answerAccept">ยืนยัน</string>
+    <string name="answerCancel">ยกเลิก</string>
+    <string name="answerYes">ใช่</string>
+    <string name="answerNo">ไม่</string>
+
+    <string name="settings0">การตั้งค่า</string>
+    <string name="settings1">คำใบ้</string>
+    <string name="settings2">โหมดยาก</string>
+    <string name="settings3">ธีมมืด</string>
+    <string name="settings4">"เปิดเสียง"</string>
+    <string name="settings5">"กดยกเลิก"</string>
+    <string name="resetRecords">ล้างคะแนน</string>
+    <string name="OptionsSet">การตั้งค่าถูกบันทึก</string>
+    <string name="bandsActiveButton">เปลี่ยนกลุ่มที่ใช้ได้</string>
+    <string name="bandsActiveTitle">เปลี่ยนกลุ่มที่ใช้ได้</string>
+
+    <string name="gameRulesAbaut">กฎเกม</string>
+    <string name="aboutTitle">ยินดีต้อนรับ!</string>
+    <string name="aboutText">
+        "\t"ยินดีต้อนรับสู่แอป Guess K-pop! ในแอปนี้, คุณสามารถทดสอบความรู้ของคุณเกี่ยวกับ K-pop. คุณมีโหมดเกมหลักสามประการ:"\n"
+        1) เดาดาว"\n"
+        2) เดาวง"\n"
+        3) การจัดกลุ่ม"\n"
+        "โดยใช้โหมดเกมเหล่านี้, คุณสามารถจำได้ทุกวง K-pop ที่มีชื่อเสียงและสมาชิกที่น่าทึ่งของพวกเขา! และแน่นอน, ทดสอบความรู้ของคุณ!"\n"
+        แต่ละโหมดเกมมีรางวัลของตัวเองที่สามารถดูได้ในเมนูหลัก."\n"
+        p.s: เราต้อนรับความคิดเห็นใดๆ ที่คุณมีได้ที่หน้าแอปใน Play Store "\n"
+        โชคดีและสนุก!
+    </string>
+
+    <!-- For the score -->
+    <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
+
+    <string name="achievementUnlocked">ปลดล็อครางวัลแล้ว!</string>
+
+    <string name="newRecordTitle">ระดับใหม่!</string>
+    <string name="newRecordText">ยินดีด้วย! คุณได้รับระดับใหม่:</string>
+    <string name="endGameTitle">จบเกม</string>
+    <string name="endGameTextScoreNow">คะแนนของคุณ: %d</string>
+    <string name="endGameTextRecordNow">ระดับปัจจุบัน: %d</string>
+    <string name="gameModeAbout">คำอธิบายโหมดเกม</string>
+    <string name="guessStarGameModeAbout">
+        โหมดเกม "เดาดาว" ช่วยทดสอบความรู้ของคุณเกี่ยวกับดารา K-pop."\n"
+        เดาชื่อศิลปิน K-pop จากรูปภาพของพวกเขา ไม่ว่าดาราจะเป็นของวงไหน, สิ่งสำคัญคือรู้จักชื่อของเขาหรือเธอ. คุณมี 3 ชีวิต. การตอบถูกจะเพิ่มคะแนนของคุณ, และการตอบผิดจะลดชีวิต. "\n"
+        นอกจากนี้, ทุก 35 คะแนนคุณจะได้รับ 1 ชีวิตเพิ่ม, และทุก 70 คะแนนจะมีการเพิ่มคำใบ้. แต่คิดว่าคุณจะทำได้นะ."\n"
+        โชคดี :)
+    </string>
+    <string name="guessBandGameModeAbout">
+        โหมดเกม "เดาวง" ช่วยทดสอบความรู้ของคุณเกี่ยวกับวง K-pop ที่มีชื่อเสียงที่สุดในประวัติ!\n"
+        เดาว่าวงที่ศิลปินบนหน้าจอนั้นเป็นของวงใด. การตอบถูกเพิ่มคะแนนของคุณ! และการตอบผิดจะลดชีวิต. แน่นอน, เมื่อชีวิตหมด, เกมจะจบ."\n"
+        นอกจากนี้, คุณมี 3 คำใบ้ต่อเกม, ซึ่งจะแสดงตัวอักษรที่ประกอบชื่อวง K-pop. ทุกครั้งที่คุณเดาถูก 35 ครั้ง, คุณจะได้รับชีวิตเพิ่ม. และทุกครั้งที่คุณเดาถูก 70 ครั้งจะมีการเพิ่มคำใบ้. แต่คิดว่าคุณจะทำได้นะ."\n"
+        โชคดี ;)
+    </string>
+    <string name="guessBandGameModeTwoAbout">
+        โหมดเกม "เดาวง" ช่วยทดสอบความรู้ของคุณเกี่ยวกับวง K-pop ที่มีชื่อเสียงที่สุดในประวัติ!\n"
+        เดาว่าวงที่ศิลปินบนหน้าจอนั้นเป็นของวงใด. การตอบถูกเพิ่มคะแนนของคุณ! และการตอบผิดจะลดชีวิต. แน่นอน, เมื่อชีวิตหมด, เกมจะจบ."\n"
+        นอกจากนี้, คุณมี 3 คำใบ้ต่อเกม, ซึ่งจะแสดงตัวอักษรที่ประกอบชื่อวง K-pop. ทุกครั้งที่คุณเดาถูก 35 ครั้ง, คุณจะได้รับชีวิตเพิ่ม. และทุกครั้งที่คุณเดาถูก 70 ครั้งจะมีการเพิ่มคำใบ้. แต่คิดว่าคุณจะทำได้นะ."\n"
+        โชคดี ;)
+    </string>
+    <string name="twoBandsTinderGameModeAbout">
+        โหมดเกม "การจัดกลุ่ม" ช่วยทดสอบความรู้ของคุณเกี่ยวกับวง K-pop"\n"
+        คุณจะได้รับบรรทัดของดารา K-pop ต่างๆ และคุณต้องแบ่งพวกเขาอย่างเท่าเทียมใน 2 กลุ่ม. เพื่อแบ่งการ์ดศิลปิน, คุณต้องสวิปและลากไปยังวง K-pop ที่เหมาะสมบนหน้าจอ. "\n"
+        หลังจากการกระจาย, คุณสามารถดูการ์ดศิลปินทั้งหมดและแบ่งพวกเขาใหม่. หลังจากยืนยันการกระจายของคุณ, คุณจะเห็นว่าทุกอย่างถูกแบ่งไปถูกต้องหรือไม่, หลังจากนั้นคุณจะไปต่อไปยังคู่ของวงถัดไป. "\n"
+        ทุกครั้งที่คุณทำผิดมากกว่าหนึ่งศิลปิน, ชีวิตหนึ่งของคุณจะหายไป. เมื่อชีวิตหมด, เกมจะจบ. คุณจะได้รับ 1 คะแนนสำหรับทุกคู่ศิลปินที่แบ่งถูกต้อง. ดังนั้น, พยายามที่จะตอบถูกนะ!
+        ยังมีคำใบ้ - พวกเขาจะแสดงชื่อศิลปินเพื่อทำให้คุณเข้าใจง่ายว่าพวกเขาเป็นส่วนหนึ่งของกลุ่มไหน."\n"
+        ชีวิตจะกู้คืนทุก 50 คะแนน, และคำใบ้ - ทุก 100 คะแนน. "\n"
+        ในความเป็นจริง, มันง่ายมาก - โชคดี!"\n"
+        แบ่งทั้งหมดนี้ ツ
+    </string>
+
+    <string name="score_text">คะแนนของคุณ: %d</string>
+    <string name="record_text">ระดับของคุณ: %d</string>
+    <string name="last_artist_text">ศิลปินที่ไม่เดา: %s</string>
+
+    <string name="endGameCongratulate">ยินดีด้วย!</string>
+    <string name="endGameNewGame">เริ่มเกมใหม่?</string>
+    <string name="endGameReward">หรือดูโฆษณาเพื่อเพิ่มชีวิต?</string>
+    <string name="endGameYes">เริ่มเกมใหม่</string>
+    <string name="endGameNo">เมนูหลัก</string>
+    <string name="endGameRewardShow">ดูโฆษณา</string>
+
+    <string name="endHintCongratulate">ความสนใจ!</string>
+    <string name="endHintReward">ดูโฆษณาเพื่อใช้คำใบ้หรือไม่? (เหลือ: %d)</string>
+    <string name="endHintYes">ใช่</string>
+    <string name="endHintNo">ไม่</string>
+
+    <string name="tinderCountGroupError">จำนวนศิลปินในกลุ่มไม่ตรงกัน!</string>
+    <string name="tinderContinue">ดำเนินการต่อ</string>
+    <string name="tinderMissTakeView">ดูข้อผิดพลาด</string>
+    <string name="tinderLoseScreenTitle">พร้อมแล้ว!</string>
+    <string name="tinderLoseScreenWinMessage">คุณรู้จักทั้ง 2 กลุ่มได้ดีเยี่ยม! ยินดีด้วย! คะแนนที่ได้: %d!</string>
+    <string name="tinderLoseScreenLoseMessage">ไม่แย่! คุณได้คะแนน %d จาก %d! แต่เสียใจที่คุณระบุสมาชิกบางคนไม่ถูกต้อง!</string>
+    <string name="tinderLoseScreenExit">ออก</string>
+
+    <string name="tinderRedistribute">กระจายใหม่</string>
+    <string name="tinderOr">หรือ</string>
+    <string name="tinderDistributeGroup">สมาชิกที่ถูกแบ่ง:</string>
+
+    <string name="ratingApp">ให้คะแนนแอป</string>
+    <string name="ratingSend">ส่ง</string>
+    <string name="ratingCancel">ให้คะแนน\nภายหลัง</string>
+    <string name="ratingClose">อย่าแสดงอีก</string>
+
+</resources>

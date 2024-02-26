@@ -1,157 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Guess K-pop</string>
-
     <string name="yandex_id_metrica" translatable="false">b4c83928-a477-4bf9-a55d-de34930f441c</string>
-
     <string name="admob_id_account" translatable="false">ca-app-pub-1704760570617777~3272301452</string>
-
     <string name="yandex_id_interstitial_menu" translatable="false">R-M-1594557-1</string>
     <string name="yandex_id_reward" translatable="false">R-M-1594557-2</string>
     <string name="yandex_id_interstitial_game" translatable="false">R-M-1594557-5</string>
 
-    <!--    <string name="admob_id_account" translatable="false">ca-app-pub-3940256099942544~3347511713</string>-->
-    <!--    <string name="admob_id_reward_star" translatable="false">ca-app-pub-3940256099942544/5224354917</string>-->
-    <!--    <string name="admob_id_reward_bands" translatable="false">ca-app-pub-3940256099942544/5224354917</string>-->
-    <!--    <string name="admob_id_interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>-->
-
-    <string name="menuItemGuessStar">Guess star</string>
-    <string name="menuItemGuessStarReverse">Guess star reverse</string>
-    <string name="menuItemGuessBand">Guess Band</string>
-    <string name="menuItemTinderSwipe">Distribute by bands</string>
+    <string name="app_name">Guess K-pop</string>
+    <string name="menuItemGuessStar">Guess the Star</string>
+    <string name="menuItemGuessStarReverse">Reverse Star Guess</string>
+    <string name="menuItemGuessBand">Guess the Band</string>
+    <string name="menuItemTinderSwipe">Group Sorting</string>
     <string name="menuItemGallery">Gallery</string>
     <string name="menuItemSettings">Settings</string>
     <string name="menuItemAbout">About</string>
 
-    <string name="achGuessStarBeginner">Idol neophyte</string>
-    <string name="achGuessStarNormal">Idol scholar</string>
-    <string name="achGuessStarExpert">Idol expert</string>
-    <string name="achGuessBandsBeginner">Guess Band neophyte</string>
-    <string name="achGuessBandsNormal">Guess Band scholar</string>
-    <string name="achGuessBandsExpert">Guess Band expert</string>
-    <string name="achDistributeByBandsBeginner">Distribute band neophyte</string>
-    <string name="achDistributeByBandsNormal">Distribute band scholar</string>
-    <string name="achDistributeByBandsExpert">Distribute band expert</string>
-    <string name="achTripleExpert">K-pop Master</string>
-    <string name="achSecretAch">Secret achievement</string>
+    <string name="achGuessStarBeginner">Idol Novice</string>
+    <string name="achGuessStarNormal">Idol Expert</string>
+    <string name="achGuessStarExpert">Idol Master</string>
+    <string name="achGuessBandsBeginner">Group Novice</string>
+    <string name="achGuessBandsNormal">Group Expert</string>
+    <string name="achGuessBandsExpert">Group Master</string>
+    <string name="achDistributeByBandsBeginner">Sorter Novice</string>
+    <string name="achDistributeByBandsNormal">Sorter Expert</string>
+    <string name="achDistributeByBandsExpert">Sorter Master</string>
+    <string name="achTripleExpert">K-pop Conqueror</string>
+    <string name="achSecretAch">Secret Achievement</string>
 
-    <string name="achGuessStarBeginnerText">You got 10 points in Guess Star gamemode</string>
-    <string name="achGuessStarNormalText">You got 50 points in Guess Star gamemode</string>
-    <string name="achGuessStarExpertText">You got 150 points in Guess Star gamemode</string>
-    <string name="achGuessBandsBeginnerText">You got 10 points in Guess Band gamemode</string>
-    <string name="achGuessBandsNormalText">You got 50 points in Guess Band gamemode</string>
-    <string name="achGuessBandsExpertText">You got 150 points in Guess Band gamemode</string>
-    <string name="achDistributeByBandsBeginnerText">You got 15 points in Distribute by bands gamemode</string>
-    <string name="achDistributeByBandsNormalText">You got 75 points in Distribute by bands gamemode</string>
-    <string name="achDistributeByBandsExpertText">You got 225 points in Distribute by bands gamemode</string>
-    <string name="achTripleExpertText">You are an expert in all three modes. By unlocking this achievement, all advertising will be disabled. Only the most worthy will pass.</string>
-    <string name="achSecretAchText">What is it?</string>
+    <string name="achGuessStarBeginnerText">"\t"You scored 10 points in the "Guess the Star" mode</string>
+    <string name="achGuessStarNormalText">"\t"You scored 50 points in the "Guess the Star" mode</string>
+    <string name="achGuessStarExpertText">"\t"You scored 150 points in the "Guess the Star" mode</string>
+    <string name="achGuessBandsBeginnerText">"\t"You scored 10 points in the "Guess the Band" mode</string>
+    <string name="achGuessBandsNormalText">"\t"You scored 50 points in the "Guess the Band" mode</string>
+    <string name="achGuessBandsExpertText">"\t"You scored 150 points in the "Guess the Band" mode</string>
+    <string name="achDistributeByBandsBeginnerText">"\t"You scored 15 points in the "Group Sorting" mode</string>
+    <string name="achDistributeByBandsNormalText">"\t"You scored 75 points in the "Group Sorting" mode</string>
+    <string name="achDistributeByBandsExpertText">"\t"You scored 225 points in the "Group Sorting" mode</string>
+    <string name="achTripleExpertText">"\t"You became an expert in all three modes. Unlocking this achievement will disable all ads. Only the worthiest will pass."</string>
+    <string name="achSecretAchText">What could this be?</string>
 
-    <string name="settings0">Settings</string>
-    <string name="settings1">Hint mode</string>
-    <string name="settings2">Hard mode</string>
-    <string name="settings3">Dark theme</string>
-    <string name="settings4">Sound enabled</string>
-    <string name="settings5">Parameter 5</string>
-    <string name="resetRecords">Score reset</string>
-    <string name="bandsActiveButton">Change available bands</string>
-    <string name="bandsActiveTitle">Change available bands</string>
-
-    <string name="OptionsSet">Settings saved</string>
-
-    <string name="questionReset">Confirm reset all records?</string>
-    <string name="questionConfirmTitle">Please confirm</string>
-    <string name="answerAccept">Accept</string>
+    <string name="questionReset">Reset records?</string>
+    <string name="questionConfirmTitle">Confirmation</string>
+    <string name="answerAccept">Confirm</string>
     <string name="answerCancel">Cancel</string>
     <string name="answerYes">Yes</string>
     <string name="answerNo">No</string>
 
+    <string name="settings0">Settings</string>
+    <string name="settings1">Hints</string>
+    <string name="settings2">Hard mode</string>
+    <string name="settings3">Dark theme</string>
+    <string name="settings4">"Enable sounds"</string>
+    <string name="settings5">"Press CANCEL"</string>
+    <string name="resetRecords">Reset score</string>
+    <string name="OptionsSet">Settings saved</string>
+    <string name="bandsActiveButton">Change available groups</string>
+    <string name="bandsActiveTitle">Change available groups</string>
 
-    <string name="gameRulesAbaut">Games Rules</string>
+    <string name="gameRulesAbaut">Game rules</string>
     <string name="aboutTitle">Welcome!</string>
     <string name="aboutText">
-"\t"
-         Welcome to the Guess K-pop app! In this application, you can test your knowledge of K-pop. You are offered 3 main game modes: "\n"
-         1) Guess star"\n"
-         2) Guess band"\n"
-         3) Distribute by bands"\n"
-   "\t" With these game modes, you can memorize all the most famous K-pop groups, as well as all their incredible members! And of course, test your knowledge!"\n"
-         Each game mode has its own achievements. They can be viewed in the main menu."\n"
-p.s: We will be glad to receive any feedback from you on the application page in the play market "\n"
+        "\t"Welcome to the Guess K-pop app! In this app, you can test your knowledge of K-pop. You have three main game modes:"\n"
+        1) Guess the Star"\n"
+        2) Guess the Band"\n"
+        3) Group Sorting"\n"
+        "Using these game modes, you can memorize all the most famous K-pop groups and their incredible members! And, of course, test your knowledge!"\n"
+        Each game mode has its own achievements, which can be viewed in the main menu."\n"
+        p.s: We welcome any feedback on the app\'s page on the Play Store "\n"
         Good luck and have fun!
     </string>
 
+    <!-- For the score -->
     <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
 
     <string name="achievementUnlocked">Achievement unlocked!</string>
 
     <string name="newRecordTitle">New record!</string>
-    <string name="newRecordText">Congratulations! You have reached new record:</string>
-    <string name="endGameTitle">Game over</string>
+    <string name="newRecordText">Congratulations! You have achieved a new record:</string>
+    <string name="endGameTitle">End of the game</string>
     <string name="endGameTextScoreNow">Your score: %d</string>
     <string name="endGameTextRecordNow">Your record: %d</string>
-    <string name="gameModeAbout">About game mode</string>
-    <string name="guessStarGameModeAbout">" The Guess Star game mode allows you to test your knowledge of K-pop stars.           Guess the names of K-pop artists from photos. It's not important for you to know what group the star on screen is in, but it is important to know his or her name. You have 3 lives. The correct answer will increase your score, and the wrong answer will take lives.            In addition, for every 35 points, 1 life will be restored to you, and for every 70 a hint will be added. But I think you'll figure it out.           Good luck :)     "</string>
+    <string name="gameModeAbout">Mode description</string>
+    <string name="guessStarGameModeAbout">
+        The "Guess the Star" game mode allows you to test your knowledge of K-pop stars."\n"
+        Guess the names of K-pop artists from their photos. It doesn\'t matter which group the star belongs to on the screen, but it\'s important to know his or her name. You have 3 lives. Correct answers will increase your score, and incorrect ones will take away lives. "\n"
+        Additionally, for every 35 points, you will get 1 life, and for every 70 points, a hint will be added. But I think you\'ll figure it out."\n"
+        Good luck :)
+    </string>
     <string name="guessBandGameModeAbout">
-The "Guess Band" game mode allows you to test your knowledge of the most famous K-pop groups in history!
-         Guess the group the artist is in on the screen. Every correct answer increases your score! And the unfaithful reduces life. It is clear that when lives end, the game will be over."\n"
-         In addition, you have 3 hints for the game, which will tell you the letters that make up the name of the k-pop group. Every 35th group guessed will restore one life to you. And every 70th will add a hint. But I think you\'ll figure it out."\n"
-         Good luck ;)
+        The "Guess the Band" game mode allows you to test your knowledge of the most famous K-pop groups in history!
+        Guess the group to which the artist on the screen belongs. Each correct answer increases your score! And an incorrect one reduces lives. Of course, when lives run out, the game will end."\n"
+        Additionally, you have 3 hints per game, which will show you the letters that make up the name of the K-pop group. Every 35th guessed group will restore one life to you. And every 70th will add a hint. But I think you\'ll figure it out."\n"
+        Good luck ;)
     </string>
     <string name="guessBandGameModeTwoAbout">
-The "Guess Band" game mode allows you to test your knowledge of the most famous K-pop groups in history!
-         Guess the group the artist is in on the screen. Every correct answer increases your score! And the unfaithful reduces life. It is clear that when lives end, the game will be over."\n"
-         In addition, you have 3 hints for the game, which will tell you the letters that make up the name of the k-pop group. Every 35th group guessed will restore one life to you. And every 70th will add a hint. But I think you\'ll figure it out."\n"
-         Good luck ;)
+        The "Guess the Band" game mode allows you to test your knowledge of the most famous K-pop groups in history!
+        Guess the group to which the artist on the screen belongs. Each correct answer increases your score! And an incorrect one reduces lives. Of course, when lives run out, the game will end."\n"
+        Additionally, you have 3 hints per game, which will show you the letters that make up the name of the K-pop group. Every 35th guessed group will restore one life to you. And every 70th will add a hint. But I think you\'ll figure it out."\n"
+        Good luck ;)
     </string>
     <string name="twoBandsTinderGameModeAbout">
-The "Distribute by bands" game mode allows you to test your knowledge of k-pop groups"\n"
-        You are given a set of different K-pop stars, and you need to divide them into 2 groups. To distribute artist cards, you need to swipe them to the side of the screen corresponding to the K-pop group. "\n"
-        At any time you can view all artist cards and redistribute them. After you confirm your distribution, you will be shown whether everything is distributed correctly, after which you will move on to the next pair of groups. "\n"
-        Every time you are wrong by more than one artist, one of your lives is burned. As soon as everything is over, the game will end. For each pair of correctly distributed artists, you will receive 1 point. So try to answer correctly!
-        Well, there are also hints - they will show the names of the artists, so that it would be easier for you to understand what group they are from."\n"
-        Lives are restored every 50 points, and hints are restored every 100 points. "\n"
-        In reality, everything is much simpler - good luck!"\n"
+        The "Group Sorting" game mode allows you to test your knowledge of K-pop groups"\n"
+        You are given a set of various K-pop stars, and you need to distribute them into 2 groups. To distribute artist cards, you need to swipe them to the corresponding K-pop group on the screen. "\n"
+        After distribution, you can view all artist cards and redistribute them. After confirming your distribution, you will see if everything is distributed correctly, after which you will move on to the next pair of groups. "\n"
+        Every time you make a mistake of more than one artist, one of your lives will be lost. Once all lives are gone, the game will end. You will receive 1 point for every correctly distributed pair of artists. So try to answer correctly!
+        Also, there are hints - they will show the names of the artists to make it easier for you to understand which group they belong to."\n"
+        Lives are restored every 50 points, and hints - every 100 points. "\n"
+        In reality, it\'s all much easier - good luck!"\n"
         Distribute them all ツ
     </string>
 
-    <string name="score_text">Score: %d</string>
-    <string name="record_text">Record: %d</string>
-    <string name="last_artist_text">Last artist: %s</string>
+    <string name="score_text">Your score: %d</string>
+    <string name="record_text">Your record: %d</string>
+    <string name="last_artist_text">Last not guessed: %s</string>
+
+    <string name="endGameCongratulate">Congratulations!</string>
+    <string name="endGameNewGame">Start a new game?</string>
+    <string name="endGameReward">Or watch an ad to add another life?</string>
+    <string name="endGameYes">Start a new game</string>
+    <string name="endGameNo">Main menu</string>
+    <string name="endGameRewardShow">Watch ad</string>
 
     <string name="endHintCongratulate">Attention!</string>
-    <string name="endHintReward">View ad for hint? (remained %d)</string>
+    <string name="endHintReward">Watch an ad to use a hint? (left: %d)</string>
     <string name="endHintYes">Yes</string>
     <string name="endHintNo">No</string>
 
-    <string name="endGameCongratulate">Game over!</string>
-    <string name="endGameNewGame">Start new game?</string>
-    <string name="endGameReward">Or view ad for 1 extra life?</string>
-    <string name="endGameYes">Yes</string>
-    <string name="endGameNo">No</string>
-    <string name="endGameRewardShow">Get extra life</string>
-
-    <string name="settingRed" translatable="false">Red</string>
-    <string name="settingGreen" translatable="false">Green</string>
-    <string name="settingPink" translatable="false">Pastel</string>
-    <string name="settingRabbit" translatable="false">Rabbit</string>
-    <string name="settingHamster" translatable="false">Hamster</string>
-    <string name="settingCat" translatable="false">Kitty</string>
-
-
-    <string name="tinderCountGroupError">The number of artists in the groups is not the same!</string>
-    <string name="tinderLoseScreenTitle">Done!</string>
-    <string name="tinderLoseScreenWinMessage">"You know both bands perfectly! Congratulations! The number of points received: %d!"</string>
-    <string name="tinderLoseScreenLoseMessage">"Not bad! You scored %d out of %d points! Unfortunately, you misidentified some of the contestants!"</string>
+    <string name="tinderCountGroupError">The number of artists in the groups does not match!</string>
     <string name="tinderContinue">Continue</string>
-    <string name="tinderMissTakeView">View misidentified</string>
+    <string name="tinderMissTakeView">View mistakes</string>
+    <string name="tinderLoseScreenTitle">Ready!</string>
+    <string name="tinderLoseScreenWinMessage">You know both groups perfectly! Congratulations! Number of points earned: %d!</string>
+    <string name="tinderLoseScreenLoseMessage">Not bad! You scored %d out of %d points! Unfortunately, you incorrectly identified some of the members!</string>
     <string name="tinderLoseScreenExit">Exit</string>
+
     <string name="tinderRedistribute">Redistribute</string>
     <string name="tinderOr">or</string>
-    <string name="tinderDistributeGroup">Distributed artists:</string>
+    <string name="tinderDistributeGroup">Distributed members:</string>
 
     <string name="ratingApp">Rate the app</string>
     <string name="ratingSend">Send</string>
-    <string name="ratingCancel">Rate later</string>
-    <string name="ratingClose">Show no more</string>
+    <string name="ratingCancel">Rate\nlater</string>
+    <string name="ratingClose">Do not show again</string>
 
 </resources>

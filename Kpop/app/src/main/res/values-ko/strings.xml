@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">K-pop 추측</string>
+    <string name="menuItemGuessStar">스타 추측</string>
+    <string name="menuItemGuessStarReverse">역방향 스타 추측</string>
+    <string name="menuItemGuessBand">밴드 추측</string>
+    <string name="menuItemTinderSwipe">그룹 정렬</string>
+    <string name="menuItemGallery">갤러리</string>
+    <string name="menuItemSettings">설정</string>
+    <string name="menuItemAbout">소개</string>
+
+    <string name="achGuessStarBeginner">아이돌 초보</string>
+    <string name="achGuessStarNormal">아이돌 전문가</string>
+    <string name="achGuessStarExpert">아이돌 마스터</string>
+    <string name="achGuessBandsBeginner">그룹 초보</string>
+    <string name="achGuessBandsNormal">그룹 전문가</string>
+    <string name="achGuessBandsExpert">그룹 마스터</string>
+    <string name="achDistributeByBandsBeginner">분류자 초보</string>
+    <string name="achDistributeByBandsNormal">분류자 전문가</string>
+    <string name="achDistributeByBandsExpert">분류자 마스터</string>
+    <string name="achTripleExpert">K-pop 정복자</string>
+    <string name="achSecretAch">비밀 업적</string>
+
+    <string name="achGuessStarBeginnerText">"\t"당신은 "스타 추측" 모드에서 10점을 획득했습니다</string>
+    <string name="achGuessStarNormalText">"\t"당신은 "스타 추측" 모드에서 50점을 획득했습니다</string>
+    <string name="achGuessStarExpertText">"\t"당신은 "스타 추측" 모드에서 150점을 획득했습니다</string>
+    <string name="achGuessBandsBeginnerText">"\t"당신은 "밴드 추측" 모드에서 10점을 획득했습니다</string>
+    <string name="achGuessBandsNormalText">"\t"당신은 "밴드 추측" 모드에서 50점을 획득했습니다</string>
+    <string name="achGuessBandsExpertText">"\t"당신은 "밴드 추측" 모드에서 150점을 획득했습니다</string>
+    <string name="achDistributeByBandsBeginnerText">"\t"당신은 "그룹 정렬" 모드에서 15점을 획득했습니다</string>
+    <string name="achDistributeByBandsNormalText">"\t"당신은 "그룹 정렬" 모드에서 75점을 획득했습니다</string>
+    <string name="achDistributeByBandsExpertText">"\t"당신은 "그룹 정렬" 모드에서 225점을 획득했습니다</string>
+    <string name="achTripleExpertText">"\t"당신은 세 가지 모드 모두에서 전문가가 되었습니다. 이 업적을 해제하면 모든 광고가 비활성화됩니다. 가장 가치 있는 사람만 통과할 것입니다."</string>
+    <string name="achSecretAchText">이게 뭐죠?</string>
+
+    <string name="questionReset">기록 초기화?</string>
+    <string name="questionConfirmTitle">확인</string>
+    <string name="answerAccept">확인</string>
+    <string name="answerCancel">취소</string>
+    <string name="answerYes">예</string>
+    <string name="answerNo">아니오</string>
+
+    <string name="settings0">설정</string>
+    <string name="settings1">힌트</string>
+    <string name="settings2">어려운 모드</string>
+    <string name="settings3">어두운 테마</string>
+    <string name="settings4">"소리 활성화"</string>
+    <string name="settings5">"취소 버튼을 누르세요"</string>
+    <string name="resetRecords">점수 초기화</string>
+    <string name="OptionsSet">설정 저장됨</string>
+    <string name="bandsActiveButton">사용 가능한 그룹 변경</string>
+    <string name="bandsActiveTitle">사용 가능한 그룹 변경</string>
+
+    <string name="gameRulesAbaut">게임 규칙</string>
+    <string name="aboutTitle">환영합니다!</string>
+    <string name="aboutText">
+        "\t"Guess K-pop 앱에 오신 것을 환영합니다! 이 앱에서는 K-pop에 대한 지식을 테스트할 수 있습니다. 세 가지 주요 게임 모드가 있습니다:"\n"
+        1) 스타 추측"\n"
+        2) 밴드 추측"\n"
+        3) 그룹 정렬"\n"
+        "이러한 게임 모드를 사용하면 모든 가장 유명한 K-pop 그룹과 그들의 놀라운 멤버를 기억할 수 있습니다! 그리고 물론 지식을 테스트할 수 있습니다!"\n"
+        각 게임 모드에는 메인 메뉴에서 볼 수 있는 고유한 업적이 있습니다."\n"
+        p.s: Play Store의 앱 페이지에서 피드백을 환영합니다 "\n"
+        행운을 빕니다. 즐겁게 게임하세요!
+    </string>
+
+    <!-- For the score -->
+    <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
+
+    <string name="achievementUnlocked">업적 해제!</string>
+
+    <string name="newRecordTitle">새로운 기록!</string>
+    <string name="newRecordText">축하합니다! 새로운 기록을 달성했습니다:</string>
+    <string name="endGameTitle">게임 종료</string>
+    <string name="endGameTextScoreNow">당신의 점수: %d</string>
+    <string name="endGameTextRecordNow">당신의 기록: %d</string>
+    <string name="gameModeAbout">모드 설명</string>
+    <string name="guessStarGameModeAbout">
+        "스타 추측" 게임 모드를 사용하면 K-pop 스타에 대한 지식을 테스트할 수 있습니다."\n"
+        K-pop 아티스트의 이름을 사진에서 추측하세요. 화면에 표시된 스타가 어느 그룹에 속하는지는 중요하지 않지만 그의 이름을 알아내는 것이 중요합니다. 3 목숨이 주어집니다. 정답은 점수를 높이고, 오답은 목숨을 감소시킵니다. "\n"
+        추가로, 매 35 점마다 1 목숨이 추가되며, 매 70 점마다 힌트가 추가됩니다. 하지만 당신이 알아낼 수 있을 것입니다."\n"
+        행운을 빕니다 :)
+    </string>
+    <string name="guessBandGameModeAbout">
+        "밴드 추측" 게임 모드를 사용하면 역사상 가장 유명한 K-pop 그룹에 대한 지식을 테스트할 수 있습니다!
+        화면에 표시된 아티스트가 속한 그룹을 추측하세요. 각 정답은 당신의 점수를 높입니다! 그리고 오답은 목숨을 감소시킵니다. 물론 목숨이 다 떨어지면 게임이 종료됩니다."\n"
+        추가로, 게임 당 3 번의 힌트가 제공되며, K-pop 그룹의 이름을 구성하는 글자를 보여줍니다. 매 35개의 추측에서 1 목숨을 복구하고, 매 70개에서 힌트를 추가합니다. 하지만 당신이 알아낼 수 있을 것입니다."\n"
+        행운을 빕니다 ;)
+    </string>
+    <string name="guessBandGameModeTwoAbout">
+        "밴드 추측" 게임 모드를 사용하면 역사상 가장 유명한 K-pop 그룹에 대한 지식을 테스트할 수 있습니다!
+        화면에 표시된 아티스트가 속한 그룹을 추측하세요. 각 정답은 당신의 점수를 높입니다! 그리고 오답은 목숨을 감소시킵니다. 물론 목숨이 다 떨어지면 게임이 종료됩니다."\n"
+        추가로, 게임 당 3 번의 힌트가 제공되며, K-pop 그룹의 이름을 구성하는 글자를 보여줍니다. 매 35개의 추측에서 1 목숨을 복구하고, 매 70개에서 힌트를 추가합니다. 하지만 당신이 알아낼 수 있을 것입니다."\n"
+        행운을 빕니다 ;)
+    </string>
+    <string name="twoBandsTinderGameModeAbout">
+        "그룹 정렬" 게임 모드를 사용하면 K-pop 그룹에 대한 지식을 테스트할 수 있습니다"\n"
+        여러 가지 K-pop 스타로 이루어진 세트가 제공되며, 이를 2 그룹으로 분배해야 합니다. 아티스트 카드를 분배하려면 화면의 해당 K-pop 그룹으로 스와이프하면 됩니다. "\n"
+        분배 후 모든 아티스트 카드를 볼 수 있으며, 다시 분배할 수 있습니다. 분배를 확인한 후 모든 것이 올바르게 분배되었는지 확인한 후 다음 그룹으로 이동합니다. "\n"
+        1 명 이상의 아티스트에 대한 실수를 할 때마다 1 목숨이 소멸됩니다. 목숨이 모두 소진되면 게임이 종료됩니다. 올바르게 분배된 아티스트 쌍 당 1 점을 얻게 됩니다. 그러니 올바르게 답하려고 노력하세요!
+        또한 힌트가 있습니다. - 이것들은 아티스트의 이름을 보여주어 그들이 어느 그룹에 속하는지 이해하기 쉽게 만들 것입니다."\n"
+        목숨은 매 50 점마다 복구되고, 힌트는 매 100 점마다 추가됩니다. "\n"
+        실제로는 모두 더 쉽습니다 - 행운을 빕니다!"\n"
+        모두 분배하세요 ツ
+    </string>
+
+    <string name="score_text">당신의 점수: %d</string>
+    <string name="record_text">당신의 기록: %d</string>
+    <string name="last_artist_text">마지막 추측하지 못한 것: %s</string>
+
+    <string name="endGameCongratulate">축하합니다!</string>
+    <string name="endGameNewGame">새 게임 시작?</string>
+    <string name="endGameReward">또 다른 목숨을 추가하려면 광고를 시청하시겠습니까?</string>
+    <string name="endGameYes">새 게임 시작</string>
+    <string name="endGameNo">메인 메뉴</string>
+    <string name="endGameRewardShow">광고 보기</string>
+
+    <string name="endHintCongratulate">주의!</string>
+    <string name="endHintReward">힌트를 사용하려면 광고를 시청하시겠습니까? (남은 횟수: %d)</string>
+    <string name="endHintYes">예</string>
+    <string name="endHintNo">아니오</string>
+
+    <string name="tinderCountGroupError">그룹의 아티스트 수가 일치하지 않습니다!</string>
+    <string name="tinderContinue">계속</string>
+    <string name="tinderMissTakeView">잘못된 점 보기</string>
+    <string name="tinderLoseScreenTitle">준비!</string>
+    <string name="tinderLoseScreenWinMessage">두 그룹을 완벽하게 알고 계셨군요! 축하합니다! 획득한 점수: %d!</string>
+    <string name="tinderLoseScreenLoseMessage">꽤 잘했습니다! %d점 중 %d점을 획득했습니다! 불행하게도 일부 멤버를 잘못 식별했습니다!</string>
+    <string name="tinderLoseScreenExit">나가기</string>
+
+    <string name="tinderRedistribute">다시 분배</string>
+    <string name="tinderOr">또는</string>
+    <string name="tinderDistributeGroup">분배된 멤버:</string>
+
+    <string name="ratingApp">앱 평가하기</string>
+    <string name="ratingSend">보내기</string>
+    <string name="ratingCancel">평가\n나중에</string>
+    <string name="ratingClose">다시 표시 안 함</string>
+
+</resources>

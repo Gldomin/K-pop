@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Teeka K-pop</string>
+    <string name="menuItemGuessStar">Teka Bintang</string>
+    <string name="menuItemGuessStarReverse">Teka Bintang Terbalik</string>
+    <string name="menuItemGuessBand">Teka Kumpulan</string>
+    <string name="menuItemTinderSwipe">Penyusunan Kumpulan</string>
+    <string name="menuItemGallery">Galeri</string>
+    <string name="menuItemSettings">Tetapan</string>
+    <string name="menuItemAbout">Tentang</string>
+
+    <string name="achGuessStarBeginner">Novis Idol</string>
+    <string name="achGuessStarNormal">Pakar Idol</string>
+    <string name="achGuessStarExpert">Mahaguru Idol</string>
+    <string name="achGuessBandsBeginner">Novis Kumpulan</string>
+    <string name="achGuessBandsNormal">Pakar Kumpulan</string>
+    <string name="achGuessBandsExpert">Mahaguru Kumpulan</string>
+    <string name="achDistributeByBandsBeginner">Novis Penyusun</string>
+    <string name="achDistributeByBandsNormal">Pakar Penyusun</string>
+    <string name="achDistributeByBandsExpert">Mahaguru Penyusun</string>
+    <string name="achTripleExpert">Penakluk K-pop</string>
+    <string name="achSecretAch">Pencapaian Rahsia</string>
+
+    <string name="achGuessStarBeginnerText">"\t"Anda memperoleh 10 mata dalam mod "Teka Bintang"</string>
+    <string name="achGuessStarNormalText">"\t"Anda memperoleh 50 mata dalam mod "Teka Bintang"</string>
+    <string name="achGuessStarExpertText">"\t"Anda memperoleh 150 mata dalam mod "Teka Bintang"</string>
+    <string name="achGuessBandsBeginnerText">"\t"Anda memperoleh 10 mata dalam mod "Teka Kumpulan"</string>
+    <string name="achGuessBandsNormalText">"\t"Anda memperoleh 50 mata dalam mod "Teka Kumpulan"</string>
+    <string name="achGuessBandsExpertText">"\t"Anda memperoleh 150 mata dalam mod "Teka Kumpulan"</string>
+    <string name="achDistributeByBandsBeginnerText">"\t"Anda memperoleh 15 mata dalam mod "Penyusunan Kumpulan"</string>
+    <string name="achDistributeByBandsNormalText">"\t"Anda memperoleh 75 mata dalam mod "Penyusunan Kumpulan"</string>
+    <string name="achDistributeByBandsExpertText">"\t"Anda memperoleh 225 mata dalam mod "Penyusunan Kumpulan"</string>
+    <string name="achTripleExpertText">"\t"Anda menjadi pakar dalam ketiga-tiga mod. Membuka pencapaian ini akan menonaktifkan semua iklan. Hanya yang paling layak akan lulus."</string>
+    <string name="achSecretAchText">Apa ini?</string>
+
+    <string name="questionReset">Set semula rekod?</string>
+    <string name="questionConfirmTitle">Pengesahan</string>
+    <string name="answerAccept">Sahkan</string>
+    <string name="answerCancel">Batal</string>
+    <string name="answerYes">Ya</string>
+    <string name="answerNo">Tidak</string>
+
+    <string name="settings0">Tetapan</string>
+    <string name="settings1">Petunjuk</string>
+    <string name="settings2">Mod Susah</string>
+    <string name="settings3">Tema Gelap</string>
+    <string name="settings4">"Aktifkan bunyi"</string>
+    <string name="settings5">"Tekan BATAL"</string>
+    <string name="resetRecords">Set semula mata</string>
+    <string name="OptionsSet">Tetapan disimpan</string>
+    <string name="bandsActiveButton">Tukar kumpulan yang tersedia</string>
+    <string name="bandsActiveTitle">Tukar kumpulan yang tersedia</string>
+
+    <string name="gameRulesAbaut">Peraturan permainan</string>
+    <string name="aboutTitle">Selamat Datang!</string>
+    <string name="aboutText">
+        "\t"Selamat datang ke aplikasi Teeka K-pop! Dalam aplikasi ini, anda boleh menguji pengetahuan anda tentang K-pop. Terdapat tiga mod permainan utama:"\n"
+        1) Teka Bintang"\n"
+        2) Teka Kumpulan"\n"
+        3) Penyusunan Kumpulan"\n"
+        "Dengan menggunakan mod permainan ini, anda boleh mengingati semua kumpulan K-pop yang paling terkenal dan ahli mereka yang luar biasa! Dan, tentu saja, menguji pengetahuan anda!"\n"
+        Setiap mod permainan mempunyai pencapaian sendiri, yang boleh dilihat dalam menu utama."\n"
+        p.s: Kami mengalu-alukan sebarang maklum balas di halaman aplikasi di Play Store "\n"
+        Semoga berjaya dan berseronok!
+    </string>
+
+    <!-- For the score -->
+    <string name="title_activity_two_bands_tinder">DuaBandsTinder</string>
+
+    <string name="achievementUnlocked">Pencapaian dibuka!</string>
+
+    <string name="newRecordTitle">Rekod baru!</string>
+    <string name="newRecordText">Tahniah! Anda mencapai rekod baru:</string>
+    <string name="endGameTitle">Akhir permainan</string>
+    <string name="endGameTextScoreNow">Mata anda: %d</string>
+    <string name="endGameTextRecordNow">Rekod anda: %d</string>
+    <string name="gameModeAbout">Penerangan Mod</string>
+    <string name="guessStarGameModeAbout">
+        Mod permainan "Teka Bintang" membolehkan anda menguji pengetahuan anda tentang bintang K-pop."\n"
+        Tebak nama artis K-pop dari foto mereka. Tidak kira kumpulan mana bintang tersebut tergabung di skrin, tetapi penting untuk mengetahui nama beliau. Anda mempunyai 3 nyawa. Jawapan yang betul akan meningkatkan mata anda, dan yang tidak betul akan mengambil nyawa. "\n"
+        Selain itu, setiap 35 mata, anda akan mendapat 1 nyawa, dan setiap 70 mata, satu petunjuk akan ditambah. Tetapi saya fikir anda akan faham."\n"
+        Semoga berjaya :)
+    </string>
+    <string name="guessBandGameModeAbout">
+        Mod permainan "Teka Kumpulan" membolehkan anda menguji pengetahuan anda tentang kumpulan K-pop paling terkenal dalam sejarah!
+        Tebak kumpulan yang mana artis di skrin tergabung. Setiap jawapan yang betul akan meningkatkan mata anda! Dan yang tidak betul akan mengurangkan nyawa. Tentu saja, apabila nyawa habis, permainan akan berakhir."\n"
+        Selain itu, anda mempunyai 3 petunjuk setiap permainan, yang akan menunjukkan huruf-huruf yang membentuk nama kumpulan K-pop. Setiap kumpulan yang ditebak setiap 35 kali akan memulihkan satu nyawa kepada anda. Dan setiap 70 kali akan menambah satu petunjuk. Tetapi saya fikir anda akan faham."\n"
+        Semoga berjaya ;)
+    </string>
+    <string name="guessBandGameModeTwoAbout">
+        Mod permainan "Teka Kumpulan" membolehkan anda menguji pengetahuan anda tentang kumpulan K-pop paling terkenal dalam sejarah!
+        Tebak kumpulan yang mana artis di skrin tergabung. Setiap jawapan yang betul akan meningkatkan mata anda! Dan yang tidak betul akan mengurangkan nyawa. Tentu saja, apabila nyawa habis, permainan akan berakhir."\n"
+        Selain itu, anda mempunyai 3 petunjuk setiap permainan, yang akan menunjukkan huruf-huruf yang membentuk nama kumpulan K-pop. Setiap kumpulan yang ditebak setiap 35 kali akan memulihkan satu nyawa kepada anda. Dan setiap 70 kali akan menambah satu petunjuk. Tetapi saya fikir anda akan faham."\n"
+        Semoga berjaya ;)
+    </string>
+    <string name="twoBandsTinderGameModeAbout">
+        Mod permainan "Penyusunan Kumpulan" membolehkan anda menguji pengetahuan anda tentang kumpulan K-pop"\n"
+        Anda diberi set pelbagai bintang K-pop, dan anda perlu mengagihkannya ke dalam 2 kumpulan. Untuk mengagihkan kad artis, anda perlu menyapu mereka ke kumpulan K-pop yang sepadan di skrin. "\n"
+        Selepas pengagihan, anda boleh melihat semua kad artis dan mengagihkannya semula. Selepas mengesahkan pengagihan anda, anda akan melihat sama ada semuanya telah diagihkan dengan betul, selepas itu anda akan berpindah ke pasangan kumpulan seterusnya. "\n"
+        Setiap kali anda membuat kesilapan lebih dari satu artis, satu nyawa akan hilang. Setelah semua nyawa habis, permainan akan berakhir. Anda akan menerima 1 mata untuk setiap pasangan artis yang diagihkan dengan betul. Jadi cubalah menjawab dengan betul!
+        Juga, terdapat petunjuk - mereka akan menunjukkan nama-nama artis untuk memudahkan anda memahami kumpulan mana mereka tergabung."\n"
+        Nyawa dipulihkan setiap 50 mata, dan petunjuk - setiap 100 mata. "\n"
+        Pada hakikatnya, semuanya jauh lebih mudah - semoga berjaya!"\n"
+        Agihkan semuanya ツ
+    </string>
+
+    <string name="score_text">Mata anda: %d</string>
+    <string name="record_text">Rekod anda: %d</string>
+    <string name="last_artist_text">Artis terakhir yang tidak diteka: %s</string>
+
+    <string name="endGameCongratulate">Tahniah!</string>
+    <string name="endGameNewGame">Mulakan permainan baru?</string>
+    <string name="endGameReward">Atau tonton iklan untuk menambah nyawa lain?</string>
+    <string name="endGameYes">Mulakan permainan baru</string>
+    <string name="endGameNo">Menu utama</string>
+    <string name="endGameRewardShow">Tonton iklan</string>
+
+    <string name="endHintCongratulate">Perhatian!</string>
+    <string name="endHintReward">Tonton iklan untuk menggunakan petunjuk? (tinggal: %d)</string>
+    <string name="endHintYes">Ya</string>
+    <string name="endHintNo">Tidak</string>
+
+    <string name="tinderCountGroupError">Bilangan artis dalam kumpulan tidak sepadan!</string>
+    <string name="tinderContinue">Teruskan</string>
+    <string name="tinderMissTakeView">Lihat kesilapan</string>
+    <string name="tinderLoseScreenTitle">Sedia!</string>
+    <string name="tinderLoseScreenWinMessage">Anda tahu kedua-dua kumpulan dengan sangat baik! Tahniah! Bilangan mata yang diperoleh: %d!</string>
+    <string name="tinderLoseScreenLoseMessage">Tidak buruk! Anda memperoleh %d daripada %d mata! Malangnya, anda mengenalpasti beberapa ahli dengan tidak betul!</string>
+    <string name="tinderLoseScreenExit">Keluar</string>
+
+    <string name="tinderRedistribute">Agihkan semula</string>
+    <string name="tinderOr">atau</string>
+    <string name="tinderDistributeGroup">Ahli yang diagihkan:</string>
+
+    <string name="ratingApp">Beri penilaian kepada aplikasi</string>
+    <string name="ratingSend">Hantar</string>
+    <string name="ratingCancel">Beri penilaian\nnanti</string>
+    <string name="ratingClose">Jangan tunjukkan lagi</string>
+
+</resources>

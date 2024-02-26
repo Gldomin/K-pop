@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">猜K-pop</string>
+    <string name="menuItemGuessStar">猜明星</string>
+    <string name="menuItemGuessStarReverse">反向明星猜测</string>
+    <string name="menuItemGuessBand">猜乐队</string>
+    <string name="menuItemTinderSwipe">分组排序</string>
+    <string name="menuItemGallery">画廊</string>
+    <string name="menuItemSettings">设置</string>
+    <string name="menuItemAbout">关于</string>
+
+    <string name="achGuessStarBeginner">偶像新手</string>
+    <string name="achGuessStarNormal">偶像专家</string>
+    <string name="achGuessStarExpert">偶像大师</string>
+    <string name="achGuessBandsBeginner">乐队新手</string>
+    <string name="achGuessBandsNormal">乐队专家</string>
+    <string name="achGuessBandsExpert">乐队大师</string>
+    <string name="achDistributeByBandsBeginner">排序新手</string>
+    <string name="achDistributeByBandsNormal">排序专家</string>
+    <string name="achDistributeByBandsExpert">排序大师</string>
+    <string name="achTripleExpert">K-pop征服者</string>
+    <string name="achSecretAch">秘密成就</string>
+
+    <string name="achGuessStarBeginnerText">"\t"在"猜明星"模式中你得了10分</string>
+    <string name="achGuessStarNormalText">"\t"在"猜明星"模式中你得了50分</string>
+    <string name="achGuessStarExpertText">"\t"在"猜明星"模式中你得了150分</string>
+    <string name="achGuessBandsBeginnerText">"\t"在"猜乐队"模式中你得了10分</string>
+    <string name="achGuessBandsNormalText">"\t"在"猜乐队"模式中你得了50分</string>
+    <string name="achGuessBandsExpertText">"\t"在"猜乐队"模式中你得了150分</string>
+    <string name="achDistributeByBandsBeginnerText">"\t"在"分组排序"模式中你得了15分</string>
+    <string name="achDistributeByBandsNormalText">"\t"在"分组排序"模式中你得了75分</string>
+    <string name="achDistributeByBandsExpertText">"\t"在"分组排序"模式中你得了225分</string>
+    <string name="achTripleExpertText">"\t"你成为了所有三种模式的专家。解锁此成就将禁用所有广告。只有最值得的人才能通过。"</string>
+    <string name="achSecretAchText">这可能是什么？</string>
+
+    <string name="questionReset">重置记录？</string>
+    <string name="questionConfirmTitle">确认</string>
+    <string name="answerAccept">确认</string>
+    <string name="answerCancel">取消</string>
+    <string name="answerYes">是</string>
+    <string name="answerNo">否</string>
+
+    <string name="settings0">设置</string>
+    <string name="settings1">提示</string>
+    <string name="settings2">困难模式</string>
+    <string name="settings3">暗黑主题</string>
+    <string name="settings4">"启用声音"</string>
+    <string name="settings5">"按取消"</string>
+    <string name="resetRecords">重置得分</string>
+    <string name="OptionsSet">设置已保存</string>
+    <string name="bandsActiveButton">更改可用的组</string>
+    <string name="bandsActiveTitle">更改可用的组</string>
+
+    <string name="gameRulesAbaut">游戏规则</string>
+    <string name="aboutTitle">欢迎！</string>
+    <string name="aboutText">
+        "\t"欢迎来到Guess K-pop应用程序！在这个应用中，你可以测试你对K-pop的了解。你有三个主要的游戏模式："\\n"
+        1) 猜明星"\n"
+        2) 猜乐队"\n"
+        3) 分组排序"\n"
+        "使用这些游戏模式，你可以记忆所有最著名的K-pop组和他们令人难以置信的成员！当然，还可以测试你的知识！"\n"
+        每个游戏模式都有自己的成就，可以在主菜单中查看。"\n"
+        p.s：我们欢迎在Play Store应用页面上的任何反馈意见 "\n"
+        祝你好运，玩得开心！
+    </string>
+
+    <!-- For the score -->
+    <string name="title_activity_two_bands_tinder">TwoBandsTinder</string>
+
+    <string name="achievementUnlocked">解锁成就！</string>
+
+    <string name="newRecordTitle">新记录！</string>
+    <string name="newRecordText">恭喜！你取得了新纪录：</string>
+    <string name="endGameTitle">游戏结束</string>
+    <string name="endGameTextScoreNow">你的得分：%d</string>
+    <string name="endGameTextRecordNow">你的记录：%d</string>
+    <string name="gameModeAbout">模式说明</string>
+    <string name="guessStarGameModeAbout">
+        "猜明星"游戏模式让你测试你对K-pop明星的了解。"\n"
+        从他们的照片中猜出K-pop艺术家的名字。屏幕上的明星属于哪个组并不重要，但知道他或她的名字很重要。你有3条生命。正确的答案将增加你的分数，而不正确的答案将减少生命。 "\n"
+        此外，每获得35分，你将获得1条生命，每获得70分，将添加一条提示。但我相信你会弄清楚的。"\n"
+        祝你好运 :)
+    </string>
+    <string name="guessBandGameModeAbout">
+        "猜乐队"游戏模式让你测试对史上最著名的K-pop组的了解！
+        猜出屏幕上的艺术家所属的组。每个正确的答案都会增加你的分数！而错误的答案会减少生命。当然，当生命用尽时，游戏将结束。"\n"
+        此外，每场游戏你有3条提示，它们将显示组成K-pop组名的字母。每猜对35个组，将恢复一条生命。每猜对70个组，将添加一条提示。但我相信你会弄清楚的。"\n"
+        祝你好运 ;)
+    </string>
+    <string name="guessBandGameModeTwoAbout">
+        "猜乐队"游戏模式让你测试对史上最著名的K-pop组的了解！
+        猜出屏幕上的艺术家所属的组。每个正确的答案都会增加你的分数！而错误的答案会减少生命。当然，当生命用尽时，游戏将结束。"\n"
+        此外，每场游戏你有3条提示，它们将显示组成K-pop组名的字母。每猜对35个组，将恢复一条生命。每猜对70个组，将添加一条提示。但我相信你会弄清楚的。"\n"
+        祝你好运 ;)
+    </string>
+    <string name="twoBandsTinderGameModeAbout">
+        "分组排序"游戏模式让你测试对K-pop组的了解"\n"
+        你会得到一组各种K-pop明星，你需要将它们分配到2个组中。要分配艺术家卡片，你需要在屏幕上将它们滑动到相应的K-pop组。 "\n"
+        分配后，你可以查看所有艺术家卡片并重新分配它们。确认你的分配后，你将看到是否一切都分配正确，之后你将进入下一组。 "\n"
+        每次犯一个超过一个艺术家的错误，你将失去一条生命。一旦所有生命都用完，游戏就结束了。每正确分配一对艺术家，你将获得1分。所以尽量正确回答！
+        此外，还有提示 - 它们将显示艺术家的名字，以便你更容易理解他们属于哪个组。"\n"
+        生命每50分恢复一次，提示每100分恢复一次。 "\n"
+        实际上，一切都简单得多 - 祝你好运！"\n"
+        把它们都分配出去 ツ
+    </string>
+
+    <string name="score_text">你的得分：%d</string>
+    <string name="record_text">你的记录：%d</string>
+    <string name="last_artist_text">最后一个未猜中的：%s</string>
+
+    <string name="endGameCongratulate">恭喜！</string>
+    <string name="endGameNewGame">开始新游戏？</string>
+    <string name="endGameReward">或观看广告添加另一条生命？</string>
+    <string name="endGameYes">开始新游戏</string>
+    <string name="endGameNo">主菜单</string>
+    <string name="endGameRewardShow">观看广告</string>
+
+    <string name="endHintCongratulate">注意！</string>
+    <string name="endHintReward">观看广告以使用提示？（剩余：%d）</string>
+    <string name="endHintYes">是</string>
+    <string name="endHintNo">否</string>
+
+    <string name="tinderCountGroupError">组中艺术家的数量不匹配！</string>
+    <string name="tinderContinue">继续</string>
+    <string name="tinderMissTakeView">查看错误</string>
+    <string name="tinderLoseScreenTitle">准备好了！</string>
+    <string name="tinderLoseScreenWinMessage">你完全了解两个组！恭喜！获得的分数：%d！</string>
+    <string name="tinderLoseScreenLoseMessage">不错！你获得了%d分中的%d分！不幸的是，你错误地识别了一些成员！</string>
+    <string name="tinderLoseScreenExit">退出</string>
+
+    <string name="tinderRedistribute">重新分配</string>
+    <string name="tinderOr">或</string>
+    <string name="tinderDistributeGroup">分配的成员：</string>
+
+    <string name="ratingApp">评价应用</string>
+    <string name="ratingSend">发送</string>
+    <string name="ratingCancel">稍后评价</string>
+    <string name="ratingClose">不再显示</string>
+
+</resources>
