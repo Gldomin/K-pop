@@ -40,18 +40,18 @@
     <string name="answerYes">Да</string>
     <string name="answerNo">Нет</string>
 
-    <string name="settings0">Настройки</string>
-    <string name="settings1">Подсказки</string>
-    <string name="settings2">Усложненный режим</string>
-    <string name="settings3">Темная тема</string>
-    <string name="settings4">"Включить звуки"</string>
-    <string name="settings5">"Нажми ОТМЕНА"</string>
-    <string name="resetRecords">Сбросить счёт</string>
-    <string name="OptionsSet">Настройки сохранены</string>
-    <string name="bandsActiveButton">Изменить доступные группы</string>
-    <string name="bandsActiveTitle">Изменить доступные группы</string>
+    <string name="settingsName">Настройки</string>
+    <string name="settingsHints">Подсказки</string>
+    <string name="settingsHard">Усложненный режим</string>
+    <string name="settingsDarkTheme">Темная тема</string>
+    <string name="settingsSounds">"Включить звуки"</string>
+    <string name="settingsCancel">"Нажми ОТМЕНА"</string>
+    <string name="settingResetRecords">Сбросить счёт</string>
+    <string name="settingSave">Настройки сохранены</string>
+    <string name="settingsBandsActiveButton">Изменить доступные группы</string>
+    <string name="settingsBandsActiveTitle">Изменить доступные группы</string>
 
-    <string name="gameRulesAbaut">Правила игры</string>
+    <string name="gameRulesAbout">Правила игры</string>
     <string name="aboutTitle">Добро пожаловать!</string>
     <string name="aboutText">
   "\t"
@@ -137,5 +137,6 @@ p.s: Будем рады любому вашему фидбеку на стра�
     <string name="ratingSend">Отправить</string>
     <string name="ratingCancel">Оценить\nпозже</string>
     <string name="ratingClose">Больше не показывать</string>
+    <string name="settingsGroup">Только группы</string>
 
 </resources>

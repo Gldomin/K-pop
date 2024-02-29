@@ -40,18 +40,18 @@
     <string name="answerYes">ใช่</string>
     <string name="answerNo">ไม่</string>
 
-    <string name="settings0">การตั้งค่า</string>
-    <string name="settings1">คำใบ้</string>
-    <string name="settings2">โหมดยาก</string>
-    <string name="settings3">ธีมมืด</string>
-    <string name="settings4">"เปิดเสียง"</string>
-    <string name="settings5">"กดยกเลิก"</string>
-    <string name="resetRecords">ล้างคะแนน</string>
-    <string name="OptionsSet">การตั้งค่าถูกบันทึก</string>
-    <string name="bandsActiveButton">เปลี่ยนกลุ่มที่ใช้ได้</string>
-    <string name="bandsActiveTitle">เปลี่ยนกลุ่มที่ใช้ได้</string>
+    <string name="settingsName">การตั้งค่า</string>
+    <string name="settingsHints">คำใบ้</string>
+    <string name="settingsHard">โหมดยาก</string>
+    <string name="settingsDarkTheme">ธีมมืด</string>
+    <string name="settingsSounds">"เปิดเสียง"</string>
+    <string name="settingsCancel">"กดยกเลิก"</string>
+    <string name="settingResetRecords">ล้างคะแนน</string>
+    <string name="settingSave">การตั้งค่าถูกบันทึก</string>
+    <string name="settingsBandsActiveButton">เปลี่ยนกลุ่มที่ใช้ได้</string>
+    <string name="settingsBandsActiveTitle">เปลี่ยนกลุ่มที่ใช้ได้</string>
 
-    <string name="gameRulesAbaut">กฎเกม</string>
+    <string name="gameRulesAbout">กฎเกม</string>
     <string name="aboutTitle">ยินดีต้อนรับ!</string>
     <string name="aboutText">
         "\t"ยินดีต้อนรับสู่แอป Guess K-pop! ในแอปนี้, คุณสามารถทดสอบความรู้ของคุณเกี่ยวกับ K-pop. คุณมีโหมดเกมหลักสามประการ:"\n"
@@ -136,5 +136,6 @@
     <string name="ratingSend">ส่ง</string>
     <string name="ratingCancel">ให้คะแนน\nภายหลัง</string>
     <string name="ratingClose">อย่าแสดงอีก</string>
+    <string name="settingsGroup">เฉพาะกลุ่ม</string>
 
 </resources>

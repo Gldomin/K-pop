@@ -41,18 +41,18 @@
     <string name="answerYes">はい</string>
     <string name="answerNo">いいえ</string>
 
-    <string name="settings0">アプリケーションの設定</string>
-    <string name="settings1">ヒント</string>
-    <string name="settings2">ハードモード</string>
-    <string name="settings3">暗いテーマ</string>
-    <string name="settings4">音</string>
-    <string name="settings5">なに</string>
-    <string name="resetRecords">アカウントをリセットする</string>
-    <string name="OptionsSet">設定が保存されました</string>
-    <string name="bandsActiveButton">利用可能なバンドを変更する</string>
-    <string name="bandsActiveTitle">利用可能なバンドを変更する</string>
+    <string name="settingsName">アプリケーションの設定</string>
+    <string name="settingsHints">ヒント</string>
+    <string name="settingsHard">ハードモード</string>
+    <string name="settingsDarkTheme">暗いテーマ</string>
+    <string name="settingsSounds">音</string>
+    <string name="settingsCancel">なに</string>
+    <string name="settingResetRecords">アカウントをリセットする</string>
+    <string name="settingSave">設定が保存されました</string>
+    <string name="settingsBandsActiveButton">利用可能なバンドを変更する</string>
+    <string name="settingsBandsActiveTitle">利用可能なバンドを変更する</string>
 
-    <string name="gameRulesAbaut">ゲームのルール</string>
+    <string name="gameRulesAbout">ゲームのルール</string>
     <string name="aboutTitle">いらっしゃいませ</string>
     <string name="aboutText">
   "\t"
@@ -133,5 +133,6 @@ ps.s: Play マーケットのアプリケーション ページでフィード�
     <string name="ratingSend">送信</string>
     <string name="ratingCancel">後で評価する</string>
     <string name="ratingClose">二度と表示しないでください</string>
+    <string name="settingsGroup">グループのみ</string>
 
 </resources>

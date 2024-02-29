@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="@string/settings0"
+        android:text="@string/settingsName"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,32 +65,38 @@
         app:layout_constraintTop_toBottomOf="@+id/settingTitleTextView"
         app:layout_constraintVertical_bias="0.528">
 
-
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/optionSwitch2"
+            android:id="@+id/optionSwitchGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/optionSwitch1"
+            android:layout_below="@+id/optionSwitchSound"
             android:layout_centerHorizontal="true"
+            android:text="@string/settingsGroup"
             android:layout_marginTop="20dp"
-            android:text="@string/settings4"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/optionSwitch1"
+            android:id="@+id/optionSwitchSound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/optionSwitchDarkTheme"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/settingsSounds"
+            android:textSize="24sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/optionSwitchDarkTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:text="@string/settings3"
+            android:text="@string/settingsDarkTheme"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="TouchTargetSizeCheck" />
 
         <Button
@@ -105,15 +111,14 @@
             android:paddingTop="5dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp"
-            android:text="@string/resetRecords"
+            android:text="@string/settingResetRecords"
             android:textFontWeight="1" />
 
         <Button
             android:id="@+id/bandsActive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_below="@+id/optionSwitch2"
+            android:layout_below="@+id/optionSwitchGroup"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
@@ -121,7 +126,7 @@
             android:paddingTop="5dp"
             android:paddingRight="10dp"
             android:paddingBottom="5dp"
-            android:text="@string/bandsActiveButton"
+            android:text="@string/settingsBandsActiveButton"
             android:textFontWeight="1" />
 
 

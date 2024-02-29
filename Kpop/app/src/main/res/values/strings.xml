@@ -46,18 +46,19 @@
     <string name="answerYes">Yes</string>
     <string name="answerNo">No</string>
 
-    <string name="settings0">Settings</string>
-    <string name="settings1">Hints</string>
-    <string name="settings2">Hard mode</string>
-    <string name="settings3">Dark theme</string>
-    <string name="settings4">"Enable sounds"</string>
-    <string name="settings5">"Press CANCEL"</string>
-    <string name="resetRecords">Reset score</string>
-    <string name="OptionsSet">Settings saved</string>
-    <string name="bandsActiveButton">Change available groups</string>
-    <string name="bandsActiveTitle">Change available groups</string>
+    <string name="settingsName">Settings</string>
+    <string name="settingsHints">Hints</string>
+    <string name="settingsHard">Hard mode</string>
+    <string name="settingsDarkTheme">Dark theme</string>
+    <string name="settingsGroup">Only groups</string>
+    <string name="settingsSounds">"Enable sounds"</string>
+    <string name="settingsCancel">"Press CANCEL"</string>
+    <string name="settingResetRecords">Reset score</string>
+    <string name="settingSave">Settings saved</string>
+    <string name="settingsBandsActiveButton">Change available groups</string>
+    <string name="settingsBandsActiveTitle">Change available groups</string>
 
-    <string name="gameRulesAbaut">Game rules</string>
+    <string name="gameRulesAbout">Game rules</string>
     <string name="aboutTitle">Welcome!</string>
     <string name="aboutText">
         "\t"Welcome to the Guess K-pop app! In this app, you can test your knowledge of K-pop. You have three main game modes:"\n"

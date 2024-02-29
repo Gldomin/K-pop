@@ -53,8 +53,7 @@ public class Artist {
     }
 
     public String getFolder() {
-        Random rand = new Random();
-        return convertStringToPath(getNamesImage(rand.nextInt(namesImages.length)));
+        return convertStringToPath(getNamesImage(new Random().nextInt(namesImages.length)));
     }
 
     public int getCountImages() {
@@ -67,8 +66,7 @@ public class Artist {
 
     public String getFolderNotRandom() {
         if (countRandom < 0) {
-            Random rand = new Random();
-            countRandom = rand.nextInt(namesImages.length);
+            countRandom = new Random().nextInt(namesImages.length);
         }
         return convertStringToPath(getNamesImage(countRandom));
     }

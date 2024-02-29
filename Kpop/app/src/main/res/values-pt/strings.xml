@@ -40,18 +40,18 @@
     <string name="answerYes">Sim</string>
     <string name="answerNo">Não</string>
 
-    <string name="settings0">Configurações</string>
-    <string name="settings1">Dicas</string>
-    <string name="settings2">Modo Difícil</string>
-    <string name="settings3">Tema Escuro</string>
-    <string name="settings4">"Ativar sons"</string>
-    <string name="settings5">"Pressione CANCELAR"</string>
-    <string name="resetRecords">Redefinir pontuação</string>
-    <string name="OptionsSet">Configurações salvas</string>
-    <string name="bandsActiveButton">Alterar grupos disponíveis</string>
-    <string name="bandsActiveTitle">Alterar grupos disponíveis</string>
+    <string name="settingsName">Configurações</string>
+    <string name="settingsHints">Dicas</string>
+    <string name="settingsHard">Modo Difícil</string>
+    <string name="settingsDarkTheme">Tema Escuro</string>
+    <string name="settingsSounds">"Ativar sons"</string>
+    <string name="settingsCancel">"Pressione CANCELAR"</string>
+    <string name="settingResetRecords">Redefinir pontuação</string>
+    <string name="settingSave">Configurações salvas</string>
+    <string name="settingsBandsActiveButton">Alterar grupos disponíveis</string>
+    <string name="settingsBandsActiveTitle">Alterar grupos disponíveis</string>
 
-    <string name="gameRulesAbaut">Regras do jogo</string>
+    <string name="gameRulesAbout">Regras do jogo</string>
     <string name="aboutTitle">Bem-vindo!</string>
     <string name="aboutText">
         "\t"Bem-vindo ao aplicativo Guess K-pop! Neste aplicativo, você pode testar seu conhecimento sobre o K-pop. Você tem três modos principais de jogo:"\n"
@@ -136,5 +136,6 @@
     <string name="ratingSend">Enviar</string>
     <string name="ratingCancel">Avaliar\nmais tarde</string>
     <string name="ratingClose">Não mostrar novamente</string>
+    <string name="settingsGroup">Apenas grupos</string>
 
 </resources>

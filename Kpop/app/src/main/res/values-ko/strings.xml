@@ -40,18 +40,18 @@
     <string name="answerYes">예</string>
     <string name="answerNo">아니오</string>
 
-    <string name="settings0">설정</string>
-    <string name="settings1">힌트</string>
-    <string name="settings2">어려운 모드</string>
-    <string name="settings3">어두운 테마</string>
-    <string name="settings4">"소리 활성화"</string>
-    <string name="settings5">"취소 버튼을 누르세요"</string>
-    <string name="resetRecords">점수 초기화</string>
-    <string name="OptionsSet">설정 저장됨</string>
-    <string name="bandsActiveButton">사용 가능한 그룹 변경</string>
-    <string name="bandsActiveTitle">사용 가능한 그룹 변경</string>
+    <string name="settingsName">설정</string>
+    <string name="settingsHints">힌트</string>
+    <string name="settingsHard">어려운 모드</string>
+    <string name="settingsDarkTheme">어두운 테마</string>
+    <string name="settingsSounds">"소리 활성화"</string>
+    <string name="settingsCancel">"취소 버튼을 누르세요"</string>
+    <string name="settingResetRecords">점수 초기화</string>
+    <string name="settingSave">설정 저장됨</string>
+    <string name="settingsBandsActiveButton">사용 가능한 그룹 변경</string>
+    <string name="settingsBandsActiveTitle">사용 가능한 그룹 변경</string>
 
-    <string name="gameRulesAbaut">게임 규칙</string>
+    <string name="gameRulesAbout">게임 규칙</string>
     <string name="aboutTitle">환영합니다!</string>
     <string name="aboutText">
         "\t"Guess K-pop 앱에 오신 것을 환영합니다! 이 앱에서는 K-pop에 대한 지식을 테스트할 수 있습니다. 세 가지 주요 게임 모드가 있습니다:"\n"
@@ -136,5 +136,6 @@
     <string name="ratingSend">보내기</string>
     <string name="ratingCancel">평가\n나중에</string>
     <string name="ratingClose">다시 표시 안 함</string>
+    <string name="settingsGroup">그룹만</string>
 
 </resources>

@@ -40,18 +40,18 @@
     <string name="answerYes">Ya</string>
     <string name="answerNo">Tidak</string>
 
-    <string name="settings0">Tetapan</string>
-    <string name="settings1">Petunjuk</string>
-    <string name="settings2">Mod Susah</string>
-    <string name="settings3">Tema Gelap</string>
-    <string name="settings4">"Aktifkan bunyi"</string>
-    <string name="settings5">"Tekan BATAL"</string>
-    <string name="resetRecords">Set semula mata</string>
-    <string name="OptionsSet">Tetapan disimpan</string>
-    <string name="bandsActiveButton">Tukar kumpulan yang tersedia</string>
-    <string name="bandsActiveTitle">Tukar kumpulan yang tersedia</string>
+    <string name="settingsName">Tetapan</string>
+    <string name="settingsHints">Petunjuk</string>
+    <string name="settingsHard">Mod Susah</string>
+    <string name="settingsDarkTheme">Tema Gelap</string>
+    <string name="settingsSounds">"Aktifkan bunyi"</string>
+    <string name="settingsCancel">"Tekan BATAL"</string>
+    <string name="settingResetRecords">Set semula mata</string>
+    <string name="settingSave">Tetapan disimpan</string>
+    <string name="settingsBandsActiveButton">Tukar kumpulan yang tersedia</string>
+    <string name="settingsBandsActiveTitle">Tukar kumpulan yang tersedia</string>
 
-    <string name="gameRulesAbaut">Peraturan permainan</string>
+    <string name="gameRulesAbout">Peraturan permainan</string>
     <string name="aboutTitle">Selamat Datang!</string>
     <string name="aboutText">
         "\t"Selamat datang ke aplikasi Teeka K-pop! Dalam aplikasi ini, anda boleh menguji pengetahuan anda tentang K-pop. Terdapat tiga mod permainan utama:"\n"
@@ -136,5 +136,6 @@
     <string name="ratingSend">Hantar</string>
     <string name="ratingCancel">Beri penilaian\nnanti</string>
     <string name="ratingClose">Jangan tunjukkan lagi</string>
+    <string name="settingsGroup">Hanya kumpulan</string>
 
 </resources>

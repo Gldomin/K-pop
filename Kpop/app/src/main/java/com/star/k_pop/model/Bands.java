@@ -85,8 +85,7 @@ public class Bands {
      * @return путь: имя группы/картинка
      */
     public String getFolder() {
-        Random rand = new Random();
-        return convertStringToPath(getNamesImages(rand.nextInt(imagesBands.length)));
+        return convertStringToPath(getNamesImages(new Random().nextInt(imagesBands.length)));
     }
 
     public String getFolder(int i){
@@ -95,5 +94,13 @@ public class Bands {
 
     private String convertStringToPath(String file){
         return "file:///android_asset/Groups/" + name[0] + "/" + file;
+    }
+
+    public String getFolderRandom() {
+        if (new Random().nextInt(10) > 5) {
+            return artists.get(new Random().nextInt(numberOfPeople)).getFolder();
+        } else {
+            return getFolder();
+        }
     }
 }

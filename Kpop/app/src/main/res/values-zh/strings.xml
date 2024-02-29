@@ -40,18 +40,18 @@
     <string name="answerYes">是</string>
     <string name="answerNo">否</string>
 
-    <string name="settings0">设置</string>
-    <string name="settings1">提示</string>
-    <string name="settings2">困难模式</string>
-    <string name="settings3">暗黑主题</string>
-    <string name="settings4">"启用声音"</string>
-    <string name="settings5">"按取消"</string>
-    <string name="resetRecords">重置得分</string>
-    <string name="OptionsSet">设置已保存</string>
-    <string name="bandsActiveButton">更改可用的组</string>
-    <string name="bandsActiveTitle">更改可用的组</string>
+    <string name="settingsName">设置</string>
+    <string name="settingsHints">提示</string>
+    <string name="settingsHard">困难模式</string>
+    <string name="settingsDarkTheme">暗黑主题</string>
+    <string name="settingsSounds">"启用声音"</string>
+    <string name="settingsCancel">"按取消"</string>
+    <string name="settingResetRecords">重置得分</string>
+    <string name="settingSave">设置已保存</string>
+    <string name="settingsBandsActiveButton">更改可用的组</string>
+    <string name="settingsBandsActiveTitle">更改可用的组</string>
 
-    <string name="gameRulesAbaut">游戏规则</string>
+    <string name="gameRulesAbout">游戏规则</string>
     <string name="aboutTitle">欢迎！</string>
     <string name="aboutText">
         "\t"欢迎来到Guess K-pop应用程序！在这个应用中，你可以测试你对K-pop的了解。你有三个主要的游戏模式："\\n"
@@ -136,5 +136,6 @@
     <string name="ratingSend">发送</string>
     <string name="ratingCancel">稍后评价</string>
     <string name="ratingClose">不再显示</string>
+    <string name="settingsGroup">只有团体</string>
 
 </resources>

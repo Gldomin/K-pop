@@ -16,8 +16,9 @@ import com.star.k_pop.lib.SomeMethods;
 public class Settings extends AppCompatActivity {
 
     Theme theme;
-    SwitchCompat optionSwitch1;
-    SwitchCompat optionSwitch2;
+    SwitchCompat optionSwitchDarkTheme;
+    SwitchCompat optionSwitchSound;
+    SwitchCompat optionSwitchGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +32,21 @@ public class Settings extends AppCompatActivity {
         final TextView settingText = findViewById(R.id.settingTitleTextView);
         settingText.setTextColor(theme.getTextColor());
 
-        optionSwitch1 = findViewById(R.id.optionSwitch1); //darkMode переключалка
-        optionSwitch1.setTextColor(theme.getTextColor());
-
-        optionSwitch2 = findViewById(R.id.optionSwitch2); //sound переключалка
-        optionSwitch2.setTextColor(theme.getTextColor());
-
         final Storage recordStorage = new Storage(this, "UserScore"); //хранилищеРекорда
 
         Storage storage = new Storage(this, "settings");
 
-        optionSwitch1.setChecked(storage.getBoolean("darkMode"));
-        optionSwitch2.setChecked(storage.getBoolean("soundMode"));
+        optionSwitchDarkTheme = findViewById(R.id.optionSwitchDarkTheme); //darkMode переключалка
+        optionSwitchDarkTheme.setTextColor(theme.getTextColor());
+        optionSwitchDarkTheme.setChecked(storage.getBoolean("darkMode"));
+
+        optionSwitchSound = findViewById(R.id.optionSwitchSound); //sound переключалка
+        optionSwitchSound.setTextColor(theme.getTextColor());
+        optionSwitchSound.setChecked(storage.getBoolean("soundMode"));
+
+        optionSwitchGroup = findViewById(R.id.optionSwitchGroup); //Group переключалка
+        optionSwitchGroup.setTextColor(theme.getTextColor());
+        optionSwitchGroup.setChecked(storage.getBoolean("modeOnlyGroup"));
 
         Button settingsConfirmButton = findViewById(R.id.settingsConfirm);
         settingsConfirmButton.setBackgroundResource(theme.getBackgroundButton());
@@ -84,13 +88,13 @@ public class Settings extends AppCompatActivity {
             image.setClass(Settings.this, BandsActiveActivity.class);
             startActivity(image);
         });
-
     }
 
     void saveSettings() {
         Storage storage = new Storage(this, "settings");
-        storage.saveValue("darkMode", optionSwitch1.isChecked());
-        storage.saveValue("soundMode", optionSwitch2.isChecked());
+        storage.saveValue("darkMode", optionSwitchDarkTheme.isChecked());
+        storage.saveValue("soundMode", optionSwitchSound.isChecked());
+        storage.saveValue("modeOnlyGroup", optionSwitchGroup.isChecked());
     }
 
     @Override

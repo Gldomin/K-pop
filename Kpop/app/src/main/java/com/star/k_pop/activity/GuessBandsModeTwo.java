@@ -82,6 +82,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     //----------------------------------------------------------------------------------------------
     private SoundPlayer soundPlayer; //это объект для воспроизведения звуков
     private boolean sound; //включен ли звук
+    private boolean isOnlyGroup; //Только группы
     private int pingClickID; //Звук неправильного ответа
     private int longSwitchID; // Звук правильного ответа
     private int keyClickID; //Звук кнопок при вводе
@@ -151,9 +152,9 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         spBands = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
         record = spBands.getInt("userScoreGuessBandModeTwo", 0);
 
-        sound = false;
         Storage storage = new Storage(this, "settings"); //хранилище для извлечения
         sound = storage.getBoolean("soundMode"); //настроек звука
+        isOnlyGroup = storage.getBoolean("modeOnlyGroup");
     }
 
     //Инициализация рекламы
@@ -290,14 +291,20 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         updateButtonAnswer();
         updateButtonInput();
 
-        Glide.with(this).load(Uri.parse(bands.get(count).getFolder()))
+        String imageGroup;
+        if (isOnlyGroup) {
+            imageGroup = bands.get(count).getFolder();
+        } else {
+            imageGroup = bands.get(count).getFolderRandom();
+        }
+        Glide.with(this).load(Uri.parse(imageGroup))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transition(withCrossFade())
                 .into(groupPhoto);
     }
 
     //Обновление кнопок поля ответа
-    private void updateButtonInput(){
+    private void updateButtonInput() {
         ref = createRandomButton();
         String nameTwo;
         do {
@@ -324,7 +331,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
     }
 
     //Обновление кнопок ввода
-    private void updateButtonAnswer(){
+    private void updateButtonAnswer() {
         for (Button b : buttonsEnd) {
             b.setText(" ");
             b.setVisibility(View.GONE);

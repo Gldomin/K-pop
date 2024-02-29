@@ -40,18 +40,18 @@
     <string name="answerYes">Sí</string>
     <string name="answerNo">No</string>
 
-    <string name="settings0">Configuración</string>
-    <string name="settings1">Pistas</string>
-    <string name="settings2">Modo Difícil</string>
-    <string name="settings3">Tema Oscuro</string>
-    <string name="settings4">"Habilitar sonidos"</string>
-    <string name="settings5">"Presiona CANCELAR"</string>
-    <string name="resetRecords">Restablecer puntuación</string>
-    <string name="OptionsSet">Configuración guardada</string>
-    <string name="bandsActiveButton">Cambiar grupos disponibles</string>
-    <string name="bandsActiveTitle">Cambiar grupos disponibles</string>
+    <string name="settingsName">Configuración</string>
+    <string name="settingsHints">Pistas</string>
+    <string name="settingsHard">Modo Difícil</string>
+    <string name="settingsDarkTheme">Tema Oscuro</string>
+    <string name="settingsSounds">"Habilitar sonidos"</string>
+    <string name="settingsCancel">"Presiona CANCELAR"</string>
+    <string name="settingResetRecords">Restablecer puntuación</string>
+    <string name="settingSave">Configuración guardada</string>
+    <string name="settingsBandsActiveButton">Cambiar grupos disponibles</string>
+    <string name="settingsBandsActiveTitle">Cambiar grupos disponibles</string>
 
-    <string name="gameRulesAbaut">Reglas del juego</string>
+    <string name="gameRulesAbout">Reglas del juego</string>
     <string name="aboutTitle">¡Bienvenido!</string>
     <string name="aboutText">
         "\t"¡Bienvenido a la aplicación Adivina K-pop! En esta aplicación, puedes poner a prueba tus conocimientos sobre K-pop. Tienes tres modos principales de juego:"\n"
@@ -136,5 +136,6 @@
     <string name="ratingSend">Enviar</string>
     <string name="ratingCancel">Calificar\nmás tarde</string>
     <string name="ratingClose">No mostrar de nuevo</string>
+    <string name="settingsGroup">Sólo grupos</string>
 
 </resources>
