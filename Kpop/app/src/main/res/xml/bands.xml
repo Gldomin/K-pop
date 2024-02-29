@@ -146,7 +146,6 @@
             <ImageArtists>1.jpg</ImageArtists>
             <ImageArtists>2.jpg</ImageArtists>
             <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Seungri</NameArtist>
@@ -174,6 +173,7 @@
         <Image>1.jpg</Image>
         <Image>2.jpg</Image>
         <Image>3.jpg</Image>
+        <Image>4.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Jenny</NameArtist>
@@ -185,22 +185,29 @@
             <ImageArtists>5.jpg</ImageArtists>
         </Artist>
         <Artist>
-            <NameArtist>Kim Jisoo</NameArtist>
+            <NameArtist>Jisoo</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>1.jpg</ImageArtists>
             <ImageArtists>2.jpg</ImageArtists>
+            <ImageArtists>3.jpg</ImageArtists>
+            <ImageArtists>4.jpg</ImageArtists>
+            <ImageArtists>5.jpg</ImageArtists>
         </Artist>
         <Artist>
-            <NameArtist>Lalisa</NameArtist>
+            <NameArtist>Lisa</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>1.jpg</ImageArtists>
             <ImageArtists>2.jpg</ImageArtists>
+            <ImageArtists>3.jpg</ImageArtists>
+            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Rose</NameArtist>
             <Sex>Female</Sex>
             <ImageArtists>1.jpg</ImageArtists>
             <ImageArtists>2.jpg</ImageArtists>
+            <ImageArtists>3.jpg</ImageArtists>
+            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
@@ -215,6 +222,8 @@
             <ImageArtists>1.jpg</ImageArtists>
             <ImageArtists>2.jpg</ImageArtists>
             <ImageArtists>3.jpg</ImageArtists>
+            <ImageArtists>4.jpg</ImageArtists>
+            <ImageArtists>5.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jimin</NameArtist>
@@ -257,6 +266,7 @@
             <ImageArtists>1.jpg</ImageArtists>
             <ImageArtists>2.jpg</ImageArtists>
             <ImageArtists>3.jpg</ImageArtists>
+            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
