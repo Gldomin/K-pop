@@ -134,5 +134,7 @@ ps.s: Play マーケットのアプリケーション ページでフィード�
     <string name="ratingCancel">後で評価する</string>
     <string name="ratingClose">二度と表示しないでください</string>
     <string name="settingsGroup">グループのみ</string>
+    <string name="ratingSendCloseTitle">Thank you for feedback</string>
+    <string name="ratingSendClose">Feedback sent</string>
 
 </resources>

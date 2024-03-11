@@ -138,5 +138,7 @@ p.s: Будем рады любому вашему фидбеку на стра�
     <string name="ratingCancel">Оценить\nпозже</string>
     <string name="ratingClose">Больше не показывать</string>
     <string name="settingsGroup">Только группы</string>
+    <string name="ratingSendCloseTitle">Thank you for feedback</string>
+    <string name="ratingSendClose">Feedback sent</string>
 
 </resources>

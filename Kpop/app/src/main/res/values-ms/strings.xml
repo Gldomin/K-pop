@@ -137,5 +137,7 @@
     <string name="ratingCancel">Beri penilaian\nnanti</string>
     <string name="ratingClose">Jangan tunjukkan lagi</string>
     <string name="settingsGroup">Hanya kumpulan</string>
+    <string name="ratingSendCloseTitle">Thank you for feedback</string>
+    <string name="ratingSendClose">Feedback sent</string>
 
 </resources>

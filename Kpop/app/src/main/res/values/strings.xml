@@ -143,5 +143,7 @@
     <string name="ratingSend">Send</string>
     <string name="ratingCancel">Rate\nlater</string>
     <string name="ratingClose">Do not show again</string>
+    <string name="ratingSendClose">Feedback sent</string>
+    <string name="ratingSendCloseTitle">Thank you for feedback</string>
 
 </resources>

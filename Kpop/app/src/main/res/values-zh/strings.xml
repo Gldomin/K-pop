@@ -137,5 +137,7 @@
     <string name="ratingCancel">稍后评价</string>
     <string name="ratingClose">不再显示</string>
     <string name="settingsGroup">只有团体</string>
+    <string name="ratingSendCloseTitle">Thank you for feedback</string>
+    <string name="ratingSendClose">Feedback sent</string>
 
 </resources>

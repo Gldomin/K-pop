@@ -137,5 +137,7 @@
     <string name="ratingCancel">ให้คะแนน\nภายหลัง</string>
     <string name="ratingClose">อย่าแสดงอีก</string>
     <string name="settingsGroup">เฉพาะกลุ่ม</string>
+    <string name="ratingSendCloseTitle">Thank you for feedback</string>
+    <string name="ratingSendClose">Feedback sent</string>
 
 </resources>

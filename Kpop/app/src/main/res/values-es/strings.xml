@@ -137,5 +137,7 @@
     <string name="ratingCancel">Calificar\nmás tarde</string>
     <string name="ratingClose">No mostrar de nuevo</string>
     <string name="settingsGroup">Sólo grupos</string>
+    <string name="ratingSendCloseTitle">Thank you for feedback</string>
+    <string name="ratingSendClose">Feedback sent</string>
 
 </resources>

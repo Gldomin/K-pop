@@ -137,5 +137,7 @@
     <string name="ratingCancel">평가\n나중에</string>
     <string name="ratingClose">다시 표시 안 함</string>
     <string name="settingsGroup">그룹만</string>
+    <string name="ratingSendCloseTitle">Thank you for feedback</string>
+    <string name="ratingSendClose">Feedback sent</string>
 
 </resources>
