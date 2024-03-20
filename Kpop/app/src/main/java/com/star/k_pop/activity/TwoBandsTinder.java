@@ -445,8 +445,10 @@ public class TwoBandsTinder extends AppCompatActivity {
     public void fadeAnimation(boolean anim, boolean isLeft) {
         if (anim) {
             imBTmp.setVisibility(View.VISIBLE);
-            imBTmp.setY(imageBand.getY());
-            imBTmp.setX(imageBand.getX());
+            imBTmp.setLeft(imageBand.getLeft());
+            imBTmp.setTop(imageBand.getTop());
+            imBTmp.setY(imageBand.getTranslationY());
+            imBTmp.setX(imageBand.getTranslationX());
             imBTmp.setImageDrawable(imageBand.getDrawable());
             imBTmp.setRotation(0);
             imBTmp.setScaleX(1);
