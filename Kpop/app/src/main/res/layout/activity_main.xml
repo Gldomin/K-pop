@@ -74,10 +74,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/achievement"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/settingsButton"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.899" />
+        app:layout_constraintStart_toEndOf="@+id/settingsButton" />
 
     <ImageView
         android:id="@+id/settingsButton"
@@ -85,24 +84,19 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:padding="10dp"
-        android:paddingLeft="7dp"
-        android:paddingTop="7dp"
         android:src="@drawable/setting_gear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.899" />
+        android:layout_marginBottom="10dp"/>
 
     <ImageView
         android:id="@+id/galleryButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
         android:src="@drawable/gallary_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/settingsButton" />

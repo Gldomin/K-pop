@@ -730,7 +730,7 @@ public class TwoBandsTinder extends AppCompatActivity {
         Storage storage = new Storage(this, "appStatus");
         if (!storage.getBoolean("achTripleExpert")) {
             if (countAd <= 0 && onRewarded) {
-                countAd = 5;
+                countAd = 3;
                 if (mInterstitialAd.show()) {
                     AppMetrica.reportEvent("Show ads", "{\"tinder\":\"interstitial\"}");
                 }

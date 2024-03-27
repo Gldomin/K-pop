@@ -548,7 +548,7 @@ public class GuessBandsModeTwo extends AppCompatActivity {
         Storage storage = new Storage(this, "appStatus");
         if (!storage.getBoolean("achTripleExpert")) {
             if (countAd <= 0 && onRewarded) {
-                countAd = 5;
+                countAd = 4;
                 if (mInterstitialAd.show()) {
                     AppMetrica.reportEvent("Show ads", "{\"bands\":\"interstitial\"}");
                 }
