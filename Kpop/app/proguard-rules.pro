@@ -27,4 +27,7 @@
   public *;
 }
 
+-dontwarn com.yandex.metrica.IIdentifierCallback
+-dontwarn com.yandex.metrica.YandexMetrica
+-dontwarn com.yandex.metrica.p
 -dontwarn com.yandex.metrica.ModulesFacade

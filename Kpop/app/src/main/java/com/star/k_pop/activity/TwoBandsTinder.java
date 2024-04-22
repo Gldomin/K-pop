@@ -264,7 +264,7 @@ public class TwoBandsTinder extends AppCompatActivity {
     private void createAd() {
         rewardedCustom = new RewardedCustomYandex(this, getResources().getString(R.string.yandex_id_reward));
         mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_game));
-        countAd = 5;
+        countAd = 3;
     }
 
     //Создание подсказки
