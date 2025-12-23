@@ -49,14 +49,12 @@ public class Importer {
      * @param res ресурсы приложения
      */
     public static void createListArtists(Resources res, Context context) {
-        if (bands.size() > 0 && artists.size() > 0) {
+        if (!bands.isEmpty() && !artists.isEmpty()) {
             return;
         }
         XmlPullParser parser = res.getXml(R.xml.bands);
         ArrayList<Artist> artistsBand = new ArrayList<>();
-        ArrayList<String> images = new ArrayList<>();
         ArrayList<String> nameBand = new ArrayList<>();
-        ArrayList<String> imageBand = new ArrayList<>();
         Bands.Sex sexBand = Bands.Sex.MIXED;
         String nameArtist = "artist";
         boolean sex = false;
@@ -64,11 +62,6 @@ public class Importer {
             while (parser.getEventType() != XmlPullParser.END_DOCUMENT) {
                 switch (parser.getEventType()) {
                     case XmlPullParser.START_TAG:
-                        if (parser.getName().equals("Image")) {
-                            parser.next();
-                            imageBand.add(parser.getText());
-                            break;
-                        }
                         if (parser.getName().equals("NameBand")) {
                             parser.next();
                             nameBand.add(parser.getText());
@@ -77,11 +70,6 @@ public class Importer {
                         if (parser.getName().equals("NameArtist")) {
                             parser.next();
                             nameArtist = parser.getText();
-                            break;
-                        }
-                        if (parser.getName().equals("ImageArtists")) {
-                            parser.next();
-                            images.add(parser.getText());
                             break;
                         }
                         if (parser.getName().equals("Sex")) {
@@ -104,18 +92,16 @@ public class Importer {
                         break;
                     case XmlPullParser.END_TAG:
                         if (parser.getName().equals("Artist")) {
-                            artistsBand.add(new Artist(nameBand.toArray(new String[0]), nameArtist, images.toArray(new String[0]), sex));
-                            images.clear();
+                            artistsBand.add(new Artist(nameBand.toArray(new String[0]), nameArtist, createImage(), sex));
                             sex = false;
                             break;
                         }
                         if (parser.getName().equals("Band")) {
                             artists.addAll(artistsBand);
-                            bands.add(new Bands(nameBand.toArray(new String[0]), artistsBand, imageBand.toArray(new String[0]), sexBand));
+                            bands.add(new Bands(nameBand.toArray(new String[0]), artistsBand, createImage(), sexBand));
                             bandsAll.add(nameBand.get(0));
                             nameBand.clear();
                             artistsBand.clear();
-                            imageBand.clear();
                         }
                         break;
                     default:
@@ -126,12 +112,19 @@ public class Importer {
             LoadBandsActive(context);
         } catch (XmlPullParserException | IOException e) {
             AppMetrica.reportEvent("Importer error " + countLoading + " " + e.getMessage() + " ");
-            e.printStackTrace();
             countLoading++;
             if (countLoading < 5) {
                 createListArtists(res, context);
             }
         }
+    }
+
+    private static String[] createImage() {
+        ArrayList<String> images = new ArrayList<>();
+        images.add("1.webp");
+        images.add("2.webp");
+        images.add("3.webp");
+        return images.toArray(new String[0]);
     }
 
     /**
@@ -140,7 +133,7 @@ public class Importer {
      * @return список артистов
      */
     public static ArrayList<Artist> getArtists() {
-        if (artistsNotAll.size() > 0) {
+        if (!artistsNotAll.isEmpty()) {
             return new ArrayList<>(artistsNotAll);
         }
         return new ArrayList<>(artists);
@@ -171,7 +164,7 @@ public class Importer {
      * @return список групп
      */
     public static ArrayList<Bands> getBands() {
-        if (bandsNotAll.size() > 0) {
+        if (!bandsNotAll.isEmpty()) {
             return new ArrayList<>(bandsNotAll);
         }
         return new ArrayList<>(bands);

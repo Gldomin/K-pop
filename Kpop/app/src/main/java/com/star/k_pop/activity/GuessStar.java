@@ -123,7 +123,7 @@ public class GuessStar extends AppCompatActivity {
     private void initGame(Bundle savedInstanceState) {
         artists = Importer.getRandomArtists();
         count = 0;
-        if (artists.size() == 0) {
+        if (artists.isEmpty()) {
             finish();
         }
         SharedPreferences sp = getSharedPreferences("UserScore", Context.MODE_PRIVATE);
@@ -262,7 +262,11 @@ public class GuessStar extends AppCompatActivity {
     //Получепние подсказки
     private void getHint() {
         hintButton.setBackgroundResource(theme.getBackgroundButtonDisable());
-        counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+        if (hintCount<=0){
+            counterHint.setText(getResources().getString(R.string.ad_hint));
+        }else{
+            counterHint.setText(String.format(Locale.getDefault(), "%d", hintCount));
+        }
         int number = 0;
         for (int i = 0; i < 4; i++) {
             if (buttons[i].getText().equals(artists.get(count).getName())) {

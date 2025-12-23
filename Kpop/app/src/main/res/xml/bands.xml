@@ -1,1521 +1,782 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Bands>
     <Band>
-        <NameBand>2NE1</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <SexBand>Female</SexBand>
-        <Artist>
-            <NameArtist>CL</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Dara</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Minzy</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Park Bom</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-    </Band>
-    <Band>
-        <NameBand>2PM</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <SexBand>Male</SexBand>
-        <Artist>
-            <NameArtist>Chansung</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Jun.K</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Junho</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Nichkhun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Taecyeon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Wooyoung</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-    </Band>
-    <Band>
-        <NameBand>ATEEZ</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <SexBand>Male</SexBand>
-        <Artist>
-            <NameArtist>Hongjoong</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Jongho</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Mingi</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>San</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Seonghwa</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Wooyoung</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Yeosang</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Yunho</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-    </Band>
-    <Band>
-        <NameBand>Big Bang</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <SexBand>Male</SexBand>
-        <Artist>
-            <NameArtist>Daesung</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>G-Dragon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Seungri</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>T.O.P</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Taeyang</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-    </Band>
-    <Band>
-        <NameBand>Blackpink</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <Image>4.jpg</Image>
-        <SexBand>Female</SexBand>
-        <Artist>
-            <NameArtist>Jenny</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-            <ImageArtists>5.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Jisoo</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-            <ImageArtists>5.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Lisa</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Rose</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-        </Artist>
-    </Band>
-    <Band>
-        <NameBand>BTS</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <Image>4.jpg</Image>
-        <SexBand>Male</SexBand>
-        <Artist>
-            <NameArtist>J-Hope</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-            <ImageArtists>5.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Jimin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-            <ImageArtists>5.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Jin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Jungkook</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>RM</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Suga</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>V</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-        </Artist>
-    </Band>
-    <Band>
-        <NameBand>DAY6</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <SexBand>Male</SexBand>
-        <Artist>
-            <NameArtist>Dowoon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Sungjin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Wonpil</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Young K</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-    </Band>
-    <Band>
-        <NameBand>ENHYPEN</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <Image>4.jpg</Image>
-        <SexBand>Male</SexBand>
-        <Artist>
-            <NameArtist>Heeseung</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Jake</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Jay</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Jungwon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Ni-ki</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Sunghoon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Sunoo</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-    </Band>
-    <Band>
-        <NameBand>Everglow</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <SexBand>Female</SexBand>
-        <Artist>
-            <NameArtist>Aisha</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>EU</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Mia</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Onda</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Sihyeon</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Yiren</NameArtist>
-            <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-    </Band>
-    <Band>
         <NameBand>(G)I-DLE</NameBand>
         <NameBand>GI-DLE</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <Image>4.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Minnie</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Miyeon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Shuhua</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Soyeon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yuqi</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>2NE1</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>CL</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Dara</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Minzy</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Park Bom</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>2PM</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Chansung</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jun.K</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Junho</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Nichkhun</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Taecyeon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Wooyoung</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>ATEEZ</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Hongjoong</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jongho</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Mingi</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>San</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Seonghwa</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Wooyoung</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yeosang</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yunho</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>Big Bang</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Daesung</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>G-Dragon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Seungri</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>T.O.P</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Taeyang</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>Blackpink</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Jenny</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Jisoo</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Lisa</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Rose</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>BTS</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>J-Hope</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jimin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jungkook</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>RM</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Suga</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>V</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>DAY6</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Dowoon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Sungjin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Wonpil</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Young K</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>ENHYPEN</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Heeseung</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jake</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jay</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jungwon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Ni-ki</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Sunghoon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Sunoo</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>Everglow</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Aisha</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>EU</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Mia</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Onda</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Sihyeon</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Yiren</NameArtist>
+            <Sex>Female</Sex>
         </Artist>
     </Band>
     <Band>
         <NameBand>Girls’ Generation</NameBand>
         <NameBand>Girls Generation</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Hyoyeon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Seohyun</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sooyoung</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sunny</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Taeyeon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Tiffany</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yoona</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yuri</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>GOT7</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Bam-Bam</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-            <ImageArtists>5.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jackson</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>JB</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-            <ImageArtists>5.jpg</ImageArtists>
-            <ImageArtists>6.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jinyoung</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Mark</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Youngjae</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yugyeom</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
-            <ImageArtists>5.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>iKON</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Bobby</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
-            <NameArtist>Dong Hyuk</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>Chan</NameArtist>
         </Artist>
         <Artist>
-            <NameArtist>Jin Hwan</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>DK</NameArtist>
         </Artist>
         <Artist>
-            <NameArtist>Jung Chan</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>Jay</NameArtist>
         </Artist>
         <Artist>
-            <NameArtist>Kim Han Bin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
+            <NameArtist>Ju-ne</NameArtist>
         </Artist>
         <Artist>
-            <NameArtist>Ku Jun He</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Song Yun Hyeong</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>Song</NameArtist>
         </Artist>
     </Band>
     <Band>
         <NameBand>ITZY</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <Image>4.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Chaeryeong</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Lia</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Ryujin</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yeji</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yuna</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>Iz One</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <Image>4.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Chaewon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Eunbi</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Hitomi</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Hyewon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Lee Chae Yeon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Minju</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Nako</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sakura</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Wonyoung</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yena</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yujin</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yuri</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>Mamamoo</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Hwasa</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Moonbyul</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Solar</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Wheein</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>MONSTA X</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
-            <NameArtist>Chae Hyungwon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>Hyungwon</NameArtist>
         </Artist>
         <Artist>
-            <NameArtist>Im Changkyun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>I.M</NameArtist>
         </Artist>
         <Artist>
-            <NameArtist>Lee Joohoney</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>Joohoney</NameArtist>
         </Artist>
         <Artist>
-            <NameArtist>Lee Minhyuk</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>Kihyun</NameArtist>
         </Artist>
         <Artist>
-            <NameArtist>Son Hyunwoo</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>Minhyuk</NameArtist>
         </Artist>
         <Artist>
-            <NameArtist>Yoo Kihyun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
+            <NameArtist>Shownu</NameArtist>
         </Artist>
     </Band>
     <Band>
         <NameBand>NCT 127</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <Image>4.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Doyoung</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Haechan</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jaehyun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Johnny</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jungwoo</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Mark</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Taeil</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Taeyong</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Winwin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yuta</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>NU'EST</NameBand>
         <NameBand>NUEST</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Aron</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Baekho</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>JR</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Minhyun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Ren</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>PIXY</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Dajeong</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Dia</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Lola</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Rinji</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sua</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>Red Velvet</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Irene</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Joy</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Seulgi</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Wendy</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yeri</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>SEVENTEEN</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <Image>4.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Dino</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>DK</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Hoshi</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jeonghan</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Joshua</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Mingyu</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>S.Coups</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Seungkwan</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>The8</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Vernon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Wonwoo</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Woozi</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>SHINee</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
-            <NameArtist>Jonghyun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
             <NameArtist>Key</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Minho</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Onew</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Taemin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>STAYC</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
-        <Image>4.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Isa</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>J</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Seeun</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sieun</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sumin</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yoon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>Stray Kids</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Bang Chan</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Changbin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Felix</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Han</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Hyunjin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>IN</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Lee Know</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Seungmin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>Super Junior</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Donghae</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Eunhyuk</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Heechul</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Kyuhyun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Leeteuk</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Ryeowook</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Shindong</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Siwon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Sungmin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yesung</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>SuperM</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Baekhyun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Kai</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Mark</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Taemin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Taeyong</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Ten</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>TVXQ</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Max Changmin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>U-Know Yunho</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>Twice</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Female</SexBand>
         <Artist>
             <NameArtist>Chaeyoung</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Dahyun</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jihyo</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Jungyeon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Mina</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Momo</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Nayeon</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Sana</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Tzuyu</NameArtist>
             <Sex>Female</Sex>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-            <ImageArtists>4.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>TXT</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
             <NameArtist>Beomgyu</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>HueningKai</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Soobin</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Taehyun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
             <NameArtist>Yeonjun</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
     </Band>
     <Band>
         <NameBand>WINNER</NameBand>
-        <Image>1.jpg</Image>
-        <Image>2.jpg</Image>
-        <Image>3.jpg</Image>
         <SexBand>Male</SexBand>
         <Artist>
-            <NameArtist>Jinwoo</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
+            <NameArtist>Hoony</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jinu</NameArtist>
         </Artist>
         <Artist>
             <NameArtist>Mino</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
         </Artist>
         <Artist>
-            <NameArtist>Seunghoon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
-            <ImageArtists>3.jpg</ImageArtists>
-        </Artist>
-        <Artist>
-            <NameArtist>Seungyoon</NameArtist>
-            <ImageArtists>1.jpg</ImageArtists>
-            <ImageArtists>2.jpg</ImageArtists>
+            <NameArtist>Yoon</NameArtist>
         </Artist>
     </Band>
 </Bands>
