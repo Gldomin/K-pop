@@ -7,7 +7,7 @@
     tools:context=".activity.MainActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/garlandImage"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:scaleType="fitCenter"
@@ -17,13 +17,16 @@
         app:srcCompat="@drawable/garland" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/presentImage"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:scaleType="fitCenter"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
         app:layout_constraintBottom_toTopOf="@+id/settingsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:srcCompat="@drawable/presents" />
 
     <LinearLayout

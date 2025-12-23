@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sp;
 
     private InterstitialCustom mInterstitialAd;
+    private ImageView garland;
+    private boolean garlandLight = true;
 
     private int countAd = 4;
 
@@ -51,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
         theme.setThemeSecond();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        garland = findViewById(R.id.garlandImage);
+        garland.setOnClickListener(view -> {
+            garlandLight = !garlandLight;
+            updateGardenLight();
+        });
+        if (savedInstanceState != null) {
+            if (savedInstanceState.containsKey("garlandLight")) {
+                garlandLight = savedInstanceState.getBoolean("garlandLight");
+                updateGardenLight();
+            }
+        }
 
         mInterstitialAd = new InterstitialCustomYandex(this, getResources().getString(R.string.yandex_id_interstitial_menu));
 
@@ -121,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
             image.setClass(MainActivity.this, Achievements.class);
             startActivity(image);
         });
+
+
 
         Button about = findViewById(R.id.abautButton);
         about.setBackgroundResource(theme.getBackgroundButton());
@@ -214,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putBoolean("garlandLight", garlandLight);
         super.onSaveInstanceState(outState);
     }
 
@@ -222,6 +239,14 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             recreate();
+        }
+    }
+
+    private void updateGardenLight() {
+        if (garlandLight) {
+            garland.setImageResource(R.drawable.garland);
+        } else {
+            garland.setImageResource(R.drawable.garland_off);
         }
     }
 
