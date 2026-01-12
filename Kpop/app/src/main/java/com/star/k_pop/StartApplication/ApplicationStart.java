@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.multidex.MultiDexApplication;
 
+import com.bumptech.glide.Glide;
 import com.star.k_pop.R;
 import com.star.k_pop.helper.Storage;
 
@@ -71,6 +72,11 @@ public class ApplicationStart extends MultiDexApplication {
             tempStorage.saveValue("achSwipeTwoBandsExpert", false); //ачивка
             tempStorage.saveValue("achTripleExpert", false); //ачивка
             tempStorage.saveValue("achRoyal", false); //ачивка
+        }
+        if (!sp.contains("update2.1")){
+            Storage tempStorage = new Storage(this, "appStatus");
+            tempStorage.saveValue("update2.1", true);
+            Glide.get(this).clearMemory();
         }
     }
 }
