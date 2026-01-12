@@ -68,6 +68,72 @@
         </Artist>
     </Band>
     <Band>
+        <NameBand>Aespa</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Giselle</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Karina</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Ningning</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Winter</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>Apink</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Bomi</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Chorong</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Eunji</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Hayoung</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Namjoo</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>ASTRO</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Cha Eun Woo</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>JinJin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>MJ</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Moon Bin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Rocky</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yoon San Ha</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
         <NameBand>ATEEZ</NameBand>
         <SexBand>Male</SexBand>
         <Artist>
@@ -93,6 +159,38 @@
         </Artist>
         <Artist>
             <NameArtist>Yunho</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>BABYMONSTER</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Ahyeon</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Asa</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Chiquita</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Pharita</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Rami</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Rora</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Ruka</NameArtist>
+            <Sex>Female</Sex>
         </Artist>
     </Band>
     <Band>
@@ -135,6 +233,28 @@
         </Artist>
     </Band>
     <Band>
+        <NameBand>BOYNEXTDOOR</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Jaehyun</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Leehan</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Riwoo</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Sungho</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Taesan</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Woonhak</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
         <NameBand>BTS</NameBand>
         <SexBand>Male</SexBand>
         <Artist>
@@ -157,6 +277,37 @@
         </Artist>
         <Artist>
             <NameArtist>V</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>CRAVITY</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Allen</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Hyeongjun</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jungmo</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Minhee</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Seongmin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Serim</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Taeyoung</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Wonjin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Woobin</NameArtist>
         </Artist>
     </Band>
     <Band>
@@ -229,6 +380,86 @@
         </Artist>
     </Band>
     <Band>
+        <NameBand>EXO</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Baekhyun</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Chanyeol</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Chen</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>D.O</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Kai</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Lay</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Sehun</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Suho</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Xiumin</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>FIFTY FIFTY</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Athena</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Chanelle Moon</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Hana</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Keena</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Yewon</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>Fromis_9</NameBand>
+        <NameBand>Fromis 9</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Baek Jiheon</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Lee Chaeyoung</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Lee Nagyung</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Park Jiwon</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Song Hayoung</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
         <NameBand>Girls’ Generation</NameBand>
         <NameBand>Girls Generation</NameBand>
         <SexBand>Female</SexBand>
@@ -291,6 +522,79 @@
         </Artist>
     </Band>
     <Band>
+        <NameBand>H1-KEY</NameBand>
+        <NameBand>H1 KEY</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Hwiseo</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Riina</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Seoi</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Yel</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>Hearts2Hearts</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>A-na</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Carmen</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Ian</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Jiwoo</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Juun</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Stella</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Ye-on</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Yuha</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>HIGHLIGHT</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Lee Gikwang</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Son Dongwoon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yang Yoseop</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yoon Dujun</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
         <NameBand>iKON</NameBand>
         <SexBand>Male</SexBand>
         <Artist>
@@ -310,6 +614,30 @@
         </Artist>
         <Artist>
             <NameArtist>Song</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>ILLIT</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Iroha</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Minju</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Moka</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Wonhee</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Yunah</NameArtist>
+            <Sex>Female</Sex>
         </Artist>
     </Band>
     <Band>
@@ -333,6 +661,34 @@
         </Artist>
         <Artist>
             <NameArtist>Yuna</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>IVE</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>An Yujin</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Gaeul</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Jang Wonyoung</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Leeseo</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Liz</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Rei</NameArtist>
             <Sex>Female</Sex>
         </Artist>
     </Band>
@@ -389,6 +745,110 @@
         </Artist>
     </Band>
     <Band>
+        <NameBand>Izna</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Bang Jeemin</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Choi Jungeun</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Jeong Saebi</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Koko</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Mai</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Ryu Sarang</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>KATSEYE</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Daniela</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Lara</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Manon</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Megan</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Sophia</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Yoonchae</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>KiiiKiii</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Haum</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Jiyu</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Kya</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Leesol</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Sui</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>LE SSERAFIM</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Hong Eunchae</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Huh Yunjin</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Kazuha</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Kim Chaewon</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Sakura</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
         <NameBand>Mamamoo</NameBand>
         <SexBand>Female</SexBand>
         <Artist>
@@ -405,6 +865,30 @@
         </Artist>
         <Artist>
             <NameArtist>Wheein</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>MEOVV</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Anna</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Ella</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Gawon</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Narin</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Sooin</NameArtist>
             <Sex>Female</Sex>
         </Artist>
     </Band>
@@ -462,6 +946,30 @@
         </Artist>
     </Band>
     <Band>
+        <NameBand>NewJeans</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Danielle</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Haerin</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Hanni</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Hyein</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Minji</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
         <NameBand>NU'EST</NameBand>
         <NameBand>NUEST</NameBand>
         <SexBand>Male</SexBand>
@@ -479,6 +987,87 @@
         </Artist>
         <Artist>
             <NameArtist>Ren</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>OH MY GIRL</NameBand>
+        <SexBand>Female</SexBand>
+        <Artist>
+            <NameArtist>Arin</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Hyojung</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Mimi</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Seunghee</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>YooA</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+        <Artist>
+            <NameArtist>Yubin</NameArtist>
+            <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>P1Harmony</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Intak</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jiung</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jongseob</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Keeho</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Soul</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Theo</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>PENTAGON</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Hongseok</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Hui</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jinho</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Kino</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Shinwon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Wooseok</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yan An</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yeo One</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yuto</NameArtist>
         </Artist>
     </Band>
     <Band>
@@ -527,6 +1116,28 @@
         <Artist>
             <NameArtist>Yeri</NameArtist>
             <Sex>Female</Sex>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>RIIZE</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Anton</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Eunseok</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Shotaro</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Sohee</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Sungchan</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Wonbin</NameArtist>
         </Artist>
     </Band>
     <Band>
@@ -695,6 +1306,77 @@
         </Artist>
     </Band>
     <Band>
+        <NameBand>THE BOYZ</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Eric</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Hyunjae</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jacob</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Ju Haknyeon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Juyeon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Kevin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>New</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Q</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Sangyeon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Sunwoo</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Younghoon</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>TREASURE</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Asahi</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Choi Hyun Suk</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Doyoung</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Haruto</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jihoon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Junkyu</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Park Jeong Woo</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>So Jung Hwan</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yoon Jae Hyuk</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yoshi</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
         <NameBand>TVXQ</NameBand>
         <SexBand>Male</SexBand>
         <Artist>
@@ -745,6 +1427,28 @@
         </Artist>
     </Band>
     <Band>
+        <NameBand>TWS</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Dohoon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Hanjin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jihoon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Kyungmin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Shinyu</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Youngjae</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
         <NameBand>TXT</NameBand>
         <SexBand>Male</SexBand>
         <Artist>
@@ -777,6 +1481,59 @@
         </Artist>
         <Artist>
             <NameArtist>Yoon</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>Xdinary Heroes</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Gaon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Gunil</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jooyeon</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jun Han</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jungsu</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>O.de</NameArtist>
+        </Artist>
+    </Band>
+    <Band>
+        <NameBand>ZEROBASEONE</NameBand>
+        <SexBand>Male</SexBand>
+        <Artist>
+            <NameArtist>Gunwook</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Gyuvin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Hanbin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Jiwoong</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Matthew</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Ricky</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Taerae</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Yujin</NameArtist>
+        </Artist>
+        <Artist>
+            <NameArtist>Zhang Hao</NameArtist>
         </Artist>
     </Band>
 </Bands>

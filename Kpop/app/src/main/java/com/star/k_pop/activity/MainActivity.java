@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView garland;
     private boolean garlandLight = true;
 
-    private int countAd = 4;
+    private int countAd = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
